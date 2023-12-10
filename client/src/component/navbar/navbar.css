@@ -1,0 +1,14 @@
+.Container{
+    background-color: aquamarine;
+    display: flex;
+    height: 16vh;
+    align-items: center;
+}
+.dash{
+   margin-left:75vw;
+   font-weight: bold;
+   
+}
+.dash:hover{
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,46 @@
+.contain{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login{
+    width: 23vw;
+    height: 55vh;
+    border: 1px solid black;
+    border-radius:10px;
+}
+.nameLogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.input{
+    font-size:18px;
+    width: 275px;
+    margin-bottom: 20px;
+    font-weight:bold;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+.pass{
+    font-weight:bold;
+    font-size: 18px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    margin-bottom: 25px;
+}
+.botton{
+    background-color: inherit;
+    border: 0;
+    border-bottom:1px solid black;
+}
+.submit{
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    border-radius: 10px;
+}
