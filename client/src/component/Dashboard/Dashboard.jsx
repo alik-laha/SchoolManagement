@@ -1,5 +1,5 @@
 import SideBar from "../sideBar/SideBar";
-import CreateItem from "../DashboardMain/DashBoardMain";
+import DashBoardMain from "../DashboardMain/DashBoardMain";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -8,7 +8,7 @@ const Dashboard = () => {
       <div style={{ height: "40px", backgroundColor: "blue" }}>Head</div>
       <div style={{ display: "flex" }}>
         <SideBar />
-        <CreateItem />
+        <DashBoardMain />
       </div>
       <div style={{ height: "40px", backgroundColor: "blue" }}>Foot</div>
     </>
