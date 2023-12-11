@@ -1,8 +1,37 @@
 import "./sidebar.css";
+import { useState } from "react";
 
 const SideBar = () => {
+  const [stockVisi, setStockVisi] = useState("none");
+  const [userVisi, SetUserVisi] = useState("none");
+
+  const stockVisiblity = () => {
+    if (stockVisi === "none") {
+      setStockVisi("block");
+      SetUserVisi("none");
+    } else {
+      setStockVisi("none");
+    }
+  };
+  const userVisiblity = () => {
+    if (userVisi === "none") {
+      SetUserVisi("block");
+    } else {
+      SetUserVisi("none");
+    }
+  };
+
   return (
     <div className="side">
+      <span onClick={userVisiblity}>User</span>
+      <div id="stock" style={{ display: userVisi }}>
+        <ul>
+          <li>Vendor</li>
+          <li>Item type</li>
+          <li>Stock Entry</li>
+          <li>Check Pending Amount</li>
+        </ul>
+      </div>
       {/* user */}
       <select className="user">
         <option>Dashboard users</option>
@@ -22,13 +51,15 @@ const SideBar = () => {
       </select>
 
       {/* stock */}
-      <select className="user">
-        <option>Stock</option>
-        <option>Vendor</option>
-        <option>Item type</option>
-        <option>Stock Entry</option>
-        <option>Pending Amount</option>
-      </select>
+      <span onClick={stockVisiblity}>Stock</span>
+      <div id="stock" style={{ display: stockVisi }}>
+        <ul>
+          <li>Vendor</li>
+          <li>Item type</li>
+          <li>Stock Entry</li>
+          <li>Check Pending Amount</li>
+        </ul>
+      </div>
     </div>
   );
 };
