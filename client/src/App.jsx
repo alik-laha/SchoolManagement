@@ -2,11 +2,13 @@ import Navbar from "./component/navbar/Navbar";
 import Login from "./component/login/Login";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
+import PrivateComponent from "./component/private/private";
 function App() {
   return (
     <BrowserRouter>
-      {/* home page */}
       <Routes>
+        {/* home page */}
+
         <Route
           path="/"
           element={
@@ -15,19 +17,20 @@ function App() {
             </>
           }
         />
-        {/* dashboard page */}
-        <Route
-          path="/dashboard"
-          element={
-            <>
-              <Dashboard />
-            </>
-          }
-        />
-      </Routes>
+        <Route element={<PrivateComponent />}>
+          {/* dashboard page */}
 
-      {/* login */}
-      <Routes>
+          <Route
+            path="/dashboard"
+            element={
+              <>
+                <Dashboard />
+              </>
+            }
+          />
+        </Route>
+        {/* login */}
+
         <Route path="/log-in" element={<Login />} />
       </Routes>
     </BrowserRouter>
