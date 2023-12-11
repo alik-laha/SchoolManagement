@@ -1,0 +1,14 @@
+.side{
+    width: 25vw;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.user{
+    font-size: 20px;
+    margin-bottom: 20px;
+    border: none;
+    background-color: inherit;
+    outline: none;
+}

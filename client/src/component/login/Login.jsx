@@ -3,17 +3,21 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
-  const [pass, setpass] = useState("");
-
+  const [pass, setPass] = useState("");
+  const [name, setName] = useState("");
   //store the pass
   const handalePass = (e) => {
-    setpass(e.target.value);
+    setPass(e.target.value);
+  };
+  //store the name
+  const handaleName = (e) => {
+    setName(e.target.value);
   };
 
   //password visiblity
   const passwordSee = (e) => {
     e.preventDefault();
-    if (!confirm) {
+    if (!pass) {
       setVisiblity("password");
     } else {
       if (visiblity === "password") {
@@ -55,7 +59,13 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <input type="text" placeholder="Username" className="input" />
+          <input
+            type="text"
+            placeholder="Username"
+            className="input"
+            value={name}
+            onChange={handaleName}
+          />
           <div className="Password">
             <section style={{ display: "flex" }}>
               <input
