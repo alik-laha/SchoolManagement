@@ -1,4 +1,4 @@
-import Navbar from "./component/navbar/Navbar";
+
 import Login from "./component/login/Login";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
@@ -7,6 +7,7 @@ import StockEntry from "./component/StockCreate/StockEntry/StockEntry";
 import Home from "./component/Home/Home.jsx";
 import Header from "./component/Home/Header.jsx";
 import Footer from "./component/Home/Footer.jsx";
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,18 +17,12 @@ function App() {
         <Route
           path="/"
           element={
-            
-              
               <div>
-              
               <Header/>
-              <div className="min-h-[60vh]">
-              <Home/>
-              <Navbar/>
-              </div>
-              
+                <div className="min-h-[60vh]">
+                  <Home/>
+                </div>
               <Footer/>
-             
               </div>
             
           }

@@ -1,6 +1,7 @@
 // src/components/Header.js
 import React from "react";
 import logo from './logo_ahm.jpg'
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div className="navbar bg-[#FA7D19] text-white  px-16">
@@ -13,18 +14,18 @@ const Header = () => {
        {/*<a href="#" className="btn btn-ghost normal-case text-1xl">CodeBun</a>*/}
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal p-0 font-bold">
-          <li>
-            <a>Home</a>
-          </li>
-          <li>
+        <ul className="menu menu-horizontal p-0 font-bold ">
+          <li >
             <a>About</a>
           </li>
           <li>
-            <a>Blogs</a>
+            <a>Gallery</a>
           </li>
           <li>
             <a>Contact Us</a>
+          </li>
+          <li>
+            <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
         </ul>
       </div>
