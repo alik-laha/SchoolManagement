@@ -4,11 +4,13 @@ import { useState } from "react";
 const SideBar = () => {
   const [stockVisi, setStockVisi] = useState("none");
   const [userVisi, SetUserVisi] = useState("none");
+  const [employVisi, setEmployVisi] = useState("none");
 
   const stockVisiblity = () => {
     if (stockVisi === "none") {
       setStockVisi("block");
       SetUserVisi("none");
+      setEmployVisi("none");
     } else {
       setStockVisi("none");
     }
@@ -16,49 +18,62 @@ const SideBar = () => {
   const userVisiblity = () => {
     if (userVisi === "none") {
       SetUserVisi("block");
+      setEmployVisi("none");
+      setStockVisi("none");
     } else {
       SetUserVisi("none");
+    }
+  };
+  const employVisiblity = () => {
+    if (employVisi === "none") {
+      setEmployVisi("block");
+      SetUserVisi("none");
+      setStockVisi("none");
+    } else {
+      setEmployVisi("none");
     }
   };
 
   return (
     <div className="side">
-      <span onClick={userVisiblity}>User</span>
-      <div id="stock" style={{ display: userVisi }}>
-        <ul>
-          <li>Vendor</li>
-          <li>Item type</li>
-          <li>Stock Entry</li>
-          <li>Check Pending Amount</li>
-        </ul>
-      </div>
       {/* user */}
-      <select className="user">
-        <option>Dashboard users</option>
-        <option>Create users</option>
-        <option>View users</option>
-      </select>
+      <span onClick={userVisiblity} className="user">
+        User
+      </span>
+      <div className="user" style={{ display: userVisi }}>
+        <div className="Items">Dashboard users</div>
+        <div className="Items">Create users</div>
+        <div className="Items" style={{ borderBottom: "none" }}>
+          View users
+        </div>
+      </div>
+
       {/* employ */}
-      <select className="user">
-        <option>Employ(Staff)</option>
-        <option>Create Employ</option>
-        <option>View Employ</option>
-      </select>
+      {/* <div onClick={employVisiblity} className="user">
+        Employ
+      </div>
+      <div className="user" style={{ display: employVisi }}>
+        <div className="Items">Employ(Staff)</div>
+        <div className="Items">Create Employ</div>
+        <div className="Items">View Employ</div>
+      </div> */}
 
       {/* student */}
-      <select className="user">
+      {/* <select className="user">
         <option>Student details</option>
-      </select>
+      </select> */}
 
       {/* stock */}
-      <span onClick={stockVisiblity}>Stock</span>
-      <div id="stock" style={{ display: stockVisi }}>
-        <ul>
-          <li>Vendor</li>
-          <li>Item type</li>
-          <li>Stock Entry</li>
-          <li>Check Pending Amount</li>
-        </ul>
+      <span onClick={stockVisiblity} className="user">
+        Stock
+      </span>
+      <div className="user" style={{ display: stockVisi }}>
+        <div className="Items">Vendor</div>
+        <div className="Items">Item type</div>
+        <div className="Items">Stock Entry</div>
+        <div className="Items" style={{ borderBottom: "none" }}>
+          Check Pending Amount
+        </div>
       </div>
     </div>
   );

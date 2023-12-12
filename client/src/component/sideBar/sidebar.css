@@ -11,4 +11,12 @@
     border: none;
     background-color: inherit;
     outline: none;
+    cursor: pointer;
+    border: 1px solid black;
+}
+.Items{
+    display: flex;
+    align-items: center;
+   cursor: pointer;
+   border-bottom: 1px solid black;
 }
