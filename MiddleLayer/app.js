@@ -5,8 +5,8 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json());
 
-// const user = require("./Route/UserRoute")
+const user = require("./router/userRouter")
 // route import
-// app.use('/api/v1', user)
+app.use('/api/v1', user)
 
 module.exports = app
