@@ -2,7 +2,7 @@
 import React from 'react';
 const Footer = () => {
     return (
-        <div className="bg-[#FA7D19] text-white">
+        <div className="alhilal-footer_color-css text-white">
             <footer className="footer p-10 justify-items-center">
                 <div>
                     <span className="footer-title">Services</span>

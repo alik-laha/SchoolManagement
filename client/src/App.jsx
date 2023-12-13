@@ -7,6 +7,7 @@ import StockEntry from "./component/StockCreate/StockEntry/StockEntry";
 import Home from "./component/Home/Home.jsx";
 import Header from "./component/Home/Header.jsx";
 import Footer from "./component/Home/Footer.jsx";
+import NavDropdown from "./component/Home/NavDropdown.jsx";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
           element={
               <div>
               <Header/>
+              
                 <div className="min-h-[60vh]">
+                <NavDropdown/>
                   <Home/>
                 </div>
               <Footer/>

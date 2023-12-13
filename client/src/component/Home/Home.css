@@ -11,3 +11,14 @@
     align-items: center;
     
 }
+
+.alhilal-header_color-css
+{
+    background-color: rgba(47,47,162, 0.9);
+}
+
+.alhilal-footer_color-css
+{
+    background-color: rgba(237,245,225, 0.9);
+    color: black;
+}
