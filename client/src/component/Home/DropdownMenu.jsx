@@ -5,9 +5,10 @@ const DropdownMenu = () => {
   return (
     <div className="dropdown-menu">
       <ul>
-        <li>Menu 1</li>
-        <li>Menu 2</li>
-        <li>Menu 3</li>
+        <li>History</li>
+        <li>Vision & Mission</li>
+        <li>Programs</li>
+        <li>Facilities</li>
       </ul>
     </div>
   );

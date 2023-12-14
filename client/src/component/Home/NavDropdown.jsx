@@ -20,7 +20,7 @@ function NavDropdown() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button className="navdropbutton">Dropdown Menu</button>
+          <button className="navdropbutton">Institute</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible && <DropdownMenu />}
         </div>
