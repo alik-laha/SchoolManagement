@@ -57,21 +57,21 @@ exports.Create = (req, res) => {
 //search user by request(id,name)
 
 exports.SearcheData = (req, res) => {
-    const { u_id, u_name } = req.body;
+    const { id, name } = req.body;
 
     let search;
     let quarych;
 
-    if (u_id) {
-        search = u_id;
+    if (id) {
+        search = id;
         quarych = "user_id"
     }
-    else if (u_name) {
-        search = u_name;
+    else if (name) {
+        search = name;
         quarych = "user_name"
     }
-    else if (u_name && u_id) {
-        search = u_id;
+    else if (name && u_id) {
+        search = id;
         quarych = "user_id"
     }
     else {
@@ -106,6 +106,53 @@ exports.SendData = (req, res) => {
                 return res.status(200).json({
                     status: "success",
                     data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//update user
+
+exports.UpdateUser = (req, res) => {
+    const { id, name, password, role } = req.body
+    try {
+        if (!{ name, password, role, id }) {
+            return res.message("all data needed")
+        }
+        query = `
+        UPDATE user SET user_name="${name}",password="${password}",roletype_name="${role}" WHERE user_id=${id}`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    // data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//delete user
+exports.DeleteUser = (req, res) => {
+    const { id } = req.body
+    try {
+        if (!{ id }) {
+            return res.message("all data needed")
+        }
+        query = `
+        DELETE FROM user WHERE user_id=${id}`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    // data: data
                 });
             }
         })
