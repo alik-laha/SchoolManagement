@@ -8,7 +8,7 @@ header {
   
   
   .navdropbutton {
-    background: orange;
+    background: #01285e;
     box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
     color: white;
     padding: 12px 12px;
@@ -16,7 +16,7 @@ header {
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    width: 100px;
+    width: 150px;
   }
   
   .dropdown-menu ul {
@@ -25,6 +25,7 @@ header {
     margin: unset;
     position: absolute;
     background-color: aliceblue;
+    width: 150px;
   }
   
   .dropdown-menu ul li {
@@ -37,7 +38,7 @@ header {
   }
   
   .dropdown-menu ul li:hover {
-    background: olivedrab;
+    background: #4c8be4;
     cursor: pointer;
     color: #fff;
   }

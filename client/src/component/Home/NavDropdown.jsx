@@ -2,7 +2,7 @@ import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import "./NavDropDown.css"
 
-function NavDropdown() {
+function NavDropdown(prop) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -20,7 +20,7 @@ function NavDropdown() {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button className="navdropbutton">Institute</button>
+          <button className="navdropbutton">{prop.value}</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible && <DropdownMenu />}
         </div>

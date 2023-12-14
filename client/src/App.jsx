@@ -23,9 +23,17 @@ function App() {
           element={
               <div>
               <Header/>
-              
+              <span style={{display: 'flex',backgroundColor:'#061574'}}> 
+                <NavDropdown value='Institute'/>
+                <NavDropdown value='Academics'/>
+                <NavDropdown value='Students'/>
+                <NavDropdown value='Examination'/>
+                <NavDropdown value='Admission'/>
+                <NavDropdown value='Facilities'/>
+                
+                </span>
                 <div className="min-h-[60vh]">
-                <NavDropdown/>
+               
                   <Home/>
                 </div>
               <Footer/>
