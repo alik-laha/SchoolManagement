@@ -1,6 +1,8 @@
 
 import Login from "./component/login/Login";
 import AboutUs from "./component/AboutUS/AboutUS.jsx";
+import ContactUs from "./component/ContactUs/ContactUS.jsx";
+import Gallery from "./component/Galllery/Gallery.jsx";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import PrivateComponent from "./component/private/private";
@@ -48,8 +50,8 @@ function App() {
 
         <Route path="/log-in" element={<Login />} />
         <Route path="/aboutus" element={<AboutUs/>} />
-        <Route path="/contactus" element={<contactus/>} />
-        <Route path="/gallery" element={<gallery/>} />
+        <Route path="/contactus" element={<ContactUs/>} />
+        <Route path="/gallery" element={<Gallery/>} />
 
       </Routes>
     </BrowserRouter>
