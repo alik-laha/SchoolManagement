@@ -97,5 +97,19 @@ exports.SearcheData = (req, res) => {
 //get all user
 
 exports.SendData = (req, res) => {
-
+    try {
+        query = `
+        SELECT * FROM user `;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
 }

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Login, Create, SearcheData } = require('../controller/userController')
+const { Login, Create, SearcheData, SendData } = require('../controller/userController')
 
 //login user
 router.post('/login', Login)
@@ -10,5 +10,8 @@ router.post('/create', Create)
 
 //search user
 router.post('/search', SearcheData)
+
+//get all user
+router.put('/getall', SendData)
 
 module.exports = router
