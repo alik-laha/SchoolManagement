@@ -8,7 +8,7 @@ import background from './school_image.png';
 const Home = (props) => {
     return (
         
-        <div>
+        <div className='min-h-[60vh]'>
             <div style={{ backgroundImage: `url(${background})`}} className="banner-container">
                 <div className="text-center">
                     <h1 className=" text-6xl text-orange-600 font-bold">Welcome to Codebun</h1>

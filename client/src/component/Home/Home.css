@@ -9,12 +9,16 @@
     justify-content: center;
     background-blend-mode: overlay;
     align-items: center;
+    opacity: 0.8;
     
 }
 
 .alhilal-header_color-css
 {
-    background-color: rgba(47,47,162, 0.9);
+    background-color: ivory;
+    color: #061574;
+    font-size: 11px;
+    font-weight: 700;
 }
 
 .alhilal-footer_color-css
