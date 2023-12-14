@@ -32,7 +32,7 @@ exports.Login = (req, res) => {
 }
 
 //create user
-exports.Create = (req, res, next) => {
+exports.Create = (req, res) => {
     const { id, name, password, role } = req.body
     try {
         if (!{ name, password, role, id }) {
@@ -54,3 +54,48 @@ exports.Create = (req, res, next) => {
     }
 }
 
+//search user by request(id,name)
+
+exports.SearcheData = (req, res) => {
+    const { u_id, u_name } = req.body;
+
+    let search;
+    let quarych;
+
+    if (u_id) {
+        search = u_id;
+        quarych = "user_id"
+    }
+    else if (u_name) {
+        search = u_name;
+        quarych = "user_name"
+    }
+    else if (u_name && u_id) {
+        search = u_id;
+        quarych = "user_id"
+    }
+    else {
+        return res.send("at least one data needed")
+    }
+    try {
+        query = `
+        SELECT * FROM user WHERE ${quarych} ="${search}"`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data[0]) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data[0]
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//get all user
+
+exports.SendData = (req, res) => {
+
+}
