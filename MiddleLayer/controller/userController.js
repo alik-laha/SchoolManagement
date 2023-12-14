@@ -32,7 +32,7 @@ exports.Login = (req, res) => {
 }
 
 //create user
-exports.Create = (req, res, next) => {
+exports.Create = (req, res) => {
     const { id, name, password, role } = req.body
     try {
         if (!{ name, password, role, id }) {
@@ -54,3 +54,109 @@ exports.Create = (req, res, next) => {
     }
 }
 
+//search user by request(id,name)
+
+exports.SearcheData = (req, res) => {
+    const { id, name } = req.body;
+
+    let search;
+    let quarych;
+
+    if (id) {
+        search = id;
+        quarych = "user_id"
+    }
+    else if (name) {
+        search = name;
+        quarych = "user_name"
+    }
+    else if (name && u_id) {
+        search = id;
+        quarych = "user_id"
+    }
+    else {
+        return res.send("at least one data needed")
+    }
+    try {
+        query = `
+        SELECT * FROM user WHERE ${quarych} ="${search}"`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data[0]) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data[0]
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//get all user
+
+exports.SendData = (req, res) => {
+    try {
+        query = `
+        SELECT * FROM user `;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//update user
+
+exports.UpdateUser = (req, res) => {
+    const { id, name, password, role } = req.body
+    try {
+        if (!{ name, password, role, id }) {
+            return res.message("all data needed")
+        }
+        query = `
+        UPDATE user SET user_name="${name}",password="${password}",roletype_name="${role}" WHERE user_id=${id}`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    // data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//delete user
+exports.DeleteUser = (req, res) => {
+    const { id } = req.body
+    try {
+        if (!{ id }) {
+            return res.message("all data needed")
+        }
+        query = `
+        DELETE FROM user WHERE user_id=${id}`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    // data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
