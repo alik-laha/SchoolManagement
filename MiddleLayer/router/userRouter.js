@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser } = require('../controller/userController')
+const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser, CreateRole, GetUserByRole, GetRole } = require('../controller/userController')
 
 //login user
 router.post('/login', Login)
@@ -19,5 +19,16 @@ router.post('/update', UpdateUser)
 
 //delete user
 router.post('/delete', DeleteUser)
+
+//get all user by role
+router.put('/getallbyrole', GetUserByRole)
+
+//create role
+router.post('/createrole', CreateRole)
+
+//get all role
+router.put('/getallrole', GetRole)
+
+
 
 module.exports = router

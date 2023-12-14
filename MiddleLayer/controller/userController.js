@@ -160,3 +160,69 @@ exports.DeleteUser = (req, res) => {
         console.log(err.message)
     }
 }
+
+//create role
+exports.CreateRole = (req, res) => {
+    const { role } = req.body
+    try {
+        if (!{ role }) {
+            return res.message("all data needed")
+        }
+        query = `
+        INSERT INTO role (roletype_name) VALUES ("${role}")`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//get user by role
+
+exports.GetUserByRole = (req, res) => {
+    const { role } = req.body
+    try {
+        if (!{ role }) {
+            return res.message("all data needed")
+        }
+        query = `
+        SELECT * FROM user WHERE roletype_name="${role}"`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+//get all role
+exports.GetRole = (req, res) => {
+    try {
+        query = `
+        SELECT * FROM role`;
+        Database.query(query, function (error, data) {
+            if (error) throw error;
+            if (data) {
+                return res.status(200).json({
+                    status: "success",
+                    data: data
+                });
+            }
+        })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
