@@ -2,21 +2,28 @@ const Database = require('../Config/Dbconnection')
 
 //login user
 exports.Login = (req, res) => {
-    const { name, password } = req.body
+    const { name, pass } = req.body
     try {
-        if (!{ name, password }) {
+        if (!{ name, pass }) {
             return res.message("all data needed")
         }
         query = `
-        SELECT * FROM user 
-        WHERE user_name ="${name}" AND password = "${password}"`;
+        SELECT * FROM user WHERE user_name ="${name}"`;
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
-                return res.status(200).json({
-                    status: "success",
-                    data: data
-                });
+                if (data[0].password == pass) {
+                    return res.status(200).json({
+                        status: "success",
+                        data: data
+                    });
+                }
+                else {
+                    return res.status(400).json({
+                        status: "failed",
+                        data: "wrong password"
+                    });
+                }
             }
         })
     } catch (err) {
@@ -46,3 +53,4 @@ exports.Create = (req, res, next) => {
         console.log(err.message)
     }
 }
+

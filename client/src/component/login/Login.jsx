@@ -1,6 +1,8 @@
 import "./login.css";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
   const handaleName = (e) => {
     setName(e.target.value);
   };
-
+  const navigator = useNavigate();
   //password visiblity
   const passwordSee = (e) => {
     e.preventDefault();
@@ -39,6 +41,20 @@ const Login = () => {
 
   const handaleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post("http://localhost:7000/api/v1/login", { name, pass })
+      .then((result) => {
+        if (result.data.data[0]) {
+          localStorage.setItem(
+            "user",
+            JSON.stringify(result.data.data[0].roletype_name)
+          );
+          navigator("/dashboard");
+        } else {
+          console.log("invalid cradentials");
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -46,8 +62,7 @@ const Login = () => {
       <div className="login">
         <div className="nameLogo">
           <section>Logo</section>
-          <h2 style={{ color: "green" }}>AL-HILAL MISSON</h2>
-          <section>Provide username and password for login</section>
+          <h1 style={{ color: "green" }}>AL-HILAL MISSON</h1>
         </div>
         <form
           onSubmit={handaleSubmit}
@@ -62,12 +77,12 @@ const Login = () => {
           <input
             type="text"
             placeholder="Username"
-            className="input"
+            className="inputS"
             value={name}
             onChange={handaleName}
           />
           <div className="Password">
-            <section style={{ display: "flex" }}>
+            <section style={{ display: "flex" }} className="Align">
               <input
                 type={visiblity}
                 placeholder="Password"
@@ -77,7 +92,7 @@ const Login = () => {
               />
               <button
                 onClick={passwordSee}
-                className="botton"
+                className="bottons"
                 style={{
                   height: "30px",
                   fontSize: "20px",
