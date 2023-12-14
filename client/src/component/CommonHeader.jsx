@@ -1,8 +1,8 @@
 // src/components/Header.js
 import React from "react";
-import logo from './logo_ahm.jpg'
+import logo from './Home/logo_ahm.jpg'
 import { NavLink } from "react-router-dom";
-const Header = () => {
+const CommonHeader = () => {
   return (
     <div className="navbar alhilal-header_color-css text-white  px-16">
       <div className="flex-1">
@@ -16,20 +16,12 @@ const Header = () => {
       <div className="flex-none">
         <ul className="menu menu-horizontal p-0 font-bold ">
           <li >
-          <NavLink to="/aboutus">About Us</NavLink>
+          <NavLink to="/">Back to Home</NavLink>
           </li>
-          <li>
-          <NavLink to="/gallery">Gallery</NavLink>
-          </li>
-          <li>
-          <NavLink to="/contactus">Contact Us</NavLink>
-          </li>
-          <li>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </li>
+
         </ul>
       </div>
     </div>
   );
 };
-export default Header;
+export default CommonHeader;

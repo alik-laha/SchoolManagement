@@ -1,9 +1,10 @@
 
 import Login from "./component/login/Login";
+import AboutUs from "./component/AboutUS/AboutUS.jsx";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import PrivateComponent from "./component/private/private";
-import StockEntry from "./component/StockCreate/StockEntry/StockEntry";
+
 import Home from "./component/Home/Home.jsx";
 import Header from "./component/Home/Header.jsx";
 import Footer from "./component/Home/Footer.jsx";
@@ -30,6 +31,7 @@ function App() {
             
           }
         />
+
         <Route element={<PrivateComponent />}>
           {/* dashboard page */}
 
@@ -45,6 +47,10 @@ function App() {
         {/* login */}
 
         <Route path="/log-in" element={<Login />} />
+        <Route path="/aboutus" element={<AboutUs/>} />
+        <Route path="/contactus" element={<contactus/>} />
+        <Route path="/gallery" element={<gallery/>} />
+
       </Routes>
     </BrowserRouter>
   );
