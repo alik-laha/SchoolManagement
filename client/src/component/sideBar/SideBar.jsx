@@ -1,14 +1,28 @@
 import "./sidebar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const SideBar = () => {
   const [stockVisi, setStockVisi] = useState("none");
   const [userVisi, SetUserVisi] = useState("none");
   const [employVisi, setEmployVisi] = useState("none");
-
+  const [admin, setAdmin] = useState("none");
+  const [cashAdmin, setCashAdmin] = useState("");
+  const [stockAdmin, setStockAdmin] = useState("");
+  const user = sessionStorage.getItem("user");
+  useEffect(() => {
+    if (user === "ADMIN") {
+      setAdmin("block");
+    } else if (user === !"ADMIN") {
+      setAdmin("none");
+    } else if (user === "STOCK ADMIN") {
+      setCashAdmin("none");
+    } else if (user === "CASH ADMIN") {
+      setStockAdmin("none");
+    }
+  }, [user]);
   const stockVisiblity = () => {
     if (stockVisi === "none") {
-      setStockVisi("block");
+      setStockVisi("");
       SetUserVisi("none");
       setEmployVisi("none");
     } else {
@@ -37,7 +51,7 @@ const SideBar = () => {
   return (
     <div className="side">
       {/* user */}
-      <span onClick={userVisiblity} className="user">
+      <span onClick={userVisiblity} className="user" style={{ display: admin }}>
         User
       </span>
       <div className="user" style={{ display: userVisi }}>
@@ -68,10 +82,17 @@ const SideBar = () => {
         Stock
       </span>
       <div className="user" style={{ display: stockVisi }}>
-        <div className="Items">Vendor</div>
+        <div className="Items" style={{ display: cashAdmin }}>
+          Create Vendor
+        </div>
         <div className="Items">Item type</div>
-        <div className="Items">Stock Entry</div>
-        <div className="Items" style={{ borderBottom: "none" }}>
+        <div className="Items" style={{ display: stockAdmin }}>
+          Stock Entry
+        </div>
+        <div className="Items" style={{ display: cashAdmin }}>
+          Cash entry
+        </div>
+        <div className="Items" style={{ borderBottom: "none", display: admin }}>
           Check Pending Amount
         </div>
       </div>

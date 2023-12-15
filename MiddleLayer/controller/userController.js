@@ -34,6 +34,8 @@ exports.Login = (req, res) => {
 //create user
 exports.Create = (req, res) => {
     const { id, name, password, role } = req.body
+
+
     try {
         if (!{ name, password, role, id }) {
             return res.message("all data needed")

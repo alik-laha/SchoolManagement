@@ -45,7 +45,7 @@ const Login = () => {
       .post("http://localhost:7000/api/v1/login", { name, pass })
       .then((result) => {
         if (result.data.data[0]) {
-          sessionStorage.setItem("user", JSON.stringify(result.data.data));
+          sessionStorage.setItem("user", result.data.data[0].roletype_name);
           navigator("/dashboard");
         } else {
           console.log("invalid cradentials");
