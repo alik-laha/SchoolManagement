@@ -3,6 +3,12 @@ import Login from "./component/login/Login";
 import AboutUs from "./component/AboutUS/AboutUS.jsx";
 import ContactUs from "./component/ContactUs/ContactUS.jsx";
 import Gallery from "./component/Galllery/Gallery.jsx";
+
+import VisionMision from "./component/NavLinkComponents/VisionMission.jsx"
+import Programs from "./component/NavLinkComponents/Programs.jsx"
+import History from "./component/NavLinkComponents/History.jsx"
+import Facilities from "./component/NavLinkComponents/Facilities.jsx"
+
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard";
 import PrivateComponent from "./component/private/private";
@@ -13,6 +19,8 @@ import Footer from "./component/Home/Footer.jsx";
 import NavDropdown from "./component/Home/NavDropdown.jsx";
 
 function App() {
+  const InstituteInfo={name:"Institute",history:"History",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
+
   return (
     <BrowserRouter>
       <Routes>
@@ -24,7 +32,7 @@ function App() {
               <div>
               <Header/>
               <span style={{display: 'flex',backgroundColor:'#061574'}}> 
-                <NavDropdown value='Institute'/>
+                <NavDropdown value={InstituteInfo}/>
                 <NavDropdown value='Academics'/>
                 <NavDropdown value='Students'/>
                 <NavDropdown value='Examination'/>
@@ -60,6 +68,16 @@ function App() {
         <Route path="/aboutus" element={<AboutUs/>} />
         <Route path="/contactus" element={<ContactUs/>} />
         <Route path="/gallery" element={<Gallery/>} />
+        
+        <Route path="/History" element={<History/>} />
+        <Route path="/Vision&Mission" element={<VisionMision/>} />
+        <Route path="/Programs" element={<Programs/>} />
+        <Route path="/Facilities" element={<Facilities/>} />
+        
+
+
+
+
 
       </Routes>
     </BrowserRouter>

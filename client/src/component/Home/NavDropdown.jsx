@@ -1,8 +1,9 @@
 import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
-import "./NavDropDown.css"
+import "./NavDropDown.css";
 
-function NavDropdown(prop) {
+
+function NavDropdown(props) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const handleMouseEnter = () => {
@@ -20,9 +21,9 @@ function NavDropdown(prop) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button className="navdropbutton">{prop.value}</button>
+          <button className="navdropbutton">{props.value.name}</button>
           {/* <DropdownMenu /> */}
-          {isDropdownVisible && <DropdownMenu />}
+          {isDropdownVisible && <DropdownMenu props={props}/>}
         </div>
       </header>
     </div>
