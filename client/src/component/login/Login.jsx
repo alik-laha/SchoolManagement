@@ -59,8 +59,8 @@ const Login = () => {
   return (
     <div className="contain" style={{display:'inline-block'}}>
       <CommonHeader/>
-      <div style={{display: 'table'}}>
-      <div className="login">
+      <div className="login-box-body" style={{display: 'table'}}>
+      <div className="login login-logo">
         <div className="nameLogo">
           <section>Logo</section>
           <h1 style={{ color: "green" }}>AL-HILAL MISSON</h1>
