@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CommonHeader from "../CommonHeader";
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
@@ -55,7 +56,9 @@ const Login = () => {
   };
 
   return (
-    <div className="contain">
+    <div className="contain" style={{display:'inline-block'}}>
+      <CommonHeader/>
+      <div style={{display: 'table'}}>
       <div className="login">
         <div className="nameLogo">
           <section>Logo</section>
@@ -106,6 +109,7 @@ const Login = () => {
           </div>
           <input className="submit" type="submit" placeholder="Submit" />
         </form>
+      </div>
       </div>
     </div>
   );
