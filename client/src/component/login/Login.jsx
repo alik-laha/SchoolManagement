@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CommonHeader from "../CommonHeader";
+import Footer from "../Home/Footer";
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
@@ -111,6 +112,7 @@ const Login = () => {
         </form>
       </div>
       </div>
+      <Footer/>
     </div>
   );
 };

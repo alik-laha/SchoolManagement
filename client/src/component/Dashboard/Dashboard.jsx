@@ -1,6 +1,7 @@
 import SideBar from "../sideBar/SideBar";
 import DashBoardMain from "../DashboardMain/DashBoardMain";
 import "./Dashboard.css";
+import Footer from "../Home/Footer";
 
 const Dashboard = () => {
   const HandaleLogout = () => {
@@ -16,7 +17,7 @@ const Dashboard = () => {
         <SideBar />
         <DashBoardMain />
       </div>
-      <div style={{ height: "40px", backgroundColor: "blue" }}>Foot</div>
+      <Footer/>
     </>
   );
 };
