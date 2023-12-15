@@ -59,35 +59,40 @@ exports.Create = (req, res) => {
 //search user by request(id,name)
 
 exports.SearcheData = (req, res) => {
-    const { id, name } = req.body;
+    const { id, name, role } = req.body;
+    let query;
 
-    let search;
-    let quarych;
-
-    if (id) {
-        search = id;
-        quarych = "user_id"
+    if (id && !role && !name) {
+        query = `SELECT * FROM user WHERE user_id="${id}"`;
     }
-    else if (name) {
-        search = name;
-        quarych = "user_name"
+    else if (name && !role && !id) {
+        query = `SELECT * FROM user WHERE user_name="${name}"`;
     }
-    else if (name && u_id) {
-        search = id;
-        quarych = "user_id"
+    else if (name && id) {
+        query = `SELECT * FROM user WHERE user_name="${name}" AND user_id="${id}"`;
+    }
+    else if (name && role) {
+        query = `SELECT * FROM user WHERE user_name="${name}" AND roletype_name="${role}"`;
+    }
+    else if (id && role) {
+        query = `SELECT * FROM user WHERE user_id="${id}" AND roletype_name="${role}"`;
+    }
+    else if (role && !name && !id) {
+        query = `SELECT * FROM user WHERE roletype_name="${role}"`;
+    }
+    else if (id && name && role) {
+        query = `SELECT * FROM user WHERE user_id="${id}" AND user_name="${name}" AND roletype_name="${role}"`;
     }
     else {
         return res.send("at least one data needed")
     }
     try {
-        query = `
-        SELECT * FROM user WHERE ${quarych} ="${search}"`;
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data[0]) {
                 return res.status(200).json({
                     status: "success",
-                    data: data[0]
+                    data: data
                 });
             }
         })
@@ -186,29 +191,6 @@ exports.CreateRole = (req, res) => {
     }
 }
 
-//get user by role
-
-exports.GetUserByRole = (req, res) => {
-    const { role } = req.body
-    try {
-        if (!{ role }) {
-            return res.message("all data needed")
-        }
-        query = `
-        SELECT * FROM user WHERE roletype_name="${role}"`;
-        Database.query(query, function (error, data) {
-            if (error) throw error;
-            if (data) {
-                return res.status(200).json({
-                    status: "success",
-                    data: data
-                });
-            }
-        })
-    } catch (err) {
-        console.log(err.message)
-    }
-}
 
 //get all role
 exports.GetRole = (req, res) => {
