@@ -25,7 +25,7 @@ const Footer = () => {
                     <a className="link link-hover">Cookie policy</a>
                 </div>
             </footer>
-            <div className="text-center" style={{backgroundColor:'#01285E',height:'30px',color:'white'}}>
+            <div className="text-center" style={{backgroundColor:'#01285E',height:'40px',color:'white',fontSize:'14px',paddingTop:'10px'}}>
                 <p>Copyright © 2022 - All right reserved by AL-HILAL Mission</p>
             </div>
         </div>
