@@ -1,7 +1,7 @@
 
 import React from 'react';
 import CommonHeader from '../CommonHeader';
-
+import '../Home/Home.css'
 import Footer from '../Home/Footer';
 
 const History = () => {

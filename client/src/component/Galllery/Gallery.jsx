@@ -1,21 +1,28 @@
 import Carousel from "./Carousel";
 import CommonHeader from '../CommonHeader';
 import Footer from '../Home/Footer';
-import img1 from './GalleryImage/IMG20230815170241.jpg'
+import img1 from './GalleryImage/img1.jpg'
+import img2 from './GalleryImage/img2.jpg'
+import img3 from './GalleryImage/img3.jpg'
+import img4 from './GalleryImage/IMG20230815170241.jpg'
+import img5 from './GalleryImage/IMG20230815170241.jpg'
+import img6 from './GalleryImage/IMG20230815170241.jpg'
+import img7 from './GalleryImage/IMG20230815170241.jpg'
+import '../Home/Home.css'
 
 
 
 const Gallery = () => { 
     const slides = [
-    <img src={img1} alt="Slide 1" height={300} width={300}/>,
-    <img src="/images/img2.jpeg" alt="Slide 2" height={300} width={300} />,
-    <img src="/images/img3.jpeg" alt="Slide 3" height={300} width={300} />
+    <img src={img1} alt="Slide 1" />,
+    <img src={img3} alt="Slide 2"  />,
+    <img src={img4} alt="Slide 3"  />
   ];
   return (
-    <div className="App">
+    <div >
         <CommonHeader/>
-        
-      <Carousel slides={slides} />
+       <div className="vision-mision-main text-1xl"><Carousel slides={slides} /></div> 
+      
       <Footer/>
     </div>
   );

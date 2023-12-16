@@ -1,19 +1,32 @@
 .carousel-container {
-  width: 100%;
+ 
   display: flex;
   justify-content: center;
+  max-height: 350px;
+   max-width: 800px;
+   overflow: hidden;
+
+
+  margin: 5px;
+  border: 1px solid #ccc;
 }
 .carousel-container img {
+  margin: 10px;
   width: 100%;
 }
+.carousel-container:hover{
+  border: 1px solid #777;
+}
+
+
 .prev-button, .next-button {
-  padding: 10px;
-  font-size: 20px;
-  background-color: rgba(12, 98, 127, 0.977);
-  color: white;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 50%;
+  background-color:rgb(198, 198, 248);
+  height: 50px;
+  font-weight: 600;
 }
 .prev-button {
   margin-right: 10px;
