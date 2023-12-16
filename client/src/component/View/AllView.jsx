@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 const Getall = () => {
   const [all, setAll] = useState([]);
   let dataFetch = () => {
@@ -18,6 +19,17 @@ const Getall = () => {
   useEffect(() => {
     dataFetch();
   }, []);
+  const handaleDelete = (user_id) => {
+    axios
+      .post("http://localhost:7000/api/v1/delete", { user_id })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.reload();
+  };
   return (
     <div>
       <table>
@@ -26,6 +38,7 @@ const Getall = () => {
             <th>User Id</th>
             <th>User Name</th>
             <th>User Role</th>
+            <th>Action</th>
           </tr>
         </thead>
 
@@ -35,6 +48,12 @@ const Getall = () => {
               <td>{item.user_id}</td>
               <td>{item.user_name}</td>
               <td>{item.roletype_name}</td>
+              <td>
+                <button>Edit</button>
+                <button onClick={() => handaleDelete(item.user_id)}>
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
