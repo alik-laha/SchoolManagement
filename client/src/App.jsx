@@ -19,7 +19,7 @@ import Footer from "./component/Home/Footer.jsx";
 import NavDropdown from "./component/Home/NavDropdown.jsx";
 
 function App() {
-  const InstituteInfo={name:"Institute",history:"History",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
+  const InstituteInfo={name:"Institute",history:"/History",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
 
   return (
     <BrowserRouter>

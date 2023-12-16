@@ -25,3 +25,16 @@
     background-color: rgb(181, 200, 232);
     color: black;
 }
+.vision-mision-main
+{
+    padding: 50px;
+}
+.vision{
+   padding: 30px;
+   background-color: whitesmoke;
+}
+.mission{
+    margin-top: 30px;
+    padding: 30px;
+    background-color: whitesmoke;
+}

@@ -7,7 +7,7 @@ const DropdownMenu = (prop) => {
       {prop.props.name}
       <ul>
         <li>
-          <NavLink to={"/" + prop.props.value.history}>History</NavLink>
+          <NavLink to={prop.props.value.history}>History</NavLink>
         </li>
 
         <li>
