@@ -27,14 +27,15 @@
 }
 .vision-mision-main
 {
-    padding: 50px;
+    padding: 50px 200px 50px 200px;
+    
 }
 .vision{
    padding: 30px;
    background-color: whitesmoke;
 }
 .mission{
-    margin-top: 30px;
+    margin-top: 50px;
     padding: 30px;
     background-color: whitesmoke;
 }
