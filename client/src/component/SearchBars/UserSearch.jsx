@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-const UserSearch = () => {
+const UserSearch = (props) => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
@@ -10,7 +10,7 @@ const UserSearch = () => {
     axios
       .post("http://localhost:7000/api/v1/search", { id, name, role })
       .then((res) => {
-        console.log(res.data);
+        props.result(res.data.data);
       });
   };
 
