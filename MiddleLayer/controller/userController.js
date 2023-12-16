@@ -147,13 +147,13 @@ exports.UpdateUser = (req, res) => {
 
 //delete user
 exports.DeleteUser = (req, res) => {
-    const { id } = req.body
+    const { user_id } = req.body
     try {
-        if (!{ id }) {
+        if (!{ user_id }) {
             return res.message("all data needed")
         }
         query = `
-        DELETE FROM user WHERE user_id=${id}`;
+        DELETE FROM user WHERE user_id=${user_id}`;
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
