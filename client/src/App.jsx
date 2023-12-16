@@ -19,7 +19,7 @@ import Footer from "./component/Home/Footer.jsx";
 import NavDropdown from "./component/Home/NavDropdown.jsx";
 
 function App() {
-  const InstituteInfo={name:"Institute",history:"/History",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
+  const InstituteInfo={name:"Institute",history:"/Introduction",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
 
   return (
     <BrowserRouter>
@@ -69,7 +69,7 @@ function App() {
         <Route path="/contactus" element={<ContactUs/>} />
         <Route path="/gallery" element={<Gallery/>} />
         
-        <Route path="/History" element={<History/>} />
+        <Route path="/Introduction" element={<History/>} />
         <Route path="/Vision&Mission" element={<VisionMision/>} />
         <Route path="/Programs" element={<Programs/>} />
         <Route path="/Facilities" element={<Facilities/>} />
