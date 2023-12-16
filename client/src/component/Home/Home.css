@@ -39,3 +39,10 @@
     padding: 30px;
     background-color: whitesmoke;
 }
+
+.gallery-main{
+    margin: 5% 20% 5% 20%;
+    background-color: whitesmoke;
+    padding: 40px;
+    border: 2px solid #777;
+}

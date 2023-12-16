@@ -30,16 +30,16 @@ const Carousel = (props) =>
   const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div >
-      <div className="carousel-container">
+      <div className="carousel-container" >
       {renderSlide()}
       </div>
     
-    <div><button className="prev-button" onClick={goToPrevSlide}>
+      <div><button className="prev-button" onClick={goToPrevSlide}>
     &#8249;&#8249;
-    </button>
-    <button className="next-button" onClick={goToNextSlide}>
+          </button>
+          <button className="next-button" onClick={goToNextSlide}>
     &#8250;&#8250;
-    </button></div>
+          </button></div>
    
   </div>
   )

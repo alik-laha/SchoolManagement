@@ -2,7 +2,7 @@
  
   display: flex;
   justify-content: center;
-  max-height: 350px;
+  max-height: 400px;
    max-width: 800px;
    overflow: hidden;
 
@@ -12,10 +12,13 @@
 }
 .carousel-container img {
   margin: 10px;
-  width: 100%;
+  width: 97%;
+  height: 100%;
 }
 .carousel-container:hover{
   border: 1px solid #777;
+  opacity: 0.9;
+  transform: scale(1.01);
 }
 
 
