@@ -1,36 +1,24 @@
-import React from 'react';
-
+import Carousel from "./Carousel";
 import CommonHeader from '../CommonHeader';
-import img1 from './GalleryImage/IMG20230912051244.png';
 import Footer from '../Home/Footer';
+import img1 from './GalleryImage/IMG20230815170241.jpg'
 
-const Gallery = (props) => {
-    const images = [
-        { src: {img1}, alt: 'Image 1' },
-        { src: 'image2.jpg', alt: 'Image 2' },
-        { src: 'image3.jpg', alt: 'Image 3' },
-        { src: 'image4.jpg', alt: 'Image 4' },
-        { src: 'image5.jpg', alt: 'Image 5' }
-      ];
-    return (
+
+
+const Gallery = () => { 
+    const slides = [
+    <img src={img1} alt="Slide 1" height={300} width={300}/>,
+    <img src="/images/img2.jpeg" alt="Slide 2" height={300} width={300} />,
+    <img src="/images/img3.jpeg" alt="Slide 3" height={300} width={300} />
+  ];
+  return (
+    <div className="App">
+        <CommonHeader/>
         
-        <div>
-            <CommonHeader/>
-            <div className='gallery'>
-            {images.map((image, index) => (
-                <img
-                 key={index}
-                 className="gallery__item"
-                src={image.src}
-                alt={image.alt}
-        />
-      ))}
-
-            </div> 
-            <Footer/>
-        </div>
-       
-      
-    );
+      <Carousel slides={slides} />
+      <Footer/>
+    </div>
+  );
 };
+ 
 export default Gallery;
