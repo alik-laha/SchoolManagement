@@ -20,14 +20,10 @@ router.post('/update', UpdateUser)
 //delete user
 router.post('/delete', DeleteUser)
 
-
-
 //create role
 router.post('/createrole', CreateRole)
 
 //get all role
 router.put('/getallrole', GetRole)
-
-
 
 module.exports = router

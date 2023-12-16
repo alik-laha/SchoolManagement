@@ -1,7 +1,40 @@
 import axios from "axios";
+import { useState } from "react";
 
 const SearchView = ({ data }) => {
-  const handaleDelete = (user_id) => {
+  const [visiblity, setVisiblity] = useState("none");
+  const [id, setid] = useState("");
+  const [name, setname] = useState("");
+  const [role, setrole] = useState("");
+  const [password, setpassword] = useState("");
+
+  const handleEdit = (data) => {
+    setVisiblity("block");
+    setid(data.user_id);
+    setname(data.user_name);
+    setrole(data.roletype_name);
+    setpassword(data.user_password);
+  };
+
+  const handaleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://localhost:7000/api/v1/update", {
+        id,
+        name,
+        password,
+        role,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    window.location.reload();
+  };
+
+  const handleDelete = (user_id) => {
     axios
       .post("http://localhost:7000/api/v1/delete", { user_id })
       .then((res) => {
@@ -13,7 +46,7 @@ const SearchView = ({ data }) => {
     window.location.reload();
   };
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <table>
         <thead>
           <tr>
@@ -31,8 +64,17 @@ const SearchView = ({ data }) => {
               <td>{item.user_name}</td>
               <td>{item.roletype_name} </td>
               <td>
-                <button>Edit</button>
-                <button onClick={() => handaleDelete(item.user_id)}>
+                <button onClick={() => handleEdit(item)}>Edit</button>
+                <button
+                  onClick={() => {
+                    const confirmBox = window.confirm(
+                      "Do you really want to delete this User?"
+                    );
+                    if (confirmBox === true) {
+                      handleDelete(item.user_id);
+                    }
+                  }}
+                >
                   Delete
                 </button>
               </td>
@@ -40,6 +82,35 @@ const SearchView = ({ data }) => {
           ))}
         </tbody>
       </table>
+      <div style={{ marginLeft: "30px", display: visiblity }}>
+        <form onSubmit={handaleSubmit}>
+          <label>User Id</label>
+          <input
+            type="number"
+            value={id}
+            onChange={(e) => setid(e.target.value)}
+          />
+          <label>User Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setname(e.target.value)}
+          />
+          <label>User Role</label>
+          <input
+            type="text"
+            value={role}
+            onChange={(e) => setrole(e.target.value)}
+          />
+          <label>User Password</label>
+          <input
+            type="text"
+            value={password}
+            onChange={(e) => setpassword(e.target.value)}
+          />
+          <input type="submit" value="Update" />
+        </form>
+      </div>
     </div>
   );
 };
