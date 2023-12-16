@@ -2,7 +2,6 @@ import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import "./NavDropDown.css";
 
-
 function NavDropdown(props) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
@@ -23,7 +22,7 @@ function NavDropdown(props) {
         >
           <button className="navdropbutton">{props.value.name}</button>
           {/* <DropdownMenu /> */}
-          {isDropdownVisible && <DropdownMenu props={props}/>}
+          {isDropdownVisible && <DropdownMenu props={props} />}
         </div>
       </header>
     </div>
