@@ -12,7 +12,7 @@ router.post('/create', Create)
 router.post('/search', SearcheData)
 
 //get all user
-router.put('/getall', SendData)
+router.get('/getall', SendData)
 
 //update user
 router.post('/update', UpdateUser)
