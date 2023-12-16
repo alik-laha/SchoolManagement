@@ -24,6 +24,6 @@ router.post('/delete', DeleteUser)
 router.post('/createrole', CreateRole)
 
 //get all role
-router.put('/getallrole', GetRole)
+router.get('/getallrole', GetRole)
 
 module.exports = router
