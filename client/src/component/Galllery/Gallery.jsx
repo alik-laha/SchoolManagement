@@ -18,14 +18,12 @@ const Gallery = () => {
     <img src={img3} alt="Slide 2"  />,
     <img src={img4} alt="Slide 3"  />,
   ];
-{/*  const msgs={msg1: "Information of Image 1",msg2: "Information of Image 2",msg3: "Information of Image 3"}
-  const sliders={slides,msgs}*/}
-
 
   return (
     <div >
         <CommonHeader/>
-       <div className="gallery-main text-1xl"><Carousel slides={slides} /></div> 
+       <div className="gallery-main text-1xl">
+        AL-HILAL Image Galleries<Carousel slides={slides} /></div> 
       
       <Footer/>
     </div>

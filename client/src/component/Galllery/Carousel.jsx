@@ -34,11 +34,11 @@ const Carousel = (props) =>
       {renderSlide()}
       </div>
     
-      <div><button className="prev-button" onClick={goToPrevSlide}>
-    &#8249;&#8249;
+      <div className='button-gallery-all'><button className="prev-button" onClick={goToPrevSlide}>
+    &#8249;&#8249;Prev
           </button>
           <button className="next-button" onClick={goToNextSlide}>
-    &#8250;&#8250;
+          Next&#8250;&#8250;
           </button></div>
    
   </div>

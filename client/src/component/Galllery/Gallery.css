@@ -5,10 +5,8 @@
   max-height: 400px;
    max-width: 800px;
    overflow: hidden;
-
-
   margin: 5px;
-  border: 1px solid #ccc;
+  
 }
 .carousel-container img {
   margin: 10px;
@@ -16,24 +14,32 @@
   height: 100%;
 }
 .carousel-container:hover{
-  border: 1px solid #777;
-  opacity: 0.9;
-  transform: scale(1.01);
+  border: none;
+  
+  transform: scale(1.03);
 }
 
 
 .prev-button, .next-button {
   text-decoration: none;
   display: inline-block;
-  padding: 8px 16px;
-  border-radius: 50%;
-  background-color:rgb(198, 198, 248);
+  padding: 5px 5px;
+  border-radius: 2%;
+  background-color:rgba(191, 231, 226, 0.764);
+  font-size: 13px;
+  font-weight: 700;
   height: 50px;
-  font-weight: 600;
+  border: 1px solid rgb(201, 183, 183);
+  vertical-align: top;
 }
 .prev-button {
   margin-right: 10px;
 }
 .next-button {
   margin-left: 10px;
+}
+
+.button-gallery-all{
+  text-align: center;
+  margin-top: 30px;
 }
