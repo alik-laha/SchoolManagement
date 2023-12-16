@@ -2,12 +2,10 @@ import Carousel from "./Carousel";
 import CommonHeader from '../CommonHeader';
 import Footer from '../Home/Footer';
 import img1 from './GalleryImage/img1.jpg'
-import img2 from './GalleryImage/img2.jpg'
 import img3 from './GalleryImage/img3.jpg'
 import img4 from './GalleryImage/IMG20230815170241.jpg'
-import img5 from './GalleryImage/IMG20230815170241.jpg'
-import img6 from './GalleryImage/IMG20230815170241.jpg'
-import img7 from './GalleryImage/IMG20230815170241.jpg'
+
+import imgline from './GalleryImage/line.png'
 import '../Home/Home.css'
 
 
@@ -22,8 +20,11 @@ const Gallery = () => {
   return (
     <div >
         <CommonHeader/>
+        <div className="gallery-line"> 
+          <p>Image Galleries</p><img src={imgline} alt="Line Image" />
+        </div>
        <div className="gallery-main text-1xl">
-        AL-HILAL Image Galleries<Carousel slides={slides} /></div> 
+       <Carousel slides={slides} /></div> 
       
       <Footer/>
     </div>

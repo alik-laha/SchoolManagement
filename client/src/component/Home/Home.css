@@ -41,10 +41,26 @@
 }
 
 .gallery-main{
-    margin: 5% 20% 5% 20%;
+    margin: 2% 20% 5% 20%;
     background-color: whitesmoke;
     padding: 40px;
     border: 1px solid #777;
     text-align: center;
     font-weight: 600;
 }
+
+.gallery-line{
+    text-align: center;
+    margin-top: 4%;
+    font-size: 1.675rem;
+    line-height: 2.25rem;
+    font-size: 700;
+}
+.gallery-line img{
+    text-align: center;
+    padding-left: 580px;
+    }
+
+    .gallery-line p{
+        padding-bottom: 10px;
+        }    
