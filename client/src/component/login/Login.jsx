@@ -48,6 +48,7 @@ const Login = () => {
       .then((result) => {
         if (result.data.data[0]) {
           sessionStorage.setItem("user", result.data.data[0].roletype_name);
+          sessionStorage.setItem("name",result.data.data[0].user_name)
           navigator("/dashboard");
         } else {
           console.log("invalid cradentials");
