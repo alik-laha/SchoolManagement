@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
       <div className='dashoboard-main-header'>
         <span className="logo-lg">DASHBOARD</span>
-        <span className='operator-hide' onClick={logoutVisiblity}><img style={{height:'40px',width:'40px'}}src={icon}></img></span>
+        <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">AL-HILAL</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>
           <ul className="dropdown-menu" style={{ display: dashbvisi}}>
             <li className="user-header">

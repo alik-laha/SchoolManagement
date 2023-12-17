@@ -12,8 +12,11 @@
 .dashoboard-main-header .operator-hide{
     float: right;
     padding-right: 30px;
-    margin-top: 5px;
-
+}
+.dashoboard-main-header .operator-hide img{
+    height:40px;
+    width:40px;
+    margin-top:5px;
 }
 .dashoboard-main-header .logo-lg {
     display: block;
@@ -26,9 +29,10 @@
     line-height: 50px;
     text-align: center;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    padding-left: 50px;
     font-weight: 300;
     color: white;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 
@@ -77,12 +81,7 @@
     width: 250px;
 }
 
-
-
-
-
 .dashboard-btn{
-
     Display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
