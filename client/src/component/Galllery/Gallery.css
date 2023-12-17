@@ -2,22 +2,27 @@
  
   display: flex;
   justify-content: center;
-  max-height: 400px;
-   max-width: 800px;
+  align-items: center;
+  font-size: 18px;
+   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
    overflow: hidden;
   margin: 5px;
   
 }
 .carousel-container img {
+  /* border: 2px solid black; */
+  box-shadow: 4px 4px 7px 4px rgba(0, 0, 0, 0.5);
   margin: 10px;
-  width: 97%;
-  height: 100%;
+  width: 800px;
+  height: 400px;
+  margin-bottom: 30px;
+
 }
-.carousel-container:hover{
+/* .carousel-container:hover{
   border: none;
   
   transform: scale(1.03);
-}
+} */
 
 
 .prev-button, .next-button {

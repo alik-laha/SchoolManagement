@@ -50,16 +50,21 @@
 }
 
 .gallery-line{
+    font-family: fantasy;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     margin-top: 4%;
     font-size: 1.675rem;
     line-height: 2.25rem;
     font-size: 700;
+    gap: 20px;
 }
 .gallery-line img{
     text-align: center;
-    padding-left: 39%;
-    }
+    
 
 .gallery-line p{
         padding-bottom: 10px;
