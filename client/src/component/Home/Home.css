@@ -58,9 +58,38 @@
 }
 .gallery-line img{
     text-align: center;
-    padding-left: 580px;
+    padding-left: 39%;
     }
 
-    .gallery-line p{
+.gallery-line p{
         padding-bottom: 10px;
-        }    
+}    
+
+.about-us-introduction{
+    
+    display: flex;
+    padding: 30px;
+    background-color: ghostwhite;
+    font-style: italic;
+
+}        
+
+.about-us-introduction img
+{
+    padding-right: 30px;
+    
+}
+
+.about-us-main{
+
+    padding: 50px 150px 50px 150px;
+    font-size: 14px;
+}
+
+.about-us-objectives{
+    
+    margin-top: 30px;
+    padding: 30px;
+    background-color: whitesmoke;
+    font-family: math;
+}
