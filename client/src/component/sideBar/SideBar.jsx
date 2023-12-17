@@ -49,7 +49,7 @@ const SideBar = () => {
   };
 
   return (
-    <div className="side">
+    <div className="dashobard-sidebar">
       {/* user */}
       <span onClick={userVisiblity} className="user" style={{ display: admin }}>
         User
