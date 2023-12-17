@@ -25,7 +25,7 @@ const Dashboard = () => {
 }
 
 const NavbarVisibility = () => {
-  if(NavbarVisibility== 'navbar-before'){
+  if(nvbrvisi=== 'navbar-before'){
     setNavbarVisi('navbar-after');
   }
   else{
