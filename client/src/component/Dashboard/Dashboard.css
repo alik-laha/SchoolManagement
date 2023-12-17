@@ -8,9 +8,13 @@
     line-height: 1.42857143;
     background-color: #3c8dbc;
     display: flow-root;
-    
 }
+.dashoboard-main-header .operator-hide{
+    float: right;
+    padding-right: 30px;
+    margin-top: 5px;
 
+}
 .dashoboard-main-header .logo-lg {
     display: block;
     -o-transition: width .3s ease-in-out;
@@ -21,9 +25,8 @@
     font-size: 18px;
     line-height: 50px;
     text-align: center;
-    width: 300px;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    padding: 0 15px;
+    padding-left: 50px;
     font-weight: 300;
     color: white;
 }
@@ -31,6 +34,7 @@
 
 .dashoboard-main-header .navbar-custom-menu{
     float: right;
+    margin-top: 50px;
   
 }
 .dashoboard-main-header .navbar-custom-menu ul{
@@ -53,9 +57,9 @@
     border-color: rgba(255,255,255,0.2);
     border-radius: 50%;
     vertical-align: middle;
+    margin-top: 30px;
 }
 .dashoboard-main-header .navbar-custom-menu p.text-logout  {
-   
     color: #fff;
     color: rgba(255,255,255,0.8);
     font-size: 17px;
@@ -63,7 +67,7 @@
 }
 .dashoboard-main-header .navbar-custom-menu li.user-footer {
     background-color: #f9f9f9;
-    padding: 10px;
+    padding-bottom: 10px;
 }
 .dashoboard-main-header .navbar-custom-menu .dropdown-menu{
     border-top-right-radius: 0;
