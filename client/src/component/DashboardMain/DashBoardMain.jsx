@@ -1,9 +1,10 @@
 import CreateUser from "../CreateUser/CreateUser";
 import { useState } from "react";
-import CreateRole from "../Role/CreateRole";
 import UserSearch from "../SearchBars/UserSearch";
 import View from "../View/SearchView";
 import Getall from "../View/AllView";
+import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
+import InstituteNotice from "../NoticeInput/InstituteNotice.jsx";
 const CreateItem = () => {
   const [data, setdata] = useState([]);
   const getdata = (data) => {
@@ -14,10 +15,10 @@ const CreateItem = () => {
       <div style={{ backgroundColor: "yellow", width: "80%" }}>
         <div style={{ height: "40%", backgroundColor: "gray" }}>
           <CreateUser />
-          <CreateRole />
+          <StudentInputNotice/>
           <UserSearch result={getdata} />
         </div>
-        <div style={{ height: "60%", backgroundColor: "white" }}>
+        <div style={{ height: "60%", backgroundColor: "white",display:"none" }}>
           {data != undefined && data.length > 0 ? (
             <View data={data} />
           ) : (

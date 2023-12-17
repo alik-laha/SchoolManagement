@@ -9,12 +9,13 @@ const StudentInputNotice = () => {
     const formData = new FormData();
     formData.append("file", file);
     axios
-      .post("http://localhost:7000/api/v1/upload", {
-        body: formData,
-      })
+      .post("http://localhost:7000/api/v1/studentnotice", formData)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+      })
+        .catch(err=>{
+        console.log(err)
       });
   };
   return (
