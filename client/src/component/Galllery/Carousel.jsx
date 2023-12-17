@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Gallery.css";
-import { set } from "mongoose";
 const Carousel = (props) => {
   const goToNextSlide = () => {
     if (currentIndex === props.slides.length - 1) {
