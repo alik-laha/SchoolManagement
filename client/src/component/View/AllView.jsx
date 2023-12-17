@@ -14,7 +14,7 @@ const Getall = () => {
     setid(data.user_id);
     setname(data.user_name);
     setrole(data.roletype_name);
-    setpassword(data.user_password);
+    setpassword(data.password);
   };
 
   const [all, setAll] = useState([]);
