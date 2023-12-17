@@ -8,7 +8,8 @@ const storage=multer.diskStorage({
         return cb(null,"./student")
     },
     filename:function (req,file,cb){
-        return cb(null,`${Date.now()}_${file.originalname}`)
+
+        return cb(null,file.originalname)
     }
 })
 const upload=multer({storage})
@@ -16,7 +17,7 @@ const upload=multer({storage})
 //upload student notice
 router.post('/studentnotice',upload.single('file'),(req,res)=>{
     console.log(req.body)
-    console.log(req.file)
+    console.log(req.form)
 })
 
 //login user
