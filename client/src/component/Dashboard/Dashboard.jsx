@@ -105,7 +105,7 @@ const handalePublish=()=>{
         </span>
 
         
-      </div>
+    </div>
       <div className="dashboard-main-panel">
         <SideBar class={nvbrvisi} oncreate={handaleCreateUser} onpublish={handalePublish} onSearch={handaleSearch}/>
         <DashBoardMain right={rightDashbrd} createUser={createUser} Publish={publish} Search={search}/>

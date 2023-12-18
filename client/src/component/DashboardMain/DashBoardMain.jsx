@@ -19,6 +19,14 @@ const CreateItem = (props) => {
           <StudentInputNotice Publish={props.Publish}/>
           <UserSearch result={getdata} Search={props.Search} />
         </div>
+       
+
+
+
+
+
+
+
         <div style={{ height: "60%", backgroundColor: "white" }}>
           {data !== undefined && data.length > 0 ? (
             <View data={data} />

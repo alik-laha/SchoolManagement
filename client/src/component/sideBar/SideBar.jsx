@@ -2,114 +2,108 @@ import "./sidebar.css";
 import { useState, useEffect } from "react";
 
 const SideBar = (props) => {
-  const [stockVisi, setStockVisi] = useState("none");
   const [userVisi, SetUserVisi] = useState("none");
+  const [noticeVisi, setNoticeVisi] = useState("none");
+  const [stockVisi, setStockVisi] = useState("none");
+
   const [employVisi, setEmployVisi] = useState("none");
+
   const [admin, setAdmin] = useState("none");
   const [cashAdmin, setCashAdmin] = useState("");
   const [stockAdmin, setStockAdmin] = useState("");
-  const [dropArrow,setdropArrow]=useState("+");
+
+
+  const [dropArrowuser,setdropArrowuser]=useState("+");
+  const [dropArrowNotc,setdropArrowNotc]=useState("+");
+  const [dropArrowstock,setdropArrowstock]=useState("+");
+
   const user = sessionStorage.getItem("user");
 
   useEffect(() => {
-    if (user === "ADMIN") {
-      setAdmin("block");
-    } else if (user === !"ADMIN") {
-      setAdmin("none");
-    } else if (user === "STOCK ADMIN") {
-      setCashAdmin("none");
-    } else if (user === "CASH ADMIN") {
-      setStockAdmin("none");
-    }
-  }, [user]);
+    if (user === "ADMIN") 
+      {setAdmin("block");}
+       else if (user === !"ADMIN") 
+       {setAdmin("none");}
+       else if (user === "STOCK ADMIN") 
+       {setCashAdmin("none");}
+       else if (user === "CASH ADMIN") 
+       {setStockAdmin("none");}
+                  }, [user]);
+
+
+    {/* User*/}
+  const userVisiblity = () => {
+    if (userVisi === "none") 
+    { SetUserVisi("block");
+      setNoticeVisi("none");
+      setStockVisi("none");} 
+    else {SetUserVisi("none");}
+
+    if (dropArrowuser=="+")
+    {setdropArrowuser("-");}
+    else{setdropArrowuser("+");}};  
+    
+    {/* NoticeBoard*/}
+  const noticeVisibility = () => {
+    if (noticeVisi === "none") 
+    { setNoticeVisi("block");
+      SetUserVisi("none");
+      setStockVisi("none");} 
+    else {setNoticeVisi("none");}
+
+    if (dropArrowNotc=="+")
+    { setdropArrowNotc("-");}
+    else{setdropArrowNotc("+");}};
+
+    {/* Stock*/}
   const stockVisiblity = () => {
     if (stockVisi === "none") {
-      setStockVisi("");
+      setStockVisi("block");
       SetUserVisi("none");
-      setEmployVisi("none");
-    } else {
-      setStockVisi("none");
-    }
-  };
+      setNoticeVisi("none");}
+      else {setStockVisi("none");}
 
+    if (dropArrowstock=="+")
+    { setdropArrowstock("-");}
+    else{setdropArrowstock("+");}};
 
-  const userVisiblity = () => {
-    if (userVisi === "none") {
-      SetUserVisi("block");
-      setEmployVisi("none");
-      setStockVisi("none");
-    } else {
-      SetUserVisi("none");
-    }
-
-    if (dropArrow=="+")
-    {
-      setdropArrow("-");
-    }
-    else
-    {
-      setdropArrow("+");
-    }
-
-  };
-  const employVisiblity = () => {
-    if (employVisi === "none") {
-      setEmployVisi("block");
-      SetUserVisi("none");
-      setStockVisi("none");
-    } else {
-      setEmployVisi("none");
-    }
-  };
-
-  return (
-    <div className={props.class}>
-      <div className="sidebar-main-header">{/* user */}
-        <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrow}</p></span>
+  return(
+      <>
+      <div className={props.class}>
+      <div className="sidebar-main-header">
+        {/* User */}
+        <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
         <div style={{ display: userVisi }}>
           <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
           <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
           <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Publish Notice</div>
         </div>
 
-      {/* employ */}
-      {/* <div onClick={employVisiblity} className="user">
-        Employ
-      </div>
-      <div className="user" style={{ display: employVisi }}>
-        <div className="Items">Employ(Staff)</div>
-        <div className="Items">Create Employ</div>
-        <div className="Items">View Employ</div>
-      </div> */}
+        {/* Notice */}
 
-      {/* student */}
-      {/* <select className="user">
-        <option>Student details</option>
-      </select> */}
+        <span onClick={noticeVisibility} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;NoticeBoard<p>{dropArrowNotc}</p></span>
+        <div style={{ display: noticeVisi }}>
+          <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
+          <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Delete Notice</div>
+          
+        </div>
 
-      {/* stock */}
-      <span onClick={stockVisiblity} className="user">
-        Stock
-      </span>
-      <div className="user" style={{ display: stockVisi }}>
-        <div className="Items" style={{ display: cashAdmin }}>
-          Create Vendor
+        {/* stock */}
+        <span onClick={stockVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+        <div className="user" style={{ display: stockVisi }}>
+          <div className="Items" style={{ display: cashAdmin }}>Create Vendor</div>
+          <div className="Items">Item type</div>
+          <div className="Items" style={{ display: stockAdmin }}>Stock Entry</div>
+          <div className="Items" style={{ display: cashAdmin }}>Cash entry</div>
+          <div className="Items" style={{ borderBottom: "none", display: admin }}>Check Pending Amount</div>
         </div>
-        <div className="Items">Item type</div>
-        <div className="Items" style={{ display: stockAdmin }}>
-          Stock Entry
-        </div>
-        <div className="Items" style={{ display: cashAdmin }}>
-          Cash entry
-        </div>
-        <div className="Items" style={{ borderBottom: "none", display: admin }}>
-          Check Pending Amount
-        </div>
-      </div>
     </div>
-      
     </div>
+
+      </>
+
   );
-};
 
+
+};
 export default SideBar;
