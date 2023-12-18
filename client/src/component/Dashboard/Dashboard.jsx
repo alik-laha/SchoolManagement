@@ -87,14 +87,15 @@ const handalePublish=()=>{
     <>
     <div className="dashboard-root">
     <div className='dashoboard-main-header'>
-        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>DASHBOARD</span>
+        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>{sessionStorage.getItem("user")}</span>
         <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg dashboard-open" onClick={NavbarVisibility}>☰</span>
-        <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">AL-HILAL</p><img src={icon}></img></span>
+        <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">{sessionStorage.getItem("name").toUpperCase()}</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>
           <ul className="dropdown-menu" style={{ display: dashbvisi}}>
             <li className="user-header">
               <span style={{textAlign:'-webkit-center'}}><img src={icon} alt='Operator Icon' className="img-header"></img></span>
               <p className="text-logout">Welcome {sessionStorage.getItem("name")}</p>
+                <p className="text-logout">{sessionStorage.getItem("user")}</p>
             </li>
             
             <li className="user-footer"> 

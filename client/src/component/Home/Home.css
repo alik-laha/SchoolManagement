@@ -98,3 +98,10 @@
     background-color: whitesmoke;
     font-family: math;
 }
+.logo{
+    display: flex;
+    gap: 5px;
+}
+.logoC{
+    font-size: 23px;
+}
