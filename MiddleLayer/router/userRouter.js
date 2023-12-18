@@ -2,6 +2,18 @@ const express = require('express')
 const router = express.Router()
 const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser, CreateRole, GetRole } = require('../controller/userController')
 const multer=require('multer')
+const fs = require('fs');
+
+const directoryPath ='./student';
+
+router.get('/allfiles', (req, res) => {
+    fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+            return res.status(404).send('Error reading files.',err);
+        }
+        res.json({ files });
+    });
+});
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
