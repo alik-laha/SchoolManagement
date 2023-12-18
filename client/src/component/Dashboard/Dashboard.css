@@ -60,7 +60,6 @@
     left: 0;
     overflow: hidden;
     transition: 0.5s;
-
 }
 
 .dashoboard-main-header .operator-hide{
@@ -92,7 +91,6 @@
     color: white;
     margin-right: 20px;
 }
-
 
 .dashoboard-main-header .navbar-custom-menu{
     float: right;

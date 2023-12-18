@@ -4,6 +4,7 @@ import UserSearch from "../SearchBars/UserSearch";
 import View from "../View/SearchView";
 import Getall from "../View/AllView";
 import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
+import '../Dashboard/Dashboard.css'
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
   const getdata = (data) => {

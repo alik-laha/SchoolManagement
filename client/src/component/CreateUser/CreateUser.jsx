@@ -41,13 +41,18 @@ const CreateUser = ({showCreate}) => {
   };
   return (
     <>
+      <div >
       <form onSubmit={handaleSubmit} style={{display:showCreate}}>
+        <div className="dashbrd-40-colm">
+          <label>User ID</label>
         <input
           type="text"
           placeholder="name"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
+        </div>
+        
         <input
           type="text"
           placeholder="password"
@@ -64,6 +69,8 @@ const CreateUser = ({showCreate}) => {
         </select>
         <button type="submit">Submit</button>
       </form>
+      </div>
+      
     </>
   );
 };
