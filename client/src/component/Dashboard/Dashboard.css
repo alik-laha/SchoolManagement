@@ -13,7 +13,7 @@
 
 .dashoboard-main-header{
     position: relative;
-    max-height: 100px;
+    
     z-index: 1030;
     font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 400;
@@ -28,13 +28,13 @@
     display: flex;
     transition: margin-right .5s;
     flex-direction: row-reverse;
-    height: 100vh;
+    height: 92vh;
     
 }
 .navbar-before{
     width: 20%;
     border: 1px solid black;
-    height: 100vh;
+    height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
     flex: 0 0 200px;
@@ -43,7 +43,7 @@
     left: 0;
     overflow: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+   
 
 }
 
@@ -52,7 +52,7 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
@@ -61,7 +61,6 @@
     left: 0;
     overflow: hidden;
     transition: 0.5s;
-    padding-top: 60px;
 
 }
 

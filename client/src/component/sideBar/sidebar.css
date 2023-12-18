@@ -3,22 +3,19 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.sidebar-main-header{
-   
-  
-    
-}
 
 .dashobard-sidebar > span{
     position: relative;
     margin: 0;
     padding: 0;
+    font-weight: 600;
+    
 }
 
 .user{
@@ -28,7 +25,6 @@
     background-color: inherit;
     outline: none;
     cursor: pointer;
-    border: 1px solid black;
 }
 .Items{
     display: flex;
