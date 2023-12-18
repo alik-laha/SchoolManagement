@@ -13,6 +13,8 @@ const Dashboard = () => {
   };
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
+ 
+ const [dashbrdtextwidth,setdashbrdtextwidth]=useState('17%')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -30,12 +32,23 @@ const NavbarVisibility = () => {
   else{
     setNavbarVisi('navbar-before');
   }
+
+  if(dashbrdtextwidth=='17%')
+  {
+    setdashbrdtextwidth('0%');
+  }
+  else{
+    setdashbrdtextwidth('17%');
+  }
+
+
 }
   return (
     <>
-      <div className='dashoboard-main-header'>
-        <span className="logo-lg">DASHBOARD</span>
-        <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg" onClick={NavbarVisibility}>☰  </span>
+    <div className="dashboard-root">
+    <div className='dashoboard-main-header'>
+        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>DASHBOARD</span>
+        <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg dashboard-open" onClick={NavbarVisibility}>☰</span>
         <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">AL-HILAL</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>
           <ul className="dropdown-menu" style={{ display: dashbvisi}}>
@@ -56,6 +69,8 @@ const NavbarVisibility = () => {
         <SideBar class={nvbrvisi}/>
         <DashBoardMain />
       </div>
+    </div>
+     
       
     </>
   );
