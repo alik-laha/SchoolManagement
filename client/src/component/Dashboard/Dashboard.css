@@ -9,6 +9,13 @@
     background-color: #3c8dbc;
     display: flow-root;
 }
+
+
+.dashboard-main-panel{
+    transition: margin-left .5s;
+    
+
+}
 .dashoboard-main-header .operator-hide{
     float: right;
     padding-right: 30px;
@@ -88,10 +95,26 @@
 
 .navbar-before{
     width: 20%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    flex: 0 0 200px;
+
 }
 
 .navbar-after{
     width: 0;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .dashboard-btn{

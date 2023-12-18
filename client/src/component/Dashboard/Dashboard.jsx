@@ -21,7 +21,6 @@ const Dashboard = () => {
     setdashBVisi("none");
   }
 
-
 }
 
 const NavbarVisibility = () => {
@@ -36,7 +35,7 @@ const NavbarVisibility = () => {
     <>
       <div className='dashoboard-main-header'>
         <span className="logo-lg">DASHBOARD</span>
-        <span  onClick={NavbarVisibility}>☰ click </span>
+        <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg" onClick={NavbarVisibility}>☰  </span>
         <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">AL-HILAL</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>
           <ul className="dropdown-menu" style={{ display: dashbvisi}}>
@@ -53,8 +52,8 @@ const NavbarVisibility = () => {
 
         
       </div>
-      <div className={nvbrvisi} style={{ display: "flex" }}>
-        <SideBar />
+      <div style={{ display: "flex" }} className="dashboard-main-panel">
+        <SideBar class={nvbrvisi}/>
         <DashBoardMain />
       </div>
       

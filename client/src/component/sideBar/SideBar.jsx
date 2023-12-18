@@ -1,7 +1,8 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 
-const SideBar = () => {
+const SideBar = (props) => {
+  console.log(props);
   const [stockVisi, setStockVisi] = useState("none");
   const [userVisi, SetUserVisi] = useState("none");
   const [employVisi, setEmployVisi] = useState("none");
@@ -49,8 +50,8 @@ const SideBar = () => {
   };
 
   return (
-    <div className="dashobard-sidebar">
-      {/* user */}
+    <div className={props.class}>
+      <div className="sidebar-main-header">{/* user */}
       <span onClick={userVisiblity} className="user" style={{ display: admin }}>
         User
       </span>
@@ -96,6 +97,8 @@ const SideBar = () => {
           Check Pending Amount
         </div>
       </div>
+    </div>
+      
     </div>
   );
 };

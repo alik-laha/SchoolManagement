@@ -1,5 +1,5 @@
 .dashobard-sidebar{
-    width: 20%;
+    
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -7,6 +7,12 @@
     padding-bottom: 10px;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.sidebar-main-header{
+   
+    transition: 0.5s;
+    
 }
 
 .dashobard-sidebar > span{
