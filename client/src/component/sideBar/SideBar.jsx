@@ -8,7 +8,9 @@ const SideBar = (props) => {
   const [admin, setAdmin] = useState("none");
   const [cashAdmin, setCashAdmin] = useState("");
   const [stockAdmin, setStockAdmin] = useState("");
+  const [dropArrow,setdropArrow]=useState("+");
   const user = sessionStorage.getItem("user");
+
   useEffect(() => {
     if (user === "ADMIN") {
       setAdmin("block");
@@ -29,6 +31,8 @@ const SideBar = (props) => {
       setStockVisi("none");
     }
   };
+
+
   const userVisiblity = () => {
     if (userVisi === "none") {
       SetUserVisi("block");
@@ -37,6 +41,16 @@ const SideBar = (props) => {
     } else {
       SetUserVisi("none");
     }
+
+    if (dropArrow=="+")
+    {
+      setdropArrow("-");
+    }
+    else
+    {
+      setdropArrow("+");
+    }
+
   };
   const employVisiblity = () => {
     if (employVisi === "none") {
@@ -51,7 +65,7 @@ const SideBar = (props) => {
   return (
     <div className={props.class}>
       <div className="sidebar-main-header">{/* user */}
-        <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User</span>
+        <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrow}</p></span>
         <div style={{ display: userVisi }}>
           <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
           <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
