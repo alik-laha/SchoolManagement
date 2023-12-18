@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const SearchView = ({ data}) => {
+const SearchView = ({ data,View}) => {
   const [visiblity, setVisiblity] = useState("none");
   const [id, setid] = useState("");
   const [name, setname] = useState("");
@@ -46,7 +46,7 @@ const SearchView = ({ data}) => {
     window.location.reload();
   };
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: View }}>
       <table>
         <thead>
           <tr>

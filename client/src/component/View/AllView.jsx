@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 // To use confirm dialog
 import axios from "axios";
-const Getall = () => {
+const Getall = (props) => {
   const [visiblity, setVisiblity] = useState("none");
   const [id, setid] = useState("");
   const [name, setname] = useState("");
@@ -63,8 +63,9 @@ const Getall = () => {
       });
     window.location.reload();
   };
+
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: props.View }}>
       <table>
         <thead>
           <tr>

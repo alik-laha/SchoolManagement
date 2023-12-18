@@ -21,11 +21,11 @@ const CreateItem = (props) => {
         </div>
         <div style={{ height: "60%", backgroundColor: "white" }}>
           {data !== undefined && data.length > 0 ? (
-            <View data={data} />
+            <View data={data} View={props.View} />
           ) : (
-            <Getall />
+            <Getall View={props.View} />
           )}
-          <NoticeManupulation />
+          <NoticeManupulation Publish={props.Publish}/>
         </div>
       </div>
     </>
