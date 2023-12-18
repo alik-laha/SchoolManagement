@@ -17,12 +17,13 @@ const CreateItem = () => {
           <StudentInputNotice/>
           <UserSearch result={getdata} />
         </div>
-        <div style={{ height: "60%", backgroundColor: "white",display:"none" }}>
+        <div style={{ height: "60%", backgroundColor: "white" }}>
           {data != undefined && data.length > 0 ? (
             <View data={data} />
           ) : (
             <Getall />
           )}
+
         </div>
       </div>
     </>
