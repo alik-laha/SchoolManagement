@@ -14,7 +14,8 @@ const Dashboard = () => {
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
  
- const [dashbrdtextwidth,setdashbrdtextwidth]=useState('17%')
+ const [dashbrdtextwidth,setdashbrdtextwidth]=useState('17%');
+ const [rightDashbrd,setrightDashbrd]=useState('80%')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -41,6 +42,13 @@ const NavbarVisibility = () => {
     setdashbrdtextwidth('17%');
   }
 
+  if(rightDashbrd=='80%')
+  {
+    setrightDashbrd('100%');
+  }
+  else{
+    setrightDashbrd('80%');
+  }
 
 }
   return (
@@ -67,7 +75,7 @@ const NavbarVisibility = () => {
       </div>
       <div className="dashboard-main-panel">
         <SideBar class={nvbrvisi}/>
-        <DashBoardMain />
+        <DashBoardMain right={rightDashbrd}/>
       </div>
     </div>
      

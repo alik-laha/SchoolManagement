@@ -4,14 +4,14 @@ import UserSearch from "../SearchBars/UserSearch";
 import View from "../View/SearchView";
 import Getall from "../View/AllView";
 import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
-const CreateItem = () => {
+const CreateItem = (props) => {
   const [data, setdata] = useState([]);
   const getdata = (data) => {
     setdata(data);
   };
   return (
     <>
-      <div style={{ backgroundColor: "yellow", width: "80%" }}>
+      <div style={{ backgroundColor: "yellow", width: props.right,transition:'0.5s' }}>
         <div style={{ height: "40%", backgroundColor: "gray" }}>
           <CreateUser />
           <StudentInputNotice/>
