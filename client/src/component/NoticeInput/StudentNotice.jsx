@@ -18,6 +18,7 @@ const StudentInputNotice = ({Publish}) => {
         .catch(err=>{
         console.log(err)
       });
+    window.location.reload();
   };
   return (
     <div style={{display:Publish}}>

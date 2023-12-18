@@ -71,10 +71,12 @@ const handaleCreateUser=()=>{
          setCreateUser("block")
          setSearch('none')
          setPublish('none')
+         setView('flex')
 
      }
      else{
          setCreateUser("none")
+         setView('none')
      }
 }
 const handalePublish=()=>{
@@ -92,6 +94,10 @@ const handaleView=()=>{
     if(view==='none'){
         setPublish('none')
         setView('flex')
+    }
+    else if(createUser==='block' || search==='block'){
+        setView('flex')
+
     }
     else{
         setView('none')

@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS `ALHILALDB` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `ALHILALDB`;
+
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `roletype_name` varchar(20) UNIQUE NOT NULL,
+  PRIMARY KEY  (`roletype_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(255) UNIQUE NOT NULL auto_increment,
+  `user_name` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+   `roletype_name` varchar(20) NOT NULL,
+  PRIMARY KEY  (`user_id`),
+  FOREIGN KEY (`roletype_name`) REFERENCES `role` (`roletype_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `vendor` (
+  `vendor_name` varchar(20) UNIQUE NOT NULL,
+  PRIMARY KEY  (`vendor_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `item` (
+  `item_type` varchar(20) UNIQUE NOT NULL,
+  PRIMARY KEY  (`item_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
