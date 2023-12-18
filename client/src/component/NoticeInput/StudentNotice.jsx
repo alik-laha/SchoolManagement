@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const StudentInputNotice = () => {
+const StudentInputNotice = ({Publish}) => {
   const [file, setFile] = useState(null);
 
 
@@ -20,7 +20,7 @@ const StudentInputNotice = () => {
       });
   };
   return (
-    <div>
+    <div style={{display:Publish}}>
       <h1>Student Input Notice</h1>
       <form onSubmit={HandaleSubmit}>
         <input

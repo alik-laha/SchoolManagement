@@ -2,7 +2,6 @@ import "./sidebar.css";
 import { useState, useEffect } from "react";
 
 const SideBar = (props) => {
-  console.log(props);
   const [stockVisi, setStockVisi] = useState("none");
   const [userVisi, SetUserVisi] = useState("none");
   const [employVisi, setEmployVisi] = useState("none");
@@ -56,10 +55,10 @@ const SideBar = (props) => {
         User
       </span>
       <div className="user" style={{ display: userVisi }}>
-        <div className="Items">Dashboard users</div>
-        <div className="Items">Create users</div>
-        <div className="Items" style={{ borderBottom: "none" }}>
-          View users
+        <div className="Items" onClick={props.onSearch}>Search users</div>
+        <div className="Items" onClick={props.oncreate}>Create users</div>
+        <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>
+          Publish Notice
         </div>
       </div>
 

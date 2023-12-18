@@ -34,7 +34,7 @@ const UserSearch = (props) => {
   }, []);
 
   return (
-    <div className="search">
+    <div className="search" style={{display:props.Search}}>
       <input
         type="text"
         placeholder="Search by id"

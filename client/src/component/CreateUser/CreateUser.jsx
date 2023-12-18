@@ -2,7 +2,7 @@ import "./Ceateuser.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const CreateUser = () => {
+const CreateUser = ({showCreate}) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
@@ -13,6 +13,7 @@ const CreateUser = () => {
       headers: {
         Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
+
     })
       .then((res) => res.json())
       .then((data) => {
@@ -40,7 +41,7 @@ const CreateUser = () => {
   };
   return (
     <>
-      <form onSubmit={handaleSubmit}>
+      <form onSubmit={handaleSubmit} style={{display:showCreate}}>
         <input
           type="text"
           placeholder="name"

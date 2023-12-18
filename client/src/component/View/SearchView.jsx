@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const SearchView = ({ data }) => {
+const SearchView = ({ data}) => {
   const [visiblity, setVisiblity] = useState("none");
   const [id, setid] = useState("");
   const [name, setname] = useState("");

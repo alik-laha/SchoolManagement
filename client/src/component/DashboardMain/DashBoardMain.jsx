@@ -11,14 +11,14 @@ const CreateItem = (props) => {
   };
   return (
     <>
-      <div style={{ backgroundColor: "yellow", width: props.right,transition:'0.5s' }}>
+      <div style={{ backgroundColor: "yellow", width: props.right,transition:'0.5s'}}>
         <div style={{ height: "40%", backgroundColor: "gray" }}>
-          <CreateUser />
-          <StudentInputNotice/>
-          <UserSearch result={getdata} />
+          <CreateUser showCreate={props.createUser} />
+          <StudentInputNotice Publish={props.Publish}/>
+          <UserSearch result={getdata} Search={props.Search} />
         </div>
         <div style={{ height: "60%", backgroundColor: "white" }}>
-          {data != undefined && data.length > 0 ? (
+          {data !== undefined && data.length > 0 ? (
             <View data={data} />
           ) : (
             <Getall />

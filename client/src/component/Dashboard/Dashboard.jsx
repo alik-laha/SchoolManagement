@@ -13,9 +13,11 @@ const Dashboard = () => {
   };
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
- 
+ const [createUser,setCreateUser]=useState("none")
  const [dashbrdtextwidth,setdashbrdtextwidth]=useState('17%');
  const [rightDashbrd,setrightDashbrd]=useState('80%')
+ const [publish,setPublish]=useState('none')
+ const [search,setSearch]=useState("none")
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -34,7 +36,7 @@ const NavbarVisibility = () => {
     setNavbarVisi('navbar-before');
   }
 
-  if(dashbrdtextwidth=='17%')
+  if(dashbrdtextwidth==='17%')
   {
     setdashbrdtextwidth('0%');
   }
@@ -42,7 +44,7 @@ const NavbarVisibility = () => {
     setdashbrdtextwidth('17%');
   }
 
-  if(rightDashbrd=='80%')
+  if(rightDashbrd==='80%')
   {
     setrightDashbrd('100%');
   }
@@ -50,6 +52,36 @@ const NavbarVisibility = () => {
     setrightDashbrd('80%');
   }
 
+}
+const handaleSearch=()=>{
+if(search==='none'){
+    setCreateUser("none")
+    setPublish('none')
+    setSearch('block')
+}
+else{
+    setSearch('none')
+}
+}
+const handaleCreateUser=()=>{
+     if(createUser==="none"){
+         setCreateUser("block")
+         setSearch('none')
+         setPublish('none')
+     }
+     else{
+         setCreateUser("none")
+     }
+}
+const handalePublish=()=>{
+     if(publish==='none'){
+         setCreateUser('none')
+         setPublish('block')
+         setSearch('none')
+     }
+     else{
+         setPublish('none')
+     }
 }
   return (
     <>
@@ -74,8 +106,8 @@ const NavbarVisibility = () => {
         
       </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi}/>
-        <DashBoardMain right={rightDashbrd}/>
+        <SideBar class={nvbrvisi} oncreate={handaleCreateUser} onpublish={handalePublish} onSearch={handaleSearch}/>
+        <DashBoardMain right={rightDashbrd} createUser={createUser} Publish={publish} Search={search}/>
       </div>
     </div>
      
