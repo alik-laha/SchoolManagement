@@ -40,8 +40,11 @@ const SideBar = (props) => {
     else {SetUserVisi("none");}
 
     if (dropArrowuser=="+")
-    {setdropArrowuser("-");}
-    else{setdropArrowuser("+");}};  
+    {setdropArrowuser("-");
+      setdropArrowstock("+")
+      setdropArrowNotc("+");}
+    else{setdropArrowuser("+");
+        }};  
     
     {/* NoticeBoard*/}
   const noticeVisibility = () => {
@@ -52,7 +55,9 @@ const SideBar = (props) => {
     else {setNoticeVisi("none");}
 
     if (dropArrowNotc=="+")
-    { setdropArrowNotc("-");}
+    { setdropArrowNotc("-");
+      setdropArrowstock("+");
+      setdropArrowuser("+")}
     else{setdropArrowNotc("+");}};
 
     {/* Stock*/}
@@ -64,7 +69,9 @@ const SideBar = (props) => {
       else {setStockVisi("none");}
 
     if (dropArrowstock=="+")
-    { setdropArrowstock("-");}
+    { setdropArrowstock("-");
+      setdropArrowuser("+");
+      setdropArrowNotc("+")}
     else{setdropArrowstock("+");}};
 
   return(
@@ -77,7 +84,6 @@ const SideBar = (props) => {
           <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
           <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
             <div className="Items" onClick={props.onview}>&#x3e;&nbsp;&nbsp;View Users</div>
-          <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Publish Notice</div>
         </div>
 
         {/* Notice */}
