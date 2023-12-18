@@ -18,6 +18,7 @@ const Dashboard = () => {
  const [rightDashbrd,setrightDashbrd]=useState('85%')
  const [publish,setPublish]=useState('none')
  const [search,setSearch]=useState("none")
+    const [view,setView]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -58,9 +59,11 @@ if(search==='none'){
     setCreateUser("none")
     setPublish('none')
     setSearch('block')
+    setView('flex')
 }
 else{
     setSearch('none')
+    setView('none')
 }
 }
 const handaleCreateUser=()=>{
@@ -68,9 +71,12 @@ const handaleCreateUser=()=>{
          setCreateUser("block")
          setSearch('none')
          setPublish('none')
+         setView('flex')
+
      }
      else{
          setCreateUser("none")
+         setView('none')
      }
 }
 const handalePublish=()=>{
@@ -78,10 +84,24 @@ const handalePublish=()=>{
          setCreateUser('none')
          setPublish('block')
          setSearch('none')
+        setView('none')
      }
      else{
          setPublish('none')
      }
+}
+const handaleView=()=>{
+    if(view==='none'){
+        setPublish('none')
+        setView('flex')
+    }
+    else if(createUser==='block' || search==='block'){
+        setView('flex')
+
+    }
+    else{
+        setView('none')
+    }
 }
   return (
     <>
@@ -107,8 +127,8 @@ const handalePublish=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} oncreate={handaleCreateUser} onpublish={handalePublish} onSearch={handaleSearch}/>
-        <DashBoardMain right={rightDashbrd} createUser={createUser} Publish={publish} Search={search}/>
+        <SideBar class={nvbrvisi} oncreate={handaleCreateUser} onpublish={handalePublish} onSearch={handaleSearch} onview={handaleView}/>
+        <DashBoardMain right={rightDashbrd} createUser={createUser} Publish={publish} Search={search} View={view}/>
       </div>
     </div>
      

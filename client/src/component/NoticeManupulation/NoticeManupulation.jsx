@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
-const NoticeManupulation=()=>{
+const NoticeManupulation=(props)=>{
     const [file,setFile]=useState([])
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
@@ -20,7 +20,7 @@ const NoticeManupulation=()=>{
         window.location.reload()
     }
     return(
-        <div>
+        <div style={{display:props.Publish}}>
             <ul>
                 {file.map((fileName, index) => (
                     <li key={index}>
