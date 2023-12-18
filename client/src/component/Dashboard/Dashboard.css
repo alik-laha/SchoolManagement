@@ -12,10 +12,51 @@
 
 
 .dashboard-main-panel{
-    transition: margin-left .5s;
+    display: flex;
+    transition: margin-right .5s;
+    flex-direction: row-reverse;
+    height: 100vh;
     
+}
+.navbar-before{
+    width: 20%;
+    border: 1px solid black;
+    height: 100vh;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    flex: 0 0 200px;
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 
 }
+
+.navbar-after{
+    width: 0;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+}
+
 .dashoboard-main-header .operator-hide{
     float: right;
     padding-right: 30px;
@@ -93,29 +134,7 @@
     width: 250px;
 }
 
-.navbar-before{
-    width: 20%;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    flex: 0 0 200px;
 
-}
-
-.navbar-after{
-    width: 0;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding-bottom: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-}
 
 .dashboard-btn{
     Display: inline-block;

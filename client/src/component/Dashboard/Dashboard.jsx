@@ -52,7 +52,7 @@ const NavbarVisibility = () => {
 
         
       </div>
-      <div style={{ display: "flex" }} className="dashboard-main-panel">
+      <div className="dashboard-main-panel">
         <SideBar class={nvbrvisi}/>
         <DashBoardMain />
       </div>
