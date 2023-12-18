@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser, CreateRole, GetRole } = require('../controller/userController')
+const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser, CreateRole, GetRole, DeleteNotice} = require('../controller/userController')
 const multer=require('multer')
 const fs = require('fs');
 
@@ -56,6 +56,9 @@ router.post('/createrole', CreateRole)
 //get all role
 router.get('/getallrole', GetRole)
 
+
+//delete Notice
+router.post('/deletenotice',DeleteNotice )
 
 
 

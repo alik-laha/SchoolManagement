@@ -1,5 +1,5 @@
 const Database = require('../Config/Dbconnection')
-
+const fs = require('fs');
 //login user
 exports.Login = (req, res) => {
     const { name, pass } = req.body
@@ -206,6 +206,25 @@ exports.GetRole = (req, res) => {
                 });
             }
         })
+    } catch (err) {
+        console.log(err.message)
+    }
+}
+
+exports.DeleteNotice =async (req, res) => {
+    const {fileName} = req.body
+    try {
+        if (!{ fileName }) {
+            return res.message("all data needed")
+        }
+       await fs.unlink(`./student/${fileName}`, function (err) {
+            if (err) throw err;
+            console.log('File deleted!');
+            return res.status(200).json({
+                status: "success",
+            });
+          });
+
     } catch (err) {
         console.log(err.message)
     }
