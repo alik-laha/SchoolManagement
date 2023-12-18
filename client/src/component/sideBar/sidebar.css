@@ -1,5 +1,4 @@
 .dashobard-sidebar{
-    
     border: 1px solid black;
     display: flex;
     flex-direction: column;
@@ -8,27 +7,37 @@
     white-space: nowrap;
     overflow: hidden;
 }
-
+.sidebar-main-header{
+    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
 
 .dashobard-sidebar > span{
     position: relative;
     margin: 0;
     padding: 0;
-    font-weight: 600;
-    
 }
 
 .user{
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 600;
     border: none;
     background-color: inherit;
     outline: none;
     cursor: pointer;
+    margin: 12px 5px 12px 10px;
 }
 .Items{
     display: flex;
     align-items: center;
-   cursor: pointer;
-   border-bottom: 1px solid black;
+    cursor: pointer;
+    color: #777;
+    background-color: whitesmoke;
+    padding: 5px 0px 5px 20px;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.Items:hover{
+    color:black
 }

@@ -51,16 +51,12 @@ const SideBar = (props) => {
   return (
     <div className={props.class}>
       <div className="sidebar-main-header">{/* user */}
-      <span onClick={userVisiblity} className="user" style={{ display: admin }}>
-        User
-      </span>
-      <div className="user" style={{ display: userVisi }}>
-        <div className="Items" onClick={props.onSearch}>Search users</div>
-        <div className="Items" onClick={props.oncreate}>Create users</div>
-        <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>
-          Publish Notice
+        <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User</span>
+        <div style={{ display: userVisi }}>
+          <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
+          <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
+          <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Publish Notice</div>
         </div>
-      </div>
 
       {/* employ */}
       {/* <div onClick={employVisiblity} className="user">
