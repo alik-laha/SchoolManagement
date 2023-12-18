@@ -14,7 +14,7 @@ const Dashboard = () => {
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
  const [createUser,setCreateUser]=useState("none")
- const [dashbrdtextwidth,setdashbrdtextwidth]=useState('13%');
+ const [dashbrdtextwidth,setdashbrdtextwidth]=useState('12%');
  const [rightDashbrd,setrightDashbrd]=useState('85%')
  const [publish,setPublish]=useState('none')
  const [search,setSearch]=useState("none")
@@ -37,12 +37,12 @@ const NavbarVisibility = () => {
     setNavbarVisi('navbar-before');
   }
 
-  if(dashbrdtextwidth==='13%')
+  if(dashbrdtextwidth==='12%')
   {
     setdashbrdtextwidth('0%');
   }
   else{
-    setdashbrdtextwidth('13%');
+    setdashbrdtextwidth('12%');
   }
 
   if(rightDashbrd==='85%')

@@ -32,7 +32,7 @@
 }
 .navbar-before{
     width: 15%;
-    border: 1px solid black;
+    border: 2px solid lightgray;
     height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
@@ -42,7 +42,6 @@
     left: 0;
     overflow: hidden;
     transition: 0.5s;
-   
 
 }
 
