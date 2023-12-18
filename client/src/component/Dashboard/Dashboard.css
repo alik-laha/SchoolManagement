@@ -13,7 +13,6 @@
 
 .dashoboard-main-header{
     position: relative;
-    
     z-index: 1030;
     font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-weight: 400;
@@ -32,7 +31,7 @@
     
 }
 .navbar-before{
-    width: 20%;
+    width: 15%;
     border: 1px solid black;
     height: 92vh;
     padding-bottom: 10px;
