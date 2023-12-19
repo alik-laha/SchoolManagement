@@ -63,6 +63,7 @@ if(search==='none'){
     setPublish('none')
     setSearch('block')
     setView('flex')
+    setNotice('none')
 }
 else{
     setSearch('none')
@@ -76,7 +77,7 @@ const handaleCreateUser=()=>{
          setSearch('none')
          setPublish('none')
          setView('none')
-
+            setNotice('none')
      }
      else{
          setCreateUser("none")
