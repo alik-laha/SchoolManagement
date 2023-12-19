@@ -8,9 +8,11 @@ const Getall = (props) => {
   const [name, setname] = useState("");
   const [role, setrole] = useState("");
   const [password, setpassword] = useState("");
+  const [mainsvisibility,setmainsvisibility]=useState("contents")
 
   const handleEdit = (data) => {
-    setVisiblity("block");
+    setVisiblity("contents");
+    setmainsvisibility('none')
     setid(data.user_id);
     setname(data.user_name);
     setrole(data.roletype_name);
@@ -67,7 +69,7 @@ const Getall = (props) => {
   return (
     <div style={{ display: props.View }}>
       <table className="table-60">
-        <thead>
+        <thead style={{display:mainsvisibility}}>
           <tr>
             <th>User Id</th>
             <th>User Name</th>
@@ -76,7 +78,7 @@ const Getall = (props) => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody style={{display:mainsvisibility}}>
           {all.map((item) => (
             <tr key={item.user_id}>
               <td>{item.user_id}</td>
@@ -100,36 +102,50 @@ const Getall = (props) => {
             </tr>
           ))}
         </tbody>
+
+{/* hidden tbody */}
+
+
+        <thead style={{display:visiblity}}>
+          <tr>
+            <th>User Id</th>
+            <th>User Name</th>
+            <th>User Role</th>
+            <th>Password</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+
+        <tbody style={{display:visiblity}}>
+
+                  <tr>
+                    <td>  
+                      <input type="number" value={id} onChange={(e) => setid(e.target.value)}/> 
+                    </td>
+                    <td>
+                     <input type="text" value={name} onChange={(e) => setname(e.target.value)}/>
+                    </td>
+
+                    <td>
+                     <input type="text" value={role} onChange={(e) => setname(e.target.value)}/>
+                    </td>
+                    <td>
+                     <input type="text" value={password} onChange={(e) => setname(e.target.value)}/>
+                    </td>
+                    <td><button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}>Update</button></td>
+                  </tr>
+
+        
+
+
+        </tbody>
+
+{/* hidden tbody */}
+
       </table>
-      <div style={{ marginLeft: "30px", display: visiblity }}>
-        <form onSubmit={handaleSubmit}>
-          <label>User Id</label>
-          <input
-            type="number"
-            value={id}
-            onChange={(e) => setid(e.target.value)}
-          />
-          <label>User Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setname(e.target.value)}
-          />
-          <label>User Role</label>
-          <input
-            type="text"
-            value={role}
-            onChange={(e) => setrole(e.target.value)}
-          />
-          <label>User Password</label>
-          <input
-            type="text"
-            value={password}
-            onChange={(e) => setpassword(e.target.value)}
-          />
-          <input type="submit" value="Update" />
-        </form>
-      </div>
+
+
     </div>
   );
 };
