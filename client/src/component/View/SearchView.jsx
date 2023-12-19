@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import '../Dashboard/Dashboard.css'
 
 const SearchView = ({ data,View}) => {
   const [visiblity, setVisiblity] = useState("none");
@@ -48,7 +49,7 @@ const SearchView = ({ data,View}) => {
   };
   return (
     <div style={{ display: View }}>
-      <table>
+      <table className="">
         <thead>
           <tr>
             <th>User Id</th>

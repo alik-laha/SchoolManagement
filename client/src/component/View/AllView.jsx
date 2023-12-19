@@ -66,7 +66,7 @@ const Getall = (props) => {
 
   return (
     <div style={{ display: props.View }}>
-      <table>
+      <table className="table-60">
         <thead>
           <tr>
             <th>User Id</th>
