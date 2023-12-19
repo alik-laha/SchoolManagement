@@ -29,7 +29,6 @@ const [view,setView]=useState('none')
   } else {
     setdashBVisi("none");
   }
-
 }
 
 const NavbarVisibility = () => {

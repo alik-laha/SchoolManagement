@@ -6,8 +6,16 @@ const UserSearch = (props) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [allRoles, setAllRoles] = useState([]);
-
+    const [Search,setSearch]=useState("none")
   const handleSearch = (e) => {
+    if(Search==="none"){
+        props.setSearch("flex")
+        setSearch("flex")
+    }
+    else {
+        props.setSearch("none")
+        setSearch("none")
+    }
 
     e.preventDefault();
     axios

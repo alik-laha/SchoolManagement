@@ -1,5 +1,5 @@
 import CreateUser from "../CreateUser/CreateUser";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import UserSearch from "../SearchBars/UserSearch";
 import View from "../View/SearchView";
 import Getall from "../View/AllView";
@@ -8,26 +8,34 @@ import '../Dashboard/Dashboard.css'
 import NoticeManupulation from "../NoticeManupulation/NoticeManupulation.jsx";
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
-    const [search,setSearch]=useState("none")
+  const [search,setSearch]=useState("none")
+  const[View,setView]=useState('none')
   const getdata = (data) => {
     setdata(data);
   };
-
+useEffect(()=>{
+if(props.Search==="block" && search==="flex"){
+  setView("flex")
+}
+else{
+  setView("none")
+}
+},[search,props.Search])
+  console.log(search)
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           DashBoard AL-HILAL-Mission
-          <UserSearch result={getdata} Search={props.Search} />
+          <UserSearch result={getdata} Search={props.Search} setSearch={setSearch} />
             <CreateUser showCreate={props.createUser} />
-          <StudentInputNotice Publish={props.Publish}/>
-          
+          <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
         </div>
         <div className="dashboard-main-60">
           {data !== undefined && data.length > 0 ? (
-            <View data={data} View={props.View} />
+            <View data={data} View={View} />
           ) : (
-            <Getall View={props.View} />
+            < Getall View={View} />
           )}
           <NoticeManupulation Publish={props.Notice}/>
         </div>

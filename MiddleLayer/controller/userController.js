@@ -1,5 +1,6 @@
 const Database = require('../Config/Dbconnection')
 const fs = require('fs');
+
 //login user
 exports.Login = (req, res) => {
     const { name, pass } = req.body
@@ -134,6 +135,7 @@ exports.UpdateUser = (req, res) => {
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
+
                 return res.status(200).json({
                     status: "success",
                     // data: data
@@ -157,6 +159,7 @@ exports.DeleteUser = (req, res) => {
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
+
                 return res.status(200).json({
                     status: "success",
                     // data: data
@@ -180,6 +183,7 @@ exports.CreateRole = (req, res) => {
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
+
                 return res.status(200).json({
                     status: "success",
                     data: data
@@ -200,6 +204,7 @@ exports.GetRole = (req, res) => {
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
+
                 return res.status(200).json({
                     status: "success",
                     data: data
