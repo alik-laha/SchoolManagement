@@ -9,7 +9,7 @@ import NoticeManupulation from "../NoticeManupulation/NoticeManupulation.jsx";
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
-  const[View,setView]=useState('none')
+  const[view,setView]=useState('none')
   const getdata = (data) => {
     setdata(data);
   };
@@ -21,7 +21,6 @@ else{
   setView("none")
 }
 },[search,props.Search])
-  console.log(search)
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -33,9 +32,9 @@ else{
         </div>
         <div className="dashboard-main-60">
           {data !== undefined && data.length > 0 ? (
-            <View data={data} View={View} />
+            <View data={data} View={view} />
           ) : (
-            < Getall View={View} />
+            < Getall View={view} />
           )}
           <NoticeManupulation Publish={props.Notice}/>
         </div>
