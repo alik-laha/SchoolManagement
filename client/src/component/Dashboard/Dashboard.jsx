@@ -13,12 +13,14 @@ const Dashboard = () => {
   };
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
- const [createUser,setCreateUser]=useState("none")
+ 
  const [dashbrdtextwidth,setdashbrdtextwidth]=useState('12%');
- const [rightDashbrd,setrightDashbrd]=useState('85%')
+ const [rightDashbrd,setrightDashbrd]=useState('85%');
+
+ const [createUser,setCreateUser]=useState("none")
  const [publish,setPublish]=useState('none')
  const [search,setSearch]=useState("none")
-    const [view,setView]=useState('none')
+const [view,setView]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -127,8 +129,8 @@ const handaleView=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} oncreate={handaleCreateUser} onpublish={handalePublish} onSearch={handaleSearch} onview={handaleView}/>
-        <DashBoardMain right={rightDashbrd} createUser={createUser} Publish={publish} Search={search} View={view}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}  onview={handaleView} onpublish={handalePublish}/>
+        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view}/>
       </div>
     </div>
      

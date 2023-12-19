@@ -13,21 +13,17 @@ const CreateItem = (props) => {
   };
   return (
     <>
-      <div style={{ backgroundColor: "yellow", width: props.right,transition:'0.5s'}}>
-        <div style={{ height: "40%", backgroundColor: "gray" }}>
+      <div style={{ width: props.right}} className="dashboard-main-right">
+        <div className="dasdhboard-main-40">
+          <UserSearch result={getdata} Search={props.Search} />
           <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish}/>
-          <UserSearch result={getdata} Search={props.Search} />
+          
         </div>
        
 
 
-
-
-
-
-
-        <div style={{ height: "60%", backgroundColor: "white" }}>
+        <div className="dashboard-main-60">
           {data !== undefined && data.length > 0 ? (
             <View data={data} View={props.View} />
           ) : (

@@ -83,7 +83,7 @@ const SideBar = (props) => {
         <div style={{ display: userVisi }}>
           <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
           <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
-            <div className="Items" onClick={props.onview}>&#x3e;&nbsp;&nbsp;View Users</div>
+          <div className="Items" onClick={props.onview}>&#x3e;&nbsp;&nbsp;View All Users</div>
         </div>
 
         {/* Notice */}

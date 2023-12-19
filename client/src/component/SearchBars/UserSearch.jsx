@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "../Dashboard/Dashboard.css";
 import axios from "axios";
 const UserSearch = (props) => {
   const [id, setId] = useState("");
@@ -34,8 +35,8 @@ const UserSearch = (props) => {
   }, []);
 
   return (
-    <div className="search" style={{display:props.Search}}>
-      <input
+    <div className="form-control-40" style={{display:props.Search}}>
+      <input 
         type="text"
         placeholder="Search by id"
         value={id}

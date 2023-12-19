@@ -1,4 +1,4 @@
-import "./Ceateuser.css";
+import "../Dashboard/Dashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -41,24 +41,29 @@ const CreateUser = ({showCreate}) => {
   };
   return (
     <>
-      <div >
+      <div className="dashbrd-40-colm">
       <form onSubmit={handaleSubmit} style={{display:showCreate}}>
-        <div className="dashbrd-40-colm">
-          <label>User ID</label>
+        <div >
+          <label>User Name</label>
         <input
           type="text"
-          placeholder="name"
+          placeholder="User Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
         </div>
-        
+        <div >
+          <label>Password</label>
         <input
           type="text"
-          placeholder="password"
+          placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
+        </div>
+
+        <div>
+        <label>Role</label>
         <select onChange={(e) => setRole(e.target.value)}>
           <option value="">Role</option>
           {allRoles.map((data) => (
@@ -67,6 +72,9 @@ const CreateUser = ({showCreate}) => {
             </option>
           ))}
         </select>
+        </div>
+
+        
         <button type="submit">Submit</button>
       </form>
       </div>
