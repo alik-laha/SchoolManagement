@@ -169,8 +169,9 @@
     -ms-user-select: none;
     user-select: none;
     background-image: none;
-    border: 1px solid transparent;
     border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid transparent;
 
 }
 
@@ -294,4 +295,16 @@
 
 .dashboard-main-60 table>tbody>tr:hover{
     background-color: whitesmoke;
+}
+
+.btn-warning{
+    background-color: #f39c12;
+    border-color: #e08e0b;
+    color: white;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.btn-warning:hover{
+    background-color:rgb(233, 187, 127);
 }
