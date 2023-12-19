@@ -21,6 +21,7 @@ const Dashboard = () => {
  const [publish,setPublish]=useState('none')
  const [search,setSearch]=useState("none")
 const [view,setView]=useState('none')
+    const [notice,setNotice]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -89,10 +90,23 @@ const handalePublish=()=>{
          setPublish('block')
          setSearch('none')
         setView('none')
+         setNotice('none')
      }
      else{
          setPublish('none')
      }
+}
+const handaleNotice=()=>{
+     if(notice==='none'){
+         setCreateUser('none')
+         setPublish('none')
+         setSearch('none')
+         setView('none')
+         setNotice('block')
+     }
+        else{
+            setNotice('none')
+        }
 }
 
   return (
@@ -119,8 +133,8 @@ const handalePublish=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}   onpublish={handalePublish}/>
-        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}   onpublish={handalePublish} onNoticeManupulation={handaleNotice}/>
+        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view} Notice={notice}/>
       </div>
     </div>
      

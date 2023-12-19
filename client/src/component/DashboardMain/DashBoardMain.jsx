@@ -29,7 +29,7 @@ const CreateItem = (props) => {
           ) : (
             <Getall View={props.View} />
           )}
-          <NoticeManupulation Publish={props.Publish}/>
+          <NoticeManupulation Publish={props.Notice}/>
         </div>
       </div>
     </>

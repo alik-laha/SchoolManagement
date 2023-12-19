@@ -90,7 +90,7 @@ const SideBar = (props) => {
         <span onClick={noticeVisibility} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;NoticeBoard<p>{dropArrowNotc}</p></span>
         <div style={{ display: noticeVisi }}>
           <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
-          <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;View/Delete Notice</div>
+          <div className="Items" onClick={props.onNoticeManupulation}>&#x3e;&nbsp;&nbsp;View/Delete Notice</div>
           
         </div>
 
