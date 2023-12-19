@@ -291,3 +291,7 @@
     line-height: 1.42857143;
     vertical-align: top;
 }
+
+.dashboard-main-60 table>tbody>tr:hover{
+    background-color: whitesmoke;
+}

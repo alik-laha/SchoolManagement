@@ -49,7 +49,7 @@ const SearchView = ({ data,View}) => {
   };
   return (
     <div style={{ display: View }}>
-      <table className="">
+      <table className="table-60">
         <thead>
           <tr>
             <th>User Id</th>
