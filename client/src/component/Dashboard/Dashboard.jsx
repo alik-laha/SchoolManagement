@@ -61,6 +61,7 @@ if(search==='none'){
     setCreateUser("none")
     setPublish('none')
     setSearch('block')
+    setView('flex')
 }
 else{
     setSearch('none')
@@ -93,20 +94,7 @@ const handalePublish=()=>{
          setPublish('none')
      }
 }
-const handaleView=()=>{
-    if(view==='none'){
-        setPublish('none')
-        setCreateUser('none')
-        setView('flex')
-    }
-    else if(createUser==='block' || search==='block'){
-        setView('flex')
 
-    }
-    else{
-        setView('none')
-    }
-}
   return (
     <>
     <div className="dashboard-root">
@@ -131,7 +119,7 @@ const handaleView=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}  onview={handaleView} onpublish={handalePublish}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}   onpublish={handalePublish}/>
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view}/>
       </div>
     </div>

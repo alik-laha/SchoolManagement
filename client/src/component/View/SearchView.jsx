@@ -15,6 +15,7 @@ const SearchView = ({ data,View}) => {
     setrole(data.roletype_name);
     setpassword(data.user_password);
   };
+  console.log(View)
 
   const handaleSubmit = (e) => {
     e.preventDefault();
