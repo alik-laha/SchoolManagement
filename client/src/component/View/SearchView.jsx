@@ -4,12 +4,14 @@ import '../Dashboard/Dashboard.css'
 
 const SearchView = ({ data,View}) => {
   const [visiblity, setVisiblity] = useState("none");
+  const [prevVisi,setPrevVisi]=useState("contents")
   const [id, setid] = useState("");
   const [name, setname] = useState("");
   const [role, setrole] = useState("");
   const [password, setpassword] = useState("");
 
   const handleEdit = (data) => {
+    setPrevVisi('none');
     setVisiblity("block");
     setid(data.user_id);
     setname(data.user_name);
@@ -49,7 +51,7 @@ const SearchView = ({ data,View}) => {
   };
   return (
     <div style={{ display: View }}>
-      <table className="table-60">
+      <table className="table-60 ">
         <thead>
           <tr>
             <th>User Id</th>
@@ -59,7 +61,7 @@ const SearchView = ({ data,View}) => {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody style={{display:prevVisi}}>
           {data.map((item) => (
             <tr key={item.user_id}>
               <td>{item.user_id}</td>
