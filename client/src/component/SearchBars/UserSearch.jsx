@@ -6,14 +6,19 @@ const UserSearch = (props) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [allRoles, setAllRoles] = useState([]);
-
+    const [search, setSearch] = useState("none");
   const handleSearch = (e) => {
+      if(search==='none'){
+          setSearch("flex")
+      }
+      props.SetSearch(search)
     e.preventDefault();
     axios
       .post("http://localhost:7000/api/v1/search", { id, name, role })
       .then((res) => {
         props.result(res.data.data);
       });
+
   };
   let dataFetch = () => {
     fetch("http://localhost:7000/api/v1/getallrole", {

@@ -61,7 +61,6 @@ if(search==='none'){
     setCreateUser("none")
     setPublish('none')
     setSearch('block')
-    setView('flex')
 }
 else{
     setSearch('none')
