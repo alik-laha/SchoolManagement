@@ -6,7 +6,9 @@ const CreateUser = ({showCreate}) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [dOB,setdOB]=useState('');
   const [allRoles, setAllRoles] = useState([]);
+  const [suceessflag,setsuceessflag]= useState('none');
 
   let dataFetch = () => {
     fetch("http://localhost:7000/api/v1/getallrole", {
@@ -30,15 +32,17 @@ const CreateUser = ({showCreate}) => {
   const handaleSubmit = (e) => {
     e.preventDefault();
     const user = {
-      id: 1,
       name: name,
       password: password,
       role: role,
+      dOB : dOB
     };
     axios.post("http://localhost:7000/api/v1/create", user).then((res) => {
-      console.log(res.data);
-    });
-  };
+      if(res.status=='success' && suceessflag=='none'){
+        setsuceessflag('block');
+      }
+  });}
+
   return (
     <>
       <div className="dashbrd-40-colm">
@@ -62,6 +66,16 @@ const CreateUser = ({showCreate}) => {
         />
         </div>
 
+        <div >
+          <label>Date Of Birth</label>
+        <input
+          type="date"
+          placeholder="Date of Birth"
+          onChange={(e) => setdOB(e.target.value)}
+          value={dOB}
+        />
+        </div>
+
         <div>
         <label>Create Role</label>
         <select onChange={(e) => setRole(e.target.value)}>
@@ -76,12 +90,15 @@ const CreateUser = ({showCreate}) => {
 
         <span>
         <button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button>
-        </span>
-       
+            </span>
+            <span style={{display:suceessflag}}>User Created Successfully</span>
       </form>
+      
       </div>
       
     </>
-  );
+  )
 };
+
+
 export default CreateUser;
