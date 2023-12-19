@@ -186,6 +186,7 @@
 .dashboard-main-right{
     background-color: white;
     transition: 0.5s;
+    height: fit-content;
 }
 .dasdhboard-main-40{
     height: 35%;
@@ -304,6 +305,8 @@
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
+   
+    
 }
 .btn-warning:hover{
     background-color:rgb(233, 187, 127);
