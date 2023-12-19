@@ -44,7 +44,7 @@ const CreateUser = ({showCreate}) => {
       <div className="dashbrd-40-colm">
       <form onSubmit={handaleSubmit} style={{display:showCreate}}>
         <div >
-          <label>User Name</label>
+          <label>Create User Name</label>
         <input
           type="text"
           placeholder="User Name"
@@ -53,7 +53,7 @@ const CreateUser = ({showCreate}) => {
         />
         </div>
         <div >
-          <label>Password</label>
+          <label>Create Password</label>
         <input
           type="text"
           placeholder="Password"
@@ -63,7 +63,7 @@ const CreateUser = ({showCreate}) => {
         </div>
 
         <div>
-        <label>Role</label>
+        <label>Create Role</label>
         <select onChange={(e) => setRole(e.target.value)}>
           <option value="">Role</option>
           {allRoles.map((data) => (
@@ -74,8 +74,10 @@ const CreateUser = ({showCreate}) => {
         </select>
         </div>
 
-        
-        <button type="submit">Submit</button>
+        <span>
+        <button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button>
+        </span>
+       
       </form>
       </div>
       

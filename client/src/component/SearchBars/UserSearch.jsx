@@ -35,20 +35,30 @@ const UserSearch = (props) => {
   }, []);
 
   return (
-    <div className="form-control-40" style={{display:props.Search}}>
+    <div className="dashbrd-40-colm" style={{display:props.Search}}>
+      
+      <div>
+      <label>Search By User ID</label>
       <input 
         type="text"
-        placeholder="Search by id"
+        placeholder="User ID"
         value={id}
         onChange={(e) => setId(e.target.value)}
       />
+      </div>
+
+      <div>
+      <label>Search By User Name</label> 
       <input
         type="text"
-        placeholder="Search by name"
+        placeholder="User Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-
+      </div>
+     
+      <div>
+      <label>Search by Role</label> 
       <select onChange={(e) => setRole(e.target.value)}>
         <option value="">Role</option>
         {allRoles.map((data) => (
@@ -57,7 +67,10 @@ const UserSearch = (props) => {
           </option>
         ))}
       </select>
-      <button onClick={handleSearch}>Search</button>
+      </div>
+      <span>
+      <button className="dashboard-btn dashboard-btn-scss" onClick={handleSearch}>Search</button>
+      </span>
     </div>
   );
 };

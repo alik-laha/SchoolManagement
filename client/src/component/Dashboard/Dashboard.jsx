@@ -65,6 +65,7 @@ if(search==='none'){
 }
 else{
     setSearch('none')
+    setCreateUser('none')
     setView('none')
 }
 }
@@ -73,11 +74,12 @@ const handaleCreateUser=()=>{
          setCreateUser("block")
          setSearch('none')
          setPublish('none')
-         setView('flex')
+         setView('none')
 
      }
      else{
          setCreateUser("none")
+         setSearch('none')
          setView('none')
      }
 }
@@ -95,6 +97,7 @@ const handalePublish=()=>{
 const handaleView=()=>{
     if(view==='none'){
         setPublish('none')
+        setCreateUser('none')
         setView('flex')
     }
     else if(createUser==='block' || search==='block'){
