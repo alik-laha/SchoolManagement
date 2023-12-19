@@ -66,9 +66,14 @@ const Getall = (props) => {
     window.location.reload();
   };
 
+  const cancelEdit =() =>{
+    setVisiblity('none');
+    setmainsvisibility('contents');
+  };
+
   return (
     <div style={{ display: props.View }}>
-      <table className="table-60">
+      <table className="table-60" >
         <thead style={{display:mainsvisibility}}>
           <tr>
             <th>User Id</th>
@@ -106,7 +111,7 @@ const Getall = (props) => {
 {/* hidden tbody */}
 
 
-        <thead style={{display:visiblity}}>
+        <thead style={{display:visiblity}} id='hidden-table-60'>
           <tr>
             <th>User Id</th>
             <th>User Name</th>
@@ -117,7 +122,7 @@ const Getall = (props) => {
         </thead>
 
 
-        <tbody style={{display:visiblity}}>
+        <tbody style={{display:visiblity}} id='hidden-table-60'>
 
                   <tr>
                     <td>  
@@ -133,7 +138,9 @@ const Getall = (props) => {
                     <td>
                      <input type="text" value={password} onChange={(e) => setname(e.target.value)}/>
                     </td>
-                    <td><button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}>Update</button></td>
+                    <td><button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}>Update</button>
+                    <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={cancelEdit}>Cancel</button></td>
+                  
                   </tr>
 
         

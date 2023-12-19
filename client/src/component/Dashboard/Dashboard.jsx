@@ -133,7 +133,7 @@ const handaleNotice=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}   onpublish={handalePublish} onNoticeManupulation={handaleNotice}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser} onpublish={handalePublish} onNoticeManupulation={handaleNotice}/>
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view} Notice={notice}/>
       </div>
     </div>

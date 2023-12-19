@@ -21,16 +21,19 @@ else{
   setView("none")
 }
 },[search,props.Search])
+
+
+
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           DashBoard AL-HILAL-Mission
           <UserSearch result={getdata} Search={props.Search} setSearch={setSearch} />
-            <CreateUser showCreate={props.createUser} />
+          <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
         </div>
-        <div className="dashboard-main-60">
+        <div id = 'dashboard-main-60' className="dashboard-main-60">
           {data !== undefined && data.length > 0 ? (
             <View data={data} View={view} />
           ) : (
