@@ -286,7 +286,7 @@
     line-height: 1.42857143;
 }
 
-.dashboard-main-60 table>tbody>tr>td
+.dashboard-main-60 table>tbody>tr>td, .dashboard-main-60 table>tbody>tr>td>input
 {
     border: 1px solid #eaeaea;
     padding: 8px;
