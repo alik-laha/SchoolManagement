@@ -185,6 +185,7 @@
 .dashboard-main-right{
     background-color: white;
     transition: 0.5s;
+    font-size: 15px;
 }
 .dasdhboard-main-40{
     height: 35%;
