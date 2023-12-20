@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Login, Create, SearcheData, SendData, UpdateUser, DeleteUser, CreateRole, GetRole, DeleteNotice} = require('../controller/userController')
+const { Login, CreateUser, SearchUser, SendData, UpdateUser, DeleteUser, CreateUserRole, GetUserRole, DeleteNotice} = require('../controller/userController')
 const multer=require('multer')
 const fs = require('fs');
 
@@ -36,25 +36,23 @@ router.post('/studentnotice',upload.single('file'),(req,res)=>{
 router.post('/login', Login)
 
 //create user
-router.post('/create', Create)
+router.post('/createuser', CreateUser)
 
 //search user
-router.post('/search', SearcheData)
+router.post('/searchuser', SearchUser)
 
-//get all user
-router.get('/getall', SendData)
 
 //update user
-router.post('/update', UpdateUser)
+router.post('/updateuser', UpdateUser)
 
 //delete user
-router.post('/delete', DeleteUser)
+router.post('/deleteuser', DeleteUser)
 
 //create role
-router.post('/createrole', CreateRole)
+router.post('/createrole', CreateUserRole)
 
 //get all role
-router.get('/getallrole', GetRole)
+router.get('/getallrole', GetUserRole)
 
 
 //delete Notice

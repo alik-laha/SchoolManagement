@@ -2,7 +2,7 @@ import {useState,useEffect} from 'react'
 import axios from 'axios'
 
 
-const ViewALl=(props)=>{
+const UserSearchResponse60=(props)=>{
     const [allData,setAllData]=useState([])
     const [view,setView]=useState([])
     const [visiblity, setVisiblity] = useState("none");
@@ -12,37 +12,19 @@ const ViewALl=(props)=>{
     const [password, setpassword] = useState("");
     const [mainsvisibility,setmainsvisibility]=useState("contents")
 
-    let dataFetch = () => {
-        fetch("http://localhost:7000/api/v1/getall", {
-            headers: {
-                Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setAllData(data.data);
-            })
-            .catch((error) => {
-                console.log("check the backend", error);
-            });
-    };
-    //all data
-    useEffect(() => {
-        dataFetch();
-    }, [view]);
 
     //searched data
     useEffect(() => {
         if(props.data!==undefined && props.data.length>0){
             setView(props.data)
         }
-        else{
+        else {
             setView(allData)
         }
     }, [props.data]);
     const handleDelete = (user_id) => {
         axios
-            .post("http://localhost:7000/api/v1/delete", { user_id })
+            .post("http://localhost:7000/api/v1/deleteuser", { user_id })
             .then((res) => {
                 console.log(res);
             })
@@ -61,7 +43,7 @@ const ViewALl=(props)=>{
     const handaleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post("http://localhost:7000/api/v1/update", {
+            .post("http://localhost:7000/api/v1/updateuser", {
                 id,
                 name,
                 password,
@@ -172,4 +154,4 @@ const ViewALl=(props)=>{
         </div>
     )
 }
-export default ViewALl
+export default UserSearchResponse60

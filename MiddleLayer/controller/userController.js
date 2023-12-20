@@ -39,7 +39,7 @@ exports.Login = (req, res) => {
 }
 
 //create user
-exports.Create = (req, res) => {
+exports.CreateUser = (req, res) => {
     const { name, password, role,dOB} = req.body
 
 
@@ -70,43 +70,32 @@ exports.Create = (req, res) => {
 
 //search user by request(id,name)
 
-exports.SearcheData = (req, res) => {
-    const { id, name, role } = req.body;
+exports.SearchUser = (req, res) => {
+    const { name, role } = req.body;
     let query;
 
-    if (id && !role && !name) {
-        query = `SELECT * FROM user WHERE user_id="${id}"`;
-    }
-    else if (name && !role && !id) {
+     if (name && !role ) {
         query = `SELECT * FROM user WHERE user_name="${name}"`;
     }
-    else if (name && id) {
-        query = `SELECT * FROM user WHERE user_name="${name}" AND user_id="${id}"`;
-    }
+
     else if (name && role) {
         query = `SELECT * FROM user WHERE user_name="${name}" AND roletype_name="${role}"`;
     }
-    else if (id && role) {
-        query = `SELECT * FROM user WHERE user_id="${id}" AND roletype_name="${role}"`;
-    }
-    else if (role && !name && !id) {
+    else if ( role && !name) {
         query = `SELECT * FROM user WHERE roletype_name="${role}"`;
     }
-    else if (id && name && role) {
-        query = `SELECT * FROM user WHERE user_id="${id}" AND user_name="${name}" AND roletype_name="${role}"`;
-    }
-    else {
-        return res.send("at least one data needed")
-    }
+    else if (!name && !role) {
+        query= `SELECT * FROM user`;
+     }
     try {
         Database.query(query, function (error, data) {
-            if (error) {
+            if (data.length==0) {
                 return res.status(400).json({
                     status: "failed",
                     data: "user not found"
                 });
             }
-            if (data[0]) {
+            else if (data[0]) {
                 return res.status(200).json({
                     status: "success",
                     data: data
@@ -118,25 +107,7 @@ exports.SearcheData = (req, res) => {
     }
 }
 
-//get all user
 
-exports.SendData = (req, res) => {
-    try {
-        query = `
-        SELECT * FROM user `;
-        Database.query(query, function (error, data) {
-            if (error) throw error;
-            if (data) {
-                return res.status(200).json({
-                    status: "success",
-                    data: data
-                });
-            }
-        })
-    } catch (err) {
-        console.log(err.message)
-    }
-}
 
 //update user
 
@@ -188,7 +159,7 @@ exports.DeleteUser = (req, res) => {
 }
 
 //create role
-exports.CreateRole = (req, res) => {
+exports.CreateUserRole = (req, res) => {
     const { role } = req.body
     try {
         if (!{ role }) {
@@ -213,7 +184,7 @@ exports.CreateRole = (req, res) => {
 
 
 //get all role
-exports.GetRole = (req, res) => {
+exports.GetUserRole = (req, res) => {
     try {
         query = `
         SELECT * FROM role`;

@@ -1,10 +1,10 @@
 import CreateUser from "../CreateUser/CreateUser";
 import { useState,useEffect } from "react";
-import UserSearch from "../SearchBars/UserSearch";
+import UserSearchquery40 from "../SearchBars/UserSearchquery40.jsx";
 import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
 import '../Dashboard/Dashboard.css'
 import NoticeManupulation from "../NoticeManupulation/NoticeManupulation.jsx";
-import ViewAll from "../View/ViewAll.jsx";
+import ViewAll from "../View/UserSearchResponse60.jsx";
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -21,24 +21,17 @@ else{
 }
 },[search,props.Search])
 
-
-
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           DashBoard AL-HILAL-Mission
-          <UserSearch result={getdata} Search={props.Search} setSearch={setSearch} />
+          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} />
           <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          {/*{data !== undefined && data.length > 0 ? (*/}
-          {/*  <View data={data} View={view} />*/}
-          {/*) : (*/}
-          {/*  < Getall View={view} />*/}
-          {/*)}*/}
-          <ViewAll data={data} View={view}/>
+          <ViewAll data={data} View={view} />
           <NoticeManupulation Publish={props.Notice}/>
         </div>
       </div>

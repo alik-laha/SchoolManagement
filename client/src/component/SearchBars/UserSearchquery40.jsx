@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import "../Dashboard/Dashboard.css";
 import axios from "axios";
-const UserSearch = (props) => {
+const UserSearchquery40 = (props) => {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [allRoles, setAllRoles] = useState([]);
     const [Search,setSearch]=useState("none")
-  const handleSearch = (e) => {
+  const handleSearch =  (e) => {
     if(Search==="none"){
         props.setSearch("flex")
         setSearch("flex")
@@ -19,7 +19,7 @@ const UserSearch = (props) => {
 
     e.preventDefault();
     axios
-      .post("http://localhost:7000/api/v1/search", { id, name, role })
+      .post("http://localhost:7000/api/v1/searchuser", { id, name, role })
       .then((res) => {
         props.result(res.data.data);
       });
@@ -84,4 +84,4 @@ const UserSearch = (props) => {
     </div>
   );
 };
-export default UserSearch;
+export default UserSearchquery40;
