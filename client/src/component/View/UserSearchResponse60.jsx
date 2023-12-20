@@ -11,7 +11,7 @@ const UserSearchResponse60=(props)=>{
     const [role, setrole] = useState("");
     const [password, setpassword] = useState("");
     const [mainsvisibility,setmainsvisibility]=useState("contents")
-
+    const [allRoles, setAllRoles] = useState([]);
 
     //searched data
     useEffect(() => {
@@ -63,6 +63,19 @@ const UserSearchResponse60=(props)=>{
         window.location.reload();
     };
     const handleEdit = (data) => {
+
+        fetch("http://localhost:7000/api/v1/getallrole", {
+            headers: {
+                Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                setAllRoles(data.data);
+            })
+            .catch((error) => {
+                console.log("check the backend", error);
+            });
         setVisiblity("contents");
         setmainsvisibility('none')
         setid(data.user_id);
@@ -131,10 +144,18 @@ const UserSearchResponse60=(props)=>{
                     </td>
 
                     <td>
-                        <input type="text" value={role} onChange={(e) => setrole(e.target.value)} required={true}/>
+                        <select onChange={(e) => setrole(e.target.value)} value={role}>
+                            <option >Role</option>
+                            {allRoles.map((data) => (
+                                <option value={data.roletype_name} key={data.roletype_name}>
+                                    {data.roletype_name}
+                                </option>
+                            ))}
+                        </select>
                     </td>
                     <td>
-                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)} required={true}/>
+                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}
+                               required={true}/>
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
