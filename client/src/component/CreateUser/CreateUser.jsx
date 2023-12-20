@@ -50,15 +50,17 @@ const CreateUser = ({showCreate}) => {
           placeholder="User Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
+          required
         />
         </div>
         <div >
           <label>Create Password</label>
         <input
-          type="text"
+          type="password"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
           value={password}
+          required
         />
         </div>
 
@@ -69,12 +71,13 @@ const CreateUser = ({showCreate}) => {
           placeholder="Date of Birth"
           onChange={(e) => setdOB(e.target.value)}
           value={dOB}
+          required
         />
         </div>
 
         <div>
         <label>Create Role</label>
-        <select onChange={(e) => setRole(e.target.value)}>
+        <select onChange={(e) => setRole(e.target.value)} required>
           <option value="">Role</option>
           {allRoles.map((data) => (
             <option value={data.roletype_name} key={data.roletype_name}>

@@ -46,16 +46,7 @@ const UserSearchquery40 = (props) => {
 
   return (
     <div className="dashbrd-40-colm" style={{display:props.Search}}>
-      
-      <div>
-      <label>Search By User ID</label>
-      <input 
-        type="text"
-        placeholder="User ID"
-        value={id}
-        onChange={(e) => setId(e.target.value)}
-      />
-      </div>
+
 
       <div>
       <label>Search By User Name</label> 

@@ -42,6 +42,10 @@ const UserSearchResponse60=(props)=>{
 
     const handaleSubmit = (e) => {
         e.preventDefault();
+        if(!name || !password || !role){
+            alert("Please fill all the fields")
+            return
+        }
         axios
             .post("http://localhost:7000/api/v1/updateuser", {
                 id,
@@ -123,14 +127,14 @@ const UserSearchResponse60=(props)=>{
                     <td>{id}</td>
                     
                     <td>
-                        <input type="text" value={name} onChange={(e) => setname(e.target.value)}/>
+                        <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true}/>
                     </td>
 
                     <td>
-                        <input type="text" value={role} onChange={(e) => setrole(e.target.value)}/>
+                        <input type="text" value={role} onChange={(e) => setrole(e.target.value)} required={true}/>
                     </td>
                     <td>
-                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}/>
+                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)} required={true}/>
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
