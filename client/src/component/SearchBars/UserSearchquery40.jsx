@@ -8,9 +8,7 @@ const UserSearchquery40 = (props) => {
   const [allRoles, setAllRoles] = useState([]);
   const [Search,setSearch]=useState("none")
   const [userSearchErorr,setuserSearchErorr]=useState("")
-
-
-    let ErorrMessage
+  const [errorMessage,setErrorMessage]=useState("none")
   const handleSearch =  (e) => {
     if(Search==="none"){
         props.setSearch("flex")
@@ -26,11 +24,14 @@ const UserSearchquery40 = (props) => {
       .post("http://localhost:7000/api/v1/searchuser", { id, name, role })
       .then((res) => {
         
-        window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
-      
-        setuserSearchErorr(promiseRejectionEvent.reason.response.data.data)
-      });
+        window.addEventListener("unhandledrejection", function(promiseRejectionEvent) {
+            setuserSearchErorr(promiseRejectionEvent.reason.response.data.data)
+            if(promiseRejectionEvent.reason.response.data.data) {
+                setErrorMessage("block")
+            }
 
+      });
+          setErrorMessage("none")
         props.result(res.data.data);
       });
 
@@ -66,7 +67,7 @@ const UserSearchquery40 = (props) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
-              <span style={{fontSize: "12px", color: "red"}}>{userSearchErorr}</span>
+              <span style={{fontSize: "12px", color: "red",display:errorMessage}}>{userSearchErorr}</span>
           </div>
 
           <div>
