@@ -197,6 +197,7 @@
     height: 75%;
     background-color: white;
     padding: 15px;
+    font-size: 15px;
 }
 
 
@@ -252,7 +253,7 @@
     border: 1px solid #eaeaea;
     width: 100%;
     max-width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border-spacing: 0;
     border-collapse: collapse;
     font-size: 15px;
@@ -292,7 +293,7 @@
     border: 1px solid #eaeaea;
     padding: 6px;
     line-height: 1.42857143;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .dashboard-main-60 table>tbody>tr:hover{
