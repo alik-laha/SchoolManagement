@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import { MdDelete } from "react-icons/md";
 import axios from "axios";
-const NoticeManupulation=(props)=>{
+const NoticeManupulation60=(props)=>{
     const [file,setFile]=useState([])
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
@@ -34,4 +34,4 @@ const NoticeManupulation=(props)=>{
         </div>
     )
 }
-export default NoticeManupulation
+export default NoticeManupulation60

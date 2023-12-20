@@ -1,9 +1,9 @@
 import CreateUser from "../CreateUser/CreateUser";
 import { useState,useEffect } from "react";
 import UserSearchquery40 from "../SearchBars/UserSearchquery40.jsx";
-import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
+import StudentInputNotice from "../NoticeInput/NoticeBoardUpload40.jsx";
 import '../Dashboard/Dashboard.css'
-import NoticeManupulation from "../NoticeManupulation/NoticeManupulation.jsx";
+import NoticeManupulation60 from "../NoticeManupulation/NoticeManupulation60.jsx";
 import ViewAll from "../View/UserSearchResponse60.jsx";
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
@@ -32,7 +32,7 @@ else{
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} />
-          <NoticeManupulation Publish={props.Notice}/>
+          <NoticeManupulation60 Publish={props.Notice}/>
         </div>
       </div>
     </>
