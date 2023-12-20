@@ -35,6 +35,7 @@ const CreateUser = ({showCreate}) => {
       if(res.status=='success' && suceessflag=='none'){
         setsuceessflag('block');
       }
+      window.location.reload();
   });}
 
   return (
