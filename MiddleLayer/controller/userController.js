@@ -34,15 +34,15 @@ exports.Login = (req, res) => {
 
 //create user
 exports.Create = (req, res) => {
-    const { id, name, password, role } = req.body
+    const { name, password, role,dOB} = req.body
 
 
     try {
-        if (!{ name, password, role, id }) {
+        if (!{ name, password, role,dOB }) {
             return res.message("all data needed")
         }
         query = `
-        INSERT INTO user (user_id,user_name,password,roletype_name) VALUES ( ${id},"${name}","${password}","${role}")`;
+        INSERT INTO user (user_name,password,roletype_name,date_of_Birth) VALUES ("${name}","${password}","${role}","${dOB}")`;
         Database.query(query, function (error, data) {
             if (error) throw error;
             if (data) {
