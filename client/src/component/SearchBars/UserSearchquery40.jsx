@@ -21,6 +21,12 @@ const UserSearchquery40 = (props) => {
     axios
       .post("http://localhost:7000/api/v1/searchuser", { id, name, role })
       .then((res) => {
+        
+        window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
+      
+          alert(promiseRejectionEvent.reason.response.data.data);
+      });
+
         props.result(res.data.data);
       });
 
