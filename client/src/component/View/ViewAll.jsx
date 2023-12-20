@@ -73,6 +73,7 @@ const ViewALl=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
+        alert("User Updated Successfully");
         window.location.reload();
     };
     const handleEdit = (data) => {
@@ -144,7 +145,7 @@ const ViewALl=(props)=>{
                     </td>
 
                     <td>
-                        <input type="text" value={role} onChange={(e) => setname(e.target.value)}/>
+                        <input type="text" value={role} onChange={(e) => setrole(e.target.value)}/>
                     </td>
                     <td>
                         <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}/>
