@@ -134,12 +134,11 @@ const ViewALl=(props)=>{
                 </thead>
 
 
-                <tbody style={{display: visiblity}} id='hidden-table-60'>
+                <tbody style={{display: visiblity}} >
 
                 <tr>
-                    <td>
-                        <input type="number" value={id} onChange={(e) => setid(e.target.value)}/>
-                    </td>
+                    <td>{id}</td>
+                    
                     <td>
                         <input type="text" value={name} onChange={(e) => setname(e.target.value)}/>
                     </td>

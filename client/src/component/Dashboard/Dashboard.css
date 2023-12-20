@@ -255,6 +255,7 @@
     margin-bottom: 20px;
     border-spacing: 0;
     border-collapse: collapse;
+    font-size: 15px;
 }
 
 .dashboard-main-60 .table-60 thead{
@@ -282,14 +283,14 @@
 
 .dashboard-main-60 table>thead>tr>th{
     vertical-align: bottom;
-    padding: 8px;
+    padding: 6px;
     line-height: 1.42857143;
 }
 
 .dashboard-main-60 table>tbody>tr>td, .dashboard-main-60 table>tbody>tr>td>input
 {
     border: 1px solid #eaeaea;
-    padding: 8px;
+    padding: 6px;
     line-height: 1.42857143;
     vertical-align: top;
 }
@@ -297,6 +298,10 @@
 .dashboard-main-60 table>tbody>tr:hover{
     background-color: whitesmoke;
 }
+.dashboard-main-60 table>tbody>tr:hover{
+    background-color: whitesmoke;
+}
+
 
 .btn-warning{
     background-color: #f39c12;
