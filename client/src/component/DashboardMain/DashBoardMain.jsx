@@ -6,6 +6,7 @@ import Getall from "../View/AllView";
 import StudentInputNotice from "../NoticeInput/StudentNotice.jsx";
 import '../Dashboard/Dashboard.css'
 import NoticeManupulation from "../NoticeManupulation/NoticeManupulation.jsx";
+import ViewAll from "../View/ViewAll.jsx";
 const CreateItem = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -34,11 +35,12 @@ else{
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          {data !== undefined && data.length > 0 ? (
-            <View data={data} View={view} />
-          ) : (
-            < Getall View={view} />
-          )}
+          {/*{data !== undefined && data.length > 0 ? (*/}
+          {/*  <View data={data} View={view} />*/}
+          {/*) : (*/}
+          {/*  < Getall View={view} />*/}
+          {/*)}*/}
+          <ViewAll data={data} View={view}/>
           <NoticeManupulation Publish={props.Notice}/>
         </div>
       </div>

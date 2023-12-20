@@ -31,13 +31,7 @@ const CreateUser = ({showCreate}) => {
   }, []);
   const handaleSubmit = (e) => {
     e.preventDefault();
-    const user = {
-      name: name,
-      password: password,
-      role: role,
-      dOB : dOB
-    };
-    axios.post("http://localhost:7000/api/v1/create", user).then((res) => {
+    axios.post("http://localhost:7000/api/v1/create", {name,password,role,dOB}).then((res) => {
       if(res.status=='success' && suceessflag=='none'){
         setsuceessflag('block');
       }
