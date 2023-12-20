@@ -11,7 +11,13 @@ exports.Login = (req, res) => {
         query = `
         SELECT * FROM user WHERE user_name ="${name}"`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "failed",
+                    data: "user not found"
+                });
+
+            }
             if (data) {
                 if (data[0].password == pass) {
                     return res.status(200).json({
@@ -44,7 +50,12 @@ exports.Create = (req, res) => {
         query = `
         INSERT INTO user (user_name,password,roletype_name,date_of_Birth) VALUES ("${name}","${password}","${role}","${dOB}")`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "failed",
+                    data: "user already exist"
+                });
+            }
             if (data) {
                 return res.status(200).json({
                     status: "success",
@@ -89,7 +100,12 @@ exports.SearcheData = (req, res) => {
     }
     try {
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "failed",
+                    data: "user not found"
+                });
+            }
             if (data[0]) {
                 return res.status(200).json({
                     status: "success",

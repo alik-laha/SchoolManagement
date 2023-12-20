@@ -147,7 +147,7 @@ const ViewALl=(props)=>{
                         <input type="text" value={role} onChange={(e) => setname(e.target.value)}/>
                     </td>
                     <td>
-                        <input type="text" value={password} onChange={(e) => setname(e.target.value)}/>
+                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}/>
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
