@@ -22,13 +22,14 @@ const SideBar = (props) => {
   useEffect(() => {
     if (user === "ADMIN") 
       {setAdmin("block");}
-       else if (user === !"ADMIN") 
+    else if (user === !"ADMIN")
        {setAdmin("none");}
-       else if (user === "STOCK ADMIN") 
+    else if (user === "STOCK-ADMIN")
        {setCashAdmin("none");}
-       else if (user === "CASH ADMIN") 
+    else if (user === "CASH-ADMIN")
        {setStockAdmin("none");}
-                  }, [user]);
+
+       }, [user]);
 
 
     {/* User*/}
@@ -66,7 +67,7 @@ const SideBar = (props) => {
       setStockVisi("block");
       SetUserVisi("none");
       setNoticeVisi("none");}
-      else {setStockVisi("none");}
+    else {setStockVisi("none");}
 
     if (dropArrowstock=="+")
     { setdropArrowstock("-");
@@ -95,7 +96,7 @@ const SideBar = (props) => {
         </div>
 
         {/* stock */}
-        <span onClick={stockVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+        <span onClick={stockVisiblity} className="user" >&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
         <div className="user" style={{ display: stockVisi }}>
           <div className="Items" style={{ display: cashAdmin }}>Create Vendor</div>
           <div className="Items">Item type</div>

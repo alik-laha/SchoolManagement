@@ -6,7 +6,11 @@ const UserSearchquery40 = (props) => {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [allRoles, setAllRoles] = useState([]);
-    const [Search,setSearch]=useState("none")
+  const [Search,setSearch]=useState("none")
+  const [userSearchErorr,setuserSearchErorr]=useState("")
+
+
+    let ErorrMessage
   const handleSearch =  (e) => {
     if(Search==="none"){
         props.setSearch("flex")
@@ -24,7 +28,7 @@ const UserSearchquery40 = (props) => {
         
         window.addEventListener("unhandledrejection", function(promiseRejectionEvent) { 
       
-          alert(promiseRejectionEvent.reason.response.data.data);
+        setuserSearchErorr(promiseRejectionEvent.reason.response.data.data)
       });
 
         props.result(res.data.data);
@@ -51,34 +55,35 @@ const UserSearchquery40 = (props) => {
   }, []);
 
   return (
-    <div className="dashbrd-40-colm" style={{display:props.Search}}>
+      <div className="dashbrd-40-colm" style={{display: props.Search}}>
 
 
-      <div>
-      <label>Search By User Name</label> 
-      <input
-        type="text"
-        placeholder="User Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      </div>
-     
-      <div>
-      <label>Search by Role</label> 
-      <select onChange={(e) => setRole(e.target.value)}>
-        <option value="">Role</option>
-        {allRoles.map((data) => (
-          <option value={data.roletype_name} key={data.roletype_name}>
-            {data.roletype_name}
-          </option>
-        ))}
-      </select>
-      </div>
-      <span>
+          <div>
+              <label>Search By User Name</label>
+              <input
+                  type="text"
+                  placeholder="User Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+              />
+              <span style={{fontSize: "12px", color: "red"}}>{userSearchErorr}</span>
+          </div>
+
+          <div>
+              <label>Search by Role</label>
+              <select onChange={(e) => setRole(e.target.value)}>
+                  <option value="">Role</option>
+                  {allRoles.map((data) => (
+                      <option value={data.roletype_name} key={data.roletype_name}>
+                          {data.roletype_name}
+                      </option>
+                  ))}
+              </select>
+          </div>
+          <span>
       <button className="dashboard-btn dashboard-btn-scss" onClick={handleSearch}>Search</button>
       </span>
-    </div>
+      </div>
   );
 };
 export default UserSearchquery40;

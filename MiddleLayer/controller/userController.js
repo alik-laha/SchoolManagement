@@ -92,7 +92,7 @@ exports.SearchUser = (req, res) => {
             if (data.length==0) {
                 return res.status(400).json({
                     status: "failed",
-                    data: "user not found"
+                    data: `Entry Not found with user name ${name} `
                 });
             }
             else if (data[0]) {
