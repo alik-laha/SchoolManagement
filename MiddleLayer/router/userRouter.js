@@ -35,7 +35,7 @@ router.post('/studentnotice',upload.single('file'),(req,res)=>{
 //login user
 router.post('/login', Login)
 
-//create user
+// create user
 router.post('/createuser', CreateUser)
 
 //search user
