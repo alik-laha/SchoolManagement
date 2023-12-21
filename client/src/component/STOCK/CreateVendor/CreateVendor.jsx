@@ -2,7 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 
 
-const CreateVendor = () => {
+const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
 
     const handleCreateVendor = () => {
@@ -14,9 +14,8 @@ const CreateVendor = () => {
         })
 
     }
-
     return(
-        <div>
+        <div style={{display:props.createView}}>
             <input type="text" placeholder="Vendor Name" onChange={(e)=>setVendor(e.target.value)}/>
             <button onClick={handleCreateVendor}>Create Vendor</button>
         </div>

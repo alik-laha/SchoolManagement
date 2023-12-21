@@ -2,7 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 
 
-const CreateItem = () => {
+const CreateItem = (props) => {
     const [item,setitem]=useState("")
 
     const handleCreateItem = () => {
@@ -16,8 +16,8 @@ const CreateItem = () => {
     }
 
     return(
-        <div>
-            <input type="text" placeholder="Vendor Name" onChange={(e)=>setitem(e.target.value)}/>
+        <div style={{display:props.itemCreateView}}>
+            <input type="text" placeholder="Create Item" onChange={(e)=>setitem(e.target.value)}/>
             <button onClick={handleCreateItem}>Create item type</button>
         </div>
     )

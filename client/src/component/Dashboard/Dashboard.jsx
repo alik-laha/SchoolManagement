@@ -22,6 +22,8 @@ const Dashboard = () => {
  const [search,setSearch]=useState("none")
 const [view,setView]=useState('none')
     const [notice,setNotice]=useState('none')
+    const [vendorDisplay,setVendorDisplay]=useState("none")
+    const[itemCreate,setItemCreate]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -60,8 +62,10 @@ const handaleSearch=()=>{
 if(search==='none'){
     setCreateUser("none")
     setPublish('none')
+    setVendorDisplay('none')
     setSearch('block')
     setView('flex')
+    setItemCreate('none')
     setNotice('none')
 }
 else{
@@ -73,9 +77,11 @@ else{
 const handaleCreateUser=()=>{
      if(createUser==="none"){
          setCreateUser("block")
+         setVendorDisplay('none')
          setSearch('none')
          setPublish('none')
          setView('none')
+         setItemCreate('none')
             setNotice('none')
      }
      else{
@@ -87,26 +93,60 @@ const handaleCreateUser=()=>{
 const handalePublish=()=>{
      if(publish==='none'){
          setCreateUser('none')
+         setVendorDisplay('none')
          setPublish('block')
          setSearch('none')
         setView('none')
+         setItemCreate('none')
          setNotice('none')
      }
      else{
          setPublish('none')
      }
 }
-const handaleNotice=()=>{
-     if(notice==='none'){
+
+const HandleVendorCreate=()=>{
+     if(vendorDisplay==='none'){
+         setVendorDisplay('block')
          setCreateUser('none')
          setPublish('none')
          setSearch('none')
          setView('none')
+         setItemCreate('none')
+         setNotice('none')
+     }
+        else{
+            setVendorDisplay('none')
+        }
+
+}
+const handaleNotice=()=>{
+     if(notice==='none'){
+         setCreateUser('none')
+         setVendorDisplay('none')
+         setPublish('none')
+         setSearch('none')
+         setView('none')
+         setItemCreate('none')
          setNotice('block')
      }
         else{
             setNotice('none')
         }
+}
+const handleItemCreate=()=>{
+        if(itemCreate==='none'){
+            setItemCreate('block')
+            setCreateUser('none')
+            setVendorDisplay('none')
+            setPublish('none')
+            setSearch('none')
+            setView('none')
+            setNotice('none')
+        }
+            else{
+                setItemCreate('none')
+            }
 }
 
   return (
@@ -133,8 +173,8 @@ const handaleNotice=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser} onpublish={handalePublish} onNoticeManupulation={handaleNotice}/>
-        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view} Notice={notice}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser} onpublish={handalePublish} onNoticeManupulation={handaleNotice} onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}/>
+        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view} Notice={notice} VendorCreateDisplay={vendorDisplay} ItemCreateDisplay={itemCreate}/>
       </div>
     </div>
      

@@ -31,8 +31,8 @@ else{
           <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} />
           <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
-          <CreateVendor/>
-          <CreateItem/>
+          <CreateVendor createView={props.VendorCreateDisplay}/>
+          <CreateItem itemCreateView={props.ItemCreateDisplay}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} />
