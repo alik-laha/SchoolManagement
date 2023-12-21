@@ -5,7 +5,9 @@ import StudentInputNotice from "../NoticeInput/NoticeBoardUpload40.jsx";
 import '../Dashboard/Dashboard.css'
 import NoticeManupulation60 from "../NoticeManupulation/NoticeManupulation60.jsx";
 import ViewAll from "../View/UserSearchResponse60.jsx";
-const CreateItem = (props) => {
+import CreateVendor from "../STOCK/CreateVendor/CreateVendor.jsx";
+import CreateItem from "../STOCK/CreateItemType/CreateItem.jsx";
+const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
   const[view,setView]=useState('none')
@@ -29,6 +31,8 @@ else{
           <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} />
           <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
+          <CreateVendor/>
+          <CreateItem/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} />
@@ -38,4 +42,4 @@ else{
     </>
   );
 };
-export default CreateItem;
+export default DashBoardMain

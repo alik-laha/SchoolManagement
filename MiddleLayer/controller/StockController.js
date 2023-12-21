@@ -9,12 +9,17 @@ exports.CreateItem = (req, res) => {
             return res.message("all data needed")
         }
         query = `
-        INSERT INTO item (item_type) VALUES ("${item}")`;
+        INSERT INTO itemType (item_type) VALUES ("${item}")`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "error at creating item",
+                    message: error
+                });
+            }
             if (data) {
                 return res.status(200).json({
-                    status: "success",
+                    status: "item created",
                     data: data
                 });
             }
@@ -30,12 +35,18 @@ exports.CreateItem = (req, res) => {
 exports.GetItem = (req, res) => {
     try {
         query = `
-        SELECT * FROM item`;
+        SELECT * FROM itemType`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
-            if (data) {
+            if (error) {
+                return res.status(400).json({
+                    status: "error at geting item",
+                    message: error
+                });
+
+            }
+            else if (data) {
                 return res.status(200).json({
-                    status: "success",
+                    status: "got all item",
                     data: data
                 });
             }
@@ -55,10 +66,15 @@ exports.CreateVendor = (req, res) => {
         query = `
         INSERT INTO vendor (vendor_name) VALUES ("${vendor}")`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "error at creating vendor",
+                    message: error
+                });
+            }
             if (data) {
                 return res.status(200).json({
-                    status: "success",
+                    status: "venodr created",
                     data: data
                 });
             }
@@ -74,10 +90,15 @@ exports.GetVendor = (req, res) => {
         query = `
         SELECT * FROM vendor`;
         Database.query(query, function (error, data) {
-            if (error) throw error;
+            if (error) {
+                return res.status(400).json({
+                    status: "error at geting vendor",
+                    message: error
+                });
+            }
             if (data) {
                 return res.status(200).json({
-                    status: "success",
+                    status: "got all vendor",
                     data: data
                 });
             }
