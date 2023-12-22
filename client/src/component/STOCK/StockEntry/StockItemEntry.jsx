@@ -4,14 +4,13 @@ const StockItemEntry= (props) => {
     const [itemName, setItemName] = useState("");
     const [billNo, setBillNo] = useState("");
     const [billDate, setBillDate] = useState();
-    const[unitCost, setUnitCost] = useState(0);
-    const [quantity, setQuantity] = useState(0);
     const [allVendorName, setAllVendorName] = useState([]);
     const [allItemType, setAllItemType] = useState([]);
     const [vendorName, setVendorName] = useState("");
     const [itemType, setItemType] = useState("");
-    const[projectedCost, setProjectedCost] = useState("");
-
+    const [UnitPerCost, setUnitPerCost] = useState();
+    const [Quantity, setQuantity] = useState();
+    const [ProjectedCost, setProjectedCost] = useState();
     useEffect(()=>{
 
     axios.post("http://localhost:7000/api/v1/stock/getallvendor")
@@ -28,6 +27,10 @@ const StockItemEntry= (props) => {
 
             })
     },[])
+
+    useEffect(()=>{
+        setProjectedCost(UnitPerCost*Quantity)
+    },[Quantity,UnitPerCost])
     return(
         <div style={{display:props.stockEntryView}}>
             <form>
@@ -86,24 +89,27 @@ const StockItemEntry= (props) => {
                 <div>
                     <label>Unit Cost</label>
                     <input
+                        id="UnitCost"
                         type="number"
+                        value={UnitPerCost}
+                        onChange={(e) => setUnitPerCost(e.target.value)}
                         placeholder="User Name"
-                        onChange={(e) => setUnitCost(e.target.value)}
-                        value={unitCost}
                         required
                     />
                 </div>
                 <div>
                     <label>Quantity</label>
                     <input
+                        id="Quantity"
                         type="number"
-                        placeholder="User Name"
                         onChange={(e) => setQuantity(e.target.value)}
-                        value={quantity}
+                        value={Quantity}
+                        placeholder="User Name"
                         required
                     />
                 </div>
-                {/*<input type="number" value={unitCost*quantity}  />*/}
+                <input type="number" value={ProjectedCost} readOnly />
+                <button type="submit">Submit</button>
             </form>
 
         </div>
