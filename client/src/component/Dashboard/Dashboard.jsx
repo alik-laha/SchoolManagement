@@ -24,6 +24,7 @@ const [view,setView]=useState('none')
     const [notice,setNotice]=useState('none')
     const [vendorDisplay,setVendorDisplay]=useState("none")
     const[itemCreate,setItemCreate]=useState('none')
+    const [stockEntry,setStockEntry]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -67,6 +68,7 @@ if(search==='none'){
     setView('flex')
     setItemCreate('none')
     setNotice('none')
+    setStockEntry('none')
 }
 else{
     setSearch('none')
@@ -83,6 +85,7 @@ const handaleCreateUser=()=>{
          setView('none')
          setItemCreate('none')
             setNotice('none')
+         setStockEntry('none')
      }
      else{
          setCreateUser("none")
@@ -99,6 +102,7 @@ const handalePublish=()=>{
         setView('none')
          setItemCreate('none')
          setNotice('none')
+         setStockEntry('none')
      }
      else{
          setPublish('none')
@@ -114,6 +118,7 @@ const HandleVendorCreate=()=>{
          setView('none')
          setItemCreate('none')
          setNotice('none')
+         setStockEntry('none')
      }
         else{
             setVendorDisplay('none')
@@ -129,6 +134,7 @@ const handaleNotice=()=>{
          setView('none')
          setItemCreate('none')
          setNotice('block')
+         setStockEntry('none')
      }
         else{
             setNotice('none')
@@ -143,11 +149,28 @@ const handleItemCreate=()=>{
             setSearch('none')
             setView('none')
             setNotice('none')
+            setStockEntry('none')
         }
             else{
                 setItemCreate('none')
             }
 }
+const handleStockEntry=()=>{
+        if(stockEntry==='none'){
+            setStockEntry('block')
+            setItemCreate('none')
+            setCreateUser('none')
+            setVendorDisplay('none')
+            setPublish('none')
+            setSearch('none')
+            setView('none')
+            setNotice('none')
+        }
+            else{
+                setStockEntry('none')
+            }
+}
+
 
   return (
     <>
@@ -173,8 +196,14 @@ const handleItemCreate=()=>{
         
     </div>
       <div className="dashboard-main-panel">
-        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser} onpublish={handalePublish} onNoticeManupulation={handaleNotice} onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}/>
-        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser} Publish={publish} View={view} Notice={notice} VendorCreateDisplay={vendorDisplay} ItemCreateDisplay={itemCreate}/>
+        <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}
+                 onpublish={handalePublish} onNoticeManupulation={handaleNotice}
+                 onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
+                 onStockEntry={handleStockEntry}/>
+        <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}
+                       Publish={publish} View={view}
+                       Notice={notice} VendorCreateDisplay={vendorDisplay}
+                       ItemCreateDisplay={itemCreate} EntryStock={stockEntry}/>
       </div>
     </div>
      

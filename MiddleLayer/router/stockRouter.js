@@ -6,13 +6,13 @@ const router = express.Router()
 router.post('/createitem',CreateItem)
 
 //get all item
-router.get('/getallitem',GetItem)
+router.post('/getallitem',GetItem)
 
 //create vendor
 router.post('/createvendor',CreateVendor)
 
 //get all vendor
-router.get('/getallvendor',GetVendor)
+router.post('/getallvendor',GetVendor)
 
 
 module.exports = router

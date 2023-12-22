@@ -100,7 +100,7 @@ const SideBar = (props) => {
         <div className="user" style={{ display: stockVisi }}>
           <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>Create Vendor</div>
           <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>Create Item type</div>
-          <div className="Items" style={{ display: stockAdmin }}>Stock Entry</div>
+          <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockEntry}>Stock Entry</div>
           <div className="Items" style={{ display: cashAdmin }}>Cash entry</div>
           <div className="Items" style={{ borderBottom: "none", display: admin }}>Check Pending Amount</div>
         </div>

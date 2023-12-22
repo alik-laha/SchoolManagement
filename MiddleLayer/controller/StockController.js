@@ -106,6 +106,7 @@ exports.CreateVendor = (req, res) => {
                     connection.release()
                 })
             }
+
     } )
 
 }
@@ -123,7 +124,7 @@ exports.GetVendor = (req, res) => {
             query = `
                 SELECT *
                 FROM vendor`;
-            Database.query(query, function (error, data) {
+            connection.query(query, function (error, data) {
                 if (error) {
                     return res.status(400).json({
                         status: "error at geting vendor",
@@ -136,7 +137,9 @@ exports.GetVendor = (req, res) => {
                         data: data
                     });
                 }
+                connection.release()
             })
         }
+
     } )
 }

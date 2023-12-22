@@ -7,6 +7,7 @@ import NoticeManupulation60 from "../NoticeManupulation/NoticeManupulation60.jsx
 import ViewAll from "../View/UserSearchResponse60.jsx";
 import CreateVendor from "../STOCK/CreateVendor/CreateVendor.jsx";
 import CreateItem from "../STOCK/CreateItemType/CreateItem.jsx";
+import StockItemEntry from "../STOCK/StockEntry/StockItemEntry.jsx";
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -33,6 +34,7 @@ else{
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
           <CreateVendor createView={props.VendorCreateDisplay}/>
           <CreateItem itemCreateView={props.ItemCreateDisplay}/>
+          <StockItemEntry stockEntryView={props.EntryStock}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} />

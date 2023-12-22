@@ -178,7 +178,8 @@ exports.Login = (req, res) => {
                 if (err) {
                     return res.status(400).json({
                         status: "failed",
-                        data: "did not connect to database"
+                        data: "did not connect to database",
+                        message:err.message
                     });
                 }
                 else {
