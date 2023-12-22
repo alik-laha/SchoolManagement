@@ -28,7 +28,7 @@ else{
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
-          DashBoard AL-HILAL-Mission
+          
           <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} />
           <CreateUser showCreate={props.createUser} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />

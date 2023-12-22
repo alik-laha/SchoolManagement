@@ -182,6 +182,19 @@
     background-color: #f4f4f4;
 }
 
+.dashboard-top-heading{
+    display: block;
+    background-color: lightblue;
+    margin: 2px 2px 2px 2px!important;
+    color: black;
+    height: 35px;
+    text-align: center;
+    line-height: 2;
+    font-family: monospace;
+    
+    
+
+}
 
 .dashboard-main-right{
     background-color: white;

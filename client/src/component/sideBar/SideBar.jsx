@@ -78,6 +78,7 @@ const SideBar = (props) => {
   return(
       <>
       <div className={props.class}>
+      <span className="dashboard-top-heading user">AL-HILAL-Mission</span>
       <div className="sidebar-main-header">
         {/* User */}
         <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
@@ -90,19 +91,19 @@ const SideBar = (props) => {
 
         <span onClick={noticeVisibility} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;NoticeBoard<p>{dropArrowNotc}</p></span>
         <div style={{ display: noticeVisi }}>
-          <div className="Items" style={{ borderBottom: "none" }} onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
+          <div className="Items"  onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
           <div className="Items" onClick={props.onNoticeManupulation}>&#x3e;&nbsp;&nbsp;View/Delete Notice</div>
           
         </div>
 
         {/* stock */}
-        <span onClick={stockVisiblity} className="user" >&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
-        <div className="user" style={{ display: stockVisi }}>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>Create Vendor</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>Create Item type</div>
-          <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockEntry}>Stock Entry</div>
-          <div className="Items" style={{ display: cashAdmin }}>Cash entry</div>
-          <div className="Items" style={{ borderBottom: "none", display: admin }}>Check Pending Amount</div>
+        <span onClick={stockVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+        <div style={{ display: stockVisi }}>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Vendor</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Create Item type</div>
+          <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Stock Entry</div>
+          <div className="Items" style={{ display: cashAdmin }}>&#x3e;&nbsp;&nbsp;Cash entry</div>
+          <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>
         </div>
     </div>
     </div>
