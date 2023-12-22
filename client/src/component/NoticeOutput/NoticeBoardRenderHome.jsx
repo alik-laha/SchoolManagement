@@ -2,6 +2,7 @@ import {useState,useEffect} from "react";
 
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
+    
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
             .then((response) => response.json())
@@ -11,16 +12,28 @@ const NoticeOutput=()=>{
 
     return(
         <div>
-            <h1>Download Files</h1>
+            <span>Download Files</span>
+            
+            
+            <marquee direction="up" scrolldelay="1" scrollamount="1"  >
             <ul>
                 {file.map((fileName, index) => (
-                    <li key={index}>
-                        <a href={`./student/${fileName}`} download>
+                    
+                         <li key={index}>
+                        <a href={`./student/${fileName}`} download style={{color:'#990000'}}>
                             {fileName}
+                            <br/>
+                            <hr size="1" color='#c7c7c7'></hr>
+                            <br/>
                         </a>
                     </li>
-                ))}
-            </ul>
+                   
+                       
+                    
+                    
+                ))}</ul>
+                 </marquee>
+            
         </div>
     )
 }

@@ -11,7 +11,7 @@ const Home = (props) => {
         
         <div >
             <div style={{ backgroundImage: `url(${background})`}} className="banner-container">
-                <div className="text-center" style={{backgroundColor:"white"}}>
+                <div className="noticeboard" style={{backgroundColor:"white"}}>
                     <NoticeBoardRenderHome />
                 </div>
             </div>

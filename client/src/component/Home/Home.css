@@ -105,3 +105,22 @@
 .logoC{
     font-size: 23px;
 }
+
+
+
+.noticeboard{
+    background-color: white;
+    /* float: right; */
+    padding: 20px;
+    width: 25%;
+    margin-right:-72%;
+    height: 80vh;
+    opacity: 0.85;
+    font-size: 15px;
+
+}
+
+.noticeboard ul li a{
+  
+
+}
