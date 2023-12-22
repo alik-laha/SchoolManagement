@@ -24,17 +24,23 @@ const StudentInputNotice = ({Publish}) => {
 
   };
   return (
-    <div style={{display:Publish}}>
-      <h1>Student Input Notice</h1>
-      <form onSubmit={HandaleSubmit}>
-        <input
+    <div className="dashbrd-40-colm" style={{display:Publish}}>
+      
+      <div>
+      <label>Institute Notice Upload </label>
+      <form onSubmit={HandaleSubmit} >
+         <input style={{border:'none'}}
           type="file"
           onChange={(e) => {
             setFile(e.target.files[0]);
           }}
         />
-        <button type="submit">Submit</button>
+       
+        
       </form>
+      </div>
+      <div><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></div>
+     
     </div>
   );
 };
