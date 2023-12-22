@@ -21,15 +21,34 @@ const NoticeManupulation60=(props)=>{
     }
     return(
         <div style={{display:props.Publish}}>
-            <ul>
+           
+           <table className="table-60">
+           <thead>
+                <tr>
+                    <th>Notice Name</th>
+                    <th>Action(Delete)</th>
+                </tr>
+                </thead>
+
+                <tbody>
                 {file.map((fileName, index) => (
-                    <li key={index}>
-                        <div style={{display:"flex"}}>
+                    <tr key={index}>
+                        <td>
                             {fileName}
-                            <button onClick={()=>handaleDelete(fileName)}><MdDelete /></button>
-                        </div>
-                    </li>
+                            
+                        </td>
+                        <td>
+                        <button className="dashboard-btn btn-warning" onClick={()=>handaleDelete(fileName)}><MdDelete/></button>
+                        </td>
+                    </tr>
                 ))}
+
+                </tbody>
+
+            </table>
+           
+            <ul>
+             
             </ul>
         </div>
     )
