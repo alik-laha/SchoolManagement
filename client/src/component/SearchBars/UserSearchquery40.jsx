@@ -67,7 +67,7 @@ const UserSearchquery40 = (props) => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
               />
-              <span style={{fontSize: "12px", color: "red",display:errorMessage}}>{userSearchErorr}</span>
+              
           </div>
 
           <div>
@@ -84,6 +84,7 @@ const UserSearchquery40 = (props) => {
           <span>
       <button className="dashboard-btn dashboard-btn-scss" onClick={handleSearch}>Search</button>
       </span>
+      <span style={{fontSize: "16px", color: "red",display:errorMessage}}>{userSearchErorr}</span>
       </div>
   );
 };
