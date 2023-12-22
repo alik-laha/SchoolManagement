@@ -3,17 +3,20 @@ import axios from "axios";
 const StockItemEntry= (props) => {
     const [itemName, setItemName] = useState("");
     const [billNo, setBillNo] = useState("");
-    const [billDate, setBillDate] = useState("");
-    const[unitCost, setUnitCost] = useState("");
-    const [quantity, setQuantity] = useState("");
-    const [vendor, setVendor] = useState([]);
-    const [item, setItem] = useState([]);
+    const [billDate, setBillDate] = useState();
+    const[unitCost, setUnitCost] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const [allVendorName, setAllVendorName] = useState([]);
+    const [allItemType, setAllItemType] = useState([]);
+    const [vendorName, setVendorName] = useState("");
+    const [itemType, setItemType] = useState("");
+    const[projectedCost, setProjectedCost] = useState("");
 
     useEffect(()=>{
 
     axios.post("http://localhost:7000/api/v1/stock/getallvendor")
         .then((res)=>{
-            setVendor(res.data.data);
+            setAllVendorName(res.data.data);
         })
         .catch((err)=>{
           console.log(err);
@@ -21,19 +24,18 @@ const StockItemEntry= (props) => {
 
         axios.post("http://localhost:7000/api/v1/stock/getallitem")
             .then((data)=>{
-                setItem(data.data.data);
+                setAllItemType(data.data.data);
 
             })
     },[])
-    console.log(item)
     return(
         <div style={{display:props.stockEntryView}}>
             <form>
                 <div>
-                    <label>Create Role</label>
-                    <select onChange={(e) => setRole(e.target.value)} required>
-                        <option value="">Role</option>
-                        {vendor.map((data) => (
+                    <label>Vendor</label>
+                    <select onChange={(e) => setVendorName(e.target.value)} required value={vendorName}>
+                        <option >Vendor</option>
+                        {allVendorName.map((data) => (
                             <option value={data.vendor_name} key={data.vendor_id}>
                                 {data.vendor_name}
                             </option>
@@ -51,10 +53,10 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Create Role</label>
-                    <select onChange={(e) => setRole(e.target.value)} required>
+                    <label>Items</label>
+                    <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
                         <option value="">Role</option>
-                        {item.map((data) => (
+                        {allItemType.map((data) => (
                             <option value={data.item_Type} key={data.type_id}>
                                 {data.item_Type}
                             </option>
@@ -74,7 +76,7 @@ const StockItemEntry= (props) => {
                 <div>
                     <label>Bill Date</label>
                     <input
-                        type="text"
+                        type="date"
                         placeholder="User Name"
                         onChange={(e) => setBillDate(e.target.value)}
                         value={billDate}
@@ -84,7 +86,7 @@ const StockItemEntry= (props) => {
                 <div>
                     <label>Unit Cost</label>
                     <input
-                        type="text"
+                        type="number"
                         placeholder="User Name"
                         onChange={(e) => setUnitCost(e.target.value)}
                         value={unitCost}
@@ -94,14 +96,14 @@ const StockItemEntry= (props) => {
                 <div>
                     <label>Quantity</label>
                     <input
-                        type="text"
+                        type="number"
                         placeholder="User Name"
                         onChange={(e) => setQuantity(e.target.value)}
                         value={quantity}
                         required
                     />
                 </div>
-
+                {/*<input type="number" value={unitCost*quantity}  />*/}
             </form>
 
         </div>

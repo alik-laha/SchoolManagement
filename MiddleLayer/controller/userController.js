@@ -18,6 +18,7 @@ exports.Login = (req, res) => {
                 WHERE user_name = "${name}"`;
             connection.query(query, function (error, data) {
                 if (error) {
+                    connection.release();
                     return res.status(400).json({
                         status: "failed",
                         data: "user not found"
@@ -26,18 +27,20 @@ exports.Login = (req, res) => {
                 }
                 if (data) {
                     if (data[0].password == pass) {
+                        connection.release();
                         return res.status(200).json({
                             status: "success",
                             data: data
                         });
                     } else {
+                        connection.release();
                         return res.status(400).json({
                             status: "failed",
                             data: "wrong password"
                         });
                     }
                 }
-                connection.release();
+
             })
 
         }
@@ -64,18 +67,20 @@ exports.Login = (req, res) => {
                         VALUES ("${name}", "${password}", "${role}", "${dOB}")`;
                     connection.query(query, function (error, data) {
                         if (error) {
+                            connection.release();
                             return res.status(400).json({
                                 status: "failed",
                                 data: "user already exist"
                             });
                         }
                         if (data) {
+                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 data: data
                             });
                         }
-                        connection.release();
+
                     })
                 }
             })
@@ -113,17 +118,19 @@ exports.Login = (req, res) => {
             } else {
                 connection.query(query, function (error, data) {
                     if (data.length == 0) {
+                        connection.release();
                         return res.status(400).json({
                             status: "failed",
                             data: `Entry Not found with user name ${name} `
                         });
                     } else if (data[0]) {
+                        connection.release();
                         return res.status(200).json({
                             status: "success",
                             data: data
                         });
                     }
-                    connection.release();
+
                 })
             }
         })
@@ -153,15 +160,18 @@ exports.Login = (req, res) => {
                             roletype_name="${role}"
                         WHERE user_id = ${id}`;
                     connection.query(query, function (error, data) {
-                        if (error) throw error;
+                        if (error) {
+                            connection.release();
+                            res.send(error)
+                        }
                         if (data) {
-
+                            connection.release()
                             return res.status(200).json({
                                 status: "success",
                                 // data: data
                             });
                         }
-                        connection.release()
+
                     })
                 }
         } )
@@ -176,6 +186,7 @@ exports.Login = (req, res) => {
             }
             Database.getConnection((err, connection) => {
                 if (err) {
+                    connection.release();
                     return res.status(400).json({
                         status: "failed",
                         data: "did not connect to database",
@@ -189,6 +200,7 @@ exports.Login = (req, res) => {
                         WHERE user_id = ${user_id}`;
                     connection.query(query, function (error, data) {
                         if (error) {
+                            connection.release();
                             return res.status(400).json({
                                 status: "failed",
                                 data: "user not found"
@@ -196,13 +208,13 @@ exports.Login = (req, res) => {
                         }
                         ;
                         if (data) {
-
+                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 // data: data
                             });
                         }
-                        connection.release();
+
                     })
                 }
         } )
@@ -227,15 +239,18 @@ exports.Login = (req, res) => {
                         INSERT INTO role (roletype_name)
                         VALUES ("${role}")`;
                     connection.query(query, function (error, data) {
-                        if (error) throw error;
+                        if (error) {
+                            connection.release();
+                            res.send(error)
+                        }
                         if (data) {
-
+                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 data: data
                             });
                         }
-                        connection.release();
+
                     })
                 }
         } )
@@ -255,15 +270,18 @@ exports.Login = (req, res) => {
             else {
                 query = ` SELECT *FROM role`;
                 connection.query(query, function (error, data) {
-                    if (error) throw error;
+                    if (error) {
+                        connection.release();
+                        res.status(400).send(error)
+                    }
                     if (data) {
-
+                        connection.release();
                         return res.status(200).json({
                             status: "success",
                             data: data
                         });
                     }
-                    connection.release();
+
                 })
             }
         } )

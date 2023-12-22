@@ -1,5 +1,5 @@
 const express = require('express')
-const {CreateItem, GetItem, CreateVendor, GetVendor} = require("../controller/StockController");
+const {CreateItem, GetItem, CreateVendor, GetVendor,StockEntry} = require("../controller/StockController");
 const router = express.Router()
 
 //create item
@@ -13,6 +13,9 @@ router.post('/createvendor',CreateVendor)
 
 //get all vendor
 router.post('/getallvendor',GetVendor)
+
+//stock entry
+router.post('/stockentry',StockEntry)
 
 
 module.exports = router
