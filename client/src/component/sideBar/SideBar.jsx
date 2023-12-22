@@ -99,7 +99,7 @@ const SideBar = (props) => {
         </div>
 
         {/* stock */}
-        <span onClick={stockVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+        <span onClick={stockVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
         <div style={{ display: stockVisi }}>
           <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Vendor</div>
           <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Create Item type</div>
