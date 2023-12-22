@@ -1,5 +1,6 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
+import logo from '../Home/logo_ahm.jpg'
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -78,7 +79,8 @@ const SideBar = (props) => {
   return(
       <>
       <div className={props.class}>
-      <span className="dashboard-top-heading user">AL-HILAL-Mission</span>
+      
+      <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p>AL-HILAL-Mission</p></span>
       <div className="sidebar-main-header">
         {/* User */}
         <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
