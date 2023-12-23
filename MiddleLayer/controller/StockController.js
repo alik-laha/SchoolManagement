@@ -154,8 +154,8 @@ exports.GetVendor = (req, res) => {
 
 //stock entry
 exports.StockEntry=(req,res)=>{
-    const {itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,ProjectedCost}=req.body
-    if(!itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName){
+    const {itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,projectedCost}=req.body
+    if(!itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost){
         return res.status(400).json({
             status:"all data needed"
         })
@@ -174,18 +174,20 @@ exports.StockEntry=(req,res)=>{
                     VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}")`
                 connection.query(query,function(error,data){
                     if(error){
+                        connection.release()
                         return res.status(400).json({
                             status:"error at creating stock",
                             message:error
                         })
                     }
                     if(data){
+                        connection.release()
                         return res.status(200).json({
                             status:"stock created",
                             data:data
                         })
                     }
-                    connection.release()
+
                 })
             }
         })
