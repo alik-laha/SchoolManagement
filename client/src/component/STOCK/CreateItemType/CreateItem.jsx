@@ -16,9 +16,16 @@ const CreateItem = (props) => {
     }
 
     return(
-        <div style={{display:props.itemCreateView}}>
+        <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
+            <div >
+          <label>Create Item Type</label>
             <input type="text" placeholder="Create Item" onChange={(e)=>setitem(e.target.value)}/>
-            <button onClick={handleCreateItem}>Create item type</button>
+            
+            </div>
+            <div>
+            <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateItem}>Create Item Type</button>
+            </div>
+            
         </div>
     )
 }

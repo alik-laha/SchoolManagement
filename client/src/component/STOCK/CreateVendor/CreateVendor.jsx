@@ -27,7 +27,7 @@ const CreateVendor = (props) => {
              />
          </div >
          <div >   
-            <span><button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateVendor}>Create Vendor</button></span>
+            <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateVendor}>Create Vendor</button>
             
             </div >
         </div>
