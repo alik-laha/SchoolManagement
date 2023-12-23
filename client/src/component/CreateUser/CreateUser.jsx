@@ -36,7 +36,10 @@ const CreateUser = ({showCreate}) => {
       if(res.status=='success' && suceessflag=='none'){
         setsuceessflag('block');
       }
-      window.location.reload();
+        setName("");
+        setPassword("");
+        setRole("");
+        setdOB('');
   });}
 
   return (
@@ -77,7 +80,7 @@ const CreateUser = ({showCreate}) => {
 
         <div>
         <label>Create Role</label>
-        <select onChange={(e) => setRole(e.target.value)} required>
+        <select onChange={(e) => setRole(e.target.value)} required value={role}>
           <option value="">Role</option>
           {allRoles.map((data) => (
             <option value={data.roletype_name} key={data.roletype_name}>

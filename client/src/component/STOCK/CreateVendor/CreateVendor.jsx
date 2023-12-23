@@ -10,7 +10,7 @@ const CreateVendor = (props) => {
             vendor:vendor
         }).then((response)=>{
             alert(`Vendor created with Vendor Name ${vendor}`)
-            window.location.reload()
+            setVendor("")
         })
 
     }

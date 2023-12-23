@@ -2,6 +2,7 @@ import {useState,useEffect} from "react";
 
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
+    const [scrollAmout,setScrollAmout]=useState("3")
     
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
@@ -14,24 +15,22 @@ const NoticeOutput=()=>{
         <div className="noticeboard-main">
             
             <span className="noticeboard-main-header">Institute Notice Board</span>
-            
-            
-            <marquee behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" onmouseover="this.stop();" onMouseout="this.start();" >
+
+
+            <marquee behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();" >
             <ul className="cssmarquee">
                 {file.map((fileName, index) => (
-                    
+
                          <li key={index}>
                             <hr size="1" color='#ff0000'></hr>
                         <a href={`./student/${fileName}`} download >
                             {fileName}
-                           
-                           
                         </a>
                     </li>
-                    
+
                 ))}</ul>
                  </marquee>
-            
+
         </div>
     )
 }

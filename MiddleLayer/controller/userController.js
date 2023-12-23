@@ -186,7 +186,6 @@ exports.Login = (req, res) => {
             }
             Database.getConnection((err, connection) => {
                 if (err) {
-                    connection.release();
                     return res.status(400).json({
                         status: "failed",
                         data: "did not connect to database",
