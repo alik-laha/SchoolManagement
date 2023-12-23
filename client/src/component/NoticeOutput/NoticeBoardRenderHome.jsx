@@ -11,25 +11,23 @@ const NoticeOutput=()=>{
     },[])
 
     return(
-        <div>
-            <span>Download Files</span>
+        <div className="noticeboard-main">
+            
+            <span className="noticeboard-main-header">Institute Notice Board</span>
             
             
-            <marquee direction="up" scrolldelay="1" scrollamount="1"  >
-            <ul>
+            <marquee height ='90%' direction="up" scrolldelay="1" scrollamount="2"  >
+            <ul className="cssmarquee">
                 {file.map((fileName, index) => (
                     
                          <li key={index}>
-                        <a href={`./student/${fileName}`} download style={{color:'#990000'}}>
+                            <hr size="1" color='#ff0000'></hr>
+                        <a href={`./student/${fileName}`} download >
                             {fileName}
-                            <br/>
-                            <hr size="1" color='#c7c7c7'></hr>
-                            <br/>
+                           
+                           
                         </a>
                     </li>
-                   
-                       
-                    
                     
                 ))}</ul>
                  </marquee>
