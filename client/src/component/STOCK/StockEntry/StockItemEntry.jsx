@@ -32,7 +32,7 @@ const StockItemEntry= (props) => {
         setProjectedCost(UnitPerCost*Quantity)
     },[Quantity,UnitPerCost])
     return(
-        <div style={{display:props.stockEntryView}}>
+        <div style={{display:props.stockEntryView}} className="dashbrd-40-colm">
             <form>
                 <div>
                     <label>Vendor</label>
@@ -49,7 +49,7 @@ const StockItemEntry= (props) => {
                     <label>Item Name</label>
                     <input
                         type="text"
-                        placeholder="User Name"
+                        placeholder="Item Name"
                         onChange={(e) => setItemName(e.target.value)}
                         value={itemName}
                         required
@@ -58,7 +58,7 @@ const StockItemEntry= (props) => {
                 <div>
                     <label>Items</label>
                     <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
-                        <option value="">Role</option>
+                        <option value="">Item Type</option>
                         {allItemType.map((data) => (
                             <option value={data.item_Type} key={data.type_id}>
                                 {data.item_Type}
@@ -70,7 +70,7 @@ const StockItemEntry= (props) => {
                     <label>Bill No</label>
                     <input
                         type="text"
-                        placeholder="User Name"
+                        placeholder="Bill No."
                         onChange={(e) => setBillNo(e.target.value)}
                         value={billNo}
                         required
@@ -108,8 +108,18 @@ const StockItemEntry= (props) => {
                         required
                     />
                 </div>
-                <input type="number" value={ProjectedCost} readOnly />
-                <button type="submit">Submit</button>
+                <div>
+                    <label>Projected Cost</label>
+                    <input
+                        id="Projected_Cost"
+                        type="number"
+                        onChange={(e) => setQuantity(e.target.value)}
+                        value={ProjectedCost}
+                        readOnly
+                    />
+                </div>
+                <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
+                
             </form>
 
         </div>
