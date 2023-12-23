@@ -8,10 +8,10 @@ const Header = () => {
       <div className="flex-1">
       <img src={logo} alt='logo image' height ={90} width={90}/> 
             <div style={{display: "grid"}}>
-            <span className=' px-12 text-3xl' >AL HILAL MISSION <span style={{fontSize:'17px'}}>  (KADAMBAGACHI) </span></span>
-            <span className=' px-12 text-2xl' >An Ideal Educational Cultural & Social Welfare Organization</span>
+            <span className=' px-12 text-2xl' >AL HILAL MISSION <span style={{fontSize:'17px'}}>  (KADAMBAGACHI) </span></span>
+            <span className=' px-12 text-1xl' >An Ideal Educational Cultural & Social Welfare Organization</span>
             {/*<span className=' px-12 text-2xl' >WBBSE and WBCHSE Syllabi are being followed</span>*/}
-            <span className=' px-12 text-2xl' >ESTD. 1999</span>
+            <span className=' px-12 text-1xl' >ESTD. 1999</span>
             </div>
        {/*<a href="#" className="btn btn-ghost normal-case text-1xl">CodeBun</a>*/}
       </div>

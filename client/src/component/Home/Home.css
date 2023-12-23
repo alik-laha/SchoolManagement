@@ -40,6 +40,24 @@
     background-color: whitesmoke;
 }
 
+.founder-image-desc{
+
+    text-align: center;
+    font-family: none;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
+.founder-img-div{
+    margin-left: 45px;
+    padding-top: 45px;
+    padding: 30px 5px 0px 5px;
+  
+    
+}
+
 .gallery-main{
     margin: 2% 20% 5% 20%;
     background-color: whitesmoke;
