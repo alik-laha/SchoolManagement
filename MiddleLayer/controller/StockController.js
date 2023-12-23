@@ -8,27 +8,20 @@ exports.CreateItem = (req, res) => {
         if (!{ item }) {
             return res.message("all data needed")
         }
-        Database.getConnection(function (err, connection) {
-            if(err){
-                res.status(400).json({
-                    status: "error at connecting to database",
-                    message: err
-                });
-            }
             else {
                 query = `
                     INSERT INTO itemType (item_type)
                     VALUES ("${item}")`;
-                connection.query(query, function (error, data) {
+                Database.query(query, function (error, data) {
                     if (error) {
-                        connection.release()
+
                         return res.status(400).json({
                             status: "error at creating item",
                             message: error
                         });
                     }
                     if (data) {
-                        connection.release()
+
                         return res.status(200).json({
                             status: "item created",
                             data: data
@@ -37,34 +30,26 @@ exports.CreateItem = (req, res) => {
 
                 })
             }
-    } )
-}
+    }
+
 
 
 
 //get all item
 exports.GetItem = (req, res) => {
-    Database.getConnection(function (err, connection) {
-        if(err){
-            res.status(400).json({
-                status: "error at connecting to database",
-                message: err
-            });
-        }
-        else {
             query = `
                 SELECT *
                 FROM itemType`;
-            connection.query(query, function (error, data) {
+            Database.query(query, function (error, data) {
                 if (error) {
-                    connection.release()
+
                     return res.status(400).json({
                         status: "error at geting item",
                         message: error
                     });
 
                 } else if (data) {
-                    connection.release()
+
                     return res.status(200).json({
                         status: "got all item",
                         data: data
@@ -73,8 +58,6 @@ exports.GetItem = (req, res) => {
 
             })
         }
-    } )
-}
 
 //create vendor
 exports.CreateVendor = (req, res) => {
@@ -83,27 +66,19 @@ exports.CreateVendor = (req, res) => {
         if (!{ vendor }) {
             return res.message("all data needed")
         }
-        Database.getConnection(function (err, connection) {
-            if(err){
-                res.status(400).json({
-                    status: "error at connecting to database",
-                    message: err
-                });
-            }
-            else {
                 query = `
                     INSERT INTO vendor (vendor_name)
                     VALUES ("${vendor}")`;
-                connection.query(query, function (error, data) {
+                Database.query(query, function (error, data) {
                     if (error) {
-                        connection.release()
+
                         return res.status(400).json({
                             status: "error at creating vendor",
                             message: error
                         });
                     }
                     if (data) {
-                        connection.release()
+
                         return res.status(200).json({
                             status: "venodr created",
                             data: data
@@ -111,35 +86,24 @@ exports.CreateVendor = (req, res) => {
                     }
 
                 })
-            }
-
-    } )
 
 }
 
 //get all vendor
 exports.GetVendor = (req, res) => {
-    Database.getConnection(function (err, connection) {
-        if(err){
-            res.status(400).json({
-                status: "error at connecting to database",
-                message: err
-            });
-        }
-        else {
             query = `
                 SELECT *
                 FROM vendor`;
-            connection.query(query, function (error, data) {
+            Database.query(query, function (error, data) {
                 if (error) {
-                    connection.release()
+
                     return res.status(400).json({
                         status: "error at geting vendor",
                         message: error
                     });
                 }
                 if (data) {
-                    connection.release()
+
                     return res.status(200).json({
                         status: "got all vendor",
                         data: data
@@ -147,9 +111,6 @@ exports.GetVendor = (req, res) => {
                 }
 
             })
-        }
-
-    } )
 }
 
 //stock entry
@@ -161,27 +122,19 @@ exports.StockEntry=(req,res)=>{
         })
     }
     else{
-        Database.getConnection(function(err,connection){
-            if(err){
-                res.status(400).json({
-                    status:"error at connecting to database",
-                    message:err
-                })
-            }
-            else{
                 query=`
                     INSERT INTO stock (item_Type,item_Name,vendor_name,bill_id,bill_date,unit_cost,quantity,projected_cost)
                     VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}")`
-                connection.query(query,function(error,data){
+                Database.query(query,function(error,data){
                     if(error){
-                        connection.release()
+
                         return res.status(400).json({
                             status:"error at creating stock",
                             message:error
                         })
                     }
                     if(data){
-                        connection.release()
+
                         return res.status(200).json({
                             status:"stock created",
                             data:data
@@ -190,6 +143,26 @@ exports.StockEntry=(req,res)=>{
 
                 })
             }
-        })
-    }
+        }
+
+    //get all stock
+    exports.GetStock=(req,res)=>{
+                query=`
+                    SELECT *
+                    FROM stock`
+                Database.query(query,function(error,data){
+                    if(error){
+                        return res.status(400).json({
+                            status:"error at getting stock",
+                            message:error
+                        })
+                    }
+                    if(data){
+                        return res.status(200).json({
+                            status:"got all stock",
+                            data:data
+                        })
+                    }
+
+                })
 }

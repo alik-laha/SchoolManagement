@@ -7,18 +7,12 @@ exports.Login = (req, res) => {
     if (!{name, pass}) {
         return res.message("all data needed")
     }
-    Database.getConnection((err, connection) => {
-
-        if (err) {
-            res.send(err.message)
-        } else {
             query = `
                 SELECT *
                 FROM user
                 WHERE user_name = "${name}"`;
-            connection.query(query, function (error, data) {
+            Database.query(query, function (error, data) {
                 if (error) {
-                    connection.release();
                     return res.status(400).json({
                         status: "failed",
                         data: "user not found"
@@ -27,13 +21,12 @@ exports.Login = (req, res) => {
                 }
                 if (data) {
                     if (data[0].password == pass) {
-                        connection.release();
                         return res.status(200).json({
                             status: "success",
                             data: data
                         });
                     } else {
-                        connection.release();
+
                         return res.status(400).json({
                             status: "failed",
                             data: "wrong password"
@@ -43,8 +36,6 @@ exports.Login = (req, res) => {
 
             })
 
-        }
-    })
 }
 
 //create user
@@ -55,26 +46,18 @@ exports.Login = (req, res) => {
             if (!{name, password, role, dOB}) {
                 return res.message("all data needed")
             }
-            Database.getConnection((err, connection) => {
-                if (err) {
-                    return res.status(400).json({
-                        status: "failed",
-                        data: "did not connect to database"
-                    });
-                } else {
                     query = `
                         INSERT INTO user (user_name, password, roletype_name, date_of_Birth)
                         VALUES ("${name}", "${password}", "${role}", "${dOB}")`;
-                    connection.query(query, function (error, data) {
+                    Database.query(query, function (error, data) {
                         if (error) {
-                            connection.release();
+
                             return res.status(400).json({
                                 status: "failed",
                                 data: "user already exist"
                             });
                         }
                         if (data) {
-                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 data: data
@@ -82,8 +65,6 @@ exports.Login = (req, res) => {
                         }
 
                     })
-                }
-            })
     }
 
 //search user by request(id,name)
@@ -109,22 +90,14 @@ exports.Login = (req, res) => {
             query = `SELECT *
                      FROM user`;
         }
-        Database.getConnection((err, connection) => {
-            if (err) {
-                return res.status(400).json({
-                    status: "failed",
-                    data: "did not connect to database"
-                });
-            } else {
-                connection.query(query, function (error, data) {
+                Database.query(query, function (error, data) {
                     if (data.length == 0) {
-                        connection.release();
                         return res.status(400).json({
                             status: "failed",
                             data: `Entry Not found with user name ${name} `
                         });
                     } else if (data[0]) {
-                        connection.release();
+
                         return res.status(200).json({
                             status: "success",
                             data: data
@@ -132,8 +105,6 @@ exports.Login = (req, res) => {
                     }
 
                 })
-            }
-        })
     }
 
 
@@ -145,27 +116,18 @@ exports.Login = (req, res) => {
             if (!{name, password, role, id}) {
                 return res.message("all data needed")
             }
-            Database.getConnection((err, connection) => {
-                if(err){
-                    return res.status(400).json({
-                        status: "failed",
-                        data: "did not connect to database"
-                    });
-                }
-                else {
                     query = `
                         UPDATE user
                         SET user_name="${name}",
                             password="${password}",
                             roletype_name="${role}"
                         WHERE user_id = ${id}`;
-                    connection.query(query, function (error, data) {
+                    Database.query(query, function (error, data) {
                         if (error) {
                             connection.release();
                             res.send(error)
                         }
                         if (data) {
-                            connection.release()
                             return res.status(200).json({
                                 status: "success",
                                 // data: data
@@ -173,8 +135,6 @@ exports.Login = (req, res) => {
                         }
 
                     })
-                }
-        } )
     }
 
 //delete user
@@ -184,30 +144,19 @@ exports.Login = (req, res) => {
             if (!{user_id}) {
                 return res.message("all data needed")
             }
-            Database.getConnection((err, connection) => {
-                if (err) {
-                    return res.status(400).json({
-                        status: "failed",
-                        data: "did not connect to database",
-                        message:err.message
-                    });
-                }
-                else {
                     query = `
                         DELETE
                         FROM user
                         WHERE user_id = ${user_id}`;
-                    connection.query(query, function (error, data) {
+                    Database.query(query, function (error, data) {
                         if (error) {
-                            connection.release();
+
                             return res.status(400).json({
                                 status: "failed",
                                 data: "user not found"
                             });
                         }
-                        ;
                         if (data) {
-                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 // data: data
@@ -215,8 +164,6 @@ exports.Login = (req, res) => {
                         }
 
                     })
-                }
-        } )
     }
 
 //create role
@@ -226,24 +173,14 @@ exports.Login = (req, res) => {
             if (!{role}) {
                 return res.message("all data needed")
             }
-            Database.getConnection((err, connection) => {
-                if (err) {
-                    return res.status(400).json({
-                        status: "failed",
-                        data: "did not connect to database"
-                    });
-                    }
-                else {
                     query = `
                         INSERT INTO role (roletype_name)
                         VALUES ("${role}")`;
-                    connection.query(query, function (error, data) {
+                    Database.query(query, function (error, data) {
                         if (error) {
-                            connection.release();
                             res.send(error)
                         }
                         if (data) {
-                            connection.release();
                             return res.status(200).json({
                                 status: "success",
                                 data: data
@@ -252,29 +189,16 @@ exports.Login = (req, res) => {
 
                     })
                 }
-        } )
-
-    }
 
 
 //get all role
     exports.GetUserRole = (req, res) => {
-        Database.getConnection((err, connection) => {
-            if (err) {
-                return res.status(400).json({
-                    status: "failed",
-                    data: "did not connect to database"
-                });
-            }
-            else {
                 query = ` SELECT *FROM role`;
-                connection.query(query, function (error, data) {
+                Database.query(query, function (error, data) {
                     if (error) {
-                        connection.release();
                         res.status(400).send(error)
                     }
                     if (data) {
-                        connection.release();
                         return res.status(200).json({
                             status: "success",
                             data: data
@@ -282,8 +206,6 @@ exports.Login = (req, res) => {
                     }
 
                 })
-            }
-        } )
     }
 
     exports.DeleteNotice = async (req, res) => {
