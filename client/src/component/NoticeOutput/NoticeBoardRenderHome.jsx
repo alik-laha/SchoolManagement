@@ -21,11 +21,11 @@ const NoticeOutput=()=>{
             <ul className="cssmarquee">
                 {file.map((fileName, index) => (
 
-                         <li key={index}>
-                            <hr size="1" color='#ff0000'></hr>
+                         <li key={index}>  
                         <a href={`./student/${fileName}`} download >
                             {fileName}
                         </a>
+                        <hr size="1" color='#ff0000'></hr>
                     </li>
 
                 ))}</ul>
