@@ -31,34 +31,9 @@ const StockItemEntry= (props) => {
     useEffect(()=>{
         setProjectedCost(UnitPerCost*Quantity)
     },[Quantity,UnitPerCost])
-
-    const handleSubmition = (e) => {
-        e.preventDefault();
-        const data = {
-            vendorName,
-            itemName,
-            itemType,
-            billNo,
-            billDate,
-            UnitPerCost,
-            Quantity,
-            ProjectedCost
-        };
-        axios.post("http://localhost:7000/api/v1/stock/stockentry", data)
-            .then((res) => {
-                console.log(res);
-                alert("Stock Entry Successfull");
-                window.location.reload();
-            })
-            .catch((err) => {
-                console.log(err);
-                alert("Stock Entry Failed");
-            });
-    }
-
     return(
         <div style={{display:props.stockEntryView}}>
-            <form onSubmit={handleSubmition}>
+            <form>
                 <div>
                     <label>Vendor</label>
                     <select onChange={(e) => setVendorName(e.target.value)} required value={vendorName}>
