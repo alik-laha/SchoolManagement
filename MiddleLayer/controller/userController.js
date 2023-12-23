@@ -76,7 +76,7 @@ exports.Login = (req, res) => {
         if (name && !role) {
             query = `SELECT *
                      FROM user
-                     WHERE user_name = "${name}"`;
+                     WHERE user_name REGEXP "${name}"`;
         } else if (name && role) {
             query = `SELECT *
                      FROM user
@@ -91,7 +91,7 @@ exports.Login = (req, res) => {
                      FROM user`;
         }
                 Database.query(query, function (error, data) {
-                    if (data.length == 0) {
+                    if (data.length <= 0) {
                         return res.status(400).json({
                             status: "failed",
                             data: `Entry Not found with user name ${name} `

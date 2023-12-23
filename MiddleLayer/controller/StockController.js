@@ -145,11 +145,36 @@ exports.StockEntry=(req,res)=>{
             }
         }
 
-    //get all stock
+    //get stock from search
     exports.GetStock=(req,res)=>{
-                query=`
-                    SELECT *
-                    FROM stock`
+
+                const{itemType,itemName,billDate,billId,vendorName,}=req.body
+
+                    if(billId){
+                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
+                    }
+                    else if(itemType && !itemName && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" `
+                    }
+                    else if(itemName && !itemType  && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Name REGEXP "${itemName}" `
+                    }
+                    else if(vendorName && !itemName  && !itemType){
+                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}"`
+                    }
+                    else if(itemType && itemName  && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND item_Name REGEXP"${itemName}"`
+                    }
+                    else if(itemType && vendorName && !itemName){
+                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}"`
+                    }
+                    else if(itemName && vendorName && !itemType){
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND item_Name REGEXP ${itemName}"`
+                    }
+                    else if(itemType && itemName && vendorName ){
+                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" AND item_Name REGEXP "${itemName}"`
+                    }
+
                 Database.query(query,function(error,data){
                     if(error){
                         return res.status(400).json({
@@ -165,4 +190,24 @@ exports.StockEntry=(req,res)=>{
                     }
 
                 })
+}
+//get all stock
+
+exports.GetAllStock=(req,res)=>{
+    query=`SELECT * FROM stock`
+    Database.query(query,function(error,data){
+        if(error){
+            return res.status(400).json({
+                status:"error at getting stock",
+                message:error
+            })
+        }
+        if(data){
+            return res.status(200).json({
+                status:"got all stock",
+                data:data
+            })
+        }
+
+    })
 }

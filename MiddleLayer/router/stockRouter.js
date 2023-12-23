@@ -18,7 +18,7 @@ router.post('/getallvendor',GetVendor)
 router.post('/stockentry',StockEntry)
 
 //get all stock
-// router.post('/getallstock',GetStock)
+router.post('/getstock',GetStock)
 
 
 module.exports = router
