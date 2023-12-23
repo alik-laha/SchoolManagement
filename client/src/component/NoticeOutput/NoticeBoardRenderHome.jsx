@@ -16,7 +16,7 @@ const NoticeOutput=()=>{
             <span className="noticeboard-main-header">Institute Notice Board</span>
             
             
-            <marquee height ='90%' direction="up" scrolldelay="1" scrollamount="2"  >
+            <marquee behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" onmouseover="this.stop();" onmouseout="this.start();" >
             <ul className="cssmarquee">
                 {file.map((fileName, index) => (
                     
