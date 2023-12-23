@@ -15,9 +15,21 @@ const CreateVendor = (props) => {
 
     }
     return(
-        <div style={{display:props.createView}}>
-            <input type="text" placeholder="Vendor Name" onChange={(e)=>setVendor(e.target.value)}/>
-            <button onClick={handleCreateVendor}>Create Vendor</button>
+        <div className="dashbrd-40-colm" style={{display:props.createView}}>
+            
+        <div >
+          <label>Create Vendor</label>
+            <input
+          type="text"
+          placeholder="Vendor Name"
+          onChange={(e) => setVendor(e.target.value)}
+          required
+             />
+         </div >
+         <div >   
+            <span><button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateVendor}>Create Vendor</button></span>
+            
+            </div >
         </div>
     )
 }
