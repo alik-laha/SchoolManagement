@@ -1,8 +1,6 @@
 import {useState,useEffect} from "react";
-
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
-    const [scrollAmout,setScrollAmout]=useState("3")
     
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
@@ -22,7 +20,7 @@ const NoticeOutput=()=>{
                 {file.map((fileName, index) => (
 
                          <li key={index}>  
-                        <a href={`./student/${fileName}`} download >
+                        <a href={`/MiddleLayer/student/${fileName}`} download>
                             {fileName}
                         </a>
                         <hr size="1" color='#ff0000'></hr>
