@@ -3,14 +3,15 @@ import axios from "axios";
 
 
 const CreateItem = (props) => {
-    const [item,setitem]=useState("")
+    const [item,setItem]=useState("")
 
     const handleCreateItem = () => {
         axios.post("http://localhost:7000/api/v1/stock/createitem",{
             item:item
         }).then((response)=>{
+            setItem("")
             alert(`New item added with this Name ${item}`)
-           setitem("")
+
         })
 
     }
@@ -19,7 +20,7 @@ const CreateItem = (props) => {
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
             <div >
           <label>Create Item Type</label>
-            <input type="text" placeholder="Create Item" onChange={(e)=>setitem(e.target.value)}/>
+            <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)}/>
             
             </div>
             <div>

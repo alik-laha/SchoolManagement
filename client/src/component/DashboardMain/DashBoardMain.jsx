@@ -12,6 +12,7 @@ const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
   const[view,setView]=useState('none')
+  const [allRoles, setAllRoles] = useState([]);
   const getdata = (data) => {
     setdata(data);
   };
@@ -24,13 +25,16 @@ else{
 }
 },[search,props.Search])
 
+  const getAllRoles = (data) => {
+    setAllRoles(data);
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           
-          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} />
-          <CreateUser showCreate={props.createUser} />
+          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles} />
+          <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
           <CreateVendor createView={props.VendorCreateDisplay}/>
           <CreateItem itemCreateView={props.ItemCreateDisplay}/>

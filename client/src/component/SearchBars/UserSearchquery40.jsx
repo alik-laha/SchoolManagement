@@ -45,6 +45,7 @@ const UserSearchquery40 = (props) => {
       .then((res) => res.json())
       .then((data) => {
         setAllRoles(data.data);
+        props.allRoles(data.data);
       })
       .catch((error) => {
         console.log("check the backend", error);
