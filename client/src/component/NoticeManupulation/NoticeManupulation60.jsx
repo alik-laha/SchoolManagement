@@ -8,7 +8,7 @@ const NoticeManupulation60=(props)=>{
             .then((response) => response.json())
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
-    },[])
+    },[props.Publish])
 
     const handaleDelete=(fileName)=>{
         console.log(fileName)
