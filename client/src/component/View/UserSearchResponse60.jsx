@@ -13,7 +13,6 @@ const UserSearchResponse60=(props)=>{
     const [mainsvisibility,setmainsvisibility]=useState("contents")
     const [allRoles, setAllRoles] = useState([]);
 
-    //searched data
     useEffect(() => {
         if(props.data!==undefined && props.data.length>0){
             setView(props.data)
@@ -22,6 +21,10 @@ const UserSearchResponse60=(props)=>{
             setView(allData)
         }
     }, [props.data]);
+
+    useEffect(() => {
+        setAllRoles(props.AllRoles)
+    }, []);
     const handleDelete = (user_id) => {
         axios
             .post("http://localhost:7000/api/v1/deleteuser", { user_id })
@@ -63,19 +66,6 @@ const UserSearchResponse60=(props)=>{
         window.location.reload();
     };
     const handleEdit = (data) => {
-
-        fetch("http://localhost:7000/api/v1/getallrole", {
-            headers: {
-                Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-            },
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                setAllRoles(data.data);
-            })
-            .catch((error) => {
-                console.log("check the backend", error);
-            });
         setVisiblity("contents");
         setmainsvisibility('none')
         setid(data.user_id);

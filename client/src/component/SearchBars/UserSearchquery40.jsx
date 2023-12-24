@@ -37,11 +37,7 @@ const UserSearchquery40 = (props) => {
 
   };
   let dataFetch = () => {
-    fetch("http://localhost:7000/api/v1/getallrole", {
-      headers: {
-        Authorization: `bearer ${JSON.parse(localStorage.getItem("token"))}`,
-      },
-    })
+    fetch("http://localhost:7000/api/v1/getallrole")
       .then((res) => res.json())
       .then((data) => {
         setAllRoles(data.data);

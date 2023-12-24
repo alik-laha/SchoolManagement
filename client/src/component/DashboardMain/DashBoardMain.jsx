@@ -41,7 +41,7 @@ else{
           <StockItemEntry stockEntryView={props.EntryStock}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          <ViewAll data={data} View={view} />
+          <ViewAll data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
         </div>
       </div>
