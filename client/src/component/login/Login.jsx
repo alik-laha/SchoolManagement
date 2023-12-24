@@ -5,6 +5,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CommonHeader from "../CommonHeader";
 import Footer from "../Home/Footer";
+import logo from '../Home/logo_ahm.jpg'
+
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
@@ -63,8 +65,9 @@ const Login = () => {
       <div className="login-box-body" style={{display: 'table'}}>
       <div className="login login-logo">
         <div className="nameLogo">
-          <section>Logo</section>
-          <h1 style={{ color: "green" }}>AL-HILAL MISSON</h1>
+          <img src={logo} height={80} width={80}></img>
+          <p className="login-logo-msg1 ">AL-HILAL MISSON </p> 
+          <p className="login-logo-msg2"> Provide Username and Password</p>
         </div>
         <form
           onSubmit={handaleSubmit}

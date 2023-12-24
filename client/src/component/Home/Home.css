@@ -154,6 +154,7 @@
     height: 80vh;
     opacity: 0.80;
     font-size: 15px;
+    box-shadow: 0 8px 22px 0 rgba(0,0,0,0.4);
 
 }
 
@@ -162,8 +163,9 @@
     text-decoration: underline;
     display: block;
     padding: 5px 5px;
-    color: rgb(6, 21, 116); ;
-    font-size: 14px;
+    color: black;
+    /* color: rgb(6, 21, 116);  */
+    font-size: 13px;
     font-weight: 650;
     font-family:Arial, Helvetica, sans-serif;
 }
