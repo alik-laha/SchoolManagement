@@ -1,15 +1,22 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
-const ViewAllItem=()=>{
+const ViewAllItem=(props)=>{
     const [allItem,setAllItem]=useState([])
+    const [View,setView]=useState("none")
     useEffect(()=>{
         axios.post("http://localhost:7000/api/v1/stock/getallitem")
             .then(res=>{
                 setAllItem(res.data.data)
             })
-
-    })
-
+    },[])
+    useEffect(() => {
+        if(props.itemCreateView==="block" && props.View==="block"){
+           setView("block")
+        }
+        else{
+            setView("none")
+        }
+    }, [props.View,props.itemCreateView]);
     const handleDelete = (itemId) => {
         axios
             .post("http://localhost:7000/api/v1/stock/deleteitem", { itemId })
@@ -22,7 +29,7 @@ const ViewAllItem=()=>{
         window.location.reload();
     }
     return(
-        <div>
+        <div style={{display:View}}>
             <table className="table-60">
                 <thead >
                 <tr>

@@ -1,14 +1,15 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
-const ViewAllVendor=()=>{
+const ViewAllVendor=(props)=>{
     const [allVendor,setAllVendor]=useState([])
+    const [view,setView]=useState("none")
     useEffect(()=>{
       axios.post("http://localhost:7000/api/v1/stock/getallvendor")
         .then(res=>{
            setAllVendor(res.data.data)
         })
 
-    })
+    },[])
 
     const handleDelete = (vendorId) => {
         axios
@@ -21,8 +22,18 @@ const ViewAllVendor=()=>{
             });
         window.location.reload();
     }
+    useEffect(()=>{
+        if(props.createView==="block" && props.View==="block"){
+            setView("block")
+
+        }
+        else {
+            setView("none")
+
+        }
+    },[props.createView,props.View])
     return(
-        <div>
+        <div style={{display:view}}>
             <table className="table-60">
                 <thead >
                 <tr>

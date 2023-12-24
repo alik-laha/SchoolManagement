@@ -25,6 +25,7 @@ const CreateItem = (props) => {
             </div>
             <div>
             <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateItem}>Create Item Type</button>
+                <button className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View</button>
             </div>
             
         </div>
