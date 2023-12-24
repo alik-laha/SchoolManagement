@@ -1,8 +1,6 @@
 import {useState,useEffect} from "react";
-
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
-    const [scrollAmout,setScrollAmout]=useState("3")
     
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
@@ -10,6 +8,13 @@ const NoticeOutput=()=>{
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
     },[])
+    const handleDownload = (fileName) => {
+        const url = window.URL.createObjectURL(`/SchoolManagement/Middleware/student/${fileName}`)
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = file.name;
+        link.click();
+    };
 
     return(
         <div className="noticeboard-main">
@@ -22,7 +27,7 @@ const NoticeOutput=()=>{
                 {file.map((fileName, index) => (
 
                          <li key={index}>  
-                        <a href={`./student/${fileName}`} download >
+                        <a onClick={()=>handleDownload(fileName)}>
                             {fileName}
                             
                         </a>
