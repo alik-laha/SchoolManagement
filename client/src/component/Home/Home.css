@@ -175,7 +175,6 @@
 }
 
 .cssmarquee {
-   
     position: relative;
     }
 
@@ -187,7 +186,15 @@
     line-height: 50px;
     text-align: center;
     transform: translateY(-100%); 
+
+
+.cssmarquee:hover{
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+     animation-play-state: paused;
+
 }
+
     @keyframes cssmarquee {
     0% {
     transform: translateY(-100%);

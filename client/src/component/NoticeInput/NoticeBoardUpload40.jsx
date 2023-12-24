@@ -36,10 +36,10 @@ const StudentInputNotice = ({Publish}) => {
           }}
         />
        
-        
+       <div><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button></div>
       </form>
       </div>
-      <div><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></div>
+      
      
     </div>
   );

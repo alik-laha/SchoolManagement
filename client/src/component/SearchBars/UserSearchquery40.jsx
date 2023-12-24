@@ -73,7 +73,7 @@ const UserSearchquery40 = (props) => {
           <div>
               <label>Search by Role</label>
               <select onChange={(e) => setRole(e.target.value)}>
-                  <option value="">Role</option>
+                  <option value="">All</option>
                   {allRoles.map((data) => (
                       <option value={data.roletype_name} key={data.roletype_name}>
                           {data.roletype_name}
