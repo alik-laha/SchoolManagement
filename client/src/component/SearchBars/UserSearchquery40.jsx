@@ -37,6 +37,15 @@ const UserSearchquery40 = (props) => {
       });
 
   };
+
+  useEffect(()=>{
+      if(errorMessage==="block"){
+         props.setViewError("none")
+      }
+        else{
+            props.setViewError("flex")
+      }
+  },[errorMessage])
   let dataFetch = () => {
     fetch("http://localhost:7000/api/v1/getallrole")
       .then((res) => res.json())

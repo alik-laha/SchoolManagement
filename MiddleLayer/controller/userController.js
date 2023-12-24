@@ -80,8 +80,8 @@ exports.Login = (req, res) => {
         } else if (name && role) {
             query = `SELECT *
                      FROM user
-                     WHERE user_name = "${name}"
-                       AND roletype_name = "${role}"`;
+                     WHERE roletype_name = "${role}"
+                       AND user_name REGEXP "${name}"`;
         } else if (role && !name) {
             query = `SELECT *
                      FROM user
