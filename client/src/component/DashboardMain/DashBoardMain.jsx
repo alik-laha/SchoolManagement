@@ -8,11 +8,14 @@ import ViewAll from "../View/UserSearchResponse60.jsx";
 import CreateVendor from "../STOCK/CreateVendor/CreateVendor.jsx";
 import CreateItem from "../STOCK/CreateItemType/CreateItem.jsx";
 import StockItemEntry from "../STOCK/StockEntry/StockItemEntry.jsx";
+import ViewAllVendor from "../STOCK/ViewAllVendor/ViewAllVendor.jsx";
+import ViewAllItem from "../STOCK/ViewAllItem/ViewAllItem.jsx";
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
   const[view,setView]=useState('none')
   const [allRoles, setAllRoles] = useState([]);
+
   const getdata = (data) => {
     setdata(data);
   };
@@ -43,6 +46,8 @@ else{
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
+          <ViewAllVendor />
+          <ViewAllItem/>
         </div>
       </div>
     </>

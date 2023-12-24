@@ -9,6 +9,7 @@ const UserSearchquery40 = (props) => {
   const [Search,setSearch]=useState("none")
   const [userSearchErorr,setuserSearchErorr]=useState("")
   const [errorMessage,setErrorMessage]=useState("none")
+
   const handleSearch =  (e) => {
     if(Search==="none"){
         props.setSearch("flex")
@@ -18,7 +19,6 @@ const UserSearchquery40 = (props) => {
         props.setSearch("none")
         setSearch("none")
     }
-
     e.preventDefault();
     axios
       .post("http://localhost:7000/api/v1/searchuser", { id, name, role })
@@ -31,6 +31,7 @@ const UserSearchquery40 = (props) => {
             }
 
       });
+
           setErrorMessage("none")
         props.result(res.data.data);
       });

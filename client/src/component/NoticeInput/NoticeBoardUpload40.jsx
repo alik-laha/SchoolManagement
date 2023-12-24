@@ -13,7 +13,6 @@ const StudentInputNotice = ({Publish}) => {
       .post("http://localhost:7000/api/v1/studentnotice", formData)
       .then((res) => res.json())
       .then((data) => {
-
         console.log(data);
 
       })

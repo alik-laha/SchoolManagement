@@ -1,5 +1,5 @@
 const express = require('express')
-const {CreateItem, GetItem, CreateVendor, GetVendor,StockEntry,GetStock} = require("../controller/StockController");
+const {CreateItem, GetItem, CreateVendor, GetVendor,StockEntry,GetStock,DeleteVendor, DeleteItem} = require("../controller/StockController");
 const router = express.Router()
 
 //create item
@@ -19,6 +19,12 @@ router.post('/stockentry',StockEntry)
 
 //get all stock
 router.post('/getstock',GetStock)
+
+//delete vendor
+router.post('/deletevendor',DeleteVendor)
+
+//delete item
+router.post('/deleteitem',DeleteItem)
 
 
 module.exports = router

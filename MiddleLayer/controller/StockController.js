@@ -211,3 +211,59 @@ exports.GetAllStock=(req,res)=>{
 
     })
 }
+
+//delete vendor
+exports.DeleteVendor=(req,res)=>{
+    const {vendorId}=req.body
+    if(!vendorId){
+        return res.status(400).json({
+            status:"vendor id needed"
+        })
+    }
+    else{
+        query=`DELETE FROM vendor WHERE vendor_id="${vendorId}"`
+        Database.query(query,function(error,data){
+            if(error){
+                return res.status(400).json({
+                    status:"error at deleting vendor",
+                    message:error
+                })
+            }
+            if(data){
+                return res.status(200).json({
+                    status:"vendor deleted",
+                    data:data
+                })
+            }
+
+        })
+    }
+}
+
+//delete item
+exports.DeleteItem=(req,res)=>{
+    const {itemId}=req.body
+    if(!itemId){
+        return res.status(400).json({
+            status:"item id needed"
+        })
+    }
+    else{
+        query=`DELETE FROM itemType WHERE type_id="${itemId}"`
+        Database.query(query,function(error,data){
+            if(error){
+                return res.status(400).json({
+                    status:"error at deleting item",
+                    message:error
+                })
+            }
+            if(data){
+                return res.status(200).json({
+                    status:"item deleted",
+                    data:data
+                })
+            }
+
+        })
+    }
+}
