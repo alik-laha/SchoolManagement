@@ -34,7 +34,7 @@ const Footer = () => {
                 fontSize: '14px',
                 paddingTop: '10px'
             }}>
-                <p>Copyright © 2022 - All right reserved by AL-HILAL Mission</p>
+                <p>Copyright © 2024 - All right reserved by AL-HILAL Mission</p>
             </div>
         </div>
     );

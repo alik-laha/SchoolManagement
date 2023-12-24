@@ -24,8 +24,9 @@ const NoticeOutput=()=>{
                          <li key={index}>  
                         <a href={`./student/${fileName}`} download >
                             {fileName}
+                            
                         </a>
-                        <hr size="1" color='#ff0000'></hr>
+                        <hr size="0.5" color='red'></hr>
                     </li>
 
                 ))}</ul>
