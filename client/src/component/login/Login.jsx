@@ -69,50 +69,35 @@ const Login = () => {
           <p className="login-logo-msg1 ">AL-HILAL MISSON </p> 
           <p className="login-logo-msg2"> Provide Username and Password</p>
         </div>
-        <form
-          onSubmit={handaleSubmit}
-          style={{
-            marginTop: "50px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <input
+        <form onSubmit={handaleSubmit} >
+
+          <div className="username-container">
+            <input
             type="text"
-            placeholder="Username"
-            className="inputS"
+            placeholder="Username" style={{width:'100%'}}
+            className="input-login-username"
             value={name}
             onChange={handaleName}
-          />
-          <div className="Password">
-            <section style={{ display: "flex" }} className="Align">
+          /></div>
+          
+          <div className="username-container Password" style={{marginBottom:'40px'}}>
+            <section style={{ display: "flex" }}>
               <input
                 type={visiblity}
                 placeholder="Password"
-                className="pass"
+                className="input-login-username"
                 value={pass}
-                onChange={handalePass}
+                onChange={handalePass} style={{width:'85%'}}
               />
               <button
                 onClick={passwordSee}
-                className="bottons"
-                style={{
-                  height: "30px",
-                  fontSize: "20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  position: "relative",
-                  bottom: "6px",
-                }}
+                className=" input-login-username" style={{width:'15%'}}
               >
                 {change}
               </button>
             </section>
           </div>
-          <input className="submit" type="submit" placeholder="Submit" />
+          <input className="dashboard-btn dashboard-btn-scss" type="submit" placeholder="Sign In" />
         </form>
       </div>
       </div>
