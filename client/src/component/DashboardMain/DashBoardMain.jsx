@@ -17,7 +17,7 @@ const DashBoardMain = (props) => {
   const [allRoles, setAllRoles] = useState([]);
   const [ViewVendor,setViewVendor]=useState("none")
   const [itemView,setitemView]=useState("none")
-  const [ViewError,setViewError]=useState("")
+
   const getdata = (data) => {
     setdata(data);
   };
@@ -49,12 +49,17 @@ if(props.Search==="block" && search==="flex"){
     setAllRoles(data);
   };
 
+  window.addEventListener("unhandledrejection", function() {
+    setView('none');
+});
+
+
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           
-          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles} setViewError={setViewError} />
+          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  />
           <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
           <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>

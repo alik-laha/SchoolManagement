@@ -94,7 +94,7 @@ exports.Login = (req, res) => {
                     if (data.length === 0) {
                         return res.status(400).json({
                             status: "failed",
-                            data: `Entry Not found with user name ${name} `
+                            data: `Desired Result is not found with user name ${name} and Role ${role} combination` 
                         });
                     } else if (data[0]) {
 

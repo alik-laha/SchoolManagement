@@ -9,6 +9,7 @@ const UserSearchquery40 = (props) => {
   const [Search,setSearch]=useState("none")
   const [userSearchErorr,setuserSearchErorr]=useState("")
   const [errorMessage,setErrorMessage]=useState("none")
+  
 
   const handleSearch =  (e) => {
     if(Search==="none"){
@@ -33,19 +34,13 @@ const UserSearchquery40 = (props) => {
       });
 
           setErrorMessage("none")
+         
         props.result(res.data.data);
       });
 
   };
 
-  useEffect(()=>{
-      if(errorMessage==="block"){
-         props.setViewError("none")
-      }
-        else{
-            props.setViewError("flex")
-      }
-  },[errorMessage])
+
   let dataFetch = () => {
     fetch("http://localhost:7000/api/v1/getallrole")
       .then((res) => res.json())

@@ -32,12 +32,12 @@
 }
 .navbar-before{
     width: 15%;
-    border: 2px solid lightgray;
+    border: 1px solid lightgray;
     height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
     flex: 0 0 200px;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     left: 0;
     overflow: hidden;
@@ -197,7 +197,8 @@
 .dashboard-main-right{
     background-color: white;
     transition: 0.5s;
-    height: fit-content;
+    height: 92vh;
+    overflow: scroll;
 }
 .dasdhboard-main-40{
     height: 35%;
