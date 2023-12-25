@@ -3,7 +3,7 @@ import axios from "axios";
 const StockItemEntry= (props) => {
     const [itemName, setItemName] = useState("");
     const [billNo, setBillNo] = useState("");
-    const [billDate, setBillDate] = useState("");
+    const [billDate, setBillDate] = useState(new Date().toISOString().slice(0, 10) );
     const [allVendorName, setAllVendorName] = useState([]);
     const [allItemType, setAllItemType] = useState([]);
     const [vendorName, setVendorName] = useState("");
@@ -49,7 +49,7 @@ const StockItemEntry= (props) => {
                     alert("Stock Entry Successfull");
                     setItemName("");
                     setBillNo("");
-                    setBillDate("");
+                    setBillDate(new Date().toISOString().slice(0, 10) );
                     setVendorName("");
                     setItemType("");
                     setUnitCost(0);
