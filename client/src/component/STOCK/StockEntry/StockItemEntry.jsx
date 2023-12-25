@@ -16,6 +16,7 @@ const StockItemEntry= (props) => {
     axios.post("http://localhost:7000/api/v1/stock/getallvendor")
         .then((res)=>{
             setAllVendorName(res.data.data);
+            props.setAllVendorName(res.data.data);
         })
         .catch((err)=>{
           console.log(err);
@@ -24,7 +25,7 @@ const StockItemEntry= (props) => {
         axios.post("http://localhost:7000/api/v1/stock/getallitem")
             .then((data)=>{
                 setAllItemType(data.data.data);
-
+                props.setAllItemType(data.data.data);
             })
     },[])
 
