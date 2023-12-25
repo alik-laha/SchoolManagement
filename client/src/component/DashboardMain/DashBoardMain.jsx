@@ -55,7 +55,9 @@ if(props.Search==="block" && search==="flex"){
     }
     
 });
-
+  if(props.Search==="none" && view==="flex"){
+    setView("none")
+  }
 
 
   return (
