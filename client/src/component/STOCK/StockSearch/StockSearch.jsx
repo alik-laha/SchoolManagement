@@ -8,16 +8,13 @@ const StockSearch = (props) => {
 
     const HandleEdit=(e)=> {
         e.preventDefault();
-       if(!billId||!billDate||!itemType||!vendorname){
-              alert("Please fill all the fields")
-       }
-        axios.post("http://localhost:7000/api/v1/stock/stocksearch",{billId,billDate,itemType,vendorname})
-            .then((res)=>{
-                props.setStockData(res.data.data);
-            })
-            .catch((err)=>{
-                console.log(err);
-            })
+        const data={
+            billId,
+            billDate,
+            itemType,
+            vendorname
+        }
+        props.setStockData(data);
     }
     return(
         <div style={{display: props.StockView}}>

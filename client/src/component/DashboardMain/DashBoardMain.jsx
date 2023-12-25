@@ -21,6 +21,7 @@ const DashBoardMain = (props) => {
   const [itemView,setitemView]=useState("none")
   const [allVendorName, setAllVendorName] = useState([]);
   const [allItemType, setAllItemType] = useState([]);
+  const [StockData,setStockData]=useState([]);
 
   const getdata = (data) => {
     setdata(data);
@@ -69,6 +70,9 @@ if(props.Search==="block" && search==="flex"){
 const handleItemType=(data)=>{
     setAllItemType(data);
 }
+  const handleStockData=(data)=>{
+    setStockData(data);
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -76,18 +80,18 @@ const handleItemType=(data)=>{
           
           <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  />
           <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
-          <StudentInputNotice Publish={props.Publish} setSearch={setSearch} />
+          <StudentInputNotice Publish={props.Publish} setSearch={setSearch}/>
           <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
           <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
-          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={}/>
+          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
-          <StockView StockView={props.StockView}/>
+          <StockView StockView={props.StockView} SearchebyData={StockData}/>
         </div>
       </div>
     </>

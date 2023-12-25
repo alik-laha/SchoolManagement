@@ -169,7 +169,7 @@ exports.StockEntry=(req,res)=>{
                         query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}"`
                     }
                     else if(billDate && vendorName && !itemType){
-                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND item_Name REGEXP ${billDate}"`
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND item_Name REGEXP "${billDate}"`
                     }
                     else if(itemType && billDate && vendorName ){
                         query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" AND item_Name REGEXP "${billDate}"`
