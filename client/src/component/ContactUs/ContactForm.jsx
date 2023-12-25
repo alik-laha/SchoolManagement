@@ -6,15 +6,17 @@ export const ContactForm = () => {
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
     const [emailSent, setEmailSent] = useState('false')
+    const [typequery, settypequery] = useState('')
 
     const submit = () => {
-        if (name && email && message) {
+        if (name && email && message && typequery) {
             const serviceId = 'service_yjmjno8'
             const templateId = 'template_hshxz6f'
             const templateParams = {
                 name,
                 email,
-                message
+                message,
+                typequery
             }
 
             emailjs.send(serviceId, templateId, templateParams)
@@ -24,6 +26,7 @@ export const ContactForm = () => {
             setName('')
             setEmail('')
             setMessage('')
+            settypequery('')
             setEmailSent('true')
         } else {
             alert('Please fill in all fields.')
@@ -31,10 +34,38 @@ export const ContactForm = () => {
     }
 
     return (
-        <div id="contact-form" className="absolute mt-52 ml-48 w-80 float-left border-2 p-2 rounded-xl shadow-xl text-xl">
+        <div id="contact-form" className="float-left p-2 rounded-xl shadow-xl text-xl" style={{marginRight:'15rem',marginLeft:'15rem',marginTop:'2rem'}}>
            <p className="text-2xl">Feedback & Queries</p>
 
             <div>
+            <br></br>
+            <label className="text-sm">Select Issue*</label>
+                    <br></br>
+                    <select className="bg-gray-50 border border-gray-300 
+                                        text-gray-600 text-sm rounded-lg 
+                                        focus:border-blue-500 w-full p-2.5">
+                        <option value="Feedback" >
+                            -- Select Your Query --
+                        </option>
+                        <option value="Feedback" >
+                            Feedback
+                        </option>
+                        <option value="Feedback">
+                            Admission Related Queries
+                        </option>
+                        <option value="Feedback">
+                            Course Related Queries
+                        </option>
+                        <option value="Feedback">
+                           Payment Related Issue
+                        </option>
+                        <option value="Feedback">
+                               Others
+                        </option>
+                    </select>
+                    <br></br>
+
+
             <label className="text-sm">Name</label>
                     <br></br>
                     <input className="bg-gray-50 border border-gray-300 

@@ -14,17 +14,14 @@ const ContactUs = (props) => {
         <div>
             <CommonHeader/>
             
-            <div className='vision-mision-main text-1xl'>
-                     <div className='vision' >
+            <div className=''>
+                     <div  >
                      <ContactForm/>
-                    {/* <img src={img} alt='clg-img'></img> */}
-                 Contact US
-           
-           
+                    {/* <img src={img} alt='clg-img' height={30} width={300}></img>  */}
 
                 </div>
             
-                </div>
+            </div>
             <Footer/>
         </div>
        
