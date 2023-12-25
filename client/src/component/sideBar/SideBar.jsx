@@ -104,6 +104,8 @@ const SideBar = (props) => {
           <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Vendor</div>
           <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Create Item type</div>
           <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Stock Entry</div>
+          <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockView}>&#x3e;&nbsp;&nbsp;Stock View</div>
+          <div className="Items" style={{ display: cashAdmin }}>&#x3e;&nbsp;&nbsp;Stock View/Update</div>
           <div className="Items" style={{ display: cashAdmin }}>&#x3e;&nbsp;&nbsp;Cash entry</div>
           <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>
         </div>

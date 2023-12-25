@@ -10,6 +10,7 @@ import CreateItem from "../STOCK/CreateItemType/CreateItem.jsx";
 import StockItemEntry from "../STOCK/StockEntry/StockItemEntry.jsx";
 import ViewAllVendor from "../STOCK/ViewAllVendor/ViewAllVendor.jsx";
 import ViewAllItem from "../STOCK/ViewAllItem/ViewAllItem.jsx";
+import StockView from "../STOCK/StockView/StockView.jsx";
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -58,7 +59,9 @@ if(props.Search==="block" && search==="flex"){
   if(props.Search==="none" && view==="flex"){
     setView("none")
   }
+useEffect(()=>{
 
+},[])
 
   return (
     <>
@@ -77,6 +80,7 @@ if(props.Search==="block" && search==="flex"){
           <NoticeManupulation60 Publish={props.Notice}/>
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
+          <StockView StockView={props.StockView}/>
         </div>
       </div>
     </>

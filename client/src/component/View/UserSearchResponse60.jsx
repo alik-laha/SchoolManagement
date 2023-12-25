@@ -27,7 +27,7 @@ const UserSearchResponse60=(props)=>{
     }, [props.AllRoles]);
     const handleDelete = (user_id) => {
         axios
-            .post("http://localhost:7000/api/v1/deleteuser", { user_id })
+            .post("http://localhost:7000/api/v1/deleteuser", {user_id})
             .then((res) => {
                 console.log(res);
             })

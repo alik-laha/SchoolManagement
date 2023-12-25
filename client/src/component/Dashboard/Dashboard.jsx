@@ -25,6 +25,7 @@ const [view,setView]=useState('none')
     const [vendorDisplay,setVendorDisplay]=useState("none")
     const[itemCreate,setItemCreate]=useState('none')
     const [stockEntry,setStockEntry]=useState('none')
+    const [stockView,setStockView]=useState('none')
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -69,6 +70,7 @@ if(search==='none'){
     setItemCreate('none')
     setNotice('none')
     setStockEntry('none')
+    setStockView('none')
 }
 else{
     setSearch('none')
@@ -86,6 +88,7 @@ const handaleCreateUser=()=>{
          setItemCreate('none')
             setNotice('none')
          setStockEntry('none')
+         setStockView('none')
      }
      else{
          setCreateUser("none")
@@ -103,6 +106,7 @@ const handalePublish=()=>{
          setItemCreate('none')
          setNotice('none')
          setStockEntry('none')
+         setStockView('none')
      }
      else{
          setPublish('none')
@@ -119,6 +123,7 @@ const HandleVendorCreate=()=>{
          setItemCreate('none')
          setNotice('none')
          setStockEntry('none')
+         setStockView('none')
      }
         else{
             setVendorDisplay('none')
@@ -135,6 +140,7 @@ const handaleNotice=()=>{
          setItemCreate('none')
          setNotice('block')
          setStockEntry('none')
+         setStockView('none')
      }
         else{
             setNotice('none')
@@ -150,6 +156,7 @@ const handleItemCreate=()=>{
             setView('none')
             setNotice('none')
             setStockEntry('none')
+            setStockView('none')
         }
             else{
                 setItemCreate('none')
@@ -165,12 +172,27 @@ const handleStockEntry=()=>{
             setSearch('none')
             setView('none')
             setNotice('none')
+            setStockView('none')
         }
             else{
                 setStockEntry('none')
             }
 }
-
+const handleStockView=()=>{
+        if(stockView==='none'){
+            setStockView('block')
+            setStockEntry('none')
+            setItemCreate('none')
+            setCreateUser('none')
+            setVendorDisplay('none')
+            setPublish('none')
+            setSearch('none')
+            setNotice('none')
+        }
+            else{
+                setStockView('none')
+            }
+}
 
   return (
     <>
@@ -199,11 +221,13 @@ const handleStockEntry=()=>{
         <SideBar class={nvbrvisi} onSearch={handaleSearch} oncreate={handaleCreateUser}
                  onpublish={handalePublish} onNoticeManupulation={handaleNotice}
                  onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
-                 onStockEntry={handleStockEntry}/>
+                 onStockEntry={handleStockEntry}
+                    onStockView={handleStockView}/>
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}
                        Publish={publish} View={view}
                        Notice={notice} VendorCreateDisplay={vendorDisplay}
-                       ItemCreateDisplay={itemCreate} EntryStock={stockEntry}/>
+                       ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
+                        StockView={stockView}/>
       </div>
     </div>
      
