@@ -1,6 +1,5 @@
 import React from 'react';
 import CommonHeader from '../CommonHeader';
-import img from '../home/location-ahm.png';
 import { ContactForm }from '../ContactUs/ContactForm'
 import emailjs from '@emailjs/browser'
 import Footer from '../Home/Footer';
