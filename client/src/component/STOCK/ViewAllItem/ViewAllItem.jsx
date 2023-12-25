@@ -33,8 +33,8 @@ const ViewAllItem=(props)=>{
             <table className="table-60">
                 <thead >
                 <tr>
-                    <th>Vendor Id</th>
-                    <th>Vendor Name</th>
+                    <th>ItemType Id</th>
+                    <th>ItemType Name</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -45,7 +45,7 @@ const ViewAllItem=(props)=>{
                             <td>{vendor.type_id}</td>
                             <td>{vendor.item_Type}</td>
                             <td>
-                                <button onClick={()=>handleDelete(vendor.type_id)}>Delete</button>
+                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.type_id)}>Delete</button>
                             </td>
                         </tr>
                     )

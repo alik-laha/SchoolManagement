@@ -24,9 +24,10 @@ const CreateItem = (props) => {
             <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)}/>
             
             </div>
-            <div>
             <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateItem}>Create Item Type</button>
-                <button className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View</button>
+            <div>
+            
+                <button className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View/Delete Item Type</button>
             </div>
             
         </div>

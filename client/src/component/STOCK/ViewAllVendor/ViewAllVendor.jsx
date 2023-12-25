@@ -49,7 +49,7 @@ const ViewAllVendor=(props)=>{
                             <td>{vendor.vendor_id}</td>
                             <td>{vendor.vendor_name}</td>
                             <td>
-                                <button onClick={()=>handleDelete(vendor.vendor_id)}>Delete</button>
+                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.vendor_id)}>Delete</button>
                             </td>
                         </tr>
                     )
