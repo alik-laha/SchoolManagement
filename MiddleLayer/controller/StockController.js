@@ -148,31 +148,34 @@ exports.StockEntry=(req,res)=>{
     //get stock from search
     exports.GetStock=(req,res)=>{
 
-                const{itemType,itemName,billDate,billId,vendorName,}=req.body
+                const{itemType,billDate,billId,vendorName,}=req.body
 
                     if(billId){
                         query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
                     }
-                    else if(itemType && !itemName && !vendorName){
+                    else if(itemType && !billDate && !vendorName){
                         query=`SELECT * FROM stock WHERE item_Type = "${itemType}" `
                     }
-                    else if(itemName && !itemType  && !vendorName){
-                        query=`SELECT * FROM stock WHERE item_Name REGEXP "${itemName}" `
+                    else if(billDate && !itemType  && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Name REGEXP "${billDate}" `
                     }
-                    else if(vendorName && !itemName  && !itemType){
+                    else if(vendorName && !billDate  && !itemType){
                         query=`SELECT * FROM stock WHERE vendor_name="${vendorName}"`
                     }
-                    else if(itemType && itemName  && !vendorName){
-                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND item_Name REGEXP"${itemName}"`
+                    else if(itemType && billDate  && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND item_Name REGEXP"${billDate}"`
                     }
-                    else if(itemType && vendorName && !itemName){
+                    else if(itemType && vendorName && !billDate){
                         query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}"`
                     }
-                    else if(itemName && vendorName && !itemType){
-                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND item_Name REGEXP ${itemName}"`
+                    else if(billDate && vendorName && !itemType){
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND item_Name REGEXP ${billDate}"`
                     }
-                    else if(itemType && itemName && vendorName ){
-                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" AND item_Name REGEXP "${itemName}"`
+                    else if(itemType && billDate && vendorName ){
+                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" AND item_Name REGEXP "${billDate}"`
+                    }
+                    else{
+                        query=`SELECT * FROM stock`
                     }
 
                 Database.query(query,function(error,data){
@@ -191,26 +194,7 @@ exports.StockEntry=(req,res)=>{
 
                 })
 }
-//get all stock
 
-exports.GetAllStock=(req,res)=>{
-    query=`SELECT * FROM stock`
-    Database.query(query,function(error,data){
-        if(error){
-            return res.status(400).json({
-                status:"error at getting stock",
-                message:error
-            })
-        }
-        if(data){
-            return res.status(200).json({
-                status:"got all stock",
-                data:data
-            })
-        }
-
-    })
-}
 
 //delete vendor
 exports.DeleteVendor=(req,res)=>{
