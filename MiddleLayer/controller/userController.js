@@ -76,19 +76,19 @@ exports.Login = (req, res) => {
         if (name && !role) {
             query = `SELECT *
                      FROM user
-                     WHERE user_name REGEXP "${name}"`;
+                     WHERE user_name REGEXP "${name}" ORDER BY user_id ASC`;
         } else if (name && role) {
             query = `SELECT *
                      FROM user
                      WHERE roletype_name = "${role}"
-                       AND user_name REGEXP "${name}"`;
+                       AND user_name REGEXP "${name}" ORDER BY user_id ASC`;
         } else if (role && !name) {
             query = `SELECT *
                      FROM user
-                     WHERE roletype_name = "${role}"`;
+                     WHERE roletype_name = "${role}" ORDER BY user_id ASC`;
         } else if (!name && !role) {
             query = `SELECT *
-                     FROM user`;
+                     FROM user ORDER BY user_id ASC`;
         }
                 Database.query(query, function (error, data) {
                     if (data.length === 0) {

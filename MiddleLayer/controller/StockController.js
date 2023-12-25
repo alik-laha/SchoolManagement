@@ -39,7 +39,7 @@ exports.CreateItem = (req, res) => {
 exports.GetItem = (req, res) => {
             query = `
                 SELECT *
-                FROM itemType`;
+                FROM itemType ORDER BY type_id ASC`;
             Database.query(query, function (error, data) {
                 if (error) {
 
@@ -93,7 +93,7 @@ exports.CreateVendor = (req, res) => {
 exports.GetVendor = (req, res) => {
             query = `
                 SELECT *
-                FROM vendor`;
+                FROM vendor ORDER BY vendor_id ASC`;
             Database.query(query, function (error, data) {
                 if (error) {
 
