@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import axios from "axios";
 const StockSearch = (props) => {
     const [billId,setBillid]=useState("");
     const [billDate,setBillDate]=useState("");
@@ -8,13 +8,16 @@ const StockSearch = (props) => {
 
     const HandleEdit=(e)=> {
         e.preventDefault();
-        const data = {
-            billId,
-            billDate,
-            itemType,
-            vendorname
-        }
-        console.log(data);
+       if(!billId||!billDate||!itemType||!vendorname){
+              alert("Please fill all the fields")
+       }
+        axios.post("http://localhost:7000/api/v1/stock/stocksearch",{billId,billDate,itemType,vendorname})
+            .then((res)=>{
+                props.setStockData(res.data.data);
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
     }
     return(
         <div style={{display: props.StockView}}>

@@ -80,7 +80,7 @@ const handleItemType=(data)=>{
           <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
           <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
-          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType}/>
+          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} AllRoles={allRoles} />
