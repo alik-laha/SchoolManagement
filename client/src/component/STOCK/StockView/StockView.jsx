@@ -3,7 +3,7 @@ import axios from "axios";
 const StockView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
-
+    const [visible,setVisible]=useState("none")
     useEffect(()=>{
 
       axios.post("http://localhost:7000/api/v1/stock/getstock",props.SearchebyData)
@@ -15,8 +15,18 @@ const StockView= (props) => {
           } )
     },[props.SearchebyData])
 
+    useEffect(()=> {
+        console.log(props.StockView,props.view)
+        if (props.StockView === "block" && props.view === "block") {
+            setVisible("block")
+        }
+        else {
+            setVisible("none")
+        }
+    },[props.StockView,props.view])
+
     return (
-        <div style={{display:props.StockView}}>
+        <div style={{display:visible}}>
             <table>
                 <thead>
                 <tr>

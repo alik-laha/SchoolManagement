@@ -3,7 +3,7 @@ import CommonHeader from '../CommonHeader';
 import { ContactForm }from '../ContactUs/ContactForm'
 import emailjs from '@emailjs/browser'
 import Footer from '../Home/Footer';
-import img from '../home/location-ahm.png'
+import img from '../Home/location-ahm.png'
 
 
 

@@ -12,6 +12,7 @@ import ViewAllVendor from "../STOCK/ViewAllVendor/ViewAllVendor.jsx";
 import ViewAllItem from "../STOCK/ViewAllItem/ViewAllItem.jsx";
 import StockView from "../STOCK/StockView/StockView.jsx";
 import StockSearch from "../STOCK/StockSearch/StockSearch.jsx";
+import stockView from "../STOCK/StockView/StockView.jsx";
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -22,7 +23,7 @@ const DashBoardMain = (props) => {
   const [allVendorName, setAllVendorName] = useState([]);
   const [allItemType, setAllItemType] = useState([]);
   const [StockData,setStockData]=useState([]);
-
+  const [ViewStock,setViewStock]=useState("none")
   const getdata = (data) => {
     setdata(data);
   };
@@ -73,6 +74,9 @@ const handleItemType=(data)=>{
   const handleStockData=(data)=>{
     setStockData(data);
   }
+  const stockViewShow=(data)=>{
+    setViewStock(data);
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -84,14 +88,14 @@ const handleItemType=(data)=>{
           <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
           <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
-          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData}/>
+          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAll data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
-          <StockView StockView={props.StockView} SearchebyData={StockData}/>
+          <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
         </div>
       </div>
     </>

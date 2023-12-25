@@ -4,7 +4,7 @@ const StockSearch = (props) => {
     const [billId,setBillid]=useState("");
     const [billDate,setBillDate]=useState("");
     const [itemType,setItemtype]=useState("");
-    const [vendorname,setVendorName]=useState("");
+    const [vendorName,setVendorName]=useState("");
 
     const HandleEdit=(e)=> {
         e.preventDefault();
@@ -12,8 +12,9 @@ const StockSearch = (props) => {
             billId,
             billDate,
             itemType,
-            vendorname
+            vendorName
         }
+        props.buttonClick("block");
         props.setStockData(data);
     }
     return(
@@ -23,7 +24,7 @@ const StockSearch = (props) => {
                 <label>Search By Bill Id</label>
                 <input
                     type="text"
-                    placeholder="User Name"
+                    placeholder="Bill Id"
                     value={billId}
                     onChange={(e) => setBillid(e.target.value)}
                 />
@@ -50,7 +51,7 @@ const StockSearch = (props) => {
             </div>
             <div>
                 <label>Search by Item Type</label>
-                <select onChange={(e) => setVendorName(e.target.value)}>
+                <select onChange={(e) => setItemtype(e.target.value)}>
                     <option value="">All</option>
                     {props.Item.map((data) => (
                         <option value={data.item_Type} key={data.item_id}>
