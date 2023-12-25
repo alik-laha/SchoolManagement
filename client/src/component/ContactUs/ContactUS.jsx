@@ -14,12 +14,13 @@ const ContactUs = (props) => {
         <div>
             <CommonHeader/>
             
-            <div className=''>
-                     <div  >
+            <div style={{display:'flex'}} className=''>
+                     
                      <ContactForm/>
-                    {/* <img src={img} alt='clg-img' height={30} width={300}></img>  */}
-
-                </div>
+                    
+                    <div style={{marginTop:'5rem',marginLeft:'10rem'}}>
+                        <img src={img} alt='clg-img' height={60} width={500}></img> 
+                     </div>
             
             </div>
             <Footer/>

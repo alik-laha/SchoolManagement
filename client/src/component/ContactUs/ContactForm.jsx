@@ -34,7 +34,7 @@ export const ContactForm = () => {
     }
 
     return (
-        <div id="contact-form" className="float-left p-2 rounded-xl shadow-xl text-xl" style={{marginRight:'15rem',marginLeft:'15rem',marginTop:'2rem'}}>
+        <div id="contact-form" className="float-left p-2 rounded-xl shadow-xl text-xl" style={{marginLeft:'15rem',marginTop:'2rem',width:'30%'}}>
            <p className="text-2xl">Feedback & Queries</p>
 
             <div>
@@ -106,11 +106,11 @@ export const ContactForm = () => {
             {/* <input type="text" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} /> */}
             {/* <input type="email" placeholder="Your email address"  /> */}
             {/* <textarea placeholder="Your message" value={message} onChange={e => setMessage(e.target.value)}></textarea> */}
-            <button className="bg-blue-500 hover:bg-blue-700 
-                                        text-white font-bold 
-                                        py-2 px-4 rounded" onClick={submit}>Send Message</button>
+            <div style={{fontSize:'15px',textAlign:'center'}} className={emailSent ? 'visible' : ''}>Thank you for your message, we will be in touch in no time!</div>
+            <div style={{textAlign:'center',marginTop:'30px'}}> <button  className="dashboard-btn dashboard-btn-scss" onClick={submit}>Send</button></div>
+           
 
-            <span className={emailSent ? 'visible' : undefined}>Thank you for your message, we will be in touch in no time!</span>
+            
         </div>
 
         // indranil
