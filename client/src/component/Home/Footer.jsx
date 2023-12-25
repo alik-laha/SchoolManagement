@@ -15,17 +15,18 @@ const Footer = () => {
                     <NavLink to="/gallery" className="link link-hover">Gallery</NavLink>
                 </div>
                 <div>
-                    <span className="footer-title">Legal</span>
-                    <a className="link link-hover">Terms of use</a>
-                    <a className="link link-hover">Privacy policy</a>
-                    <a className="link link-hover">Cookie policy</a>
-                </div>
-                <div>
                     <span className="footer-title">Social Media</span>
                     <a className="link link-hover logo" href="https://www.facebook.com/groups/ALHILALMISSON" target="_blank"><span className="logoC"><FaFacebook /></span>Facebook</a>
                     <a className="link link-hover logo" href="https://www.youtube.com/channel/UCDuC3dIoG18fCjIZ35AD0mg" target="_blank"><span className="logoC"><FaYoutube/></span>Youtube</a>
                     <a className="link link-hover logo"><span className="logoC"><BiLogoGmail /></span>alhilalmisson999@gmail.com</a>
                 </div>
+                <div>
+                    <span className="footer-title">Head Office</span>
+                    <p className="link link-hover">Kadambagachi, Duttapukur(Barasat),North 24 Parganas</p>
+                    <p className="link link-hover">Kolkata -700125</p>
+                    <p className="link link-hover">Mobile: 9732491636 / 9143005911 / 9325817306 / 7980008201 / 7003117687</p>
+                </div>
+               
             </footer>
             <div className="text-center" style={{
                 backgroundColor: '#01285E',

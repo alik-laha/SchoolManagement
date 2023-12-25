@@ -50,8 +50,12 @@ if(props.Search==="block" && search==="flex"){
   };
 
   window.addEventListener("unhandledrejection", function() {
-    setView('none');
+    if(view=='flex'){
+      setView('none');
+    }
+    
 });
+
 
 
   return (
