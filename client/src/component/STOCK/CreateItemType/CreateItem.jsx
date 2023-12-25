@@ -11,6 +11,7 @@ const CreateItem = (props) => {
         }).then((response)=>{
             setItem("")
             alert(`New item added with this Name ${item}`)
+            window.location.reload();
 
         })
 
