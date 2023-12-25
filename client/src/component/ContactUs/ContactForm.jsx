@@ -5,8 +5,9 @@ export const ContactForm = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
-    const [emailSent, setEmailSent] = useState('false')
+    const [emailSent, setEmailSent] = useState(0)
     const [typequery, settypequery] = useState('')
+    const [style,setstyle]=useState('none')
 
     const submit = () => {
         if (name && email && message && typequery) {
@@ -27,21 +28,23 @@ export const ContactForm = () => {
             setEmail('')
             setMessage('')
             settypequery('')
-            setEmailSent('true')
+            setstyle('block')
+            setEmailSent(1)
         } else {
             alert('Please fill in all fields.')
+            
         }
     }
 
     return (
-        <div id="contact-form" className="float-left p-2 rounded-xl shadow-xl text-xl" style={{marginLeft:'15rem',marginTop:'2rem',width:'30%'}}>
+        <div id="contact-form" className="float-left p-2 text-xl" style={{marginLeft:'15rem',marginTop:'2rem',width:'30%',boxShadow:'0 5px 5px 0 rgba(0,0,0,0.4)'}}>
            <p className="text-2xl">Feedback & Queries</p>
 
             <div>
             <br></br>
             <label className="text-sm">Select Issue*</label>
                     <br></br>
-                    <select className="bg-gray-50 border border-gray-300 
+                    <select onChange={e => settypequery(e.target.value)} className="bg-gray-50 border border-gray-300 
                                         text-gray-600 text-sm rounded-lg 
                                         focus:border-blue-500 w-full p-2.5">
                         <option value="Feedback" >
@@ -50,13 +53,13 @@ export const ContactForm = () => {
                         <option value="Feedback" >
                             Feedback
                         </option>
-                        <option value="Feedback">
+                        <option value="Admission Related Queries">
                             Admission Related Queries
                         </option>
-                        <option value="Feedback">
+                        <option value="Course Related Queries">
                             Course Related Queries
                         </option>
-                        <option value="Feedback">
+                        <option value="Payment Related Issue">
                            Payment Related Issue
                         </option>
                         <option value="Feedback">
@@ -106,7 +109,10 @@ export const ContactForm = () => {
             {/* <input type="text" placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} /> */}
             {/* <input type="email" placeholder="Your email address"  /> */}
             {/* <textarea placeholder="Your message" value={message} onChange={e => setMessage(e.target.value)}></textarea> */}
-            <div style={{fontSize:'15px',textAlign:'center'}} className={emailSent ? 'visible' : ''}>Thank you for your message, we will be in touch in no time!</div>
+            
+            
+            <div style={{fontSize:'15px',textAlign:'center',display:style,fontWeight:'500'}} >Thank you, we will be in touch in no time!</div>
+            
             <div style={{textAlign:'center',marginTop:'30px'}}> <button  className="dashboard-btn dashboard-btn-scss" onClick={submit}>Send</button></div>
            
 

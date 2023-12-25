@@ -160,15 +160,12 @@
 }
 
 .noticeboard ul li a{
-  
-    
     display: block;
     padding: 5px 5px;
     color: black;
     /* color: rgb(6, 21, 116);  */
     font-size: 13px;
     font-weight: 500;
-    
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
@@ -194,6 +191,33 @@
     animation-play-state:paused;
 
 }
+
+.contct-google-img{
+
+    padding: 15px 0px 0px 0px;
+    
+    margin-bottom: 30px;
+
+}
+
+.direction-span{
+
+    color:red;
+    padding-left:5px;
+    font-Size:16px;
+    margin-Top:40px;
+    font-weight: 500;
+}
+
+.direction-paragraph{
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 25%;
+
+}
+
+
 
     @keyframes cssmarquee {
     0% {
