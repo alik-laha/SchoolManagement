@@ -6,17 +6,26 @@ const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
   const [noticeVisi, setNoticeVisi] = useState("none");
   const [stockVisi, setStockVisi] = useState("none");
+  const [facultyVisi, setfacultyVisi] = useState("none");
+  const [studentsVisi, setstudentsVisi] = useState("none");
+  const [hostelVisi, sethostelVisi] = useState("none");
 
-  const [employVisi, setEmployVisi] = useState("none");
+ 
 
   const [admin, setAdmin] = useState("none");
   const [cashAdmin, setCashAdmin] = useState("");
   const [stockAdmin, setStockAdmin] = useState("");
+  const [facultyAdmin, setfacultyAdmin] = useState("");
+  const [studentAdmin, setstudentAdmin] = useState("");
+  const [hostelAdmin, sethostelAdmin] = useState("");
 
 
   const [dropArrowuser,setdropArrowuser]=useState("+");
   const [dropArrowNotc,setdropArrowNotc]=useState("+");
   const [dropArrowstock,setdropArrowstock]=useState("+");
+  const [dropArrowfaculty,setdropArrowfaculty]=useState("+");
+  const [dropArrowstudents,setdropArrowstudents]=useState("+");
+  const [dropArrowhostel,setdropArrowhostel]=useState("+");
 
   const user = sessionStorage.getItem("user");
 
@@ -38,13 +47,21 @@ const SideBar = (props) => {
     if (userVisi === "none") 
     { SetUserVisi("block");
       setNoticeVisi("none");
-      setStockVisi("none");} 
+      setStockVisi("none");
+      setfacultyVisi("none");
+      sethostelVisi("none");
+      setstudentsVisi("none"); 
+    } 
     else {SetUserVisi("none");}
 
     if (dropArrowuser=="+")
     {setdropArrowuser("-");
       setdropArrowstock("+")
-      setdropArrowNotc("+");}
+      setdropArrowNotc("+");
+      setdropArrowfaculty("+")
+      setdropArrowhostel("+")
+      setdropArrowstudents("+")
+    }
     else{setdropArrowuser("+");
         }};  
     
@@ -53,13 +70,22 @@ const SideBar = (props) => {
     if (noticeVisi === "none") 
     { setNoticeVisi("block");
       SetUserVisi("none");
-      setStockVisi("none");} 
+      setStockVisi("none");
+      setfacultyVisi("none");
+      sethostelVisi("none");
+      setstudentsVisi("none"); 
+    } 
     else {setNoticeVisi("none");}
 
     if (dropArrowNotc=="+")
     { setdropArrowNotc("-");
       setdropArrowstock("+");
-      setdropArrowuser("+")}
+      setdropArrowuser("+")
+      setdropArrowfaculty("+")
+      setdropArrowhostel("+")
+      setdropArrowstudents("+")
+    }
+      
     else{setdropArrowNotc("+");}};
 
     {/* Stock*/}
@@ -67,14 +93,97 @@ const SideBar = (props) => {
     if (stockVisi === "none") {
       setStockVisi("block");
       SetUserVisi("none");
-      setNoticeVisi("none");}
+      setNoticeVisi("none");
+      setfacultyVisi("none");
+      sethostelVisi("none");
+      setstudentsVisi("none"); 
+    }
     else {setStockVisi("none");}
 
     if (dropArrowstock=="+")
     { setdropArrowstock("-");
       setdropArrowuser("+");
-      setdropArrowNotc("+")}
-    else{setdropArrowstock("+");}};
+      setdropArrowNotc("+")
+      setdropArrowfaculty("+")
+      setdropArrowhostel("+")
+      setdropArrowstudents("+")
+    }
+    else{setdropArrowstock("+");}
+  };
+
+    {/* Faculty*/}
+    const facultyVisiblity = () => {
+      if (facultyVisi === "none") {
+        setfacultyVisi("block");
+        SetUserVisi("none");
+        setNoticeVisi("none");
+        setStockVisi("none");
+        sethostelVisi("none");
+        setstudentsVisi("none"); 
+      }
+      else {setfacultyVisi("none");}
+  
+      if (dropArrowfaculty=="+")
+      { setdropArrowfaculty("-");
+        setdropArrowuser("+");
+        setdropArrowNotc("+")
+        setdropArrowstock("-")
+        setdropArrowhostel("+")
+        setdropArrowstudents("+")
+      }
+      else{setdropArrowfaculty("+");}
+    };
+
+    {/* Students*/}
+    const studentsVisiblity = () => {
+      if (studentsVisi === "none") {
+        setstudentsVisi("block");
+        SetUserVisi("none");
+        setNoticeVisi("none");
+        setStockVisi("none");
+        sethostelVisi("none");
+        setfacultyVisi("none"); 
+      }
+      else {setstudentsVisi("none");}
+  
+      if (dropArrowstudents=="+")
+      { setdropArrowstudents("-");
+        setdropArrowuser("+");
+        setdropArrowNotc("+")
+        setdropArrowstock("-")
+        setdropArrowhostel("+")
+        setdropArrowfaculty("+")
+      }
+      else{setdropArrowstudents("+");}
+    };
+
+    {/* Students*/}
+    const hostelVisiblity = () => {
+      if (hostelVisi === "none") {
+        sethostelVisi("block");
+        SetUserVisi("none");
+        setNoticeVisi("none");
+        setStockVisi("none");
+        setstudentsVisi("none");
+        setfacultyVisi("none"); 
+      }
+      else {sethostelVisi("none");}
+  
+      if (dropArrowhostel=="+")
+      { setdropArrowhostel("-");
+        setdropArrowuser("+");
+        setdropArrowNotc("+")
+        setdropArrowstock("-")
+        setdropArrowstudents("+")
+        setdropArrowfaculty("+")
+      }
+      else{setdropArrowhostel("+");}
+    };
+
+
+
+
+
 
   return(
       <>
@@ -85,8 +194,9 @@ const SideBar = (props) => {
         {/* User */}
         <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
         <div style={{ display: userVisi }}>
-          <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search Users</div>
+          
           <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
+          <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search/Modify Users</div>
         </div>
 
         {/* Notice */}
@@ -110,6 +220,35 @@ const SideBar = (props) => {
           <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Modify Stock Entry</div>
           <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>
         </div>
+
+
+        {/* Faculty */}
+        <span onClick={facultyVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Faculty<p>{dropArrowfaculty}</p></span>
+        <div style={{ display: facultyVisi }}>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
+
+        </div>
+
+
+        {/* Students */}
+        <span onClick={studentsVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
+        <div style={{ display: studentsVisi }}>
+        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Master Entry</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Academic Entry</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Academic Entry</div>
+          
+        </div>
+
+         {/* Hostel */}
+         <span onClick={hostelVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>
+        <div style={{ display: hostelVisi }}>
+        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Hostel Entry</div>
+        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Hostel Entry</div>
+        </div>
+
+
     </div>
     </div>
 
