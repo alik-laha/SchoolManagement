@@ -49,7 +49,7 @@ const StockView= (props) => {
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
                         <td>{item.bill_id}</td>
-                        <td>{item.bill_date}</td>
+                        <td>{item.bill_date.slice(0,10)}</td>
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
