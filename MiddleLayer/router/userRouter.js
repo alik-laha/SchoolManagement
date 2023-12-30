@@ -33,15 +33,15 @@ router.get('/allactivefiles', (req, res) => {
 
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
-        console.log("this is the status"+req.body.status.toString())
-        if (req.body.status==true)
-        {
-            return cb(null,"./activeNotice")
-        }
-        else
-        {
+        //console.log("this is the status"+req.body.status.toString())
+        //if (req.body.status==true)
+        //{
+            //return cb(null,"./activeNotice")
+        //}
+        //else
+        //{
             return cb(null,"./student")
-        }
+       // }
         
     },
     filename:function (req,file,cb){

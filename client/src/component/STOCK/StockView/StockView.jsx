@@ -31,28 +31,30 @@ const StockView= (props) => {
                 <thead>
                 <tr>
                     <th>Item Id</th>
+                    <th>Bill Id</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
-                    <th>Bill Id</th>
                     <th>Bill Date</th>
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Total Price(Estimated)</th>
+                    
                 </tr>
                 </thead>
                 <tbody>
                 {viewStock.map((item) => (
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
+                        <td>{item.bill_id}</td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
-                        <td>{item.bill_id}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
+                        
                     </tr>
                 ))}
                 </tbody>
