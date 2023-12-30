@@ -27,7 +27,7 @@ const StockView= (props) => {
 
     return (
         <div style={{display:visible}}>
-            <table>
+            <table className="table-60">
                 <thead>
                 <tr>
                     <th>Item Id</th>
