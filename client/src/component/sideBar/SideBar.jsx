@@ -15,6 +15,7 @@ const SideBar = (props) => {
   const [admin, setAdmin] = useState("none");
   const [cashAdmin, setCashAdmin] = useState("");
   const [stockAdmin, setStockAdmin] = useState("");
+  const [cashstockAdmin, setcashStockAdmin] = useState("");
   const [facultyAdmin, setfacultyAdmin] = useState("");
   const [studentAdmin, setstudentAdmin] = useState("");
   const [hostelAdmin, sethostelAdmin] = useState("");
@@ -35,9 +36,42 @@ const SideBar = (props) => {
     else if (user === !"ADMIN")
        {setAdmin("none");}
     else if (user === "STOCK-ADMIN")
-       {setCashAdmin("none");}
+       {
+        setcashStockAdmin("block")
+        setCashAdmin("none");
+        setfacultyAdmin("none");
+        sethostelAdmin("none");
+        setstudentAdmin("none");
+      }
     else if (user === "CASH-ADMIN")
-       {setStockAdmin("none");}
+       {
+        setcashStockAdmin("block");
+        setStockAdmin("none");
+       setfacultyAdmin("none");
+       sethostelAdmin("none");
+       setstudentAdmin("none");}
+
+    else if (user === "FACULTY-ADMIN")
+    {   setCashAdmin("none");
+        setStockAdmin("none");
+        setcashStockAdmin("none");
+        setstudentAdmin("none");
+        sethostelAdmin("none");
+    }
+    else if (user === "STUDENT-ADMIN")
+    {   setCashAdmin("none");
+        setStockAdmin("none");
+        setcashStockAdmin("none");
+        setfacultyAdmin("none");
+        sethostelAdmin("none");
+    }
+    else if (user === "HOSTEL-ADMIN")
+    {   setCashAdmin("none");
+        setStockAdmin("none");
+        setcashStockAdmin("none");
+        setfacultyAdmin("none");
+        setstudentAdmin("none");
+    }
 
        }, [user]);
 
@@ -209,7 +243,7 @@ const SideBar = (props) => {
         </div>
 
         {/* stock */}
-        <span onClick={stockVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+        <span onClick={stockVisiblity} className="user" style={{ display: cashstockAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
         <div style={{ display: stockVisi }}>
           <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Vendor</div>
           <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Item type</div>
@@ -223,29 +257,29 @@ const SideBar = (props) => {
 
 
         {/* Faculty */}
-        <span onClick={facultyVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Faculty<p>{dropArrowfaculty}</p></span>
+        <span onClick={facultyVisiblity} className="user" style={{ display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Faculty<p>{dropArrowfaculty}</p></span>
         <div style={{ display: facultyVisi }}>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
 
         </div>
 
 
         {/* Students */}
-        <span onClick={studentsVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
+        <span onClick={studentsVisiblity} className="user" style={{ display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
         <div style={{ display: studentsVisi }}>
-        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Master Entry</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Academic Entry</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Academic Entry</div>
+        <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Master Entry</div>
+          <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
+          <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Academic Entry</div>
+          <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Academic Entry</div>
           
         </div>
 
          {/* Hostel */}
-         <span onClick={hostelVisiblity} className="user" style={{ display: 'block'}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>
+         <span onClick={hostelVisiblity} className="user" style={{ display: hostelAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>
         <div style={{ display: hostelVisi }}>
-        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Hostel Entry</div>
-        <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Hostel Entry</div>
+        <div className="Items" style={{ display: hostelAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Hostel Entry</div>
+        <div className="Items" style={{ display: hostelAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Hostel Entry</div>
         </div>
 
 

@@ -10,6 +10,7 @@
 .sidebar-main-header{
     font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
     transition: all .5s ease-in-out;
+    display: grid;
 }
 
 .dashobard-sidebar > span{
