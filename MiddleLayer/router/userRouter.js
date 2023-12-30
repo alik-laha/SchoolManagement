@@ -30,11 +30,10 @@ router.get('/allactivefiles', (req, res) => {
 });
 
 
-
 const storage=multer.diskStorage({
     destination:function(req,file,cb){
-        console.log("this is the status"+req.body.status.toString())
-        if (req.body.status==true)
+        console.log("this is the status ",file.status)
+        if (req==true)
         {
             return cb(null,"./activeNotice")
         }
@@ -54,8 +53,8 @@ const upload=multer({storage})
 
 //upload student notice
 router.post('/studentnotice',upload.single('file'),(req,res)=>{
-    console.log(req.body)
-    console.log(req.form)
+    console.log("alik body",req.body)
+    console.log( "main status",req.body.status)
 })
 
 

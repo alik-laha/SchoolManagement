@@ -14,8 +14,9 @@ const StudentInputNotice = ({Publish}) => {
   const HandaleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("status",activestatus.toString())
+        file.status = activestatus.toString();
+      formData.append("file", file);
+    console.log(file);
 
       axios
       .post("http://localhost:7000/api/v1/studentnotice", formData)
