@@ -17,18 +17,20 @@ const CreateVendor = (props) => {
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>
             
-        <div >
-          <label>Create Vendor</label>
-            <input
-          type="text"
-          placeholder="Vendor Name"
-          onChange={(e) => setVendor(e.target.value)}
-          required
-             />
-         </div >
-       
-            <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateVendor}>Create Vendor</button>
+            <form onSubmit={handleCreateVendor}>
+              <div>
+                <label>Create Vendor</label>
+                <input
+                    type="text"
+                    placeholder="Vendor Name"
+                    onChange={(e) => setVendor(e.target.value)}
+                    required
+                />
+              </div>
             
+            <span><button className="dashboard-btn dashboard-btn-scss " type="submit">Create Vendor</button></span>
+
+            </form>
        <div>
         <button className="dashboard-btn dashboard-btn-scss" onClick={props.onViewVendor}>View/Delete Vendor</button>
         </div>

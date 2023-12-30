@@ -259,8 +259,8 @@ const SideBar = (props) => {
         {/* Faculty */}
         <span onClick={facultyVisiblity} className="user" style={{ display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Faculty<p>{dropArrowfaculty}</p></span>
         <div style={{ display: facultyVisi }}>
-          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
-          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
+          <div className="Items" style={{ display: admin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
 
         </div>
 
@@ -268,7 +268,7 @@ const SideBar = (props) => {
         {/* Students */}
         <span onClick={studentsVisiblity} className="user" style={{ display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
         <div style={{ display: studentsVisi }}>
-        <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Master Entry</div>
+        <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Master Admission Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Create Academic Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Academic Entry</div>

@@ -19,14 +19,19 @@ const CreateItem = (props) => {
 
     return(
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
-            <div >
-          <label>Create Item Type</label>
-            <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)}/>
-            
-            </div>
-            <button className="dashboard-btn dashboard-btn-scss" onClick={handleCreateItem}>Create Item Type</button>
+
+        <form onSubmit={handleCreateItem}>
+
             <div>
-            
+                <label>Create Item Type</label>
+                <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)} required/>
+
+            </div>
+            <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Item Type</button></span>
+
+        </form>
+   
+            <div>
                 <button className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View/Delete Item Type</button>
             </div>
             
