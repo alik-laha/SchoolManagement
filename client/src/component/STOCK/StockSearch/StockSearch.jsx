@@ -18,7 +18,7 @@ const StockSearch = (props) => {
         props.setStockData(data);
     }
     return(
-        <div style={{display: props.StockView}}>
+        <div className="dashbrd-40-colm" style={{display: props.StockView}}>
             <form onSubmit={HandleEdit}>
             <div>
                 <label>Search By Bill Id</label>
@@ -60,7 +60,8 @@ const StockSearch = (props) => {
                     ))}
                 </select>
             </div>
-                <button>Submit</button>
+                        <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
+                
             </form>
         </div>
     )

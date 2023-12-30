@@ -3,13 +3,21 @@ import axios from "axios";
 
 const StudentInputNotice = ({Publish}) => {
   const [file, setFile] = useState(null);
+  const [activestatus,setactivestatus]= useState(true)
+
+
+  const handleactive = () => {
+    setactivestatus(!activestatus);
+  };
 
 
   const HandaleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
-    axios
+    formData.append("status",activestatus.toString())
+
+      axios
       .post("http://localhost:7000/api/v1/studentnotice", formData)
       .then((res) => res.json())
       .then((data) => {
@@ -20,6 +28,8 @@ const StudentInputNotice = ({Publish}) => {
             window.location.reload();
         console.log(err)
       });
+    
+
 
   };
   return (
@@ -34,7 +44,15 @@ const StudentInputNotice = ({Publish}) => {
             setFile(e.target.files[0]);
           }}
         />
-       
+        <label>Active Status </label>
+        <input style={{border:'none'}}
+          type="checkbox"
+          name="Active Notice"
+          value="Active"
+          checked={activestatus}
+          onChange={handleactive}
+        />
+
        <div><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button></div>
       </form>
       </div>

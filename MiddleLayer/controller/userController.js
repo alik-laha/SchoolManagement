@@ -207,7 +207,7 @@ exports.Login = (req, res) => {
 
                 })
     }
-
+//deleteNotice
     exports.DeleteNotice = async (req, res) => {
         const {fileName} = req.body
         try {
@@ -226,3 +226,23 @@ exports.Login = (req, res) => {
             console.log(err.message)
         }
     }
+//deleteActiveNotice
+
+exports.DeleteActiveNotice = async (req, res) => {
+    const {fileName} = req.body
+    try {
+        if (!{fileName}) {
+            return res.message("all data needed")
+        }
+        await fs.unlink(`./activeNotice/${fileName}`, function (err) {
+            if (err) throw err;
+            console.log('File (Active Notice) deleted!');
+            return res.status(200).json({
+                status: "success",
+            });
+        });
+
+    } catch (err) {
+        console.log(err.message)
+    }
+}
