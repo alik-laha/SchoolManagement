@@ -13,6 +13,8 @@ import ViewAllItem from "../STOCK/ViewAllItem/ViewAllItem.jsx";
 import StockView from "../STOCK/StockView/StockView.jsx";
 import StockSearch from "../STOCK/StockSearch/StockSearch.jsx";
 import SecondaryStockEntrySearch from '../STOCK/SecondaryStockEntrySearch/SecondaryStockEntrySearch.jsx'
+import SecondaryStockEntryView from '../STOCK/SecondaryStockEntryView/SecondaryStockEntryView.jsx'
+import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAllView/SecondaryStockEntryAllView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -26,6 +28,10 @@ const DashBoardMain = (props) => {
   const [allItemType, setAllItemType] = useState([]);
   const [StockData,setStockData]=useState([]);
   const [ViewStock,setViewStock]=useState("none")
+  const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
+
+
+
   const getdata = (data) => {
     setdata(data);
   };
@@ -79,6 +85,12 @@ const handleItemType=(data)=>{
   const stockViewShow=(data)=>{
     setViewStock(data);
   }
+
+const secondaryStockEntryViewShow=(data)=> {
+  setsecondStockEntryViewShow(data);
+
+}
+
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -91,7 +103,9 @@ const handleItemType=(data)=>{
           <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
           <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
-          <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch}/>
+          <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleStockData} buttonClick={secondaryStockEntryViewShow}/>
+          <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/>
+
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAllUser data={data} View={view} AllRoles={allRoles} />
@@ -99,6 +113,7 @@ const handleItemType=(data)=>{
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
+          <SecondaryStockEntryView view={secondStockEntryViewShow} SearchebyData={StockData}/>
 
         </div>
       </div>
