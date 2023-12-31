@@ -3,7 +3,6 @@ import axios from "axios";
 const SecondaryStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
     const [billDate,setBillDate]=useState("");
-    
 
     const HandleEdit=(e)=> {
         e.preventDefault();
