@@ -249,7 +249,7 @@ const SideBar = (props) => {
           <div className="Items" style={{ display: admin }} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Item type</div>
           <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary Stock Entry(Qty.)</div>
           <div className="Items" style={{ display: stockAdmin }} onClick={props.onStockView}>&#x3e;&nbsp;&nbsp;View Primary Stock</div>
-          <div className="Items" style={{ display: cashAdmin }}>&#x3e;&nbsp;&nbsp;Secondary Stock Entry(Cash)</div>
+          <div className="Items" style={{ display: cashAdmin }} onClick={props.onSecondStockEntry}>&#x3e;&nbsp;&nbsp;Secondary Stock Entry(Cash)</div>
           <div className="Items" style={{ display: cashAdmin }}>&#x3e;&nbsp;&nbsp;View Secondary Stock</div>
           <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Modify Stock Entry</div>
           <div className="Items" style={{  display: admin }}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>

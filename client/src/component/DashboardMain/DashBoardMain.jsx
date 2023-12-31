@@ -4,7 +4,7 @@ import UserSearchquery40 from "../SearchBars/UserSearchquery40.jsx";
 import StudentInputNotice from "../NoticeInput/NoticeBoardUpload40.jsx";
 import '../Dashboard/Dashboard.css'
 import NoticeManupulation60 from "../NoticeManupulation/NoticeManupulation60.jsx";
-import ViewAll from "../View/UserSearchResponse60.jsx";
+import ViewAllUser from "../View/UserSearchResponse60.jsx";
 import CreateVendor from "../STOCK/CreateVendor/CreateVendor.jsx";
 import CreateItem from "../STOCK/CreateItemType/CreateItem.jsx";
 import StockItemEntry from "../STOCK/StockEntry/StockItemEntry.jsx";
@@ -12,7 +12,9 @@ import ViewAllVendor from "../STOCK/ViewAllVendor/ViewAllVendor.jsx";
 import ViewAllItem from "../STOCK/ViewAllItem/ViewAllItem.jsx";
 import StockView from "../STOCK/StockView/StockView.jsx";
 import StockSearch from "../STOCK/StockSearch/StockSearch.jsx";
-import stockView from "../STOCK/StockView/StockView.jsx";
+import SecondaryStockEntrySearch from '../STOCK/SecondaryStockEntrySearch/SecondaryStockEntrySearch.jsx'
+
+
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
@@ -89,13 +91,15 @@ const handleItemType=(data)=>{
           <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
           <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
+          <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch}/>
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          <ViewAll data={data} View={view} AllRoles={allRoles} />
+          <ViewAllUser data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
+
         </div>
       </div>
     </>

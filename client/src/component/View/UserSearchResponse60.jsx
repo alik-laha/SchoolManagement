@@ -169,4 +169,4 @@ const UserSearchResponse60=(props)=>{
         </div>
     )
 }
-export default UserSearchResponse60
+export default UserSearchResponse60;

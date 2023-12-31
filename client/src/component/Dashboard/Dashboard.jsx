@@ -6,6 +6,7 @@ import icon from '../Galllery/GalleryImage/operater_icon.png';
 import {useState } from "react";
 
 
+
 const Dashboard = () => {
   const HandaleLogout = () => {
     sessionStorage.removeItem("user");
@@ -26,6 +27,9 @@ const [view,setView]=useState('none')
     const[itemCreate,setItemCreate]=useState('none')
     const [stockEntry,setStockEntry]=useState('none')
     const [stockView,setStockView]=useState('none')
+    const [secondstockEntry,setSecondstockEntry]=useState('none')
+
+
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -71,6 +75,7 @@ if(search==='none'){
     setNotice('none')
     setStockEntry('none')
     setStockView('none')
+    setSecondstockEntry('none')
 }
 else{
     setSearch('none')
@@ -89,6 +94,7 @@ const handaleCreateUser=()=>{
             setNotice('none')
          setStockEntry('none')
          setStockView('none')
+         setSecondstockEntry('none')
      }
      else{
          setCreateUser("none")
@@ -107,6 +113,7 @@ const handalePublish=()=>{
          setNotice('none')
          setStockEntry('none')
          setStockView('none')
+         setSecondstockEntry('none')
      }
      else{
          setPublish('none')
@@ -124,6 +131,7 @@ const HandleVendorCreate=()=>{
          setNotice('none')
          setStockEntry('none')
          setStockView('none')
+         setSecondstockEntry('none')
      }
         else{
             setVendorDisplay('none')
@@ -141,6 +149,7 @@ const handaleNotice=()=>{
          setNotice('block')
          setStockEntry('none')
          setStockView('none')
+         setSecondstockEntry('none')
      }
         else{
             setNotice('none')
@@ -157,6 +166,7 @@ const handleItemCreate=()=>{
             setNotice('none')
             setStockEntry('none')
             setStockView('none')
+            setSecondstockEntry('none')
         }
             else{
                 setItemCreate('none')
@@ -173,6 +183,7 @@ const handleStockEntry=()=>{
             setView('none')
             setNotice('none')
             setStockView('none')
+            setSecondstockEntry('none')
         }
             else{
                 setStockEntry('none')
@@ -188,11 +199,34 @@ const handleStockView=()=>{
             setPublish('none')
             setSearch('none')
             setNotice('none')
+            setSecondstockEntry('none')
         }
             else{
                 setStockView('none')
             }
-}
+          }
+
+            
+
+const handleSecondStockEntrySearch=()=>{
+              if(secondstockEntry==='none'){
+                  setSecondstockEntry('block')
+                  setStockEntry('none')
+                  setItemCreate('none')
+                  setCreateUser('none')
+                  setVendorDisplay('none')
+                  setPublish('none')
+                  setSearch('none')
+                  setNotice('none')
+                  setStockView('none')
+              }
+                  else{
+                      setSecondstockEntry('none')
+                  }
+
+
+                }
+              
 
   return (
     <>
@@ -222,12 +256,12 @@ const handleStockView=()=>{
                  onpublish={handalePublish} onNoticeManupulation={handaleNotice}
                  onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
                  onStockEntry={handleStockEntry}
-                    onStockView={handleStockView}/>
+                    onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch}/>
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}
                        Publish={publish} View={view}
                        Notice={notice} VendorCreateDisplay={vendorDisplay}
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
-                        StockView={stockView}/>
+                        StockView={stockView} SecondstockEntrySearch={secondstockEntry}/>
       </div>
     </div>
      
@@ -235,4 +269,6 @@ const handleStockView=()=>{
     </>
   );
 };
+
+
 export default Dashboard;

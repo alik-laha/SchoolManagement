@@ -1,6 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
-const StockSearch = (props) => {
+const SecondaryStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
     const [billDate,setBillDate]=useState("");
     
@@ -16,7 +16,7 @@ const StockSearch = (props) => {
         props.setStockData(data);
     }
     return(
-        <div className="dashbrd-40-colm" style={{display: props.StockView}}>
+        <div className="dashbrd-40-colm" style={{display: props.SecondstockEntrySearch}}>
             <form onSubmit={HandleEdit}>
             <div>
                 <label>Search By Bill Id</label>
@@ -43,4 +43,4 @@ const StockSearch = (props) => {
         </div>
     )
 }
-export default StockSearch;
+export default SecondaryStockEntrySearch;
