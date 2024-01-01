@@ -25,6 +25,8 @@ const UserSearchResponse60=(props)=>{
     useEffect(() => {
         setAllRoles(props.AllRoles)
     }, [props.AllRoles]);
+
+    
     const handleDelete = (user_id) => {
         axios
             .post("http://localhost:7000/api/v1/deleteuser", {user_id})

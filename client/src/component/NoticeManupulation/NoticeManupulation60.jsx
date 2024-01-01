@@ -20,7 +20,7 @@ const NoticeManupulation60=(props)=>{
         window.location.reload()
     }
     return(
-        <div style={{display:props.Publish}}>
+        <div style={{display:props.Publish,marginTop:'-230px'}}>
            
            <table className="table-60">
            <thead>

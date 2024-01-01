@@ -145,10 +145,10 @@ exports.StockEntry=(req,res)=>{
             }
         }
 
-    //get stock from search
+    //get primary stock from search
     exports.GetStock=(req,res)=>{
 
-                const{itemType,billDate,billId,vendorName,}=req.body
+                const{itemType,billDate,billId,vendorName}=req.body
 
                     if(billId && !itemType && !billDate && !vendorName){
                         query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
@@ -250,4 +250,42 @@ exports.DeleteItem=(req,res)=>{
 
         })
     }
+}
+
+
+// get secondary stock entry
+exports.GetSecondaryStockEntry=(req,res)=>{
+
+    const{billDate,billId}=req.body
+
+        if(billId  && !billDate ){
+            query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
+        }
+       
+        else if(billDate && !billId ){
+            query=`SELECT * FROM stock WHERE bill_date REGEXP "${billDate}" `
+        }
+  
+        else if(billId && billDate){
+            query=`SELECT * FROM stock WHERE WHERE bill_id REGEXP "${billId}" AND bill_date REGEXP "${billDate}"`
+        }
+        else{
+            query=`SELECT * FROM stock`
+        }
+
+    Database.query(query,function(error,data){
+        if(error){
+            return res.status(400).json({
+                status:"error at getting stock",
+                message:error
+            })
+        }
+        if(data){
+            return res.status(200).json({
+                status:"got all stock",
+                data:data
+            })
+        }
+
+    })
 }

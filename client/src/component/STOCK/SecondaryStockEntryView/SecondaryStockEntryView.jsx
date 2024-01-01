@@ -4,9 +4,11 @@ const SecondaryStockEntryView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+    const [visiblity, setVisiblity] = useState("none");
+    const [mainsvisibility,setmainsvisibility]=useState("contents")
     useEffect(()=>{
 
-      axios.post("http://localhost:7000/api/v1/stock/getstock",props.SearchebyData)
+      axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",props.SearchebyData)
         .then((res)=>{
             setViewStock(res.data.data)
         })
@@ -25,10 +27,45 @@ const SecondaryStockEntryView= (props) => {
         }
     },[props.secondarystocksearch,props.view])
 
+    const handleEdit = (data) => {
+        setVisiblity("contents");
+        setmainsvisibility('none')
+        
+    };
+    const cancelEdit =() =>{
+        setVisiblity('none');
+        setmainsvisibility('contents');
+    };
+
+
+
+    // const handaleSubmit = (e) => {
+    //     e.preventDefault();
+    //     if(!name || !password || !role){
+    //         alert("Please fill all the fields")
+    //         return
+    //     }
+    //     axios
+    //         .post("http://localhost:7000/api/v1/updateuser", {
+    //             id,
+    //             name,
+    //             password,
+    //             role,
+    //         })
+    //         .then((res) => {
+    //             console.log(res);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    //     alert("User Updated Successfully");
+    //     window.location.reload();
+    // };
+
     return (
         <div style={{display:visible}}>
             <table className="table-60">
-                <thead>
+                <thead style={{display: mainsvisibility}}>
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
@@ -38,11 +75,12 @@ const SecondaryStockEntryView= (props) => {
                     <th>Bill Date</th>
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
-                    <th>Total Price(Estimated)</th>
+                    <th>Estimated Price</th>
+                    <th>Action</th>
                     
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style={{display: mainsvisibility}}>
                 {viewStock.map((item) => (
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
@@ -54,10 +92,68 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
+                        <td><button className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         
                     </tr>
                 ))}
                 </tbody>
+
+
+                {/* hidden tbody */}
+
+
+                <thead style={{display: visiblity}} id='hidden-table-60'>
+                <tr>
+                <th>Item Id</th>
+                    <th>Bill Id</th>
+                    <th>Estimated Amount</th>
+                    <th>Discounted Amount</th>
+                    <th>Paid Amount</th>
+                    <th>Cash Entry Date</th>
+                    <th>Modified Entry Date</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+
+
+                <tbody style={{display: visiblity}} >
+                    
+                <tr>
+                    {/* <td>{id}</td>
+                    
+                    <td>
+                        <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true}/>
+                    </td>
+
+                    <td>
+                        <select onChange={(e) => setrole(e.target.value)} value={role}>
+                            <option >Role</option>
+                            {allRoles.map((data) => (
+                                <option value={data.roletype_name} key={data.roletype_name}>
+                                    {data.roletype_name}
+                                </option>
+                            ))}
+                        </select>
+                    </td> 
+                    <td>
+                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}
+                               required={true}/>
+                    </td>*/}
+                    <td>
+                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
+                                >Entry
+                        </button>
+                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
+                                onClick={cancelEdit}>Cancel
+                        </button>
+                    </td>
+
+                </tr>
+                                 
+
+                </tbody>
+
+                
             </table>
         </div>
     )
