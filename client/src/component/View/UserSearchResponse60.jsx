@@ -135,7 +135,7 @@ const UserSearchResponse60=(props)=>{
 
                     <td>
                         <select onChange={(e) => setrole(e.target.value)} value={role}>
-                            <option >Role</option>
+                            <option >All</option>
                             {allRoles.map((data) => (
                                 <option value={data.roletype_name} key={data.roletype_name}>
                                     {data.roletype_name}

@@ -33,7 +33,7 @@ const StockSearch = (props) => {
                 <label>Search By Bill Date</label>
                 <input
                     type="date"
-                    placeholder="User Name"
+                    placeholder="Bill Date"
                     value={billDate}
                     onChange={(e) => setBillDate(e.target.value)}
                 />

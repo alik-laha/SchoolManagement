@@ -13,7 +13,7 @@ const SecondaryStockEntryView= (props) => {
     const [modifieddate,setmodifieddate]=useState(new Date().toISOString().slice(0, 10) )
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
-    const [itmid,setitmid]=useState("");
+    const [itemid,setitemid]=useState("");
 
     useEffect(()=>{
 
@@ -43,7 +43,11 @@ const SecondaryStockEntryView= (props) => {
     const handleEdit = (data) => {
         setVisiblity("contents");
         setmainsvisibility('none')
-        setitmid(data.stock_id)
+
+        setitemid(data.stock_id)
+        setbillid(data.bill_id)
+        setestimatedamt(data.projected_cost)
+
         console.log(data.stock_id)
         console.log(data.discounted_cost)
         console.log(data.pending_amount)
@@ -66,13 +70,20 @@ const SecondaryStockEntryView= (props) => {
         else{
             setbalamt(0)
         }
-        
-        setcashentrydate(data.stock_entry_date)
-        
-        setmodifieddate(data.stock_modified_date)
-        setpaidamt(data.paid_amount)
-        setbillid(data.bill_id)
-        setestimatedamt(data.projected_cost)
+        if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
+            setcashentrydate(data.stock_entry_date)
+       }
+        else{
+            setcashentrydate(new Date().toISOString().slice(0, 10))
+        }
+       if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
+            setmodifieddate(data.stock_modified_date)
+       }
+        else{
+            setmodifieddate(new Date().toISOString().slice(0, 10))
+        }
+       
+     
         
     };
     const cancelEdit =() =>{
@@ -82,28 +93,27 @@ const SecondaryStockEntryView= (props) => {
 
 
 
-    // const handaleSubmit = (e) => {
-    //     e.preventDefault();
-    //     if(!name || !password || !role){
-    //         alert("Please fill all the fields")
-    //         return
-    //     }
-    //     axios
-    //         .post("http://localhost:7000/api/v1/updateuser", {
-    //             id,
-    //             name,
-    //             password,
-    //             role,
-    //         })
-    //         .then((res) => {
-    //             console.log(res);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    //     alert("User Updated Successfully");
-    //     window.location.reload();
-    // };
+     const handaleSubmit = (e) => {
+       e.preventDefault();
+          if(!modifieddate || !cashentrydate || !balamt|| !paidamt|| !discountamt){
+           alert("Please fill all the fields")
+          return
+            }
+         axios
+            .post("http://localhost:7000/api/v1/updatecashentry", {
+               itemid,paidamt,discountamt,balamt,cashentrydate,
+               modifieddate
+               
+            })
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        alert("Cash Entry Updated Successfully");
+        window.location.reload();
+    };
 
     return (
         <div style={{display:visible}}>
@@ -151,7 +161,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Bill Id</th>
                     <th>Estimated Amount</th>
                     <th>Discounted Amount</th>
-                    <th>Paid Amount</th>
+                    <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
                     <th>Cash Entry Date</th>
                     <th>Modified Entry Date</th>
@@ -163,15 +173,30 @@ const SecondaryStockEntryView= (props) => {
                 <tbody style={{display: visiblity}} >
                     
                 <tr>
-                   <td>{itmid}</td>
+                   <td>{itemid}</td>
                    <td>{billid}</td>
                    <td>{estimatedamt}</td>
-                   <td> <input type="text" value={discountamt} onChange={(e) => setdiscountamt(e.target.value)} required={true}/></td>
-                   <td> <input type="text" value={paidamt} onChange={(e) => setpaidamt(e.target.value)} required={true}/></td>
-                   <td>{balamt}</td>
+                   <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
+                   <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
+                   <td><input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} required readOnly/>{}</td>
+                   <td><input
+                        type="date" 
+                        placeholder="Cash Entry date"
+                        onChange={(e) => setcashentrydate(e.target.value)}
+                        value={cashentrydate}
+                        required
+                    /></td>
+                    <td>     <input
+                        type="date"
+                        placeholder="Modified date"
+                        onChange={(e) => setmodifieddate(e.target.value)}
+                        value={modifieddate}
+                         required readOnly
+                    /></td>
+                  
                     <td>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                >Entry
+                        <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
+                                >Proceed
                         </button>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
                                 onClick={cancelEdit}>Cancel

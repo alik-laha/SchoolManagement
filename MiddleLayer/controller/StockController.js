@@ -289,3 +289,36 @@ exports.GetSecondaryStockEntry=(req,res)=>{
 
     })
 }
+
+
+// update secondary stock entry
+exports.UpdateSecondaryStockEntry=(req,res)=>{
+
+    const{itemid,paidamt,discountamt,balamt,cashentrydate,modifieddate}=req.body
+
+        
+    if (!{itemid,paidamt,discountamt,balamt,cashentrydate,modifieddate}) {
+        return res.message("all data needed")
+    }
+            query = `
+                UPDATE stock
+                SET paid_amount="${paidamt}",
+                    discounted_cost="${discountamt}",
+                    pending_amount="${balamt}",
+                    stock_entry_date="${cashentrydate}",
+                    stock_modified_date="${modifieddate}",
+                WHERE user_id = ${itemid}`;
+            Database.query(query, function (error, data) {
+                if (error) {
+                    connection.release();
+                    res.send(error)
+                }
+                if (data) {
+                    return res.status(200).json({
+                        status: "success",
+                        // data: data
+                    });
+                }
+
+            })
+}
