@@ -9,8 +9,8 @@ const SecondaryStockEntryView= (props) => {
     const [discountamt,setdiscountamt]=useState(0)
     const [paidamt,setpaidamt]=useState(0)
     const [balamt,setbalamt]=useState(0)
-    const [cashentrydate,setcashentrydate]=useState("")
-    const [modifieddate,setmodifieddate]=useState("")
+    const [cashentrydate,setcashentrydate]=useState(new Date().toISOString().slice(0, 10) )
+    const [modifieddate,setmodifieddate]=useState(new Date().toISOString().slice(0, 10) )
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itmid,setitmid]=useState("");
@@ -44,7 +44,23 @@ const SecondaryStockEntryView= (props) => {
         setVisiblity("contents");
         setmainsvisibility('none')
         setitmid(data.stock_id)
-        if(!data.pending_amount){
+        console.log(data.stock_id)
+        console.log(data.discounted_cost)
+        console.log(data.pending_amount)
+        console.log(data.paid_amount)
+        if(data.discounted_cost!==null || data.discounted_cost!==undefined){
+            setdiscountamt(data.discounted_cost)
+        }
+        else{
+            setdiscountamt(0)
+        }
+        if(data.paid_amount!==null || data.paid_amount!==undefined){
+            setpaidamt(data.paid_amount)
+        }
+        else{
+            setpaidamt(0)
+        }
+        if(data.pending_amount!==null || data.pending_amount!==undefined){
             setbalamt(data.pending_amount)
         }
         else{
@@ -52,7 +68,7 @@ const SecondaryStockEntryView= (props) => {
         }
         
         setcashentrydate(data.stock_entry_date)
-        setdiscountamt(data.discounted_cost)
+        
         setmodifieddate(data.stock_modified_date)
         setpaidamt(data.paid_amount)
         setbillid(data.bill_id)
@@ -152,7 +168,7 @@ const SecondaryStockEntryView= (props) => {
                    <td>{estimatedamt}</td>
                    <td> <input type="text" value={discountamt} onChange={(e) => setdiscountamt(e.target.value)} required={true}/></td>
                    <td> <input type="text" value={paidamt} onChange={(e) => setpaidamt(e.target.value)} required={true}/></td>
-                   <td> {balamt}</td>
+                   <td>{balamt}</td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
                                 >Entry

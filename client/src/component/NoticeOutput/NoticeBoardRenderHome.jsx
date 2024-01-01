@@ -9,12 +9,14 @@ const NoticeOutput=()=>{
             .catch((error) => console.error('Error fetching files:', error));
     },[])
     const handleDownload = (fileName) => {
-        const url = window.URL.createObjectURL(`/SchoolManagement/Middleware/student/${fileName}`)
+        //const url = window.URL.createObjectURL(`/SchoolManagement/MiddleLayer/student/${fileName}`)
         const link = document.createElement("a");
-        link.href = url;
+        //link.href = url;
+        link.href = 'http://localhost:7000/SchoolManagement/MiddleLayer/student/${fileName}';
         link.download = file.name;
         link.click();
     };
+    
 
     return(
         <div className="noticeboard-main">
