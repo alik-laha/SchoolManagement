@@ -6,6 +6,15 @@ const SecondaryStockEntryView= (props) => {
     const [visible,setVisible]=useState("none")
     const [visiblity, setVisiblity] = useState("none");
     const [mainsvisibility,setmainsvisibility]=useState("contents")
+    const [discountamt,setdiscountamt]=useState(0)
+    const [paidamt,setpaidamt]=useState(0)
+    const [balamt,setbalamt]=useState(0)
+    const [cashentrydate,setcashentrydate]=useState("")
+    const [modifieddate,setmodifieddate]=useState("")
+    const [billid,setbillid]=useState("");
+    const [estimatedamt,setestimatedamt]=useState("");
+    const [itmid,setitmid]=useState("");
+
     useEffect(()=>{
 
       axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",props.SearchebyData)
@@ -18,7 +27,7 @@ const SecondaryStockEntryView= (props) => {
     },[props.SearchebyData])
 
     useEffect(()=> {
-        console.log(props.sec,props.view)
+        console.log(props.secondarystocksearch,props.view)
         if (props.secondarystocksearch === "block" && props.view === "block") {
             setVisible("block")
         }
@@ -27,9 +36,27 @@ const SecondaryStockEntryView= (props) => {
         }
     },[props.secondarystocksearch,props.view])
 
+    useEffect(()=>{
+        setbalamt(discountamt-paidamt)
+    },[discountamt,paidamt])
+
     const handleEdit = (data) => {
         setVisiblity("contents");
         setmainsvisibility('none')
+        setitmid(data.stock_id)
+        if(!data.pending_amount){
+            setbalamt(data.pending_amount)
+        }
+        else{
+            setbalamt(0)
+        }
+        
+        setcashentrydate(data.stock_entry_date)
+        setdiscountamt(data.discounted_cost)
+        setmodifieddate(data.stock_modified_date)
+        setpaidamt(data.paid_amount)
+        setbillid(data.bill_id)
+        setestimatedamt(data.projected_cost)
         
     };
     const cancelEdit =() =>{
@@ -109,6 +136,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Estimated Amount</th>
                     <th>Discounted Amount</th>
                     <th>Paid Amount</th>
+                    <th>Balance Amount</th>
                     <th>Cash Entry Date</th>
                     <th>Modified Entry Date</th>
                     <th>Action</th>
@@ -119,26 +147,12 @@ const SecondaryStockEntryView= (props) => {
                 <tbody style={{display: visiblity}} >
                     
                 <tr>
-                    {/* <td>{id}</td>
-                    
-                    <td>
-                        <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true}/>
-                    </td>
-
-                    <td>
-                        <select onChange={(e) => setrole(e.target.value)} value={role}>
-                            <option >Role</option>
-                            {allRoles.map((data) => (
-                                <option value={data.roletype_name} key={data.roletype_name}>
-                                    {data.roletype_name}
-                                </option>
-                            ))}
-                        </select>
-                    </td> 
-                    <td>
-                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}
-                               required={true}/>
-                    </td>*/}
+                   <td>{itmid}</td>
+                   <td>{billid}</td>
+                   <td>{estimatedamt}</td>
+                   <td> <input type="text" value={discountamt} onChange={(e) => setdiscountamt(e.target.value)} required={true}/></td>
+                   <td> <input type="text" value={paidamt} onChange={(e) => setpaidamt(e.target.value)} required={true}/></td>
+                   <td> {balamt}</td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
                                 >Entry
