@@ -71,13 +71,13 @@ const SecondaryStockEntryView= (props) => {
             setbalamt(0)
         }
         if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
-            setcashentrydate(data.stock_entry_date)
+            setcashentrydate(data.stock_entry_date.slice(0, 10))
        }
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
         }
        if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
-            setmodifieddate(data.stock_modified_date)
+            setmodifieddate(data.stock_modified_date.slice(0, 10))
        }
         else{
             setmodifieddate(new Date().toISOString().slice(0, 10))
@@ -100,7 +100,7 @@ const SecondaryStockEntryView= (props) => {
           return
             }
          axios
-            .post("http://localhost:7000/api/v1/updatecashentry", {
+            .post("http://localhost:7000/api/v1/stock/updatecashentry", {
                itemid,paidamt,discountamt,balamt,cashentrydate,
                modifieddate
                

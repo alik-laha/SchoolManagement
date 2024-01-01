@@ -306,19 +306,21 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
                     discounted_cost="${discountamt}",
                     pending_amount="${balamt}",
                     stock_entry_date="${cashentrydate}",
-                    stock_modified_date="${modifieddate}",
-                WHERE user_id = ${itemid}`;
-            Database.query(query, function (error, data) {
-                if (error) {
-                    connection.release();
-                    res.send(error)
-                }
-                if (data) {
-                    return res.status(200).json({
-                        status: "success",
-                        // data: data
-                    });
-                }
-
-            })
+                    stock_modified_date="${modifieddate}"
+                WHERE stock_id = ${itemid}`;
+                Database.query(query,function(error,data){
+                    if(error){
+                        return res.status(400).json({
+                            status:"error at updating secondary cash entry of stock",
+                            message:error
+                        })
+                    }
+                    if(data){
+                        return res.status(200).json({
+                            status:"got all stock",
+                            data:data
+                        })
+                    }
+            
+                })
 }
