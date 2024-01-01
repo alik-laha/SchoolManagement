@@ -33,17 +33,21 @@ const StudentInputNotice = ({Publish}) => {
       
       <div>
       <label>Institute Notice Upload </label>
+      
       <form onSubmit={HandaleSubmit} >
          <input accept="application/pdf" style={{border:'none'}}
           type="file" 
           onChange={(e) => {
             setFile(e.target.files[0]);
-          }}
-        />
-        <div><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button></div>
+          }} 
+        /> 
+        <span style={{width:'max-content', fontSize:'14px',color:'red'}}>(Only PDF Files are Allowed)</span>
+        <div style={{paddingLeft:'150%'}}><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button>
+        </div>
        
       </form>
       </div>
+      
       
      
     </div>
