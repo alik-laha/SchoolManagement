@@ -16,14 +16,14 @@ const SecondaryStockEntryView= (props) => {
     },[props.SearchebyData])
 
     useEffect(()=> {
-        console.log(props.StockView,props.view)
-        if (props.StockView === "block" && props.view === "block") {
+        console.log(props.sec,props.view)
+        if (props.secondarystocksearch === "block" && props.view === "block") {
             setVisible("block")
         }
         else {
             setVisible("none")
         }
-    },[props.StockView,props.view])
+    },[props.secondarystocksearch,props.view])
 
     return (
         <div style={{display:visible}}>
