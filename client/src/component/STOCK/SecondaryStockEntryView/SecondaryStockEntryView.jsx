@@ -14,6 +14,7 @@ const SecondaryStockEntryView= (props) => {
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itemid,setitemid]=useState("");
+    
 
     useEffect(()=>{
 
@@ -48,10 +49,7 @@ const SecondaryStockEntryView= (props) => {
         setbillid(data.bill_id)
         setestimatedamt(data.projected_cost)
 
-        console.log(data.stock_id)
-        console.log(data.discounted_cost)
-        console.log(data.pending_amount)
-        console.log(data.paid_amount)
+        
         if(data.discounted_cost!==null || data.discounted_cost!==undefined){
             setdiscountamt(data.discounted_cost)
         }
@@ -129,6 +127,8 @@ const SecondaryStockEntryView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
+                    <th>Stock Entry</th>
+                    <th>Cash Entry</th>
                     <th>Action</th>
                     
                 </tr>
@@ -145,6 +145,9 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
+                        
+                        <td><input type='checkbox' checked={item.stock_entry_flag === 1 ? true : false}></input></td>
+                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td><button className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         
                     </tr>

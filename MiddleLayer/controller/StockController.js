@@ -123,8 +123,8 @@ exports.StockEntry=(req,res)=>{
     }
     else{
                 query=`
-                    INSERT INTO stock (item_Type,item_Name,vendor_name,bill_id,bill_date,unit_cost,quantity,projected_cost)
-                    VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}")`
+                    INSERT INTO stock (item_Type,item_Name,vendor_name,bill_id,bill_date,unit_cost,quantity,projected_cost,stock_entry_flag)
+                    VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}",1)`
                 Database.query(query,function(error,data){
                     if(error){
 
@@ -306,7 +306,7 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
                     discounted_cost="${discountamt}",
                     pending_amount="${balamt}",
                     stock_entry_date="${cashentrydate}",
-                    stock_modified_date="${modifieddate}"
+                    stock_modified_date="${modifieddate}",cash_entry_flag=1
                 WHERE stock_id = ${itemid}`;
                 Database.query(query,function(error,data){
                     if(error){
