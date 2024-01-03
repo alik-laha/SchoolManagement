@@ -14,7 +14,7 @@ const SecondaryStockEntryView= (props) => {
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itemid,setitemid]=useState("");
-    const [disableentrybtn,setdisableentrybtn]=useState(false);
+    let disable=false;
     
 
     useEffect(()=>{
@@ -71,16 +71,82 @@ const SecondaryStockEntryView= (props) => {
         }
         if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
             setcashentrydate(data.stock_entry_date.slice(0, 10))
+            
+            //date validation start
+            // Get the current date
+            let currentDate = new Date().toISOString();
+
+            // Get the year, month, and day of the current date
+            let currentYear = currentDate.slice(0,4);
+            let currentMonth = currentDate.slice(5,7);
+            let currentDay = currentDate.slice(8,10);
+            
+
+            // Get the year, month, and day of the database date
+            let dbYear = data.stock_entry_date.slice(0,4);
+            let dbMonth = data.stock_entry_date.slice(5, 7);
+            let dbDay = data.stock_entry_date.slice(8, 10);
+           
+            // Check if the database date is one day older than the current date
+
+            if (dbYear < currentYear) 
+            {
+                // The database date is in a previous year, so it is older
+                //setdisableentrybtn(true);
+                disable=true;
+            } 
+            else if (dbYear === currentYear) 
+            {
+                // The database date is in the same year, so compare the months
+                if (dbMonth < currentMonth) 
+                {
+                // The database date is in a previous month, so it is older
+                //setdisableentrybtn(true);
+                disable=true
+                } 
+                else if (dbMonth === currentMonth) 
+                {
+                    // The database date is in the same month, so compare the days
+                    if (dbDay < currentDay ) {
+                    // The database date is more than one day before the current date, so it is older
+                    //setdisableentrybtn(true);
+                    disable=true
+                    } 
+                    //else {
+                    // // The database date is not older than one day
+                    //setdisableentrybtn(false);
+
+                      // }
+                } 
+                //else 
+                //{
+                    // The database date is in a future month, so it is not older
+                        //setdisableentrybtn(false);
+                //}
+            } 
+            //else 
+            //{
+            // The database date is in a future year, so it is not older
+            //setdisableentrybtn(false);
+            //}
+            //date validation end
+            console.log(disable)
        }
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
         }
        if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
             setmodifieddate(data.stock_modified_date.slice(0, 10))
+
+            
+            
        }
         else{
             setmodifieddate(new Date().toISOString().slice(0, 10))
         }
+
+
+        
        
      
         
@@ -148,7 +214,7 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.projected_cost}</td>
                         
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
-                        <td><button disabled={disableentrybtn} className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
+                        <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         
                     </tr>
                 ))}
@@ -198,7 +264,7 @@ const SecondaryStockEntryView= (props) => {
                     /></td>
                   
                     <td>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
+                        <button type="submit" disabled={disable} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 >Proceed
                         </button>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
