@@ -14,6 +14,7 @@ const SecondaryStockEntryView= (props) => {
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itemid,setitemid]=useState("");
+    const [disableentrybtn,setdisableentrybtn]=useState(false);
     
 
     useEffect(()=>{
@@ -127,7 +128,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
-                    <th>Stock Entry</th>
+                    
                     <th>Cash Entry</th>
                     <th>Action</th>
                     
@@ -146,9 +147,8 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
                         
-                        <td><input type='checkbox' checked={item.stock_entry_flag === 1 ? true : false}></input></td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
-                        <td><button className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
+                        <td><button disabled={disableentrybtn} className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         
                     </tr>
                 ))}
