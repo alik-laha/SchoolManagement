@@ -15,6 +15,8 @@ import StockSearch from "../STOCK/StockSearch/StockSearch.jsx";
 import SecondaryStockEntrySearch from '../STOCK/SecondaryStockEntrySearch/SecondaryStockEntrySearch.jsx'
 import SecondaryStockEntryView from '../STOCK/SecondaryStockEntryView/SecondaryStockEntryView.jsx'
 import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAllView/SecondaryStockEntryAllView.jsx'
+import ModifyStockEntrySearch from '../STOCK/ModifyStockEntrySearch/ModifyStockEntrySearch.jsx'
+import modifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -28,8 +30,10 @@ const DashBoardMain = (props) => {
   const [allItemType, setAllItemType] = useState([]);
   const [StockData,setStockData]=useState([]);
   const [secondarysearchstockdata,setsecondarysearchstockdata]=useState([]);
+  const [modifyviewstockdata,setmodifyviewstockdata]=useState([]);
   const [ViewStock,setViewStock]=useState("none")
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
+  const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
 
 
 
@@ -86,6 +90,11 @@ const handleItemType=(data)=>{
   const handleSecondaryViewStockData=(data)=>{
     setsecondarysearchstockdata(data);
   }
+  const handlemodifysearchStockData=(data)=>{
+    setmodifyviewstockdata(data);
+  }
+
+
 
   
   const stockViewShow=(data)=>{
@@ -94,6 +103,11 @@ const handleItemType=(data)=>{
 
 const secondaryStockEntryViewShow=(data)=> {
   setsecondStockEntryViewShow(data);
+
+}
+
+const modifyStockEntryShow=(data)=> {
+  setmodifyStockEntryViewShow(data);
 
 }
 
@@ -110,7 +124,9 @@ const secondaryStockEntryViewShow=(data)=> {
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
           <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
           <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
+          <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockdata={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
           <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/>
+          
 
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
@@ -120,7 +136,10 @@ const secondaryStockEntryViewShow=(data)=> {
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-
+          <modifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+          
+          
+          
         </div>
       </div>
     </>

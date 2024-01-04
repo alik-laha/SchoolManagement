@@ -1,5 +1,5 @@
 import {useState} from "react";
-const SecondaryStockEntrySearch = (props) => {
+const ModifyStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
     const [billDate,setBillDate]=useState("");
 
@@ -40,4 +40,4 @@ const SecondaryStockEntrySearch = (props) => {
         </div>
     )
 }
-export default SecondaryStockEntrySearch;
+export default ModifyStockEntrySearch;

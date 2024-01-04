@@ -31,6 +31,7 @@ const Dashboard = () => {
     const [stockView,setStockView]=useState('none')
     const [secondstockEntry,setSecondstockEntry]=useState('none')
     const [secondStockView,setSecondStockView]=useState('none')
+    const [modifySearchView,setmodifySearchView]=useState('none')
 
 
  const logoutVisiblity = () => {
@@ -80,6 +81,7 @@ if(search==='none'){
     setStockView('none')
     setSecondstockEntry('none')
     setSecondStockView("none")
+    setmodifySearchView('none')
 }
 else{
     setSearch('none')
@@ -100,6 +102,7 @@ const handaleCreateUser=()=>{
          setStockView('none')
          setSecondstockEntry('none')
          setSecondStockView("none")
+         setmodifySearchView('none')
      }
      else{
          setCreateUser("none")
@@ -120,6 +123,7 @@ const handalePublish=()=>{
          setStockView('none')
          setSecondstockEntry('none')
          setSecondStockView("none")
+         setmodifySearchView('none')
      }
      else{
          setPublish('none')
@@ -139,6 +143,7 @@ const HandleVendorCreate=()=>{
          setStockView('none')
          setSecondstockEntry('none')
          setSecondStockView("none")
+         setmodifySearchView('none')
      }
         else{
             setVendorDisplay('none')
@@ -158,6 +163,7 @@ const handaleNotice=()=>{
          setStockView('none')
          setSecondstockEntry('none')
          setSecondStockView("none")
+         setmodifySearchView('none')
      }
         else{
             setNotice('none')
@@ -176,6 +182,7 @@ const handleItemCreate=()=>{
             setStockView('none')
             setSecondstockEntry('none')
             setSecondStockView("none")
+            setmodifySearchView('none')
         }
             else{
                 setItemCreate('none')
@@ -194,6 +201,7 @@ const handleStockEntry=()=>{
             setStockView('none')
             setSecondstockEntry('none')
             setSecondStockView("none")
+            setmodifySearchView('none')
         }
             else{
                 setStockEntry('none')
@@ -211,6 +219,7 @@ const handleStockView=()=>{
             setNotice('none')
             setSecondstockEntry('none')
             setSecondStockView("none")
+            setmodifySearchView('none')
         }
             else{
                 setStockView('none')
@@ -231,6 +240,7 @@ const handleSecondStockEntrySearch=()=>{
                   setNotice('none')
                   setStockView('none')
                   setSecondStockView("none")
+                  setmodifySearchView('none')
               }
                   else{
                       setSecondstockEntry('none')
@@ -252,13 +262,35 @@ const handleSecondStockView=()=>{
                       setNotice('none')
                       setStockView('none')
                       setSecondstockEntry("none")
+                      setmodifySearchView('none')
                   }
                       else{
                           setSecondStockView('none')
                       }
     
     
-                    }              
+                    }       
+                    
+                    const handleModifySeacrch=()=>{
+                      if(modifySearchView==='none'){
+                        setmodifySearchView('block')
+                          setStockEntry('none')
+                          setItemCreate('none')
+                          setCreateUser('none')
+                          setVendorDisplay('none')
+                          setPublish('none')
+                          setSearch('none')
+                          setNotice('none')
+                          setStockView('none')
+                          setSecondstockEntry("none")
+                      }
+                          else{
+                            setmodifySearchView('none')
+                          }
+        
+        
+                        }  
+                    
               
 
   return (
@@ -289,14 +321,16 @@ const handleSecondStockView=()=>{
                  onpublish={handalePublish} onNoticeManupulation={handaleNotice}
                  onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
                  onStockEntry={handleStockEntry}
-                    onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch} onSecondStockView={handleSecondStockView}/>
+                 onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch} onSecondStockView={handleSecondStockView}
+                 onModifySeachEntry={handleModifySeacrch}/>
 
 
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}
                        Publish={publish} View={view}
                        Notice={notice} VendorCreateDisplay={vendorDisplay}
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
-                       StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView}/>
+                       StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView} 
+                       modifyStock={modifySearchView}/>
       </div>
     </div>
      
