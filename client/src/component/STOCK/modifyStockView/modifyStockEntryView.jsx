@@ -160,6 +160,9 @@ const ModifyStockEntryView= (props) => {
     const cancelEdit =() =>{
         setVisiblity('none');
         setmainsvisibility('contents');
+        setdiscountamt(0);
+        setpaidamt(0);
+        setcashentrydate(new Date().toISOString().slice(0, 10) )
     };
 
 

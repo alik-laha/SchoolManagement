@@ -154,6 +154,11 @@ const SecondaryStockEntryView= (props) => {
     const cancelEdit =() =>{
         setVisiblity('none');
         setmainsvisibility('contents');
+        setdiscountamt(0);
+        setpaidamt(0);
+        setbalamt(0);
+        setcashentrydate(new Date().toISOString().slice(0, 10));
+
     };
 
 
@@ -187,6 +192,7 @@ const SecondaryStockEntryView= (props) => {
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
+                    <th>Cash Entry</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
@@ -195,7 +201,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Quantity</th>
                     <th>Estimated Price</th>
                     
-                    <th>Cash Entry</th>
+                    
                     <th>Action</th>
                     
                 </tr>
@@ -205,6 +211,7 @@ const SecondaryStockEntryView= (props) => {
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
+                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
@@ -213,7 +220,7 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
                         
-                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
+                        
                         <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         
                     </tr>
