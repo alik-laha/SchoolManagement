@@ -16,7 +16,7 @@ import SecondaryStockEntrySearch from '../STOCK/SecondaryStockEntrySearch/Second
 import SecondaryStockEntryView from '../STOCK/SecondaryStockEntryView/SecondaryStockEntryView.jsx'
 import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAllView/SecondaryStockEntryAllView.jsx'
 import ModifyStockEntrySearch from '../STOCK/ModifyStockEntrySearch/ModifyStockEntrySearch.jsx'
-import modifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
+import ModifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -124,8 +124,8 @@ const modifyStockEntryShow=(data)=> {
           <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
           <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
           <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
-          <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockdata={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
-          <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/>
+          <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
+          {/* <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/> */}
           
 
         </div>
@@ -136,7 +136,7 @@ const modifyStockEntryShow=(data)=> {
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-          <modifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+          <ModifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           
           
           

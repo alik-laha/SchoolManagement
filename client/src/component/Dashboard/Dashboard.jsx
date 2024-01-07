@@ -271,7 +271,7 @@ const handleSecondStockView=()=>{
     
                     }       
                     
-                    const handleModifySeacrch=()=>{
+                    const handleModifySearch=()=>{
                       if(modifySearchView==='none'){
                         setmodifySearchView('block')
                           setStockEntry('none')
@@ -322,7 +322,7 @@ const handleSecondStockView=()=>{
                  onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
                  onStockEntry={handleStockEntry}
                  onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch} onSecondStockView={handleSecondStockView}
-                 onModifySeachEntry={handleModifySeacrch}/>
+                 onModifySeachEntry={handleModifySearch}/>
 
 
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}

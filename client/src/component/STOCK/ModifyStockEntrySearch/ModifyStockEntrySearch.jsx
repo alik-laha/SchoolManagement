@@ -13,7 +13,7 @@ const ModifyStockEntrySearch = (props) => {
         props.setStockData(data);
     }
     return(
-        <div className="dashbrd-40-colm" style={{display: props.SecondstockEntrySearch}}>
+        <div className="dashbrd-40-colm" style={{display: props.ModifyStockSearch}}>p
             <form onSubmit={HandleEdit}>
             <div>
                 <label>Search By Bill Id</label>

@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-const modifyStockEntryView= (props) => {
+const ModifyStockEntryView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
@@ -36,7 +36,7 @@ const modifyStockEntryView= (props) => {
         else {
             setVisible("none")
         }
-    },[props.secondarystocksearch,props.view])
+    },[props.modifyStockView,props.view])
 
     useEffect(()=>{
         setbalamt(discountamt-paidamt)
@@ -187,6 +187,7 @@ const modifyStockEntryView= (props) => {
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
+                    <th>Cash Entry</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
@@ -199,6 +200,7 @@ const modifyStockEntryView= (props) => {
                     <th>Balance Amount</th>
                     <th>Cash Entry Date</th>
                     <th>Last Modified Date</th>
+                    
                     <th>Action</th>
                     
                 </tr>
@@ -208,6 +210,7 @@ const modifyStockEntryView= (props) => {
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
+                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
@@ -218,10 +221,9 @@ const modifyStockEntryView= (props) => {
                         <td>{item.discounted_cost}</td>
                         <td>{item.paid_amount}</td>
                         <td>{item.pending_amount}</td>
-                        <td>{item.stock_entry_date}</td>
-                        <td>{item.stock_modified_date}</td>
-                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
-                        <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
+                        <td>{item.stock_entry_date !==  null ? item.stock_entry_date.slice(0,10): null}</td>
+                        <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
+                        <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Edit</button></td>
                         
                     </tr>
                 ))}
@@ -235,6 +237,7 @@ const modifyStockEntryView= (props) => {
                 <tr>
                 <th>Item Id</th>
                     <th>Bill Id</th>
+                    
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
@@ -257,7 +260,21 @@ const modifyStockEntryView= (props) => {
                     
                 <tr>
                    <td>{itemid}</td>
-                   <td>{billid}</td>
+                   <td><input type="text" value={billid} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
+                   <td>
+                        <select onChange={(e) => setrole(e.target.value)} value={role}>
+                            <option >All</option>
+                            {allRoles.map((data) => (
+                                <option value={data.roletype_name} key={data.roletype_name}>
+                                    {data.roletype_name}
+                                </option>
+                            ))}
+                        </select>
+                    </td>
+                   
+                   
+                   
+                   
                    <td>{estimatedamt}</td>
                    <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
                    <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
@@ -296,4 +313,4 @@ const modifyStockEntryView= (props) => {
         </div>
     )
 }
-export default modifyStockEntryView;
+export default ModifyStockEntryView;
