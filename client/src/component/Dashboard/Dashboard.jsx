@@ -34,6 +34,10 @@ const Dashboard = () => {
     const [modifySearchView,setmodifySearchView]=useState('none')
 
 
+    const [hostelentry,sethostelentry]=useState('none')
+    const [hostelview,sethostelview]=useState('none')
+
+
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -82,6 +86,8 @@ if(search==='none'){
     setSecondstockEntry('none')
     setSecondStockView("none")
     setmodifySearchView('none')
+    sethostelentry('none')
+    sethostelview('none')
 }
 else{
     setSearch('none')
@@ -103,6 +109,8 @@ const handaleCreateUser=()=>{
          setSecondstockEntry('none')
          setSecondStockView("none")
          setmodifySearchView('none')
+         sethostelview('none')
+         sethostelentry('none')
      }
      else{
          setCreateUser("none")
@@ -124,6 +132,8 @@ const handalePublish=()=>{
          setSecondstockEntry('none')
          setSecondStockView("none")
          setmodifySearchView('none')
+         sethostelview('none')
+         sethostelentry('none')
      }
      else{
          setPublish('none')
@@ -144,6 +154,8 @@ const HandleVendorCreate=()=>{
          setSecondstockEntry('none')
          setSecondStockView("none")
          setmodifySearchView('none')
+         sethostelview('none')
+         sethostelentry('none')
      }
         else{
             setVendorDisplay('none')
@@ -164,6 +176,8 @@ const handaleNotice=()=>{
          setSecondstockEntry('none')
          setSecondStockView("none")
          setmodifySearchView('none')
+         sethostelview('none')
+         sethostelentry('none')
      }
         else{
             setNotice('none')
@@ -183,6 +197,8 @@ const handleItemCreate=()=>{
             setSecondstockEntry('none')
             setSecondStockView("none")
             setmodifySearchView('none')
+            sethostelview('none')
+            sethostelentry('none')
         }
             else{
                 setItemCreate('none')
@@ -202,6 +218,8 @@ const handleStockEntry=()=>{
             setSecondstockEntry('none')
             setSecondStockView("none")
             setmodifySearchView('none')
+            sethostelview('none')
+            sethostelentry('none')
         }
             else{
                 setStockEntry('none')
@@ -220,6 +238,8 @@ const handleStockView=()=>{
             setSecondstockEntry('none')
             setSecondStockView("none")
             setmodifySearchView('none')
+            sethostelview('none')
+            sethostelentry('none')
         }
             else{
                 setStockView('none')
@@ -241,6 +261,9 @@ const handleSecondStockEntrySearch=()=>{
                   setStockView('none')
                   setSecondStockView("none")
                   setmodifySearchView('none')
+                  sethostelview('none')
+                  
+                  sethostelentry('none')
               }
                   else{
                       setSecondstockEntry('none')
@@ -263,6 +286,8 @@ const handleSecondStockView=()=>{
                       setStockView('none')
                       setSecondstockEntry("none")
                       setmodifySearchView('none')
+                      sethostelview('none')
+                      sethostelentry('none')
                   }
                       else{
                           setSecondStockView('none')
@@ -283,13 +308,58 @@ const handleSecondStockView=()=>{
                           setNotice('none')
                           setStockView('none')
                           setSecondstockEntry("none")
+                          sethostelview('none')
+                          sethostelentry('none')
                       }
                           else{
                             setmodifySearchView('none')
                           }
         
         
-                        }  
+                        } 
+                        
+                        const handlehostelentry=()=>{
+                          if(hostelentry==='none'){
+                            sethostelentry('block')
+                              setStockEntry('none')
+                              setItemCreate('none')
+                              setCreateUser('none')
+                              setVendorDisplay('none')
+                              setPublish('none')
+                              setSearch('none')
+                              setNotice('none')
+                              setStockView('none')
+                              setSecondstockEntry("none")
+                              sethostelview('none')
+                          }
+                              else{
+                                sethostelentry('none')
+                              }
+            
+            
+                            } 
+
+                            const handlehostelview=()=>{
+                              if(hostelview==='none'){
+                                sethostelview('block')
+                                  setStockEntry('none')
+                                  setItemCreate('none')
+                                  setCreateUser('none')
+                                  setVendorDisplay('none')
+                                  setPublish('none')
+                                  setSearch('none')
+                                  setNotice('none')
+                                  setStockView('none')
+                                  setSecondstockEntry("none")
+                                  
+                                  sethostelentry('none')
+                              }
+                                  else{
+                                    sethostelview('none')
+                                  }
+                
+                
+                                } 
                     
               
 
@@ -322,7 +392,8 @@ const handleSecondStockView=()=>{
                  onVendorCreate={HandleVendorCreate} onItemCreate={handleItemCreate}
                  onStockEntry={handleStockEntry}
                  onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch} onSecondStockView={handleSecondStockView}
-                 onModifySeachEntry={handleModifySearch}/>
+                 onModifySeachEntry={handleModifySearch}
+                 onHostelEntryCreate={handlehostelentry} onHostelEntryView={handlehostelview}/>
 
 
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}

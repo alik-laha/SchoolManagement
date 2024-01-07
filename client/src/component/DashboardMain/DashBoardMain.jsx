@@ -126,6 +126,9 @@ const modifyStockEntryShow=(data)=> {
           <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
           <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
           {/* <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/> */}
+
+
+          
           
 
         </div>
