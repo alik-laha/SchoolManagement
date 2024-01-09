@@ -8,12 +8,12 @@ const NoticeOutput=()=>{
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
     },[])
-    const handleDownload = (fileName) => {
+    const handleDownload = (filename) => {
         //const url = window.URL.createObjectURL(`/SchoolManagement/MiddleLayer/student/${fileName}`)
         const link = document.createElement("a");
         //link.href = url;
-        link.href = 'http://localhost:7000/SchoolManagement/MiddleLayer/student/${fileName}';
-        link.download = file.name;
+        link.href = `http://localhost:7000/api/v1/download?filename=${filename}`;
+        link.download = filename;
         link.click();
     };
     
@@ -29,10 +29,11 @@ const NoticeOutput=()=>{
                 {file.map((fileName, index) => (
 
                          <li key={index}>  
-                        <a onClick={()=>handleDownload(fileName)}>
+                        <button onClick={()=>handleDownload(fileName)}>
+                            {console.log(fileName)}
                             {fileName}
                             
-                        </a>
+                        </button>
                         <hr size="0.5" color='red'></hr>
                     </li>
 

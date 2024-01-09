@@ -6,10 +6,11 @@ const multer=require('multer')
 const fs = require('fs');
 const bodyParser = require('body-parser')
 router.use(bodyParser.json())
+const path = require('path');
 router.use(bodyParser.urlencoded({ extended: true }))
 
 const directoryPath ='./student';
-const directoryactiveNoticePath ='./activeNotice';
+const directoryactiveNoticePath ='../StudentNotice';
 
 router.get('/allfiles', (req, res) => {
     fs.readdir(directoryPath, (err, files) => {
@@ -58,7 +59,10 @@ router.post('/studentnotice',upload.single('file'),(req,res)=>{
     console.log("alik body",req.body)
     console.log( "main status",req.body.status)
 })
-
+router.get('/download', function(req, res){
+    const file =path.join( './student', req.query.filename);
+    res.download(file); // Set disposition and send it.
+});
 
 //login user
 router.post('/login', Login)
