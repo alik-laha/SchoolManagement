@@ -20,7 +20,7 @@ exports.Login = (req, res) => {
 
                 }
                 if (data) {
-                    if (data[0].password == pass) {
+                    if (data[0].password === pass) {
                         return res.status(200).json({
                             status: "success",
                             data: data

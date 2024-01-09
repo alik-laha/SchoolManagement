@@ -15,13 +15,7 @@ const StudentInputNotice = ({Publish}) => {
 
       axios
       .post("http://localhost:7000/api/v1/studentnotice", formData)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-
-      })
         .catch(err=>{
-            window.location.reload();
         console.log(err)
       });
     
@@ -36,10 +30,10 @@ const StudentInputNotice = ({Publish}) => {
       
       <form onSubmit={HandaleSubmit} >
          <input accept="application/pdf" style={{border:'none'}}
-          type="file" 
+          type="file"
           onChange={(e) => {
             setFile(e.target.files[0]);
-          }} 
+          }}
         /> 
         <span style={{width:'max-content', fontSize:'14px',color:'red'}}>(Only PDF Files are Allowed)</span>
         <div style={{paddingLeft:'150%'}}><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button>

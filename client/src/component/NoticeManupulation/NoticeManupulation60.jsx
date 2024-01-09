@@ -14,10 +14,10 @@ const NoticeManupulation60=(props)=>{
         console.log(fileName)
         axios.post("http://localhost:7000/api/v1/deletenotice",{fileName:fileName})
             .then((data) => {
-                console.log("done")
+                alert("file has been deleted")
             })
             .catch((error) => console.error('Error deleting files:', error));
-        window.location.reload()
+            window.location.reload();
     }
     return(
         <div style={{display:props.Publish,marginTop:'-230px'}}>

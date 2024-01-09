@@ -1,5 +1,5 @@
 import "./login.css";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
+  const [errormsg,setErrormsg]=useState("none")
   //store the pass
   const handalePass = (e) => {
     setPass(e.target.value);
@@ -46,18 +47,26 @@ const Login = () => {
   const handaleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:7000/api/v1/login", { name, pass })
-      .then((result) => {
-        if (result.data.data[0]) {
-          sessionStorage.setItem("user", result.data.data[0].roletype_name);
-          sessionStorage.setItem("name",result.data.data[0].user_name)
-          navigator("/dashboard");
-        } else {
-          console.log("invalid cradentials");
+        .post("http://localhost:7000/api/v1/login", {name, pass})
+        .then((result) => {
+          if (result.data.data[0]) {
+            sessionStorage.setItem("user", result.data.data[0].roletype_name);
+            sessionStorage.setItem("name", result.data.data[0].user_name)
+            navigator("/dashboard");
+          } else {
+            console.log("invalid cradentials");
+          }
+        })
+        .catch((err) => {
+          if (err){
+            setErrormsg("block")
+          setPass("")
+          setName("")
         }
-      })
-      .catch((err) => console.log(err));
-  };
+        });
+    setErrormsg("none")
+  }
+
 
   return (
     <div className="contain" style={{display:'inline-block'}}>
@@ -97,6 +106,7 @@ const Login = () => {
               </button>
             </section>
           </div>
+          <p style={{display:errormsg,color:"red",fontSize:"15px"}}>sumthing went wrong</p>
           <input className="dashboard-btn dashboard-btn-scss" type="submit" placeholder="Sign In" />
         </form>
       </div>

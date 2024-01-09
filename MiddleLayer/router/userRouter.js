@@ -58,6 +58,7 @@ const upload=multer({storage})
 router.post('/studentnotice',upload.single('file'),(req,res)=>{
     console.log("alik body",req.body)
     console.log( "main status",req.body.status)
+    return res.redirect('http://localhost:5173/')
 })
 router.get('/download', function(req, res){
     const file =path.join( './student', req.query.filename);
@@ -85,7 +86,6 @@ router.post('/createrole', CreateUserRole)
 
 //get all role
 router.get('/getallrole', GetUserRole)
-
 
 //delete Notice
 router.post('/deletenotice',DeleteNotice )
