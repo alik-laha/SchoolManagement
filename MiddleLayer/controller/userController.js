@@ -10,29 +10,20 @@ exports.Login = (req, res) => {
             query = `
                 SELECT *
                 FROM user
-                WHERE user_name = "${name}"`;
+                WHERE user_name = "${name}" AND password = "${pass}"`;
             Database.query(query, function (error, data) {
                 if (error) {
                     return res.status(400).json({
                         status: "failed",
                         data: "user not found"
                     });
-
                 }
                 if (data) {
-                    if (data[0].password === pass) {
                         return res.status(200).json({
                             status: "success",
                             data: data
                         });
-                    } else {
-
-                        return res.status(400).json({
-                            status: "failed",
-                            data: "wrong password"
-                        });
                     }
-                }
 
             })
 

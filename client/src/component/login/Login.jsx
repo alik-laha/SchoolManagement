@@ -54,14 +54,16 @@ const Login = () => {
             sessionStorage.setItem("name", result.data.data[0].user_name)
             navigator("/dashboard");
           } else {
-            console.log("invalid cradentials");
+            setErrormsg("block")
+            setPass("")
+            setName("")
           }
         })
         .catch((err) => {
           if (err){
             setErrormsg("block")
-          setPass("")
-          setName("")
+            setPass("")
+            setName("")
         }
         });
     setErrormsg("none")
