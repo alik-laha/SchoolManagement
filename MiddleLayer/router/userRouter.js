@@ -11,6 +11,9 @@ router.use(bodyParser.urlencoded({ extended: true }))
 
 const directoryPath ='./student';
 const directoryactiveNoticePath ='../StudentNotice';
+const moment = require('moment');
+const date = moment();
+const formattedDate = date.format('DD-MM-YYYY');
 
 router.get('/allfiles', (req, res) => {
     fs.readdir(directoryPath, (err, files) => {
@@ -48,7 +51,7 @@ const storage=multer.diskStorage({
     },
     filename:function (req,file,cb){
 
-        return cb(null,file.originalname)
+        return cb(null,formattedDate + '-' + file.originalname)
     }
 })
 const upload=multer({storage})
@@ -58,7 +61,6 @@ const upload=multer({storage})
 router.post('/studentnotice',upload.single('file'),(req,res)=>{
     console.log("alik body",req.body)
     console.log( "main status",req.body.status)
-    return res.redirect('http://localhost:5173/')
 })
 router.get('/download', function(req, res){
     const file =path.join( './student', req.query.filename);
