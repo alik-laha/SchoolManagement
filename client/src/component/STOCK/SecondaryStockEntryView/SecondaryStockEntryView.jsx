@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const SecondaryStockEntryView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
@@ -187,7 +188,8 @@ const SecondaryStockEntryView= (props) => {
 
     return (
         <div style={{display:visible}}>
-            <table className="table-60">
+
+            <table className="table-60" id="excell">
                 <thead style={{display: mainsvisibility}}>
                 <tr>
                     <th>Item Id</th>
@@ -286,6 +288,14 @@ const SecondaryStockEntryView= (props) => {
 
                 
             </table>
+            <ReactHTMLTableToExcel
+                id="alik"
+                className="download-table-xls-button"
+                table="excell"
+                filename="test"
+                sheet="tablexls"
+                buttonText="Download as XLS"
+            />
         </div>
     )
 }
