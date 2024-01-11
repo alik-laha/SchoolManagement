@@ -16,7 +16,6 @@ const NoticeOutput=()=>{
         link.download = filename;
         link.click();
     };
-    
 
     return(
         <div className="noticeboard-main">
@@ -28,10 +27,11 @@ const NoticeOutput=()=>{
             <ul className="cssmarquee">
                 {file.map((fileName, index) => (
 
-                         <li key={index}>  
+                         <li key={index}>
                         <button onClick={()=>handleDownload(fileName)}>
-                            {console.log(fileName)}
-                            {fileName}
+                            {
+                                fileName.slice(0,-15)
+                            }
                             
                         </button>
                         <hr size="0.5" color='red'></hr>

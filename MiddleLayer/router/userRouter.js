@@ -51,7 +51,7 @@ const storage=multer.diskStorage({
     },
     filename:function (req,file,cb){
 
-        return cb(null,formattedDate + '-' + file.originalname)
+        return cb(null,file.originalname+"-"+formattedDate)
     }
 })
 const upload=multer({storage})

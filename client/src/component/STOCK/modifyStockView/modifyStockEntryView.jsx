@@ -136,7 +136,6 @@ const ModifyStockEntryView= (props) => {
             //setdisableentrybtn(false);
             //}
             //date validation end
-            console.log(disable)
        }
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
