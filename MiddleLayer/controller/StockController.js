@@ -256,18 +256,22 @@ exports.DeleteItem=(req,res)=>{
 // get secondary stock entry
 exports.GetSecondaryStockEntry=(req,res)=>{
 
-    const{billDate,billId}=req.body
+    const{fromDate,billId,toDate}=req.body
 
-        if(billId  && !billDate ){
+        if(billId  && !fromDate ){
             query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
         }
        
-        else if(billDate && !billId ){
-            query=`SELECT * FROM stock WHERE bill_date REGEXP "${billDate}" `
+        else if(fromDate && toDate && !billId ){
+            query=`SELECT *
+                   FROM stock
+                   WHERE bill_date BETWEEN 'fromDate' AND 'toDate'; `
         }
   
-        else if(billId && billDate){
-            query=`SELECT * FROM stock WHERE WHERE bill_id REGEXP "${billId}" AND bill_date REGEXP "${billDate}"`
+        else if(billId && fromDate && toDate){
+            query=`SELECT *
+                   FROM stock
+                   WHERE bill_date BETWEEN 'fromDate' AND 'toDate' AND WHERE bill_id REGEXP "${billId}"; `
         }
         else{
             query=`SELECT * FROM stock`
@@ -277,7 +281,7 @@ exports.GetSecondaryStockEntry=(req,res)=>{
         if(error){
             return res.status(400).json({
                 status:"error at getting stock",
-                message:error
+                message:fromDate,toDate
             })
         }
         if(data){
