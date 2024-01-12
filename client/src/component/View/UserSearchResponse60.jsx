@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const UserSearchResponse60=(props)=>{
     const [allData,setAllData]=useState([])
@@ -12,7 +12,26 @@ const UserSearchResponse60=(props)=>{
     const [password, setpassword] = useState("");
     const [mainsvisibility,setmainsvisibility]=useState("contents")
     const [allRoles, setAllRoles] = useState([]);
+    const [passVisi, setPassVisi] = useState("password");
 
+    let change;
+    if (passVisi === "password") {
+        change = <FaEye />;
+    } else {
+        change = <FaEyeSlash />;
+    }
+    const passwordSee = (e) => {
+        e.preventDefault();
+        if (!password) {
+            setPassVisi("password");
+        } else {
+            if (passVisi === "password") {
+                setPassVisi("text");
+            } else {
+                setPassVisi("password");
+            }
+        }
+    }
     useEffect(() => {
         if(props.data!==undefined && props.data.length>0){
             setView(props.data)
@@ -143,8 +162,25 @@ const UserSearchResponse60=(props)=>{
                         </select>
                     </td>
                     <td>
-                        <input type="text" value={password} onChange={(e) => setpassword(e.target.value)}
-                               required={true}/>
+                        <div className="username-container Password" style={{marginBottom: '40px'}}>
+                            <section style={{display: "flex"}}>
+                                <input
+                                    type={passVisi}
+                                    placeholder="Password"
+                                    className="input-login-username"
+                                    value={password}
+                                    onChange={(e)=>{
+                                        e.target.value
+                                    }} style={{width: '85%'}}
+                                />
+                                <button
+                                    onClick={passwordSee}
+                                    className=" input-login-username" style={{width: '15%'}}
+                                >
+                                    {change}
+                                </button>
+                            </section>
+                        </div>
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
