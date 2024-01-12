@@ -2,7 +2,7 @@ import {useState} from "react";
 const SecondaryStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
     const [fromDate,setFromDate]=useState("");
-    const [toDate,setToDate]=useState("")
+    const [toDate,setToDate]=useState(new Date().toISOString().slice(0, 10))
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={

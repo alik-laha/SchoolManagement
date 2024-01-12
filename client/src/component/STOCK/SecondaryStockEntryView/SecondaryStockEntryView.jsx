@@ -273,12 +273,12 @@ const SecondaryStockEntryView= (props) => {
                          required readOnly
                     /></td>
                   
-                    <td>
+                    <td style={{display:'flex'}}>
                         <button type="submit" disabled={disable} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
-                                >Proceed
+                                > Proceed
                         </button>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                onClick={cancelEdit}>Cancel
+                                onClick={cancelEdit}> Back
                         </button>
                     </td>
 
