@@ -3,6 +3,8 @@ import axios from "axios";
 const ViewAllVendor=(props)=>{
     const [allVendor,setAllVendor]=useState([])
     const [view,setView]=useState("none")
+
+
     useEffect(()=>{
       axios.post("http://localhost:7000/api/v1/stock/getallvendor")
         .then(res=>{
@@ -11,7 +13,7 @@ const ViewAllVendor=(props)=>{
         .catch(err=>{
             console.log(err)
         })
-    },[])
+    },[props.View])
 
     const handleDelete = (vendorId) => {
         axios
@@ -23,6 +25,7 @@ const ViewAllVendor=(props)=>{
                 console.log(error);
             });
         alert("Vendor Deleted Successfully")
+        setView("none")
     }
     useEffect(()=>{
         if(props.createView==="block" && props.View==="block"){

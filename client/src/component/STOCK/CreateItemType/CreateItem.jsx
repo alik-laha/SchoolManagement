@@ -10,10 +10,8 @@ const CreateItem = (props) => {
             item:item
         }).then((response)=>{
             setItem("")
-            alert(`New item added with this Name ${item}`)
-            window.location.reload();
-
         })
+        alert(`New item added with this Name ${item}`)
 
     }
 

@@ -8,7 +8,7 @@ const ViewAllItem=(props)=>{
             .then(res=>{
                 setAllItem(res.data.data)
             })
-    },[])
+    },[View])
     useEffect(() => {
         if(props.itemCreateView==="block" && props.View==="block"){
            setView("block")
@@ -26,7 +26,8 @@ const ViewAllItem=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        window.location.reload();
+        alert("Item Deleted Successfully")
+        setView("none")
     }
     return(
         <div style={{display:View}}>
