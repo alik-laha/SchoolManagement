@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import axios from "axios";
 
 const StudentInputNotice = ({Publish}) => {
   const [file, setFile] = useState(null);
- 
+  const fileRef=useRef();
 
+
+
+  const handleReset = () => {
+    fileRef.current.value = null;
+};
 
   const HandaleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +28,8 @@ const StudentInputNotice = ({Publish}) => {
       });
 
       alert("Notice Uploaded Successfully")
-      setFile(null)
+      //setFile(null)
+      handleReset();
 
   };
   return (
@@ -33,7 +39,7 @@ const StudentInputNotice = ({Publish}) => {
       <label>Institute Notice Upload </label>
       
       <form onSubmit={HandaleSubmit} >
-         <input accept="application/pdf" style={{border:'none'}}
+         <input ref={fileRef} accept="application/pdf" style={{border:'none'}}
           type="file"
           onChange={(e) => {
             setFile(e.target.files[0]);
