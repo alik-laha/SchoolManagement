@@ -23,6 +23,7 @@ const StudentInputNotice = ({Publish}) => {
       });
 
       alert("Notice Uploaded Successfully")
+      setFile(null)
 
   };
   return (
