@@ -8,7 +8,9 @@ const ViewAllVendor=(props)=>{
         .then(res=>{
            setAllVendor(res.data.data)
         })
-
+        .catch(err=>{
+            console.log(err)
+        })
     },[])
 
     const handleDelete = (vendorId) => {
@@ -20,7 +22,7 @@ const ViewAllVendor=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        window.location.reload();
+        alert("Vendor Deleted Successfully")
     }
     useEffect(()=>{
         if(props.createView==="block" && props.View==="block"){

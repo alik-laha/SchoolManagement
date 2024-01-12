@@ -8,10 +8,8 @@ const CreateVendor = (props) => {
     const handleCreateVendor = () => {
         axios.post("http://localhost:7000/api/v1/stock/createvendor",{
             vendor:vendor
-        }).then((response)=>{
-            alert(`Vendor created with Vendor Name ${vendor}`)
-            window.location.reload();
         })
+        alert(`Vendor created with Vendor Name ${vendor}`)
 
     }
     return(
