@@ -31,12 +31,12 @@ const StockView= (props) => {
                <ReactHTMLTableToExcel
                 id="alik"
                 className="dashboard-btn btn-warning excel-btn"
-                table="excell"
-                filename="test"
+                table="primary-stock-view"
+                filename="primary-stock-excel-report"
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
-            <table className="table-60">
+            <table className="table-60" id="primary-stock-view">
                 <thead>
                 <tr>
                     <th>Item Id</th>

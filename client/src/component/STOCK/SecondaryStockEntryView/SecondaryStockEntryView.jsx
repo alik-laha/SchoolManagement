@@ -190,7 +190,7 @@ const SecondaryStockEntryView= (props) => {
     return (
         <div style={{display:visible}}>
          
-            <table className="table-60" id="excell">
+            <table className="table-60">
                 <thead style={{display: mainsvisibility}}>
                 <tr>
                     <th>Item Id</th>
