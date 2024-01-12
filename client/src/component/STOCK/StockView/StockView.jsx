@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import axios from "axios";
 const StockView= (props) => {
 
@@ -27,6 +28,14 @@ const StockView= (props) => {
 
     return (
         <div style={{display:visible}}>
+               <ReactHTMLTableToExcel
+                id="alik"
+                className="dashboard-btn btn-warning excel-btn"
+                table="excell"
+                filename="test"
+                sheet="tablexls"
+                buttonText="Excel Import"
+            />
             <table className="table-60">
                 <thead>
                 <tr>
