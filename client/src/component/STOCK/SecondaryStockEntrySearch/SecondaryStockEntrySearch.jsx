@@ -26,10 +26,10 @@ const SecondaryStockEntrySearch = (props) => {
                     onChange={(e) => setBillid(e.target.value)}
                 />
             </div>
-            <div>
-                <lable>Search By Bill Date</lable>
+           
+                
                 <div>
-                <lable>From</lable>
+                <label>From Date</label>
                 <input
                     type="date"
                     placeholder="name"
@@ -37,8 +37,9 @@ const SecondaryStockEntrySearch = (props) => {
                     onChange={(e) => setFromDate(e.target.value)}
                 />
                 </div>
+                
                 <div>
-                <lable>To</lable>
+                <label>To Date</label>
                 <input
                     type="date"
                     placeholder="name"
@@ -46,7 +47,7 @@ const SecondaryStockEntrySearch = (props) => {
                     onChange={(e)=>setToDate(e.target.value)}
                 />
                 </div>
-            </div>
+            
            
                         <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 

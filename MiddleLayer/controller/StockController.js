@@ -265,13 +265,13 @@ exports.GetSecondaryStockEntry=(req,res)=>{
         else if(fromDate && toDate && !billId ){
             query=`SELECT *
                    FROM stock
-                   WHERE bill_date BETWEEN 'fromDate' AND 'toDate'; `
+                   WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}"; `
         }
   
         else if(billId && fromDate && toDate){
             query=`SELECT *
                    FROM stock
-                   WHERE bill_date BETWEEN 'fromDate' AND 'toDate' AND WHERE bill_id REGEXP "${billId}"; `
+                   WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}" AND WHERE bill_id REGEXP "${billId}"; `
         }
         else{
             query=`SELECT * FROM stock`
