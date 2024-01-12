@@ -34,7 +34,6 @@ const UserSearchResponse60=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        window.location.reload();
     };
 
     const cancelEdit =() =>{
