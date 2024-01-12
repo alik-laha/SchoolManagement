@@ -161,7 +161,7 @@ const SideBar = (props) => {
       { setdropArrowfaculty("-");
         setdropArrowuser("+");
         setdropArrowNotc("+")
-        setdropArrowstock("-")
+        setdropArrowstock("+")
         setdropArrowhostel("+")
         setdropArrowstudents("+")
       }
@@ -184,7 +184,7 @@ const SideBar = (props) => {
       { setdropArrowstudents("-");
         setdropArrowuser("+");
         setdropArrowNotc("+")
-        setdropArrowstock("-")
+        setdropArrowstock("+")
         setdropArrowhostel("+")
         setdropArrowfaculty("+")
       }
@@ -207,7 +207,7 @@ const SideBar = (props) => {
       { setdropArrowhostel("-");
         setdropArrowuser("+");
         setdropArrowNotc("+")
-        setdropArrowstock("-")
+        setdropArrowstock("+")
         setdropArrowstudents("+")
         setdropArrowfaculty("+")
       }
