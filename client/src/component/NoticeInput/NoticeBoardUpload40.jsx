@@ -15,16 +15,14 @@ const StudentInputNotice = ({Publish}) => {
 
       axios
       .post("http://localhost:7000/api/v1/studentnotice", formData).then((res) => {
-        if(res.status=='success'){
-          alert("Notice Uploaded Successfully")
-        }
+          console.log("file send")
         
     })
         .catch(err=>{
         console.log(err)
       });
-    
 
+      alert("Notice Uploaded Successfully")
 
   };
   return (
