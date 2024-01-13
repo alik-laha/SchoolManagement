@@ -1,5 +1,7 @@
 const Database = require('../Config/Dbconnection')
 
+
+//create bed
 exports.CreateBed= (req, res) => {
     try{
         let{floor,room,totalbed,bulding}=req.body
@@ -22,6 +24,23 @@ exports.CreateBed= (req, res) => {
         console.log(err)
     }
 
+}
 
+//get bed
+exports.GetBed= (req, res) => {
+    try{
+        let query = `SELECT * FROM bed_availability`
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                return res.status(200).json({result})
+            }
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
 
 }
