@@ -21,21 +21,21 @@ const Dashboard = () => {
  const [createUser,setCreateUser]=useState("none")
  const [publish,setPublish]=useState('none')
  const [search,setSearch]=useState("none")
-    const [view,setView]=useState('none')
-    const [notice,setNotice]=useState('none')
+ const [view,setView]=useState('none')
+ const [notice,setNotice]=useState('none')
 
 
-    const [vendorDisplay,setVendorDisplay]=useState("none")
-    const[itemCreate,setItemCreate]=useState('none')
-    const [stockEntry,setStockEntry]=useState('none')
-    const [stockView,setStockView]=useState('none')
-    const [secondstockEntry,setSecondstockEntry]=useState('none')
-    const [secondStockView,setSecondStockView]=useState('none')
-    const [modifySearchView,setmodifySearchView]=useState('none')
+ const [vendorDisplay,setVendorDisplay]=useState("none")
+ const [itemCreate,setItemCreate]=useState('none')
+ const [stockEntry,setStockEntry]=useState('none')
+ const [stockView,setStockView]=useState('none')
+ const [secondstockEntry,setSecondstockEntry]=useState('none')
+ const [secondStockView,setSecondStockView]=useState('none')
+ const [modifySearchView,setmodifySearchView]=useState('none')
 
 
-    const [hostelentry,sethostelentry]=useState('none')
-    const [hostelview,sethostelview]=useState('none')
+ const [bedentry,setbedentry]=useState('none')
+ const [hostelview,sethostelview]=useState('none')
 
 
  const logoutVisiblity = () => {
@@ -86,7 +86,8 @@ if(search==='none'){
     setSecondstockEntry('none')
     setSecondStockView("none")
     setmodifySearchView('none')
-    sethostelentry('none')
+    setbedentry('none')
+    setbedentry('none')
     sethostelview('none')
 }
 else{
@@ -110,7 +111,7 @@ const handaleCreateUser=()=>{
          setSecondStockView("none")
          setmodifySearchView('none')
          sethostelview('none')
-         sethostelentry('none')
+         setbedentry('none')
      }
      else{
          setCreateUser("none")
@@ -133,7 +134,7 @@ const handalePublish=()=>{
          setSecondStockView("none")
          setmodifySearchView('none')
          sethostelview('none')
-         sethostelentry('none')
+         setbedentry('none')
      }
      else{
          setPublish('none')
@@ -155,7 +156,7 @@ const HandleVendorCreate=()=>{
          setSecondStockView("none")
          setmodifySearchView('none')
          sethostelview('none')
-         sethostelentry('none')
+         setbedentry('none')
      }
         else{
             setVendorDisplay('none')
@@ -177,7 +178,7 @@ const handaleNotice=()=>{
          setSecondStockView("none")
          setmodifySearchView('none')
          sethostelview('none')
-         sethostelentry('none')
+         setbedentry('none')
      }
         else{
             setNotice('none')
@@ -198,7 +199,7 @@ const handleItemCreate=()=>{
             setSecondStockView("none")
             setmodifySearchView('none')
             sethostelview('none')
-            sethostelentry('none')
+            setbedentry('none')
         }
             else{
                 setItemCreate('none')
@@ -219,7 +220,7 @@ const handleStockEntry=()=>{
             setSecondStockView("none")
             setmodifySearchView('none')
             sethostelview('none')
-            sethostelentry('none')
+            setbedentry('none')
         }
             else{
                 setStockEntry('none')
@@ -239,7 +240,7 @@ const handleStockView=()=>{
             setSecondStockView("none")
             setmodifySearchView('none')
             sethostelview('none')
-            sethostelentry('none')
+            setbedentry('none')
         }
             else{
                 setStockView('none')
@@ -262,8 +263,8 @@ const handleSecondStockEntrySearch=()=>{
                   setSecondStockView("none")
                   setmodifySearchView('none')
                   sethostelview('none')
-                  
-                  sethostelentry('none')
+
+                  setbedentry('none')
               }
                   else{
                       setSecondstockEntry('none')
@@ -287,7 +288,7 @@ const handleSecondStockView=()=>{
                       setSecondstockEntry("none")
                       setmodifySearchView('none')
                       sethostelview('none')
-                      sethostelentry('none')
+                      setbedentry('none')
                   }
                       else{
                           setSecondStockView('none')
@@ -309,7 +310,7 @@ const handleSecondStockView=()=>{
                           setStockView('none')
                           setSecondstockEntry("none")
                           sethostelview('none')
-                          sethostelentry('none')
+                          setbedentry('none')
                       }
                           else{
                             setmodifySearchView('none')
@@ -318,9 +319,9 @@ const handleSecondStockView=()=>{
         
                         } 
                         
-                        const handlehostelentry=()=>{
-                          if(hostelentry==='none'){
-                            sethostelentry('block')
+                        const handlebedentry=()=>{
+                          if(bedentry==='none'){
+                            setbedentry('block')
                               setStockEntry('none')
                               setItemCreate('none')
                               setCreateUser('none')
@@ -333,7 +334,7 @@ const handleSecondStockView=()=>{
                               sethostelview('none')
                           }
                               else{
-                                sethostelentry('none')
+                                setbedentry('none')
                               }
             
             
@@ -393,7 +394,7 @@ const handleSecondStockView=()=>{
                  onStockEntry={handleStockEntry}
                  onStockView={handleStockView} onSecondStockEntry={handleSecondStockEntrySearch} onSecondStockView={handleSecondStockView}
                  onModifySeachEntry={handleModifySearch}
-                 onHostelEntryCreate={handlehostelentry} onHostelEntryView={handlehostelview}/>
+                 onCreatebed={handlebedentry} onHostelEntryView={handlehostelview}/>
 
 
         <DashBoardMain right={rightDashbrd} Search={search} createUser={createUser}
@@ -401,7 +402,9 @@ const handleSecondStockView=()=>{
                        Notice={notice} VendorCreateDisplay={vendorDisplay}
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
                        StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView} 
-                       modifyStock={modifySearchView}/>
+                       modifyStock={modifySearchView} createbed={bedentry}
+        />
+
       </div>
     </div>
      
