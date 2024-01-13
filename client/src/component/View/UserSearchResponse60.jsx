@@ -170,7 +170,7 @@ const UserSearchResponse60=(props)=>{
                                     className="input-login-username"
                                     value={password}
                                     onChange={(e)=>{
-                                        e.target.value
+                                       setpassword( e.target.value)
                                     }} style={{width: '85%'}}
                                 />
                                 <button

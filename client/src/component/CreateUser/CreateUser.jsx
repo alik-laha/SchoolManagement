@@ -13,7 +13,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
     e.preventDefault();
     axios.post("http://localhost:7000/api/v1/createuser", {name,password,role,dOB}).then((res) => {
       alert("User Created Successfully");
-      if(res.status=='success' && suceessflag=='none'){
+      if(res.status==='success' && suceessflag==='none'){
         setsuceessflag('block');
       }
         setName("");
