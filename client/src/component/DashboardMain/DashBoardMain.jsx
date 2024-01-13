@@ -18,6 +18,7 @@ import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAllView/Seco
 import ModifyStockEntrySearch from '../STOCK/ModifyStockEntrySearch/ModifyStockEntrySearch.jsx'
 import ModifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
 import CreateBed40 from "../HOSTEL/createBed/CreateBed40.jsx";
+import ViewBedStatus60 from "../HOSTEL/ViewBed/ViewBedStatus60.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -142,7 +143,7 @@ const modifyStockEntryShow=(data)=> {
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
           <ModifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
-          
+          <ViewBedStatus60 viewbed={props.viewbed}/>
           
           
         </div>

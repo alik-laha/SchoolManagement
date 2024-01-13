@@ -42,8 +42,8 @@ const StockSearch = (props) => {
                 <label>Search by Vendor Name</label>
                 <select onChange={(e) => setVendorName(e.target.value)}>
                     <option value="">All</option>
-                    {props.Vendor.map((data) => (
-                        <option value={data.vendor_name} key={data.vendor_id}>
+                    {props.Vendor.map((data,index) => (
+                        <option value={data.vendor_name} key={index}>
                             {data.vendor_name}
                         </option>
                     ))}
