@@ -5,7 +5,7 @@ const ViewBedStatus60 = (props) => {
     const [bedData, setBedData] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:7000/api/v1/hostel/viewbed").then((res) => {
+        axios.post("http://localhost:7000/api/v1/hostel/searchBed").then((res) => {
             setBedData(res.data.result)
         }).catch((err) => {
             console.log(err);
@@ -23,6 +23,7 @@ const ViewBedStatus60 = (props) => {
                             <th>Room Number</th>
                             <th>Total Bed</th>
                             <th>Available Bed</th>
+                            <th>Occupied Bed</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,7 @@ const ViewBedStatus60 = (props) => {
                                 <td>{item.room_no}</td>
                                 <td>{item.total_bed}</td>
                                 <td>{item.available_bed}</td>
+                                <td>{item.occupied_bed}</td>
                             </tr>
                         ))}
                     </tbody>
