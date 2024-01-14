@@ -17,7 +17,7 @@ const BedSearch= (props) => {
                     <label>
                     Search By Room No.
                     </label>
-                    <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)} value={search} />
+                    <input type="text" placeholder="Room No." onChange={(e)=>setSearch(e.target.value)} value={search} />
                     </div> 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                     {/* <input type="submit" value="Search" /> */}
