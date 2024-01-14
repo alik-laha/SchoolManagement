@@ -6,10 +6,10 @@ const ViewBedStatus60 = (props) => {
     const [mainView, setMainView] = useState("block");
     const [editView, setEditView] = useState("none");
     const [editData, setEditData] = useState({});
-    const [building, setBuilding] = useState("");
+    const [bulding, setBuilding] = useState("");
     const [floor, setFloor] = useState("");
     const [room, setRoom] = useState("");
-    const [total_bed, setTotal_bed] = useState("");
+    const [totalbed, setTotal_bed] = useState("");
 
 
     useEffect(() => {
@@ -35,6 +35,27 @@ const ViewBedStatus60 = (props) => {
             .post("http://localhost:7000/api/v1/hostel/deletebed",{id} )
             .then((res) => {
                 setView("none");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+    const handaleCancel = () => {
+        console.log("cancel")
+        setMainView("block");
+        setEditView("none");
+        setEditData({})
+        setTotal_bed("")
+        setFloor("")
+        setRoom("")
+        setBuilding("")
+    }
+    const handaleUpdate = (id) => {
+        axios
+            .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
+            .then((res) => {
+                setEditView("none");
+                setView("none")
             })
             .catch((error) => {
                 console.log(error);
@@ -79,7 +100,7 @@ const ViewBedStatus60 = (props) => {
                             <input type="text" placeholder="Id" value={editData.id} readOnly />
                         </td>
                         <td>
-                            <input type="text" placeholder="Building" value={building} onChange={(e)=>setBuilding(e.target.value)} />
+                            <input type="text" placeholder="Building" value={bulding} onChange={(e)=>setBuilding(e.target.value)} />
                         </td>
                         <td>
                             <input type="text" placeholder="Floor" value={floor} onChange={(e)=>setFloor(e.target.value)} />
@@ -88,13 +109,17 @@ const ViewBedStatus60 = (props) => {
                             <input type="text" placeholder="Room Number" value={room} onChange={(e)=>setRoom(e.target.value)} />
                         </td>
                         <td>
-                            <input type="text" placeholder="Total Bed" value={total_bed} onChange={(e)=>setTotal_bed(e.target.value)} />
+                            <input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotal_bed(e.target.value)} />
                         </td>
                         <td>
                             <input type="text" placeholder="Available Bed" value={editData.available_bed} readOnly />
                         </td>
                         <td>
                             <input type="text" placeholder="Occupied Bed" value={editData.occupied_bed} readOnly />
+                        </td>
+                        <td>
+                            <button onClick={handaleCancel}>Cancel</button>
+                            <button onClick={()=>handaleUpdate(editData.id)}>update</button>
                         </td>
                     </tr>
                     </tbody>
