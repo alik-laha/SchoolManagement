@@ -54,3 +54,31 @@ exports.GetBed= (req, res) => {
     }
 
 }
+
+//update bed
+
+
+
+//delete bed
+exports.DeleteBed= (req, res) => {
+    try{
+        const {id}=req.body
+        if(!id){
+            return res.status(400).json({msg:"Please fill all fields"})
+        }
+        else{
+            let query = `DELETE FROM bed_availability WHERE id='${id}'`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    return res.status(200).json({msg:"Bed Deleted Successfully"})
+                }
+            })
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+}
