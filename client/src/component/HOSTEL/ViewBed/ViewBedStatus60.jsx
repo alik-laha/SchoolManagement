@@ -2,18 +2,21 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 const ViewBedStatus60 = (props) => {
-    const [bedData, setBedData] = useState([]);
+    const [view, setView] = useState("none");
+
 
     useEffect(() => {
-        axios.post("http://localhost:7000/api/v1/hostel/searchBed").then((res) => {
-            setBedData(res.data.result)
-        }).catch((err) => {
-            console.log(err);
-        });
-    },[])
+       if(props.viewbed==="block" && props.BedData.length>0){
+              setView("block")
+       }
+       else{
+           setView("none")
+       }
+
+    }, [props.viewbed,props.BedData]);
     return(
         <>
-            <div style={{display:props.viewbed}}>
+            <div style={{display:view}}>
                 <table>
                     <thead>
                         <tr>
@@ -27,7 +30,7 @@ const ViewBedStatus60 = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {bedData.map((item) => (
+                        {props.BedData.map((item) => (
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.building}</td>

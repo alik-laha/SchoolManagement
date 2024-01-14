@@ -1,5 +1,6 @@
 import CreateUser from "../CreateUser/CreateUser";
 import { useState,useEffect } from "react";
+import axios from "axios";
 import UserSearchquery40 from "../SearchBars/UserSearchquery40.jsx";
 import StudentInputNotice from "../NoticeInput/NoticeBoardUpload40.jsx";
 import '../Dashboard/Dashboard.css'
@@ -19,6 +20,7 @@ import ModifyStockEntrySearch from '../STOCK/ModifyStockEntrySearch/ModifyStockE
 import ModifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
 import CreateBed40 from "../HOSTEL/createBed/CreateBed40.jsx";
 import ViewBedStatus60 from "../HOSTEL/ViewBed/ViewBedStatus60.jsx";
+import SearchBed from "../HOSTEL/ViewBed/searchBed.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -36,7 +38,7 @@ const DashBoardMain = (props) => {
   const [ViewStock,setViewStock]=useState("none")
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
-
+  const [bedData, setBedData] = useState([]);
 
 
   const getdata = (data) => {
@@ -112,6 +114,12 @@ const modifyStockEntryShow=(data)=> {
   setmodifyStockEntryViewShow(data);
 
 }
+  const handalesearchBed=(room)=>{
+    axios.post("http://localhost:7000/api/v1/hostel/searchBed",{room}).then((res)=>{
+      setBedData(res.data.result)
+
+    })
+  }
 
   return (
     <>
@@ -128,6 +136,7 @@ const modifyStockEntryShow=(data)=> {
           <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
           <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
           <CreateBed40 createbed={props.createbed}/>
+          <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           {/* <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/> */}
 
 
@@ -143,7 +152,7 @@ const modifyStockEntryShow=(data)=> {
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
           <ModifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
-          <ViewBedStatus60 viewbed={props.viewbed}/>
+          <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           
           
         </div>

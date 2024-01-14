@@ -38,7 +38,7 @@ exports.GetBed= (req, res) => {
         else{
             query = `SELECT *
                          FROM bed_availability
-                         WHERE room_no='${room}'`
+                         WHERE room_no regexp '${room}'`
         }
         Database.query(query,(err,result)=>{
             if(err){
