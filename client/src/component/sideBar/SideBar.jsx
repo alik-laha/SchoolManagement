@@ -278,8 +278,8 @@ const SideBar = (props) => {
          {/* Hostel */}
          <span onClick={hostelVisiblity} className="user" style={{ display: hostelAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>
         <div style={{ display: hostelVisi }}>
-        <div className="Items" style={{ display: hostelAdmin }} onClick={props.onCreatebed}>&#x3e;&nbsp;&nbsp;Create bed Entry</div>
-            <div className="Items" style={{ display: hostelAdmin }} onClick={props.onViewBedStatus}>&#x3e;&nbsp;&nbsp;View bed Status</div>
+        <div className="Items" style={{ display: hostelAdmin }} onClick={props.onCreatebed}>&#x3e;&nbsp;&nbsp;Hostel Bed Entry</div>
+            <div className="Items" style={{ display: hostelAdmin }} onClick={props.onViewBedStatus}>&#x3e;&nbsp;&nbsp;Bed Availability Status</div>
             <div className="Items" style={{ display: hostelAdmin }} onClick={props.onHostelEntryCreate}>&#x3e;&nbsp;&nbsp;Create/update Hostel Entry</div>
             <div className="Items" style={{ display: hostelAdmin }} onClick={props.onHostelEntryView} >&#x3e;&nbsp;&nbsp;View Hostel Entry</div>
         </div>

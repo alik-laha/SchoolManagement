@@ -23,7 +23,7 @@ const CreateBed40 = (props) => {
     }
     return (
         <>
-            <div style={{display:props.createbed}}>
+            <div className="dashbrd-40-colm" style={{display:props.createbed}}>
                 <form onSubmit={handaleSubmit}>
                     <div>
                         <label>Bulding</label>
@@ -42,7 +42,8 @@ const CreateBed40 = (props) => {
                         <label>Total Bed</label>
                         <input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotalBed(e.target.value)} required/>
                     </div>
-                    <input type="submit" value="Submit"/>
+                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                    {/* <input className="dashboard-btn dashboard-btn-scss" type="submit" value="Submit"/> */}
                 </form>
             </div>
         </>
