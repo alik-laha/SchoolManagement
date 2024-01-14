@@ -15,7 +15,7 @@ const SecondaryStockEntryView= (props) => {
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itemid,setitemid]=useState("");
-    let disable=false;
+    const [disableedit,setdisabledit]=useState(true)
     
 
     useEffect(()=>{
@@ -71,20 +71,16 @@ const SecondaryStockEntryView= (props) => {
         else{
             setbalamt(0)
         }
+
         if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
             setcashentrydate(data.stock_entry_date.slice(0, 10))
             
             //date validation start
-            // Get the current date
-            let currentDate = new Date().toISOString();
 
-            // Get the year, month, and day of the current date
+            let currentDate = new Date().toISOString();
             let currentYear = currentDate.slice(0,4);
             let currentMonth = currentDate.slice(5,7);
             let currentDay = currentDate.slice(8,10);
-            
-
-            // Get the year, month, and day of the database date
             let dbYear = data.stock_entry_date.slice(0,4);
             let dbMonth = data.stock_entry_date.slice(5, 7);
             let dbDay = data.stock_entry_date.slice(8, 10);
@@ -94,8 +90,7 @@ const SecondaryStockEntryView= (props) => {
             if (dbYear < currentYear) 
             {
                 // The database date is in a previous year, so it is older
-                //setdisableentrybtn(true);
-                disable=true;
+                setdisabledit(true);
             } 
             else if (dbYear === currentYear) 
             {
@@ -103,36 +98,34 @@ const SecondaryStockEntryView= (props) => {
                 if (dbMonth < currentMonth) 
                 {
                 // The database date is in a previous month, so it is older
-                //setdisableentrybtn(true);
-                disable=true
+                setdisabledit(true)
                 } 
                 else if (dbMonth === currentMonth) 
                 {
                     // The database date is in the same month, so compare the days
                     if (dbDay < currentDay ) {
                     // The database date is more than one day before the current date, so it is older
-                    //setdisableentrybtn(true);
-                    disable=true
+                    setdisabledit(true)
                     } 
-                    //else {
-                    // // The database date is not older than one day
-                    //setdisableentrybtn(false);
+                    else {
+                    // The database date is not older than one day
+                    setdisabledit(false);
 
-                      // }
+                     }
                 } 
-                //else 
-                //{
+                else 
+                {
                     // The database date is in a future month, so it is not older
-                        //setdisableentrybtn(false);
-                //}
+                    setdisabledit(false);
+                }
             } 
-            //else 
-            //{
+            else 
+            {
             // The database date is in a future year, so it is not older
-            //setdisableentrybtn(false);
-            //}
+            setdisabledit(false);
+            }
             //date validation end
-            console.log(disable)
+            console.log(disableedit)
        }
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
@@ -160,6 +153,7 @@ const SecondaryStockEntryView= (props) => {
         setbalamt(0);
         setcashentrydate(new Date().toISOString().slice(0, 10));
         setmodifieddate(new Date().toISOString().slice(0, 10));
+        setdisabledit(false);
     };
 
 
@@ -273,7 +267,7 @@ const SecondaryStockEntryView= (props) => {
                     /></td>
                   
                     <td style={{display:'flex'}}>
-                        <button type="submit" disabled={disable} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
+                        <button type="submit" disabled={disableedit} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 > Proceed
                         </button>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"

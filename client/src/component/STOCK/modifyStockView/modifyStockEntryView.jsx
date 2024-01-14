@@ -18,7 +18,9 @@ const ModifyStockEntryView= (props) => {
     const [itemid,setitemid]=useState("");
     const [qty,setqty]=useState();
     const [itemname,setitemname]=useState();
-    let disable=false;
+    const [vendor,setvendor]=useState('');
+    const [item,setitem]=useState('');
+    
     
 
     useEffect(()=>{
@@ -55,6 +57,8 @@ const ModifyStockEntryView= (props) => {
         setestimatedamt(data.projected_cost)
         setqty(data.quantity)
         setitemname(data.item_Name)
+        setvendor(data.vendor_name)
+        setitem(data.item_Type)
 
         
         if(data.discounted_cost!==null || data.discounted_cost!==undefined){
@@ -78,64 +82,6 @@ const ModifyStockEntryView= (props) => {
         if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
             setcashentrydate(data.stock_entry_date.slice(0, 10))
             
-            //date validation start
-            // Get the current date
-            let currentDate = new Date().toISOString();
-
-            // Get the year, month, and day of the current date
-            let currentYear = currentDate.slice(0,4);
-            let currentMonth = currentDate.slice(5,7);
-            let currentDay = currentDate.slice(8,10);
-            
-
-            // Get the year, month, and day of the database date
-            let dbYear = data.stock_entry_date.slice(0,4);
-            let dbMonth = data.stock_entry_date.slice(5, 7);
-            let dbDay = data.stock_entry_date.slice(8, 10);
-           
-            // Check if the database date is one day older than the current date
-
-            if (dbYear < currentYear) 
-            {
-                // The database date is in a previous year, so it is older
-                //setdisableentrybtn(true);
-                disable=true;
-            } 
-            else if (dbYear === currentYear) 
-            {
-                // The database date is in the same year, so compare the months
-                if (dbMonth < currentMonth) 
-                {
-                // The database date is in a previous month, so it is older
-                //setdisableentrybtn(true);
-                disable=true
-                } 
-                else if (dbMonth === currentMonth) 
-                {
-                    // The database date is in the same month, so compare the days
-                    if (dbDay < currentDay ) {
-                    // The database date is more than one day before the current date, so it is older
-                    //setdisableentrybtn(true);
-                    disable=true
-                    } 
-                    //else {
-                    // // The database date is not older than one day
-                    //setdisableentrybtn(false);
-
-                      // }
-                } 
-                //else 
-                //{
-                    // The database date is in a future month, so it is not older
-                        //setdisableentrybtn(false);
-                //}
-            } 
-            //else 
-            //{
-            // The database date is in a future year, so it is not older
-            //setdisableentrybtn(false);
-            //}
-            //date validation end
        }
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
@@ -162,6 +108,7 @@ const ModifyStockEntryView= (props) => {
         setdiscountamt(0);
         setpaidamt(0);
         setcashentrydate(new Date().toISOString().slice(0, 10) )
+        setmodifieddate(new Date().toISOString().slice(0, 10))
     };
 
 
@@ -185,7 +132,7 @@ const ModifyStockEntryView= (props) => {
                 console.log(error);
             });
         alert("Cash Entry Updated Successfully");
-        window.location.reload();
+        
     };
 
     return (
@@ -245,10 +192,11 @@ const ModifyStockEntryView= (props) => {
                 <tr>
                 <th>Item Id</th>
                     <th>Bill Id</th>
-                    
+            
                     <th>Item Name</th>
-                    <th>Item Type</th>
+                    
                     <th>Vendor Name</th>
+                    <th>Item Type</th>
                     <th>Bill Date</th>
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
@@ -270,26 +218,26 @@ const ModifyStockEntryView= (props) => {
                    <td>{itemid}</td>
                    <td><input type="text" value={billid} placeholder='Bill id' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
                    <td><input type="text" value={itemname} placeholder='Item Name' onChange={(e) => setitemname(e.target.value)} required/></td>
-                   {/* <td>
-                        <select onChange={(e) => setrole(e.target.value)} value={role}>
+                   <td>
+                        <select onChange={(e) => setvendor(e.target.value)} value={vendor}>
                             <option >All</option>
-                            {allRoles.map((data) => (
-                                <option value={data.roletype_name} key={data.roletype_name}>
-                                    {data.roletype_name}
+                            {props.Vendor.map((data,idx) => (
+                                <option value={data.vendor_name} key={idx}>
+                                    {data.vendor_name}
                                 </option>
                             ))}
                         </select>
                     </td>
                     <td>
-                        <select onChange={(e) => setrole(e.target.value)} value={role}>
+                        <select onChange={(e) => setitem(e.target.value)} value={item}>
                             <option >All</option>
-                            {allRoles.map((data) => (
-                                <option value={data.roletype_name} key={data.roletype_name}>
-                                    {data.roletype_name}
+                            {props.Item.map((data,idx) => (
+                                <option value={data.item_Type} key={idx}>
+                                    {data.item_Type}
                                 </option>
                             ))}
                         </select>
-                    </td> */}
+                    </td>
                     <td><input
                         type="date" 
                         placeholder="Bill Entry date"
@@ -320,7 +268,7 @@ const ModifyStockEntryView= (props) => {
                     /></td>
                   
                     <td>
-                        <button type="submit" disabled={disable} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
+                        <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 >Proceed
                         </button>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"

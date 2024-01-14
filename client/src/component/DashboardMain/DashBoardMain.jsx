@@ -151,7 +151,7 @@ const modifyStockEntryShow=(data)=> {
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-          <ModifyStockEntryView  modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+          <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           
           
