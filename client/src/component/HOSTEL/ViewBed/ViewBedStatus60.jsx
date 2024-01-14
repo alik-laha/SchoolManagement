@@ -34,6 +34,7 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("http://localhost:7000/api/v1/hostel/deletebed",{id} )
             .then((res) => {
+                alert("Bed Deleted Successfully")
                 setView("none");
             })
             .catch((error) => {
@@ -54,8 +55,10 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
-                setEditView("none");
+                alert("Bed Updated Successfully")
                 setView("none")
+                setMainView("block");
+                setEditView("none");
             })
             .catch((error) => {
                 console.log(error);

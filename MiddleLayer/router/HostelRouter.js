@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const{CreateBed, GetBed,DeleteBed}=require('../controller/HostelControl')
+const{CreateBed, GetBed,DeleteBed,UpdateBed}=require('../controller/HostelControl')
 
 //create bed
 router.post('/createbed',CreateBed)
@@ -9,7 +9,7 @@ router.post('/createbed',CreateBed)
 router.post('/searchBed',GetBed)
 
 //update bed
-
+router.post('/updateBed',UpdateBed)
 
 //delete bed
 router.post('/deleteBed',DeleteBed)
