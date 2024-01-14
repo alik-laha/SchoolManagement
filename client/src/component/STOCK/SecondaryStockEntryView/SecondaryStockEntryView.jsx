@@ -137,11 +137,10 @@ const SecondaryStockEntryView= (props) => {
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
         }
-       if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
-            setmodifieddate(data.stock_modified_date.slice(0, 10))
 
-            
-            
+
+       if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
+            setmodifieddate(data.stock_modified_date.slice(0, 10))      
        }
         else{
             setmodifieddate(new Date().toISOString().slice(0, 10))
@@ -160,7 +159,7 @@ const SecondaryStockEntryView= (props) => {
         setpaidamt(0);
         setbalamt(0);
         setcashentrydate(new Date().toISOString().slice(0, 10));
-
+        setmodifieddate(new Date().toISOString().slice(0, 10));
     };
 
 
