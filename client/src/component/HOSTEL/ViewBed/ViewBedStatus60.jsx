@@ -17,7 +17,7 @@ const ViewBedStatus60 = (props) => {
     return(
         <>
             <div style={{display:view}}>
-                <table>
+                <table className="table-60">
                     <thead>
                         <tr>
                             <th>Id</th>

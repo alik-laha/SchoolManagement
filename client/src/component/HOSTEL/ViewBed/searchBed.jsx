@@ -10,10 +10,17 @@ const BedSearch= (props) => {
 
     return(
         <>
-            <div style={{display:props.viewBed}}>
+            <div className="dashbrd-40-colm" style={{display:props.viewBed}}>
                 <form onSubmit={handaleSubmit}>
-                <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)} value={search} />
-                    <input type="submit" value="Search" />
+
+                   <div>
+                    <label>
+                    Search By Room No.
+                    </label>
+                    <input type="text" placeholder="Search..." onChange={(e)=>setSearch(e.target.value)} value={search} />
+                    </div> 
+                    <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
+                    {/* <input type="submit" value="Search" /> */}
                 </form>
             </div>
         </>
