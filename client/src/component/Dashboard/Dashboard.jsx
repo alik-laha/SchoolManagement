@@ -249,6 +249,7 @@ const handleBedViewStatus=()=>{
        setSecondStockView("none")
        setmodifySearchView('none')
        sethostelview('none')
+         setbedentry('none')
      }
         else{
         setbedview('none')
@@ -364,6 +365,7 @@ const handleSecondStockView=()=>{
                               setStockView('none')
                               setSecondstockEntry("none")
                               sethostelview('none')
+                              setbedview('none')
                               setbedview('none')
                           }
                               else{
