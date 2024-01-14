@@ -28,8 +28,18 @@ exports.CreateBed= (req, res) => {
 
 //get bed
 exports.GetBed= (req, res) => {
+    const {room}=req.body
+    let query
     try{
-        let query = `SELECT * FROM bed_availability`
+        if(!room) {
+            query = `SELECT *
+                         FROM bed_availability`
+        }
+        else{
+            query = `SELECT *
+                         FROM bed_availability
+                         WHERE room_no='${room}'`
+        }
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)

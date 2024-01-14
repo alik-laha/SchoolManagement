@@ -6,7 +6,7 @@ const{CreateBed, GetBed}=require('../controller/HostelControl')
 router.post('/createbed',CreateBed)
 
 //view Bed
-router.get('/viewbed',GetBed)
+router.post('/searchBed',GetBed)
 
 
 module.exports = router
