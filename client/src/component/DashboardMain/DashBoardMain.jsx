@@ -21,6 +21,7 @@ import ModifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.
 import CreateBed40 from "../HOSTEL/createBed/CreateBed40.jsx";
 import ViewBedStatus60 from "../HOSTEL/ViewBed/ViewBedStatus60.jsx";
 import SearchBed from "../HOSTEL/ViewBed/searchBed.jsx";
+import HostelEntry from "../HOSTEL/HostelEntry/HostelEntry.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -153,7 +154,7 @@ const modifyStockEntryShow=(data)=> {
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
           <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
-          
+          <HostelEntry />
           
         </div>
       </div>
