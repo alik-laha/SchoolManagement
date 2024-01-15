@@ -137,8 +137,9 @@ const ViewBedStatus60 = (props) => {
                             {editData.occupied_bed}
                         </td> */}
                         <td>
+                            
+                            <button className="dashboard-btn btn-warning" onClick={()=>handaleUpdate(editData.id)}>Update</button>
                             <button className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
-                            <button className="dashboard-btn btn-warning" onClick={()=>handaleUpdate(editData.id)}>update</button>
                         </td>
                     </tr>
                     </tbody>
