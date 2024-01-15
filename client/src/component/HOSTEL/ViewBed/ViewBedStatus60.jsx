@@ -57,7 +57,7 @@ const ViewBedStatus60 = (props) => {
             .then((res) => {
                 alert("Bed Updated Successfully")
                 setView("none")
-                setMainView("block");
+                setMainView("content");
                 setEditView("none");
             })
             .catch((error) => {
@@ -75,8 +75,9 @@ const ViewBedStatus60 = (props) => {
                             <th>Floor</th>
                             <th>Room Number</th>
                             <th>Total Bed</th>
-                            <th>Available Bed</th>
                             <th>Occupied Bed</th>
+                            <th>Available Bed</th>
+                            
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -88,8 +89,9 @@ const ViewBedStatus60 = (props) => {
                                 <td>{item.floor}</td>
                                 <td>{item.room_no}</td>
                                 <td>{item.total_bed}</td>
+                                <td>{item.occupied_bed}</td>
                                 <td style={{color:'red'}}>{item.available_bed}</td>
-                                <td style={{color:'red'}}>{item.occupied_bed}</td>
+                                
                                 <td>
                                     <button className='dashboard-btn btn-warning' onClick={()=>handaleEdit(item)}>Edit</button>
                                     <button className='dashboard-btn btn-warning' onClick={()=>handaleDelete(item.id)}>Delete</button>
