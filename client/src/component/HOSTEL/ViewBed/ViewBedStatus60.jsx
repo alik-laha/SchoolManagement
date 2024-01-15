@@ -42,7 +42,6 @@ const ViewBedStatus60 = (props) => {
             });
     }
     const handaleCancel = () => {
-        console.log("cancel")
         setMainView("contents");
         setEditView("none");
         setEditData({})
@@ -56,9 +55,12 @@ const ViewBedStatus60 = (props) => {
             .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
                 alert("Bed Updated Successfully")
-                setView("none")
-                setMainView("content");
+                setMainView("contents");
                 setEditView("none");
+                if(view==="block"){
+                    setView("none");
+                }
+
             })
             .catch((error) => {
                 console.log(error);
@@ -108,8 +110,6 @@ const ViewBedStatus60 = (props) => {
                             <th>Floor</th>
                             <th>Room Number</th>
                             <th>Total Bed</th>
-                            {/* <th>Available Bed</th>
-                            <th>Occupied Bed</th> */}
                             <th>Actions</th>
                 </tr>
                 </thead>
@@ -130,12 +130,6 @@ const ViewBedStatus60 = (props) => {
                         <td>
                             <input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotal_bed(e.target.value)} />
                         </td>
-                        {/* <td>
-                            {editData.available_bed}
-                        </td>
-                        <td>
-                            {editData.occupied_bed}
-                        </td> */}
                         <td>
                             
                             <button className="dashboard-btn btn-warning" onClick={()=>handaleUpdate(editData.id)}>Update</button>
