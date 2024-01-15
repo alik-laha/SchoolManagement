@@ -476,7 +476,7 @@ const handleSecondStockView=()=>{
                        Notice={notice} VendorCreateDisplay={vendorDisplay}
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
                        StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView} 
-                       modifyStock={modifySearchView} createbed={bedentry} viewbed={bedview}
+                       modifyStock={modifySearchView} createbed={bedentry} viewbed={bedview} checkpending={checkpending}
         />
 
       </div>
