@@ -30,7 +30,7 @@ const CreateItem = (props) => {
         </form>
    
             <div>
-                <button className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View/Delete Item Type</button>
+                <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View / Delete Item Type</button>
             </div>
             
         </div>

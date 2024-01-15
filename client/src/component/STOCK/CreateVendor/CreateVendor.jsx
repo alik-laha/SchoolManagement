@@ -30,7 +30,7 @@ const CreateVendor = (props) => {
 
             </form>
        <div>
-        <button className="dashboard-btn dashboard-btn-scss" onClick={props.onViewVendor}>View/Delete Vendor</button>
+        <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={props.onViewVendor}>View / Delete Vendor</button>
         </div>
         </div>
     )
