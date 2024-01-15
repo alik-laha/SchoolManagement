@@ -3,7 +3,7 @@ import axios from "axios";
 
 const ViewBedStatus60 = (props) => {
     const [view, setView] = useState("none");
-    const [mainView, setMainView] = useState("block");
+    const [mainView, setMainView] = useState("contents");
     const [editView, setEditView] = useState("none");
     const [editData, setEditData] = useState({});
     const [bulding, setBuilding] = useState("");
@@ -23,7 +23,7 @@ const ViewBedStatus60 = (props) => {
     }, [props.viewbed,props.BedData]);
     const handaleEdit = (data) => {
         setMainView("none");
-        setEditView("block");
+        setEditView("contents");
         setEditData(data)
         setBuilding(data.building)
         setFloor(data.floor)
@@ -43,7 +43,7 @@ const ViewBedStatus60 = (props) => {
     }
     const handaleCancel = () => {
         console.log("cancel")
-        setMainView("block");
+        setMainView("contents");
         setEditView("none");
         setEditData({})
         setTotal_bed("")
@@ -68,9 +68,9 @@ const ViewBedStatus60 = (props) => {
         <>
             <div style={{display:view}}>
                 <table className="table-60">
-                    <thead>
+                    <thead style={{display: mainView}}>
                         <tr>
-                            <th>Id</th>
+                            <th>Room Id</th>
                             <th>Bulding</th>
                             <th>Floor</th>
                             <th>Room Number</th>
@@ -88,19 +88,33 @@ const ViewBedStatus60 = (props) => {
                                 <td>{item.floor}</td>
                                 <td>{item.room_no}</td>
                                 <td>{item.total_bed}</td>
-                                <td>{item.available_bed}</td>
-                                <td>{item.occupied_bed}</td>
+                                <td style={{color:'red'}}>{item.available_bed}</td>
+                                <td style={{color:'red'}}>{item.occupied_bed}</td>
                                 <td>
-                                    <button onClick={()=>handaleEdit(item)}>Edit</button>
-                                    <button onClick={()=>handaleDelete(item.id)}>Delete</button>
+                                    <button className='dashboard-btn btn-warning' onClick={()=>handaleEdit(item)}>Edit</button>
+                                    <button className='dashboard-btn btn-warning' onClick={()=>handaleDelete(item.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
+
+
+                <thead style={{display: editView}} id='hidden-table-60'>
+                <tr>
+                            <th>Room Id</th>
+                            <th>Bulding</th>
+                            <th>Floor</th>
+                            <th>Room Number</th>
+                            <th>Total Bed</th>
+                            {/* <th>Available Bed</th>
+                            <th>Occupied Bed</th> */}
+                            <th>Actions</th>
+                </tr>
+                </thead>
                     <tbody style={{display:editView}}>
                     <tr>
                         <td>
-                            <input type="text" placeholder="Id" value={editData.id} readOnly />
+                            {editData.id}
                         </td>
                         <td>
                             <input type="text" placeholder="Building" value={bulding} onChange={(e)=>setBuilding(e.target.value)} />
@@ -114,15 +128,15 @@ const ViewBedStatus60 = (props) => {
                         <td>
                             <input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotal_bed(e.target.value)} />
                         </td>
-                        <td>
-                            <input type="text" placeholder="Available Bed" value={editData.available_bed} readOnly />
+                        {/* <td>
+                            {editData.available_bed}
                         </td>
                         <td>
-                            <input type="text" placeholder="Occupied Bed" value={editData.occupied_bed} readOnly />
-                        </td>
+                            {editData.occupied_bed}
+                        </td> */}
                         <td>
-                            <button onClick={handaleCancel}>Cancel</button>
-                            <button onClick={()=>handaleUpdate(editData.id)}>update</button>
+                            <button className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
+                            <button className="dashboard-btn btn-warning" onClick={()=>handaleUpdate(editData.id)}>update</button>
                         </td>
                     </tr>
                     </tbody>
