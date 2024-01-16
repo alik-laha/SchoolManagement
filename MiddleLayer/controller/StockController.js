@@ -148,31 +148,62 @@ exports.StockEntry=(req,res)=>{
     //get primary stock from search
     exports.GetStock=(req,res)=>{
 
-                const{itemType,billDate,billId,vendorName}=req.body
+                const{itemType,fromDate,toDate,billId,vendorName}=req.body
 
-                    if(billId && !itemType && !billDate && !vendorName){
+                    if(billId && !itemType && !fromDate && !toDate && !vendorName){
                         query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
                     }
-                    else if(itemType && !billDate && !vendorName){
+                    else if(itemType && !fromDate && !toDate && !vendorName){
                         query=`SELECT * FROM stock WHERE item_Type = "${itemType}" `
                     }
-                    else if(billDate && !itemType  && !vendorName){
-                        query=`SELECT * FROM stock WHERE bill_date REGEXP "${billDate}" `
+                    else if(fromDate && toDate && !itemType  && !vendorName){
+                        query=`SELECT * FROM stock WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}"`
                     }
-                    else if(vendorName && !billDate  && !itemType){
+                    else if(vendorName && !fromDate && !toDate  && !itemType){
                         query=`SELECT * FROM stock WHERE vendor_name="${vendorName}"`
                     }
-                    else if(itemType && billDate  && !vendorName){
-                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_date REGEXP"${billDate}"`
+
+
+
+                    else if(itemType  && billId && !fromDate && !toDate  && !vendorName){
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_id REGEXP "${billId}"`
                     }
-                    else if(itemType && vendorName && !billDate){
+                    else if(itemType && fromDate && toDate  && !vendorName && !billId){
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                    }
+                    else if(itemType && vendorName && !fromDate && !toDate  && !billId){
                         query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}"`
                     }
-                    else if(billDate && vendorName && !itemType){
-                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_date REGEXP "${billDate}"`
+                    else if(fromDate && toDate && vendorName && !itemType && !billId){
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
                     }
-                    else if(itemType && billDate && vendorName ){
-                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" AND bill_date REGEXP "${billDate}"`
+                    else if(!fromDate && !toDate && vendorName && !itemType && billId){
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_id REGEXP "${billId}"`
+                    }
+                    else if(fromDate && toDate && !vendorName && !itemType && billId){
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                    }
+
+
+
+
+                    else if(fromDate && toDate && vendorName && !itemType && billId){
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND vendor_name="${vendorName}"`
+                    }
+                    else if(fromDate && toDate && !vendorName && itemType && billId){
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}"`
+                    }
+                    else if(!fromDate && !toDate && vendorName && itemType && billId){
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND vendor_name="${vendorName}" AND item_Type="${itemType}"`
+                    }
+                    else if(fromDate && toDate && vendorName && itemType && !billId){
+                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}"`
+                    }
+
+
+
+                    else if(itemType && fromDate && toDate && vendorName && billId){
+                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" AND item_Type="${itemType}" AND vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
                     }
                     else{
                         query=`SELECT * FROM stock`
@@ -273,8 +304,6 @@ exports.GetSecondaryStockEntry=(req,res)=>{
                    FROM stock
                    WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}" AND where bill_id REGEXP "${billId}"; `
         }
-
-        
 
         else{
             query=`SELECT * FROM stock`

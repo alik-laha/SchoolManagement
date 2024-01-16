@@ -2,17 +2,19 @@ import {useState} from "react";
 import axios from "axios";
 const StockSearch = (props) => {
     const [billId,setBillid]=useState("");
-    const [billDate,setBillDate]=useState("");
     const [itemType,setItemtype]=useState("");
     const [vendorName,setVendorName]=useState("");
+    const [fromDate,setFromDate]=useState("");
+    const [toDate,setToDate]=useState("")
 
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={
             billId,
-            billDate,
             itemType,
-            vendorName
+            vendorName,
+            fromDate,
+            toDate
         }
         props.buttonClick("block");
         props.setStockData(data);
@@ -29,15 +31,29 @@ const StockSearch = (props) => {
                     onChange={(e) => setBillid(e.target.value)}
                 />
             </div>
+
+
             <div>
-                <label>Search By Bill Date</label>
+                <label>From Bill Date</label>
                 <input
                     type="date"
-                    placeholder="Bill Date"
-                    value={billDate}
-                    onChange={(e) => setBillDate(e.target.value)}
+                    placeholder="name"
+                    value={fromDate}
+                    onChange={(e) => setFromDate(e.target.value)}
                 />
-            </div>
+                </div>
+                <div>
+                <label>To Bill Date</label>
+                <input
+                    type="date"
+                    placeholder="name"
+                    value={toDate}
+                    onChange={(e)=>setToDate(e.target.value)}
+                />
+                </div>
+                         
+              
+   
             <div>
                 <label>Search by Vendor Name</label>
                 <select onChange={(e) => setVendorName(e.target.value)}>
