@@ -15,7 +15,7 @@ import StockView from "../STOCK/StockView/StockView.jsx";
 import StockSearch from "../STOCK/StockSearch/StockSearch.jsx";
 import SecondaryStockEntrySearch from '../STOCK/SecondaryStockEntrySearch/SecondaryStockEntrySearch.jsx'
 import SecondaryStockEntryView from '../STOCK/SecondaryStockEntryView/SecondaryStockEntryView.jsx'
-import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAllView/SecondaryStockEntryAllView.jsx'
+import SecondaryStockEntryAllSearch from '../STOCK/SecondaryStockEntryAll/SecondaryStockEntryAllSearch.jsx'
 import ModifyStockEntrySearch from '../STOCK/ModifyStockEntrySearch/ModifyStockEntrySearch.jsx'
 import ModifyStockEntryView from '../STOCK/modifyStockView/modifyStockEntryView.jsx'
 import CreateBed40 from "../HOSTEL/createBed/CreateBed40.jsx";
@@ -138,7 +138,7 @@ const modifyStockEntryShow=(data)=> {
           <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
           <CreateBed40 createbed={props.createbed}/>
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
-          {/* <SecondaryStockEntryAllView SecondStockView={props.SecondStockView}/> */}
+          <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView}/> 
 
 
           

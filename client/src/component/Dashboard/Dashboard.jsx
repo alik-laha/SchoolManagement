@@ -353,6 +353,7 @@ const handleSecondStockView=()=>{
                           setNotice('none')
                           setStockView('none')
                           setSecondstockEntry("none")
+                          setSecondStockView("none")
                           sethostelview('none')
                           setbedentry('none')
                           setbedview('none')
