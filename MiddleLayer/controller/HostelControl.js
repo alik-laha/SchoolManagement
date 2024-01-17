@@ -55,6 +55,29 @@ exports.GetBed= (req, res) => {
 
 }
 
+//get room no
+exports.GetRoomNo= (req, res) => {
+    let query
+    try{
+        query = `SELECT room_no
+                 FROM bed_availability`
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                return res.status(200).json({result})
+            }
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
+
+}
+
+
+
 //update bed
 exports.UpdateBed= (req, res) => {
     let query
