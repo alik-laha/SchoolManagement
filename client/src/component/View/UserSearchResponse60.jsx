@@ -162,25 +162,25 @@ const UserSearchResponse60=(props)=>{
                         </select>
                     </td>
                     <td>
-                        <div className="username-container Password" style={{marginBottom: '40px'}}>
-                            <section style={{display: "flex"}}>
+                        
+                           
                                 <input
                                     type={passVisi}
                                     placeholder="Password"
-                                    className="input-login-username"
+                                    
                                     value={password}
                                     onChange={(e)=>{
                                        setpassword( e.target.value)
-                                    }} style={{width: '85%'}}
+                                    }} 
                                 />
                                 <button
                                     onClick={passwordSee}
-                                    className=" input-login-username" style={{width: '15%'}}
+                                  
                                 >
                                     {change}
                                 </button>
-                            </section>
-                        </div>
+                            
+                        
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
