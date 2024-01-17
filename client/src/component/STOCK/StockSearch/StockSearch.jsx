@@ -69,8 +69,8 @@ const StockSearch = (props) => {
                 <label>Search by Item Type</label>
                 <select onChange={(e) => setItemtype(e.target.value)}>
                     <option value="">All</option>
-                    {props.Item.map((data) => (
-                        <option value={data.item_Type} key={data.item_id}>
+                    {props.Item.map((data,index) => (
+                        <option value={data.item_Type} key={index}>
                             {data.item_Type}
                         </option>
                     ))}
