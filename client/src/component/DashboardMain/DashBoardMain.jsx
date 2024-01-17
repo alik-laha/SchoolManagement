@@ -23,6 +23,8 @@ import ViewBedStatus60 from "../HOSTEL/ViewBed/ViewBedStatus60.jsx";
 import SearchBed from "../HOSTEL/ViewBed/searchBed.jsx";
 import HostelEntry from "../HOSTEL/HostelEntry/HostelEntry.jsx";
 import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAll/SecondaryStockEntryAllView.jsx';
+import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
+import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -41,6 +43,7 @@ const DashBoardMain = (props) => {
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
   const [bedData, setBedData] = useState([]);
+  const [hostelStudentData, setHostelStudentData] = useState([]);
   
   const [viewallStock,setviewallStock]=useState("none")
 
@@ -124,10 +127,13 @@ const modifyStockEntryShow=(data)=> {
   setmodifyStockEntryViewShow(data);
 
 }
+  const HostelStudentData=(data)=>{
+    setHostelStudentData(data);
+  }
   const handalesearchBed=(room)=>{
     axios.post("http://localhost:7000/api/v1/hostel/searchBed",{room}).then((res)=>{
       setBedData(res.data.result)
-
+      console.log(res.data.result)
     })
   }
 
@@ -148,7 +154,7 @@ const modifyStockEntryShow=(data)=> {
           <CreateBed40 createbed={props.createbed}/>
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
-
+          <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
 
           
           
@@ -164,8 +170,9 @@ const modifyStockEntryShow=(data)=> {
           <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
-          <HostelEntry view={props.HostelEntryCreate} />
-          
+          <HostelEntry data={hostelStudentData} />
+          {/*<HostelView />*/}
+
         </div>
       </div>
     </>

@@ -9,18 +9,19 @@ const HostelEntry = (props) => {
     const [roomNo, setRoomNo] = useState("");
     const [bedNo, setBedNo] = useState("");
     const [entryDate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
-    const [studentData, setStudentData] = useState([])
     const [roomData, setRoomData] = useState([])
+    const [studentData, setStudentData] = useState([]);
+    const [view, setView] = useState("none");
 
     useEffect(() => {
-       axios.get("http://localhost:7000/api/v1/student/getallstudent")
-              .then((res) => {
-                  setStudentData(res.data.result)
-              })
-                .catch((err) => {
-                    console.log(err)
-                })
-    }, []);
+      if (props.data.length > 0) {
+        console.log(props.data)
+          setView("block")
+      }
+      else{
+          setView("none")
+      }
+    }, [props.data]);
 
     const handaleUpdate = () => {
 
@@ -54,7 +55,7 @@ const HostelEntry = (props) => {
     }, []);
     return(
         <>
-                <div style={{display:props.view}}>
+                <div style={{display:view}} >
                     <table style={{display:allView}}>
                         <thead>
                         <tr>
@@ -66,7 +67,7 @@ const HostelEntry = (props) => {
                         </tr>
                         </thead>
                         {
-                            studentData.map((data)=> {
+                            props.data.map((data)=> {
                                 return(
                                 <tbody key={data.student_id}>
                                 <tr>
@@ -107,7 +108,7 @@ const HostelEntry = (props) => {
                                 <div>
                                     <select onChange={(e) => setRoomNo(e.target.value)}>
                                         <option value={roomNo}>All</option>
-                                        {roomData.map((data, index) => (
+                                        {props.data.map((data, index) => (
                                             <option value={data.room_no} key={index}>
                                                 {data.room_no}
                                             </option>
