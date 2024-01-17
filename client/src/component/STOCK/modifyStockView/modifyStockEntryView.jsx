@@ -205,7 +205,7 @@ const ModifyStockEntryView= (props) => {
                     <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
                     <th>Cash Entry Date</th>
-                    <th>Last Modified Date</th>
+                    
                     <th>Action</th>
                     
                 </tr>
@@ -259,13 +259,7 @@ const ModifyStockEntryView= (props) => {
                         value={cashentrydate}
                         required
                     /></td>
-                    <td>     <input
-                        type="date"
-                        placeholder="Modified date"
-                        onChange={(e) => setmodifieddate(e.target.value)}
-                        value={modifieddate}
-                         required readOnly
-                    /></td>
+                    
                   
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}

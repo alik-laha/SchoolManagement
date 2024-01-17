@@ -1,13 +1,15 @@
 import {useState} from "react";
 const ModifyStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
-    const [billDate,setBillDate]=useState("");
+    const [fromDate,setFromDate]=useState("");
+    const [toDate,setToDate]=useState("")
 
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={
             billId,
-            billDate, 
+            fromDate,
+            toDate
         }
         props.buttonClick("block");
         props.setStockData(data);
@@ -25,14 +27,24 @@ const ModifyStockEntrySearch = (props) => {
                 />
             </div>
             <div>
-                <label>Search By Bill Date</label>
+                <label>From Date</label>
                 <input
                     type="date"
-                    placeholder="User Name"
-                    value={billDate}
-                    onChange={(e) => setBillDate(e.target.value)}
+                    placeholder="name"
+                    value={fromDate}
+                    onChange={(e) => setFromDate(e.target.value)}
                 />
-            </div>
+                </div>
+                
+                <div>
+                <label>To Date</label>
+                <input
+                    type="date"
+                    placeholder="name"
+                    value={toDate}
+                    onChange={(e)=>setToDate(e.target.value)}
+                />
+                </div>
            
                         <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 
