@@ -148,3 +148,4 @@ exports.DeleteBed= (req, res) => {
         console.log(err)
     }
 }
+

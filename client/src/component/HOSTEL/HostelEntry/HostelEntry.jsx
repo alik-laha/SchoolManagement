@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-const HostelEntry = () => {
+const HostelEntry = (props) => {
     const [allView, setAllView] = useState("contents");
     const [entryView, setEntryView] = useState("none");
     const [id, setId] = useState("");
@@ -21,15 +21,20 @@ const HostelEntry = () => {
                     console.log(err)
                 })
     }, []);
+
+    const handaleUpdate = () => {
+
+    }
     const handaleClick = (data) => {
-        if(data.status===1){
-            //fetch the room no and bed no from master hostel table
-        }
         setAllView("none");
         setEntryView("contents");
         setId(data.student_id);
         setStudentName(data.student_Name);
         setRegNo(data.registration_no);
+        if(data.status===1){
+            console.log(regNo)
+        }
+
     }
     const handaleCancel = () => {
         setAllView("contents");
@@ -49,7 +54,7 @@ const HostelEntry = () => {
     }, []);
     return(
         <>
-                <div>
+                <div style={{display:props.view}}>
                     <table style={{display:allView}}>
                         <thead>
                         <tr>
@@ -115,7 +120,7 @@ const HostelEntry = () => {
                             <td><input type='date' placeholder="Entry Date" value={entryDate}
                                        onChange={(e) => setEntryDate(e.target.value)}/></td>
                             <td>
-                                <button>Update</button>
+                                <button onClick={handaleUpdate}>Update</button>
                                 <button>Delete</button>
                                 <button onClick={handaleCancel}>Cancel</button>
                             </td>
