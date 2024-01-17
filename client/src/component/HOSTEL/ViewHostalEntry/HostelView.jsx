@@ -10,6 +10,7 @@ const HostelView= (props) => {
                     <tr>
                         <th>Id</th>
                         <th>Student Name</th>
+                        <th>Class</th>
                         <th>Registration No</th>
                         <th>Room No</th>
                         <th>Bed No</th>
