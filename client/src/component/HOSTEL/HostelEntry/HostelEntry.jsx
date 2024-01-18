@@ -10,16 +10,14 @@ const HostelEntry = (props) => {
     const [bedNo, setBedNo] = useState("");
     const [entryDate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [roomData, setRoomData] = useState([])
-    const [studentData, setStudentData] = useState(props.data);
     const [view, setView] = useState("none");
 
     useEffect(() => {
-      if (studentData.length > 0 && props.view==="block") {
+      if (props.data.length > 0 && props.view==="block") {
           setView("block")
       }
       else{
           setView("none")
-          setStudentData([])
       }
     }, [props.data,props.view]);
 
@@ -67,7 +65,7 @@ const HostelEntry = (props) => {
                         </tr>
                         </thead>
                         {
-                            studentData.map((data)=> {
+                            props.data.map((data)=> {
                                 return(
                                 <tbody key={data.student_id}>
                                 <tr>
