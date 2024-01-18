@@ -14,14 +14,13 @@ const HostelEntry = (props) => {
     const [view, setView] = useState("none");
 
     useEffect(() => {
-      if (props.data.length > 0) {
-        console.log(props.data)
+      if (props.data.length > 0 && props.view==="block") {
           setView("block")
       }
       else{
           setView("none")
       }
-    }, [props.data]);
+    }, [props.data,props.view]);
 
     const handaleUpdate = () => {
 

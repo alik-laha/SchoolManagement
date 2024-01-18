@@ -18,10 +18,10 @@ exports.GetAllStudent=(req,res)=>{
             query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}'`
         }
         else if(!Class && regNo && !entryDate){
-            query=`SELECT * FROM Student_Admission WHERE Reg_No regexp '${regNo}'`
+            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}'`
         }
         else if(!Class && !regNo && entryDate){
-            query=`SELECT * FROM Student_Admission WHERE Entry_Date regexp '${entryDate}'`
+            query=`SELECT * FROM Student_Admission WHERE entry_date regexp '${entryDate}'`
         }
         else if(Class && regNo && !entryDate){
             query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}' AND Reg_No regexp '${regNo}'`

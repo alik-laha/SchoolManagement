@@ -3,6 +3,6 @@ const router = express.Router();
 const {GetAllStudent} = require('../controller/StudentControl')
 
 //get all students
-router.get('/getallstudent',GetAllStudent)
+router.post('/getallstudent',GetAllStudent)
 
 module.exports = router

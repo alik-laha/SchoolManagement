@@ -170,7 +170,7 @@ const modifyStockEntryShow=(data)=> {
           <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
-          <HostelEntry data={hostelStudentData} />
+          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate}/>
           {/*<HostelView />*/}
 
         </div>

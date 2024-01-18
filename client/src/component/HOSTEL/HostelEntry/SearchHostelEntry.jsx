@@ -7,7 +7,8 @@ const SearchHostelEntry= (props) => {
     const [entryDate,setEntryDate]=useState("")
 const HandaleSubmit=(e)=>{
     e.preventDefault();
-    axios.get(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,entryDate}).then((res)=>{
+    console.log(regNo)
+    axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,entryDate}).then((res)=>{
         console.log(res.data.result)
         props.setStudentData(res.data.result)
     })
