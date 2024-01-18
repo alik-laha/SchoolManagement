@@ -3,12 +3,13 @@ import axios from "axios";
 const HostelEntry = (props) => {
     const [allView, setAllView] = useState("contents");
     const [entryView, setEntryView] = useState("none");
-    const [id, setId] = useState("");
     const [studentName, setStudentName] = useState("");
     const [regNo, setRegNo] = useState("");
     const [roomNo, setRoomNo] = useState("");
     const [bedNo, setBedNo] = useState("");
-    const [entryDate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
+    const [Class, setClass] = useState("");
+    const [academicYear, setacademic] = useState("");
+    const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [roomData, setRoomData] = useState([])
     const [view, setView] = useState("none");
 
@@ -21,15 +22,32 @@ const HostelEntry = (props) => {
       }
     }, [props.data,props.view]);
 
-    const handaleUpdate = () => {
-
+    const handaleUpdate = (e) => {
+        e.preventDefault()
+    axios.post("http://localhost:7000/api/v1/hostel/createhostelentry",{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate})
+        .then((res) => {
+            alert(res.data);
+            setAllView("contents");
+            setEntryView("none");
+            setStudentName("");
+            setRegNo("");
+            setRoomNo("");
+            setBedNo("");
+            setClass("");
+            setacademic("");
+            setEntryDate(new Date().toISOString().slice(0, 10));
+        })
+        .catch((err) => {
+            console.log(err);
+        })
     }
     const handaleClick = (data) => {
         setAllView("none");
         setEntryView("contents");
-        setId(data.student_id);
         setStudentName(data.student_Name);
         setRegNo(data.registration_no);
+        setClass(data.class);
+        setacademic(data.admission_year);
         if(data.status===1){
             console.log(regNo)
         }
@@ -38,11 +56,12 @@ const HostelEntry = (props) => {
     const handaleCancel = () => {
         setAllView("contents");
         setEntryView("none");
-        setId("");
         setStudentName("");
         setRegNo("");
         setRoomNo("");
         setBedNo("");
+        setClass("");
+        setacademic("");
         setEntryDate(new Date().toISOString().slice(0, 10));
     }
     useEffect(() => {
@@ -60,8 +79,9 @@ const HostelEntry = (props) => {
                             <th>Id</th>
                             <th>Entry status</th>
                             <th>Student Name</th>
+                            <th>Class</th>
                             <th>Regidtration No</th>
-                           
+                            <th>Admisson Year</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -70,19 +90,23 @@ const HostelEntry = (props) => {
                         {
                             props.data.map((data,idx)=> {
                                 return(
-                                
-                                <tr key={idx}>
-                                    <td>{data.student_id}</td>
-                                    <td><input type='checkbox' checked={data.HostelEntry === 1 ? true : false}></input></td>
-                                    <td>{data.student_Name}</td>
-                                    <td>{data.registration_no}</td>
-                                    
-                                    <td>
-                                        <button className='dashboard-btn btn-warning' onClick={()=>handaleClick(data)}>Hostel Entry</button>
-                                    </td>
 
-                                </tr>
-                               
+                                    <tr key={idx}>
+                                        <td>{data.student_id}</td>
+                                        <td><input type='checkbox'
+                                                   checked={data.HostelEntry === 1 ? true : false}></input></td>
+                                        <td>{data.student_Name}</td>
+                                        <td>{data.class}</td>
+                                        <td>{data.registration_no}</td>
+                                        <td>{data.admission_year}</td>
+                                        <td>
+                                            <button className='dashboard-btn btn-warning'
+                                                    onClick={() => handaleClick(data)}>Hostel Entry
+                                            </button>
+                                        </td>
+
+                                    </tr>
+
                                 )
 
                             })
@@ -94,19 +118,20 @@ const HostelEntry = (props) => {
                    
                         <thead style={{display:entryView}} id='hidden-table-60'>
                         <tr>
-                            <th>Id</th>
                             <th>Student Name</th>
+                            <th>Class</th>
                             <th>Regidtration No</th>
                             <th>Room No</th>
                             <th>Bed No</th>
+                            <th>Admisson Year</th>
                             <th>Entry Date</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody style={{display:entryView}}>
                         <tr>
-                            <td>{id}</td>
                             <td>{studentName}</td>
+                            <td>{Class}</td>
                             <td>{regNo}</td>
                             <td>
                                 <div>
@@ -122,7 +147,8 @@ const HostelEntry = (props) => {
                             </td>
                             <td><input type='text' placeholder="Bed No" value={bedNo}
                                        onChange={(e) => setBedNo(e.target.value)}/></td>
-                            <td><input type='date' placeholder="Entry Date" value={entryDate}
+                            <td>{academicYear}</td>
+                            <td><input type='date' placeholder="Entry Date" value={entrydate}
                                        onChange={(e) => setEntryDate(e.target.value)}/></td>
                             <td>
                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
