@@ -8,6 +8,7 @@ const HostelEntry = (props) => {
     const [roomNo, setRoomNo] = useState("");
     const [bedNo, setBedNo] = useState("");
     const [Class, setClass] = useState("");
+    const [entryStatus, setEntryStatus] = useState(0);
     const [academicYear, setacademic] = useState("");
     const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [roomData, setRoomData] = useState([])
@@ -24,22 +25,35 @@ const HostelEntry = (props) => {
 
     const handaleUpdate = (e) => {
         e.preventDefault()
-    axios.post("http://localhost:7000/api/v1/hostel/createhostelentry",{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate})
-        .then((res) => {
-            alert(res.data);
-            setAllView("contents");
-            setEntryView("none");
-            setStudentName("");
-            setRegNo("");
-            setRoomNo("");
-            setBedNo("");
-            setClass("");
-            setacademic("");
-            setEntryDate(new Date().toISOString().slice(0, 10));
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+        if (entryStatus === 0) {
+            axios.post("http://localhost:7000/api/v1/hostel/createhostelentry", {
+                Class,
+                academicYear,
+                roomNo,
+                bedNo,
+                studentName,
+                regNo,
+                entrydate
+            })
+                .then((res) => {
+                    alert(res.data);
+                    setAllView("contents");
+                    setEntryView("none");
+                    setStudentName("");
+                    setRegNo("");
+                    setRoomNo("");
+                    setBedNo("");
+                    setClass("");
+                    setacademic("");
+                    setEntryDate(new Date().toISOString().slice(0, 10));
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        else {
+
+        }
     }
     const handaleClick = (data) => {
         setAllView("none");
@@ -48,9 +62,20 @@ const HostelEntry = (props) => {
         setRegNo(data.registration_no);
         setClass(data.class);
         setacademic(data.admission_year);
-        if(data.status===1){
-            console.log(regNo)
+        if(data.hostelentry===1){
+            const rgi=data.registration_no
+            setEntryStatus(1)
+            axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
+                console.log(res.data.result)
+                setRoomNo(res.data.result[0].room_no)
+                setBedNo(res.data.result[0].bed_no)
+                setEntryDate(res.data.result[0].entry_date.slice(0,10))
+            })
+
+        }else{
+            setEntryStatus(0)
         }
+
 
     }
     const handaleCancel = () => {
@@ -62,6 +87,7 @@ const HostelEntry = (props) => {
         setBedNo("");
         setClass("");
         setacademic("");
+        setEntryStatus(0);
         setEntryDate(new Date().toISOString().slice(0, 10));
     }
     useEffect(() => {
@@ -135,8 +161,8 @@ const HostelEntry = (props) => {
                             <td>{regNo}</td>
                             <td>
                                 <div>
-                                    <select onChange={(e) => setRoomNo(e.target.value)}>
-                                        <option value={roomNo}>All</option>
+                                    <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>
+                                        <option>All</option>
                                         {roomData.map((data, index) => (
                                             <option value={data.room_no} key={index}>
                                                 {data.room_no}

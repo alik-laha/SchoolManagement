@@ -151,20 +151,32 @@ exports.DeleteBed= (req, res) => {
 
 //get hostel entry
 exports.GetHostelEntry=(req,res)=>{
-    const {Class,academicYear}=req.body
+    const {Class,academicYear,regNo}=req.body
     try {
         let query
-        if(!Class && !academicYear){
-            query=`SELECT * FROM master_hostel`
+        if(!Class && !academicYear && !regNo){
+            query = `SELECT *
+                     FROM master_hostel`
         }
-        else if(Class && !academicYear){
-            query=`SELECT * FROM master_hostel WHERE Class regexp '${Class}'`
+        else if(!Class && !academicYear && regNo){
+            query = `SELECT *
+                     FROM master_hostel
+                     WHERE registration_no regexp '${regNo}'`
         }
-        else if(!Class && academicYear){
-            query=`SELECT * FROM master_hostel WHERE academic_year regexp '${academicYear}'`
+        else if(!Class && academicYear && !regNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE academic_year regexp '${academicYear}'`
         }
-        else{
-            query=`SELECT * FROM master_hostel WHERE Class regexp '${Class}' AND academic_year regexp '${academicYear}' `
+        else if(Class && !academicYear && !regNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE Class regexp '${Class}'`
+        }
+        else if(Class && academicYear && !regNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE Class regexp '${Class}' and academic_year regexp '${academicYear}'`
         }
         Database.query(query,(err,result)=>{
             if(err){
