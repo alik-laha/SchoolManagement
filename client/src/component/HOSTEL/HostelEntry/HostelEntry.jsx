@@ -52,41 +52,47 @@ const HostelEntry = (props) => {
             })
     }, [view]);
     return(
-        <>
+       
                 <div style={{display:view}} >
-                    <table style={{display:allView}}>
-                        <thead>
+                    <table className="table-60" >
+                        <thead style={{display:allView}}>
                         <tr>
                             <th>Id</th>
+                            <th>Entry status</th>
                             <th>Student Name</th>
                             <th>Regidtration No</th>
-                            <th>Entry status</th>
+                           
                             <th>Actions</th>
                         </tr>
                         </thead>
+
+                        <tbody style={{display:allView}}>
                         {
-                            props.data.map((data)=> {
+                            props.data.map((data,idx)=> {
                                 return(
-                                <tbody key={data.student_id}>
-                                <tr>
+                                
+                                <tr key={idx}>
                                     <td>{data.student_id}</td>
+                                    <td><input type='checkbox' checked={data.HostelEntry === 1 ? true : false}></input></td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td>
-                                    <td></td>
+                                    
                                     <td>
-                                        <button onClick={()=>handaleClick(data)}>Entry</button>
+                                        <button className='dashboard-btn btn-warning' onClick={()=>handaleClick(data)}>Hostel Entry</button>
                                     </td>
 
                                 </tr>
-                                </tbody>
+                               
                                 )
 
                             })
                         }
 
-                    </table>
-                    <table style={{display:entryView}}>
-                        <thead>
+
+                        </tbody>
+                        
+                   
+                        <thead style={{display:entryView}} id='hidden-table-60'>
                         <tr>
                             <th>Id</th>
                             <th>Student Name</th>
@@ -97,7 +103,7 @@ const HostelEntry = (props) => {
                             <th>Actions</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{display:entryView}}>
                         <tr>
                             <td>{id}</td>
                             <td>{studentName}</td>
@@ -119,15 +125,15 @@ const HostelEntry = (props) => {
                             <td><input type='date' placeholder="Entry Date" value={entryDate}
                                        onChange={(e) => setEntryDate(e.target.value)}/></td>
                             <td>
-                                <button onClick={handaleUpdate}>Update</button>
-                                <button>Delete</button>
-                                <button onClick={handaleCancel}>Cancel</button>
+                                <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
+                                <button className="dashboard-btn btn-warning">Delete</button>
+                                <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
                             </td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-        </>
+       
     )
 }
 
