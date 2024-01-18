@@ -202,15 +202,16 @@ exports.CreateHostelEntry=(req,res)=>{
                       return res.status(400).json({msg:"No Bed Available"})
                   }
                   else{
-                      available_bed=available_bed-1
-                      occupied_bed=occupied_bed+1
-                      query=`UPDATE bed_availability SET available_bed='${available_bed}',occupied_bed='${occupied_bed}' WHERE room_no='${roomNo}'`
+                    query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,student_name,reg_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entriedate}')`
                       Database.query(query,(err,result)=>{
                           if(err){
                               console.log(err)
                           }
                           else{
-                             query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,student_name,reg_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entriedate}')`
+                            available_bed=available_bed-1
+                            occupied_bed=occupied_bed+1
+                                query=`UPDATE bed_availability SET available_bed='${available_bed}',occupied_bed='${occupied_bed}' WHERE room_no='${roomNo}'`
+                             
                                 Database.query(query,(err,result)=>{
                                     if(err){
                                         console.log(err)
