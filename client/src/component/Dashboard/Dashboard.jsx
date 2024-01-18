@@ -11,7 +11,7 @@ import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 const Dashboard = () => {
   const HandaleLogout = () => {
     sessionStorage.removeItem("user");
-    window.location.reload();
+
   };
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');

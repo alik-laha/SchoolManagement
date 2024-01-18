@@ -177,7 +177,8 @@ const SecondaryStockEntryView= (props) => {
                 console.log(error);
             });
         alert("Cash Entry Updated Successfully");
-        window.location.reload();
+        setVisiblity('none');
+        setmainsvisibility('contents');
     };
 
     return (

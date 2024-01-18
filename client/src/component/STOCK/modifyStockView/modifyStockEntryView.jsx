@@ -132,6 +132,8 @@ const ModifyStockEntryView= (props) => {
                 console.log(error);
             });
         alert("Cash Entry Updated Successfully");
+        setVisiblity('none');
+        setmainsvisibility('contents');
         
     };
 

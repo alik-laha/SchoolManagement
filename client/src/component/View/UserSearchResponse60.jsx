@@ -81,7 +81,8 @@ const UserSearchResponse60=(props)=>{
                 console.log(error);
             });
         alert("User Updated Successfully");
-        window.location.reload();
+        setVisiblity("none");
+        setmainsvisibility('contents')
     };
     const handleEdit = (data) => {
         setVisiblity("contents");
