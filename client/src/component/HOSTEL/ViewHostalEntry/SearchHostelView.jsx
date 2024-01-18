@@ -13,7 +13,7 @@ const searchHostelView= (props) => {
     }
     return(
         <>
-            <div style={{display:props.view}}>
+            <div className="dashbrd-40-colm" style={{display:props.view}}>
                 <form onSubmit={handaleSubmit}>
                     <div>
                         <label>
@@ -28,7 +28,7 @@ const searchHostelView= (props) => {
                         </label>
                         <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)}/>
                     </div>
-                    <input type="submit" value="Search"/>
+                    <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 </form>
             </div>
         </>

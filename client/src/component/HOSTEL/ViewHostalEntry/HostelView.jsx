@@ -21,7 +21,7 @@ useEffect(() => {
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />
-                <table id="hostel-entry-view">
+                <table className="table-60" id="hostel-entry-view">
                     <thead>
                     <tr>
                         <th>Id</th>
