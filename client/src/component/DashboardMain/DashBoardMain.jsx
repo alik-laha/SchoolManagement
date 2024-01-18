@@ -26,6 +26,7 @@ import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAll/Secondar
 import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
 import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
+import SearchHostelView from "../HOSTEL/ViewHostalEntry/SearchHostelView.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -47,7 +48,7 @@ const DashBoardMain = (props) => {
   const [hostelStudentData, setHostelStudentData] = useState([]);
   
   const [viewallStock,setviewallStock]=useState("none")
-
+  const [hostelenrtydata,sethostelenrtydata]=useState([])
 
   const getdata = (data) => {
     setdata(data);
@@ -137,7 +138,9 @@ const modifyStockEntryShow=(data)=> {
       console.log(res.data.result)
     })
   }
-
+const hostelEntryData=(data)=>{
+  sethostelenrtydata(data)
+}
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -156,7 +159,7 @@ const modifyStockEntryShow=(data)=> {
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
-
+          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData}/>
           
           
 
@@ -172,7 +175,7 @@ const modifyStockEntryShow=(data)=> {
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate}/>
-          <HostelView view={props.HostelentryView} />
+          <HostelView view={props.HostelentryView} data={hostelenrtydata} />
 
         </div>
       </div>

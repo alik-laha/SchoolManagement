@@ -149,3 +149,32 @@ exports.DeleteBed= (req, res) => {
     }
 }
 
+exports.GetHostelEntry=(req,res)=>{
+    const {Class,academicYear}=req.body
+    try {
+        let query
+        if(!Class && !academicYear){
+            query=`SELECT * FROM master_hostel`
+        }
+        else if(Class && !academicYear){
+            query=`SELECT * FROM master_hostel WHERE Class regexp '${Class}'`
+        }
+        else if(!Class && academicYear){
+            query=`SELECT * FROM master_hostel WHERE academic_year regexp '${academicYear}'`
+        }
+        else{
+            query=`SELECT * FROM master_hostel WHERE Class regexp '${Class}' AND academic_year regexp '${academicYear}' `
+        }
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+            }
+            else{
+                return res.status(200).json({result})
+            }
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
