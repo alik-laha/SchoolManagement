@@ -149,6 +149,7 @@ exports.DeleteBed= (req, res) => {
     }
 }
 
+//get hostel entry
 exports.GetHostelEntry=(req,res)=>{
     const {Class,academicYear}=req.body
     try {
@@ -173,6 +174,65 @@ exports.GetHostelEntry=(req,res)=>{
                 return res.status(200).json({result})
             }
         })
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
+
+
+//create hostel entry
+exports.CreateHostelEntry=(req,res)=>{
+    try{
+        const{Class,academicYear,roomNo,bedNo,studentName,regNo,entriedate}=req.body
+
+        if(!Class || !academicYear || !roomNo || !bedNo || !studentName || !regNo || !entriedate){
+            return res.status(400).json({msg:"Please fill all fields"})
+        }
+        else{
+            let query=`select available_bed,occupied_bed from bed_availability where room_no='${roomNo}'`
+            Database.query(query,(err,result)=>{
+              if(err){
+                  console.log(err)
+              }
+              else {
+                  let available_bed=result[0].available_bed
+                  let occupied_bed=result[0].occupied_bed
+                  if(available_bed===0){
+                      return res.status(400).json({msg:"No Bed Available"})
+                  }
+                  else{
+                      available_bed=available_bed-1
+                      occupied_bed=occupied_bed+1
+                      query=`UPDATE bed_availability SET available_bed='${available_bed}',occupied_bed='${occupied_bed}' WHERE room_no='${roomNo}'`
+                      Database.query(query,(err,result)=>{
+                          if(err){
+                              console.log(err)
+                          }
+                          else{
+                             query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,student_name,reg_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entriedate}')`
+                                Database.query(query,(err,result)=>{
+                                    if(err){
+                                        console.log(err)
+                                    }
+                                    else{
+                                        query= `update student_admisson set hostel_flag=1 where reg_no='${regNo}'`
+                                        Database.query(query,(err,result)=>{
+                                            if(err){
+                                                console.log(err)
+                                            }
+                                            else{
+                                                return res.status(200).json({msg:"Hostel Entry Created Successfully"})
+                                            }
+                                        })
+                                    }
+                                })
+                          }
+                      })
+                  }
+              }
+            })
+        }
     }
     catch (err) {
         console.log(err)
