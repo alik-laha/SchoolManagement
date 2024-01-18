@@ -251,3 +251,17 @@ exports.CreateHostelEntry=(req,res)=>{
         console.log(err)
     }
 }
+
+//delete hostel entry
+exports.DeleteHostelEntry=(req,res)=>{
+try{
+        const{regNo,roomNo}=req.body
+        if( !regNo || !roomNo){
+            return res.status(400).json({msg:"Please fill all fields"})
+        }
+
+    }
+    catch (err) {
+        console.log(err)
+    }
+}

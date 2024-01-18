@@ -55,6 +55,10 @@ const HostelEntry = (props) => {
 
         }
     }
+
+    const handleDelete = (data) => {
+
+    }
     const handaleClick = (data) => {
         setAllView("none");
         setEntryView("contents");
@@ -178,7 +182,7 @@ const HostelEntry = (props) => {
                                        onChange={(e) => setEntryDate(e.target.value)}/></td>
                             <td>
                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
-                                <button className="dashboard-btn btn-warning">Delete</button>
+                                <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo)}>Delete</button>
                                 <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
                             </td>
                         </tr>
