@@ -10,15 +10,16 @@ const HostelEntry = (props) => {
     const [bedNo, setBedNo] = useState("");
     const [entryDate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [roomData, setRoomData] = useState([])
-    const [studentData, setStudentData] = useState([]);
+    const [studentData, setStudentData] = useState(props.data);
     const [view, setView] = useState("none");
 
     useEffect(() => {
-      if (props.data.length > 0 && props.view==="block") {
+      if (studentData.length > 0 && props.view==="block") {
           setView("block")
       }
       else{
           setView("none")
+          setStudentData([])
       }
     }, [props.data,props.view]);
 
@@ -51,7 +52,7 @@ const HostelEntry = (props) => {
             .then((res) => {
                 setRoomData(res.data.result)
             })
-    }, []);
+    }, [view]);
     return(
         <>
                 <div style={{display:view}} >
@@ -66,7 +67,7 @@ const HostelEntry = (props) => {
                         </tr>
                         </thead>
                         {
-                            props.data.map((data)=> {
+                            studentData.map((data)=> {
                                 return(
                                 <tbody key={data.student_id}>
                                 <tr>
@@ -107,7 +108,7 @@ const HostelEntry = (props) => {
                                 <div>
                                     <select onChange={(e) => setRoomNo(e.target.value)}>
                                         <option value={roomNo}>All</option>
-                                        {props.data.map((data, index) => (
+                                        {roomData.map((data, index) => (
                                             <option value={data.room_no} key={index}>
                                                 {data.room_no}
                                             </option>

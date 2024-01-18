@@ -9,7 +9,6 @@ const HandaleSubmit=(e)=>{
     e.preventDefault();
     console.log(regNo)
     axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,entryDate}).then((res)=>{
-        console.log(res.data.result)
         props.setStudentData(res.data.result)
     })
 
