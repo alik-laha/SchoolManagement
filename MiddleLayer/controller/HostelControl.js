@@ -184,10 +184,10 @@ exports.GetHostelEntry=(req,res)=>{
 //create hostel entry
 exports.CreateHostelEntry=(req,res)=>{
     try{
-        const{Class,academicYear,roomNo,bedNo,studentName,regNo,entriedate}=req.body
+        const{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate}=req.body
 
-        if(!Class || !academicYear || !roomNo || !bedNo || !studentName || !regNo || !entriedate){
-            return res.status(400).json({msg:"Please fill all fields"})
+        if(!Class || !academicYear || !roomNo || !bedNo || !studentName || !regNo || !entrydate){
+            return res.status(400).json({msg:"Please fill all fields",data:{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate}})
         }
         else{
             let query=`select available_bed,occupied_bed from bed_availability where room_no='${roomNo}'`
@@ -202,7 +202,7 @@ exports.CreateHostelEntry=(req,res)=>{
                       return res.status(400).json({msg:"No Bed Available"})
                   }
                   else{
-                    query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,student_name,reg_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entriedate}')`
+                    query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,student_name,registration_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entrydate}')`
                       Database.query(query,(err,result)=>{
                           if(err){
                               console.log(err)
@@ -217,7 +217,7 @@ exports.CreateHostelEntry=(req,res)=>{
                                         console.log(err)
                                     }
                                     else{
-                                        query= `update student_admisson set hostel_flag=1 where reg_no='${regNo}'`
+                                        query= `update Student_Admission set hostelentry=1 where reg_no='${regNo}'`
                                         Database.query(query,(err,result)=>{
                                             if(err){
                                                 console.log(err)
