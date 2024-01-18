@@ -4,6 +4,7 @@ import "./Dashboard.css";
 
 import icon from '../Galllery/GalleryImage/operater_icon.png';
 import {useState } from "react";
+import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 
 
 
@@ -35,7 +36,7 @@ const Dashboard = () => {
 const [bedview,setbedview]=useState('none')
 
  const [bedentry,setbedentry]=useState('none')
- const [hostelview,sethostelview]=useState('none')
+ const [hostelentryview,sethostelview]=useState('none')
  const [checkpending,setcheckpending]=useState('none')
  const [hostelentrycreate,sethostelentrycreate]=useState('none')
 
@@ -426,7 +427,8 @@ const handleSecondStockView=()=>{
                             } 
 
                             const handlehostelview=()=>{
-                              if(hostelview==='none'){
+     console.log("ok")
+                              if(hostelentryview==='none'){
                                 sethostelview('block')
                                   setStockEntry('none')
                                   setItemCreate('none')
@@ -515,7 +517,7 @@ const handleSecondStockView=()=>{
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
                        StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView} 
                        modifyStock={modifySearchView} createbed={bedentry} viewbed={bedview} checkpending={checkpending}
-                       HostelEntryCreate={hostelentrycreate}
+                       HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview}
         />
 
       </div>

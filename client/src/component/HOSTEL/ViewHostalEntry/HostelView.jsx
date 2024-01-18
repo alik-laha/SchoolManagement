@@ -4,7 +4,7 @@ const HostelView= (props) => {
 
     return(
         <>
-            <div>
+            <div style={{display:props.view}}>
                 <table>
                     <thead>
                     <tr>

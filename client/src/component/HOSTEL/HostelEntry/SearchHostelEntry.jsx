@@ -4,11 +4,10 @@ import axios from "axios";
 const SearchHostelEntry= (props) => {
     const [Class,setClass]=useState("")
     const [regNo,setRegNo]=useState("")
-    const [entryDate,setEntryDate]=useState("")
 const HandaleSubmit=(e)=>{
     e.preventDefault();
     console.log(regNo)
-    axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,entryDate}).then((res)=>{
+    axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo}).then((res)=>{
         props.setStudentData(res.data.result)
     })
 
@@ -30,13 +29,6 @@ const HandaleSubmit=(e)=>{
                             Search By Registration No.
                         </label>
                         <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
-                    </div>
-
-                    <div>
-                        <label>
-                            Search By Entry Date.
-                        </label>
-                        <input type="date" value={entryDate} onChange={(e) => setEntryDate(e.target.value)}/>
                     </div>
 
                     <input type="submit" value="Search"/>
