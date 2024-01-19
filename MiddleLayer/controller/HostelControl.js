@@ -304,3 +304,93 @@ try{
         console.log(err)
     }
 }
+
+//update hostel entry
+
+exports.UpdateHostelEntry=(req,res)=>{
+    const{roomNo,bedNo,entrydate,regNo}=req.body
+    try{
+       if(!roomNo || !bedNo || !entrydate || !regNo){
+           return res.status(400).json({msg:"Please fill all fields"})
+       }
+       else{
+           let query=`select room_no from master_hostel where registration_no='${regNo}'`
+              Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    let room_no=result[0].room_no
+                    if(room_no===roomNo){
+                        query=`update master_hostel set bed_no='${bedNo}',entry_date='${entrydate}' where registration_no='${regNo}'`
+                        Database.query(query,(err,result)=>{
+                            if(err){
+                                console.log(err)
+                            }
+                            else{
+                                return res.status(200).json({msg:"Hostel Entry Updated Successfully"})
+                            }
+                        })
+                    }
+                    else{
+                        query=`select available_bed,occupied_bed from bed_availability where room_no='${roomNo}'`
+                        Database.query(query,(err,result)=>{
+                          if(err){
+                              console.log(err)
+                          }
+                          else{
+                              let available_bed=result[0].available_bed
+                              let occupied_bed=result[0].occupied_bed
+                              if(available_bed===0){
+                                    return res.status(400).json({msg:"No Bed Available"})
+                              }
+                              else{
+                                  available_bed=available_bed-1
+                                  occupied_bed=occupied_bed+1
+                                    query=`UPDATE bed_availability SET available_bed='${available_bed}',occupied_bed='${occupied_bed}' WHERE room_no='${roomNo}'`
+                                    Database.query(query,(err,result)=>{
+                                      if(err){
+                                          console.log(err)
+                                      }
+                                      else{
+                                          query=`select available_bed,occupied_bed from bed_availability where room_no='${room_no}'`
+                                          Database.query(query,(err,result)=>{
+                                              if(err){
+                                                  console.log(err)
+                                              }
+                                              else{
+                                                  let available_bed=result[0].available_bed
+                                                  let occupied_bed=result[0].occupied_bed
+                                                    available_bed=available_bed+1
+                                                    occupied_bed=occupied_bed-1
+                                                    query=`UPDATE bed_availability SET available_bed='${available_bed}',occupied_bed='${occupied_bed}' WHERE room_no='${room_no}'`
+                                                    Database.query(query,(err,result)=> {
+                                                        if (err) {
+                                                            console.log(err)
+                                                        } else {
+                                                            query = `update master_hostel set room_no='${roomNo}',bed_no='${bedNo}',entry_date='${entrydate}' where registration_no='${regNo}'`
+                                                            Database.query(query, (err, result) => {
+                                                                if (err) {
+                                                                    console.log(err)
+                                                                } else {
+                                                                    return res.status(200).json({msg: "Hostel Entry Updated Successfully"})
+                                                                }
+                                                            })
+                                                        }
+                                                    })
+                                              }
+                                          })
+                                      }
+                                    })
+                              }
+                          }
+                        })
+                    }
+                }
+              })
+       }
+    }
+    catch (err) {
+        console.log(err)
+    }
+    }

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const{CreateBed, GetBed,DeleteBed,UpdateBed,GetRoomNo,GetHostelEntry,CreateHostelEntry,DeleteHostelEntry}=require('../controller/HostelControl')
+const{CreateBed, GetBed,DeleteBed,UpdateBed,GetRoomNo,GetHostelEntry,CreateHostelEntry,DeleteHostelEntry,UpdateHostelEntry}=require('../controller/HostelControl')
 
 //create bed
 router.post('/createbed',CreateBed)
@@ -26,5 +26,7 @@ router.post('/createhostelentry',CreateHostelEntry)
 //delete hostel entry
 router.post('/deletehostelentry',DeleteHostelEntry)
 
+//update hostel entry
+router.post('/updatehostelentry',UpdateHostelEntry)
 
 module.exports = router
