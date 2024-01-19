@@ -282,7 +282,7 @@ try{
                                     console.log(err)
                                 }
                                 else{
-                                    query= `update Student_Admission set hostelentry=0 where reg_no='${regNo}'`
+                                    query= `update Student_Admission set hostelentry=0 where registration_no='${regNo}'`
                                     Database.query(query,(err,result)=>{
                                         if(err){
                                             console.log(err)
