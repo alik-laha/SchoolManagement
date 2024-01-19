@@ -7,7 +7,7 @@ const HostelEntry = (props) => {
     const [regNo, setRegNo] = useState("");
     const [roomNo, setRoomNo] = useState("");
     const [bedNo, setBedNo] = useState("");
-    const [Class, setClass] = useState("");
+    const [Class, setClass] = useState(0);
     const [entryStatus, setEntryStatus] = useState(0);
     const [academicYear, setacademic] = useState("");
     const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
@@ -36,14 +36,14 @@ const HostelEntry = (props) => {
                 entrydate
             })
                 .then((res) => {
-                    alert(res.data);
+                    alert(res.data.toString());
                     setAllView("contents");
                     setEntryView("none");
                     setStudentName("");
                     setRegNo("");
                     setRoomNo("");
                     setBedNo("");
-                    setClass("");
+                    setClass(0);
                     setacademic("");
                     setEntryDate(new Date().toISOString().slice(0, 10));
                 })
@@ -56,7 +56,23 @@ const HostelEntry = (props) => {
         }
     }
 
-    const handleDelete = (data) => {
+    const handleDelete = (regNo,roomNo) => {
+        axios.post('http://localhost:7000/api/v1/hostel/deletehostelentry', {regNo,roomNo})
+            .then((res) => {
+                alert(res.data);
+                setAllView("contents");
+                setEntryView("none");
+                setStudentName("");
+                setRegNo("");
+                setRoomNo("");
+                setBedNo("");
+                setClass(0);
+                setacademic("");
+                setEntryDate(new Date().toISOString().slice(0, 10));
+            })
+            .catch((err) => {
+                console.log(err);
+            })
 
     }
     const handaleClick = (data) => {
@@ -70,7 +86,6 @@ const HostelEntry = (props) => {
             const rgi=data.registration_no
             setEntryStatus(1)
             axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
-                console.log(res.data.result)
                 setRoomNo(res.data.result[0].room_no)
                 setBedNo(res.data.result[0].bed_no)
                 setEntryDate(res.data.result[0].entry_date.slice(0,10))
@@ -89,7 +104,7 @@ const HostelEntry = (props) => {
         setRegNo("");
         setRoomNo("");
         setBedNo("");
-        setClass("");
+        setClass(0);
         setacademic("");
         setEntryStatus(0);
         setEntryDate(new Date().toISOString().slice(0, 10));
@@ -124,7 +139,7 @@ const HostelEntry = (props) => {
                                     <tr key={idx}>
                                         <td>{data.student_id}</td>
                                         <td><input type='checkbox'
-                                                   checked={data.HostelEntry === 1 ? true : false}></input></td>
+                                                   checked={data.hostelentry === 1 ? true : false}></input></td>
                                         <td>{data.student_Name}</td>
                                         <td>{data.class}</td>
                                         <td>{data.registration_no}</td>

@@ -41,7 +41,7 @@ useEffect(() => {
                                 <tr key={data.id}>
                                     <td>{data.id}</td>
                                     <td>{data.student_Name}</td>
-                                    <td>{data.Class}</td>
+                                    <td>{data.class}</td>
                                     <td>{data.registration_no}</td>
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
