@@ -52,7 +52,22 @@ const HostelEntry = (props) => {
                 })
         }
         else {
-
+            axios.post("http://localhost:7000/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate})
+                .then((res) => {
+                    alert(res.data.toString());
+                    setAllView("contents");
+                    setEntryView("none");
+                    setStudentName("");
+                    setRegNo("");
+                    setRoomNo("");
+                    setBedNo("");
+                    setClass(0);
+                    setacademic("");
+                    setEntryDate(new Date().toISOString().slice(0, 10));
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
         }
     }
 
