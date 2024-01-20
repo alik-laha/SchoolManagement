@@ -11,6 +11,7 @@ const StockItemEntry= (props) => {
     const [unitCost, setUnitCost] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [projectedCost, setProjectedCost] = useState(0);
+    const [modifiedDate, setModifiedDate] = useState(new Date().toISOString().slice(0, 10) );
     useEffect(()=>{
 
     axios.post("http://localhost:7000/api/v1/stock/getallvendor")
@@ -43,7 +44,8 @@ const StockItemEntry= (props) => {
             billDate,
             unitCost,
             quantity,
-            projectedCost
+            projectedCost,
+            modifiedDate
         }
         axios.post("http://localhost:7000/api/v1/stock/stockentry", data)
             .then((res) => {
@@ -122,7 +124,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Unit Cost</label>
+                    <label>Unit Cost(Per Pc/Kg/Ltr/Mtr)</label>
                     <input
                         id="UnitCost"
                         type="number"
@@ -133,7 +135,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Quantity</label>
+                    <label>Quantity (Pc/ Kg/Ltr/Mtr)</label>
                     <input
                         id="Quantity"
                         type="number"
