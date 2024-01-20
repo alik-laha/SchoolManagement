@@ -159,7 +159,7 @@ const hostelEntryData=(data)=>{
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
-          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData}/>
+          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} />
           
           
 
@@ -174,7 +174,7 @@ const hostelEntryData=(data)=>{
           <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
-          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate}/>
+          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
           <HostelView view={props.HostelentryView} data={hostelenrtydata} />
 
         </div>

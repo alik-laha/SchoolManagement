@@ -129,6 +129,9 @@ const HostelEntry = (props) => {
             .then((res) => {
                 setRoomData(res.data.result)
             })
+            .catch((err) => {
+                console.log(err);
+            })
     }, [view]);
     return(
        

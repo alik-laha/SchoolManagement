@@ -96,6 +96,8 @@ if(search==='none'){
     setbedview('none')
     setcheckpending('none')
     sethostelentrycreate('none')
+
+
 }
 else{
     setSearch('none')
@@ -418,6 +420,7 @@ const handleSecondStockView=()=>{
                               setbedview('none')
                               setcheckpending('none')
                               sethostelentrycreate('none')
+                              setmodifySearchView('none')
                           }
                               else{
                                 setbedentry('none')
@@ -466,6 +469,7 @@ const handleSecondStockView=()=>{
                                       setbedview('none')
                                       setbedentry('none')
                                       sethostelentrycreate('none')
+                                      sethostelview('none')
                                   }
                                       else{
                                         setcheckpending('none')

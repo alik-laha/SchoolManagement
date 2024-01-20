@@ -151,32 +151,52 @@ exports.DeleteBed= (req, res) => {
 
 //get hostel entry
 exports.GetHostelEntry=(req,res)=>{
-    const {Class,academicYear,regNo}=req.body
+    const {Class,academicYear,regNo,roomNo}=req.body
     try {
         let query
-        if(!Class && !academicYear && !regNo){
+        if(!Class && !academicYear && !regNo && !roomNo){
             query = `SELECT *
                      FROM master_hostel`
         }
-        else if(!Class && !academicYear && regNo){
+        else if(!Class && !academicYear && regNo && !roomNo){
             query = `SELECT *
                      FROM master_hostel
                      WHERE registration_no regexp '${regNo}'`
         }
-        else if(!Class && academicYear && !regNo){
+        else if(!Class && academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
                         WHERE academic_year regexp '${academicYear}'`
         }
-        else if(Class && !academicYear && !regNo){
+        else if(Class && !academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
                         WHERE Class regexp '${Class}'`
         }
-        else if(Class && academicYear && !regNo){
+        else if(Class && academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
                         WHERE Class regexp '${Class}' and academic_year regexp '${academicYear}'`
+        }
+        else if(Class && !academicYear && !regNo && roomNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE Class regexp '${Class}' and room_no regexp '${roomNo}'`
+        }
+        else if(!Class && academicYear && !regNo && roomNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE academic_year regexp '${academicYear}' and room_no regexp '${roomNo}'`
+        }
+        else if(!Class && !academicYear && !regNo && roomNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE room_no regexp '${roomNo}'`
+        }
+        else if(Class && academicYear && !regNo && roomNo){
+            query = `SELECT * 
+                        FROM master_hostel
+                        WHERE Class regexp '${Class}' and academic_year regexp '${academicYear}' and room_no regexp '${roomNo}'`
         }
         Database.query(query,(err,result)=>{
             if(err){
