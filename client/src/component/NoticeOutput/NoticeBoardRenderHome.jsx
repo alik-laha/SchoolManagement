@@ -77,25 +77,27 @@ const NoticeOutput=()=>{
 
 
             <marquee behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" >
-            <ul className="cssmarquee">
+            {/* <ul className="cssmarquee"> */}
                 {file.map((fileName, index) => (
 
-                         <li key={index}>    
-                               
-                        <div className='li-notice' style={{display:'flex'}}>
-                        <NewImage filedate={fileName.slice(-10)}/> 
-                        <button onClick={()=>handleDownload(fileName)}>
+                         <div key={index}>    
+
+                         <NewImage filedate={fileName.slice(-10)}/> 
+                          <a onClick={()=>handleDownload(fileName)}>
                             {       
                                 fileName.slice(0,-15)
-                            }
+                            }</a>
                             
-                        </button>
-                        <hr size="0.5" color='red'></hr>
-                        </div>
                         
-                    </li>
+                        <hr size="0.5" color='red'></hr>
+                            
+                        
+                       
+                       
+                        
+                    </div>
 
-                ))}</ul>
+                ))}
                  </marquee>
 
         </div>
