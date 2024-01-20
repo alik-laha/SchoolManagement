@@ -1,6 +1,7 @@
 import {useState,useEffect} from "react";
 import ntc_img from '../NoticeOutput/notice_img.gif'
-
+//Brrech day is defined in day
+const breech_day=10
 
 
 function NewImage({ filedate }) {
@@ -29,7 +30,7 @@ function NewImage({ filedate }) {
         else if (dbMonth === currentMonth) 
         {
           
-            if (dbDay < currentDay ) {
+            if (dbDay < currentDay-breech_day ) {
                 
                 dontshowimg=true;
             } 
