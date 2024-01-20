@@ -140,7 +140,7 @@ const HostelEntry = (props) => {
                             <th>Entry status</th>
                             <th>Student Name</th>
                             <th>Class</th>
-                            <th>Regidtration No</th>
+                            <th>Registration No</th>
                             <th>Admisson Year</th>
                             <th>Actions</th>
                         </tr>

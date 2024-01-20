@@ -1,4 +1,5 @@
 import {useState,useEffect} from "react";
+import ntc_img from '../NoticeOutput/notice_img.gif'
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
     
@@ -9,9 +10,7 @@ const NoticeOutput=()=>{
             .catch((error) => console.error('Error fetching files:', error));
     },[])
     const handleDownload = (filename) => {
-        //const url = window.URL.createObjectURL(`/SchoolManagement/MiddleLayer/student/${fileName}`)
         const link = document.createElement("a");
-        //link.href = url;
         link.href = `http://localhost:7000/api/v1/download?filename=${filename}`;
         link.download = filename;
         link.click();
@@ -28,6 +27,7 @@ const NoticeOutput=()=>{
                 {file.map((fileName, index) => (
 
                          <li key={index}>
+                            <img src={ntc_img}></img>
                         <button onClick={()=>handleDownload(fileName)}>
                             {
                                 fileName.slice(0,-15)

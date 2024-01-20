@@ -25,13 +25,16 @@ useEffect(() => {
                     <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Student Name</th>
+                        <th>Academic Year </th>
                         <th>Class</th>
                         <th>Registration No</th>
+                        <th>Student Name</th>
+                        
+                        
                         <th>Room No</th>
                         <th>Bed No</th>
                         <th>Entry Date</th>
-                        <th>Academic Year </th>
+                        
                     </tr>
                     </thead>
                     <tbody>
@@ -40,13 +43,17 @@ useEffect(() => {
                             return(
                                 <tr key={data.id}>
                                     <td>{data.id}</td>
-                                    <td>{data.student_Name}</td>
+                                    <td>{data.academic_year}</td>
                                     <td>{data.class}</td>
                                     <td>{data.registration_no}</td>
+                                    
+                                    <td>{data.student_Name}</td>
+                                    
+                                    
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
                                     <td>{data.entry_date.slice(0,10)}</td>
-                                    <td>{data.academic_year}</td>
+                                   
                                 </tr>
                             )
 
