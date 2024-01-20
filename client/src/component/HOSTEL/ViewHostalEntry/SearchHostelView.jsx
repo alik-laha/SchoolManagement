@@ -43,7 +43,7 @@ const searchHostelView= (props) => {
                         <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)}/>
                     </div>
                     <div>
-                        Search by room no
+                    <label>Search by Room No. </label>
                         <select onChange={(e)=>setRoomNo(e.target.value)}>
                             <option value="">Select Room No</option>
                             {
