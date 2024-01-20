@@ -1,7 +1,6 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
 const ViewAllVendor=(props)=>{
-    const [allVendor,setAllVendor]=useState([])
     const [view,setView]=useState("none")
 
     const handleDelete = (vendorId) => {

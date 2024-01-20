@@ -78,7 +78,6 @@ exports.CreateVendor = (req, res) => {
                         });
                     }
                     if (data) {
-
                         return res.status(200).json({
                             status: "venodr created",
                             data: data
@@ -129,7 +128,7 @@ exports.StockEntry=(req,res)=>{
                     if(error){
 
                         return res.status(400).json({
-                            status:"error at creating stock",
+                            status:"Bill No. Already Exists",
                             message:error
                         })
                     }

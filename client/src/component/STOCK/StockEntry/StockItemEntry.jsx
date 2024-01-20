@@ -47,7 +47,7 @@ const StockItemEntry= (props) => {
         }
         axios.post("http://localhost:7000/api/v1/stock/stockentry", data)
             .then((res) => {
-                    alert("Stock Entry Successfull");
+                    alert("Stock Entry Successfully");
                     setItemName("");
                     setBillNo("");
                     setBillDate(new Date().toISOString().slice(0, 10) );
@@ -59,7 +59,10 @@ const StockItemEntry= (props) => {
 
             })
             .catch((err) => {
-                console.log(err);
+                 if(err.response.data.message.errno === 1062){
+                    alert("Bill No. " + billNo+" Already Exist");
+                 }
+
             })
     }
 

@@ -20,7 +20,11 @@ const CreateUser = ({showCreate,AllRoles}) => {
         setPassword("");
         setRole("");
         setdOB('');
-  }).catch(err=>alert(err.response.data.data))
+  }).catch(err=>{
+    if(err.response.data.msg.errno===1062){
+      alert(`UserName ${name} already exists`)
+    }
+    })
     ;}
 
   return (

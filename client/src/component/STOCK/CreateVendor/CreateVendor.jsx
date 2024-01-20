@@ -9,8 +9,12 @@ const CreateVendor = (props) => {
         axios.post("http://localhost:7000/api/v1/stock/createvendor",{
             vendor:vendor
         })
-        alert(`Vendor created with Vendor Name ${vendor}`)
-
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>

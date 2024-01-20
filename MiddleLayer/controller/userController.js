@@ -50,7 +50,8 @@ exports.Login = (req, res) => {
 
                             return res.status(400).json({
                                 status: "failed",
-                                data: `UserName ${name} already exists`
+                                data: `UserName ${name} already exists`,
+                                msg: error
                             });
                         }
                         if (data) {
