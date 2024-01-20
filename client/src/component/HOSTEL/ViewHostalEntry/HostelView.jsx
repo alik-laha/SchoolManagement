@@ -60,9 +60,10 @@ useEffect(() => {
                         })
                     }
                     </tbody>
-
                 </table>
+
             </div>
+            {props.data.length===0 ? <div className="no-data">No Data Found</div> : null}
         </>
     )
 }
