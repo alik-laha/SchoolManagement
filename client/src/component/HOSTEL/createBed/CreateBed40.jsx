@@ -18,7 +18,7 @@ const CreateBed40 = (props) => {
             setRoom("");
             setTotalBed("");
         }).catch((err) => {
-            console.log(err);
+            alert(err.response.data.msg);
         });
     }
     return (

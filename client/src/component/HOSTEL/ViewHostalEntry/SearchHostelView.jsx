@@ -12,6 +12,9 @@ const searchHostelView= (props) => {
             console.log(res.data.result)
             props.setHostelEntryData(res.data.result)
         })
+            .catch((err)=>{
+                console.log(err);
+            })
     }
     useEffect(()=>{
         axios.get("http://localhost:7000/api/v1/hostel/getroomno")

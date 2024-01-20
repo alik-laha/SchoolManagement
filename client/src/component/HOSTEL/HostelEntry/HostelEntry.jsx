@@ -48,7 +48,7 @@ const HostelEntry = (props) => {
                     setEntryDate(new Date().toISOString().slice(0, 10));
                 })
                 .catch((err) => {
-                    console.log(err);
+                    alert(err.response.data.msg);
                 })
         }
         else {
@@ -66,7 +66,7 @@ const HostelEntry = (props) => {
                     setEntryDate(new Date().toISOString().slice(0, 10));
                 })
                 .catch((err) => {
-                    console.log(err);
+                    alert(err.response.data.msg);
                 })
         }
     }
@@ -86,7 +86,7 @@ const HostelEntry = (props) => {
                 setEntryDate(new Date().toISOString().slice(0, 10));
             })
             .catch((err) => {
-                console.log(err);
+                alert(err.response.msg);
             })
 
     }
@@ -131,6 +131,7 @@ const HostelEntry = (props) => {
             })
             .catch((err) => {
                 console.log(err);
+                window.location.reload()
             })
     }, [view]);
     return(
