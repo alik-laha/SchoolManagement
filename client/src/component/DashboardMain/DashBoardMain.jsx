@@ -27,6 +27,7 @@ import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
 import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import SearchHostelView from "../HOSTEL/ViewHostalEntry/SearchHostelView.jsx";
+import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -160,7 +161,7 @@ const hostelEntryData=(data)=>{
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} />
-          
+          <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
           
 
         </div>

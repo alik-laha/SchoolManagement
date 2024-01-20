@@ -421,6 +421,7 @@ const handleSecondStockView=()=>{
                               setcheckpending('none')
                               sethostelentrycreate('none')
                               setmodifySearchView('none')
+                              setSecondStockView("none")
                           }
                               else{
                                 setbedentry('none')
@@ -446,6 +447,7 @@ const handleSecondStockView=()=>{
                                   setbedentry('none')
                                   setcheckpending('none')
                                   sethostelentrycreate('none')
+                                  setSecondStockView("none")
                               }
                                   else{
                                     sethostelview('none')
@@ -470,6 +472,8 @@ const handleSecondStockView=()=>{
                                       setbedentry('none')
                                       sethostelentrycreate('none')
                                       sethostelview('none')
+                                      setmodifySearchView('none')
+                                        setSecondStockView("none")
                                   }
                                       else{
                                         setcheckpending('none')
