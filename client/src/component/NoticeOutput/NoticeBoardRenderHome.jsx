@@ -77,19 +77,24 @@ const NoticeOutput=()=>{
 
 
             <marquee onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" >
-            {/* <ul className="cssmarquee"> */}
+         <ul> 
                 {file.map((fileName, index) => (
 
-                         <div key={index}>    
+                         <li  key={index}>
+                                
                          <NewImage filedate={fileName.slice(-10)}/> 
                           <a onClick={()=>handleDownload(fileName)}>
                             {       
                                 fileName.slice(0,-15)
                             }</a>
-                        <hr size="0.5" color='red'></hr>
-                    </div>
+                            
+                            
+                        
+                    </li>
+                    
 
                 ))}
+                </ul>
                  </marquee>
 
         </div>
