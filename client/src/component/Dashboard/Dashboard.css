@@ -21,7 +21,13 @@
     background-color: #3c8dbc;
     display: flow-root;
 }
-
+.no-data{
+    text-align: center;
+    font-size: 20px;
+    color: red;
+    margin-top: 20px;
+    
+}
 
 .dashboard-main-panel{
     display: flex;

@@ -68,6 +68,7 @@ const StockView= (props) => {
                 ))}
                 </tbody>
             </table>
+            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
         </div>
     )
 }
