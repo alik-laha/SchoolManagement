@@ -44,11 +44,11 @@ const UserSearchResponse60=(props)=>{
     useEffect(() => {
         setAllRoles(props.AllRoles)
     }, [props.AllRoles]);
-    const handleDelete = (user_id) => {
+    const handleDelete = (user_id,userName) => {
         axios
             .post("http://localhost:7000/api/v1/deleteuser", {user_id})
             .then((res) => {
-                console.log(res);
+                alert("User: "+userName+" Deleted Successfully");
             })
             .catch((error) => {
                 console.log(error);
@@ -115,10 +115,10 @@ const UserSearchResponse60=(props)=>{
                             <button className="dashboard-btn btn-warning"
                                     onClick={() => {
                                         const confirmBox = window.confirm(
-                                            "Do you really want to delete this User?"
+                                            "Do you really want to delete this User: "+item.user_name +"?"
                                         );
                                         if (confirmBox === true) {
-                                            handleDelete(item.user_id);
+                                            handleDelete(item.user_id, item.user_name);
                                         }
                                     }}
                             >

@@ -50,7 +50,7 @@ exports.Login = (req, res) => {
 
                             return res.status(400).json({
                                 status: "failed",
-                                data: "user already exist"
+                                data: `UserName ${name} already exists`
                             });
                         }
                         if (data) {
@@ -90,7 +90,7 @@ exports.Login = (req, res) => {
                     if (data.length === 0) {
                         return res.status(400).json({
                             status: "failed",
-                            data: `Desired Result is not found with user name ${name} and Role ${role} combination` 
+                            data: `Desired Result is not found with User Name ${name} and Role ${role} combination`
                         });
                     } else if (data[0]) {
 
