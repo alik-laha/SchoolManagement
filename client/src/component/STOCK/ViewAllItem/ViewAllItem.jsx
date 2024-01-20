@@ -3,12 +3,7 @@ import axios from "axios";
 const ViewAllItem=(props)=>{
     const [allItem,setAllItem]=useState([])
     const [View,setView]=useState("none")
-    useEffect(()=>{
-        axios.post("http://localhost:7000/api/v1/stock/getallitem")
-            .then(res=>{
-                setAllItem(res.data.data)
-            })
-    },[View])
+
     useEffect(() => {
         if(props.itemCreateView==="block" && props.View==="block"){
            setView("block")
@@ -40,7 +35,7 @@ const ViewAllItem=(props)=>{
                 </tr>
                 </thead>
                 <tbody >
-                {allItem.map((vendor)=>{
+                {props.Item.map((vendor)=>{
                     return(
                         <tr key={vendor.type_id}>
                             <td>{vendor.type_id}</td>

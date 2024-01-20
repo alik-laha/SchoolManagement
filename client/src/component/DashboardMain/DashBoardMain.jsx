@@ -168,8 +168,8 @@ const hostelEntryData=(data)=>{
         <div id = 'dashboard-main-60' className="dashboard-main-60">
           <ViewAllUser data={data} View={view} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
-          <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor}  />
-          <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView}/>
+          <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={allVendorName}  />
+          <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>
           <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
           <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
           <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>

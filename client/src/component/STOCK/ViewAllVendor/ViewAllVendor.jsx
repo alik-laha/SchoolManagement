@@ -4,17 +4,6 @@ const ViewAllVendor=(props)=>{
     const [allVendor,setAllVendor]=useState([])
     const [view,setView]=useState("none")
 
-
-    useEffect(()=>{
-      axios.post("http://localhost:7000/api/v1/stock/getallvendor")
-        .then(res=>{
-           setAllVendor(res.data.data)
-        })
-        .catch(err=>{
-            console.log(err)
-        })
-    },[props.View])
-
     const handleDelete = (vendorId) => {
         axios
             .post("http://localhost:7000/api/v1/stock/deletevendor", { vendorId })
@@ -48,7 +37,7 @@ const ViewAllVendor=(props)=>{
                 </tr>
                 </thead>
                 <tbody >
-                {allVendor.map((vendor)=>{
+                {props.Vendor.map((vendor)=>{
                     return(
                         <tr key={vendor.vendor_id}>
                             <td>{vendor.vendor_id}</td>
