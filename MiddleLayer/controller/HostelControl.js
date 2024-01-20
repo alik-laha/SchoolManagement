@@ -12,7 +12,7 @@ exports.CreateBed= (req, res) => {
             let query = `INSERT INTO bed_availability (floor,room_no,total_bed,available_bed,building) VALUES ('${floor}','${room}','${totalbed}','${totalbed}','${bulding}')`
             Database.query(query,(err,result)=>{
                 if(err){
-                    console.log(err)
+                    return res.status(400).json({msg:err})
                 }
                 else{
                     return res.status(200).json({msg:"Bed Created Successfully"})
