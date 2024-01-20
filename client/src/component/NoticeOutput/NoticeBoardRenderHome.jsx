@@ -1,8 +1,62 @@
 import {useState,useEffect} from "react";
 import ntc_img from '../NoticeOutput/notice_img.gif'
+
+
+
+function NewImage({ filedate }) {
+    console.log(filedate)
+    //date validation start
+    let dontshowimg=true
+    let currentDate = new Date().toISOString();
+    let currentYear = currentDate.slice(0,4);
+    let currentMonth = currentDate.slice(5,7);
+    let currentDay = currentDate.slice(8,10);
+    let dbYear = filedate.slice(6);
+    let dbMonth = filedate.slice(3, 5);
+    let dbDay = filedate.slice(0, 2);
+
+    if (dbYear < currentYear) 
+    {
+        dontshowimg=true;
+    } 
+    else if (dbYear === currentYear) 
+    {
+        
+        if (dbMonth < currentMonth) 
+        {
+            dontshowimg=true;
+        } 
+        else if (dbMonth === currentMonth) 
+        {
+          
+            if (dbDay < currentDay ) {
+                
+                dontshowimg=true;
+            } 
+            else {
+                
+                dontshowimg=false;
+             }
+        } 
+        else 
+        {
+            dontshowimg=false;
+        }
+    } 
+    else 
+    {
+        dontshowimg=false;
+    }
+
+    if (!dontshowimg) {
+      return <img src={ntc_img}></img>;
+    }
+    return ;
+  }
+
+
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
-    
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
             .then((response) => response.json())
@@ -26,10 +80,10 @@ const NoticeOutput=()=>{
             <ul className="cssmarquee">
                 {file.map((fileName, index) => (
 
-                         <li key={index}>
-                            <img src={ntc_img}></img>
+                         <li key={index}>    
+                        <NewImage filedate={fileName.slice(-10)}/>        
                         <button onClick={()=>handleDownload(fileName)}>
-                            {
+                            {       
                                 fileName.slice(0,-15)
                             }
                             
