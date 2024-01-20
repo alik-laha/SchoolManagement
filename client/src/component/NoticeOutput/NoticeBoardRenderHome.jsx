@@ -76,25 +76,17 @@ const NoticeOutput=()=>{
             <span className="noticeboard-main-header">Institute Notice Board</span>
 
 
-            <marquee behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" >
+            <marquee onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" >
             {/* <ul className="cssmarquee"> */}
                 {file.map((fileName, index) => (
 
                          <div key={index}>    
-
                          <NewImage filedate={fileName.slice(-10)}/> 
                           <a onClick={()=>handleDownload(fileName)}>
                             {       
                                 fileName.slice(0,-15)
                             }</a>
-                            
-                        
                         <hr size="0.5" color='red'></hr>
-                            
-                        
-                       
-                       
-                        
                     </div>
 
                 ))}
