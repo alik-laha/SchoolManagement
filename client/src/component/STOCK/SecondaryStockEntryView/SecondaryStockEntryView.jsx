@@ -237,7 +237,6 @@ const SecondaryStockEntryView= (props) => {
                     <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
                     <th>Cash Entry Date</th>
-                    <th>Modified Entry Date</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -259,14 +258,6 @@ const SecondaryStockEntryView= (props) => {
                         value={cashentrydate}
                         required
                     /></td>
-                    <td>     <input
-                        type="date"
-                        placeholder="Modified date"
-                        onChange={(e) => setmodifieddate(e.target.value)}
-                        value={modifieddate}
-                         required readOnly
-                    /></td>
-                  
                     <td style={{display:'flex'}}>
                         <button type="submit" disabled={disableedit} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 > Proceed
@@ -283,6 +274,7 @@ const SecondaryStockEntryView= (props) => {
 
                 
             </table>
+            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
 
         </div>
     )
