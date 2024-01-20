@@ -3,21 +3,22 @@ import { MdDelete } from "react-icons/md";
 import axios from "axios";
 const NoticeManupulation60=(props)=>{
     const [file,setFile]=useState([])
+    const [refresh,setRefresh]=useState(false)
     useEffect(()=>{
         fetch("http://localhost:7000/api/v1/allfiles")
             .then((response) => response.json())
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
-    },[props.Publish])
+    },[props.Publish,refresh])
 
     const handaleDelete=(fileName)=>{
         console.log(fileName)
         axios.post("http://localhost:7000/api/v1/deletenotice",{fileName:fileName})
             .then((data) => {
-                alert("file has been deleted")
+                alert("File has been Deleted")
             })
-            .catch((error) => console.error('Error deleting files:', error));
-            window.location.reload();
+            .catch((error) => console.log('Error deleting files:', error));
+        setRefresh(true)
     }
     return(
         <div style={{display:props.Publish,marginTop:'-230px'}}>

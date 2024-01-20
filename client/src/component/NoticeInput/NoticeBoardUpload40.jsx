@@ -27,7 +27,7 @@ const StudentInputNotice = ({Publish}) => {
         console.log(err)
       });
 
-      alert("Notice Uploaded Successfully")
+      alert("Notice has been Uploaded Successfully")
       //setFile(null)
       handleReset();
 
