@@ -48,7 +48,7 @@ const StockView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Total Price(Estimated)</th>
-                    <th>Primery Stock Entry Date</th>
+                    <th>Last Modified Date</th>
                     
                 </tr>
                 </thead>

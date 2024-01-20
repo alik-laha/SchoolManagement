@@ -130,20 +130,6 @@ const SecondaryStockEntryView= (props) => {
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
         }
-
-
-       if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
-            setmodifieddate(data.stock_modified_date.slice(0, 10))      
-       }
-        else{
-            setmodifieddate(new Date().toISOString().slice(0, 10))
-        }
-
-
-        
-       
-     
-        
     };
     const cancelEdit =() =>{
         setVisiblity('none');
@@ -197,8 +183,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
-                    
-                    
+                    <th>Last Modified Date</th>
                     <th>Action</th>
                     
                 </tr>
@@ -216,6 +201,7 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
+                        <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
                         
                         
                         <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
