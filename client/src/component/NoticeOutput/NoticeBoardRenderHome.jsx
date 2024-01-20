@@ -49,7 +49,7 @@ function NewImage({ filedate }) {
     }
 
     if (!dontshowimg) {
-      return <img src={ntc_img}></img>;
+      return <img className="new-img-notice" src={ntc_img}></img>;
     }
     return ;
   }
@@ -81,7 +81,9 @@ const NoticeOutput=()=>{
                 {file.map((fileName, index) => (
 
                          <li key={index}>    
-                        <NewImage filedate={fileName.slice(-10)}/>        
+                               
+                        <div className='li-notice' style={{display:'flex'}}>
+                        <NewImage filedate={fileName.slice(-10)}/> 
                         <button onClick={()=>handleDownload(fileName)}>
                             {       
                                 fileName.slice(0,-15)
@@ -89,6 +91,8 @@ const NoticeOutput=()=>{
                             
                         </button>
                         <hr size="0.5" color='red'></hr>
+                        </div>
+                        
                     </li>
 
                 ))}</ul>

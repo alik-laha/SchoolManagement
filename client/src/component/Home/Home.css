@@ -217,6 +217,17 @@
 
 }
 
+.new-img-notice{
+    margin-top: 13px;
+    height: 15px;
+    width: 30px;
+    padding-right: 5px;
+}
+.li-notice{
+    font-family: serif;
+    font-weight: 600;
+}
+
 
 
     @keyframes cssmarquee {
