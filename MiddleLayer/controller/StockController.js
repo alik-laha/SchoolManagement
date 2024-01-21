@@ -363,10 +363,11 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
 //Modify Stock
 
 exports.ModifyStock=(req,res)=>{
-    const {stockid,itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost }=req.body
-    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate || !itemType || !discountCost || !actualCost){
+    const {stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost }=req.body
+    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  || !discountCost || !actualCost || !unitCost){
         return res.status(400).json({
-            status:"all data needed"
+            status:"all data needed",
+            data:{stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost}
         })
     }
     else{

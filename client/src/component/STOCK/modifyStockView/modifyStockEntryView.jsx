@@ -115,25 +115,43 @@ const ModifyStockEntryView= (props) => {
 
      const handaleSubmit = (e) => {
        e.preventDefault();
-          if(!modifieddate || !cashentrydate || !balamt|| !paidamt|| !discountamt){
-           alert("Please fill all the fields")
-          return
-            }
-         axios
-            .post("http://localhost:7000/api/v1/stock/updatecashentry", {
-               itemid,paidamt,discountamt,balamt,cashentrydate,
-               modifieddate
-               
-            })
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        alert("Cash Entry Updated Successfully");
-        setVisiblity('none');
-        setmainsvisibility('contents');
+         const data={
+          stockid:itemid,
+          billNo:billid,
+          itemName:itemname,
+          itemType:item,
+          vendorName:vendor,
+          billDate:billDate,
+          unitCost:unitcost,
+          quantity:qty,
+          projectedCost:estimatedamt,
+          discountedCost:discountamt,
+          actualCost:paidamt,
+          modifiedDate:modifieddate,
+         }
+            axios.post("http://localhost:7000/api/v1/stock/modifystockentry",data)
+                .then((res) => {
+                    alert("Stock Entry Successfully");
+                    setVisiblity('none');
+                    setmainsvisibility('contents');
+                    setdiscountamt(0);
+                    setpaidamt(0);
+                    setcashentrydate(new Date().toISOString().slice(0, 10) )
+                    setmodifieddate(new Date().toISOString().slice(0, 10))
+                    setbillDate(new Date().toISOString().slice(0, 10))
+                    setunitcost(0)
+                    setqty(0)
+                    setestimatedamt(0)
+                    setbillid("")
+                    setitemid("")
+                    setitemname("")
+                    setvendor("")
+                    setitem("")
+                    props.setStockData(res.data.data)
+                })
+                .catch((err) => {
+                    console.log(err.response.data.data);
+                })
         
     };
 
