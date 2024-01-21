@@ -32,15 +32,6 @@ useEffect(() => {
                         <th>Roll No</th>
                         <th>Year of Admission</th>
                         <th>Hostel Entry</th>
-                       
-                        
-                        
-                        
-                        
-                        
-                        <th>Room No</th>
-                        <th>Bed No</th>
-                        <th>Entry Date</th>
                         
                     </tr>
                     </thead>
@@ -48,18 +39,18 @@ useEffect(() => {
                     {
                         props.data.map((data)=> {
                             return(
-                                <tr key={data.id}>
-                                    <td>{data.id}</td>
-                                    <td>{data.academic_year}</td>
-                                    <td>{data.class}</td>
-                                    <td>{data.registration_no}</td>
-                                    
+                                <tr key={data.student_id}>
+                                    <td>{data.student_id}</td>
                                     <td>{data.student_Name}</td>
+                                    <td>{data.registration_no}</td>
+                                    <td>{data.class}</td>
+                                    <td>{data.section}</td>
+                                    <td>{data.roll_no}</td>
+                                    <td>{data.admission_year}</td>
+                                    <td>{data.hostelentry === 1 ? 'Yes' : 'No'}</td>
+
+
                                     
-                                    
-                                    <td>{data.room_no}</td>
-                                    <td>{data.bed_no}</td>
-                                    <td>{data.entry_date.slice(0,10)}</td>
                                    
                                 </tr>
                             )
