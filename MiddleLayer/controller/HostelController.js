@@ -97,7 +97,7 @@ exports.UpdateBed= (req, res) => {
                 } else {
                     let occupied_bed = result[0].occupied_bed
                     if (occupied_bed > totalbed) {
-                        return res.status(400).json({msg: "Total Bed must be greater than occupied bed"})
+                        return res.status(400).json({msg: "Total Bed must be Greater than Occupied Bed"})
                     } else {
                         available_bed = totalbed - occupied_bed
                         query = `UPDATE bed_availability
@@ -111,7 +111,7 @@ exports.UpdateBed= (req, res) => {
                             if (err) {
                                 console.log(err)
                             } else {
-                                return res.status(200).json({msg: "Bed Updated Successfully"})
+                                return res.status(200).json({msg: "Room Details Updated Successfully"})
                             }
                         })
                     }
@@ -131,7 +131,7 @@ exports.DeleteBed= (req, res) => {
     try {
         const {id} = req.body
         if (!id) {
-            return res.status(400).json({msg: "Please fill all fields"})
+            return res.status(400).json({msg: "Please Fill All the Necessary Fields"})
         } else {
             let query = `DELETE
                          FROM bed_availability
@@ -140,7 +140,7 @@ exports.DeleteBed= (req, res) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    return res.status(200).json({msg: "Bed Deleted Successfully"})
+                    return res.status(200).json({msg: "Room has been Deleted Successfully"})
                 }
             })
         }
