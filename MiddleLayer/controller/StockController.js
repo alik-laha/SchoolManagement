@@ -359,3 +359,48 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
             
                 })
 }
+
+//Modify Stock
+
+exports.ModifyStock=(req,res)=>{
+    const {stockid,itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost }=req.body
+    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate || !itemType || !discountCost || !actualCost){
+        return res.status(400).json({
+            status:"all data needed"
+        })
+    }
+    else{
+                query=`
+                    UPDATE stock
+                    SET item_Type="${itemType}",
+                        item_Name="${itemName}",
+                        item_Type="${itemType}",
+                        vendor_name="${vendorName}",
+                        bill_id="${billNo}",
+                        bill_date="${billDate}",
+                        unit_cost="${unitCost}",
+                        discount_cost="${discountCost}",
+                        actual_cost="${actualCost}",
+                        quantity="${quantity}",
+                        projected_cost="${projectedCost}",
+                        stock_modified_date="${modifiedDate}"
+                    WHERE stock_id = ${stockid}`;
+                Database.query(query,function(error,data){
+                    if(error){
+
+                        return res.status(400).json({
+                            status:"Bill No. Already Exists",
+                            message:error
+                        })
+                    }
+                    if(data){
+
+                        return res.status(200).json({
+                            status:"stock modified",
+                            data:data
+                        })
+                    }
+
+                })
+            }
+}
