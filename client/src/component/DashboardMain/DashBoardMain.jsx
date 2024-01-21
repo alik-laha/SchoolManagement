@@ -27,8 +27,9 @@ import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
 import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import SearchHostelView from "../HOSTEL/ViewHostalEntry/SearchHostelView.jsx";
 import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.jsx";
-import AcademicEntrySearch from '../AcademicEntry/AcademicEntrySearch.jsx';
-import AcademicEntryView from '../AcademicEntry/AcademicEntryView.jsx'
+import AcademicEntrySearch from '../Student/AcademicEntry/AcademicEntrySearch.jsx';
+import AcademicEntryView from '../Student/AcademicEntry/AcademicEntryView.jsx'
+import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -185,7 +186,7 @@ const handleacademicEntryData=(data)=>{
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
-          
+          <MasterStudentEntry />
 
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
