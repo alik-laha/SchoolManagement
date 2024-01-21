@@ -46,6 +46,7 @@ const SecondaryStockEntryView= (props) => {
 
 
     const clearTable = () => {
+        if(visiblity==='none')
         setViewStock([]);
       };
 
@@ -175,9 +176,10 @@ const SecondaryStockEntryView= (props) => {
 
     return (
         <div style={{display:visible}}>
-         <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+            
             <table className="table-60">
                 <thead style={{display: mainsvisibility}}>
+                <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
