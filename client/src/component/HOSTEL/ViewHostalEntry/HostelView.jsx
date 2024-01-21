@@ -1,19 +1,38 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import axios from "axios";
+
+
 const HostelView= (props) => {
     const [view,setView]=useState("none")
-    
+    const [hostelexportall,sethostelexportall]=useState([])
     const clearTable = () => {
-        props.data=Object.assign([],props.data)
+        sethostelexportall([]);
       };
-useEffect(() => {
-    if (props.data.length > 0 && props.view==="block") {
-        setView("block")
-    }
-    else{
-        setView("none")
-    }
-}, [props.data,props.view])
+
+      useEffect(()=>{
+        axios.post("http://localhost:7000/api/v1/hostel/gethostelentry",props.SearchebyData)
+          .then((res)=>{
+            sethostelexportall(res.data.result)
+          })
+            .catch((error)=>{
+                console.log(error)
+            } )
+      },[props.SearchebyData])
+
+
+
+      useEffect(()=> {
+        if (props.hostelexportview === "block" && props.view === "block") {
+            setView("block")
+        }
+        else {
+            setView("none")
+        }
+    },[props.hostelexportview,props.view])
+
+
+
     return(
         <>
             <div style={{display:view}}>
@@ -34,8 +53,6 @@ useEffect(() => {
                         <th>Class</th>
                         <th>Registration No</th>
                         <th>Student Name</th>
-                        
-                        
                         <th>Room No</th>
                         <th>Bed No</th>
                         <th>Entry Date</th>
@@ -44,31 +61,28 @@ useEffect(() => {
                     </thead>
                     <tbody>
                     {
-                        props.data.map((data)=> {
+                        hostelexportall.map((data)=> {
                             return(
                                 <tr key={data.id}>
                                     <td>{data.id}</td>
                                     <td>{data.academic_year}</td>
                                     <td>{data.class}</td>
-                                    <td>{data.registration_no}</td>
-                                    
+                                    <td>{data.registration_no}</td>                        
                                     <td>{data.student_Name}</td>
-                                    
-                                    
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
-                                    <td>{data.entry_date.slice(0,10)}</td>
-                                   
-                                </tr>
+                                    <td>{data.entry_date.slice(0,10)}</td>           
+                             </tr>
                             )
 
                         })
                     }
                     </tbody>
                 </table>
+                {hostelexportall.length===0 ? <div className="no-data">No Data Exists</div> : null}
 
             </div>
-            {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
+            
         </>
     )
 }

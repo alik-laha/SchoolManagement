@@ -55,6 +55,7 @@ const DashBoardMain = (props) => {
 
   const [academicentrydata,setacademicEntryData]=useState([])
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
+  const [hostelexportshow,sethostelexportshow]=useState("none")
 
   const getdata = (data) => {
     setdata(data);
@@ -134,8 +135,10 @@ const stockallshow=(data)=>{
 const academicAllShow=(data)=>{
   setviewallacademicEntryShow(data);
 }
-
-
+//hostel-export-all-show
+const hostelExportAllShow=(data)=>{
+  sethostelexportshow(data);
+}
 
 
 const modifyStockEntryShow=(data)=> {
@@ -159,6 +162,8 @@ const handleacademicEntryData=(data)=>{
   setacademicEntryData(data)
 }
 
+
+
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -177,7 +182,7 @@ const handleacademicEntryData=(data)=>{
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
-          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} />
+          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} buttonClick={hostelExportAllShow} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           
@@ -194,7 +199,7 @@ const handleacademicEntryData=(data)=>{
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
-          <HostelView view={props.HostelentryView} data={hostelenrtydata} />
+          <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
 
         </div>

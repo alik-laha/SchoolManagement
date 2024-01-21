@@ -8,14 +8,18 @@ const searchHostelView= (props) => {
 
     const handaleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{Class,academicYear,roomNo}).then((res)=>{
-            console.log(res.data.result)
-            props.setHostelEntryData(res.data.result)
-        })
-            .catch((err)=>{
-                console.log(err);
-            })
+        //axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{Class,academicYear,roomNo}).then((res)=>{
+            const data={
+                Class,
+                academicYear,
+                roomNo
+            }
+            props.buttonClick("block");
+            props.hostelEntryData(data);
     }
+
+
+
     useEffect(()=>{
         axios.get("http://localhost:7000/api/v1/hostel/getroomno")
             .then((res) => {

@@ -87,9 +87,9 @@ const AcademicEntryView= (props) => {
                     }
                     </tbody>
                 </table>
-
+                {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
-            {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
+            
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
         </>
     )
