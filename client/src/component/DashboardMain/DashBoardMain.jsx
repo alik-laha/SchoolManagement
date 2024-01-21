@@ -186,7 +186,7 @@ const handleacademicEntryData=(data)=>{
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
-          <MasterStudentEntry />
+          <MasterStudentEntry view={props.StudentEntry}/>
 
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">

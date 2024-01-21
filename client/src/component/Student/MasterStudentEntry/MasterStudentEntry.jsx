@@ -31,8 +31,11 @@ const MasterStudentEntry= (props) => {
     const [admissionDate, setAdmissionDate] = useState("");
     const [age, setAge] = useState("");
     const [bloodGroup, setBloodGroup] = useState("");
+    const [bankAcountNo, setBankAcountNo] = useState("");
+    const [brunch, setBrunch] = useState("");
+    const [ifscCode, setIfscCode] = useState("");
     return(
-        <div className="dashbrd-40-colm">
+        <div style={{display:props.view}} className="dashbrd-40-colm">
             <form>
                 <div>
                     <label>Student Name*</label>
@@ -346,6 +349,33 @@ const MasterStudentEntry= (props) => {
                         value={bloodGroup}
                         onChange={(e) => setBloodGroup(e.target.value)}
                         placeholder="Blood Group"
+                    />
+                </div>
+                <div>
+                    <label>Bank Acount No</label>
+                    <input
+                        type="text"
+                        value={bankAcountNo}
+                        onChange={(e) => setBankAcountNo(e.target.value)}
+                        placeholder="Bank Acount No"
+                    />
+                </div>
+                <div>
+                    <label>Brunch</label>
+                    <input
+                        type="text"
+                        value={brunch}
+                        onChange={(e) => setBrunch(e.target.value)}
+                        placeholder="Brunch"
+                    />
+                </div>
+                <div>
+                    <label>Ifsc code</label>
+                    <input
+                        type="text"
+                        value={ifscCode}
+                        onChange={(e) => setIfscCode(e.target.value)}
+                        placeholder="Ifsc code"
                     />
                 </div>
             </form>
