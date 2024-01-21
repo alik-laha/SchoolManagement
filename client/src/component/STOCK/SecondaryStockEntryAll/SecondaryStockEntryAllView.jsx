@@ -39,7 +39,7 @@ const SecondaryStockEntryAllView= (props) => {
 
     return (
         <div style={{display:visible}}>
-            <button className="dashboard-btn dashboard-btn-scss" onClick={clearTable}>Clear Result</button>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"

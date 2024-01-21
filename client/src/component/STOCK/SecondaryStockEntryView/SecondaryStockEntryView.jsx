@@ -44,6 +44,12 @@ const SecondaryStockEntryView= (props) => {
         setbalamt(discountamt-paidamt)
     },[discountamt,paidamt])
 
+
+    const clearTable = () => {
+        setViewStock([]);
+      };
+
+
     const handleEdit = (data) => {
         setVisiblity("contents");
         setmainsvisibility('none')
@@ -169,7 +175,7 @@ const SecondaryStockEntryView= (props) => {
 
     return (
         <div style={{display:visible}}>
-         
+         <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
             <table className="table-60">
                 <thead style={{display: mainsvisibility}}>
                 <tr>
@@ -260,7 +266,7 @@ const SecondaryStockEntryView= (props) => {
 
                 
             </table>
-            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
+            {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
 
         </div>
     )
