@@ -1,21 +1,22 @@
 import {useState} from "react";
-import axios from "axios";
+
 const AcademicEntrySearch= (props) => {
     const [Class,setClass]=useState("")
     const [regNo,setregNo]=useState("")
     const [year,setyear]=useState("")
     
-    const handaleSubmit=(e)=>{
-        e.preventDefault()
-        axios.post('http://localhost:7000/api/v1/student/getallstudent',{Class,regNo,year}).then((res)=>{
-            console.log(res.data.result)
-            props.setAcademicEntryData(res.data.result)
-        })
-            .catch((err)=>{
-                console.log(err);
-            })
+
+    const handaleSubmit=(e)=> {
+        e.preventDefault();
+        const data={
+            Class,
+            regNo,
+            year
+        }
+        props.buttonClick("block");
+        props.setAcademicEntryData(data);
     }
-  
+
     return(
         <>
             <div className="dashbrd-40-colm" style={{display:props.view}}>

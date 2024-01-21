@@ -51,8 +51,10 @@ const DashBoardMain = (props) => {
   
   const [viewallStock,setviewallStock]=useState("none")
   const [hostelenrtydata,sethostelenrtydata]=useState([])
+
+
   const [academicentrydata,setacademicEntryData]=useState([])
-  
+  const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
 
   const getdata = (data) => {
     setdata(data);
@@ -119,7 +121,7 @@ const handlemodifysearchStockData=(data)=>{
   const stockViewShow=(data)=>{
     setViewStock(data);
   }
-
+//secondary-stock-button-show
 const secondaryStockEntryViewShow=(data)=> {
   setsecondStockEntryViewShow(data);
 
@@ -128,6 +130,11 @@ const secondaryStockEntryViewShow=(data)=> {
 const stockallshow=(data)=>{
   setviewallStock(data);
 }
+//academic-all-button-show
+const academicAllShow=(data)=>{
+  setviewallacademicEntryShow(data);
+}
+
 
 
 
@@ -148,7 +155,7 @@ const hostelEntryData=(data)=>{
   sethostelenrtydata(data)
 }
 
-const academicEntryData=(data)=>{
+const handleacademicEntryData=(data)=>{
   setacademicEntryData(data)
 }
 
@@ -172,7 +179,7 @@ const academicEntryData=(data)=>{
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
-          <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={academicEntryData}/>
+          <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           
 
         </div>
@@ -188,7 +195,7 @@ const academicEntryData=(data)=>{
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
           <HostelView view={props.HostelentryView} data={hostelenrtydata} />
-          <AcademicEntryView view={props.Academicview} data={academicentrydata}/>
+          <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
 
         </div>
       </div>

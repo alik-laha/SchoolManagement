@@ -1,18 +1,46 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import axios from "axios";
+
+
 const AcademicEntryView= (props) => {
     const [view,setView]=useState("none")
-useEffect(() => {
-    if (props.data.length > 0 && props.view==="block") {
-        setView("block")
-    }
-    else{
-        setView("none")
-    }
-}, [props.data,props.view])
+    const [academicAll,setAcademicAll]=useState([])
+
+
+    const clearTable = () => {
+        setAcademicAll([]);
+      };
+    
+
+    useEffect(()=>{
+
+        axios.post("http://localhost:7000/api/v1/student/getallstudent",props.SearchebyData)
+          .then((res)=>{
+            setAcademicAll(res.data.result)
+          })
+            .catch((error)=>{
+                console.log(error)
+            } )
+      },[props.SearchebyData])
+
+
+      useEffect(()=> {
+        console.log(props.academicallview,props.view)
+        if (props.academicallview === "block" && props.view === "block") {
+            setView("block")
+        }
+        else {
+            setView("none")
+        }
+    },[props.academicallview,props.view])
+
+
     return(
         <>
+        
             <div style={{display:view}}>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <ReactHTMLTableToExcel
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
@@ -37,7 +65,7 @@ useEffect(() => {
                     </thead>
                     <tbody>
                     {
-                        props.data.map((data)=> {
+                        academicAll.map((data)=> {
                             return(
                                 <tr key={data.student_id}>
                                     <td>{data.student_id}</td>
@@ -61,6 +89,7 @@ useEffect(() => {
                 </table>
 
             </div>
+            {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
         </>
     )
