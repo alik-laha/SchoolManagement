@@ -25,9 +25,10 @@ import HostelEntry from "../HOSTEL/HostelEntry/HostelEntry.jsx";
 import SecondaryStockEntryAllView from '../STOCK/SecondaryStockEntryAll/SecondaryStockEntryAllView.jsx';
 import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
 import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
-import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import SearchHostelView from "../HOSTEL/ViewHostalEntry/SearchHostelView.jsx";
 import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.jsx";
+import AcademicEntrySearch from '../AcademicEntry/AcademicEntrySearch.jsx';
+import AcademicEntryView from '../AcademicEntry/AcademicEntryView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -50,6 +51,8 @@ const DashBoardMain = (props) => {
   
   const [viewallStock,setviewallStock]=useState("none")
   const [hostelenrtydata,sethostelenrtydata]=useState([])
+  const [academicentrydata,setacademicEntryData]=useState([])
+  
 
   const getdata = (data) => {
     setdata(data);
@@ -92,21 +95,23 @@ if(props.Search==="block" && search==="flex"){
     setView("none")
   }
 
-  const handleVendor=(data)=>{
+
+
+const handleVendor=(data)=>{
       setAllVendorName(data);
-  }
+}
 const handleItemType=(data)=>{
     setAllItemType(data);
 }
-  const handleStockData=(data)=>{
+const handleStockData=(data)=>{
     setStockData(data);
-  }
-  const handleSecondaryViewStockData=(data)=>{
+}
+const handleSecondaryViewStockData=(data)=>{
     setsecondarysearchstockdata(data);
-  }
-  const handlemodifysearchStockData=(data)=>{
+}
+const handlemodifysearchStockData=(data)=>{
     setmodifyviewstockdata(data);
-  }
+}
 
 
 
@@ -142,6 +147,11 @@ const modifyStockEntryShow=(data)=> {
 const hostelEntryData=(data)=>{
   sethostelenrtydata(data)
 }
+
+const academicEntryData=(data)=>{
+  setacademicEntryData(data)
+}
+
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -162,6 +172,7 @@ const hostelEntryData=(data)=>{
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
+          <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={academicEntryData}/>
           
 
         </div>
@@ -177,6 +188,7 @@ const hostelEntryData=(data)=>{
           <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
           <HostelView view={props.HostelentryView} data={hostelenrtydata} />
+          <AcademicEntryView view={props.Academicview} data={academicentrydata}/>
 
         </div>
       </div>

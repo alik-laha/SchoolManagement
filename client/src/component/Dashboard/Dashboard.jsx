@@ -4,7 +4,7 @@ import "./Dashboard.css";
 
 import icon from '../Galllery/GalleryImage/operater_icon.png';
 import {useState } from "react";
-import hostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
+
 
 
 
@@ -39,6 +39,8 @@ const [bedview,setbedview]=useState('none')
  const [hostelentryview,sethostelview]=useState('none')
  const [checkpending,setcheckpending]=useState('none')
  const [hostelentrycreate,sethostelentrycreate]=useState('none')
+ const [academicview,setacademicview]=useState('none')
+
 
 
 
@@ -96,6 +98,7 @@ if(search==='none'){
     setbedview('none')
     setcheckpending('none')
     sethostelentrycreate('none')
+    setacademicview('none')
 
 
 }
@@ -124,6 +127,7 @@ const handaleCreateUser=()=>{
          setbedentry('none')
          setcheckpending('none')
          sethostelentrycreate('none')
+         setacademicview('none')
      }
      else{
          setCreateUser("none")
@@ -150,6 +154,7 @@ const handalePublish=()=>{
          setbedview('none')
          setcheckpending('none')
          sethostelentrycreate('none')
+         setacademicview('none')
      }
      else{
          setPublish('none')
@@ -175,6 +180,7 @@ const HandleVendorCreate=()=>{
          setbedview('none')
          setcheckpending('none')
          sethostelentrycreate('none')
+         setacademicview('none')
      }
         else{
             setVendorDisplay('none')
@@ -200,6 +206,7 @@ const handaleNotice=()=>{
          setbedview('none')
          setcheckpending('none')
          sethostelentrycreate('none')
+         setacademicview('none')
      }
         else{
             setNotice('none')
@@ -224,6 +231,7 @@ const handleItemCreate=()=>{
             setbedview('none')
             setcheckpending('none')
             sethostelentrycreate('none')
+            setacademicview('none')
         }
             else{
                 setItemCreate('none')
@@ -248,6 +256,7 @@ const handleStockEntry=()=>{
             setbedview('none')
             setcheckpending('none')
             sethostelentrycreate('none')
+            setacademicview('none')
         }
             else{
                 setStockEntry('none')
@@ -272,6 +281,7 @@ const handleBedViewStatus=()=>{
          setbedentry('none')
          setcheckpending('none')
          sethostelentrycreate('none')
+         setacademicview('none')
      }
         else{
         setbedview('none')
@@ -295,6 +305,7 @@ const handleStockView=()=>{
             setbedview('none')
             setcheckpending('none')
             sethostelentrycreate('none')
+            setacademicview('none')
         }
             else{
                 setStockView('none')
@@ -321,6 +332,7 @@ const handleSecondStockEntrySearch=()=>{
                   sethostelentrycreate('none')
                   setbedentry('none')
                   setcheckpending('none')
+                  setacademicview('none')
               }
                   else{
                       setSecondstockEntry('none')
@@ -346,6 +358,7 @@ const handleSecondStockEntrySearch=()=>{
       setbedview('none')
       setbedentry('none')
       setcheckpending('none')
+      setacademicview('none')
     }
     else{
         sethostelentrycreate('none')
@@ -369,6 +382,7 @@ const handleSecondStockView=()=>{
                       setbedview('none')
                       setcheckpending('none')
                       sethostelentrycreate('none')
+                      setacademicview('none')
                   }
                       else{
                           setSecondStockView('none')
@@ -395,6 +409,7 @@ const handleSecondStockView=()=>{
                           setbedview('none')
                           setcheckpending('none')
                           sethostelentrycreate('none')
+                          setacademicview('none')
                       }
                           else{
                             setmodifySearchView('none')
@@ -422,6 +437,7 @@ const handleSecondStockView=()=>{
                               sethostelentrycreate('none')
                               setmodifySearchView('none')
                               setSecondStockView("none")
+                              setacademicview('none')
                           }
                               else{
                                 setbedentry('none')
@@ -448,6 +464,7 @@ const handleSecondStockView=()=>{
                                   setcheckpending('none')
                                   sethostelentrycreate('none')
                                   setSecondStockView("none")
+                                  setacademicview('none')
                               }
                                   else{
                                     sethostelview('none')
@@ -474,6 +491,7 @@ const handleSecondStockView=()=>{
                                       sethostelview('none')
                                       setmodifySearchView('none')
                                         setSecondStockView("none")
+                                        setacademicview('none')
                                   }
                                       else{
                                         setcheckpending('none')
@@ -481,6 +499,32 @@ const handleSecondStockView=()=>{
                     
                     
                                     } 
+
+                                    const handleacademicview=()=>{
+                                      if(academicview==='none'){
+                                        setacademicview('block')
+                                          setStockEntry('none')
+                                          setItemCreate('none')
+                                          setCreateUser('none')
+                                          setVendorDisplay('none')
+                                          setPublish('none')
+                                          setSearch('none')
+                                          setNotice('none')
+                                          setStockView('none')
+                                          setSecondstockEntry("none")
+                                          setbedview('none')
+                                          setbedentry('none')
+                                          sethostelentrycreate('none')
+                                          sethostelview('none')
+                                          setmodifySearchView('none')
+                                            setSecondStockView("none")
+                                      }
+                                          else{
+                                            setacademicview('none')
+                                          }
+                        
+                        
+                                        } 
                     
               
 
@@ -516,6 +560,7 @@ const handleSecondStockView=()=>{
                  onModifySeachEntry={handleModifySearch}
                  onCreatebed={handlebedentry} onHostelEntryView={handlehostelview}
                  onViewBedStatus={handleBedViewStatus} onCheckPending={handleCheckPending} onHostelEntryCreate={handlehostelEntryCreate}
+                 onAcademicView={handleacademicview}
         />
 
 
@@ -525,7 +570,7 @@ const handleSecondStockView=()=>{
                        ItemCreateDisplay={itemCreate} EntryStock={stockEntry}
                        StockView={stockView} SecondstockEntrySearch={secondstockEntry} SecondStockView={secondStockView} 
                        modifyStock={modifySearchView} createbed={bedentry} viewbed={bedview} checkpending={checkpending}
-                       HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview}
+                       HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview} Academicview={academicview}
         />
 
       </div>
