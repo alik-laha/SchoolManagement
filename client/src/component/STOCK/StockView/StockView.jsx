@@ -5,6 +5,10 @@ const StockView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+
+    const clearTable = () => {
+        setViewStock([]);
+      };
     useEffect(()=>{
 
       axios.post("http://localhost:7000/api/v1/stock/getstock",props.SearchebyData)
@@ -28,6 +32,7 @@ const StockView= (props) => {
 
     return (
         <div style={{display:visible}}>
+            <button className="dashboard-btn dashboard-btn-scss" onClick={clearTable}>Clear Result</button>
                <ReactHTMLTableToExcel
                 id="alik"
                 className="dashboard-btn btn-warning excel-btn"
@@ -69,7 +74,7 @@ const StockView= (props) => {
                 ))}
                 </tbody>
             </table>
-            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
+            {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }

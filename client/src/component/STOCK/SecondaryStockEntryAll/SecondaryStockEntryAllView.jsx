@@ -1,10 +1,21 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import axios from "axios";
+
+
+
+
+
 const SecondaryStockEntryAllView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+    
+    const clearTable = () => {
+        setViewStock([]);
+      };
+
+
     useEffect(()=>{
 
       axios.post("http://localhost:7000/api/v1/stock/getstock",props.SearchebyData)
@@ -28,6 +39,7 @@ const SecondaryStockEntryAllView= (props) => {
 
     return (
         <div style={{display:visible}}>
+            <button className="dashboard-btn dashboard-btn-scss" onClick={clearTable}>Clear Result</button>
                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
@@ -78,7 +90,7 @@ const SecondaryStockEntryAllView= (props) => {
                 ))}
                 </tbody>
             </table>
-            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
+            {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }
