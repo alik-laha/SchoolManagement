@@ -15,28 +15,28 @@ exports.GetAllStudent=(req,res)=>{
             query=`SELECT * FROM Student_Admission where active=1`
         }
         else if(Class && !regNo && !year){
-            query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE Class='${Class}' and active=1'`
         }
 
         else if(!Class && regNo && !year){
-            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and active=1'`
         }
         else if(!Class && !regNo && year){
-            query=`SELECT * FROM Student_Admission WHERE admission_year regexp '${year} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE admission_year regexp '${year}' and active=1'`
         }
 
         else if(Class && regNo && !year){
-            query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}' and registration_no regexp '${regNo} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}' and registration_no regexp '${regNo}' and active=1'`
         }
         else if(!Class && regNo && year){
-            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and admission_year regexp '${year} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and admission_year regexp '${year}' and active=1'`
         }
         else if(Class && !regNo && year){
-            query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}' and admission_year regexp '${year} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE Class regexp '${Class}' and admission_year regexp '${year}' and active=1'`
         }
 
         else{
-            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and admission_year regexp '${year}' and Class regexp '${Class} and active=1'`
+            query=`SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and admission_year regexp '${year}' and Class regexp '${Class}' and active=1'`
         }
        
         Database.query(query,(err,result)=>{
