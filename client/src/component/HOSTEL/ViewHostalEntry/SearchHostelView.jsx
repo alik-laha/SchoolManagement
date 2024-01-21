@@ -15,7 +15,7 @@ const searchHostelView= (props) => {
                 roomNo
             }
             props.buttonClick("block");
-            props.hostelEntryData(data);
+            props.setHostelEntryData(data);
     }
 
 

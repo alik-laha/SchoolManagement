@@ -154,7 +154,7 @@ const modifyStockEntryShow=(data)=> {
       console.log(res.data.result)
     })
   }
-const hostelEntryData=(data)=>{
+const handlehostelEntryData=(data)=>{
   sethostelenrtydata(data)
 }
 
@@ -182,7 +182,7 @@ const handleacademicEntryData=(data)=>{
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
           <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
-          <SearchHostelView view={props.HostelentryView} setHostelEntryData={hostelEntryData} buttonClick={hostelExportAllShow} />
+          <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} />
           <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           
