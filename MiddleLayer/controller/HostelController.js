@@ -166,27 +166,27 @@ exports.GetHostelEntry=(req,res)=>{
         else if(!Class && academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE academic_year regexp '${academicYear}'`
+                        WHERE crnt_yr regexp '${academicYear}'`
         }
         else if(Class && !academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE Class regexp '${Class}'`
+                        WHERE Class='${Class}'`
         }
         else if(Class && academicYear && !regNo && !roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE Class regexp '${Class}' and academic_year regexp '${academicYear}'`
+                        WHERE Class='${Class}' and crnt_yr regexp '${academicYear}'`
         }
         else if(Class && !academicYear && !regNo && roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE Class regexp '${Class}' and room_no regexp '${roomNo}'`
+                        WHERE Class = '${Class}' and room_no regexp '${roomNo}'`
         }
         else if(!Class && academicYear && !regNo && roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE academic_year regexp '${academicYear}' and room_no regexp '${roomNo}'`
+                        WHERE crnt_yr regexp '${academicYear}' and room_no regexp '${roomNo}'`
         }
         else if(!Class && !academicYear && !regNo && roomNo){
             query = `SELECT * 
@@ -196,7 +196,7 @@ exports.GetHostelEntry=(req,res)=>{
         else if(Class && academicYear && !regNo && roomNo){
             query = `SELECT * 
                         FROM master_hostel
-                        WHERE Class regexp '${Class}' and academic_year regexp '${academicYear}' and room_no regexp '${roomNo}'`
+                        WHERE Class = '${Class}' and crnt_yr regexp '${academicYear}' and room_no regexp '${roomNo}'`
         }
         Database.query(query,(err,result)=>{
             if(err){

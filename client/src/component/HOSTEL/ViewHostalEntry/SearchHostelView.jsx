@@ -37,14 +37,14 @@ const searchHostelView= (props) => {
                         <label>
                             Search By Class.
                         </label>
-                        <input type="text" value={Class} onChange={(e) => setClass(e.target.value)}/>
+                        <input type="text" value={Class} onChange={(e) => setClass(e.target.value)} placeholder="Class"/>
                     </div>
 
                     <div>
                         <label>
-                            Search By Academic Year.
+                            Search By Current Academic Year.
                         </label>
-                        <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)}/>
+                        <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} placeholder="Current Year"/>
                     </div>
                     <div>
                     <label>Search by Room No. </label>

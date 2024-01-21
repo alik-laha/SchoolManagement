@@ -48,11 +48,14 @@ const HostelView= (props) => {
                 <table className="table-60" id="hostel-entry-view">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Academic Year </th>
-                        <th>Class</th>
-                        <th>Registration No</th>
+                        <th>Student Id</th>
                         <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Year of Admission</th>
+                        
+                        
+                        <th>Registration No</th>
+                        <th>Current Year of Studys</th>
                         <th>Room No</th>
                         <th>Bed No</th>
                         <th>Entry Date</th>
@@ -65,10 +68,13 @@ const HostelView= (props) => {
                             return(
                                 <tr key={data.id}>
                                     <td>{data.id}</td>
-                                    <td>{data.academic_year}</td>
-                                    <td>{data.class}</td>
-                                    <td>{data.registration_no}</td>                        
                                     <td>{data.student_Name}</td>
+                                    <td>{data.class}</td>
+                                    <td>{data.academic_year}</td>
+                                    
+                                    
+                                    <td>{data.registration_no}</td>                        
+                                    <td>{data.crnt_yr}</td>
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
                                     <td>{data.entry_date.slice(0,10)}</td>           
