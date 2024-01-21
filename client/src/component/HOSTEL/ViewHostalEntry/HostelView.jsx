@@ -2,6 +2,10 @@ import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const HostelView= (props) => {
     const [view,setView]=useState("none")
+    
+    const clearTable = () => {
+        props.data=Object.assign([],props.data)
+      };
 useEffect(() => {
     if (props.data.length > 0 && props.view==="block") {
         setView("block")
@@ -13,6 +17,7 @@ useEffect(() => {
     return(
         <>
             <div style={{display:view}}>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <ReactHTMLTableToExcel
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
