@@ -36,7 +36,8 @@ const HostelEntry = (props) => {
                 entrydate
             })
                 .then((res) => {
-                    alert(res.data.toString());
+                    alert(res.data.msg+' for Student Reg. Id : '+ regNo);
+                    
                     setAllView("contents");
                     setEntryView("none");
                     setStudentName("");
@@ -54,7 +55,7 @@ const HostelEntry = (props) => {
         else {
             axios.post("http://localhost:7000/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate})
                 .then((res) => {
-                    alert(res.data.toString());
+                    alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                     setAllView("contents");
                     setEntryView("none");
                     setStudentName("");
@@ -74,7 +75,7 @@ const HostelEntry = (props) => {
     const handleDelete = (regNo,roomNo) => {
         axios.post('http://localhost:7000/api/v1/hostel/deletehostelentry', {regNo,roomNo})
             .then((res) => {
-                alert(res.data);
+                alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                 setAllView("contents");
                 setEntryView("none");
                 setStudentName("");
@@ -184,11 +185,11 @@ const HostelEntry = (props) => {
                         <tr>
                             <th>Student Name</th>
                             <th>Class</th>
-                            <th>Regidtration No</th>
+                            <th>Registration No</th>
                             <th>Room No</th>
                             <th>Bed No</th>
                             <th>Admisson Year</th>
-                            <th>Entry Date</th>
+                            <th>Hostel Entry Date</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -213,7 +214,7 @@ const HostelEntry = (props) => {
                                        onChange={(e) => setBedNo(e.target.value)}/></td>
                             <td>{academicYear}</td>
                             <td><input type='date' placeholder="Entry Date" value={entrydate}
-                                       onChange={(e) => setEntryDate(e.target.value)}/></td>
+                                       onChange={(e) => setEntryDate(e.target.value)} readOnly/></td>
                             <td>
                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
                                 <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button>
