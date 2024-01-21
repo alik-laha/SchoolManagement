@@ -47,6 +47,9 @@ const HostelEntry = (props) => {
                     setClass(0);
                     setacademic("");
                     setEntryDate(new Date().toISOString().slice(0, 10));
+                    if(view==="block"){
+                        setView("none");
+                    }
                 })
                 .catch((err) => {
                     alert(err.response.data.msg);
@@ -65,6 +68,9 @@ const HostelEntry = (props) => {
                     setClass(0);
                     setacademic("");
                     setEntryDate(new Date().toISOString().slice(0, 10));
+                    if(view==="block"){
+                        setView("none");
+                    }
                 })
                 .catch((err) => {
                     alert(err.response.data.msg);
@@ -85,6 +91,9 @@ const HostelEntry = (props) => {
                 setClass(0);
                 setacademic("");
                 setEntryDate(new Date().toISOString().slice(0, 10));
+                if(view==="block"){
+                    setView("none");
+                }
             })
             .catch((err) => {
                 alert(err.response.msg);
