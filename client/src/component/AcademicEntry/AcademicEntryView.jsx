@@ -16,19 +16,26 @@ useEffect(() => {
                 <ReactHTMLTableToExcel
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
-                    table="hostel-entry-view"
+                    table="academic-entry-view"
                     filename="hostel-excel-report"
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />
-                <table className="table-60" id="hostel-entry-view">
+                <table className="table-60" id="academic-entry-view">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Academic Year </th>
-                        <th>Class</th>
-                        <th>Registration No</th>
+                        <th>Student Id</th>
                         <th>Student Name</th>
+                        <th>Registration No</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Roll No</th>
+                        <th>Year of Admission</th>
+                        <th>Hostel Entry</th>
+                       
+                        
+                        
+                        
                         
                         
                         <th>Room No</th>
