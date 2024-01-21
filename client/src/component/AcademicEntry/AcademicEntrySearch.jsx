@@ -2,11 +2,12 @@ import {useState} from "react";
 import axios from "axios";
 const AcademicEntrySearch= (props) => {
     const [Class,setClass]=useState("")
-    const [academicYear,setAcademicYear]=useState("")
+    const [regNo,setregNo]=useState("")
+    const [year,setyear]=useState("")
     
     const handaleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:7000/api/v1/hostel/getacademicentry',{Class,academicYear}).then((res)=>{
+        axios.post('http://localhost:7000/api/v1/student/getallstudent',{Class,regNo,year}).then((res)=>{
             console.log(res.data.result)
             props.setAcademicEntryData(res.data.result)
         })
@@ -30,7 +31,13 @@ const AcademicEntrySearch= (props) => {
                         <label>
                             Search By Academic Year.
                         </label>
-                        <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)}/>
+                        <input type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>
+                            Search By Registration No.
+                        </label>
+                        <input type="text" value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
                    
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
