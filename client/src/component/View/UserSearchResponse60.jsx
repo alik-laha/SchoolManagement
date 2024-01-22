@@ -47,7 +47,7 @@ const UserSearchResponse60=(props)=>{
     }, [props.data]);
 
     useEffect(() => {
-        if(props.View==='block' && props.UserView==='block'){
+        if(props.View==='block' && props.UserView==='block' && props.data.length>0){
             setdisp('block')
         }
         else {
@@ -55,12 +55,12 @@ const UserSearchResponse60=(props)=>{
         }
         console.log(props.View)
         console.log(disp)
-    }, [props.View,props.UserView]);
+    }, [props.View,props.UserView,props.data]);
 
     useEffect(() => {
         setAllRoles(props.AllRoles)
     }, [props.AllRoles]);
-    
+
     const handleDelete = (user_id,userName) => {
         axios
             .post("http://localhost:7000/api/v1/deleteuser", {user_id})
