@@ -15,7 +15,7 @@ exports.CreateBed= (req, res) => {
                     return res.status(400).json({msg:err})
                 }
                 else{
-                    return res.status(200).json({msg:"Bed Created Successfully"})
+                    return res.status(200).json({msg:"Room  Created Successfully"})
                 }
             })
         }

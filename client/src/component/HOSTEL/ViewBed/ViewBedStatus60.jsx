@@ -54,7 +54,7 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
-                alert("Bed Updated Successfully")
+                alert("Room Updated Successfully")
                 setMainView("contents");
                 setEditView("none");
                 if(view==="block"){
