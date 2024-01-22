@@ -114,10 +114,8 @@ exports.MasterStudentAdmission = (req, res) => {
                              "${bspId}", "${applyClass}", "${admissionYear}", "${age}", "${admissonDate}", "${bloodGroup}",
                              "${bankAcountNo}", "${brunch}", "${ifscCode}"
                          )`;
-            console.log(query)
             Database.query(query, (err, result) => {
                 if (err) {
-                    console.log(err)
                     return res.status(500).json({
                         err: err
                     })
@@ -132,7 +130,6 @@ exports.MasterStudentAdmission = (req, res) => {
         }
     }
     catch (err) {
-        console.log(err)
         return res.status(500).json({
             err: err
         })
