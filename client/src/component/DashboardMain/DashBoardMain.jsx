@@ -80,7 +80,7 @@ const DashBoardMain = (props) => {
 
 useEffect(()=>{
 if(props.Search==="block" && search==="flex"){
-  setView("flex")
+  setView("block")
 }
 
 },[search,props.Search])
@@ -90,12 +90,12 @@ if(props.Search==="block" && search==="flex"){
   };
 
   window.addEventListener("unhandledrejection", function() {
-    if(view=='flex'){
+    if(view=='block'){
       setView('none');
     }
     
 });
-  if(props.Search==="none" && view==="flex"){
+  if(props.Search==="none" && view==="block"){
     setView("none")
   }
 

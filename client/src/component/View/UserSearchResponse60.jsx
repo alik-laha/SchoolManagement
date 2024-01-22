@@ -14,6 +14,10 @@ const UserSearchResponse60=(props)=>{
     const [allRoles, setAllRoles] = useState([]);
     const [passVisi, setPassVisi] = useState("password");
 
+    const clearTable = () => {
+        setView([]);
+      };
+
     let change;
     if (passVisi === "password") {
         change = <FaEye />;
@@ -94,6 +98,7 @@ const UserSearchResponse60=(props)=>{
     };
     return (
         <div style={{display: props.View}}>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
             <table className="table-60">
                 <thead style={{display: mainsvisibility}}>
                 <tr>
@@ -200,6 +205,7 @@ const UserSearchResponse60=(props)=>{
                 {/* hidden tbody */}
 
             </table>
+            {view.length===0 ? <div className="no-data">No Data Exists</div> : null}
 
 
         </div>
