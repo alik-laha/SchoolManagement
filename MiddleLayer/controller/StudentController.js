@@ -93,19 +93,26 @@ exports.MasterStudentAdmission = (req, res) => {
         ifscCode
     } = req.body
     try {
-        if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNoaddress || !address || !pinNo || !applyClass || !admissionYear || !admissionDate || !age) {
+        if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissionDate || !age) {
             return res.status(400).json({
-                msg: "please fill all the importent field"
+                msg: "please fill all the importent field",
+                data: name, regNo, adharNo, sex, religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissionDate, age
             })
         } else {
             let query = `
-INSERT INTO master_student(student_Name,adhar_no,registration_no,sex,religion,dob,cast,physically_challenged,orphanage,father_name,father_qualification,father_ocupation,
-    father_monthlyIncome,father_contact,mother_name,mother_qualification,mother_ocupation,mother_monthlyIncome,mother_contact,guardian_name,relationship,guardian_contact,address,pin_no,bsp_id,applied_class,admission_year,admission_date,age,blood_group,account_no,branch,ifsc)
-    VALUES ("${name}","${adharNo}","${regNo}","${sex}","${religion}","${dob}","${cast}","${physicallyChallenged}","${orphanage}","${fatherName}","${fatherQualification}","${fatherOcupation}"
+                INSERT INTO master_student (
+                    student_Name, adhar_no, registration_no, sex, religion, dob, cast, physically_challenged, orphanage,
+                    father_name, father_qualification, father_ocupation, father_monthlyIncome, father_contact,
+                    mother_name, mother_qualification, mother_ocupation, mother_monthlyIncome, mother_contact,
+                    guardian_name, relationship, guardian_contact, address, pin_no, bsp_id, applied_class, admisson_year,
+                    admission_date, age, blood_group, account_no, branch, ifsc
+                ) VALUES ("${name}","${adharNo}","${regNo}","${sex}","${religion}","${dob}","${cast}","${physicallyChallenged}","${orphanage}","${fatherName}","${fatherQualification}","${fatherOcupation}"
            ,"${fatherMonthlyIncome}","${fatherContactNo}","${motherName}","${motherQualification}","${motherOcupation}","${motherMonthlyIncome}","${motherContactNo}","${guardianName}","${relationship}",
-           "${guardianContactNo}","${address}","${pinNo}","${bspId}","${applyClass}","${admissionYear}","${admissionDate}","${age}","${bloodGroup}","${bankAcountNo}","${brunch}","${ifscCode}")`
-            Database(query, (err, result) => {
+           "${guardianContactNo}","${address}","${pinNo}","${bspId}","${applyClass}","${admissionYear}"
+                ,"${admissionDate}","${age}","${bloodGroup}","${bankAcountNo}","${brunch}","${ifscCode}")`
+            Database.query(query, (err, result) => {
                 if (err) {
+                    console.log(err)
                     return res.status(500).json({
                         err: err
                     })
@@ -120,6 +127,7 @@ INSERT INTO master_student(student_Name,adhar_no,registration_no,sex,religion,do
         }
     }
     catch (err) {
+        console.log(err)
         return res.status(500).json({
             err: err
         })

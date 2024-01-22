@@ -1,43 +1,52 @@
 import {useState} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
-    const [name, setName] = useState("");
-    const [regNo, setRegNo] = useState("");
-    const [adharNo, setAdharNo] = useState("");
-    const [sex, setSex] = useState("");
-    const [religion, setReligion] = useState("");
-    const [dob, setDob] = useState("");
-    const [cast, setCast] = useState("");
-    const [physicallyChallenged, setPhysicallyChallenged] = useState("");
-    const [orphanage, setOrphanage] = useState("");
-    const [fatherName, setFatherName] = useState("");
-    const [fatherQualification, setFatherQualification] = useState("");
-    const [fatherOcupation, setFatherOcupation] = useState("");
-    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState("");
-    const [fatherContactNo, setFatherContactNo] = useState("");
-    const [motherName, setMotherName] = useState("");
-    const [motherQualification, setMotherQualification] = useState("");
-    const [motherOcupation, setMotherOcupation] = useState("");
-    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState("");
-    const [motherContactNo, setMotherContactNo] = useState("");
-    const [guardianName, setGuardianName] = useState("");
-    const [relationship, setRelationship] = useState("");
-    const [guardianContactNo, setGuardianContactNo] = useState("");
-    const [address, setAddress] = useState("");
-    const [pinNo, setPinNo] = useState("");
-    const [bspId, setBspId] = useState("");
-    const [applyClass, setApplyClass] = useState("");
-    const [admissionYear, setAdmissionYear] = useState("");
-    const [admissionDate, setAdmissionDate] = useState("");
-    const [age, setAge] = useState("");
-    const [bloodGroup, setBloodGroup] = useState("");
-    const [bankAcountNo, setBankAcountNo] = useState("");
-    const [brunch, setBrunch] = useState("");
-    const [ifscCode, setIfscCode] = useState("");
+    const [name, setName] = useState(null);
+    const [regNo, setRegNo] = useState("aliklaha");
+    const [adharNo, setAdharNo] = useState(null);
+    const [sex, setSex] = useState(null);
+    const [religion, setReligion] = useState(null);
+    const [dob, setDob] = useState(null);
+    const [cast, setCast] = useState(null);
+    const [physicallyChallenged, setPhysicallyChallenged] = useState(0);
+    const [orphanage, setOrphanage] = useState(0);
+    const [fatherName, setFatherName] = useState(null);
+    const [fatherQualification, setFatherQualification] = useState(null);
+    const [fatherOcupation, setFatherOcupation] = useState(null);
+    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(null);
+    const [fatherContactNo, setFatherContactNo] = useState(null);
+    const [motherName, setMotherName] = useState(null);
+    const [motherQualification, setMotherQualification] = useState(null);
+    const [motherOcupation, setMotherOcupation] = useState(null);
+    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(null);
+    const [motherContactNo, setMotherContactNo] = useState(null);
+    const [guardianName, setGuardianName] = useState(null);
+    const [relationship, setRelationship] = useState(null);
+    const [guardianContactNo, setGuardianContactNo] = useState(null);
+    const [address, setAddress] = useState(null);
+    const [pinNo, setPinNo] = useState(null);
+    const [bspId, setBspId] = useState(null);
+    const [applyClass, setApplyClass] = useState(null);
+    const [admissionYear, setAdmissionYear] = useState(null);
+    const [admissionDate, setAdmissionDate] = useState(null);
+    const [age, setAge] = useState(null);
+    const [bloodGroup, setBloodGroup] = useState(null);
+    const [bankAcountNo, setBankAcountNo] = useState(null);
+    const [brunch, setBrunch] = useState(null);
+    const [ifscCode, setIfscCode] = useState(null);
 
 
     const handleEntry = (e) => {
         e.preventDefault();
+        const data = {
+            name, regNo, adharNo, sex, religion, dob, cast, physicallyChallenged, orphanage, fatherName, fatherQualification, fatherOcupation, fatherMonthlyIncome, fatherContactNo, motherName, motherQualification, motherOcupation, motherMonthlyIncome, motherContactNo, guardianName, relationship, guardianContactNo, address, pinNo, bspId, applyClass, admissionYear, admissionDate, age, bloodGroup, bankAcountNo, brunch, ifscCode
+        }
+        axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
+            .then((res) => {
+              console.log(res);
+            }).catch((err) => {
+                console.log(err);
+            })
 
     }
 
@@ -59,7 +68,7 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={regNo}
                         placeholder="Registration No"
-                        readOnly
+                        // readOnly
                     />
                 </div>
                 <div>
