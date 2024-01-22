@@ -85,7 +85,7 @@ exports.MasterStudentAdmission = (req, res) => {
         bspId,
         applyClass,
         admissionYear,
-        admissionDate,
+        admissonDate,
         age,
         bloodGroup,
         bankAcountNo,
@@ -93,10 +93,10 @@ exports.MasterStudentAdmission = (req, res) => {
         ifscCode
     } = req.body
     try {
-        if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissionDate || !age) {
+        if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissonDate || !age) {
             return res.status(400).json({
                 msg: "please fill all the importent field",
-                data: name, regNo, adharNo, sex, religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissionDate, age
+                data: name, regNo, adharNo, sex, religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age
             })
         } else {
             let query = `
@@ -105,11 +105,16 @@ exports.MasterStudentAdmission = (req, res) => {
                     father_name, father_qualification, father_ocupation, father_monthlyIncome, father_contact,
                     mother_name, mother_qualification, mother_ocupation, mother_monthlyIncome, mother_contact,
                     guardian_name, relationship, guardian_contact, address, pin_no, bsp_id, applied_class, admisson_year,
-                    admission_date, age, blood_group, account_no, branch, ifsc
-                ) VALUES ("${name}","${adharNo}","${regNo}","${sex}","${religion}","${dob}","${cast}","${physicallyChallenged}","${orphanage}","${fatherName}","${fatherQualification}","${fatherOcupation}"
-           ,"${fatherMonthlyIncome}","${fatherContactNo}","${motherName}","${motherQualification}","${motherOcupation}","${motherMonthlyIncome}","${motherContactNo}","${guardianName}","${relationship}",
-           "${guardianContactNo}","${address}","${pinNo}","${bspId}","${applyClass}","${admissionYear}"
-                ,"${admissionDate}","${age}","${bloodGroup}","${bankAcountNo}","${brunch}","${ifscCode}")`
+                     age,admisson_date, blood_group, acount_no, branch, ifsc
+                ) VALUES (
+                             "${name}", "${adharNo}", "${regNo}", "${sex}", "${religion}", "${dob}", "${cast}", "${physicallyChallenged}",
+                             "${orphanage}", "${fatherName}", "${fatherQualification}", "${fatherOcupation}", "${fatherMonthlyIncome}",
+                             "${fatherContactNo}", "${motherName}", "${motherQualification}", "${motherOcupation}", "${motherMonthlyIncome}",
+                             "${motherContactNo}", "${guardianName}", "${relationship}", "${guardianContactNo}", "${address}", "${pinNo}",
+                             "${bspId}", "${applyClass}", "${admissionYear}", "${age}", "${admissonDate}", "${bloodGroup}",
+                             "${bankAcountNo}", "${brunch}", "${ifscCode}"
+                         )`;
+            console.log(query)
             Database.query(query, (err, result) => {
                 if (err) {
                     console.log(err)

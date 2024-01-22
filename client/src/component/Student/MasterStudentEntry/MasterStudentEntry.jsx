@@ -2,7 +2,7 @@ import {useState} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState(null);
-    const [regNo, setRegNo] = useState("aliklaha");
+    const [regNo, setRegNo] = useState(null);
     const [adharNo, setAdharNo] = useState(null);
     const [sex, setSex] = useState(null);
     const [religion, setReligion] = useState(null);
@@ -13,13 +13,13 @@ const MasterStudentEntry= (props) => {
     const [fatherName, setFatherName] = useState(null);
     const [fatherQualification, setFatherQualification] = useState(null);
     const [fatherOcupation, setFatherOcupation] = useState(null);
-    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(null);
-    const [fatherContactNo, setFatherContactNo] = useState(null);
+    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(0);
+    const [fatherContactNo, setFatherContactNo] = useState(0);
     const [motherName, setMotherName] = useState(null);
     const [motherQualification, setMotherQualification] = useState(null);
     const [motherOcupation, setMotherOcupation] = useState(null);
-    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(null);
-    const [motherContactNo, setMotherContactNo] = useState(null);
+    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(0);
+    const [motherContactNo, setMotherContactNo] = useState(0);
     const [guardianName, setGuardianName] = useState(null);
     const [relationship, setRelationship] = useState(null);
     const [guardianContactNo, setGuardianContactNo] = useState(null);
@@ -28,10 +28,10 @@ const MasterStudentEntry= (props) => {
     const [bspId, setBspId] = useState(null);
     const [applyClass, setApplyClass] = useState(null);
     const [admissionYear, setAdmissionYear] = useState(null);
-    const [admissionDate, setAdmissionDate] = useState(null);
+    const [admissonDate, setAdmissonDate] = useState(null);
     const [age, setAge] = useState(null);
     const [bloodGroup, setBloodGroup] = useState(null);
-    const [bankAcountNo, setBankAcountNo] = useState(null);
+    const [bankAcountNo, setBankAcountNo] = useState(0);
     const [brunch, setBrunch] = useState(null);
     const [ifscCode, setIfscCode] = useState(null);
 
@@ -39,7 +39,7 @@ const MasterStudentEntry= (props) => {
     const handleEntry = (e) => {
         e.preventDefault();
         const data = {
-            name, regNo, adharNo, sex, religion, dob, cast, physicallyChallenged, orphanage, fatherName, fatherQualification, fatherOcupation, fatherMonthlyIncome, fatherContactNo, motherName, motherQualification, motherOcupation, motherMonthlyIncome, motherContactNo, guardianName, relationship, guardianContactNo, address, pinNo, bspId, applyClass, admissionYear, admissionDate, age, bloodGroup, bankAcountNo, brunch, ifscCode
+            name, regNo, adharNo, sex, religion, dob, cast, physicallyChallenged, orphanage, fatherName, fatherQualification, fatherOcupation, fatherMonthlyIncome, fatherContactNo, motherName, motherQualification, motherOcupation, motherMonthlyIncome, motherContactNo, guardianName, relationship, guardianContactNo, address, pinNo, bspId, applyClass, admissionYear, admissonDate, age, bloodGroup, bankAcountNo, brunch, ifscCode
         }
         axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
             .then((res) => {
@@ -68,7 +68,7 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={regNo}
                         placeholder="Registration No"
-                        // readOnly
+                        readOnly
                     />
                 </div>
                 <div>
@@ -344,8 +344,8 @@ const MasterStudentEntry= (props) => {
                     <label>Admission Date</label>
                     <input
                         type="date"
-                        value={admissionDate}
-                        onChange={(e) => setAdmissionDate(e.target.value)}
+                        value={admissonDate}
+                        onChange={(e) => setAdmissonDate(e.target.value)}
                         placeholder="Admission Date"
                     />
                 </div>
