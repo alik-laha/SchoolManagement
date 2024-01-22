@@ -86,12 +86,6 @@ const ModifyStockEntryView= (props) => {
         else{
             setcashentrydate(new Date().toISOString().slice(0, 10))
         }
-       if(data.stock_modified_date!==null || data.stock_modified_date!==undefined){
-            setmodifieddate(data.stock_modified_date.slice(0, 10))     
-       }
-        else{
-            setmodifieddate(new Date().toISOString().slice(0, 10))
-        }
 
         if(data.bill_date!==null || data.bill_date!==undefined){
             setbillDate(data.bill_date.slice(0, 10))     
@@ -125,7 +119,7 @@ const ModifyStockEntryView= (props) => {
           unitCost:unitcost,
           quantity:qty,
           projectedCost:estimatedamt,
-          discountedCost:discountamt,
+          discountCost:discountamt,
           actualCost:paidamt,
           modifiedDate:modifieddate,
          }
@@ -147,10 +141,12 @@ const ModifyStockEntryView= (props) => {
                     setitemname("")
                     setvendor("")
                     setitem("")
-                    props.setStockData(res.data.data)
+                    // props.setStockData(res.data.data)
+                    setViewStock([])
+
                 })
                 .catch((err) => {
-                    console.log(err.response.data.data);
+                    console.log(err);
                 })
         
     };

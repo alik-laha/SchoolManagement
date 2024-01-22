@@ -364,10 +364,9 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
 
 exports.ModifyStock=(req,res)=>{
     const {stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost }=req.body
-    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  || !discountCost || !actualCost || !unitCost){
+    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  || !discountCost || !actualCost ){
         return res.status(400).json({
-            status:"all data needed",
-            data:{stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost}
+            status:"all data needed"
         })
     }
     else{
@@ -380,8 +379,8 @@ exports.ModifyStock=(req,res)=>{
                         bill_id="${billNo}",
                         bill_date="${billDate}",
                         unit_cost="${unitCost}",
-                        discount_cost="${discountCost}",
-                        actual_cost="${actualCost}",
+                        discounted_cost="${discountCost}",
+                        paid_amount="${actualCost}",
                         quantity="${quantity}",
                         projected_cost="${projectedCost}",
                         stock_modified_date="${modifiedDate}"
@@ -395,7 +394,6 @@ exports.ModifyStock=(req,res)=>{
                         })
                     }
                     if(data){
-
                         return res.status(200).json({
                             status:"stock modified",
                             data:data
