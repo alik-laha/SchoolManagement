@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState("");
     const [regNo, setRegNo] = useState("");
@@ -34,9 +34,16 @@ const MasterStudentEntry= (props) => {
     const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState("");
     const [ifscCode, setIfscCode] = useState("");
+
+
+    const handleEntry = (e) => {
+        e.preventDefault();
+
+    }
+
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
-            <form>
+            <form onSubmit={handleEntry}>
                 <div>
                     <label>Student Name*</label>
                     <input
@@ -378,6 +385,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="Ifsc code"
                     />
                 </div>
+                <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>
 
