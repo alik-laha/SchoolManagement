@@ -12,7 +12,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
   const handaleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:7000/api/v1/createuser", {name,password,role,dOB}).then((res) => {
-      alert(`UserName ${name} Created Successfully`);
+      alert(`User [${name}] has been Created Successfully`);
       if(res.status==='success' && suceessflag==='none'){
         setsuceessflag('block');
       }

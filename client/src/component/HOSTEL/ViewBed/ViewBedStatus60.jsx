@@ -34,7 +34,7 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("http://localhost:7000/api/v1/hostel/deletebed",{id} )
             .then((res) => {
-                alert("Bed Deleted Successfully")
+                alert("Room No : "+room+" Deleted Successfully")
                 setView("none");
             })
             .catch((error) => {
@@ -54,7 +54,7 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
-                alert("Room Updated Successfully")
+                alert("Room No : "+room+" Updated Successfully")
                 setMainView("contents");
                 setEditView("none");
                 if(view==="block"){
