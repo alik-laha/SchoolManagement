@@ -70,7 +70,8 @@ exports.MasterStudentAdmission = (req, res) => {
         fatherName,
         fatherQualification,
         fatherOcupation,
-        fatherMonthlyIncomefatherContactNo,
+        fatherMonthlyIncome,
+        fatherContactNo,
         motherName,
         motherQualification,
         motherOcupation,
@@ -78,7 +79,7 @@ exports.MasterStudentAdmission = (req, res) => {
         motherContactNo,
         guardianName,
         relationship,
-        guardianContactNoaddress,
+        guardianContactNo,
         address,
         pinNo,
         bspId,
@@ -100,7 +101,21 @@ exports.MasterStudentAdmission = (req, res) => {
             let query = `
 INSERT INTO master_student(student_Name,adhar_no,registration_no,sex,religion,dob,cast,physically_challenged,orphanage,father_name,father_qualification,father_ocupation,
     father_monthlyIncome,father_contact,mother_name,mother_qualification,mother_ocupation,mother_monthlyIncome,mother_contact,guardian_name,relationship,guardian_contact,address,pin_no,bsp_id,applied_class,admission_year,admission_date,age,blood_group,account_no,branch,ifsc)
-    VALUES ("${name}","${adharNo}","${regNo}" )`
+    VALUES ("${name}","${adharNo}","${regNo}","${sex}","${religion}","${dob}","${cast}","${physicallyChallenged}","${orphanage}","${fatherName}","${fatherQualification}","${fatherOcupation}"
+           ,"${fatherMonthlyIncome}","${fatherContactNo}","${motherName}","${motherQualification}","${motherOcupation}","${motherMonthlyIncome}","${motherContactNo}","${guardianName}","${relationship}",
+           "${guardianContactNo}","${address}","${pinNo}","${bspId}","${applyClass}","${admissionYear}","${admissionDate}","${age}","${bloodGroup}","${bankAcountNo}","${brunch}","${ifscCode}")`
+            Database(query, (err, result) => {
+                if (err) {
+                    return res.status(500).json({
+                        err: err
+                    })
+                }
+                else {
+                    return res.status(200).json({
+                        msg: "student admission successfully Done"
+                    })
+                }
+            })
 
         }
     }
