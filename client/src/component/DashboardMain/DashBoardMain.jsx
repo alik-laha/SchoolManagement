@@ -58,6 +58,8 @@ const DashBoardMain = (props) => {
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
   const [hostelexportshow,sethostelexportshow]=useState("none")
 
+  const [allusershow,setallusershow]=useState("none")
+
   const getdata = (data) => {
     setdata(data);
   };
@@ -140,7 +142,10 @@ const academicAllShow=(data)=>{
 const hostelExportAllShow=(data)=>{
   sethostelexportshow(data);
 }
-
+//user-show
+const usershow=(data)=>{
+  setallusershow(data);
+}
 
 const modifyStockEntryShow=(data)=> {
   setmodifyStockEntryViewShow(data);
@@ -170,7 +175,7 @@ const handleacademicEntryData=(data)=>{
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
           
-          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  />
+          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  buttonClick={usershow}/>
           <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
           <StudentInputNotice Publish={props.Publish} setSearch={setSearch}/>
           <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
@@ -190,7 +195,7 @@ const handleacademicEntryData=(data)=>{
 
         </div>
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          <ViewAllUser data={data} View={view} AllRoles={allRoles} />
+          <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
           <NoticeManupulation60 Publish={props.Notice}/>
           <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={allVendorName}  />
           <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>

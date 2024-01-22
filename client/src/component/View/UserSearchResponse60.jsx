@@ -13,6 +13,7 @@ const UserSearchResponse60=(props)=>{
     const [mainsvisibility,setmainsvisibility]=useState("contents")
     const [allRoles, setAllRoles] = useState([]);
     const [passVisi, setPassVisi] = useState("password");
+    const [disp,setdisp]=useState("none")
 
     const clearTable = () => {
         setView([]);
@@ -46,8 +47,20 @@ const UserSearchResponse60=(props)=>{
     }, [props.data]);
 
     useEffect(() => {
+        if(props.View==='block' && props.UserView==='block'){
+            setdisp('block')
+        }
+        else {
+            setdisp('none')
+        }
+        console.log(props.View)
+        console.log(disp)
+    }, [props.View,props.UserView]);
+
+    useEffect(() => {
         setAllRoles(props.AllRoles)
     }, [props.AllRoles]);
+    
     const handleDelete = (user_id,userName) => {
         axios
             .post("http://localhost:7000/api/v1/deleteuser", {user_id})
@@ -57,6 +70,10 @@ const UserSearchResponse60=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
+
+            if(disp==="block"){
+                setdisp("none");
+            }
     };
 
     const cancelEdit =() =>{
@@ -85,6 +102,9 @@ const UserSearchResponse60=(props)=>{
                 console.log(error);
             });
         alert("User Updated Successfully");
+        if(disp==="block"){
+            setdisp("none");
+        }
         setVisiblity("none");
         setmainsvisibility('contents')
     };
@@ -97,7 +117,7 @@ const UserSearchResponse60=(props)=>{
         setpassword(data.password);
     };
     return (
-        <div style={{display: props.View}}>
+        <div style={{display: disp}}>
             <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
             <table className="table-60">
                 <thead style={{display: mainsvisibility}}>

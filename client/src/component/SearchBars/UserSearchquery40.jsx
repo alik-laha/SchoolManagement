@@ -36,6 +36,7 @@ const UserSearchquery40 = (props) => {
           setErrorMessage("none")
          
         props.result(res.data.data);
+        props.buttonClick("block");
       });
 
   };
