@@ -30,6 +30,7 @@ import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.j
 import AcademicEntrySearch from '../Student/AcademicEntry/AcademicEntrySearch.jsx';
 import AcademicEntryView from '../Student/AcademicEntry/AcademicEntryView.jsx'
 import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
+import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -44,10 +45,13 @@ const DashBoardMain = (props) => {
   const [StockData,setStockData]=useState([]);
   const [secondarysearchstockdata,setsecondarysearchstockdata]=useState([]);
   const [modifyviewstockdata,setmodifyviewstockdata]=useState([]);
+  const [pendingviewstockdata,setpendingviewstockdata]=useState([]);
   const [ViewStock,setViewStock]=useState("none")
   const [viewallStock,setviewallStock]=useState("none")
+
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
+  const [pendingViewAllShow,setpendingViewAllShow]=useState('none')
   const [bedData, setBedData] = useState([]);
   const [hostelStudentData, setHostelStudentData] = useState([]);
 
@@ -58,73 +62,74 @@ const DashBoardMain = (props) => {
   const [allusershow,setallusershow]=useState("none")
 
   {/* User Start */}
-    //get all roles
-      const getAllRoles = (data) => {
-        setAllRoles(data);
-      };
-    //view user button show
-      const usershow=(data)=>{
-      setallusershow(data);
-      }
-    //get user data
-      const getdata = (data) => {
-      setdata(data);
-      };
+            //get all roles
+              const getAllRoles = (data) => {
+                setAllRoles(data);
+              };
+            //view user button show
+              const usershow=(data)=>{
+              setallusershow(data);
+              }
+            //get user data
+              const getdata = (data) => {
+              setdata(data);
+              };
   {/* User End */}
 
-
-
   {/* Stock Start */}
-      //div-40-call
-      const viewallvendor = () => {
-        if(ViewVendor==="none") {
-          setViewVendor("block")
-        }
-        else{
-          setViewVendor("none")
+        //div-40-call
+            const viewallvendor = () => {
+              if(ViewVendor==="none") {
+                setViewVendor("block")
+              }
+              else{
+                setViewVendor("none")
+                  }
             }
-      }
-      const Viewallitemtype=()=>{
-        if(itemView==="none"){
-          setitemView("block")
-        }
-        else{
-          setitemView("none")
-        }
-      }
-     
-     //Search-Data  
-      const handleVendor=(data)=>{
-        setAllVendorName(data);
-      }
-      const handleItemType=(data)=>{
-        setAllItemType(data);
-      }
-      //common to both primary and secondary export
-      const handleStockData=(data)=>{
-        setStockData(data);
-      }
-      const handleSecondaryViewStockData=(data)=>{
-        setsecondarysearchstockdata(data);
-      }
-      const handlemodifysearchStockData=(data)=>{
-        setmodifyviewstockdata(data);
-      }
-      
-    //Search-button-functionality
-      const stockViewShow=(data)=>{
-        setViewStock(data);
-      }
-      const secondaryStockEntryViewShow=(data)=> {
-        setsecondStockEntryViewShow(data);
-      } 
-      const stockallshow=(data)=>{
-        setviewallStock(data);
-      }
-      const modifyStockEntryShow=(data)=> {
-        setmodifyStockEntryViewShow(data);
-      }
-
+            const Viewallitemtype=()=>{
+              if(itemView==="none"){
+                setitemView("block")
+              }
+              else{
+                setitemView("none")
+              }
+            }
+        //Search-Data  
+            const handleVendor=(data)=>{
+              setAllVendorName(data);
+            }
+            const handleItemType=(data)=>{
+              setAllItemType(data);
+            }
+            //common to both primary and secondary export
+            const handleStockData=(data)=>{
+              setStockData(data);
+            }
+            const handleSecondaryViewStockData=(data)=>{
+              setsecondarysearchstockdata(data);
+            }
+            const handlemodifysearchStockData=(data)=>{
+              setmodifyviewstockdata(data);
+            }
+            const handlePendingViewStockData=(data)=>{
+              setpendingviewstockdata(data);
+            } 
+      //Search-button-functionality
+            const stockViewShow=(data)=>{
+              setViewStock(data);
+            }
+            const secondaryStockEntryViewShow=(data)=> {
+              setsecondStockEntryViewShow(data);
+            } 
+            const stockallshow=(data)=>{
+              setviewallStock(data);
+            }
+            const modifyStockEntryShow=(data)=> {
+              setmodifyStockEntryViewShow(data);
+            }
+            const pendingViewShow=(data)=> {
+              setpendingViewAllShow(data);
+            }
 {/* Stock End */}
 
 useEffect(()=>{
@@ -214,7 +219,7 @@ const handleacademicEntryData=(data)=>{
             {/* Modify Stock Entry Search */} 
             <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
              {/* Check Pending Search */}
-            <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
+            <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
 
         {/* Stock End*/}
 
@@ -268,7 +273,9 @@ const handleacademicEntryData=(data)=>{
             <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
             {/* View Modify Stock */}
             <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
-         
+            {/* View Pending Balance */}
+            <SecondaryStockEntryAllView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
+
          {/* Vendor End*/}    
 
          {/* Hostel Start*/}   

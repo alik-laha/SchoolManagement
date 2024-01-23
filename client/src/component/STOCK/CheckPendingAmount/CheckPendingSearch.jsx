@@ -15,14 +15,17 @@ const CheckPendingSearch = (props) => {
             toDate
         }
 
+        props.buttonClick("block");
+        props.setPendingStockData(data);
+
     }
     return (
         <div className="dashbrd-40-colm" style={{display: props.view}}>
             <form onSubmit={handleSubmit}>
                 <div>
-                    Search by Vendor Name
+                    <label>Search by Vendor Name</label>
                     <select onChange={(e) => setVendorName(e.target.value)}>
-                        <option value="">Select Room No</option>
+                        <option value="">All</option>
                         {
                             props.Vendor.map((data, idx) => {
                                 return (
@@ -34,9 +37,9 @@ const CheckPendingSearch = (props) => {
 
                 </div>
                 <div>
-                    Search by Item Type
+                   <label>Search by Item Type</label> 
                     <select onChange={(e) => setItemType(e.target.value)}>
-                        <option value="">Select Room No</option>
+                        <option value="">All</option>
                         {
                             props.Item.map((data, idx) => {
                                 return (
@@ -47,7 +50,7 @@ const CheckPendingSearch = (props) => {
                     </select>
                 </div>
                 <div>
-                    <label>From Date</label>
+                    <label>From Bill Date</label>
                     <input
                         type="date"
                         placeholder="name"
@@ -57,7 +60,7 @@ const CheckPendingSearch = (props) => {
                 </div>
 
                 <div>
-                    <label>To Date</label>
+                    <label>To Bill Date</label>
                     <input
                         type="date"
                         placeholder="name"
