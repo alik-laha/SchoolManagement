@@ -258,7 +258,7 @@ const SideBar = (props) => {
         <span onClick={studentsVisiblity} className="user" style={{ display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
         <div style={{ display: studentsVisi }}>
         <div className="Items" style={{ display: studentAdmin }} onClick={props.onMasterStudentEntry}>&#x3e;&nbsp;&nbsp;Master Admission Entry</div>
-          <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
+          <div className="Items" style={{ display: studentAdmin }} onClick={props.onMasterStudentView}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Academic Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry</div>
           <div className="Items" style={{ display: studentAdmin }} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Promote To Next Class</div>

@@ -31,6 +31,7 @@ import AcademicEntrySearch from '../Student/AcademicEntry/AcademicEntrySearch.js
 import AcademicEntryView from '../Student/AcademicEntry/AcademicEntryView.jsx'
 import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
 import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
+import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterStudentViewSearch.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -238,7 +239,7 @@ const handleacademicEntryData=(data)=>{
 
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           <MasterStudentEntry view={props.StudentEntry}/>
-
+            <MasterStudentViewSearch view={props.MasterStudentView}/>
         </div>
 
 
