@@ -250,7 +250,7 @@ const SecondaryStockEntryView= (props) => {
                         placeholder="Cash Entry date"
                         onChange={(e) => setcashentrydate(e.target.value)}
                         value={cashentrydate}
-                        required
+                        required readOnly
                     /></td>
                     <td style={{display:'flex'}}>
                         <button type="submit" disabled={disableedit} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}

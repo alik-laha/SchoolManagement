@@ -11,7 +11,7 @@ const ModifyStockEntryView= (props) => {
     const [balamt,setbalamt]=useState(0)
     const [billDate,setbillDate]=useState();
     const [unitcost,setunitcost]=useState();
-    const [cashentrydate,setcashentrydate]=useState(new Date().toISOString().slice(0, 10) )
+    const [cashentrydate,setcashentrydate]=useState()
     const [modifieddate,setmodifieddate]=useState(new Date().toISOString().slice(0, 10) )
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
@@ -47,6 +47,9 @@ const ModifyStockEntryView= (props) => {
     useEffect(()=>{
         setbalamt(discountamt-paidamt)
     },[discountamt,paidamt])
+    useEffect(()=>{
+        setestimatedamt(unitcost*qty)
+    },[qty,unitcost])
 
     const handleEdit = (data) => {
         setVisiblity("contents");
@@ -83,9 +86,7 @@ const ModifyStockEntryView= (props) => {
             setcashentrydate(data.stock_entry_date.slice(0, 10))
             
        }
-        else{
-            setcashentrydate(new Date().toISOString().slice(0, 10))
-        }
+        
 
         if(data.bill_date!==null || data.bill_date!==undefined){
             setbillDate(data.bill_date.slice(0, 10))     
@@ -101,7 +102,7 @@ const ModifyStockEntryView= (props) => {
         setmainsvisibility('contents');
         setdiscountamt(0);
         setpaidamt(0);
-        setcashentrydate(new Date().toISOString().slice(0, 10) )
+
         setmodifieddate(new Date().toISOString().slice(0, 10))
     };
 
@@ -130,7 +131,7 @@ const ModifyStockEntryView= (props) => {
                     setmainsvisibility('contents');
                     setdiscountamt(0);
                     setpaidamt(0);
-                    setcashentrydate(new Date().toISOString().slice(0, 10) )
+                    setcashentrydate()
                     setmodifieddate(new Date().toISOString().slice(0, 10))
                     setbillDate(new Date().toISOString().slice(0, 10))
                     setunitcost(0)
@@ -142,7 +143,7 @@ const ModifyStockEntryView= (props) => {
                     setvendor("")
                     setitem("")
                     // props.setStockData(res.data.data)
-                    setViewStock([])
+                    
 
                 })
                 .catch((err) => {
@@ -220,7 +221,6 @@ const ModifyStockEntryView= (props) => {
                     <th>Discounted Amount</th>
                     <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
-                    <th>Cash Entry Date</th>
                     
                     <th>Action</th>
                     
@@ -232,7 +232,7 @@ const ModifyStockEntryView= (props) => {
                     
                 <tr>
                    <td>{itemid}</td>
-                   <td><input type="text" value={billid} placeholder='Bill id' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
+                   <td><input type="text" value={billid} placeholder='Bill id' onChange={(e) => setbillid(e.target.value)} required/></td>
                    <td><input type="text" value={itemname} placeholder='Item Name' onChange={(e) => setitemname(e.target.value)} required/></td>
                    <td>
                         <select onChange={(e) => setvendor(e.target.value)} value={vendor}>
@@ -257,7 +257,7 @@ const ModifyStockEntryView= (props) => {
                     <td><input
                         type="date" 
                         placeholder="Bill Entry date"
-                        onChange={(e) => (e.target.value)}
+                        onChange={(e) => setbillDate(e.target.value)}
                         value={billDate}
                         required
                     /></td>
@@ -268,13 +268,7 @@ const ModifyStockEntryView= (props) => {
                    <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
                    <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
                    <td><input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} required readOnly/></td>
-                   <td><input
-                        type="date" 
-                        placeholder="Cash Entry date"
-                        onChange={(e) => setcashentrydate(e.target.value)}
-                        value={cashentrydate}
-                        required
-                    /></td>
+                   
                     
                   
                     <td>
