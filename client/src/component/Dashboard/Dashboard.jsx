@@ -93,7 +93,6 @@ if(search==='none'){
     setSecondStockView("none")
     setmodifySearchView('none')
     setbedentry('none')
-    setbedentry('none')
     sethostelview('none')
     setbedview('none')
     setcheckpending('none')

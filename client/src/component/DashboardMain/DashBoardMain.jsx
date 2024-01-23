@@ -50,6 +50,7 @@ const DashBoardMain = (props) => {
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
   const [bedData, setBedData] = useState([]);
   const [hostelStudentData, setHostelStudentData] = useState([]);
+
   const [hostelenrtydata,sethostelenrtydata]=useState([])
   const [academicentrydata,setacademicEntryData]=useState([])
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
