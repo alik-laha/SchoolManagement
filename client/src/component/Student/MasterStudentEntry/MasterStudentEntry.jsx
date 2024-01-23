@@ -2,7 +2,6 @@ import {useState} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState(null);
-    const [regNo, setRegNo] = useState(null);
     const [adharNo, setAdharNo] = useState(null);
     const [sex, setSex] = useState(null);
     const [religion, setReligion] = useState(null);
@@ -38,16 +37,76 @@ const MasterStudentEntry= (props) => {
 
     const handleEntry = (e) => {
         e.preventDefault();
-        const data = {
-            name, regNo, adharNo, sex, religion, dob, cast, physicallyChallenged, orphanage, fatherName, fatherQualification, fatherOcupation, fatherMonthlyIncome, fatherContactNo, motherName, motherQualification, motherOcupation, motherMonthlyIncome, motherContactNo, guardianName, relationship, guardianContactNo, address, pinNo, bspId, applyClass, admissionYear, admissonDate, age, bloodGroup, bankAcountNo, brunch, ifscCode
-        }
-        axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
+        let id;
+        let regNo;
+        axios.get("http://localhost:7000/api/v1/student/lastid")
             .then((res) => {
-              console.log(res);
-            }).catch((err) => {
-                console.log(err);
+                id=(res.data.result[0].serial_no+1);
+                const schoolName = "AHM"
+                const Class = applyClass.toString()
+                const year = admissionYear.toString()
+                const ID = id.toString()
+                if (ID.length === 1) {
+                    id = "0000" + ID
+                } else if (ID.length === 2) {
+                    id = "000" + ID
+                } else if (ID.length === 3) {
+                    id = "00" + ID
+                } else if (ID.length === 4) {
+                    id = "0" + ID
+                } else if (ID.length === 5) {
+                    id = ID
+                }
+                regNo = schoolName + year + Class + id
+                console.log(regNo)
             })
+            .catch((err) => {
+              console.log(err);
+            })
+            .then(() => {
+                const data = {
+                    name,
+                    regNo,
+                    adharNo,
+                    sex,
+                    religion,
+                    dob,
+                    cast,
+                    physicallyChallenged,
+                    orphanage,
+                    fatherName,
+                    fatherQualification,
+                    fatherOcupation,
+                    fatherMonthlyIncome,
+                    fatherContactNo,
+                    motherName,
+                    motherQualification,
+                    motherOcupation,
+                    motherMonthlyIncome,
+                    motherContactNo,
+                    guardianName,
+                    relationship,
+                    guardianContactNo,
+                    address,
+                    pinNo,
+                    bspId,
+                    applyClass,
+                    admissionYear,
+                    admissonDate,
+                    age,
+                    bloodGroup,
+                    bankAcountNo,
+                    brunch,
+                    ifscCode
+                }
+                axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
+                    .then((res) => {
+                        console.log(res);
+                    }).catch((err) => {
+                    console.log(err);
+                })
 
+            })
     }
 
     return(
@@ -60,15 +119,6 @@ const MasterStudentEntry= (props) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Student Name"
-                    />
-                </div>
-                <div>
-                    <label>Registration No</label>
-                    <input
-                        type="text"
-                        value={regNo}
-                        placeholder="Registration No"
-                        readOnly
                     />
                 </div>
                 <div>

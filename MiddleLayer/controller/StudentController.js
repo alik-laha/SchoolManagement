@@ -6,6 +6,24 @@ const Database = require('../Config/Dbconnection')
 
 
 
+//last id of student admission
+exports.LastId = (req, res) => {
+    try {
+        let query = `SELECT serial_no from master_student ORDER BY serial_no DESC LIMIT 1`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                return res.status(200).json({result})
+            }
+        })
+    }catch(err){
+            console.log(err)
+
+        }
+}
+
+
 //get all students byclass and registration
 exports.GetAllStudent = (req, res) => {
     const { Class, regNo, year } = req.body
