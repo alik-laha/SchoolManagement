@@ -119,6 +119,7 @@ const MasterStudentEntry= (props) => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Student Name"
+                        required={true}
                     />
                 </div>
                 <div>
@@ -128,6 +129,7 @@ const MasterStudentEntry= (props) => {
                         value={adharNo}
                         onChange={(e) => setAdharNo(e.target.value)}
                         placeholder="Adhar Number"
+                        required={true}
                     />
                 </div>
 
@@ -167,6 +169,7 @@ const MasterStudentEntry= (props) => {
                         value={dob}
                         onChange={(e) => setDob(e.target.value)}
                         placeholder="Date of Birth"
+                        required={true}
                     />
                 </div>
 
@@ -321,6 +324,7 @@ const MasterStudentEntry= (props) => {
                         value={guardianName}
                         onChange={(e) => setGuardianName(e.target.value)}
                         placeholder="Guardian Name"
+                        required={true}
                     />
                 </div>
 
@@ -331,6 +335,7 @@ const MasterStudentEntry= (props) => {
                         value={relationship}
                         onChange={(e) => setRelationship(e.target.value)}
                         placeholder="relationship"
+                        required={true}
                     />
                 </div>
 
@@ -341,6 +346,7 @@ const MasterStudentEntry= (props) => {
                         value={guardianContactNo}
                         onChange={(e) => setGuardianContactNo(e.target.value)}
                         placeholder="Guardian Contact No"
+                        required={true}
                     />
                 </div>
 
@@ -351,6 +357,7 @@ const MasterStudentEntry= (props) => {
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="Address"
+                        required={true}
                     />
                 </div>
 
@@ -361,6 +368,7 @@ const MasterStudentEntry= (props) => {
                         value={pinNo}
                         onChange={(e) => setPinNo(e.target.value)}
                         placeholder="Pin Number"
+                        required={true}
                     />
                 </div>
                 <div>
@@ -373,39 +381,43 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Applied Class</label>
+                    <label>Applied Class*</label>
                     <input
                         type="number"
                         value={applyClass}
                         onChange={(e) => setApplyClass(e.target.value)}
                         placeholder="Applied Class"
+                        required={true}
                     />
                 </div>
                 <div>
-                    <label>Admission Year</label>
+                    <label>Admission Year*</label>
                     <input
                         type="number"
                         value={admissionYear}
                         onChange={(e) => setAdmissionYear(e.target.value)}
                         placeholder="Admission Year"
+                        required={true}
                     />
                 </div>
                 <div>
-                    <label>Admission Date</label>
+                    <label>Admission Date*</label>
                     <input
                         type="date"
                         value={admissonDate}
                         onChange={(e) => setAdmissonDate(e.target.value)}
                         placeholder="Admission Date"
+                        required={true}
                     />
                 </div>
                 <div>
-                    <label>Age</label>
+                    <label>Age*</label>
                     <input
                         type="number"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
                         placeholder="Age"
+                        required={true}
                     />
                 </div>
                 <div>
