@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {GetAllStudent,MasterStudentAdmission, LastId} = require('../controller/StudentController')
+const {GetAllStudent,MasterStudentAdmission, LastId,GetMasterStudentAdmisson} = require('../controller/StudentController')
 
 //get all students
 router.post('/getallstudent',GetAllStudent)
@@ -11,5 +11,7 @@ router.post('/masterstudentadmission',MasterStudentAdmission)
 //last id
 router .get('/lastid',LastId)
 
+//get Master student admission
+router.post('/getmasterstudent',GetMasterStudentAdmisson)
 
 module.exports = router

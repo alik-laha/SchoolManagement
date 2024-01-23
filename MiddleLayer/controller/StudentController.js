@@ -153,3 +153,49 @@ exports.MasterStudentAdmission = (req, res) => {
         })
     }
 }
+
+//get Master student admission by registration no and admission year and applied class
+exports.GetMasterStudentAdmisson= (req, res) => {
+    const{regNo,admissionYear,applyClass}=req.body
+    try{
+        let query
+        if (!regNo && !admissionYear && !applyClass) {
+            query = `SELECT * FROM master_student`
+        }
+        else if (regNo && !admissionYear && !applyClass) {
+            query = `SELECT * FROM master_student WHERE registration_no = '${regNo}'`
+        }
+
+        else if (!regNo && admissionYear && !applyClass) {
+            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}'`
+        }
+        else if (!regNo && !admissionYear && applyClass) {
+            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' `
+        }
+
+        else if (regNo && admissionYear && !applyClass) {
+            query = `SELECT * FROM master_student WHERE registration_no='${regNo}' and admisson_year='${admissionYear}'`
+        }
+        else if (!regNo && admissionYear && applyClass) {
+            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and applied_class='${applyClass}'`
+        }
+        else if (regNo && !admissionYear && applyClass) {
+            query = `SELECT * FROM master_student WHERE registration_no='${regNo}' and applied_class='${applyClass}'`
+        }
+
+        else {
+            query = `SELECT * FROM master_student WHERE registration_no='${regNo}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' `
+        }
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(200).json({ result })
+            }
+        })
+
+    }catch (err){
+        console.log(err)
+    }
+}
