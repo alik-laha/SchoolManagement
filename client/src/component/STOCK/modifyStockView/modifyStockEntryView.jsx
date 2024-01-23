@@ -62,6 +62,7 @@ const ModifyStockEntryView= (props) => {
         setitemname(data.item_Name)
         setvendor(data.vendor_name)
         setitem(data.item_Type)
+        setbillDate(data.billDate.slice(0,10))
 
         
         if(data.discounted_cost!==null || data.discounted_cost!==undefined){
@@ -87,22 +88,21 @@ const ModifyStockEntryView= (props) => {
             
        }
         
-
-        if(data.bill_date!==null || data.bill_date!==undefined){
-            setbillDate(data.bill_date.slice(0, 10))     
-       }
-        else{
-            setbillDate(new Date().toISOString().slice(0, 10))
-        }
+        
 
         
     };
+
+    const clearTable = () => {
+        if(visiblity==='none')
+        setViewStock([]);
+      };
     const cancelEdit =() =>{
         setVisiblity('none');
         setmainsvisibility('contents');
         setdiscountamt(0);
         setpaidamt(0);
-
+        setbillDate()
         setmodifieddate(new Date().toISOString().slice(0, 10))
     };
 
@@ -133,7 +133,7 @@ const ModifyStockEntryView= (props) => {
                     setpaidamt(0);
                     setcashentrydate()
                     setmodifieddate(new Date().toISOString().slice(0, 10))
-                    setbillDate(new Date().toISOString().slice(0, 10))
+                    setbillDate()
                     setunitcost(0)
                     setqty(0)
                     setestimatedamt(0)
@@ -143,6 +143,7 @@ const ModifyStockEntryView= (props) => {
                     setvendor("")
                     setitem("")
                     // props.setStockData(res.data.data)
+                    setVisible('none')
                     
 
                 })
@@ -156,6 +157,7 @@ const ModifyStockEntryView= (props) => {
         <div style={{display:visible}}>
             <table className="table-60">
                 <thead style={{display: mainsvisibility}}>
+                <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
