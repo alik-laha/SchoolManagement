@@ -184,6 +184,7 @@ const SecondaryStockEntryView= (props) => {
                     <th>Item Id</th>
                     <th>Bill Id</th>
                     <th>Cash Entry</th>
+                    <th>Cash Entry Date</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
@@ -191,7 +192,6 @@ const SecondaryStockEntryView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
-                    <th>Last Modified Date</th>
                     <th>Action</th>
                     
                 </tr>
@@ -202,6 +202,7 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
+                        <td>{item.stock_entry_date !== null ?item.stock_entry_date.slice(0,10):null}</td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
@@ -209,8 +210,6 @@ const SecondaryStockEntryView= (props) => {
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
-                        <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
-                        
                         
                         <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Cash Entry</button></td>
                         

@@ -114,7 +114,7 @@ exports.GetVendor = (req, res) => {
 
 //stock entry
 exports.StockEntry=(req,res)=>{
-    const {itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,projectedCost, modifiedDate }=req.body
+    const {itemName,billNo,billDate,unitCost,quantity,itemType,vendorName,projectedCost, primaryEntryDate,modifiedDate }=req.body
     if(!itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost){
         return res.status(400).json({
             status:"all data needed"
@@ -122,8 +122,8 @@ exports.StockEntry=(req,res)=>{
     }
     else{
                 query=`
-                    INSERT INTO stock (item_Type,item_Name,vendor_name,bill_id,bill_date,unit_cost,quantity,projected_cost,stock_modified_date)
-                    VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}","${modifiedDate}")`;
+                    INSERT INTO stock (item_Type,item_Name,vendor_name,bill_id,bill_date,unit_cost,quantity,projected_cost,primary_entry_date,stock_modified_date)
+                    VALUES ("${itemType}","${itemName}","${vendorName}","${billNo}","${billDate}","${unitCost}","${quantity}","${projectedCost}","${primaryEntryDate}","${modifiedDate}")`;
                 Database.query(query,function(error,data){
                     if(error){
 

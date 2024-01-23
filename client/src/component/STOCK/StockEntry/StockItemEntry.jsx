@@ -11,6 +11,7 @@ const StockItemEntry= (props) => {
     const [unitCost, setUnitCost] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [projectedCost, setProjectedCost] = useState(0);
+    const [primaryEntryDate, setprimaryEntryDate] = useState(new Date().toISOString().slice(0, 10) );
     const [modifiedDate, setModifiedDate] = useState(new Date().toISOString().slice(0, 10) );
     useEffect(()=>{
 
@@ -45,6 +46,7 @@ const StockItemEntry= (props) => {
             unitCost,
             quantity,
             projectedCost,
+            primaryEntryDate,
             modifiedDate
         }
         axios.post("http://localhost:7000/api/v1/stock/stockentry", data)

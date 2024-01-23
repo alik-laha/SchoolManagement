@@ -29,7 +29,7 @@ const SecondaryStockEntrySearch = (props) => {
            
                 
                 <div>
-                <label>From Date</label>
+                <label>From Bill Date</label>
                 <input
                     type="date"
                     placeholder="name"
@@ -39,7 +39,7 @@ const SecondaryStockEntrySearch = (props) => {
                 </div>
                 
                 <div>
-                <label>To Date</label>
+                <label>To Bill Date</label>
                 <input
                     type="date"
                     placeholder="name"

@@ -53,6 +53,7 @@ const StockView= (props) => {
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
                     <th>Total Price(Estimated)</th>
+                    <th>Primary Stock Entry Date</th>
                     <th>Last Modified Date</th>
                     
                 </tr>
@@ -69,6 +70,7 @@ const StockView= (props) => {
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
                         <td>{item.projected_cost}</td>
+                        <td>{item.primary_entry_date !== null ?item.primary_entry_date.slice(0,10):null}</td>
                         <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
                     </tr>
                 ))}

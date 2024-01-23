@@ -121,7 +121,7 @@ const UserSearchResponse60=(props)=>{
         <div style={{display: disp}}>
             
             <table className="table-60">
-            <button style={{marginTop:'-70px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+            <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <thead style={{display: mainsvisibility}}>
                 <tr>
                     <th>User Id</th>
