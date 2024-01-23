@@ -159,7 +159,7 @@ const ModifyStockEntryView= (props) => {
                 <thead style={{display: mainsvisibility}}>
                 <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
-                    <th>Item Id</th>
+                    {/* <th>Item Id</th> */}
                     <th>Bill Id</th>
                     <th>Cash Entry</th>
                     <th>Item Name</th>
@@ -172,6 +172,7 @@ const ModifyStockEntryView= (props) => {
                     <th>Discounted Amount</th>
                     <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
+                    <th>Primary Stock Entry Date</th>
                     <th>Cash Entry Date</th>
                     <th>Last Modified Date</th>
                     
@@ -182,7 +183,7 @@ const ModifyStockEntryView= (props) => {
                 <tbody style={{display: mainsvisibility}}>
                 {viewStock.map((item) => (
                     <tr key={item.stock_id}>
-                        <td>{item.stock_id}</td>
+                        {/* <td>{item.stock_id}</td> */}
                         <td>{item.bill_id}</td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>
@@ -195,6 +196,7 @@ const ModifyStockEntryView= (props) => {
                         <td>{item.discounted_cost}</td>
                         <td>{item.paid_amount}</td>
                         <td>{item.pending_amount}</td>
+                        <td>{item.primary_entry_date !==  null ? item.primary_entry_date.slice(0,10): null}</td>
                         <td>{item.stock_entry_date !==  null ? item.stock_entry_date.slice(0,10): null}</td>
                         <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
                         <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Edit</button></td>

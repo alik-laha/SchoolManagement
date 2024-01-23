@@ -55,10 +55,10 @@ const HostelView= (props) => {
                         
                         
                         <th>Registration No</th>
-                        <th>Current Year of Studys</th>
+                        <th>Current Year of Study</th>
                         <th>Room No</th>
                         <th>Bed No</th>
-                        <th>Entry Date</th>
+                        <th>Hostel Entry Date</th>
                         
                     </tr>
                     </thead>
