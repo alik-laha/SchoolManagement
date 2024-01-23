@@ -174,38 +174,103 @@ const handleacademicEntryData=(data)=>{
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
         <div className="dasdhboard-main-40">
-          
-          <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  buttonClick={usershow}/>
-          <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
-          <StudentInputNotice Publish={props.Publish} setSearch={setSearch}/>
-          <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
-          <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
-          <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
-          <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
-          <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
-          <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
+
+        {/* User Start*/}
+
+            {/* Create User */}
+            <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
+            {/* Search User */}
+            <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  buttonClick={usershow}/>
+        
+        {/* User End*/}
+
+        {/* NoticeBoard Start*/}
+
+            {/* Create Notice */}
+            <StudentInputNotice Publish={props.Publish} setSearch={setSearch}/>
+
+        {/* NoticeBoard End*/}
+
+        {/* Stock Start*/}
+
+            {/* Create Vendor */} 
+            <CreateVendor createView={props.VendorCreateDisplay} onViewVendor={viewallvendor}/>
+            {/* Create Item */} 
+            <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
+            {/* Primary Stock Entry */} 
+            <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
+            {/* Export Primary Stock Search */} 
+            <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
+            {/* Secondary Stock Entry Search */} 
+            <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
+            {/* Export Secondary Stock Search */} 
+            <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
+            {/* Modify Stock Entry Search */} 
+            <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
+             {/* Check Pending Search */}
+            <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
+
+        {/* Stock End*/}
+
+        {/* Hostel Start*/}  
+
+          {/* Create Room */}  
           <CreateBed40 createbed={props.createbed}/>
+          {/* Search Room */} 
           <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
-          <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
+          {/* Search Hostel Entry */}
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
+          {/* Export Hostel Entry Search*/}
           <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} />
-          <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType}  />
+        
+        {/* Hostel End*/}
+
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           <MasterStudentEntry view={props.StudentEntry}/>
 
         </div>
+
+
+
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-          <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
-          <NoticeManupulation60 Publish={props.Notice}/>
-          <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={allVendorName}  />
-          <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>
-          <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
-          <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-          <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+        
+        {/* User Start*/} 
+
+            {/* View User*/}     
+            <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
+
+        {/* User End*/}  
+
+        {/* Noticeboard Start*/}
+
+            {/* View Notice*/}     
+            <NoticeManupulation60 Publish={props.Notice}/>
+
+        {/* Noticeboard End*/}
+
+        {/* Stock Start*/}
+
+            {/* View Vendor */}     
+            <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={allVendorName}  />
+            {/* View Item */}
+            <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>
+            {/* View Primary Stock */}
+            <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
+            {/* View Secondary Stock */}
+            <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
+            {/* View ExportSecondary Stock */}
+            <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
+            {/* View Modify Stock */}
+            <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+         
+         {/* Vendor End*/}    
+
+         {/* Hostel Start*/}   
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
-          <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
           <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
+         {/* Hostel End*/}   
+
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
 
         </div>
