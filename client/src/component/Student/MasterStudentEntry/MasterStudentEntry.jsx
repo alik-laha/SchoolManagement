@@ -101,7 +101,7 @@ const MasterStudentEntry= (props) => {
                 }
                 axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
                     .then((res) => {
-                        console.log(res);
+                        alert("Student Admission Successfully with registration no. "+regNo);
                     }).catch((err) => {
                     console.log(err);
                 })
