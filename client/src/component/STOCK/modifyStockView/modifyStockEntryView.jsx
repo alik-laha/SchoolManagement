@@ -62,7 +62,7 @@ const ModifyStockEntryView= (props) => {
         setitemname(data.item_Name)
         setvendor(data.vendor_name)
         setitem(data.item_Type)
-        setbillDate(data.billDate.slice(0,10))
+        setbillDate(data.bill_date.slice(0,10))
 
         
         if(data.discounted_cost!==null || data.discounted_cost!==undefined){
