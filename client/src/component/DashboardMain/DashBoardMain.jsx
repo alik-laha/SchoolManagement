@@ -45,40 +45,86 @@ const DashBoardMain = (props) => {
   const [secondarysearchstockdata,setsecondarysearchstockdata]=useState([]);
   const [modifyviewstockdata,setmodifyviewstockdata]=useState([]);
   const [ViewStock,setViewStock]=useState("none")
+  const [viewallStock,setviewallStock]=useState("none")
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
   const [bedData, setBedData] = useState([]);
   const [hostelStudentData, setHostelStudentData] = useState([]);
-  
-  const [viewallStock,setviewallStock]=useState("none")
   const [hostelenrtydata,sethostelenrtydata]=useState([])
-
-
   const [academicentrydata,setacademicEntryData]=useState([])
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
   const [hostelexportshow,sethostelexportshow]=useState("none")
-
   const [allusershow,setallusershow]=useState("none")
 
-  const getdata = (data) => {
-    setdata(data);
-  };
-  const viewallvendor = () => {
-    if(ViewVendor==="none") {
-      setViewVendor("block")
-    }
-    else{
-        setViewVendor("none")
-    }
-  }
- const Viewallitemtype=()=>{
-    if(itemView==="none"){
-      setitemView("block")
-    }
-    else{
-      setitemView("none")
-    }
- }
+  {/* User Start */}
+    //get all roles
+      const getAllRoles = (data) => {
+        setAllRoles(data);
+      };
+    //view user button show
+      const usershow=(data)=>{
+      setallusershow(data);
+      }
+    //get user data
+      const getdata = (data) => {
+      setdata(data);
+      };
+  {/* User End */}
+
+
+
+  {/* Stock Start */}
+      //div-40-call
+      const viewallvendor = () => {
+        if(ViewVendor==="none") {
+          setViewVendor("block")
+        }
+        else{
+          setViewVendor("none")
+            }
+      }
+      const Viewallitemtype=()=>{
+        if(itemView==="none"){
+          setitemView("block")
+        }
+        else{
+          setitemView("none")
+        }
+      }
+     
+     //Search-Data  
+      const handleVendor=(data)=>{
+        setAllVendorName(data);
+      }
+      const handleItemType=(data)=>{
+        setAllItemType(data);
+      }
+      //common to both primary and secondary export
+      const handleStockData=(data)=>{
+        setStockData(data);
+      }
+      const handleSecondaryViewStockData=(data)=>{
+        setsecondarysearchstockdata(data);
+      }
+      const handlemodifysearchStockData=(data)=>{
+        setmodifyviewstockdata(data);
+      }
+      
+    //Search-button-functionality
+      const stockViewShow=(data)=>{
+        setViewStock(data);
+      }
+      const secondaryStockEntryViewShow=(data)=> {
+        setsecondStockEntryViewShow(data);
+      } 
+      const stockallshow=(data)=>{
+        setviewallStock(data);
+      }
+      const modifyStockEntryShow=(data)=> {
+        setmodifyStockEntryViewShow(data);
+      }
+
+{/* Stock End */}
 
 useEffect(()=>{
 if(props.Search==="block" && search==="flex"){
@@ -87,9 +133,7 @@ if(props.Search==="block" && search==="flex"){
 
 },[search,props.Search])
 
-  const getAllRoles = (data) => {
-    setAllRoles(data);
-  };
+ 
 
   window.addEventListener("unhandledrejection", function() {
     if(view=='block'){
@@ -103,37 +147,6 @@ if(props.Search==="block" && search==="flex"){
 
 
 
-const handleVendor=(data)=>{
-      setAllVendorName(data);
-}
-const handleItemType=(data)=>{
-    setAllItemType(data);
-}
-const handleStockData=(data)=>{
-    setStockData(data);
-}
-const handleSecondaryViewStockData=(data)=>{
-    setsecondarysearchstockdata(data);
-}
-const handlemodifysearchStockData=(data)=>{
-    setmodifyviewstockdata(data);
-}
-
-
-
-  
-  const stockViewShow=(data)=>{
-    setViewStock(data);
-  }
-//secondary-stock-button-show
-const secondaryStockEntryViewShow=(data)=> {
-  setsecondStockEntryViewShow(data);
-
-}
-
-const stockallshow=(data)=>{
-  setviewallStock(data);
-}
 //academic-all-button-show
 const academicAllShow=(data)=>{
   setviewallacademicEntryShow(data);
@@ -142,15 +155,7 @@ const academicAllShow=(data)=>{
 const hostelExportAllShow=(data)=>{
   sethostelexportshow(data);
 }
-//user-show
-const usershow=(data)=>{
-  setallusershow(data);
-}
 
-const modifyStockEntryShow=(data)=> {
-  setmodifyStockEntryViewShow(data);
-
-}
   const HostelStudentData=(data)=>{
     setHostelStudentData(data);
   }
