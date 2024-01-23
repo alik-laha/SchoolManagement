@@ -84,7 +84,7 @@ if(search==='none'){
     setPublish('none')
     setVendorDisplay('none')
     setSearch('block')
-    setView('flex')
+    setView('block')
     setItemCreate('none')
     setNotice('none')
     setStockEntry('none')

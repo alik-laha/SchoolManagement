@@ -128,7 +128,7 @@ const DashBoardMain = (props) => {
 {/* Stock End */}
 
 useEffect(()=>{
-if(props.Search==="block" && search==="flex"){
+if(props.Search==="block" && search==="block"){
   setView("block")
 }
 
