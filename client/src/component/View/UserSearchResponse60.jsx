@@ -79,6 +79,7 @@ const UserSearchResponse60=(props)=>{
     const cancelEdit =() =>{
         setVisiblity('none');
         setmainsvisibility('contents');
+        setPassVisi("password")
     };
 
 
