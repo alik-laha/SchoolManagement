@@ -27,7 +27,7 @@ const MasterStudentEntry= (props) => {
     const [bspId, setBspId] = useState(null);
     const [applyClass, setApplyClass] = useState(null);
     const [admissionYear, setAdmissionYear] = useState(null);
-    const [admissonDate, setAdmissonDate] = useState(null);
+    const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
     const [age, setAge] = useState(null);
     const [bloodGroup, setBloodGroup] = useState(null);
     const [bankAcountNo, setBankAcountNo] = useState(0);
@@ -103,8 +103,40 @@ const MasterStudentEntry= (props) => {
                     .then((res) => {
                         alert("Student Admission Successfully with registration no. "+regNo);
                     }).catch((err) => {
-                    console.log(err);
+                    alert(err.response.data.msg)
                 })
+                setName(null);
+                setAdharNo(null);
+                setSex(null);
+                setReligion(null);
+                setDob(null);
+                setCast(null);
+                setPhysicallyChallenged(0);
+                setOrphanage(0);
+                setFatherName(null);
+                setFatherQualification(null);
+                setFatherOcupation(null);
+                setFatherMonthlyIncome(0);
+                setFatherContactNo(0);
+                setMotherName(null);
+                setMotherQualification(null);
+                setMotherOcupation(null);
+                setMotherMonthlyIncome(0);
+                setMotherContactNo(0);
+                setGuardianName(null);
+                setRelationship(null);
+                setGuardianContactNo(null);
+                setAddress(null);
+                setPinNo(null);
+                setBspId(null);
+                setApplyClass(null);
+                setAdmissionYear(null);
+                setAdmissonDate(new Date().toISOString().slice(0, 10));
+                setAge(null);
+                setBloodGroup(null);
+                setBankAcountNo(0);
+                setBrunch(null);
+                setIfscCode(null);
 
             })
     }
