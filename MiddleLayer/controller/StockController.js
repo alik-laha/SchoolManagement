@@ -4,32 +4,28 @@ const Database = require('../Config/Dbconnection')
 //create Item
 exports.CreateItem = (req, res) => {
     const { item } = req.body
-
-        if (!{ item }) {
-            return res.message("all data needed")
-        }
-            else {
-                query = `
-                    INSERT INTO itemType (item_type)
+    if (! item || item === " ") {
+        return res.message("all data needed")
+    }
+    query = `
+                    INSERT INTO  itemType (item_Type)
                     VALUES ("${item}")`;
-                Database.query(query, function (error, data) {
-                    if (error) {
+    Database.query(query, function (error, data) {
+        if (error) {
 
-                        return res.status(400).json({
-                            status: "error at creating item",
-                            message: error
-                        });
-                    }
-                    if (data) {
+            return res.status(400).json({
+                status: "error at creating vendor",
+                message: error
+            });
+        }
+        if (data) {
+            return res.status(200).json({
+                status: "venodr created",
+                data: data
+            });
+        }
 
-                        return res.status(200).json({
-                            status: "item created",
-                            data: data
-                        });
-                    }
-
-                })
-            }
+    })
     }
 
 
@@ -63,7 +59,7 @@ exports.GetItem = (req, res) => {
 exports.CreateVendor = (req, res) => {
     const { vendor } = req.body
 
-        if (!{ vendor }) {
+        if (! vendor || vendor === " ") {
             return res.message("all data needed")
         }
                 query = `

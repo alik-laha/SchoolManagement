@@ -11,7 +11,8 @@ const CreateVendor = (props) => {
             vendor:vendor
         })
             .then((res) => {
-                console.log(res);
+                alert(`New Vendor created with this Name ${vendor}`)
+                setVendor("");
             })
             .catch((error) => {
                 console.log(error);
@@ -26,6 +27,7 @@ const CreateVendor = (props) => {
                 console.log(err);
             })
         props.onclick("block");
+
     }
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>

@@ -11,8 +11,9 @@ const CreateItem = (props) => {
             item:item
         }).then((response)=>{
             setItem("")
+            alert(`New item added with this Name ${item}`)
         })
-        alert(`New item added with this Name ${item}`)
+
 
     }
     const handaleitem=()=>{

@@ -85,10 +85,20 @@ const DashBoardMain = (props) => {
   {/* Stock Start */}
         //div-40-call
             const viewallVendor = (data) => {
-                setViewVendor(data);
+      if(ViewVendor==="none") {
+          setViewVendor("block");
+      }
+        else{
+            setViewVendor("none");
+            }
             }
             const Viewallitemtype=(data)=>{
-                setitemView(data);
+                if(itemView==="none") {
+                    setitemView("block");
+                }
+                else{
+                    setitemView("none");
+                }
             }
         //Search-Data  
             const handleVendor=(data)=>{
