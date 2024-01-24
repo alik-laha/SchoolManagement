@@ -5,7 +5,7 @@ const Database = require('../Config/Dbconnection')
 exports.CreateItem = (req, res) => {
     const { item } = req.body
     if (! item || item === " ") {
-        return res.message("all data needed")
+        return res.json({msg:"all data needed"})
     }
     query = `
                     INSERT INTO  itemType (item_Type)
@@ -60,7 +60,7 @@ exports.CreateVendor = (req, res) => {
     const { vendor } = req.body
 
         if (! vendor || vendor === " ") {
-            return res.message("all data needed")
+            return res.json({msg:"all data needed"})
         }
                 query = `
                     INSERT INTO vendor (vendor_name)
