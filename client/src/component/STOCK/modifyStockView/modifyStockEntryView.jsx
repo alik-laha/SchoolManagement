@@ -22,6 +22,7 @@ const ModifyStockEntryView= (props) => {
     const [item,setitem]=useState('');
     
     
+    
 
     useEffect(()=>{
         setViewStock(props.SearchebyData)
@@ -116,6 +117,7 @@ const ModifyStockEntryView= (props) => {
           discountCost:discountamt,
           actualCost:paidamt,
           modifiedDate:modifieddate,
+          pendingamount:balamt
          }
             axios.post("http://localhost:7000/api/v1/stock/modifystockentry",data)
                 .then((res) => {

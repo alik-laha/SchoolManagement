@@ -363,8 +363,8 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
 //Modify Stock
 
 exports.ModifyStock=(req,res)=>{
-    const {stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost }=req.body
-    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  || !discountCost || !actualCost ){
+    const {stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost ,pendingamount}=req.body
+    if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  ){
         return res.status(400).json({
             status:"all data needed"
         })
@@ -384,6 +384,7 @@ exports.ModifyStock=(req,res)=>{
                         quantity="${quantity}",
                         projected_cost="${projectedCost}",
                         stock_modified_date="${modifiedDate}"
+                        pending_amount="${pendingamount}"
                     WHERE stock_id = ${stockid}`;
                 Database.query(query,function(error,data){
                     if(error){
