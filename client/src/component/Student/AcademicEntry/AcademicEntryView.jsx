@@ -14,14 +14,7 @@ const AcademicEntryView= (props) => {
     
 
     useEffect(()=>{
-
-        axios.post("http://localhost:7000/api/v1/student/getallstudent",props.SearchebyData)
-          .then((res)=>{
-            setAcademicAll(res.data.result)
-          })
-            .catch((error)=>{
-                console.log(error)
-            } )
+        setAcademicAll(props.SearchebyData)
       },[props.SearchebyData])
 
 

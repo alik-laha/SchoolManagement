@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const AcademicEntrySearch= (props) => {
     const [Class,setClass]=useState("")
@@ -13,8 +14,15 @@ const AcademicEntrySearch= (props) => {
             regNo,
             year
         }
+        axios.post("http://localhost:7000/api/v1/student/getallstudent",data)
+            .then((res)=>{
+                props.setAcademicEntryData(res.data.result)
+            })
+            .catch((error)=>{
+                console.log(error)
+            } )
         props.buttonClick("block");
-        props.setAcademicEntryData(data);
+
     }
 
     return(
