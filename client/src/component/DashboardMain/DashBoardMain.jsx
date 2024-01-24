@@ -44,7 +44,8 @@ const DashBoardMain = (props) => {
   const [itemView,setitemView]=useState("none")
   const [allVendorName, setAllVendorName] = useState([]);
   const [allItemType, setAllItemType] = useState([]);
-  const [StockData,setStockData]=useState([]);
+  const [pmyStockData,setpmyStockData]=useState([]);
+  const [scndStockData,setscndStockData]=useState([]);
   const [secondarysearchstockdata,setsecondarysearchstockdata]=useState([]);
   const [modifyviewstockdata,setmodifyviewstockdata]=useState([]);
   const [pendingviewstockdata,setpendingviewstockdata]=useState([]);
@@ -106,9 +107,13 @@ const DashBoardMain = (props) => {
               setAllItemType(data);
             }
             //common to both primary and secondary export
-            const handleStockData=(data)=>{
-              setStockData(data);
+            const handleprimaryStockData=(data)=>{
+              setpmyStockData(data);
             }
+            const handleseconadryStockData=(data)=>{
+              setscndStockData(data);
+            }
+
             const handleSecondaryViewStockData=(data)=>{
               setsecondarysearchstockdata(data);
             }
@@ -221,11 +226,11 @@ const handleacademicEntryData=(data)=>{
             {/* Primary Stock Entry */} 
             <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
             {/* Export Primary Stock Search */} 
-            <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} buttonClick={stockViewShow}/>
+            <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleprimaryStockData} buttonClick={stockViewShow}/>
             {/* Secondary Stock Entry Search */} 
             <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
             {/* Export Secondary Stock Search */} 
-            <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
+            <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleseconadryStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
             {/* Modify Stock Entry Search */} 
             <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
              {/* Check Pending Search */}
@@ -276,11 +281,11 @@ const handleacademicEntryData=(data)=>{
             {/* View Item */}
             <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>
             {/* View Primary Stock */}
-            <StockView StockView={props.StockView} view={ViewStock} SearchebyData={StockData}/>
+            <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
             {/* View Secondary Stock */}
             <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
             {/* View ExportSecondary Stock */}
-            <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={StockData}/>
+            <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={scndStockData}/>
             {/* View Modify Stock */}
             <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
             {/* View Pending Balance */}
