@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 const SecondaryStockEntrySearch = (props) => {
     const [billId,setBillid]=useState("");
     const [fromDate,setFromDate]=useState("");
@@ -14,6 +15,7 @@ const SecondaryStockEntrySearch = (props) => {
         axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",data)
         .then((res)=>{
             props.setStockData(res.data.data)
+            console.log(res.data.data)
         })
           .catch((error)=>{
               console.log(error)
