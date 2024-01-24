@@ -5,7 +5,8 @@ import axios from "axios";
 const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
 
-    const handleCreateVendor = () => {
+    const handleCreateVendor = (e) => {
+        e.preventDefault()
         axios.post("http://localhost:7000/api/v1/stock/createvendor",{
             vendor:vendor
         })
@@ -15,6 +16,16 @@ const CreateVendor = (props) => {
             .catch((error) => {
                 console.log(error);
             });
+    }
+    const handleViewVendor = () => {
+        axios.post("http://localhost:7000/api/v1/stock/getallvendor")
+            .then((res)=>{
+                props.setVendorData(res.data.data);
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        props.onclick("block");
     }
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>
@@ -34,7 +45,7 @@ const CreateVendor = (props) => {
 
             </form>
        <div>
-        <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={props.onViewVendor}>View / Delete Vendor</button>
+        <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewVendor}>View / Delete Vendor</button>
         </div>
         </div>
     )

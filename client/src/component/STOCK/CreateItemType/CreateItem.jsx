@@ -5,7 +5,8 @@ import axios from "axios";
 const CreateItem = (props) => {
     const [item,setItem]=useState("")
 
-    const handleCreateItem = () => {
+    const handleCreateItem = (e) => {
+        e.preventDefault()
         axios.post("http://localhost:7000/api/v1/stock/createitem",{
             item:item
         }).then((response)=>{
