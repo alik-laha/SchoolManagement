@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 const MasterStudentViewSearch = (props) => {
     const [regNo,setRegNo]=useState("");
     const [admissionYear,setAdmissionYear]=useState("");
@@ -10,7 +11,11 @@ const MasterStudentViewSearch = (props) => {
             admissionYear,
             applyClass
         }
-        // props.setMasterStudentData(data);
+        axios.post("http://localhost:7000/api/v1/student/getmasterstudent",data)
+            .then((res)=>{
+                props.setMasterStudentData(res.data.result)
+            })
+            props.onclick("block");
     }
     return(
         <div className="dashbrd-40-colm" style={{display:props.view}}>

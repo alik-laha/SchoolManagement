@@ -32,6 +32,7 @@ import AcademicEntryView from '../Student/AcademicEntry/AcademicEntryView.jsx'
 import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
 import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
 import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterStudentViewSearch.jsx";
+import MasterStudentViewUpdate from "../Student/MasterStudentViewUpdate/MasterStudentViewUpdate.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -61,6 +62,8 @@ const DashBoardMain = (props) => {
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
   const [hostelexportshow,sethostelexportshow]=useState("none")
   const [allusershow,setallusershow]=useState("none")
+  const [masterStudentViewShow,setmasterStudentViewShow]=useState("none")
+  const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
 
   {/* User Start */}
             //get all roles
@@ -180,6 +183,12 @@ const handleacademicEntryData=(data)=>{
   setacademicEntryData(data)
 }
 
+  const MasterStudentViewall=(data)=>{
+      setmasterStudentViewShow(data)
+  }
+  const MasterStudentSearchData=(data)=>{
+      setMasterStudentSearchData(data)
+  }
 
 
   return (
@@ -239,7 +248,7 @@ const handleacademicEntryData=(data)=>{
 
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           <MasterStudentEntry view={props.StudentEntry}/>
-            <MasterStudentViewSearch view={props.MasterStudentView}/>
+            <MasterStudentViewSearch view={props.MasterStudentView} onclick={MasterStudentViewall} setMasterStudentData={MasterStudentSearchData}/>
         </div>
 
 
@@ -286,7 +295,7 @@ const handleacademicEntryData=(data)=>{
          {/* Hostel End*/}   
 
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
-
+            <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
         </div>
       </div>
     </>
