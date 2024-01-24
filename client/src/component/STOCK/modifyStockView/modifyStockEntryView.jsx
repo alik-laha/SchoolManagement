@@ -11,7 +11,7 @@ const ModifyStockEntryView= (props) => {
     const [balamt,setbalamt]=useState(0)
     const [billDate,setbillDate]=useState();
     const [unitcost,setunitcost]=useState();
-    const [cashentrydate,setcashentrydate]=useState()
+    const [cashentrydate,setcashentrydate]=useState('')
     const [modifieddate,setmodifieddate]=useState(new Date().toISOString().slice(0, 10) )
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
@@ -81,6 +81,7 @@ const ModifyStockEntryView= (props) => {
             setcashentrydate(data.stock_entry_date.slice(0, 10))
             
        }
+     
         
         
 

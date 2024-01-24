@@ -383,7 +383,7 @@ exports.ModifyStock=(req,res)=>{
                         paid_amount="${actualCost}",
                         quantity="${quantity}",
                         projected_cost="${projectedCost}",
-                        stock_modified_date="${modifiedDate}"
+                        stock_modified_date="${modifiedDate}",
                         pending_amount="${pendingamount}"
                     WHERE stock_id = ${stockid}`;
                 Database.query(query,function(error,data){
