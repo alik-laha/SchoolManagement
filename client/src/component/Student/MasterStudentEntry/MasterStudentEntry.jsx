@@ -30,7 +30,7 @@ const MasterStudentEntry= (props) => {
     const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
     const [age, setAge] = useState(null);
     const [bloodGroup, setBloodGroup] = useState(null);
-    const [bankAcountNo, setBankAcountNo] = useState(0);
+    const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState(null);
     const [ifscCode, setIfscCode] = useState(null);
 
