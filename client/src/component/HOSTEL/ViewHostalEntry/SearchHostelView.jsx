@@ -8,14 +8,20 @@ const searchHostelView= (props) => {
 
     const handaleSubmit=(e)=>{
         e.preventDefault()
-        //axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{Class,academicYear,roomNo}).then((res)=>{
             const data={
                 Class,
                 academicYear,
                 roomNo
             }
+        axios.post("http://localhost:7000/api/v1/hostel/gethostelentry",props.SearchebyData)
+            .then((res)=>{
+                props.setHostelEntryData(res.data.result)
+            })
+            .catch((error)=>{
+                console.log(error)
+            } )
             props.buttonClick("block");
-            props.setHostelEntryData(data);
+
     }
 
 

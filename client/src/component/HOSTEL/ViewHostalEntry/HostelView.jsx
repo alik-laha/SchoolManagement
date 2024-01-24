@@ -11,13 +11,7 @@ const HostelView= (props) => {
       };
 
       useEffect(()=>{
-        axios.post("http://localhost:7000/api/v1/hostel/gethostelentry",props.SearchebyData)
-          .then((res)=>{
-            sethostelexportall(res.data.result)
-          })
-            .catch((error)=>{
-                console.log(error)
-            } )
+        sethostelexportall(props.SearchebyData)
       },[props.SearchebyData])
 
 
