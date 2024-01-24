@@ -11,8 +11,16 @@ const SecondaryStockEntrySearch = (props) => {
             toDate
 
         }
+        axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",data)
+        .then((res)=>{
+            props.setStockData(res.data.data)
+        })
+          .catch((error)=>{
+              console.log(error)
+              console.log(props.SearchebyData)
+          } )
         props.buttonClick("block");
-        props.setStockData(data);
+        
     }
     return(
         <div className="dashbrd-40-colm" style={{display: props.SecondstockEntrySearch}}>
