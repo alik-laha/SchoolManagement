@@ -42,7 +42,7 @@ const MasterStudentEntry= (props) => {
         axios.get("http://localhost:7000/api/v1/student/lastid")
             .then((res) => {
                 id=(res.data.result[0].serial_no+1);
-                const schoolName = "ahm"
+                const schoolName = "AHM"
                 const Class = applyClass.toString()
                 const year = admissionYear.toString()
                 const ID = id.toString()
