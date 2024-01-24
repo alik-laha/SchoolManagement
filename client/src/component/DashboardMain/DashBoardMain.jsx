@@ -106,7 +106,7 @@ const DashBoardMain = (props) => {
             const handleItemType=(data)=>{
               setAllItemType(data);
             }
-            //common to both primary and secondary export
+           
             const handleprimaryStockData=(data)=>{
               setpmyStockData(data);
             }
