@@ -24,14 +24,7 @@ const ModifyStockEntryView= (props) => {
     
 
     useEffect(()=>{
-
-      axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",props.SearchebyData)
-        .then((res)=>{
-            setViewStock(res.data.data)
-        })
-          .catch((error)=>{
-              console.log(error)
-          } )
+        setViewStock(props.SearchebyData)
     },[props.SearchebyData])
 
     useEffect(()=> {
