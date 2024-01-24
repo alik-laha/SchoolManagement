@@ -199,3 +199,33 @@ exports.GetMasterStudentAdmisson= (req, res) => {
         console.log(err)
     }
 }
+
+//student admission
+exports.StudentAdmission = (req, res) => {
+    const {name, regNo, applyClass, admissionYear} = req.body
+    try {
+        if (!name || !regNo || !applyClass || !admissionYear) {
+            return res.status(400).json({
+                msg: "please fill all the importent field",
+                data: name, regNo, applyClass, admissionYear
+            })
+        } else {
+            let query = `INSERT INTO Student_Admission (student_Name, registration_no, class, admission_year,
+                                                        current_academic_year)
+                         VALUES ("${name}", "${regNo}", "${applyClass}", "${admissionYear}", "${admissionYear}")`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).json({
+                        err: err.sqlMessage
+                    })
+                } else {
+                    return res.status(200).json({
+                        msg: "student admission successfully Done"
+                    })
+                }
+            })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}

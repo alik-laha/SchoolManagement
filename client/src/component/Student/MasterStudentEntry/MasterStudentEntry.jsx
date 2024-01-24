@@ -42,7 +42,7 @@ const MasterStudentEntry= (props) => {
         axios.get("http://localhost:7000/api/v1/student/lastid")
             .then((res) => {
                 id=(res.data.result[0].serial_no+1);
-                const schoolName = "AHM"
+                const schoolName = "ahm"
                 const Class = applyClass.toString()
                 const year = admissionYear.toString()
                 const ID = id.toString()
@@ -99,9 +99,21 @@ const MasterStudentEntry= (props) => {
                     brunch,
                     ifscCode
                 }
+                const data1 = {
+                    regNo,
+                    name,
+                    applyClass,
+                    admissionYear,
+                }
                 axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
                     .then((res) => {
+                        axios.post("http://localhost:7000/api/v1/student/studentadmission", data1)
+                            .then((res) => {
                         alert("Student Admission Successfully with registration no. "+regNo);
+                    })
+                    .catch((err) => {
+                        alert(err.response.data.msg)
+                    })
                     }).catch((err) => {
                     alert(err.response.data.msg)
                 })
