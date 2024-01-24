@@ -66,6 +66,7 @@ const DashBoardMain = (props) => {
   const [masterStudentViewShow,setmasterStudentViewShow]=useState("none")
   const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
   const [VendorDatas,setVendorData]=useState([])
+  const[itemData,setItemData]=useState([])
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -86,13 +87,8 @@ const DashBoardMain = (props) => {
             const viewallVendor = (data) => {
                 setViewVendor(data);
             }
-            const Viewallitemtype=()=>{
-              if(itemView==="none"){
-                setitemView("block")
-              }
-              else{
-                setitemView("none")
-              }
+            const Viewallitemtype=(data)=>{
+                setitemView(data);
             }
         //Search-Data  
             const handleVendor=(data)=>{
@@ -192,6 +188,9 @@ const handleacademicEntryData=(data)=>{
   const MasterStudentSearchData=(data)=>{
       setMasterStudentSearchData(data)
   }
+  const ItemData=(data)=>{
+      setItemData(data)
+  }
 
 
   return (
@@ -220,7 +219,7 @@ const handleacademicEntryData=(data)=>{
             {/* Create Vendor */} 
             <CreateVendor createView={props.VendorCreateDisplay} onclick={viewallVendor} setVendorData={VendorData}/>
             {/* Create Item */} 
-            <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype}/>
+            <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype} setItemData={ItemData}/>
             {/* Primary Stock Entry */} 
             <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
             {/* Export Primary Stock Search */} 
@@ -277,7 +276,7 @@ const handleacademicEntryData=(data)=>{
             {/* View Vendor */}     
             <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
             {/* View Item */}
-            <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={allItemType}/>
+            <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData}/>
             {/* View Primary Stock */}
             <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
             {/* View Secondary Stock */}

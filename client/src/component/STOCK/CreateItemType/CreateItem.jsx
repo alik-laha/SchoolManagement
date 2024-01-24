@@ -15,6 +15,13 @@ const CreateItem = (props) => {
         alert(`New item added with this Name ${item}`)
 
     }
+    const handaleitem=()=>{
+        axios.post("http://localhost:7000/api/v1/stock/getallitem")
+            .then((data)=>{
+                props.setItemData(data.data.data);
+            })
+        props.handleItemView("block")
+    }
 
     return(
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
@@ -31,7 +38,7 @@ const CreateItem = (props) => {
         </form>
    
             <div>
-                <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={props.handleItemView}>View / Delete Item Type</button>
+                <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitem}>View / Delete Item Type</button>
             </div>
             
         </div>
