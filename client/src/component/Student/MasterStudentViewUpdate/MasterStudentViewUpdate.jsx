@@ -4,7 +4,7 @@ const MasterStudentViewUpdate = (props) => {
     const [view,setView]=useState();
     const [masterStudent,setMasterStudent]=useState([]);
     useEffect(() => {
-       if(props.view && props.View40 === "block") {
+       if(props.view==="block" && props.View40==="block") {
                 setView("block");
             }
             else {
@@ -52,7 +52,7 @@ const MasterStudentViewUpdate = (props) => {
                 }
                 </tbody>
             </table>
-            {masterStudent.length === 0 ? <h1>No Data Found</h1> : null}
+            {masterStudent.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }
