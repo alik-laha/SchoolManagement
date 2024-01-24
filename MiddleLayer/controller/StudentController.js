@@ -30,7 +30,7 @@ exports.GetAllStudent = (req, res) => {
     let query
     try {
         if (!Class && !regNo && !year) {
-            query = `SELECT * FROM Student_Admission where active=1`
+            query = `SELECT * FROM Student_Admission WHERE active=1`
         }
         else if (Class && !regNo && !year) {
             query = `SELECT * FROM Student_Admission WHERE Class='${Class}' and active=1`
@@ -211,8 +211,8 @@ exports.StudentAdmission = (req, res) => {
             })
         } else {
             let query = `INSERT INTO Student_Admission (student_Name, registration_no, class, admission_year,
-                                                        current_academic_year)
-                         VALUES ("${name}", "${regNo}", "${applyClass}", "${admissionYear}", "${admissionYear}")`
+                                                        current_academic_year, active)
+                         VALUES ("${name}", "${regNo}", "${applyClass}", "${admissionYear}", "${admissionYear}","1")`
             Database.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).json({

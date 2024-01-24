@@ -109,46 +109,16 @@ const MasterStudentEntry= (props) => {
                     .then((res) => {
                         axios.post("http://localhost:7000/api/v1/student/studentadmission", data1)
                             .then((res) => {
+                                console.log(res)
                         alert("Student Admission Successfully with registration no. "+regNo);
                     })
                     .catch((err) => {
-                        alert(err.response.data.msg)
+                        console.log(err)
                     })
                     }).catch((err) => {
-                    alert(err.response.data.msg)
+                    console.log(err)
                 })
-                setName(null);
-                setAdharNo(null);
-                setSex(null);
-                setReligion(null);
-                setDob(null);
-                setCast(null);
-                setPhysicallyChallenged(0);
-                setOrphanage(0);
-                setFatherName(null);
-                setFatherQualification(null);
-                setFatherOcupation(null);
-                setFatherMonthlyIncome(0);
-                setFatherContactNo(0);
-                setMotherName(null);
-                setMotherQualification(null);
-                setMotherOcupation(null);
-                setMotherMonthlyIncome(0);
-                setMotherContactNo(0);
-                setGuardianName(null);
-                setRelationship(null);
-                setGuardianContactNo(null);
-                setAddress(null);
-                setPinNo(null);
-                setBspId(null);
-                setApplyClass(null);
-                setAdmissionYear(null);
-                setAdmissonDate(new Date().toISOString().slice(0, 10));
-                setAge(null);
-                setBloodGroup(null);
-                setBankAcountNo(0);
-                setBrunch(null);
-                setIfscCode(null);
+
 
             })
     }
