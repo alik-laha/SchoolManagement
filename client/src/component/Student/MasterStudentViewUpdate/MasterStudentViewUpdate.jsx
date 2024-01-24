@@ -21,7 +21,7 @@ const MasterStudentViewUpdate = (props) => {
     return(
         <div style={{display: view}}>
             <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearData}> Clear</button>
-            <table className="table-60" id="hostel-entry-view">
+            <table className="table-60" >
                 <thead>
                 <tr>
                     <th>Student Id</th>
@@ -45,7 +45,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.admisson_year}</td>
                                 <td>{item.registration_no}</td>
                                 <td>{item.admisson_date.slice(0,10)}</td>
-                                <td><button onClick={()=>props.onclick(item)}>Edit</button></td>
+                                <td><button>Edit</button></td>
                             </tr>
                         )
                     })
