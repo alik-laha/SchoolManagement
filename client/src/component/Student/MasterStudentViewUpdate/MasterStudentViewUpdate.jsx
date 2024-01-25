@@ -53,6 +53,38 @@ const MasterStudentViewUpdate = (props) => {
     const Handleedit=(item)=>{
         setAllview("none")
         setUpdateView("block")
+        setName(item.student_Name);
+        setAdharNo(item.adhar_no);
+        setSex(item.sex);
+        setReligion(item.religion);
+        setDob(item.dob.slice(0, 10));
+        setCast(item.cast);
+        setPhysicallyChallenged(item.physically_challenged===1?true:false);
+        setOrphanage(item.orphanage===1?true:false);
+        setFatherName(item.father_name);
+        setFatherQualification(item.father_qualification);
+        setFatherOcupation(item.father_ocupation);
+        setFatherMonthlyIncome(item.father_monthly_income);
+        setFatherContactNo(item.father_contact_no);
+        setMotherName(item.mother_name);
+        setMotherQualification(item.mother_qualification);
+        setMotherOcupation(item.mother_ocupation);
+        setMotherMonthlyIncome(item.mother_monthly_income);
+        setMotherContactNo(item.mother_contact_no);
+        setGuardianName(item.guardian_name);
+        setRelationship(item.relationship);
+        setGuardianContactNo(item.guardian_contact);
+        setAddress(item.address);
+        setPinNo(item.pin_no);
+        setBspId(item.bsp_id);
+        setApplyClass(item.applied_class);
+        setAdmissionYear(item.admisson_year);
+        setAdmissonDate(item.admisson_date.slice(0, 10));
+        setAge(item.age);
+        setBloodGroup(item.blood_group);
+        setBankAcountNo(item.bank_acount_no);
+        setBrunch(item.branch);
+        setIfscCode(item.ifsc);
     }
     const handleUpdate=()=>{
 
@@ -224,22 +256,16 @@ const MasterStudentViewUpdate = (props) => {
 
                 <div>
                     <label>physically challenged</label>
-                    <input
-                        type="checkbox"
-                        placeholder="physically challenged"
-                        onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
-                        value={physicallyChallenged}
-                    />
+                    <input type='checkbox'
+                            onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
+                           checked={physicallyChallenged}/>
                 </div>
 
                 <div>
                     <label>orphanage</label>
-                    <input
-                        type="checkbox"
-                        placeholder="orphanage"
-                        onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
-                        value={orphanage}
-                    />
+                    <input type='checkbox'
+                           onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
+                           checked={orphanage}/>
                 </div>
 
                 <div>
