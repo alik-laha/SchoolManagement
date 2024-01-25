@@ -229,3 +229,24 @@ exports.StudentAdmission = (req, res) => {
         console.log(err)
     }
 }
+
+//update Roll No and section
+
+exports.UpdateStudentAdmission = (req, res) => {
+    const{roollNo,section}=req.body
+    try{
+        let query=`UPDATE Student_Admission SET section='${section}' WHERE rool_no='${roollNo}'`
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+            }else{
+                return res.status(200).json({
+                    msg:"student Roll and section updated successfully"
+                })
+            }
+        })
+    }
+    catch (err){
+        console.log(err)
+    }
+}

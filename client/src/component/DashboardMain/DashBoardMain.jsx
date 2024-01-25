@@ -27,8 +27,8 @@ import SearchHostelEntry from "../HOSTEL/HostelEntry/SearchHostelEntry.jsx";
 import HostelView from "../HOSTEL/ViewHostalEntry/HostelView.jsx";
 import SearchHostelView from "../HOSTEL/ViewHostalEntry/SearchHostelView.jsx";
 import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.jsx";
-import AcademicEntrySearch from '../Student/AcademicEntry/AcademicEntrySearch.jsx';
-import AcademicEntryView from '../Student/AcademicEntry/AcademicEntryView.jsx'
+import AcademicEntrySearch from '../Student/AcademicEntryView/AcademicEntrySearch.jsx';
+import AcademicEntryView from '../Student/AcademicEntryView/AcademicEntryView.jsx'
 import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
 import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
 import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterStudentViewSearch.jsx";
