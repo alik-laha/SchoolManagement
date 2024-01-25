@@ -33,7 +33,8 @@ import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry
 import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
 import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterStudentViewSearch.jsx";
 import MasterStudentViewUpdate from "../Student/MasterStudentViewUpdate/MasterStudentViewUpdate.jsx";
-
+import AcademicEntryUpdateSearch from "../Student/AcademicEntry/AcademicEntryUpdateSearch.jsx";
+import AcademicEntryUpdate from "../Student/AcademicEntry/AcademicEntryUpdate.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -67,6 +68,8 @@ const DashBoardMain = (props) => {
   const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
   const [VendorDatas,setVendorData]=useState([])
   const[itemData,setItemData]=useState([])
+    const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
+  const [academicEntryUpdateShow, setacademicEntryUpdateShow] = useState("none");
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -167,6 +170,15 @@ if(props.Search==="block" && search==="flex"){
 
 
 //academic-all-button-show
+
+const academicEntryUpdate=(data)=>{
+    setacademicEntryUpdateShow(data)
+
+}
+  const academicEntryUpdateView=(data)=>{
+
+      setacademicEntryUpdateData(data);
+  }
 const academicAllShow=(data)=>{
   setviewallacademicEntryShow(data);
 }
@@ -261,6 +273,7 @@ const handleacademicEntryData=(data)=>{
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
           <MasterStudentEntry view={props.StudentEntry}/>
             <MasterStudentViewSearch view={props.MasterStudentView} onclick={MasterStudentViewall} setMasterStudentData={MasterStudentSearchData}/>
+            <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
         </div>
 
 
@@ -308,6 +321,7 @@ const handleacademicEntryData=(data)=>{
 
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
+            <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
         </div>
       </div>
     </>

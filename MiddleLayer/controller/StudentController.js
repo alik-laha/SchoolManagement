@@ -233,9 +233,9 @@ exports.StudentAdmission = (req, res) => {
 //update Roll No and section
 
 exports.UpdateStudentAdmission = (req, res) => {
-    const{roollNo,section}=req.body
+    const{rollNo,section}=req.body
     try{
-        let query=`UPDATE Student_Admission SET section='${section}' WHERE rool_no='${roollNo}'`
+        let query=`UPDATE Student_Admission SET section='${section}' WHERE roll_no='${rollNo}'`
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
