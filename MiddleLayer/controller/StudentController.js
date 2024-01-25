@@ -233,9 +233,14 @@ exports.StudentAdmission = (req, res) => {
 //update Roll No and section
 
 exports.UpdateStudentAdmission = (req, res) => {
-    const{rollNo,section}=req.body
+    const{rollNo,section,regNo}=req.body
     try{
-        let query=`UPDATE Student_Admission SET section='${section}' WHERE roll_no='${rollNo}'`
+        if(!{rollNo,section}||!regNo){
+            return res.status(400).json({
+                msg:"At least one Data needed"
+            })
+        }
+        let query=`UPDATE Student_Admission SET section='${section}',roll_no='${rollNo}' WHERE registration_no='${regNo}'`
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)

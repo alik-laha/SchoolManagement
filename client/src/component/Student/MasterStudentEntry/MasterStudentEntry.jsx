@@ -148,7 +148,7 @@ const MasterStudentEntry= (props) => {
                 </div>
 
                 <div>
-                    <label>Sex*</label>
+                    <label>Gender*</label>
                     <select onChange={(e) => setSex(e.target.value)} required value={sex}>
                         <option value="">Sex</option>
                         <option value="male">
