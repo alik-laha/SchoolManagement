@@ -20,6 +20,10 @@ const ModifyStockEntryView= (props) => {
     const [itemname,setitemname]=useState();
     const [vendor,setvendor]=useState('');
     const [item,setitem]=useState('');
+    const [subpaiddisp,setpaidsubdisp]=useState('inline-block')
+    const [subbaldisp,setbalsubdisp]=useState('inline-block')
+    const [subdiscdisp,setdiscsubdisp]=useState('inline-block')
+
     
     
     
@@ -46,6 +50,7 @@ const ModifyStockEntryView= (props) => {
     },[qty,unitcost])
 
     const handleEdit = (data) => {
+        console.log(data.pending_amount)
         setVisiblity("contents");
         setmainsvisibility('none')
         setunitcost(data.unit_cost)
@@ -59,25 +64,28 @@ const ModifyStockEntryView= (props) => {
         setbillDate(data.bill_date.slice(0,10))
 
         
-        if(data.discounted_cost!==null || data.discounted_cost!==undefined){
+        if(data.discounted_cost!==null && data.discounted_cost!==undefined){
             setdiscountamt(data.discounted_cost)
         }
         else{
             setdiscountamt(0)
+            setdiscsubdisp('none')
         }
-        if(data.paid_amount!==null || data.paid_amount!==undefined){
+        if(data.paid_amount!==null && data.paid_amount!==undefined){
             setpaidamt(data.paid_amount)
         }
         else{
             setpaidamt(0)
+            setpaidsubdisp('none')
         }
-        if(data.pending_amount!==null || data.pending_amount!==undefined){
+        if(data.pending_amount!==undefined && data.pending_amount!==null){
             setbalamt(data.pending_amount)
         }
         else{
             setbalamt(0)
+            setbalsubdisp('none')
         }
-        if(data.stock_entry_date!==null || data.stock_entry_date!==undefined){
+        if( data.stock_entry_date!==undefined && data.stock_entry_date!==null){
             setcashentrydate(data.stock_entry_date.slice(0, 10))
             
        }
@@ -277,16 +285,16 @@ const ModifyStockEntryView= (props) => {
                     <label>Estimated Amount</label>
                     <input type="number" value={estimatedamt} placeholder='Estimated Amount' required readOnly/>
                 </div>
-                <div>
+                <div style={{display:subdiscdisp}}>
                     <label>Discounted Amount</label>
                     <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/>
 
                 </div>
-                <div>
+                <div style={{display:subpaiddisp}}>
                     <label>Already Paid Amount</label>
                     <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} />
                 </div>
-                <div>
+                <div style={{display:subbaldisp}}>
                     <label>Balance Amount</label>
                     <input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} readOnly/>
                 </div>
