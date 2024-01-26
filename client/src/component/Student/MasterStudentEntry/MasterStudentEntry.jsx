@@ -126,6 +126,7 @@ const MasterStudentEntry= (props) => {
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleEntry}>
+                <p>Basic Details</p>
                 <div>
                     <label>Student Name*</label>
                     <input
@@ -177,6 +178,16 @@ const MasterStudentEntry= (props) => {
                         required={true}
                     />
                 </div>
+                <div>
+                    <label>Age*</label>
+                    <input
+                        type="number"
+                        value={age}
+                        onChange={(e) => setAge(e.target.value)}
+                        placeholder="Age"
+                        required={true}
+                    />
+                </div>
 
                 <div>
                     <label>Cast*</label>
@@ -203,15 +214,15 @@ const MasterStudentEntry= (props) => {
                     </select>
                 </div>
                 <div>
-                    <label>Applied For Class*</label>
+                    <label>Blood Group</label>
                     <input
-                        type="number"
-                        value={applyClass}
-                        onChange={(e) => setApplyClass(e.target.value)}
-                        placeholder="Applied Class"
-                        required={true}
+                        type="text"
+                        value={bloodGroup}
+                        onChange={(e) => setBloodGroup(e.target.value)}
+                        placeholder="Blood Group"
                     />
                 </div>
+         
 
                 <div className="div-25">
                     <label>Physically Challenged</label>
@@ -234,35 +245,36 @@ const MasterStudentEntry= (props) => {
                 </div>
                 
                 <hr className="division"/>
+                <p>Guardian Details</p>
                 <div>
                     <label>Guardian Name*</label>
                     <input
                         type="text"
                         value={guardianName}
                         onChange={(e) => setGuardianName(e.target.value)}
-                        placeholder="Guardian Name"
+                        placeholder="Name"
                         required={true}
                     />
                 </div>
 
                 <div>
-                    <label>Relationship*</label>
+                    <label>Relationship With Student*</label>
                     <input
                         type="text"
                         value={relationship}
                         onChange={(e) => setRelationship(e.target.value)}
-                        placeholder="relationship"
+                        placeholder="Relationship"
                         required={true}
                     />
                 </div>
 
                 <div>
-                    <label>Guardian Contact No*</label>
+                    <label>Guardian's Contact No*</label>
                     <input
                         type="number"
                         value={guardianContactNo}
                         onChange={(e) => setGuardianContactNo(e.target.value)}
-                        placeholder="Guardian Contact No"
+                        placeholder="Contact No"
                         required={true}
                     />
                 </div>
@@ -273,7 +285,7 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={fatherName}
                         onChange={(e) => setFatherName(e.target.value)}
-                        placeholder="Father Name"
+                        placeholder="Name"
                     />
                 </div>
 
@@ -283,17 +295,17 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={fatherQualification}
                         onChange={(e) => setFatherQualification(e.target.value)}
-                        placeholder="Father Qualification"
+                        placeholder="Qualification"
                     />
                 </div>
 
                 <div>
-                    <label>Father's Ocupation</label>
+                    <label>Father's Occupation</label>
                     <input
                         type="text"
                         value={fatherOcupation}
                         onChange={(e) => setFatherOcupation(e.target.value)}
-                        placeholder="Father Ocupation"
+                        placeholder="Occupation"
                     />
                 </div>
 
@@ -304,7 +316,7 @@ const MasterStudentEntry= (props) => {
                         type="number"
                         value={fatherContactNo}
                         onChange={(e) => setFatherContactNo(e.target.value)}
-                        placeholder="Father contact No"
+                        
                     />
                 </div>
                 
@@ -325,7 +337,7 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={motherName}
                         onChange={(e) => setMotherName(e.target.value)}
-                        placeholder="Mother Name"
+                        placeholder="Name"
                     />
                 </div>
 
@@ -335,17 +347,17 @@ const MasterStudentEntry= (props) => {
                         type="text"
                         value={motherQualification}
                         onChange={(e) => setMotherQualification(e.target.value)}
-                        placeholder="Mother Qualification"
+                        placeholder="Qualification"
                     />
                 </div>
 
                 <div>
-                    <label>Mother's Ocupation</label>
+                    <label>Mother's Occupation</label>
                     <input
                         type="text"
                         value={motherOcupation}
                         onChange={(e) => setMotherOcupation(e.target.value)}
-                        placeholder="Mother Ocupation"
+                        placeholder="Occupation"
                     />
                 </div>
 
@@ -373,11 +385,11 @@ const MasterStudentEntry= (props) => {
                 <hr className="division-2"/>
                 
                 <hr className="division"/>
-
+                <p>Other Details</p>
                 <div>
                     <label>Address*</label>
                     <input
-                        type="text"
+                        type="textbox"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="Address"
@@ -396,7 +408,7 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>B.S.P Id</label>
+                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
                     <input
                         type="text"
                         value={bspId}
@@ -426,54 +438,47 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Age*</label>
+                    <label>Applied For Class*</label>
                     <input
                         type="number"
-                        value={age}
-                        onChange={(e) => setAge(e.target.value)}
-                        placeholder="Age"
+                        value={applyClass}
+                        onChange={(e) => setApplyClass(e.target.value)}
+                        placeholder="Applied Class"
                         required={true}
                     />
                 </div>
+              
+              
                 <div>
-                    <label>Blood Group</label>
-                    <input
-                        type="text"
-                        value={bloodGroup}
-                        onChange={(e) => setBloodGroup(e.target.value)}
-                        placeholder="Blood Group"
-                    />
-                </div>
-                <div>
-                    <label>Adhar Number*</label>
+                    <label>Aadhar Number*</label>
                     <input
                         type="number"
                         value={adharNo}
                         onChange={(e) => setAdharNo(e.target.value)}
-                        placeholder="Adhar Number"
+                        placeholder="Aadhar Number"
                         required={true}
                     />
                 </div>
                 <div>
-                    <label>Bank Acount No</label>
+                    <label>Bank Account No.</label>
                     <input
                         type="text"
                         value={bankAcountNo}
                         onChange={(e) => setBankAcountNo(e.target.value)}
-                        placeholder="Bank Acount No"
+                        placeholder="Bank Account No"
                     />
                 </div>
                 <div>
-                    <label>Brunch</label>
+                    <label>Branch Name</label>
                     <input
                         type="text"
                         value={brunch}
                         onChange={(e) => setBrunch(e.target.value)}
-                        placeholder="Brunch"
+                        placeholder="Branch"
                     />
                 </div>
                 <div>
-                    <label>Ifsc code</label>
+                    <label>IFSC code</label>
                     <input
                         type="text"
                         value={ifscCode}
