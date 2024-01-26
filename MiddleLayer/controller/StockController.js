@@ -362,11 +362,34 @@ exports.ModifyStock=(req,res)=>{
     const {stockid,itemName,billNo,billDate,quantity,itemType,vendorName,projectedCost, modifiedDate,discountCost,actualCost,unitCost ,pendingamount}=req.body
     if(!stockid || !itemName || !billNo || !billDate || !unitCost || !quantity || !itemType || !vendorName || !projectedCost || !modifiedDate  ){
         return res.status(400).json({
-            status:"all data needed"
+            status:"all primary entry data needed"
         })
     }
     else{
-                query=`
+
+        if(!actualCost && !discountCost && !pendingamount)
+        {
+           
+            query=`
+                    UPDATE stock
+                    SET item_Type="${itemType}",
+                        item_Name="${itemName}",
+                        item_Type="${itemType}",
+                        vendor_name="${vendorName}",
+                        bill_id="${billNo}",
+                        bill_date="${billDate}",
+                        unit_cost="${unitCost}",
+                        quantity="${quantity}",
+                        projected_cost="${projectedCost}",
+                        stock_modified_date="${modifiedDate}"
+                        
+                    WHERE stock_id = ${stockid}`;
+        
+        }
+        else
+        {
+              
+            query=`
                     UPDATE stock
                     SET item_Type="${itemType}",
                         item_Name="${itemName}",
@@ -382,6 +405,8 @@ exports.ModifyStock=(req,res)=>{
                         stock_modified_date="${modifiedDate}",
                         pending_amount="${pendingamount}"
                     WHERE stock_id = ${stockid}`;
+        }
+                
                 Database.query(query,function(error,data){
                     if(error){
 
