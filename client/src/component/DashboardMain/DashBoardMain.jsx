@@ -35,6 +35,7 @@ import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterSt
 import MasterStudentViewUpdate from "../Student/MasterStudentViewUpdate/MasterStudentViewUpdate.jsx";
 import AcademicEntryUpdateSearch from "../Student/AcademicEntry/AcademicEntryUpdateSearch.jsx";
 import AcademicEntryUpdate from "../Student/AcademicEntry/AcademicEntryUpdate.jsx";
+import CreateFaculty from "../FACULTY/CreateFaculty/CreateFaculty.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -277,6 +278,8 @@ const getAllRoom=(data)=>{
           <MasterStudentEntry view={props.StudentEntry}/>
             <MasterStudentViewSearch view={props.MasterStudentView} onclick={MasterStudentViewall} setMasterStudentData={MasterStudentSearchData}/>
             <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
+
+            <CreateFaculty view={props.CreateFaculty}/>
         </div>
 
 
@@ -325,6 +328,7 @@ const getAllRoom=(data)=>{
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
+
         </div>
       </div>
     </>

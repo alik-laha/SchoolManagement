@@ -1,12 +1,8 @@
 import SideBar from "../sideBar/SideBar";
 import DashBoardMain from "../DashboardMain/DashBoardMain";
 import "./Dashboard.css";
-
 import icon from '../Galllery/GalleryImage/operater_icon.png';
 import {useState } from "react";
-
-
-
 
 const Dashboard = () => {
   const HandaleLogout = () => {
@@ -43,6 +39,7 @@ const [bedview,setbedview]=useState('none')
 const [studententry,setstudententry]=useState('none')
 const [masterstudentview,setmasterstudentview]=useState('none')
 const [academicEntryUpdate,setacademicEntryUpdate]=useState('none')
+const [CreateFaculty,setCreateFaculty]=useState('none')
 
 
  const logoutVisiblity = () => {
@@ -103,6 +100,7 @@ if(search==='none'){
     setmasterstudentview('none')
     setmasterstudentview('none')
     setacademicEntryUpdate('none')
+    setCreateFaculty('none')
 
 }
 else{
@@ -134,6 +132,7 @@ const handaleCreateUser=()=>{
          setstudententry('none')
          setmasterstudentview('none')
          setacademicEntryUpdate('none')
+         setCreateFaculty('none')
      }
      else{
          setCreateUser("none")
@@ -164,6 +163,7 @@ const handalePublish=()=>{
          setstudententry('none')
          setmasterstudentview('none')
          setacademicEntryUpdate('none')
+         setCreateFaculty('none')
      }
      else{
          setPublish('none')
@@ -193,6 +193,7 @@ const HandleVendorCreate=()=>{
          setstudententry('none')
          setmasterstudentview('none')
          setacademicEntryUpdate('none')
+         setCreateFaculty('none')
      }
         else{
             setVendorDisplay('none')
@@ -221,6 +222,7 @@ const handaleNotice=()=>{
          setacademicview('none')
          setstudententry('none')
          setmasterstudentview('none')
+         setCreateFaculty('none')
          setacademicEntryUpdate('none')
      }
         else{
@@ -250,6 +252,7 @@ const handleItemCreate=()=>{
             setstudententry('none')
             setmasterstudentview('none')
             setacademicEntryUpdate('none')
+            setCreateFaculty('none')
         }
             else{
                 setItemCreate('none')
@@ -278,6 +281,7 @@ const handleStockEntry=()=>{
             setmasterstudentview('none')
             setstudententry('none')
             setacademicEntryUpdate('none')
+            setCreateFaculty('none')
         }
             else{
                 setStockEntry('none')
@@ -306,6 +310,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setacademicEntryUpdate('none')
       setmasterstudentview('none')
+        setCreateFaculty('none')
     }
     else {
       setbedview('none')
@@ -333,6 +338,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       setStockView('none')
@@ -361,6 +367,7 @@ const handleStockEntry=()=>{
       setacademicview('none')
       setstudententry('none')
       setmasterstudentview('none')
+        setCreateFaculty('none')
     }
     else {
       setacademicEntryUpdate('none')
@@ -389,6 +396,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setacademicEntryUpdate('none')
       setmasterstudentview('none')
+        setCreateFaculty('none')
     }
     else {
       setSecondstockEntry('none')
@@ -419,6 +427,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       sethostelentrycreate('none')
@@ -445,6 +454,7 @@ const handleStockEntry=()=>{
       setacademicview('none')
       setstudententry('none')
       setmasterstudentview('none')
+        setCreateFaculty('none')
       setacademicEntryUpdate('none')
     }
     else {
@@ -476,6 +486,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setacademicEntryUpdate('none')
       setmasterstudentview('none')
+        setCreateFaculty('none')
     }
     else {
       setmodifySearchView('none')
@@ -507,6 +518,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       setbedentry('none')
@@ -536,6 +548,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       sethostelview('none')
@@ -566,6 +579,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       setcheckpending('none')
@@ -595,6 +609,7 @@ const handleStockEntry=()=>{
       setstudententry('none')
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
     }
     else {
       setacademicview('none')
@@ -623,6 +638,7 @@ const handleStockEntry=()=>{
       setSecondStockView("none")
       setmasterstudentview('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
 
     }
     else {
@@ -650,13 +666,40 @@ const handleStockEntry=()=>{
       setSecondStockView("none")
       setstudententry('none')
       setacademicEntryUpdate('none')
+        setCreateFaculty('none')
 
     }
     else {
       setmasterstudentview('none')
     }
   }
-
+const handleCreateFaculty=()=>{
+   if(CreateFaculty==='none'){
+        setCreateFaculty('block')
+        setmasterstudentview('none')
+        setacademicview('none')
+        setStockEntry('none')
+        setItemCreate('none')
+        setCreateUser('none')
+        setVendorDisplay('none')
+        setPublish('none')
+        setSearch('none')
+        setNotice('none')
+        setStockView('none')
+        setSecondstockEntry("none")
+        setbedview('none')
+        setbedentry('none')
+        sethostelentrycreate('none')
+        sethostelview('none')
+        setmodifySearchView('none')
+        setSecondStockView("none")
+        setstudententry('none')
+        setacademicEntryUpdate('none')
+   }
+    else{
+        setCreateFaculty('none')
+   }
+}
 
   return (
     <>
@@ -691,7 +734,7 @@ const handleStockEntry=()=>{
                  onCreatebed={handlebedentry} onHostelEntryView={handlehostelview}
                  onViewBedStatus={handleBedViewStatus} onCheckPending={handleCheckPending} onHostelEntryCreate={handlehostelEntryCreate}
                  onAcademicView={handleacademicview}  onMasterStudentEntry={handleaStudentEntry} onMasterStudentView={handleMasterStudentView}
-                 onAcademicEntryUpdate={AcademicEntryUpdate}
+                 onAcademicEntryUpdate={AcademicEntryUpdate} onCreateFaculty={handleCreateFaculty}
         />
 
 
@@ -703,6 +746,7 @@ const handleStockEntry=()=>{
                        modifyStock={modifySearchView} createbed={bedentry} viewbed={bedview} checkpending={checkpending}
                        HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview} Academicview={academicview}
                           StudentEntry={studententry} MasterStudentView={masterstudentview} AcademicEntryUpdate={academicEntryUpdate}
+                       CreateFaculty={CreateFaculty}
         />
 
       </div>
