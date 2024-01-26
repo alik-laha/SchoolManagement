@@ -283,123 +283,93 @@ const handleStockEntry=()=>{
                 setStockEntry('none')
             }
 }
-const handleBedViewStatus=()=>{
-     if (bedview==='none'){
-       setbedview('block')
-       setStockEntry('none')
-       setItemCreate('none')
-       setCreateUser('none')
-       setVendorDisplay('none')
-       setPublish('none')
-       setSearch('none')
-       setView('none')
-       setNotice('none')
-       setStockView('none')
-       setSecondstockEntry('none')
-       setSecondStockView("none")
-       setmodifySearchView('none')
-       sethostelview('none')
-         setbedentry('none')
-         setcheckpending('none')
-         sethostelentrycreate('none')
-         setacademicview('none')
-         setstudententry('none')
-         setacademicEntryUpdate('none')
-         setmasterstudentview('none')
-     }
-        else{
-        setbedview('none')
-        }
-}
-const handleStockView=()=>{
-        if(stockView==='none'){
-            setStockView('block')
-            setStockEntry('none')
-            setItemCreate('none')
-            setCreateUser('none')
-            setVendorDisplay('none')
-            setPublish('none')
-            setSearch('none')
-            setNotice('none')
-            setSecondstockEntry('none')
-            setSecondStockView("none")
-            setmodifySearchView('none')
-            sethostelview('none')
-            setbedentry('none')
-            setbedview('none')
-            setcheckpending('none')
-            sethostelentrycreate('none')
-            setacademicview('none')
-            setstudententry('none')
-            setmasterstudentview('none')
-            setacademicEntryUpdate('none')
-        }
-            else{
-                setStockView('none')
-            }
-          }
-
-  const AcademicEntryUpdate=()=>{
-     if(academicEntryUpdate==='none'){
-         setacademicEntryUpdate('block')
-         setStockView('none')
-         setStockEntry('none')
-         setItemCreate('none')
-         setCreateUser('none')
-         setVendorDisplay('none')
-         setPublish('none')
-         setSearch('none')
-         setNotice('none')
-         setSecondstockEntry('none')
-         setSecondStockView("none")
-         setmodifySearchView('none')
-         sethostelview('none')
-            setbedentry('none')
-            setbedview('none')
-            setcheckpending('none')
-            sethostelentrycreate('none')
-            setacademicview('none')
-            setstudententry('none')
-            setmasterstudentview('none')
-     }
-        else{
-            setacademicEntryUpdate('none')
-        }
+  const handleBedViewStatus = () => {
+    if (bedview === 'none') {
+      setbedview('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setView('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry('none')
+      setSecondStockView("none")
+      setmodifySearchView('none')
+      sethostelview('none')
+      setbedentry('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setacademicview('none')
+      setstudententry('none')
+      setacademicEntryUpdate('none')
+      setmasterstudentview('none')
+    }
+    else {
+      setbedview('none')
+    }
+  }
+  const handleStockView = () => {
+    if (stockView === 'none') {
+      setStockView('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setSecondstockEntry('none')
+      setSecondStockView("none")
+      setmodifySearchView('none')
+      sethostelview('none')
+      setbedentry('none')
+      setbedview('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      setStockView('none')
+    }
   }
 
-const handleSecondStockEntrySearch=()=>{
-              if(secondstockEntry==='none'){
-                  setSecondstockEntry('block')
-                  setStockEntry('none')
-                  setItemCreate('none')
-                  setCreateUser('none')
-                  setVendorDisplay('none')
-                  setPublish('none')
-                  setSearch('none')
-                  setNotice('none')
-                  setStockView('none')
-                  setSecondStockView("none")
-                  setmodifySearchView('none')
-                  sethostelview('none')
-                  setbedview('none')
-                  sethostelentrycreate('none')
-                  setbedentry('none')
-                  setcheckpending('none')
-                  setacademicview('none')
-                  setstudententry('none')
-                  setacademicEntryUpdate('none')
-                  setmasterstudentview('none')
-              }
-                  else{
-                      setSecondstockEntry('none')
-                  }
+  const AcademicEntryUpdate = () => {
+    if (academicEntryUpdate === 'none') {
+      setacademicEntryUpdate('block')
+      setStockView('none')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setSecondstockEntry('none')
+      setSecondStockView("none")
+      setmodifySearchView('none')
+      sethostelview('none')
+      setbedentry('none')
+      setbedview('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+    }
+    else {
+      setacademicEntryUpdate('none')
+    }
+  }
 
-
-                }
-
- const handlehostelEntryCreate=()=> {
-    if(hostelentrycreate==='none'){
-      sethostelentrycreate('block')
+  const handleSecondStockEntrySearch = () => {
+    if (secondstockEntry === 'none') {
+      setSecondstockEntry('block')
       setStockEntry('none')
       setItemCreate('none')
       setCreateUser('none')
@@ -412,250 +382,281 @@ const handleSecondStockEntrySearch=()=>{
       setmodifySearchView('none')
       sethostelview('none')
       setbedview('none')
+      sethostelentrycreate('none')
       setbedentry('none')
       setcheckpending('none')
       setacademicview('none')
-        setstudententry('none')
-        setmasterstudentview('none')
-        setacademicEntryUpdate('none')
+      setstudententry('none')
+      setacademicEntryUpdate('none')
+      setmasterstudentview('none')
     }
-    else{
-        sethostelentrycreate('none')
+    else {
+      setSecondstockEntry('none')
     }
- }
-const handleSecondStockView=()=>{
-                  if(secondStockView==='none'){
-                      setSecondStockView('block')
-                      setStockEntry('none')
-                      setItemCreate('none')
-                      setCreateUser('none')
-                      setVendorDisplay('none')
-                      setPublish('none')
-                      setSearch('none')
-                      setNotice('none')
-                      setStockView('none')
-                      setSecondstockEntry("none")
-                      setmodifySearchView('none')
-                      sethostelview('none')
-                      setbedentry('none')
-                      setbedview('none')
-                      setcheckpending('none')
-                      sethostelentrycreate('none')
-                      setacademicview('none')
-                      setstudententry('none')
-                      setmasterstudentview('none')
-                      setacademicEntryUpdate('none')
-                  }
-                      else{
-                          setSecondStockView('none')
-                      }
-    
-    
-                    }       
-                    
-                    const handleModifySearch=()=>{
-                      if(modifySearchView==='none'){
-                        setmodifySearchView('block')
-                          setStockEntry('none')
-                          setItemCreate('none')
-                          setCreateUser('none')
-                          setVendorDisplay('none')
-                          setPublish('none')
-                          setSearch('none')
-                          setNotice('none')
-                          setStockView('none')
-                          setSecondstockEntry("none")
-                          setSecondStockView("none")
-                          sethostelview('none')
-                          setbedentry('none')
-                          setbedview('none')
-                          setcheckpending('none')
-                          sethostelentrycreate('none')
-                          setacademicview('none')
-                          setstudententry('none')
-                          setacademicEntryUpdate('none')
-                          setmasterstudentview('none')
-                      }
-                          else{
-                            setmodifySearchView('none')
-                          }
-        
-        
-                        } 
-                        
-                        const handlebedentry=()=>{
-                          if(bedentry==='none'){
-                            setbedentry('block')
-                              setStockEntry('none')
-                              setItemCreate('none')
-                              setCreateUser('none')
-                              setVendorDisplay('none')
-                              setPublish('none')
-                              setSearch('none')
-                              setNotice('none')
-                              setStockView('none')
-                              setSecondstockEntry("none")
-                              sethostelview('none')
-                              setbedview('none')
-                              setbedview('none')
-                              setcheckpending('none')
-                              sethostelentrycreate('none')
-                              setmodifySearchView('none')
-                              setSecondStockView("none")
-                              setacademicview('none')
-                              setstudententry('none')
-                              setmasterstudentview('none')
-                              setacademicEntryUpdate('none')
-                          }
-                              else{
-                                setbedentry('none')
-                              }
-            
-            
-                            }
 
-                            const handlehostelview=()=>{
-                              if(hostelentryview==='none'){
-                                sethostelview('block')
-                                  setStockEntry('none')
-                                  setItemCreate('none')
-                                  setCreateUser('none')
-                                  setVendorDisplay('none')
-                                  setPublish('none')
-                                  setSearch('none')
-                                  setNotice('none')
-                                  setStockView('none')
-                                  setSecondstockEntry("none")
-                                  setbedview('none')
-                                  setbedentry('none')
-                                  setcheckpending('none')
-                                  sethostelentrycreate('none')
-                                  setSecondStockView("none")
-                                  setacademicview('none')
-                                  setstudententry('none')
-                                  setmasterstudentview('none')
-                                  setacademicEntryUpdate('none')
-                              }
-                                  else{
-                                    sethostelview('none')
-                                  }
-                
-                
-                                } 
-                                
-                                const handleCheckPending=()=>{
-                                  if(checkpending==='none'){
-                                    setcheckpending('block')
-                                      setStockEntry('none')
-                                      setItemCreate('none')
-                                      setCreateUser('none')
-                                      setVendorDisplay('none')
-                                      setPublish('none')
-                                      setSearch('none')
-                                      setNotice('none')
-                                      setStockView('none')
-                                      setSecondstockEntry("none")
-                                      setbedview('none')
-                                      setbedentry('none')
-                                      sethostelentrycreate('none')
-                                      sethostelview('none')
-                                      setmodifySearchView('none')
-                                        setSecondStockView("none")
-                                        setacademicview('none')
-                                      setstudententry('none')
-                                      setmasterstudentview('none')
-                                      setacademicEntryUpdate('none')
-                                  }
-                                      else{
-                                        setcheckpending('none')
-                                      }
-                    
-                    
-                                    } 
 
-                                    const handleacademicview=()=>{
-                                      if(academicview==='none'){
-                                        setacademicview('block')
-                                          setStockEntry('none')
-                                          setItemCreate('none')
-                                          setCreateUser('none')
-                                          setVendorDisplay('none')
-                                          setPublish('none')
-                                          setSearch('none')
-                                          setNotice('none')
-                                          setStockView('none')
-                                          setSecondstockEntry("none")
-                                          setbedview('none')
-                                          setbedentry('none')
-                                          sethostelentrycreate('none')
-                                          sethostelview('none')
-                                          setmodifySearchView('none')
-                                            setSecondStockView("none")
-                                          setstudententry('none')
-                                          setmasterstudentview('none')
-                                          setacademicEntryUpdate('none')
-                                      }
-                                          else{
-                                            setacademicview('none')
-                                          }
-                        
-                        
-                                        } 
-                    const handleaStudentEntry=()=>{
-                       if(studententry==='none'){
-                         setstudententry('block')
-                         setacademicview('none')
-                           setStockEntry('none')
-                           setItemCreate('none')
-                           setCreateUser('none')
-                           setVendorDisplay('none')
-                           setPublish('none')
-                           setSearch('none')
-                           setNotice('none')
-                           setStockView('none')
-                           setSecondstockEntry("none")
-                           setbedview('none')
-                           setbedentry('none')
-                           sethostelentrycreate('none')
-                           sethostelview('none')
-                           setmodifySearchView('none')
-                           setSecondStockView("none")
-                           setmasterstudentview('none')
-                           setacademicEntryUpdate('none')
+  }
 
-                       }
-                       else{
-                            setstudententry('none')
-                       }
-                    }
-      const handleMasterStudentView=()=>{
-        if(masterstudentview==='none'){
-          setmasterstudentview('block')
-          setacademicview('none')
-            setStockEntry('none')
-            setItemCreate('none')
-            setCreateUser('none')
-            setVendorDisplay('none')
-            setPublish('none')
-            setSearch('none')
-            setNotice('none')
-            setStockView('none')
-            setSecondstockEntry("none")
-            setbedview('none')
-            setbedentry('none')
-            sethostelentrycreate('none')
-            sethostelview('none')
-            setmodifySearchView('none')
-            setSecondStockView("none")
-            setstudententry('none')
-            setacademicEntryUpdate('none')
+  const handlehostelEntryCreate = () => {
+    if (hostelentrycreate === 'none') {
+      sethostelentrycreate('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondStockView("none")
+      setSecondstockEntry('none')
+      setmodifySearchView('none')
+      sethostelview('none')
+      setbedview('none')
+      setbedentry('none')
+      setcheckpending('none')
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      sethostelentrycreate('none')
+    }
+  }
+  const handleSecondStockView = () => {
+    if (secondStockView === 'none') {
+      setSecondStockView('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setmodifySearchView('none')
+      sethostelview('none')
+      setbedentry('none')
+      setbedview('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      setSecondStockView('none')
+    }
 
-        }
-        else{
-             setmasterstudentview('none')
-        }
-      }
-              
+
+  }
+
+  const handleModifySearch = () => {
+    if (modifySearchView === 'none') {
+      setmodifySearchView('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setSecondStockView("none")
+      sethostelview('none')
+      setbedentry('none')
+      setbedview('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setacademicview('none')
+      setstudententry('none')
+      setacademicEntryUpdate('none')
+      setmasterstudentview('none')
+    }
+    else {
+      setmodifySearchView('none')
+    }
+
+
+  }
+
+  const handlebedentry = () => {
+    if (bedentry === 'none') {
+      setbedentry('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      sethostelview('none')
+      setbedview('none')
+      setbedview('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setmodifySearchView('none')
+      setSecondStockView("none")
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      setbedentry('none')
+    }
+
+
+  }
+
+  const handlehostelview = () => {
+    if (hostelentryview === 'none') {
+      sethostelview('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setbedview('none')
+      setbedentry('none')
+      setcheckpending('none')
+      sethostelentrycreate('none')
+      setSecondStockView("none")
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      sethostelview('none')
+    }
+
+
+  }
+
+  const handleCheckPending = () => {
+    if (checkpending === 'none') {
+      setcheckpending('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setbedview('none')
+      setbedentry('none')
+      sethostelentrycreate('none')
+      sethostelview('none')
+      setmodifySearchView('none')
+      setSecondStockView("none")
+      setacademicview('none')
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      setcheckpending('none')
+    }
+
+
+  }
+
+  const handleacademicview = () => {
+    if (academicview === 'none') {
+      setacademicview('block')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setbedview('none')
+      setbedentry('none')
+      sethostelentrycreate('none')
+      sethostelview('none')
+      setmodifySearchView('none')
+      setSecondStockView("none")
+      setstudententry('none')
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+    }
+    else {
+      setacademicview('none')
+    }
+
+
+  }
+  const handleaStudentEntry = () => {
+    if (studententry === 'none') {
+      setstudententry('block')
+      setacademicview('none')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setbedview('none')
+      setbedentry('none')
+      sethostelentrycreate('none')
+      sethostelview('none')
+      setmodifySearchView('none')
+      setSecondStockView("none")
+      setmasterstudentview('none')
+      setacademicEntryUpdate('none')
+
+    }
+    else {
+      setstudententry('none')
+    }
+  }
+  const handleMasterStudentView = () => {
+    if (masterstudentview === 'none') {
+      setmasterstudentview('block')
+      setacademicview('none')
+      setStockEntry('none')
+      setItemCreate('none')
+      setCreateUser('none')
+      setVendorDisplay('none')
+      setPublish('none')
+      setSearch('none')
+      setNotice('none')
+      setStockView('none')
+      setSecondstockEntry("none")
+      setbedview('none')
+      setbedentry('none')
+      sethostelentrycreate('none')
+      sethostelview('none')
+      setmodifySearchView('none')
+      setSecondStockView("none")
+      setstudententry('none')
+      setacademicEntryUpdate('none')
+
+    }
+    else {
+      setmasterstudentview('none')
+    }
+  }
+
 
   return (
     <>

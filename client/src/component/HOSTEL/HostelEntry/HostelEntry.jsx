@@ -13,6 +13,7 @@ const HostelEntry = (props) => {
     const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [roomData, setRoomData] = useState([])
     const [view, setView] = useState("none");
+    const [viewStock,setViewStock]=useState([])
 
     useEffect(() => {
       if (props.data.length > 0 && props.view==="block") {
@@ -22,6 +23,17 @@ const HostelEntry = (props) => {
           setView("none")
       }
     }, [props.data,props.view]);
+
+    useEffect(()=>{
+        setViewStock(props.data)
+  
+    },[props.data])
+
+
+    const clearTable = () => {
+        if(entryView==='none')
+        setViewStock([]);
+      };
 
     const handaleUpdate = (e) => {
         e.preventDefault()
@@ -149,6 +161,7 @@ const HostelEntry = (props) => {
                 <div style={{display:view}} >
                     <table className="table-60" >
                         <thead style={{display:allView}}>
+                        <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
                             <th>Id</th>
                             <th>Entry status</th>
@@ -162,7 +175,7 @@ const HostelEntry = (props) => {
 
                         <tbody style={{display:allView}}>
                         {
-                            props.data.map((data,idx)=> {
+                            viewStock.map((data,idx)=> {
                                 return(
 
                                     <tr key={idx}>
@@ -234,6 +247,7 @@ const HostelEntry = (props) => {
                         </tr>
                         </tbody>
                     </table>
+                    {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
                 </div>
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
        </>
