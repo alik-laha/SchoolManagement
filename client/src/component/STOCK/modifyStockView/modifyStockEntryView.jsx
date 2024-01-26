@@ -151,27 +151,26 @@ const ModifyStockEntryView= (props) => {
 
     return (
         <div style={{display:visible}}>
+            <div style={{display: mainsvisibility}}>
             <table className="table-60">
-                <thead style={{display: mainsvisibility}}>
+                <thead >
                 <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
-                    {/* <th>Item Id</th> */}
+                    <th>Item Id</th>
                     <th>Bill Id</th>
+                    <th>Bill Date</th>
                     <th>Cash Entry</th>
                     <th>Item Name</th>
-                    <th>Item Type</th>
-                    <th>Vendor Name</th>
-                    <th>Bill Date</th>
+                    {/* <th>Item Type</th>
+                    <th>Vendor Name</th> */}  
                     <th>Unit Per Cost</th>
                     <th>Quantity</th>
-                    <th>Estimated Price</th>
+                    {/* <th>Estimated Price</th> */}
                     <th>Discounted Amount</th>
                     <th>Actual Paid Amount</th>
                     <th>Balance Amount</th>
                     <th>Primary Stock Entry Date</th>
-                    <th>Cash Entry Date</th>
-                    <th>Last Modified Date</th>
-                    
+                    <th>Cash Entry Date</th> 
                     <th>Action</th>
                     
                 </tr>
@@ -179,62 +178,74 @@ const ModifyStockEntryView= (props) => {
                 <tbody style={{display: mainsvisibility}}>
                 {viewStock.map((item) => (
                     <tr key={item.stock_id}>
-                        {/* <td>{item.stock_id}</td> */}
+                        <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
+                        <td>{item.bill_date.slice(0,10)}</td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>
-                        <td>{item.item_Type}</td>
-                        <td>{item.vendor_name}</td>
-                        <td>{item.bill_date.slice(0,10)}</td>
+                        {/* <td>{item.item_Type}</td>
+                        <td>{item.vendor_name}</td> */}
+                       
                         <td>{item.unit_cost}</td>
                         <td>{item.quantity}</td>
-                        <td>{item.projected_cost}</td>
+                        {/* <td>{item.projected_cost}</td> */}
                         <td>{item.discounted_cost}</td>
                         <td>{item.paid_amount}</td>
                         <td>{item.pending_amount}</td>
                         <td>{item.primary_entry_date !==  null ? item.primary_entry_date.slice(0,10): null}</td>
                         <td>{item.stock_entry_date !==  null ? item.stock_entry_date.slice(0,10): null}</td>
-                        <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
+                       
                         <td><button  className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Edit</button></td>
                         
                     </tr>
                 ))}
                 </tbody>
 
-
+                </table>
+                {viewStock.length === 0 ? <div className="no-data">No Data Exists</div> : null}
+            </div>
+         
                 {/* hidden tbody */}
+            <div style={{display: visiblity}} className="dashbrd-40-colm">
+            <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={cancelEdit}>Cancel</button>
+                <form onSubmit={handaleSubmit}>
+                <div>
+                    <label>Bill Id*</label>
+                    <input
+                        type="text"
+                        value={billid}
+                        onChange={(e) => setbillid(e.target.value)}
+                        placeholder="Bill ID"
+                        required={true}
+                    />
+                </div>
+                <div>
+                    <label>Item Name*</label>
+                    <input
+                        type="text"
+                        value={itemname}
+                        onChange={(e) => setitemname(e.target.value)}
+                        placeholder="Bill ID"
+                        required={true}
+                    />
+                </div>
+                {/* <div>
+                    <label>Item Type</label>
+                    <select onChange={(e) => setRole(e.target.value)} required value={itemname}>
+                    <option value="">Item Type</option>
+                    {AllRoles.map((data) => (
+                        <option value={data.} key={data.roletype_name}>
+                        {data.roletype_name}
+                        </option>
+                    ))}
+                    </select>
+                </div> */}
+                {/* <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span> */}
+                </form>
+            </div>
 
 
-                <thead style={{display: visiblity}} id='hidden-table-60'>
-                <tr>
-                <th>Item Id</th>
-                    <th>Bill Id</th>
-            
-                    <th>Item Name</th>
-                    
-                    <th>Vendor Name</th>
-                    <th>Item Type</th>
-                    <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
-                    <th>Quantity</th>
-                    <th>Estimated Price</th>
-                    <th>Discounted Amount</th>
-                    <th>Actual Paid Amount</th>
-                    <th>Balance Amount</th>
-                    
-                    <th>Action</th>
-                    
-                </tr>
-                </thead>
-
-
-                <tbody style={{display: visiblity}} >
-                    
-                <tr>
-                   <td>{itemid}</td>
-                   <td><input type="text" value={billid} placeholder='Bill id' onChange={(e) => setbillid(e.target.value)} required/></td>
-                   <td><input type="text" value={itemname} placeholder='Item Name' onChange={(e) => setitemname(e.target.value)} required/></td>
-                   <td>
+                   {/* <td>
                         <select onChange={(e) => setvendor(e.target.value)} value={vendor}>
                             <option >All</option>
                             {props.Vendor.map((data,idx) => (
@@ -268,26 +279,36 @@ const ModifyStockEntryView= (props) => {
                    <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
                    <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
                    <td><input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} required readOnly/></td>
-                   
+            
+                    <th>Item Name</th>
                     
+                    <th>Vendor Name</th>
+                    <th>Item Type</th>
+                    <th>Bill Date</th>
+                    <th>Unit Per Cost</th>
+                    <th>Quantity</th>
+                    <th>Estimated Price</th>
+                    <th>Discounted Amount</th>
+                    <th>Actual Paid Amount</th>
+                    <th>Balance Amount</th>
+                    
+                    <th>Action</th>
+        
+                    
+                <tr>
+                   
                   
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 >Proceed
                         </button>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                onClick={cancelEdit}>Cancel
-                        </button>
+                        
                     </td>
 
-                </tr>
-                                 
-
-                </tbody>
-
+                </tr> */}
                 
-            </table>
-            {viewStock.length===0 ? <div className="no-data">No Data Found</div> : null}
+          
+            
         </div>
     )
 }
