@@ -3,7 +3,7 @@ import axios from "axios";
 const ViewAllVendor=(props)=>{
     const [view,setView]=useState("none")
 
-    const handleDelete = (vendorId) => {
+    const handleDelete = (vendorId,vendor_name) => {
         axios
             .post("http://localhost:7000/api/v1/stock/deletevendor", { vendorId })
             .then((res) => {
@@ -12,7 +12,7 @@ const ViewAllVendor=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        alert("Vendor Deleted Successfully")
+        alert("Vendor ["+vendor_name+ "] Deleted Successfully")
         setView("none")
     }
     useEffect(()=>{
@@ -42,7 +42,7 @@ const ViewAllVendor=(props)=>{
                             <td>{vendor.vendor_id}</td>
                             <td>{vendor.vendor_name}</td>
                             <td>
-                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.vendor_id)}>Delete</button>
+                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.vendor_id,vendor.vendor_name)}>Delete</button>
                             </td>
                         </tr>
                     )

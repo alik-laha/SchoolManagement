@@ -11,7 +11,7 @@ const CreateVendor = (props) => {
             vendor:vendor
         })
             .then((res) => {
-                alert(`New Vendor created with this Name ${vendor}`)
+                alert(`Vendor created with Name : ${vendor}`)
                 setVendor("");
             })
             .catch((error) => {
