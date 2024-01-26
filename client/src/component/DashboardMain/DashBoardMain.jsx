@@ -30,7 +30,7 @@ import CheckPendingSearch from "../STOCK/CheckPendingAmount/CheckPendingSearch.j
 import AcademicEntrySearch from '../Student/AcademicEntryView/AcademicEntrySearch.jsx';
 import AcademicEntryView from '../Student/AcademicEntryView/AcademicEntryView.jsx'
 import MasterStudentEntry from "../Student/MasterStudentEntry/MasterStudentEntry.jsx";
-import pendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
+import CheckPendingView from '../STOCK/CheckPendingAmount/CheckPendingView.jsx'
 import MasterStudentViewSearch from "../Student/MasterStudentViewUpdate/MasterStudentViewSearch.jsx";
 import MasterStudentViewUpdate from "../Student/MasterStudentViewUpdate/MasterStudentViewUpdate.jsx";
 import AcademicEntryUpdateSearch from "../Student/AcademicEntry/AcademicEntryUpdateSearch.jsx";
@@ -315,7 +315,7 @@ const getAllRoom=(data)=>{
             {/* View Modify Stock */}
             <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
             {/* View Pending Balance */}
-            <SecondaryStockEntryAllView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
+            <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
 
          {/* Vendor End*/}    
 

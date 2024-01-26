@@ -3,7 +3,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import axios from "axios";
 
 
-const pendingView= (props) => {
+const CheckPendingView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
@@ -14,14 +14,7 @@ const pendingView= (props) => {
 
 
     useEffect(()=>{
-
-      axios.post("http://localhost:7000/api/v1/stock/getstock",props.SearchebyData)
-        .then((res)=>{
-            setViewStock(res.data.data)
-        })
-          .catch((error)=>{
-              console.log(error)
-          } )
+        setViewStock(props.SearchebyData)
     },[props.SearchebyData])
 
     useEffect(()=> {
@@ -54,15 +47,7 @@ const pendingView= (props) => {
                     <th>Item Type</th>
                     <th>Vendor Name</th>
                     <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
-                    <th>Quantity</th>
-                    <th>Estimated Price</th>
-                    <th>Discounted Amount</th>
-                    <th>Actual Paid Amount</th>
-                    <th>Balance Amount</th>
-                    <th>Cash Entry Date</th>
-                    <th>Last Modified Date</th>
-                    
+                    <th>Balance Amount</th>  
                 </tr>
                 </thead>
                 <tbody>
@@ -74,14 +59,8 @@ const pendingView= (props) => {
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
-                        <td>{item.unit_cost}</td>
-                        <td>{item.quantity}</td>
-                        <td>{item.projected_cost}</td>
-                        <td>{item.discounted_cost}</td>
-                        <td>{item.paid_amount}</td>
                         <td>{item.pending_amount}</td>
-                        <td>{item.stock_entry_date !==  null ? item.stock_entry_date.slice(0,10): null}</td>
-                        <td>{item.stock_modified_date !== null ?item.stock_modified_date.slice(0,10):null}</td>
+                       
                         
                     </tr>
                 ))}
@@ -91,4 +70,4 @@ const pendingView= (props) => {
         </div>
     )
 }
-export default pendingView;
+export default CheckPendingView;

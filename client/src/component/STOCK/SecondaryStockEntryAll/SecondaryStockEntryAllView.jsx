@@ -3,9 +3,6 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import axios from "axios";
 
 
-
-
-
 const SecondaryStockEntryAllView= (props) => {
 
     const [viewStock,setViewStock]=useState([])

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 
 const CheckPendingSearch = (props) => {
@@ -6,6 +7,7 @@ const CheckPendingSearch = (props) => {
     const [fromDate, setFromDate] = useState("");
     const [vendorName, setVendorName] = useState("");
     const [itemType, setItemType] = useState("");
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const data = {
@@ -14,9 +16,15 @@ const CheckPendingSearch = (props) => {
             fromDate,
             toDate
         }
-
+        axios.post("http://localhost:7000/api/v1/stock/getstock",data)
+        .then((res)=>{
+            props.setPendingStockData(res.data.data)
+        })
+          .catch((error)=>{
+              console.log(error)
+          } )
         props.buttonClick("block");
-        props.setPendingStockData(data);
+
 
     }
     return (
