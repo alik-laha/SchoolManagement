@@ -33,7 +33,7 @@ const ModifyStockEntryView= (props) => {
     },[props.SearchebyData])
 
     useEffect(()=> {
-        console.log(props.modifyStockView,props.view)
+       
         if (props.modifyStockView === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setVisible("block")
         }
@@ -66,6 +66,7 @@ const ModifyStockEntryView= (props) => {
         
         if(data.discounted_cost!==null && data.discounted_cost!==undefined){
             setdiscountamt(data.discounted_cost)
+            setdiscsubdisp('inline-block')
         }
         else{
             setdiscountamt(0)
@@ -73,6 +74,7 @@ const ModifyStockEntryView= (props) => {
         }
         if(data.paid_amount!==null && data.paid_amount!==undefined){
             setpaidamt(data.paid_amount)
+            setpaidsubdisp('inline-block')
         }
         else{
             setpaidamt(0)
@@ -80,6 +82,7 @@ const ModifyStockEntryView= (props) => {
         }
         if(data.pending_amount!==undefined && data.pending_amount!==null){
             setbalamt(data.pending_amount)
+            setbalsubdisp('inline-block')
         }
         else{
             setbalamt(0)
@@ -90,10 +93,6 @@ const ModifyStockEntryView= (props) => {
             
        }
      
-        
-        
-
-        
     };
 
     const clearTable = () => {
@@ -215,7 +214,8 @@ const ModifyStockEntryView= (props) => {
          
                 {/* hidden tbody */}
             <div style={{display: visiblity}} className="dashbrd-40-colm">
-            <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={cancelEdit}>Cancel</button>
+                <hr></hr>
+            
                 <form onSubmit={handaleSubmit}>
                 <div>
                     <label>Bill Id*</label>
@@ -301,6 +301,8 @@ const ModifyStockEntryView= (props) => {
               
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                 </form>
+                <button type="submit" value="Update" className="dashboard-btn btn-warning excel-btn" onClick={cancelEdit}>Cancel</button>
+           
             </div>
 
 
