@@ -9,15 +9,6 @@ const BedSearch= (props) => {
         e.preventDefault();
         props.setSearch(search)
     }
-    useEffect(()=>{
-        axios.get("http://localhost:7000/api/v1/hostel/getroomno")
-            .then((res) => {
-                setRoomData(res.data.result)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    },[props.viewBed])
 
     return(
         <>
@@ -29,7 +20,7 @@ const BedSearch= (props) => {
                         <select onChange={(e)=>setSearch(e.target.value)}>
                             <option value="">All Room</option>
                             {
-                                roomData.map((data,idx)=>{
+                                props.data.map((data,idx)=>{
                                     return(
                                         <option key={idx} value={data.room_no}>{data.room_no}</option>
                                     )
