@@ -70,6 +70,7 @@ const DashBoardMain = (props) => {
   const[itemData,setItemData]=useState([])
     const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
   const [academicEntryUpdateShow, setacademicEntryUpdateShow] = useState("none");
+  const [roomData, setRoomData] = useState([])
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -213,7 +214,9 @@ const handleacademicEntryData=(data)=>{
   const ItemData=(data)=>{
       setItemData(data)
   }
-
+const getAllRoom=(data)=>{
+      setRoomData(data)
+}
 
   return (
     <>
@@ -262,11 +265,11 @@ const handleacademicEntryData=(data)=>{
           {/* Create Room */}  
           <CreateBed40 createbed={props.createbed}/>
           {/* Search Room */} 
-          <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} />
+          <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} data={roomData} />
           {/* Search Hostel Entry */}
           <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
           {/* Export Hostel Entry Search*/}
-          <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} />
+          <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} data={roomData} />
         
         {/* Hostel End*/}
 
@@ -315,7 +318,7 @@ const handleacademicEntryData=(data)=>{
 
          {/* Hostel Start*/}   
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
-          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} />
+          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
           <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
          {/* Hostel End*/}   
 

@@ -137,12 +137,13 @@ const HostelEntry = (props) => {
     useEffect(() => {
         axios.get("http://localhost:7000/api/v1/hostel/getroomno")
             .then((res) => {
+                props.allRoomData(res.data.result)
                 setRoomData(res.data.result)
             })
             .catch((err) => {
                 console.log(err);
             })
-    }, [view]);
+    }, []);
     return(
         <>
                 <div style={{display:view}} >

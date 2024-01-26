@@ -4,7 +4,6 @@ const searchHostelView= (props) => {
     const [Class,setClass]=useState("")
     const [academicYear,setAcademicYear]=useState("")
     const [roomNo,setRoomNo]=useState("")
-    const [roomData,setRoomData]=useState([])
 
     const handaleSubmit=(e)=>{
         e.preventDefault()
@@ -13,7 +12,7 @@ const searchHostelView= (props) => {
                 academicYear,
                 roomNo
             }
-        axios.post("http://localhost:7000/api/v1/hostel/gethostelentry",props.SearchebyData)
+        axios.post("http://localhost:7000/api/v1/hostel/gethostelentry",data)
             .then((res)=>{
                 props.setHostelEntryData(res.data.result)
             })
@@ -24,17 +23,6 @@ const searchHostelView= (props) => {
 
     }
 
-
-
-    useEffect(()=>{
-        axios.get("http://localhost:7000/api/v1/hostel/getroomno")
-            .then((res) => {
-                setRoomData(res.data.result)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    },[props.view])
     return(
         <>
             <div className="dashbrd-40-colm" style={{display:props.view}}>
@@ -57,7 +45,7 @@ const searchHostelView= (props) => {
                         <select onChange={(e)=>setRoomNo(e.target.value)}>
                             <option value="">Select Room No</option>
                             {
-                                roomData.map((data,idx)=>{
+                                props.data.map((data,idx)=>{
                                     return(
                                         <option key={idx} value={data.room_no}>{data.room_no}</option>
                                     )
