@@ -136,16 +136,7 @@ const MasterStudentEntry= (props) => {
                         required={true}
                     />
                 </div>
-                <div>
-                    <label>Adhar Number*</label>
-                    <input
-                        type="number"
-                        value={adharNo}
-                        onChange={(e) => setAdharNo(e.target.value)}
-                        placeholder="Adhar Number"
-                        required={true}
-                    />
-                </div>
+              
 
                 <div>
                     <label>Gender*</label>
@@ -211,10 +202,20 @@ const MasterStudentEntry= (props) => {
                         </option>
                     </select>
                 </div>
-
                 <div>
-                    <label>physically challenged</label>
+                    <label>Applied For Class*</label>
                     <input
+                        type="number"
+                        value={applyClass}
+                        onChange={(e) => setApplyClass(e.target.value)}
+                        placeholder="Applied Class"
+                        required={true}
+                    />
+                </div>
+
+                <div className="div-25">
+                    <label>Physically Challenged</label>
+                    <input 
                         type="checkbox"
                         placeholder="physically challenged"
                         onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
@@ -222,8 +223,8 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
 
-                <div>
-                    <label>orphanage</label>
+                <div className="div-25">
+                    <label>Orphanage Child</label>
                     <input
                         type="checkbox"
                         placeholder="orphanage"
@@ -231,106 +232,8 @@ const MasterStudentEntry= (props) => {
                         value={orphanage}
                     />
                 </div>
-
-                <div>
-                    <label>Father Name</label>
-                    <input
-                        type="text"
-                        value={fatherName}
-                        onChange={(e) => setFatherName(e.target.value)}
-                        placeholder="Father Name"
-                    />
-                </div>
-
-                <div>
-                    <label>Father Qualification</label>
-                    <input
-                        type="text"
-                        value={fatherQualification}
-                        onChange={(e) => setFatherQualification(e.target.value)}
-                        placeholder="Father Qualification"
-                    />
-                </div>
-
-                <div>
-                    <label>Father Ocupation</label>
-                    <input
-                        type="text"
-                        value={fatherOcupation}
-                        onChange={(e) => setFatherOcupation(e.target.value)}
-                        placeholder="Father Ocupation"
-                    />
-                </div>
-
-                <div>
-                    <label>Father Monthly Income</label>
-                    <input
-                        type="number"
-                        value={fatherMonthlyIncome}
-                        onChange={(e) => setFatherMonthlyIncome(e.target.value)}
-                        placeholder="Father Monthly Income"
-                    />
-                </div>
-
-                <div>
-                    <label>Father contact No</label>
-                    <input
-                        type="number"
-                        value={fatherContactNo}
-                        onChange={(e) => setFatherContactNo(e.target.value)}
-                        placeholder="Father contact No"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother Name</label>
-                    <input
-                        type="text"
-                        value={motherName}
-                        onChange={(e) => setMotherName(e.target.value)}
-                        placeholder="Mother Name"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother Qualification</label>
-                    <input
-                        type="text"
-                        value={motherQualification}
-                        onChange={(e) => setMotherQualification(e.target.value)}
-                        placeholder="Mother Qualification"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother Ocupation</label>
-                    <input
-                        type="text"
-                        value={motherOcupation}
-                        onChange={(e) => setMotherOcupation(e.target.value)}
-                        placeholder="Mother Ocupation"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother Monthly Income</label>
-                    <input
-                        type="number"
-                        value={motherMonthlyIncome}
-                        onChange={(e) => setMotherMonthlyIncome(e.target.value)}
-                        placeholder="Mother Monthly Income"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother contact No</label>
-                    <input
-                        type="number"
-                        value={motherContactNo}
-                        onChange={(e) => setMotherContactNo(e.target.value)}
-                        placeholder="Mother contact No"
-                    />
-                </div>
+                
+                <hr className="division"/>
                 <div>
                     <label>Guardian Name*</label>
                     <input
@@ -363,6 +266,113 @@ const MasterStudentEntry= (props) => {
                         required={true}
                     />
                 </div>
+                <hr className="division-2"/>
+                <div>
+                    <label>Father's Name</label>
+                    <input
+                        type="text"
+                        value={fatherName}
+                        onChange={(e) => setFatherName(e.target.value)}
+                        placeholder="Father Name"
+                    />
+                </div>
+
+                <div>
+                    <label>Father's Qualification</label>
+                    <input
+                        type="text"
+                        value={fatherQualification}
+                        onChange={(e) => setFatherQualification(e.target.value)}
+                        placeholder="Father Qualification"
+                    />
+                </div>
+
+                <div>
+                    <label>Father's Ocupation</label>
+                    <input
+                        type="text"
+                        value={fatherOcupation}
+                        onChange={(e) => setFatherOcupation(e.target.value)}
+                        placeholder="Father Ocupation"
+                    />
+                </div>
+
+
+                <div>
+                    <label>Father's contact No</label>
+                    <input
+                        type="number"
+                        value={fatherContactNo}
+                        onChange={(e) => setFatherContactNo(e.target.value)}
+                        placeholder="Father contact No"
+                    />
+                </div>
+                
+                <div>
+                    <label>Father's Monthly Income</label>
+                    <input
+                        type="number"
+                        value={fatherMonthlyIncome}
+                        onChange={(e) => setFatherMonthlyIncome(e.target.value)}
+                        placeholder="Father Monthly Income"
+                    />
+                </div>
+                <hr className="division-2"/>
+
+                <div>
+                    <label>Mother's Name</label>
+                    <input
+                        type="text"
+                        value={motherName}
+                        onChange={(e) => setMotherName(e.target.value)}
+                        placeholder="Mother Name"
+                    />
+                </div>
+
+                <div>
+                    <label>Mother's Qualification</label>
+                    <input
+                        type="text"
+                        value={motherQualification}
+                        onChange={(e) => setMotherQualification(e.target.value)}
+                        placeholder="Mother Qualification"
+                    />
+                </div>
+
+                <div>
+                    <label>Mother's Ocupation</label>
+                    <input
+                        type="text"
+                        value={motherOcupation}
+                        onChange={(e) => setMotherOcupation(e.target.value)}
+                        placeholder="Mother Ocupation"
+                    />
+                </div>
+
+          
+
+                <div>
+                    <label>Mother's contact No</label>
+                    <input
+                        type="number"
+                        value={motherContactNo}
+                        onChange={(e) => setMotherContactNo(e.target.value)}
+                        placeholder="Mother contact No"
+                    />
+                </div>
+
+                <div>
+                    <label>Mother's Monthly Income</label>
+                    <input
+                        type="number"
+                        value={motherMonthlyIncome}
+                        onChange={(e) => setMotherMonthlyIncome(e.target.value)}
+                        placeholder="Mother Monthly Income"
+                    />
+                </div>
+                <hr className="division-2"/>
+                
+                <hr className="division"/>
 
                 <div>
                     <label>Address*</label>
@@ -394,16 +404,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="B.S.P Id"
                     />
                 </div>
-                <div>
-                    <label>Applied Class*</label>
-                    <input
-                        type="number"
-                        value={applyClass}
-                        onChange={(e) => setApplyClass(e.target.value)}
-                        placeholder="Applied Class"
-                        required={true}
-                    />
-                </div>
+        
                 <div>
                     <label>Admission Year*</label>
                     <input
@@ -441,6 +442,16 @@ const MasterStudentEntry= (props) => {
                         value={bloodGroup}
                         onChange={(e) => setBloodGroup(e.target.value)}
                         placeholder="Blood Group"
+                    />
+                </div>
+                <div>
+                    <label>Adhar Number*</label>
+                    <input
+                        type="number"
+                        value={adharNo}
+                        onChange={(e) => setAdharNo(e.target.value)}
+                        placeholder="Adhar Number"
+                        required={true}
                     />
                 </div>
                 <div>

@@ -194,9 +194,10 @@ const HostelEntry = (props) => {
                             <th>Student Name</th>
                             <th>Class</th>
                             <th>Registration No</th>
+                            <th>Admisson Year</th>
                             <th>Room No</th>
                             <th>Bed No</th>
-                            <th>Admisson Year</th>
+                            
                             <th>Hostel Entry Date</th>
                             <th>Actions</th>
                         </tr>
@@ -206,6 +207,7 @@ const HostelEntry = (props) => {
                             <td>{studentName}</td>
                             <td>{Class}</td>
                             <td>{regNo}</td>
+                            <td>{academicYear}</td>
                             <td>
                                 <div>
                                     <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>
@@ -220,7 +222,7 @@ const HostelEntry = (props) => {
                             </td>
                             <td><input type='text' placeholder="Bed No" value={bedNo}
                                        onChange={(e) => setBedNo(e.target.value)}/></td>
-                            <td>{academicYear}</td>
+                            
                             <td><input type='date' placeholder="Entry Date" value={entrydate}
                                        onChange={(e) => setEntryDate(e.target.value)} readOnly/></td>
                             <td>

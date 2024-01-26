@@ -12,7 +12,7 @@ const CreateBed40 = (props) => {
         e.preventDefault()
         axios.post("http://localhost:7000/api/v1/hostel/createbed", {bulding,floor,room,totalbed})
             .then((res) => {
-            alert("Room No."+ room +" Created/Updated Successfully with Total Bed :"+totalbed);
+            alert("Room No."+ room +" Created Successfully with Total Bed :"+totalbed);
             setBulding("");
             setFloor("");
             setRoom("");

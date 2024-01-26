@@ -270,6 +270,39 @@
     border: 1px solid #ccc;
    
 }
+.dashbrd-40-colm input[type=checkbox]{
+    height: 23px;
+    display: inline;
+    line-height:1.5;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    margin-left: 0px;
+    width: 25%;
+}
+.dashbrd-40-colm .div-25{
+    top: 20px;
+    min-height: 1px;
+    padding-top: 15px;
+    display: inline;
+}
+
+.dashbrd-40-colm .division
+{
+    margin-top: 40px;
+    margin-bottom: 20px;  
+    border-top: 2px solid whitesmoke;
+}
+.dashbrd-40-colm .division-2
+{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    size: 1;
+    border: white;
+    
+}
 
 
 
