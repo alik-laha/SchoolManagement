@@ -12,16 +12,16 @@ const ViewAllItem=(props)=>{
             setView("none")
         }
     }, [props.View,props.itemCreateView]);
-    const handleDelete = (itemId) => {
+    const handleDelete = (itemId,item_Type) => {
         axios
-            .post("http://localhost:7000/api/v1/stock/deleteitem", { itemId })
+            .post("http://localhost:7000/api/v1/stock/deleteitem", { itemId ,item_Type})
             .then((res) => {
                 console.log(res);
             })
             .catch((error) => {
                 console.log(error);
             });
-        alert("Item Deleted Successfully")
+        alert("Item type "+item_Type+ " Deleted Successfully")
         setView("none")
     }
     return(
@@ -41,7 +41,7 @@ const ViewAllItem=(props)=>{
                             <td>{vendor.type_id}</td>
                             <td>{vendor.item_Type}</td>
                             <td>
-                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.type_id)}>Delete</button>
+                                <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.type_id,vendor.item_Type)}>Delete</button>
                             </td>
                         </tr>
                     )

@@ -11,7 +11,7 @@ const CreateItem = (props) => {
             item:item
         }).then((response)=>{
             setItem("")
-            alert(`New item added with this Name ${item}`)
+            alert(`Item Type Created with Name ${item}`)
         })
 
 
@@ -31,7 +31,7 @@ const CreateItem = (props) => {
 
             <div>
                 <label>Create Item Type</label>
-                <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)} required/>
+                <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)} value={item} required/>
 
             </div>
             <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Item Type</button></span>

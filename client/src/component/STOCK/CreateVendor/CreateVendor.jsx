@@ -39,6 +39,7 @@ const CreateVendor = (props) => {
                     type="text"
                     placeholder="Vendor Name"
                     onChange={(e) => setVendor(e.target.value)}
+                    value={vendor}
                     required
                 />
               </div>

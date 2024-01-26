@@ -12,7 +12,7 @@ const ViewAllVendor=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        alert("Vendor ["+vendor_name+ "] Deleted Successfully")
+        alert("Vendor "+vendor_name+ " Deleted Successfully")
         setView("none")
     }
     useEffect(()=>{
