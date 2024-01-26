@@ -25,13 +25,13 @@ const SecondaryStockEntryView= (props) => {
 
     useEffect(()=> {
         console.log(props.secondarystocksearch,props.view)
-        if (props.secondarystocksearch === "block" && props.view === "block") {
+        if (props.secondarystocksearch === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setVisible("block")
         }
         else {
             setVisible("none")
         }
-    },[props.secondarystocksearch,props.view])
+    },[props.secondarystocksearch,props.view,props.SearchebyData])
 
     useEffect(()=>{
         setbalamt(discountamt-paidamt)
@@ -158,6 +158,10 @@ const SecondaryStockEntryView= (props) => {
             })
             .then((res) => {
                 console.log(res);
+                if(visible==='block')
+                {
+                    setVisible('none')
+                }
             })
             .catch((error) => {
                 console.log(error);

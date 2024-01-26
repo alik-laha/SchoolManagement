@@ -12,7 +12,15 @@ const CreateItem = (props) => {
         }).then((response)=>{
             setItem("")
             alert(`Item Type Created with Name ${item}`)
+            
         })
+        .catch((err) => {
+            if(err.response.data.message.errno === 1062){
+               alert("Item Type " + item+" Already Exists");
+            }
+            setItem("")
+
+       })
 
 
     }

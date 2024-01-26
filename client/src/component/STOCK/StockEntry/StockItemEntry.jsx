@@ -51,7 +51,7 @@ const StockItemEntry= (props) => {
         }
         axios.post("http://localhost:7000/api/v1/stock/stockentry", data)
             .then((res) => {
-                    alert("Stock Entry Successfully");
+                    alert("Stock has been Insterted Successfully");
                     setItemName("");
                     setBillNo("");
                     setBillDate(new Date().toISOString().slice(0, 10) );
@@ -64,7 +64,7 @@ const StockItemEntry= (props) => {
             })
             .catch((err) => {
                  if(err.response.data.message.errno === 1062){
-                    alert("Bill No. " + billNo+" Already Exist");
+                    alert("Bill No. " + billNo+" Already Exists");
                  }
 
             })
@@ -137,7 +137,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Quantity (Pc/ Kg/Ltr/Mtr)</label>
+                    <label>Quantity (Pc/Kg/Ltr/Mtr)</label>
                     <input
                         id="Quantity"
                         type="number"

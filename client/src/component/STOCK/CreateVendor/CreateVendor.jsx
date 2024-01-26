@@ -14,8 +14,12 @@ const CreateVendor = (props) => {
                 alert(`Vendor created with Name : ${vendor}`)
                 setVendor("");
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                if(err.response.data.message.errno === 1062){
+                    alert("Vendor " + vendor+" Already Exists");
+                 }
+                 setVendor("")
+                
             });
     }
     const handleViewVendor = () => {
