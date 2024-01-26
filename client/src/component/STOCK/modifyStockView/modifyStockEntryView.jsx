@@ -30,13 +30,13 @@ const ModifyStockEntryView= (props) => {
 
     useEffect(()=> {
         console.log(props.modifyStockView,props.view)
-        if (props.modifyStockView === "block" && props.view === "block") {
+        if (props.modifyStockView === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setVisible("block")
         }
         else {
             setVisible("none")
         }
-    },[props.modifyStockView,props.view])
+    },[props.modifyStockView,props.view,props.SearchebyData])
 
     useEffect(()=>{
         setbalamt(discountamt-paidamt)
@@ -122,7 +122,7 @@ const ModifyStockEntryView= (props) => {
          }
             axios.post("http://localhost:7000/api/v1/stock/modifystockentry",data)
                 .then((res) => {
-                    alert("Stock Entry Successfully");
+                    alert("Stock Entry has been Modified Successfully");
                     setVisiblity('none');
                     setmainsvisibility('contents');
                     setdiscountamt(0);
@@ -229,34 +229,9 @@ const ModifyStockEntryView= (props) => {
                         required={true}
                     />
                 </div>
-                {/* <div>
-                    <label>Item Type</label>
-                    <select onChange={(e) => setRole(e.target.value)} required value={itemname}>
-                    <option value="">Item Type</option>
-                    {AllRoles.map((data) => (
-                        <option value={data.} key={data.roletype_name}>
-                        {data.roletype_name}
-                        </option>
-                    ))}
-                    </select>
-                </div> */}
-                {/* <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span> */}
-                </form>
-            </div>
-
-
-                   {/* <td>
-                        <select onChange={(e) => setvendor(e.target.value)} value={vendor}>
-                            <option >All</option>
-                            {props.Vendor.map((data,idx) => (
-                                <option value={data.vendor_name} key={idx}>
-                                    {data.vendor_name}
-                                </option>
-                            ))}
-                        </select>
-                    </td>
-                    <td>
-                        <select onChange={(e) => setitem(e.target.value)} value={item}>
+                <div>
+                <label>Item Type</label>
+                <select onChange={(e) => setitem(e.target.value)} value={item}>
                             <option >All</option>
                             {props.Item.map((data,idx) => (
                                 <option value={data.item_Type} key={idx}>
@@ -264,47 +239,71 @@ const ModifyStockEntryView= (props) => {
                                 </option>
                             ))}
                         </select>
-                    </td>
-                    <td><input
+                </div>
+                <div>
+                <label>Vendor</label>
+                <select onChange={(e) => setvendor(e.target.value)} value={vendor}>
+                            <option >All</option>
+                            {props.Vendor.map((data,idx) => (
+                                <option value={data.vendor_name} key={idx}>
+                                    {data.vendor_name}
+                                </option>
+                            ))}
+                        </select>
+                </div>
+                <div>
+                    <label>Bill Date</label>
+                    <input
                         type="date" 
                         placeholder="Bill Entry date"
                         onChange={(e) => setbillDate(e.target.value)}
                         value={billDate}
                         required
-                    /></td>
-                   <td> <input type="number" value={unitcost} placeholder='Unit Cost' onChange={(e) => setunitcost(e.target.value)} required/></td>
-                   <td> <input type="number" value={qty} placeholder='Quantity' onChange={(e) => setqty(e.target.value)} required/></td>
-                   
-                   <td>{estimatedamt}</td>
-                   <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
-                   <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
-                   <td><input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} required readOnly/></td>
-            
-                    <th>Item Name</th>
-                    
-                    <th>Vendor Name</th>
-                    <th>Item Type</th>
-                    <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
-                    <th>Quantity</th>
-                    <th>Estimated Price</th>
-                    <th>Discounted Amount</th>
-                    <th>Actual Paid Amount</th>
-                    <th>Balance Amount</th>
-                    
-                    <th>Action</th>
-        
-                    
-                <tr>
-                   
-                  
+                    />
+                </div>
+
+                <div>
+                    <label>Per Unit Cost</label>
+                    <input type="number" 
+                    value={unitcost} 
+                    placeholder='Unit Cost' 
+                    onChange={(e) => setunitcost(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Quantity</label>
+                    <input type="number" value={qty} placeholder='Quantity' onChange={(e) => setqty(e.target.value)} required/>
+                </div>
+                <div>
+                    <label>Estimated Amount</label>
+                    <input type="number" value={estimatedamt} placeholder='Estimated Amount' required readOnly/>
+                </div>
+                <div>
+                    <label>Discounted Amount</label>
+                    <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/>
+
+                </div>
+                <div>
+                    <label>Already Paid Amount</label>
+                    <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} />
+                </div>
+                <div>
+                    <label>Balance Amount</label>
+                    <input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} readOnly/>
+                </div>
+              
+                <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                </form>
+            </div>
+
+
+                   {/* 
+                   <td>{estimatedamt}</td>          
+                    <th>Action</th>      
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 >Proceed
-                        </button>
-                        
+                        </button>     
                     </td>
-
                 </tr> */}
                 
           

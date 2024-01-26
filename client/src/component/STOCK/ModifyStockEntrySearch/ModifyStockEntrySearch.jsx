@@ -35,7 +35,7 @@ const ModifyStockEntrySearch = (props) => {
                 />
             </div>
             <div>
-                <label>From Date</label>
+                <label>From Bill Date</label>
                 <input
                     type="date"
                     placeholder="name"
@@ -45,7 +45,7 @@ const ModifyStockEntrySearch = (props) => {
                 </div>
                 
                 <div>
-                <label>To Date</label>
+                <label>To Bill Date</label>
                 <input
                     type="date"
                     placeholder="name"
