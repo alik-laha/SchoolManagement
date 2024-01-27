@@ -1,20 +1,23 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import axios from "axios";
 
 
 const CheckPendingView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+    const [totalpending,settotalpending]=useState(0);
     
     const clearTable = () => {
         setViewStock([]);
       };
 
+    
 
     useEffect(()=>{
         setViewStock(props.SearchebyData)
+        
+        
     },[props.SearchebyData])
 
     useEffect(()=> {
@@ -59,9 +62,7 @@ const CheckPendingView= (props) => {
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
-                        <td>{item.pending_amount}</td>
-                       
-                        
+                        <td>{item.pending_amount}</td>   
                     </tr>
                 ))}
                 <tr>
