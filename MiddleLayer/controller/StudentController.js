@@ -231,7 +231,6 @@ exports.StudentAdmission = (req, res) => {
 }
 
 //update Roll No and section
-
 exports.UpdateStudentAdmission = (req, res) => {
     const{rollNo,section,regNo}=req.body
     try{
@@ -255,3 +254,65 @@ exports.UpdateStudentAdmission = (req, res) => {
         console.log(err)
     }
 }
+
+//update student admission
+
+
+//delete Master student admission
+exports.DeleteMasterStudentAdmission = (req, res) => {
+    const { regNo } = req.body
+    try {
+        if (!regNo) {
+            return res.status(400).json({
+                msg: "please fill all the importent field",
+                data: regNo
+            })
+        } else {
+
+            let query =`DELETE FROM master_student WHERE registration_no='${regNo}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).json({
+                        err: err
+                    })
+                } else {
+                    return res.status(200).json({
+                        msg: "student admission successfully Deleted"
+                    })
+                }
+            })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+//delete student admission
+exports.DeleteStudentAdmission = (req, res) => {
+    const { regNo } = req.body
+    try {
+        if (!regNo) {
+            return res.status(400).json({
+                msg: "please fill all the importent field",
+                data: regNo
+            })
+        } else {
+
+            let query = `DELETE FROM Student_Admission WHERE registration_no='${regNo}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).json({
+                        err: err
+                    })
+                } else {
+                    return res.status(200).json({
+                        msg: "student admission successfully Deleted"
+                    })
+                }
+            })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
+
