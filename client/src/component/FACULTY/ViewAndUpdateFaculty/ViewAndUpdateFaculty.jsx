@@ -10,6 +10,9 @@ const [View, setView] = useState("none");
             setData(props.data);
             console.log(props.data)
         }
+        else{
+            setView("none");
+        }
     },[props.view, props.data])
 
     return(
