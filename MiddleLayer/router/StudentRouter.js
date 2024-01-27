@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {GetAllStudent,MasterStudentAdmission, LastId,GetMasterStudentAdmisson,StudentAdmission, UpdateStudentAdmission,
-    DeleteStudentAdmission, DeleteMasterStudentAdmission
+    DeleteStudentAdmission, DeleteMasterStudentAdmission, UpdateMasterStudentAdmission
 } = require('../controller/StudentController')
 
 //get all students
@@ -28,4 +28,6 @@ router.post('/deletemasterstudent',DeleteMasterStudentAdmission)
 //delete student from student admission
 router.post('/deletestudent',DeleteStudentAdmission)
 
+//update student admission
+router.post('/updatestudent',UpdateMasterStudentAdmission)
 module.exports = router

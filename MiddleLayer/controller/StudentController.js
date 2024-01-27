@@ -256,7 +256,69 @@ exports.UpdateStudentAdmission = (req, res) => {
 }
 
 //update student admission
+exports.UpdateMasterStudentAdmission = (req, res) => {
+    try{
+        const {
+            name,
+            regNo,
+            adharNo,
+            sex,
+            religion,
+            dob,
+            cast,
+            physicallyChallenged,
+            orphanage,
+            fatherName,
+            fatherQualification,
+            fatherOcupation,
+            fatherMonthlyIncome,
+            fatherContactNo,
+            motherName,
+            motherQualification,
+            motherOcupation,
+            motherMonthlyIncome,
+            motherContactNo,
+            guardianName,
+            relationship,
+            guardianContactNo,
+            address,
+            pinNo,
+            bspId,
+            applyClass,
+            admissionYear,
+            admissonDate,
+            age,
+            bloodGroup,
+            bankAcountNo,
+            brunch,
+            ifscCode
+        } = req.body
 
+        if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissonDate || !age) {
+            return res.status(400).json({
+                msg: "please fill all the importent field",
+                data: name, regNo, adharNo, sex, religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age
+            })
+        }
+        else{
+            let query = `UPDATE master_student SET adhar_no='${adharNo}',registration_no='${regNo}', sex='${sex}', religion='${religion}', dob='${dob}', cast='${cast}', physically_challenged='${physicallyChallenged}', orphanage='${orphanage}', father_name='${fatherName}', father_qualification='${fatherQualification}', father_ocupation='${fatherOcupation}', father_monthlyIncome='${fatherMonthlyIncome}', father_contact='${fatherContactNo}', mother_name='${motherName}', mother_qualification='${motherQualification}', mother_ocupation='${motherOcupation}', mother_monthlyIncome='${motherMonthlyIncome}', mother_contact='${motherContactNo}', guardian_name='${guardianName}', relationship='${relationship}', guardian_contact='${guardianContactNo}', address='${address}', pin_no='${pinNo}', bsp_id='${bspId}', applied_class='${applyClass}', age='${age}', admisson_date='${admissonDate}', blood_group='${bloodGroup}', acount_no='${bankAcountNo}', branch='${brunch}', ifsc='${ifscCode}' WHERE registration_no='${regNo}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(500).json({
+                        err: err
+                    })
+                } else {
+                    return res.status(200).json({
+                        msg: "student admission successfully updated"
+                    })
+                }
+            })
+        }
+
+    }catch (err){
+        console.log(err)
+    }
+}
 
 //delete Master student admission
 exports.DeleteMasterStudentAdmission = (req, res) => {

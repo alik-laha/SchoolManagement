@@ -62,18 +62,18 @@ const MasterStudentViewUpdate = (props) => {
         setReligion(item.religion);
         setDob(item.dob.slice(0, 10));
         setCast(item.cast);
-        setPhysicallyChallenged(item.physically_challenged===1?true:false);
-        setOrphanage(item.orphanage===1?true:false);
+        setPhysicallyChallenged(item.physically_challenged);
+        setOrphanage(item.orphanage);
         setFatherName(item.father_name);
         setFatherQualification(item.father_qualification);
         setFatherOcupation(item.father_ocupation);
-        setFatherMonthlyIncome(item.father_monthly_income);
-        setFatherContactNo(item.father_contact_no);
+        setFatherMonthlyIncome(item.father_monthlyIncome);
+        setFatherContactNo(item.father_contact);
         setMotherName(item.mother_name);
         setMotherQualification(item.mother_qualification);
         setMotherOcupation(item.mother_ocupation);
-        setMotherMonthlyIncome(item.mother_monthly_income);
-        setMotherContactNo(item.mother_contact_no);
+        setMotherMonthlyIncome(item.mother_monthlyIncome);
+        setMotherContactNo(item.mother_contact);
         setGuardianName(item.guardian_name);
         setRelationship(item.relationship);
         setGuardianContactNo(item.guardian_contact);
@@ -91,8 +91,85 @@ const MasterStudentViewUpdate = (props) => {
 
         setRegNo(item.registration_no);
     }
-    const handleUpdate=()=>{
-
+    const handleUpdate=(e)=>{
+        e.preventDefault();
+        const data = {
+            name,
+            regNo,
+            adharNo,
+            sex,
+            religion,
+            dob,
+            cast,
+            physicallyChallenged,
+            orphanage,
+            fatherName,
+            fatherQualification,
+            fatherOcupation,
+            fatherMonthlyIncome,
+            fatherContactNo,
+            motherName,
+            motherQualification,
+            motherOcupation,
+            motherMonthlyIncome,
+            motherContactNo,
+            guardianName,
+            relationship,
+            guardianContactNo,
+            address,
+            pinNo,
+            bspId,
+            applyClass,
+            admissionYear,
+            admissonDate,
+            age,
+            bloodGroup,
+            bankAcountNo,
+            brunch,
+            ifscCode
+        }
+        axios.post("http://localhost:7000/api/v1/student/updatestudent",data)
+            .then((res)=>{
+                console.log(res.data);
+                setAllview("block")
+                setUpdateView("none")
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        setName(null);
+        setAdharNo(null);
+        setSex(null);
+        setReligion(null);
+        setDob(null);
+        setCast(null);
+        setPhysicallyChallenged(0);
+        setOrphanage(0);
+        setFatherName(null);
+        setFatherQualification(null);
+        setFatherOcupation(null);
+        setFatherMonthlyIncome(0);
+        setFatherContactNo(0);
+        setMotherName(null);
+        setMotherQualification(null);
+        setMotherOcupation(null);
+        setMotherMonthlyIncome(0);
+        setMotherContactNo(0);
+        setGuardianName(null);
+        setRelationship(null);
+        setGuardianContactNo(null);
+        setAddress(null);
+        setPinNo(null);
+        setBspId(null);
+        setApplyClass(null);
+        setAdmissionYear(null);
+        setAdmissonDate(new Date().toISOString().slice(0, 10));
+        setAge(null);
+        setBloodGroup(null);
+        setBankAcountNo(0);
+        setBrunch(null);
+        setIfscCode(null);
+        setRegNo(null);
     }
     const handaleDelete=()=>{
         setAllview("block")
@@ -222,7 +299,7 @@ const MasterStudentViewUpdate = (props) => {
             </div>
 
             <div style={{display: updateView}} className="dashbrd-40-colm">
-                <button onClick={handaleDelete} className="dashboard-btn dashboard-btn-scss">Delete</button>
+                <button onClick={handaleDelete} className="dashboard-btn btn-warning">Delete</button>
                 <button onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">cancel</button>
                 <form onSubmit={handleUpdate}>
                     <div>
@@ -233,6 +310,7 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Student Name"
                             required={true}
+                            readOnly
                         />
                     </div>
                     <div>
@@ -495,6 +573,7 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setApplyClass(e.target.value)}
                             placeholder="Applied Class"
                             required={true}
+                            readOnly
                         />
                     </div>
                     <div>
@@ -505,6 +584,7 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setAdmissionYear(e.target.value)}
                             placeholder="Admission Year"
                             required={true}
+                            readOnly
                         />
                     </div>
                     <div>
