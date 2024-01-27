@@ -48,10 +48,12 @@ const AcademicEntryView= (props) => {
                         <th>Student Id</th>
                         <th>Student Name</th>
                         <th>Registration No</th>
+                        <th>Year of Admission</th>
+                        
                         <th>Class</th>
                         <th>Section</th>
                         <th>Roll No</th>
-                        <th>Year of Admission</th>
+                        <th>Current Year of Study</th>
                         <th>Hostel Entry</th>
                         
                     </tr>
@@ -64,11 +66,13 @@ const AcademicEntryView= (props) => {
                                     <td>{data.student_id}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td>
+                                    <td>{data.admission_year}</td>
+                                   
                                     <td>{data.class}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
-                                    <td>{data.admission_year}</td>
-                                    <td>{data.hostelentry === 1 ? 'Yes' : 'No'}</td>
+                                    <td>{data.current_academic_year}</td>
+                                    <td>{data.hostelentry === 1 ? 'Y' : 'N'}</td>
 
 
                                     
