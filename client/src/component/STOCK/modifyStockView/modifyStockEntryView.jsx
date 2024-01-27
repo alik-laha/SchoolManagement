@@ -213,9 +213,9 @@ const ModifyStockEntryView= (props) => {
             </div>
          
                 {/* hidden tbody */}
-            <div style={{display: visiblity}} className="dashbrd-40-colm">
+            <div style={{display: visiblity,background:'blue'}} className="dashbrd-40-colm">
                 <hr></hr>
-            
+                
                 <form onSubmit={handaleSubmit}>
                 <p className="customize-centre">Edit Stock Details</p>
                 <div>
@@ -299,10 +299,12 @@ const ModifyStockEntryView= (props) => {
                     <label>Balance Amount</label>
                     <input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} readOnly/>
                 </div>
-              
+                            
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={cancelEdit}>Cancel</button>
+                
                 </form>
-                <button type="submit" value="Update" className="dashboard-btn btn-warning excel-btn" onClick={cancelEdit}>Cancel</button>
+                
            
             </div>
 

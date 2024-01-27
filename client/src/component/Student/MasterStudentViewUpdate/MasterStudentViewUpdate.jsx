@@ -138,7 +138,7 @@ const MasterStudentViewUpdate = (props) => {
                     <th>Year of Admission</th>
                     <th>Registration No</th>
                     <th>Admisson Date</th>
-                    <th>action</th>
+                    <th>Action</th>
 
                 </tr>
                 </thead>
@@ -154,7 +154,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.registration_no}</td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
                                 <td>
-                                    <button onClick={()=>Handleedit(item)}>Edit</button>
+                                    <button className='dashboard-btn btn-warning' onClick={()=>Handleedit(item)}>Edit</button>
                                 </td>
                             </tr>
                         )
