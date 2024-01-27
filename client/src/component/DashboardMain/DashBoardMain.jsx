@@ -36,6 +36,8 @@ import MasterStudentViewUpdate from "../Student/MasterStudentViewUpdate/MasterSt
 import AcademicEntryUpdateSearch from "../Student/AcademicEntry/AcademicEntryUpdateSearch.jsx";
 import AcademicEntryUpdate from "../Student/AcademicEntry/AcademicEntryUpdate.jsx";
 import CreateFaculty from "../FACULTY/CreateFaculty/CreateFaculty.jsx";
+import ViewAndUpdateFacultysearch from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFacultySearch.jsx"
+import ViewAndUpdateFaculty from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFaculty.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -71,6 +73,7 @@ const DashBoardMain = (props) => {
   const[itemData,setItemData]=useState([])
     const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
   const [academicEntryUpdateShow, setacademicEntryUpdateShow] = useState("none");
+  const [facultyData, setFacultyData] = useState([]);
   const [roomData, setRoomData] = useState([])
   {/* User Start */}
             //get all roles
@@ -218,6 +221,9 @@ const handleacademicEntryData=(data)=>{
 const getAllRoom=(data)=>{
       setRoomData(data)
 }
+  const facultySearchedData=(data)=>{
+        setFacultyData(data)
+  }
 
   return (
     <>
@@ -280,6 +286,7 @@ const getAllRoom=(data)=>{
             <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
 
             <CreateFaculty view={props.CreateFaculty}/>
+            <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
         </div>
 
 
@@ -328,7 +335,7 @@ const getAllRoom=(data)=>{
           <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
-
+            <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
         </div>
       </div>
     </>

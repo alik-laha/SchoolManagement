@@ -12,7 +12,7 @@ router.post('/deletefaculty',DeleteFaculty)
 router.post('/updatefaculty',UpdateFaculty)
 
 //get all faculty
-router.get('/getallfaculty',GetAllFaculty)
+router.post('/getallfaculty',GetAllFaculty)
 
 
 module.exports = router

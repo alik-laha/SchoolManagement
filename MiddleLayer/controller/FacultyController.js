@@ -78,8 +78,15 @@ exports.UpdateFaculty = (req, res) => {
 
 //get all faculty
 exports.GetAllFaculty = (req, res) => {
+    const {search}=req.body
     try{
-        let query = `SELECT * FROM faculty_admin WHERE active=1`
+        let query
+        if(search){
+         query=`SELECT * FROM faculty_admin WHERE active=1 AND name LIKE '%${search}%'`
+        }
+        else{
+             query = `SELECT * FROM faculty_admin WHERE active=1`
+        }
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
