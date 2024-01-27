@@ -76,8 +76,8 @@ let sum=0;
                 <td></td>
                 <td></td>
                 <td></td>
-                    <td style={{backgroundColor:'#f39c12',color:'white',border:'solid black'}}><b>Total Balance Amount :</b></td>
-                    <td style={{backgroundColor:'ghostwhite',border:'solid black',}}><b>{sum}</b></td>
+                    <td style={{backgroundColor:'#f39c12',color:'white',border:'1px solid black'}}><b>Total Balance Amount :</b></td>
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black',}}><b>{sum}</b></td>
                 </tr>
                 </tbody>
             </table>
