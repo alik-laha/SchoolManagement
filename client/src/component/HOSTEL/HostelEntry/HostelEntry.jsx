@@ -169,6 +169,7 @@ const HostelEntry = (props) => {
                             <th>Class</th>
                             <th>Registration No</th>
                             <th>Admisson Year</th>
+                            
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -186,11 +187,13 @@ const HostelEntry = (props) => {
                                         <td>{data.class}</td>
                                         <td>{data.registration_no}</td>
                                         <td>{data.admission_year}</td>
+                                        
                                         <td>
                                             <button className='dashboard-btn btn-warning'
                                                     onClick={() => handaleClick(data)}>Hostel Entry
                                             </button>
                                         </td>
+                                        <></>
 
                                     </tr>
 
