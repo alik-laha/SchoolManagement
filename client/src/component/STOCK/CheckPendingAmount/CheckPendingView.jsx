@@ -64,6 +64,15 @@ const CheckPendingView= (props) => {
                         
                     </tr>
                 ))}
+                <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                    <td><b>Total Balance Amount :</b></td>
+                    <td></td>
+                </tr>
                 </tbody>
             </table>
             {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
