@@ -242,6 +242,13 @@
     min-height: 1px;
     position: relative; 
 }
+.special-25-div{
+    
+}
+
+.special-25-div div{
+    width: 25%!important;
+}
 .dashbrd-40-colm label{
     display: inline-block;
     max-width: 100%;

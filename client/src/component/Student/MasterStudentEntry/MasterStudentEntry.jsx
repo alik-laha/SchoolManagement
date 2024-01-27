@@ -125,7 +125,7 @@ const MasterStudentEntry= (props) => {
     }
 
     return(
-        <div style={{display:props.view}} className="dashbrd-40-colm">
+        <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
             <form onSubmit={handleEntry}>
                 <p>Basic Details</p>
                 <div>
