@@ -223,7 +223,7 @@ const SideBar = (props) => {
       <>
       <div className={props.class}>
       
-      <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p>AL-HILAL-Mission</p></span>
+      <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p>AL-HILAL-MISSION</p></span>
       <div className="sidebar-main-header">
         {/* User */}
         <span onClick={userVisiblity} className="user" style={{ display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>

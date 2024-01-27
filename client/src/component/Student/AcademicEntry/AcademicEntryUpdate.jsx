@@ -17,13 +17,18 @@ const AcademicEntryUpdate = (props) => {
 
     useEffect(()=> {
         console.log(props.academicallview,props.view)
-        if (props.academicallview === "block" && props.view === "block") {
+        if (props.academicallview === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.academicallview,props.view])
+    },[props.academicallview,props.view,props.SearchebyData])
+
+    const clearTable = () => {
+        setAcademicAll([]);
+        setEditedIndex(null)
+      };
 
     const HandleEdit=(index,data)=>{
         setEditedIndex(index);
@@ -56,6 +61,7 @@ const AcademicEntryUpdate = (props) => {
        <div style={{display:view}}>
            <table className="table-60" id="academic-entry-view">
                <thead>
+               <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                <tr>
                    <th>Student Id</th>
                    <th>Student Name</th>
