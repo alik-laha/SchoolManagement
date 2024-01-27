@@ -280,10 +280,19 @@ const getAllRoom=(data)=>{
         
         {/* Hostel End*/}
 
-          <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
+        {/* Student Start*/} 
+
+          {/* Master Student Entry*/}
           <MasterStudentEntry view={props.StudentEntry}/>
-            <MasterStudentViewSearch view={props.MasterStudentView} onclick={MasterStudentViewall} setMasterStudentData={MasterStudentSearchData}/>
-            <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
+          {/* Master Student Search*/}
+          <MasterStudentViewSearch view={props.MasterStudentView} onclick={MasterStudentViewall} setMasterStudentData={MasterStudentSearchData}/>
+          {/* Academic Student Search*/}
+          <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
+          {/* Export Student Search*/}
+          <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
+        
+        {/* Student End*/} 
+
 
             <CreateFaculty view={props.CreateFaculty}/>
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
@@ -330,11 +339,16 @@ const getAllRoom=(data)=>{
           <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
           <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
           <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
-         {/* Hostel End*/}   
+         {/* Hostel End*/}
 
-          <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
+         {/* Student Start*/} 
+            
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
+            <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
+         {/* Student End*/} 
+
+           
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
         </div>
       </div>

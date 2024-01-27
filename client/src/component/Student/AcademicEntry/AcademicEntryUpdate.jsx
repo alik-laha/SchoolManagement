@@ -42,7 +42,10 @@ const AcademicEntryUpdate = (props) => {
         if(index===editedIndex) {
             axios.post("http://localhost:7000/api/v1/student/academecentry", {section, rollNo,regNo})
                 .then((res) => {
+                    alert("Student Details Updated Successfully")
                     console.log(res)
+                    setEditedIndex(null)
+                    setView('none')
                 })
                 .catch((err) => {
                     console.log(err)
@@ -57,10 +60,11 @@ const AcademicEntryUpdate = (props) => {
                    <th>Student Id</th>
                    <th>Student Name</th>
                    <th>Registration No</th>
+                   <th>Year of Admission</th>
                    <th>Class</th>
                    <th>Section</th>
                    <th>Roll No</th>
-                   <th>Year of Admission</th>
+                   <th>Current Year of Study</th>
                     <th>Action</th>
                </tr>
                </thead>
@@ -72,6 +76,7 @@ const AcademicEntryUpdate = (props) => {
                                <td>{data.student_id}</td>
                                <td>{data.student_Name}</td>
                                <td>{data.registration_no}</td>
+                               <td>{data.admission_year}</td>
                                <td>{data.class}</td>
                                <td>{editedIndex!==index ? (
                                    data.section
@@ -93,15 +98,15 @@ const AcademicEntryUpdate = (props) => {
                                    />
                                )
                                }</td>
-                               <td>{data.admission_year}</td>
+                               <td>{data.current_academic_year}</td>
                                <td>
                                    {editedIndex === index ? (
                                        <>
-                                           <button onClick={HandaleCancel}>Cancel</button>
-                                           <button onClick={()=>HandleSubmit(index)}>Submit</button>
+                                           <div style={{display:'flex'}}><button className="dashboard-btn dashboard-btn-scss" onClick={HandaleCancel}> Cancel </button>
+                                           <button style={{marginLeft:'5px'}} className="dashboard-btn dashboard-btn-scss" onClick={()=>HandleSubmit(index)}> Submit </button></div>
                                        </>
                                    ) : (
-                                       <button onClick={() => HandleEdit(index,data)}>Edit</button>
+                                       <button className="dashboard-btn btn-warning" onClick={() => HandleEdit(index,data)}>Edit</button>
                                    )}
                                </td>
 

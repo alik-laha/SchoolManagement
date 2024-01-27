@@ -252,7 +252,7 @@ const SecondaryStockEntryView= (props) => {
                         <button type="submit" disabled={disableedit} value="Update" className="dashboard-btn btn-warning" onClick={handaleSubmit}
                                 > Proceed
                         </button>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
+                        <button type="submit" value="Update" classNa="dashboard-btn btn-warning"me
                                 onClick={cancelEdit}> Back
                         </button>
                     </td>

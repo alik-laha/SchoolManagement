@@ -33,20 +33,20 @@ const AcademicEntryUpdateSearch= (props) => {
                         <label>
                             Search By Class.
                         </label>
-                        <input type="text" value={Class} onChange={(e) => setClass(e.target.value)}/>
+                        <input placeholder='Class' type="text" value={Class} onChange={(e) => setClass(e.target.value)}/>
                     </div>
 
                     <div>
                         <label>
-                            Search By Academic Year.
+                            Search By Admission Year.
                         </label>
-                        <input type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                        <input placeholder='Admission Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
                     </div>
                     <div>
                         <label>
                             Search By Registration No.
                         </label>
-                        <input type="text" value={regNo} onChange={(e) => setregNo(e.target.value)}/>
+                        <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
