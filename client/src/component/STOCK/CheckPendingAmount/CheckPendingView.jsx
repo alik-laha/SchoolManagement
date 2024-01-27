@@ -29,7 +29,7 @@ const CheckPendingView= (props) => {
             setVisible("none")
         }
     },[props.StockView,props.view])
-
+let sum=0;
     return (
         <div style={{display:visible}}>
             <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
@@ -55,6 +55,7 @@ const CheckPendingView= (props) => {
                 </thead>
                 <tbody>
                 {viewStock.map((item) => (
+                    sum=sum+item.pending_amount,
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
@@ -62,7 +63,7 @@ const CheckPendingView= (props) => {
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
-                        <td>{item.pending_amount}</td>   
+                        <td>{item.pending_amount}</td>
                     </tr>
                 ))}
                 <tr>
@@ -72,7 +73,7 @@ const CheckPendingView= (props) => {
                 <td></td>
                 <td></td>
                     <td><b>Total Balance Amount :</b></td>
-                    <td></td>
+                    <td>{sum}</td>
                 </tr>
                 </tbody>
             </table>
