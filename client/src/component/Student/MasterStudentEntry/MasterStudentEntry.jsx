@@ -110,7 +110,8 @@ const MasterStudentEntry= (props) => {
                         axios.post("http://localhost:7000/api/v1/student/studentadmission", data1)
                             .then((res) => {
                                 console.log(res)
-                        alert("Student Admission Successfully with registration no. "+regNo);
+                                
+                        alert("Student Admitted Successfully and Registration no. Generated :"+regNo);
                     })
                     .catch((err) => {
                         console.log(err)
@@ -220,6 +221,37 @@ const MasterStudentEntry= (props) => {
                         value={bloodGroup}
                         onChange={(e) => setBloodGroup(e.target.value)}
                         placeholder="Blood Group"
+                    />
+                </div>
+                <div>
+                    <label>Address*</label>
+                    <input
+                        type="textbox"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Address"
+                        required={true}
+                    />
+                </div>
+
+                <div>
+                    <label>Pin Number*</label>
+                    <input
+                        type="number"
+                        value={pinNo}
+                        onChange={(e) => setPinNo(e.target.value)}
+                        placeholder="Pin Number"
+                        required={true}
+                    />
+                </div>
+             
+                <div>
+                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
+                    <input
+                        type="text"
+                        value={bspId}
+                        onChange={(e) => setBspId(e.target.value)}
+                        placeholder="B.S.P Id"
                     />
                 </div>
          
@@ -386,67 +418,11 @@ const MasterStudentEntry= (props) => {
                 
                 <hr className="division"/>
                 <p>Other Details</p>
-                <div>
-                    <label>Address*</label>
-                    <input
-                        type="textbox"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Address"
-                        required={true}
-                    />
-                </div>
-
-                <div>
-                    <label>Pin Number*</label>
-                    <input
-                        type="number"
-                        value={pinNo}
-                        onChange={(e) => setPinNo(e.target.value)}
-                        placeholder="Pin Number"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
-                    <input
-                        type="text"
-                        value={bspId}
-                        onChange={(e) => setBspId(e.target.value)}
-                        placeholder="B.S.P Id"
-                    />
-                </div>
+            
+           
         
-                <div>
-                    <label>Admission Year*</label>
-                    <input
-                        type="number"
-                        value={admissionYear}
-                        onChange={(e) => setAdmissionYear(e.target.value)}
-                        placeholder="Admission Year"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Admission Date*</label>
-                    <input
-                        type="date"
-                        value={admissonDate}
-                        onChange={(e) => setAdmissonDate(e.target.value)}
-                        placeholder="Admission Date"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Applied For Class*</label>
-                    <input
-                        type="number"
-                        value={applyClass}
-                        onChange={(e) => setApplyClass(e.target.value)}
-                        placeholder="Applied Class"
-                        required={true}
-                    />
-                </div>
+        
+               
               
               
                 <div>
@@ -484,6 +460,36 @@ const MasterStudentEntry= (props) => {
                         value={ifscCode}
                         onChange={(e) => setIfscCode(e.target.value)}
                         placeholder="Ifsc code"
+                    />
+                </div>
+                <div>
+                    <label>Applied For Class*</label>
+                    <input
+                        type="number"
+                        value={applyClass}
+                        onChange={(e) => setApplyClass(e.target.value)}
+                        placeholder="Applied Class"
+                        required={true}
+                    />
+                </div>
+                <div>
+                    <label>Admission Year*</label>
+                    <input
+                        type="number"
+                        value={admissionYear}
+                        onChange={(e) => setAdmissionYear(e.target.value)}
+                        placeholder="Admission Year"
+                        required={true}
+                    />
+                </div>
+                <div>
+                    <label>Admission Date*</label>
+                    <input
+                        type="date"
+                        value={admissonDate}
+                        onChange={(e) => setAdmissonDate(e.target.value)}
+                        placeholder="Admission Date"
+                        required={true}
                     />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
