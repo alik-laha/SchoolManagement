@@ -22,7 +22,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
         setdOB('');
   }).catch(err=>{
     if(err.response.data.msg.errno===1062){
-      alert(`UserName ${name} already exists`)
+      alert(`User [${name}] Already Exists`)
     }
     })
     ;}

@@ -43,7 +43,7 @@ const searchHostelView= (props) => {
                     <div>
                     <label>Search by Room No. </label>
                         <select onChange={(e)=>setRoomNo(e.target.value)}>
-                            <option value="">Select Room No</option>
+                            <option value="">All Room</option>
                             {
                                 props.data.map((data,idx)=>{
                                     return(

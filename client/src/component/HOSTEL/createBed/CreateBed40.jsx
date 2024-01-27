@@ -21,6 +21,9 @@ const CreateBed40 = (props) => {
             if(err.response.data.msg.errno===1062){
                 alert(`Room No. ${room} already exists`)
             }
+            
+            setRoom("");
+            
         });
     }
     return (
