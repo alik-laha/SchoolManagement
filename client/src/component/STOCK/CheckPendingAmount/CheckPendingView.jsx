@@ -6,7 +6,7 @@ const CheckPendingView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
-    const [totalpending,settotalpending]=useState(0);
+   
     
     const clearTable = () => {
         setViewStock([]);
@@ -46,6 +46,7 @@ let sum=0;
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
+                    <th>Cash Entry</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
@@ -59,6 +60,7 @@ let sum=0;
                     <tr key={item.stock_id}>
                         <td>{item.stock_id}</td>
                         <td>{item.bill_id}</td>
+                        <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
                         <td>{item.vendor_name}</td>
@@ -66,14 +68,16 @@ let sum=0;
                         <td>{item.pending_amount}</td>
                     </tr>
                 ))}
+          
                 <tr>
+                <td style={{border:'none'}}></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                    <td><b>Total Balance Amount :</b></td>
-                    <td>{sum}</td>
+                    <td style={{backgroundColor:'#f39c12',color:'white',border:'solid black'}}><b>Total Balance Amount :</b></td>
+                    <td style={{backgroundColor:'ghostwhite',border:'solid black',}}><b>{sum}</b></td>
                 </tr>
                 </tbody>
             </table>
