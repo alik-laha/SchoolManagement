@@ -10,7 +10,12 @@ const ViewBedStatus60 = (props) => {
     const [floor, setFloor] = useState("");
     const [room, setRoom] = useState("");
     const [totalbed, setTotal_bed] = useState("");
+    const [bedstock, setbedstock] = useState([]);
 
+    useEffect(()=>{
+        setbedstock(props.BedData)
+  
+    },[props.BedData])
 
     useEffect(() => {
        if(props.viewbed==="block" && props.BedData.length>0){
@@ -21,6 +26,12 @@ const ViewBedStatus60 = (props) => {
        }
 
     }, [props.viewbed,props.BedData]);
+
+    const clearTable = () => {
+        if(editView==='none')
+        setbedstock([]);
+      };
+
     const handaleEdit = (data) => {
         setMainView("none");
         setEditView("contents");
@@ -51,6 +62,12 @@ const ViewBedStatus60 = (props) => {
         setBuilding("")
     }
     const handaleUpdate = (id) => {
+        
+        if(!floor || !bulding || !totalbed || !totalbed){
+            alert("Please fill all the fields")
+            return
+        }
+
         axios
             .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
@@ -71,6 +88,7 @@ const ViewBedStatus60 = (props) => {
             <div style={{display:view}}>
                 <table className="table-60">
                     <thead style={{display: mainView}}>
+                    <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
                             <th>Room Id</th>
                             <th>Bulding</th>
@@ -84,7 +102,7 @@ const ViewBedStatus60 = (props) => {
                         </tr>
                     </thead>
                     <tbody style={{display:mainView}}>
-                        {props.BedData.map((item) => (
+                        {bedstock.map((item) => (
                             <tr key={item.id}>
                                 <td>{item.id}</td>
                                 <td>{item.building}</td>
@@ -138,6 +156,7 @@ const ViewBedStatus60 = (props) => {
                     </tr>
                     </tbody>
                 </table>
+                {bedstock.length===0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
         </>
     )

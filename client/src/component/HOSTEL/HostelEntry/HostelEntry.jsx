@@ -161,7 +161,7 @@ const HostelEntry = (props) => {
                 <div style={{display:view}} >
                     <table className="table-60" >
                         <thead style={{display:allView}}>
-                        <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                        <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
                             <th>Id</th>
                             <th>Entry status</th>
