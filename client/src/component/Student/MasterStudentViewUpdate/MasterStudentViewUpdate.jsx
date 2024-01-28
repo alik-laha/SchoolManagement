@@ -21,23 +21,23 @@ const MasterStudentViewUpdate = (props) => {
     const [fatherContactNo, setFatherContactNo] = useState(0);
     const [motherName, setMotherName] = useState('');
     const [motherQualification, setMotherQualification] = useState('');
-    const [motherOcupation, setMotherOcupation] = useState(null);
+    const [motherOcupation, setMotherOcupation] = useState('');
     const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(0);
     const [motherContactNo, setMotherContactNo] = useState(0);
-    const [guardianName, setGuardianName] = useState(null);
-    const [relationship, setRelationship] = useState(null);
-    const [guardianContactNo, setGuardianContactNo] = useState(null);
-    const [address, setAddress] = useState(null);
-    const [pinNo, setPinNo] = useState(null);
-    const [bspId, setBspId] = useState(null);
-    const [applyClass, setApplyClass] = useState(null);
-    const [admissionYear, setAdmissionYear] = useState(null);
+    const [guardianName, setGuardianName] = useState('');
+    const [relationship, setRelationship] = useState('');
+    const [guardianContactNo, setGuardianContactNo] = useState('');
+    const [address, setAddress] = useState('');
+    const [pinNo, setPinNo] = useState('');
+    const [bspId, setBspId] = useState('');
+    const [applyClass, setApplyClass] = useState('');
+    const [admissionYear, setAdmissionYear] = useState('');
     const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
-    const [age, setAge] = useState(null);
-    const [bloodGroup, setBloodGroup] = useState(null);
+    const [age, setAge] = useState('');
+    const [bloodGroup, setBloodGroup] = useState('');
     const [bankAcountNo, setBankAcountNo] = useState(0);
-    const [brunch, setBrunch] = useState(null);
-    const [ifscCode, setIfscCode] = useState(null);
+    const [brunch, setBrunch] = useState('');
+    const [ifscCode, setIfscCode] = useState('');
     const[allView,setAllview]=useState("block")
 
     const [regNo,setRegNo]=useState(null);
@@ -57,119 +57,119 @@ const MasterStudentViewUpdate = (props) => {
         setAllview("none")
         setUpdateView("block")
 
-        if(item.student_Name!=='null')
+        if(item.student_Name!=='')
         {
             setName(item.student_Name);
         }
         else{
             setName('');
         }
-        if(item.adhar_no!=='null')
+        if(item.adhar_no!=='')
         {
             setAdharNo(item.adhar_no);
         }
         else{
             setAdharNo('');
         }
-        if(item.sex!=='null')
+        if(item.sex!=='')
         {
             setSex(item.sex);
         }
         else{
             setSex('');
         }
-        if(item.religion!=='null')
+        if(item.religion!=='')
         {
             setReligion(item.religion);
         }
         else{
             setReligion('');
         }
-        if(item.dob!=='null')
+        if(item.dob!=='')
         {
             setDob(item.dob.slice(0, 10))
         }
         else{
             setDob('');
         }
-        if(item.cast!=='null')
+        if(item.cast!=='')
         {
             setCast(item.cast);
         }
         else{
             setCast('');
         }
-        if(item.physically_challenged!=='null' )
+        if(item.physically_challenged!=='' )
         {
             setPhysicallyChallenged(item.physically_challenged);
         }
         else{
             setPhysicallyChallenged('');
         }
-        if(item.orphanage!=='null')
+        if(item.orphanage!=='')
         {
             setOrphanage(item.orphanage);
         }
         else{
             setOrphanage('');
         }
-        if(item.father_name!=='null')
+        if(item.father_name!=='')
         {
             setFatherName(item.father_name);
         }
         else{
             setFatherName('');
         }
-        if(item.father_qualification!=='null')
+        if(item.father_qualification!=='')
         {
             setFatherQualification(item.father_qualification);
         }
         else{
             setFatherQualification('');
         }
-        if(item.father_ocupation!=='null')
+        if(item.father_ocupation!=='')
         {
             setFatherOcupation(item.father_ocupation);
         }
         else{
             setFatherOcupation('');
         }
-        if(item.father_monthlyIncome!=='null' )
+        if(item.father_monthlyIncome!=='' )
         {
             setFatherMonthlyIncome(item.father_monthlyIncome);
         }
         else{
             setFatherMonthlyIncome('');
         }
-        if(item.father_contact!=='null' )
+        if(item.father_contact!=='' )
         {
             setFatherContactNo(item.father_contact);
         }
         else{
             setFatherContactNo('');
         }
-        if(item.mother_name!=='null' )
+        if(item.mother_name!=='' )
         {
             setMotherName(item.mother_name);
         }
         else{
             setMotherName('');
         }
-        if(item.mother_qualification!=='null')
+        if(item.mother_qualification!=='')
         {
             setMotherQualification(item.mother_qualification);
         }
         else{
             setMotherQualification('');
         }
-        if(item.mother_ocupation!=='null')
+        if(item.mother_ocupation!=='')
         {
             setMotherOcupation(item.mother_ocupation);
         }
         else{
             setMotherOcupation('');
         }
-        if(item.mother_monthlyIncome!=='null')
+        if(item.mother_monthlyIncome!=='')
         {
             setMotherMonthlyIncome(item.mother_monthlyIncome);
         }
@@ -190,63 +190,63 @@ const MasterStudentViewUpdate = (props) => {
         else{
             setGuardianName('');
         }
-        if(item.relationship!=='null')
+        if(item.relationship!=='')
         {
             setRelationship(item.relationship);
         }
         else{
             setRelationship('');
         }
-        if(item.guardian_contact!=='null')
+        if(item.guardian_contact!=='')
         {
             setGuardianContactNo(item.guardian_contact);
         }
         else{
             setGuardianContactNo('');
         }
-        if(item.address!=='null')
+        if(item.address!=='')
         {
             setAddress(item.address);
         }
         else{
             setAddress('');
         }
-        if(item.pin_no!=='null')
+        if(item.pin_no!=='')
         {
             setPinNo(item.pin_no);
         }
         else{
             setPinNo('');
         }
-        if(item.bsp_id!=='null')
+        if(item.bsp_id!=='')
         {
             setBspId(item.bsp_id);
         }
         else{
             setBspId('');
         }
-        if(item.applied_class!=='null')
+        if(item.applied_class!=='')
         {
             setApplyClass(item.applied_class);
         }
         else{
             setApplyClass('');
         }
-        if(item.admisson_year!=='null')
+        if(item.admisson_year!=='')
         {
             setAdmissionYear(item.admisson_year);
         }
         else{
             setAdmissionYear('');
         }
-        if(item.admisson_date!=='null')
+        if(item.admisson_date!=='')
         {
             setAdmissonDate(item.admisson_date.slice(0, 10));
         }
         else{
             setAdmissonDate('');
         }
-        if(item.age!=='null')
+        if(item.age!=='')
         {
             setAge(item.age);
         }
@@ -310,39 +310,39 @@ const MasterStudentViewUpdate = (props) => {
             .catch((err)=>{
                 console.log(err);
             })
-        setName(null);
-        setAdharNo(null);
-        setSex(null);
-        setReligion(null);
-        setDob(null);
-        setCast(null);
-        setPhysicallyChallenged(0);
-        setOrphanage(0);
-        setFatherName(null);
-        setFatherQualification(null);
-        setFatherOcupation(null);
-        setFatherMonthlyIncome(0);
-        setFatherContactNo(0);
-        setMotherName(null);
-        setMotherQualification(null);
-        setMotherOcupation(null);
-        setMotherMonthlyIncome(0);
-        setMotherContactNo(0);
-        setGuardianName(null);
-        setRelationship(null);
-        setGuardianContactNo(null);
-        setAddress(null);
-        setPinNo(null);
-        setBspId(null);
-        setApplyClass(null);
-        setAdmissionYear(null);
-        setAdmissonDate(new Date().toISOString().slice(0, 10));
-        setAge(null);
-        setBloodGroup(null);
-        setBankAcountNo(0);
-        setBrunch(null);
-        setIfscCode(null);
-        setRegNo(null);
+            setName('');
+            setAdharNo('');
+            setSex('');
+            setReligion('');
+            setDob('');
+            setCast('');
+            setPhysicallyChallenged(0);
+            setOrphanage(0);
+            setFatherName('');
+            setFatherQualification('');
+            setFatherOcupation('');
+            setFatherMonthlyIncome(0);
+            setFatherContactNo(0);
+            setMotherName('');
+            setMotherQualification('');
+            setMotherOcupation('');
+            setMotherMonthlyIncome(0);
+            setMotherContactNo(0);
+            setGuardianName('');
+            setRelationship('');
+            setGuardianContactNo('');
+            setAddress('');
+            setPinNo('');
+            setBspId('');
+            setApplyClass('');
+            setAdmissionYear('');
+            setAdmissonDate(new Date().toISOString().slice(0, 10));
+            setAge('');
+            setBloodGroup('');
+            setBankAcountNo(0);
+            setBrunch('');
+            setIfscCode('');
+            setRegNo('');
     }
     const handaleDelete=(regNo,name)=>{
         setAllview("block")
