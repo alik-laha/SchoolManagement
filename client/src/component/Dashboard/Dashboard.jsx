@@ -7,6 +7,7 @@ import {useState } from "react";
 const Dashboard = () => {
   const HandaleLogout = () => {
     sessionStorage.removeItem("user");
+    window.location.reload();
 
   };
  const [dashbvisi,setdashBVisi]=useState('none');

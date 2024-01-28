@@ -218,6 +218,7 @@ const ModifyStockEntryView= (props) => {
                 
                 <form onSubmit={handaleSubmit}>
                 <p className="customize-centre">Edit Stock Details</p>
+                
                 <div>
                     <label>Bill Id*</label>
                     <input

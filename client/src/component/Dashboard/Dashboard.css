@@ -246,6 +246,11 @@
     
 }
 
+.read-only{
+    background: lightyellow!important;
+    font-weight: 600!important;
+}
+
 .special-25-div div{
     width: 25%!important;
 }
