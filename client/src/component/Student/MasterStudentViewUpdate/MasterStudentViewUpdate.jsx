@@ -42,13 +42,13 @@ const MasterStudentViewUpdate = (props) => {
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
-       if(props.view==="block" && props.View40==="block") {
+       if(props.view==="block" && props.View40==="block" && props.data.length>0) {
                 setView("block");
             }
             else {
                 setView("none");
             }
-    }, [props.view,props.View40]);
+    }, [props.view,props.View40,props.data]);
     useEffect(() => {
        setMasterStudent(props.data);
 
@@ -173,14 +173,16 @@ const MasterStudentViewUpdate = (props) => {
         setIfscCode(null);
         setRegNo(null);
     }
-    const handaleDelete=()=>{
+    const handaleDelete=(regNo,name)=>{
         setAllview("block")
         setUpdateView("none")
         axios.post("http://localhost:7000/api/v1/student/deletemasterstudent",{regNo})
             .then((res)=>{
         axios.post("http://localhost:7000/api/v1/student/deletestudent",{regNo})
             .then((res)=>{
+                alert('Student : '+ name + ' Deleted Successfully' )
                 console.log(res.data);
+                setView('none')
             })
             .catch((err)=>{
                 console.log(err);
@@ -290,7 +292,16 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.admisson_date.slice(0, 10)}</td>
                                 <td>
                                     <button className='dashboard-btn btn-warning' onClick={()=>Handleedit(item)}>Edit</button>
-                                    <button onClick={handaleDelete} className="dashboard-btn btn-warning">Delete</button>
+                                    <button onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "Do you really want to delete this Student: "+item.student_Name +"?"
+                                        );
+                                        if (confirmBox === true) {
+                                            handaleDelete(item.registration_no,item.student_Name);
+                                        }
+                                    }}
+                                    
+                                     className="dashboard-btn btn-warning">Delete</button>
                                 </td>
                             </tr>
                         )
