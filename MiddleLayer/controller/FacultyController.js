@@ -128,7 +128,6 @@ exports.createSubject = (req, res) => {
 }
 
 //get all subject
-
 exports.GetAllSubject = (req, res) => {
     try {
         let query = `SELECT *
@@ -145,5 +144,101 @@ exports.GetAllSubject = (req, res) => {
     catch (err) {
         console.log(err)
         res.status(400).json({message: "Error Occured", err: err})
+    }
+}
+
+//delete subject
+exports.DeleteSubject = (req, res) => {
+    const {id}=req.body
+    try{
+        if(id){
+            let query = `DELETE FROM Subject WHERE id=${id}`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured"})
+                }
+                else{
+                    res.status(200).json({message:"Subject Deleted"})
+                }
+            })
+        }
+        else {
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
+
+//create internal exam
+exports.createInternalExam = (req, res) => {
+    const {name,totalMarks}=req.body
+    try{
+        if(name && totalMarks){
+            let query = `INSERT INTO internal_exam (internal_exam_name,int_exam_marks) VALUES ('${name}','${totalMarks}')`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Subject Created"})
+                }
+            })
+        }
+        else{
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }
+    catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
+
+//get all internal exam
+exports.GetAllInternalExam = (req, res) => {
+    try {
+        let query = `SELECT *
+                     FROM internal_exam`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(400).json({message: "Error Occured"})
+            } else {
+                res.status(200).json({message: "Subject Fetched", data: result})
+            }
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(400).json({message: "Error Occured", err: err})
+    }
+}
+
+//delete internal exam
+exports.DeleteInternalExam = (req, res) => {
+    const {id}=req.body
+    try{
+        if(id){
+            let query = `DELETE FROM internal_exam WHERE id=${id}`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured"})
+                }
+                else{
+                    res.status(200).json({message:"Subject Deleted"})
+                }
+            })
+        }
+        else {
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
     }
 }
