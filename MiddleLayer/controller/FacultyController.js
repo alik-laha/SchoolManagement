@@ -242,3 +242,74 @@ exports.DeleteInternalExam = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//create external exam
+exports.createExternalExam = (req, res) => {
+    const {name,totalMarks}=req.body
+    try{
+        if(name && totalMarks){
+            let query = `INSERT INTO external_exam (external_exam_name,ext_exam_marks) VALUES ('${name}','${totalMarks}')`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Subject Created"})
+                }
+            })
+        }
+        else{
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }
+    catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
+
+//get all external exam
+exports.GetAllExternalExam = (req, res) => {
+    try {
+        let query = `SELECT *
+                     FROM external_exam`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(400).json({message: "Error Occured"})
+            } else {
+                res.status(200).json({message: "Subject Fetched", data: result})
+            }
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(400).json({message: "Error Occured", err: err})
+    }
+}
+
+//delete external exam
+exports.DeleteExternalExam = (req, res) => {
+    const {id}=req.body
+    try{
+        if(id){
+            let query = `DELETE FROM external_exam WHERE id=${id}`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured"})
+                }
+                else{
+                    res.status(200).json({message:"Subject Deleted"})
+                }
+            })
+        }
+        else {
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}

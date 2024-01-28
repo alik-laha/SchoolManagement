@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,createInternalExam} = require('../controller/FacultyController')
+const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,createInternalExam,createExternalExam,GetAllExternalExam,DeleteExternalExam} = require('../controller/FacultyController')
 
 //create faculty
 router.post('/createfaculty',createFaculty)
@@ -32,5 +32,13 @@ router.post('/getallinternalexam',GetAllInternalExam)
 //delete internal exam
 router.post('/deleteinternalexam',DeleteInternalExam)
 
+//create external exam
+router.post('/createexternalexam',createExternalExam)
+
+//get all external exam
+router.post('/getallexternalexam',GetAllExternalExam)
+
+//delete external exam
+router.post('/deleteexternalexam',DeleteExternalExam)
 
 module.exports = router
