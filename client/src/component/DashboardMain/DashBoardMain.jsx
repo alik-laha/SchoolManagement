@@ -38,6 +38,8 @@ import AcademicEntryUpdate from "../Student/AcademicEntry/AcademicEntryUpdate.js
 import CreateFaculty from "../FACULTY/CreateFaculty/CreateFaculty.jsx";
 import ViewAndUpdateFacultysearch from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFacultySearch.jsx"
 import ViewAndUpdateFaculty from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFaculty.jsx";
+import CreateSubject from "../FACULTY/CreateAndViewSubject/CreateSubject.jsx";
+import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -55,13 +57,11 @@ const DashBoardMain = (props) => {
   const [pendingviewstockdata,setpendingviewstockdata]=useState([]);
   const [ViewStock,setViewStock]=useState("none")
   const [viewallStock,setviewallStock]=useState("none")
-
   const [secondStockEntryViewShow,setsecondStockEntryViewShow]=useState('none')
   const [modifyStockEntryViewShow,setmodifyStockEntryViewShow]=useState('none')
   const [pendingViewAllShow,setpendingViewAllShow]=useState('none')
   const [bedData, setBedData] = useState([]);
   const [hostelStudentData, setHostelStudentData] = useState([]);
-
   const [hostelenrtydata,sethostelenrtydata]=useState([])
   const [academicentrydata,setacademicEntryData]=useState([])
   const [viewallacademicEntryShow,setviewallacademicEntryShow]=useState("none")
@@ -71,10 +71,12 @@ const DashBoardMain = (props) => {
   const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
   const [VendorDatas,setVendorData]=useState([])
   const[itemData,setItemData]=useState([])
-    const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
+  const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
   const [academicEntryUpdateShow, setacademicEntryUpdateShow] = useState("none");
   const [facultyData, setFacultyData] = useState([]);
   const [roomData, setRoomData] = useState([])
+  const [subjectData, setSubjectData] = useState([]);
+  const [subjectView, setSubjectView] = useState("none");
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -172,7 +174,12 @@ if(props.Search==="block" && search==="flex"){
     setView("none")
   }
 
-
+const handleSubjectData=(data)=>{
+    setSubjectData(data);
+}
+const handleSubjectView=(data)=>{
+    setSubjectView(data);
+}
 
 //academic-all-button-show
 
@@ -296,6 +303,7 @@ const getAllRoom=(data)=>{
 
             <CreateFaculty view={props.CreateFaculty}/>
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
+            <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
         </div>
 
 
@@ -350,6 +358,7 @@ const getAllRoom=(data)=>{
 
            
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
+            <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
         </div>
       </div>
     </>

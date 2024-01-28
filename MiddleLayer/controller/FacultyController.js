@@ -119,7 +119,7 @@ exports.createSubject = (req, res) => {
             })
         }
         else{
-            res.status(400).json({message:"All Fields are required"})
+            res.status(400).json({message:"All Fields are required",Body:req.body})
         }
     }catch (err){
         console.log(err)
