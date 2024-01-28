@@ -9,7 +9,6 @@ const [View, setView] = useState("none");
         if(props.view === "block" && props.data.length > 0) {
             setView("block");
             setData(props.data);
-            console.log(props.data)
         }
         else{
             setView("none");

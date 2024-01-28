@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty} = require('../controller/FacultyController')
+const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject} = require('../controller/FacultyController')
 
 //create faculty
 router.post('/createfaculty',createFaculty)
@@ -14,5 +14,10 @@ router.post('/updatefaculty',UpdateFaculty)
 //get all faculty
 router.post('/getallfaculty',GetAllFaculty)
 
+//create subject
+router.post('/createsubject',createSubject)
+
+//get all subject
+router.post('/getallsubject',GetAllSubject)
 
 module.exports = router

@@ -101,3 +101,49 @@ exports.GetAllFaculty = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//Create SUBJECT
+exports.createSubject = (req, res) => {
+    const{name}=req.body
+    try{
+        if(name){
+            let query = `INSERT INTO Subject (subject) VALUES ('${name}')`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Subject Created"})
+                }
+            })
+        }
+        else{
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
+
+//get all subject
+
+exports.GetAllSubject = (req, res) => {
+    try {
+        let query = `SELECT *
+                     FROM Subject`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+                res.status(400).json({message: "Error Occured"})
+            } else {
+                res.status(200).json({message: "Subject Fetched", data: result})
+            }
+        })
+    }
+    catch (err) {
+        console.log(err)
+        res.status(400).json({message: "Error Occured", err: err})
+    }
+}
