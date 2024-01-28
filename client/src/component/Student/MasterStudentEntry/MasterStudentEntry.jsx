@@ -33,6 +33,7 @@ const MasterStudentEntry= (props) => {
     const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
+    
 
 
     const handleEntry = (e) => {
@@ -145,6 +146,9 @@ const MasterStudentEntry= (props) => {
                         setBrunch('');
                         setIfscCode('');
                         setRegNo('');
+                        
+                                               
+
                     })
                     .catch((err) => {
                         console.log(err)
@@ -296,6 +300,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="physically challenged"
                         onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
                         value={physicallyChallenged}
+                        
                     />
                 </div>
 
@@ -306,6 +311,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="orphanage"
                         onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
                         value={orphanage}
+                        
                     />
                 </div>
                 
