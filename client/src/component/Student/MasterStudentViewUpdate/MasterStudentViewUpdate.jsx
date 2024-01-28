@@ -6,21 +6,21 @@ const MasterStudentViewUpdate = (props) => {
     const [masterStudent,setMasterStudent]=useState([]);
     const [updateView,setUpdateView]=useState("none")
 
-    const [name, setName] = useState(null);
-    const [adharNo, setAdharNo] = useState(null);
-    const [sex, setSex] = useState(null);
-    const [religion, setReligion] = useState(null);
-    const [dob, setDob] = useState(null);
-    const [cast, setCast] = useState(null);
+    const [name, setName] = useState('');
+    const [adharNo, setAdharNo] = useState('');
+    const [sex, setSex] = useState('');
+    const [religion, setReligion] = useState('');
+    const [dob, setDob] = useState('');
+    const [cast, setCast] = useState('');
     const [physicallyChallenged, setPhysicallyChallenged] = useState(0);
     const [orphanage, setOrphanage] = useState(0);
-    const [fatherName, setFatherName] = useState(null);
-    const [fatherQualification, setFatherQualification] = useState(null);
-    const [fatherOcupation, setFatherOcupation] = useState(null);
+    const [fatherName, setFatherName] = useState('');
+    const [fatherQualification, setFatherQualification] = useState('');
+    const [fatherOcupation, setFatherOcupation] = useState('');
     const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(0);
     const [fatherContactNo, setFatherContactNo] = useState(0);
-    const [motherName, setMotherName] = useState(null);
-    const [motherQualification, setMotherQualification] = useState(null);
+    const [motherName, setMotherName] = useState('');
+    const [motherQualification, setMotherQualification] = useState('');
     const [motherOcupation, setMotherOcupation] = useState(null);
     const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(0);
     const [motherContactNo, setMotherContactNo] = useState(0);
@@ -56,34 +56,205 @@ const MasterStudentViewUpdate = (props) => {
     const Handleedit=(item)=>{
         setAllview("none")
         setUpdateView("block")
-        setName(item.student_Name);
-        setAdharNo(item.adhar_no);
-        setSex(item.sex);
-        setReligion(item.religion);
-        setDob(item.dob.slice(0, 10));
-        setCast(item.cast);
-        setPhysicallyChallenged(item.physically_challenged);
-        setOrphanage(item.orphanage);
-        setFatherName(item.father_name);
-        setFatherQualification(item.father_qualification);
-        setFatherOcupation(item.father_ocupation);
-        setFatherMonthlyIncome(item.father_monthlyIncome);
-        setFatherContactNo(item.father_contact);
-        setMotherName(item.mother_name);
-        setMotherQualification(item.mother_qualification);
-        setMotherOcupation(item.mother_ocupation);
-        setMotherMonthlyIncome(item.mother_monthlyIncome);
-        setMotherContactNo(item.mother_contact);
-        setGuardianName(item.guardian_name);
-        setRelationship(item.relationship);
-        setGuardianContactNo(item.guardian_contact);
-        setAddress(item.address);
-        setPinNo(item.pin_no);
-        setBspId(item.bsp_id);
-        setApplyClass(item.applied_class);
-        setAdmissionYear(item.admisson_year);
-        setAdmissonDate(item.admisson_date.slice(0, 10));
-        setAge(item.age);
+
+        if(item.student_Name!=='null')
+        {
+            setName(item.student_Name);
+        }
+        else{
+            setName('');
+        }
+        if(item.adhar_no!=='null')
+        {
+            setAdharNo(item.adhar_no);
+        }
+        else{
+            setAdharNo('');
+        }
+        if(item.sex!=='null')
+        {
+            setSex(item.sex);
+        }
+        else{
+            setSex('');
+        }
+        if(item.religion!=='null')
+        {
+            setReligion(item.religion);
+        }
+        else{
+            setReligion('');
+        }
+        if(item.dob!=='null')
+        {
+            setDob(item.dob.slice(0, 10))
+        }
+        else{
+            setDob('');
+        }
+        if(item.cast!=='null')
+        {
+            setCast(item.cast);
+        }
+        else{
+            setCast('');
+        }
+        if(item.physically_challenged!=='null' )
+        {
+            setPhysicallyChallenged(item.physically_challenged);
+        }
+        else{
+            setPhysicallyChallenged('');
+        }
+        if(item.orphanage!=='null')
+        {
+            setOrphanage(item.orphanage);
+        }
+        else{
+            setOrphanage('');
+        }
+        if(item.father_name!=='null')
+        {
+            setFatherName(item.father_name);
+        }
+        else{
+            setFatherName('');
+        }
+        if(item.father_qualification!=='null')
+        {
+            setFatherQualification(item.father_qualification);
+        }
+        else{
+            setFatherQualification('');
+        }
+        if(item.father_ocupation!=='null')
+        {
+            setFatherOcupation(item.father_ocupation);
+        }
+        else{
+            setFatherOcupation('');
+        }
+        if(item.father_monthlyIncome!=='null' )
+        {
+            setFatherMonthlyIncome(item.father_monthlyIncome);
+        }
+        else{
+            setFatherMonthlyIncome('');
+        }
+        if(item.father_contact!=='null' )
+        {
+            setFatherContactNo(item.father_contact);
+        }
+        else{
+            setFatherContactNo('');
+        }
+        if(item.mother_name!=='null' )
+        {
+            setMotherName(item.mother_name);
+        }
+        else{
+            setMotherName('');
+        }
+        if(item.mother_qualification!=='null')
+        {
+            setMotherQualification(item.mother_qualification);
+        }
+        else{
+            setMotherQualification('');
+        }
+        if(item.mother_ocupation!=='null')
+        {
+            setMotherOcupation(item.mother_ocupation);
+        }
+        else{
+            setMotherOcupation('');
+        }
+        if(item.mother_monthlyIncome!=='null')
+        {
+            setMotherMonthlyIncome(item.mother_monthlyIncome);
+        }
+        else{
+            setMotherMonthlyIncome('');
+        }
+        if(item.mother_contact!=='null')
+        {
+            setMotherContactNo(item.mother_contact);
+        }
+        else{
+            setMotherContactNo('');
+        }
+        if(item.guardian_name!=='null')
+        {
+            setGuardianName(item.guardian_name);
+        }
+        else{
+            setGuardianName('');
+        }
+        if(item.relationship!=='null')
+        {
+            setRelationship(item.relationship);
+        }
+        else{
+            setRelationship('');
+        }
+        if(item.guardian_contact!=='null')
+        {
+            setGuardianContactNo(item.guardian_contact);
+        }
+        else{
+            setGuardianContactNo('');
+        }
+        if(item.address!=='null')
+        {
+            setAddress(item.address);
+        }
+        else{
+            setAddress('');
+        }
+        if(item.pin_no!=='null')
+        {
+            setPinNo(item.pin_no);
+        }
+        else{
+            setPinNo('');
+        }
+        if(item.bsp_id!=='null')
+        {
+            setBspId(item.bsp_id);
+        }
+        else{
+            setBspId('');
+        }
+        if(item.applied_class!=='null')
+        {
+            setApplyClass(item.applied_class);
+        }
+        else{
+            setApplyClass('');
+        }
+        if(item.admisson_year!=='null')
+        {
+            setAdmissionYear(item.admisson_year);
+        }
+        else{
+            setAdmissionYear('');
+        }
+        if(item.admisson_date!=='null')
+        {
+            setAdmissonDate(item.admisson_date.slice(0, 10));
+        }
+        else{
+            setAdmissonDate('');
+        }
+        if(item.age!=='null')
+        {
+            setAge(item.age);
+        }
+        else{
+            setAge('');
+        }
+        
+        
         setBloodGroup(item.blood_group);
         setBankAcountNo(item.bank_acount_no);
         setBrunch(item.branch);

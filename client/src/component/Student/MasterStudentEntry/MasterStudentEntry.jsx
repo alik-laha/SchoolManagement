@@ -1,38 +1,38 @@
 import {useState} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
-    const [name, setName] = useState(null);
-    const [adharNo, setAdharNo] = useState(null);
-    const [sex, setSex] = useState(null);
-    const [religion, setReligion] = useState(null);
-    const [dob, setDob] = useState(null);
-    const [cast, setCast] = useState(null);
+    const [name, setName] = useState('');
+    const [adharNo, setAdharNo] = useState('');
+    const [sex, setSex] = useState('');
+    const [religion, setReligion] = useState('');
+    const [dob, setDob] = useState('');
+    const [cast, setCast] = useState('');
     const [physicallyChallenged, setPhysicallyChallenged] = useState(0);
     const [orphanage, setOrphanage] = useState(0);
-    const [fatherName, setFatherName] = useState(null);
-    const [fatherQualification, setFatherQualification] = useState(null);
-    const [fatherOcupation, setFatherOcupation] = useState(null);
+    const [fatherName, setFatherName] = useState('');
+    const [fatherQualification, setFatherQualification] = useState('');
+    const [fatherOcupation, setFatherOcupation] = useState('');
     const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(0);
     const [fatherContactNo, setFatherContactNo] = useState(0);
-    const [motherName, setMotherName] = useState(null);
-    const [motherQualification, setMotherQualification] = useState(null);
-    const [motherOcupation, setMotherOcupation] = useState(null);
+    const [motherName, setMotherName] = useState('');
+    const [motherQualification, setMotherQualification] = useState('');
+    const [motherOcupation, setMotherOcupation] = useState('');
     const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(0);
     const [motherContactNo, setMotherContactNo] = useState(0);
-    const [guardianName, setGuardianName] = useState(null);
-    const [relationship, setRelationship] = useState(null);
-    const [guardianContactNo, setGuardianContactNo] = useState(null);
-    const [address, setAddress] = useState(null);
-    const [pinNo, setPinNo] = useState(null);
-    const [bspId, setBspId] = useState(null);
-    const [applyClass, setApplyClass] = useState(null);
-    const [admissionYear, setAdmissionYear] = useState(null);
+    const [guardianName, setGuardianName] = useState('');
+    const [relationship, setRelationship] = useState('');
+    const [guardianContactNo, setGuardianContactNo] = useState('');
+    const [address, setAddress] = useState('');
+    const [pinNo, setPinNo] = useState('');
+    const [bspId, setBspId] = useState('');
+    const [applyClass, setApplyClass] = useState('');
+    const [admissionYear, setAdmissionYear] = useState('');
     const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
-    const [age, setAge] = useState(null);
-    const [bloodGroup, setBloodGroup] = useState(null);
+    const [age, setAge] = useState('');
+    const [bloodGroup, setBloodGroup] = useState('');
     const [bankAcountNo, setBankAcountNo] = useState("");
-    const [brunch, setBrunch] = useState(null);
-    const [ifscCode, setIfscCode] = useState(null);
+    const [brunch, setBrunch] = useState('');
+    const [ifscCode, setIfscCode] = useState('');
 
 
     const handleEntry = (e) => {
@@ -112,6 +112,39 @@ const MasterStudentEntry= (props) => {
                                 console.log(res)
                                 
                         alert("Student Admitted Successfully and Registration no. Generated :"+regNo);
+                        setName('');
+                        setAdharNo('');
+                        setSex('');
+                        setReligion('');
+                        setDob('');
+                        setCast('');
+                        setPhysicallyChallenged(0);
+                        setOrphanage(0);
+                        setFatherName('');
+                        setFatherQualification('');
+                        setFatherOcupation('');
+                        setFatherMonthlyIncome(0);
+                        setFatherContactNo(0);
+                        setMotherName('');
+                        setMotherQualification('');
+                        setMotherOcupation('');
+                        setMotherMonthlyIncome(0);
+                        setMotherContactNo(0);
+                        setGuardianName('');
+                        setRelationship('');
+                        setGuardianContactNo('');
+                        setAddress('');
+                        setPinNo('');
+                        setBspId('');
+                        setApplyClass('');
+                        setAdmissionYear('');
+                        setAdmissonDate(new Date().toISOString().slice(0, 10));
+                        setAge('');
+                        setBloodGroup('');
+                        setBankAcountNo(0);
+                        setBrunch('');
+                        setIfscCode('');
+                        setRegNo('');
                     })
                     .catch((err) => {
                         console.log(err)
