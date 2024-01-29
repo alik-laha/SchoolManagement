@@ -302,3 +302,29 @@ exports.CreateExam = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//create Marks
+
+exports.CreateMarks = (req, res) => {
+    const {exam,subject,regNo,marks}=req.body
+    try{
+        if(!exam || !subject || !regNo || !marks){
+            return res.status(400).json({message:"All Fields are required"})
+        }
+        else{
+            let query = `INSERT INTO Marks (regNo,subject,exam_name,marks) VALUES ('${regNo}','${subject}','${exam}','${marks}')`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Marks Created"})
+                }
+            })
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
