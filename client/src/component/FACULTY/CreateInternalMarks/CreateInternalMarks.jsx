@@ -73,6 +73,11 @@ const FetchExam=()=>{
         setRollNo(0)
     }
 
+    const HandleSave=()=>{
+        console.log(examName)
+        console.log(totalMarks)
+    }
+    let totalMarks=0
     return(
         <div style={{display: view}}>
             <table className="table-60">
@@ -139,6 +144,7 @@ const FetchExam=()=>{
                             <select onChange={(e) => setExamName(e.target.value)} value={examName}>
                                 <option>Subject</option>
                                 {allExam.map((data, index) => (
+                                    totalMarks=data.int_exam_marks,
                                     <option value={data.internal_exam_name} key={index}>
                                         {data.internal_exam_name}
                                     </option>
@@ -160,7 +166,7 @@ const FetchExam=()=>{
                     </td>
                     <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
                     <td>
-                        <button className="dashboard-btn dashboard-btn-scss">Save</button>
+                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
                     </td>
                 </tr>
                 </tbody>
