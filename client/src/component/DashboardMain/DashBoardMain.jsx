@@ -40,6 +40,7 @@ import ViewAndUpdateFacultysearch from "../FACULTY/ViewAndUpdateFaculty/ViewAndU
 import ViewAndUpdateFaculty from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFaculty.jsx";
 import CreateSubject from "../FACULTY/CreateAndViewSubject/CreateSubject.jsx";
 import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
+import CreateExternalExam from "../FACULTY/CreateAndViewExternalExam/CreateExternalExam.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -304,6 +305,7 @@ const getAllRoom=(data)=>{
             <CreateFaculty view={props.CreateFaculty}/>
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
+            <CreateExternalExam view={props.CreateExam}/>
         </div>
 
 
