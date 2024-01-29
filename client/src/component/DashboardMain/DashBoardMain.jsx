@@ -41,6 +41,7 @@ import ViewAndUpdateFaculty from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateF
 import CreateSubject from "../FACULTY/CreateAndViewSubject/CreateSubject.jsx";
 import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
 import CreateExternalExam from "../FACULTY/CreateAndViewExternalExam/CreateExternalExam.jsx";
+import ViewExternalExam from "../FACULTY/CreateAndViewExternalExam/ViewExternalExam.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -78,6 +79,8 @@ const DashBoardMain = (props) => {
   const [roomData, setRoomData] = useState([])
   const [subjectData, setSubjectData] = useState([]);
   const [subjectView, setSubjectView] = useState("none");
+  const [externalExamData,setExternalExamData]=useState([])
+  const [externalExamView,setExternalExamView]=useState("")
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -232,6 +235,12 @@ const getAllRoom=(data)=>{
   const facultySearchedData=(data)=>{
         setFacultyData(data)
   }
+  const ExternalExamData=(data)=>{
+    setExternalExamData(data)
+  }
+  const ExternalExamView =(data)=>{
+    setExternalExamView(data)
+  }
 
   return (
     <>
@@ -305,7 +314,7 @@ const getAllRoom=(data)=>{
             <CreateFaculty view={props.CreateFaculty}/>
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
-            <CreateExternalExam view={props.CreateExam}/>
+            <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView}/>
         </div>
 
 
@@ -361,6 +370,7 @@ const getAllRoom=(data)=>{
            
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
+            <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} />
         </div>
       </div>
     </>

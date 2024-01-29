@@ -23,7 +23,12 @@ const CreateExternalExam=(props)=>{
         })
     }
     const handleView=()=>{
-
+        axios.post("http://localhost:7000/api/v1/faculty/getallexternalexam")
+            .then((res)=>{
+                console.log(res.data.data)
+                props.setExternalExam(res.data.data)
+                props.setExternalView("block")
+            })
     }
     return (
         <div style={{display: props.view}} className="dashbrd-40-colm">

@@ -39,6 +39,7 @@ const ViewSubject = (props) => {
             <table className="table table-bordered">
                 <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Subject Name</th>
                     <th>Delete</th>
                 </tr>
@@ -48,6 +49,7 @@ const ViewSubject = (props) => {
                     data.map((item) => {
                         return (
                             <tr key={item.id}>
+                                <td>{item.id}</td>
                                 <td>{item.subject}</td>
                                 <td>
                                     <button className="dashboard-btn dashboard-btn-scss"
