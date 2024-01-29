@@ -13,12 +13,19 @@ const ViewExternalExam=(props)=>{
     const handleDelete=(id)=>{
         axios.post("http://localhost:7000/api/v1/faculty/deleteexternalexam",{id})
             .then(()=>{
-                alert("data has been deleted")
+                alert("external exam has been deleted")
+                setView("none")
+            })
+    }
+    const handleDelete1=(id)=>{
+        axios.post("http://localhost:7000/api/v1/faculty/deleteinternalexam",{id})
+            .then(()=>{
+                alert("internal exam has been deleted")
                 setView("none")
             })
     }
     useEffect(() => {
-        if(props.view==="block" && props.data.length >0 && props.view40==="block"&&props.data1.length>0){
+        if(props.view==="block" && props.view40==="block" && props.data1.length>0 ||props.data.length >0){
             console.log(props.view,props.data,props.view40)
             setView("block")
         }
@@ -71,7 +78,7 @@ const ViewExternalExam=(props)=>{
                                 <td>{item.int_exam_marks}</td>
                                 <td>
                                     <button className="dashboard-btn dashboard-btn-scss"
-                                            onClick={() => handleDelete(item.id)}>Delete
+                                            onClick={() => handleDelete1(item.id)}>Delete
                                     </button>
                                 </td>
                             </tr>

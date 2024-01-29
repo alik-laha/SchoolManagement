@@ -172,32 +172,6 @@ exports.DeleteSubject = (req, res) => {
     }
 }
 
-//create internal exam
-exports.createInternalExam = (req, res) => {
-    const {name,totalMarks}=req.body
-    try{
-        if(name && totalMarks){
-            let query = `INSERT INTO internal_exam (internal_exam_name,int_exam_marks) VALUES ('${name}','${totalMarks}')`
-            Database.query(query,(err,result)=>{
-                if(err){
-                    console.log(err)
-                    res.status(400).json({message:"Error Occured",err:err})
-                }
-                else{
-                    res.status(200).json({message:"Subject Created"})
-                }
-            })
-        }
-        else{
-            res.status(400).json({message:"All Fields are required"})
-        }
-    }
-    catch (err){
-        console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
-    }
-}
-
 //get all internal exam
 exports.GetAllInternalExam = (req, res) => {
     try {
@@ -243,31 +217,6 @@ exports.DeleteInternalExam = (req, res) => {
     }
 }
 
-//create external exam
-exports.createExternalExam = (req, res) => {
-    const {name,totalMarks}=req.body
-    try{
-        if(name && totalMarks){
-            let query = `INSERT INTO external_exam (external_exam_name,ext_exam_marks) VALUES ('${name}','${totalMarks}')`
-            Database.query(query,(err,result)=>{
-                if(err){
-                    console.log(err)
-                    res.status(400).json({message:"Error Occured",err:err})
-                }
-                else{
-                    res.status(200).json({message:"Subject Created"})
-                }
-            })
-        }
-        else{
-            res.status(400).json({message:"All Fields are required"})
-        }
-    }
-    catch (err){
-        console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
-    }
-}
 
 //get all external exam
 exports.GetAllExternalExam = (req, res) => {
