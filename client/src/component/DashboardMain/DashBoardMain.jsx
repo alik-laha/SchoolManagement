@@ -40,8 +40,9 @@ import ViewAndUpdateFacultysearch from "../FACULTY/ViewAndUpdateFaculty/ViewAndU
 import ViewAndUpdateFaculty from "../FACULTY/ViewAndUpdateFaculty/ViewAndUpdateFaculty.jsx";
 import CreateSubject from "../FACULTY/CreateAndViewSubject/CreateSubject.jsx";
 import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
-import CreateExternalExam from "../FACULTY/CreateAndViewExternalExam/CreateExternalExam.jsx";
-import ViewExternalExam from "../FACULTY/CreateAndViewExternalExam/ViewExternalExam.jsx";
+import CreateExternalExam from "../FACULTY/CreateAndViewExam/CreateExternalExam.jsx";
+import ViewExternalExam from "../FACULTY/CreateAndViewExam/ViewExternalExam.jsx";
+import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMarks.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -374,6 +375,7 @@ const InternalExamData=(data)=>{
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
+            <CreateInternalMarks view={props.CreateInternalMarks} />
         </div>
       </div>
     </>
