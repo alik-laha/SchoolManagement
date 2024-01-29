@@ -6,16 +6,18 @@ const [regNo,setRegNo]=useState("")
 const [Class,setClass]=useState("")
 const [year,setYear]=useState("")
 
-const handaleSubmit=(e)=>{
+const handleSubmit=(e)=>{
     e.preventDefault();
     axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,year}).then((res)=>{
-        // props.setStudentData(res.data.result)
-        console.log(res.data.result)
+        props.setInternalMarks(res.data.result)
+        props.setInternalMarksView("block")
+    }).catch((err)=>{
+        console.log(err)
     })
 }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
-            <form onSubmit={handaleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Rgestration No</label>
                     <input type="text" placeholder="Enter Rgestration Number" value={regNo}

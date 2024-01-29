@@ -84,6 +84,8 @@ const DashBoardMain = (props) => {
   const [externalExamData,setExternalExamData]=useState([])
   const [externalExamView,setExternalExamView]=useState("")
   const [internalExamData,setInternalExamData]=useState([])
+  const [internalMarksData,setInternalMarksData]=useState([])
+  const [internalMarksView,setInternalMarksView]=useState("")
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -247,6 +249,12 @@ const getAllRoom=(data)=>{
 const InternalExamData=(data)=>{
     setInternalExamData(data)
 }
+const InternalMarksData=(data)=>{
+      setInternalMarksData(data)
+}
+const InternalMarksView=(data)=>{
+    setInternalMarksView(data)
+}
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -320,7 +328,7 @@ const InternalExamData=(data)=>{
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
             <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
-            <CreateInternalMarksSearch view={props.CreateInternalMarks} />
+            <CreateInternalMarksSearch view={props.CreateInternalMarks} setInternalMarks={InternalMarksData} setInternalMarksView={InternalMarksView}/>
         </div>
 
 
@@ -377,7 +385,7 @@ const InternalExamData=(data)=>{
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
-            {/*<CreateInternalMarks view40={props.CreateInternalMarks} />*/}
+            <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
         </div>
       </div>
     </>
