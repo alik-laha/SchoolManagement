@@ -6,6 +6,8 @@ const [view,setView]=useState("none")
 const [data,setData]=useState([])
 const [allView,setAllView]=useState("contents")
 const [hideView,setHideView]=useState("none")
+const [allSubject,setAllSubject]=useState([])
+const [allExam,setAllExam]=useState([])
 
 const [Class,setClass]=useState(0)
 const [regNo,setRegNo]=useState("")
@@ -24,9 +26,31 @@ const [rollNo,setRollNo]=useState(0)
         }
     }, [props.data,props.view,props.view40]);
 
+const FetchExam=()=>{
+   axios.post(`http://localhost:7000/api/v1/faculty/getallinternalexam`).then((res)=>{
+       setAllExam(res.data.data)
+   }).catch((err)=>{
+       console.log(err)
+   })
+}
+
+    const FetchSubject=()=>{
+        axios.post(`http://localhost:7000/api/v1/faculty/getallsubject`).then((res)=>{
+          setAllSubject(res.data.data)
+
+        })
+    }
+
+    useEffect(() => {
+        if(props.view40==="block"){
+            FetchExam()
+            FetchSubject()
+        }
+    }, [props.view40]);
+
     useEffect(()=>{
         setData(props.data)
-        console.log(props.data)
+
     },[props.data])
 
     const handleClick=(data)=>{
@@ -101,21 +125,47 @@ const [rollNo,setRollNo]=useState(0)
                     <th>Exam Name</th>
                     <th>Subject</th>
                     <th>Marks</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style={{display:hideView}}>
                 <tr>
                     <td>{name}</td>
                     <td>{regNo}</td>
                     <td>{Class}</td>
                     <td>{rollNo}</td>
-                    <td>{subject}</td>
-                    <td>{examName}</td>
-                    <td>{marks}</td>
+                    <td>
+                        <div>
+                            <select onChange={(e) => setExamName(e.target.value)} value={examName}>
+                                <option>Subject</option>
+                                {allExam.map((data, index) => (
+                                    <option value={data.internal_exam_name} key={index}>
+                                        {data.internal_exam_name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select onChange={(e) => setSubject(e.target.value)} value={subject}>
+                                <option>Subject</option>
+                                {allSubject.map((data, index) => (
+                                    <option value={data.subject} key={index}>
+                                        {data.subject}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </td>
+                    <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
+                    <td>
+                        <button className="dashboard-btn dashboard-btn-scss">Save</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
         </div>
-)
+    )
 }
 export default CreateInternalMarks
