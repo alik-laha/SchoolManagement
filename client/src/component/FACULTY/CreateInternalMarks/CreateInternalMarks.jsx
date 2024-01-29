@@ -74,8 +74,21 @@ const FetchExam=()=>{
     }
 
     const HandleSave=()=>{
-        console.log(examName)
-        console.log(totalMarks)
+        if(marks>totalMarks){
+            alert("Marks should be less than total marks")
+            setMarks(0)
+            return
+        }
+        else {
+            axios.post("http://localhost:7000/api/v1/faculty/createmarks",{Class,regNo,subject,examName,marks}).then((res)=>{
+                alert(res.data.message)
+                setMarks(0)
+                setSubject("")
+            })
+                .catch((err)=>{
+                    console.log(err)
+                })
+        }
     }
     let totalMarks=0
     return(
@@ -142,7 +155,7 @@ const FetchExam=()=>{
                     <td>
                         <div>
                             <select onChange={(e) => setExamName(e.target.value)} value={examName}>
-                                <option>Subject</option>
+                                <option>Exam Name</option>
                                 {allExam.map((data, index) => (
                                     totalMarks=data.int_exam_marks,
                                     <option value={data.internal_exam_name} key={index}>
