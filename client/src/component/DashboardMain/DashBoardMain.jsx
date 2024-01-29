@@ -43,6 +43,7 @@ import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
 import CreateExternalExam from "../FACULTY/CreateAndViewExam/CreateExternalExam.jsx";
 import ViewExternalExam from "../FACULTY/CreateAndViewExam/ViewExternalExam.jsx";
 import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMarks.jsx";
+import CreateInternalMarksSearch from "../FACULTY/CreateInternalMarks/CreateInternalMarksSearch.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -319,6 +320,7 @@ const InternalExamData=(data)=>{
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
             <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
+            <CreateInternalMarksSearch view={props.CreateInternalMarks} />
         </div>
 
 
@@ -375,7 +377,7 @@ const InternalExamData=(data)=>{
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
-            <CreateInternalMarks view={props.CreateInternalMarks} />
+            {/*<CreateInternalMarks view40={props.CreateInternalMarks} />*/}
         </div>
       </div>
     </>
