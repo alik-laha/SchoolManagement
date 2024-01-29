@@ -313,3 +313,43 @@ exports.DeleteExternalExam = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//create Exam
+exports.CreateExam = (req, res) => {
+
+    const{name,totalMarks,examType}=req.body
+    try{
+        if(name && totalMarks && examType){
+            if(examType==="Internal"){
+                let query = `INSERT INTO internal_exam (internal_exam_name,int_exam_marks) VALUES ('${name}','${totalMarks}')`
+                Database.query(query,(err,result)=>{
+                    if(err){
+                        console.log(err)
+                        res.status(400).json({message:"Error Occured",err:err})
+                    }
+                    else{
+                        res.status(200).json({message:"Examination Created"})
+                    }
+                })
+            }
+            else{
+                let query = `INSERT INTO external_exam (external_exam_name,ext_exam_marks) VALUES ('${name}','${totalMarks}')`
+                Database.query(query,(err,result)=>{
+                    if(err){
+                        console.log(err)
+                        res.status(400).json({message:"Error Occured",err:err})
+                    }
+                    else{
+                        res.status(200).json({message:"Examination Created"})
+                    }
+                })
+            }
+        }
+        else {
+            return res.status(400).json({message:"All Fields are required"})
+        }
+    }catch (err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}

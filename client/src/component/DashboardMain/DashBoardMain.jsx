@@ -81,6 +81,7 @@ const DashBoardMain = (props) => {
   const [subjectView, setSubjectView] = useState("none");
   const [externalExamData,setExternalExamData]=useState([])
   const [externalExamView,setExternalExamView]=useState("")
+  const [internalExamData,setInternalExamData]=useState([])
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -241,7 +242,9 @@ const getAllRoom=(data)=>{
   const ExternalExamView =(data)=>{
     setExternalExamView(data)
   }
-
+const InternalExamData=(data)=>{
+    setInternalExamData(data)
+}
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -314,7 +317,7 @@ const getAllRoom=(data)=>{
             <CreateFaculty view={props.CreateFaculty}/>
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
-            <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView}/>
+            <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
         </div>
 
 
@@ -370,7 +373,7 @@ const getAllRoom=(data)=>{
            
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
-            <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} />
+            <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
         </div>
       </div>
     </>

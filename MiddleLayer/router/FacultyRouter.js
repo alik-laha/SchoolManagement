@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,createInternalExam,createExternalExam,GetAllExternalExam,DeleteExternalExam} = require('../controller/FacultyController')
+const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,createInternalExam,createExternalExam,GetAllExternalExam,DeleteExternalExam,
+    CreateExam
+} = require('../controller/FacultyController')
 
 //create faculty
 router.post('/createfaculty',createFaculty)
@@ -23,9 +25,6 @@ router.post('/getallsubject',GetAllSubject)
 //delete subject
 router.post('/deletesubject',DeleteSubject)
 
-//create internal exam
-router.post('/createinternalexam',createInternalExam)
-
 //get all internal exam
 router.post('/getallinternalexam',GetAllInternalExam)
 
@@ -33,7 +32,7 @@ router.post('/getallinternalexam',GetAllInternalExam)
 router.post('/deleteinternalexam',DeleteInternalExam)
 
 //create external exam
-router.post('/createexternalexam',createExternalExam)
+router.post('/createexam',CreateExam)
 
 //get all external exam
 router.post('/getallexternalexam',GetAllExternalExam)
