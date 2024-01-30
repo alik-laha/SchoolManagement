@@ -378,3 +378,25 @@ exports.DeleteStudentAdmission = (req, res) => {
     }
 }
 
+//get Promote Search Data
+exports.GetPromoteStudentAdmisson= (req, res) => {
+    const{Class,academicYear}=req.body
+    try{
+        let query=`SELECT * 
+        FROM Student_Admission
+        WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and and active=1`
+        
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(200).json({ result })
+                
+            }
+        })
+
+    }catch (err){
+        console.log(err)
+    }
+}

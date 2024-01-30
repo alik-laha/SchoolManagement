@@ -44,6 +44,9 @@ import CreateExternalExam from "../FACULTY/CreateAndViewExam/CreateExternalExam.
 import ViewExternalExam from "../FACULTY/CreateAndViewExam/ViewExternalExam.jsx";
 import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMarks.jsx";
 import CreateInternalMarksSearch from "../FACULTY/CreateInternalMarks/CreateInternalMarksSearch.jsx";
+import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
+import PromoteNextClassView from "../PromoteNextClass/../PromoteNextClassView,jsx"
+
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -72,6 +75,10 @@ const DashBoardMain = (props) => {
   const [hostelexportshow,sethostelexportshow]=useState("none")
   const [allusershow,setallusershow]=useState("none")
   const [masterStudentViewShow,setmasterStudentViewShow]=useState("none")
+
+  const [promotetonextClass,setpromotetonextClass]=useState("none")
+  const [promoteViewData,setPromoteViewData]=useState([])
+  
   const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
   const [VendorDatas,setVendorData]=useState([])
   const[itemData,setItemData]=useState([])
@@ -88,82 +95,117 @@ const DashBoardMain = (props) => {
   const [internalMarksView,setInternalMarksView]=useState("")
 
   {/* User Start */}
-            //get all roles
-              const getAllRoles = (data) => {
-                setAllRoles(data);
-              };
-            //view user button show
-              const usershow=(data)=>{
-              setallusershow(data);
-              }
-            //get user data
-              const getdata = (data) => {
-              setdata(data);
-              };
+
+  //get all roles
+  const getAllRoles = (data) => {
+    setAllRoles(data);
+  };
+  //view user button show
+  const usershow = (data) => {
+    setallusershow(data);
+  }
+  //get user data
+  const getdata = (data) => {
+    setdata(data);
+  };
   {/* User End */}
 
-  {/* Stock Start */}
-        //div-40-call
-            const viewallVendor = (data) => {
-      if(ViewVendor==="none") {
-          setViewVendor("block");
-      }
-        else{
-            setViewVendor("none");
-            }
-            }
-            const Viewallitemtype=(data)=>{
-                if(itemView==="none") {
-                    setitemView("block");
-                }
-                else{
-                    setitemView("none");
-                }
-            }
-        //Search-Data  
-            const handleVendor=(data)=>{
-              setAllVendorName(data);
-            }
-            const handleItemType=(data)=>{
-              setAllItemType(data);
-            }
-           
-            const handleprimaryStockData=(data)=>{
-              setpmyStockData(data);
-            }
-            const handleseconadryStockData=(data)=>{
-              setscndStockData(data);
-            }
 
-            const handleSecondaryViewStockData=(data)=>{
-              setsecondarysearchstockdata(data);
-            }
-            const handlemodifysearchStockData=(data)=>{
-              setmodifyviewstockdata(data);
-            }
-            const handlePendingViewStockData=(data)=>{
-              setpendingviewstockdata(data);
-            } 
-      //Search-button-functionality
-            const stockViewShow=(data)=>{
-              setViewStock(data);
-            }
-            const secondaryStockEntryViewShow=(data)=> {
-              setsecondStockEntryViewShow(data);
-            } 
-            const stockallshow=(data)=>{
-              setviewallStock(data);
-            }
-            const modifyStockEntryShow=(data)=> {
-              setmodifyStockEntryViewShow(data);
-            }
-            const pendingViewShow=(data)=> {
-              setpendingViewAllShow(data);
-            }
-            const VendorData=(data)=>{
-                setVendorData(data);
-            }
+
+
+
+  {/* Stock Start */}
+  //div-40-call
+  const viewallVendor = (data) => {
+    if (ViewVendor === "none") {
+      setViewVendor("block");
+    }
+    else {
+      setViewVendor("none");
+    }
+  }
+  const Viewallitemtype = (data) => {
+    if (itemView === "none") {
+      setitemView("block");
+    }
+    else {
+      setitemView("none");
+    }
+  }
+  //Search-Data  
+  const handleVendor = (data) => {
+    setAllVendorName(data);
+  }
+  const handleItemType = (data) => {
+    setAllItemType(data);
+  }
+
+  const handleprimaryStockData = (data) => {
+    setpmyStockData(data);
+  }
+  const handleseconadryStockData = (data) => {
+    setscndStockData(data);
+  }
+
+  const handleSecondaryViewStockData = (data) => {
+    setsecondarysearchstockdata(data);
+  }
+  const handlemodifysearchStockData = (data) => {
+    setmodifyviewstockdata(data);
+  }
+  const handlePendingViewStockData = (data) => {
+    setpendingviewstockdata(data);
+  }
+  //Search-button-functionality
+  const stockViewShow = (data) => {
+    setViewStock(data);
+  }
+  const secondaryStockEntryViewShow = (data) => {
+    setsecondStockEntryViewShow(data);
+  }
+  const stockallshow = (data) => {
+    setviewallStock(data);
+  }
+  const modifyStockEntryShow = (data) => {
+    setmodifyStockEntryViewShow(data);
+  }
+  const pendingViewShow = (data) => {
+    setpendingViewAllShow(data);
+  }
+  const VendorData = (data) => {
+    setVendorData(data);
+  }
 {/* Stock End */}
+
+
+
+
+
+
+{/* Hostel Start */}
+
+const HostelStudentData=(data)=>{
+  setHostelStudentData(data);
+}
+const handalesearchBed=(room)=>{
+  axios.post("http://localhost:7000/api/v1/hostel/searchBed",{room}).then((res)=>{
+    setBedData(res.data.result)
+    console.log(res.data.result)
+  })
+}
+const handlehostelEntryData=(data)=>{
+sethostelenrtydata(data)
+}
+//hostel-export-all-show
+const hostelExportAllShow=(data)=>{
+  sethostelexportshow(data);
+}
+
+{/* Hostel End */}
+
+
+
+
 
 useEffect(()=>{
 if(props.Search==="block" && search==="flex"){
@@ -204,23 +246,12 @@ const academicEntryUpdate=(data)=>{
 const academicAllShow=(data)=>{
   setviewallacademicEntryShow(data);
 }
-//hostel-export-all-show
-const hostelExportAllShow=(data)=>{
-  sethostelexportshow(data);
+
+
+const PromoteNextClassShow=(data)=>{
+  setpromotetonextClass(data);
 }
 
-  const HostelStudentData=(data)=>{
-    setHostelStudentData(data);
-  }
-  const handalesearchBed=(room)=>{
-    axios.post("http://localhost:7000/api/v1/hostel/searchBed",{room}).then((res)=>{
-      setBedData(res.data.result)
-      console.log(res.data.result)
-    })
-  }
-const handlehostelEntryData=(data)=>{
-  sethostelenrtydata(data)
-}
 
 const handleacademicEntryData=(data)=>{
   setacademicEntryData(data)
@@ -255,6 +286,10 @@ const InternalMarksData=(data)=>{
 }
 const InternalMarksView=(data)=>{
     setInternalMarksView(data)
+}
+
+const PromoteNextClassSearchData=(data)=>{
+  setPromoteViewData(data)
 }
   return (
     <>
@@ -312,6 +347,8 @@ const InternalMarksView=(data)=>{
           <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
           {/* Export Student Search*/}
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
+          {/* Promote Next Class Search*/}
+          <PromoteNextClassSearch view={props.PromoteView} setPromoteData={PromoteNextClassSearchData} buttonClick={PromoteNextClassShow} />
         {/* Student End*/} 
 
          {/* Faculty Start */} 
@@ -370,6 +407,7 @@ const InternalMarksView=(data)=>{
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
             <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
+            <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={PromoteViewData}/>
          {/* Student End*/} 
 
           {/* Faculty Start*/} 
@@ -377,6 +415,7 @@ const InternalMarksView=(data)=>{
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
+
           {/* Faculty End*/} 
         </div>
       </div>

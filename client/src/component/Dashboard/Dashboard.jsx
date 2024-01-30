@@ -1018,7 +1018,7 @@ const handlePromote =()=>{
                        HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview} Academicview={academicview}
                        StudentEntry={studententry} MasterStudentView={masterstudentview} AcademicEntryUpdate={academicEntryUpdate}
                        CreateFaculty={CreateFaculty} ViewFaculty={viewFaculty} CreateSubject={CreateSubject} CreateExam={CreateExam}
-                          CreateInternalMarks={CreateInternalMarks} Promote={promote}
+                          CreateInternalMarks={CreateInternalMarks} PromoteView={promote}
         />
 
       </div>
