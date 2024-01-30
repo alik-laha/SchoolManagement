@@ -502,6 +502,8 @@ const MasterStudentViewUpdate = (props) => {
             </div>
 
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
+            <button style={{marginBottom:'8px'}}
+            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
             <hr></hr>
                 
                 
@@ -870,7 +872,7 @@ const MasterStudentViewUpdate = (props) => {
                 
                  
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
-                    <button onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">cancel</button>
+                    
                 </form>
             </div>
 
