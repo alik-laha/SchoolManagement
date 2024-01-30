@@ -11,6 +11,9 @@ const [allExam,setAllExam]=useState([])
 const [searchData,setSearchData]=useState([])
 const [searchView,setSearchView]=useState("none")
 const [totalMarks,setTotalMarks]=useState(0)
+const [target2,settarget2]=useState(0)
+
+
 
 const [Class,setClass]=useState(0)
 const [regNo,setRegNo]=useState("")
@@ -86,10 +89,11 @@ const FetchExam=()=>{
         setMarks(0)
         setName("")
         setRollNo(0)
+        setTotalMarks(0)
     }
 const HandleSearch=()=>{
     setSearchView('block')
-    if(updatedsearchExamName=='Exam Name')
+    if(updatedsearchExamName==='Exam Name')
     {
         alert("Please Choose Exam Name")
         setSearchView("none")
@@ -125,6 +129,11 @@ const HandleSearch=()=>{
 
 const handleUpdate=(data,idx)=>{
         setIndex(idx)
+        allExam.find((data1,index)=>{
+          if(data1.internal_exam_name===data.exam_name){
+              settarget2(data1.int_exam_marks)
+          }
+        })
         setUpdatedExamName(data.exam_name)
         setUpdatedMarks(data.marks)
         setUpdatedSubject(data.subject)
@@ -133,7 +142,7 @@ const handleUpdate=(data,idx)=>{
 }
 const handleUpdateSave=(id)=>{
         console.log(totalMarks)
-      if(updatedMarks>totalMarks){
+      if(updatedMarks>target2){
             alert("Marks should be less than total marks")
             setUpdatedMarks(0)
           console.log(id)
@@ -158,10 +167,21 @@ const handleUpdateCancel=()=>{
     setUpdatedExamName("")
     setUpdatedMarks(0)
     setUpdatedSubject("")
+    settarget2(0)
     setBeforeUpdate("block")
     setAfterUpdate("none")
     setIndex(null)
 }
+const setExamnameFunction=(idx)=>{
+        setTotalMarks(allExam[idx].int_exam_marks)
+        setExamName(allExam[idx].internal_exam_name)
+}
+    const setExamnameFunction2=(idx)=>{
+        const selectedExam = allExam[idx];
+        setUpdatedExamName(selectedExam.internal_exam_name);
+        settarget2(selectedExam.int_exam_marks)
+        console.log(selectedExam.int_exam_marks)
+    }
     return(
         <div style={{display: view}}>
             <table className="table-60">
@@ -256,10 +276,10 @@ const handleUpdateCancel=()=>{
                     <td>{rollNo}</td>
                     <td>
                         <div>
-                            <select onChange={(e) => setExamName(e.target.value)} value={examName}>
+                            <select onChange={(e) => setExamnameFunction(e.target.value)} value={examName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
-                                    <option value={data.internal_exam_name} key={index}>
+                                    <option value={index} key={index}>
                                         {data.internal_exam_name}
                                     </option>
                                 ))}
@@ -304,10 +324,10 @@ const handleUpdateCancel=()=>{
                             <tr key={idx}>
                                 <td>
                                     {index === idx ? <div>
-                                            <select onChange={(e) => setUpdatedExamName(e.target.value)} value={updatedExamName}>
-                                                <option>Exam Name</option>
+                                            <select onChange={(e) => setExamnameFunction2(e.target.value)} value={updatedExamName}>
+                                                <option value={-1}>Exam Name</option>
                                                 {allExam.map((data, index) => (
-                                                        <option value={data.internal_exam_name} key={index}>
+                                                        <option value={index} key={index}>
                                                             {data.internal_exam_name}
                                                         </option>
                                                 ))}
