@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 
 
@@ -8,9 +8,7 @@ const PromoteNextClassView= (props) => {
     const [academicAll,setAcademicAll]=useState([])
 
 
-    const clearTable = () => {
-        setAcademicAll([]);
-      };
+  
     
 
     useEffect(()=>{
@@ -28,33 +26,28 @@ const PromoteNextClassView= (props) => {
         }
     },[props.PromoteView,props.view])
 
+    const HandleEdit=()=>{
+       
 
+
+    }
     return(
         <>
         
             <div style={{display:view}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
-                <ReactHTMLTableToExcel
-                    id="hostel"
-                    className="dashboard-btn btn-warning excel-btn"
-                    table="academic-entry-view"
-                    filename="hostel-excel-report"
-                    sheet="tablexls"
-                    buttonText="Excel Import"
-                />
+           
+             
                 <table className="table-60" id="academic-entry-view">
                     <thead>
                     <tr>
                         <th>Student Id</th>
                         <th>Student Name</th>
                         <th>Registration No</th>
-                        <th>Year of Admission</th>
-                        
+                        <th>Current Year of Study</th>
                         <th>Class</th>
                         <th>Section</th>
                         <th>Roll No</th>
-                        <th>Current Year of Study</th>
-                        
+                        <th>Year of Admission</th>
                         
                     </tr>
                     </thead>
@@ -66,14 +59,15 @@ const PromoteNextClassView= (props) => {
                                     <td>{data.student_id}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td>
-                                    <td>{data.admission_year}</td>
+                                    <td>{data.current_academic_year}</td>
+                                    
                                    
                                     <td>{data.class}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
-                                    <td>{data.current_academic_year}</td>
+                                    <td>{data.admission_year}</td>
                                     
-    
+                                    
                                 </tr>
                             )
 
@@ -81,6 +75,16 @@ const PromoteNextClassView= (props) => {
                     }
                     </tbody>
                 </table>
+                <div style={{display:'block',textAlign:'center'}}>
+                <button  className="dashboard-btn btn-warning" onClick={() => {
+                                        const confirmBox = window.confirm(
+                                            "Do you really want to Promote these Students to next Class ?"
+                                        );
+                                        if (confirmBox === true) {
+                                            HandleEdit();
+                                        }
+                                    }}>Promote To Next Class</button></div>
+                
                 {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
             
