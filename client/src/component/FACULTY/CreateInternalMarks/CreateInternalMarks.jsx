@@ -74,6 +74,7 @@ const FetchExam=()=>{
         setHideView("contents")
         setName(data.student_Name)
         setRollNo(data.roll_no)
+
     }
     const handleCancel=()=>{
         setSearchView("none")
@@ -172,15 +173,25 @@ const handleUpdateCancel=()=>{
     setAfterUpdate("none")
     setIndex(null)
 }
-const setExamnameFunction=(idx)=>{
-        setTotalMarks(allExam[idx].int_exam_marks)
-        setExamName(allExam[idx].internal_exam_name)
+const setExamnameFunction=(e)=>{
+        let idx= e.target.value;
+        allExam.find((data,index)=>{
+            if(data.internal_exam_name===idx){
+                setTotalMarks(data.int_exam_marks)
+            }
+        })
+    setExamName(e.target.value)
 }
-    const setExamnameFunction2=(idx)=>{
-        const selectedExam = allExam[idx];
-        setUpdatedExamName(selectedExam.internal_exam_name);
-        settarget2(selectedExam.int_exam_marks)
-        console.log(selectedExam.int_exam_marks)
+    const setExamnameFunction2=(e)=>{
+        const idx= e.target.value;
+        allExam.find((data,index)=>{
+            if(data.internal_exam_name===idx){
+                settarget2(data.int_exam_marks)
+                console.log(data.int_exam_marks)
+            }
+        })
+        setUpdatedExamName(e.target.value)
+
     }
     return(
         <div style={{display: view}}>
@@ -276,10 +287,10 @@ const setExamnameFunction=(idx)=>{
                     <td>{rollNo}</td>
                     <td>
                         <div>
-                            <select onChange={(e) => setExamnameFunction(e.target.value)} value={examName}>
+                            <select onChange={setExamnameFunction} value={examName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
-                                    <option value={index} key={index}>
+                                    <option value={data.internal_exam_name} key={index}>
                                         {data.internal_exam_name}
                                     </option>
                                 ))}
@@ -324,10 +335,10 @@ const setExamnameFunction=(idx)=>{
                             <tr key={idx}>
                                 <td>
                                     {index === idx ? <div>
-                                            <select onChange={(e) => setExamnameFunction2(e.target.value)} value={updatedExamName}>
-                                                <option value={-1}>Exam Name</option>
+                                            <select onChange={setExamnameFunction2} value={updatedExamName}>
+                                                <option>Exam Name</option>
                                                 {allExam.map((data, index) => (
-                                                        <option value={index} key={index}>
+                                                        <option value={data.internal_exam_name} key={index}>
                                                             {data.internal_exam_name}
                                                         </option>
                                                 ))}
