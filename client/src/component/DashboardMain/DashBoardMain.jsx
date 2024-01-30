@@ -86,6 +86,7 @@ const DashBoardMain = (props) => {
   const [internalExamData,setInternalExamData]=useState([])
   const [internalMarksData,setInternalMarksData]=useState([])
   const [internalMarksView,setInternalMarksView]=useState("")
+
   {/* User Start */}
             //get all roles
               const getAllRoles = (data) => {
@@ -261,23 +262,18 @@ const InternalMarksView=(data)=>{
         <div className="dasdhboard-main-40">
 
         {/* User Start*/}
-
             {/* Create User */}
             <CreateUser showCreate={props.createUser} AllRoles={allRoles} />
             {/* Search User */}
             <UserSearchquery40 result={getdata} Search={props.Search}  setSearch={setSearch} allRoles={getAllRoles}  buttonClick={usershow}/>
-        
         {/* User End*/}
 
         {/* NoticeBoard Start*/}
-
             {/* Create Notice */}
             <StudentInputNotice Publish={props.Publish} setSearch={setSearch}/>
-
         {/* NoticeBoard End*/}
 
         {/* Stock Start*/}
-
             {/* Create Vendor */} 
             <CreateVendor createView={props.VendorCreateDisplay} onclick={viewallVendor} setVendorData={VendorData}/>
             {/* Create Item */} 
@@ -294,24 +290,20 @@ const InternalMarksView=(data)=>{
             <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
              {/* Check Pending Search */}
             <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
-
         {/* Stock End*/}
 
         {/* Hostel Start*/}  
-
-          {/* Create Room */}  
-          <CreateBed40 createbed={props.createbed}/>
-          {/* Search Room */} 
-          <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} data={roomData} />
-          {/* Search Hostel Entry */}
-          <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
-          {/* Export Hostel Entry Search*/}
-          <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} data={roomData} />
-        
+            {/* Create Room */}  
+            <CreateBed40 createbed={props.createbed}/>
+            {/* Search Room */} 
+            <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} data={roomData} />
+            {/* Search Hostel Entry */}
+            <SearchHostelEntry setStudentData={HostelStudentData} view={props.HostelEntryCreate}/>
+            {/* Export Hostel Entry Search*/}
+            <SearchHostelView view={props.HostelentryView} setHostelEntryData={handlehostelEntryData} buttonClick={hostelExportAllShow} data={roomData} /> 
         {/* Hostel End*/}
 
         {/* Student Start*/} 
-
           {/* Master Student Entry*/}
           <MasterStudentEntry view={props.StudentEntry}/>
           {/* Master Student Search*/}
@@ -320,37 +312,35 @@ const InternalMarksView=(data)=>{
           <AcademicEntryUpdateSearch setAcademicEntryData={academicEntryUpdateView} buttonClick={academicEntryUpdate} view={props.AcademicEntryUpdate}/>
           {/* Export Student Search*/}
           <AcademicEntrySearch view={props.Academicview} setAcademicEntryData={handleacademicEntryData} buttonClick={academicAllShow}/>
-        
         {/* Student End*/} 
 
-
+         {/* Faculty Start */} 
+            {/* Faculty Entry*/}
             <CreateFaculty view={props.CreateFaculty}/>
+            {/* Faculty Serach*/}
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
+            {/* Create Subject*/}
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
+            {/* Create External Exam*/}
             <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
+            {/* External Exam Search*/}
             <CreateInternalMarksSearch view={props.CreateInternalMarks} setInternalMarks={InternalMarksData} setInternalMarksView={InternalMarksView}/>
+          {/* Faculty End */} 
         </div>
 
 
-
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-        
         {/* User Start*/} 
-
             {/* View User*/}     
             <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
-
         {/* User End*/}  
 
         {/* Noticeboard Start*/}
-
             {/* View Notice*/}     
             <NoticeManupulation60 Publish={props.Notice}/>
-
         {/* Noticeboard End*/}
 
         {/* Stock Start*/}
-
             {/* View Vendor */}     
             <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
             {/* View Item */}
@@ -365,27 +355,26 @@ const InternalMarksView=(data)=>{
             <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
             {/* View Pending Balance */}
             <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
-
          {/* Vendor End*/}    
 
          {/* Hostel Start*/}   
-          <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
-          <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
-          <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
+            <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
+            <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
+            <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
          {/* Hostel End*/}
 
          {/* Student Start*/} 
-            
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
             <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
          {/* Student End*/} 
 
-           
+          {/* Faculty Start*/} 
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
+          {/* Faculty End*/} 
         </div>
       </div>
     </>
