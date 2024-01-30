@@ -8,6 +8,8 @@ const [allView,setAllView]=useState("contents")
 const [hideView,setHideView]=useState("none")
 const [allSubject,setAllSubject]=useState([])
 const [allExam,setAllExam]=useState([])
+const [searchData,setSearchData]=useState([])
+const [searchView,setSearchView]=useState("none")
 
 const [Class,setClass]=useState(0)
 const [regNo,setRegNo]=useState("")
@@ -17,6 +19,13 @@ const [marks,setMarks]=useState(0)
 const [name,setName]=useState("")
 const [rollNo,setRollNo]=useState(0)
 
+const [updatedMarks,setUpdatedMarks]=useState(0)
+const [updatedSubject,setUpdatedSubject]=useState("")
+const [updatedExamName,setUpdatedExamName]=useState("")
+const [index,setIndex]=useState(null)
+
+const [beforeUpdate,setBeforeUpdate]=useState("block")
+const [afterUpdate,setAfterUpdate]=useState("none")
     useEffect(() => {
         if(props.data.length>0 && props.view==="block" && props.view40==="block"){
             setView("block")
@@ -62,8 +71,12 @@ const FetchExam=()=>{
         setRollNo(data.roll_no)
     }
     const handleCancel=()=>{
+        setSearchView("none")
         setAllView("contents")
         setHideView("none")
+        setExamName("")
+        setSubject("")
+        setSearchData([])
         setClass(0)
         setRegNo("")
         setSubject("")
@@ -72,7 +85,16 @@ const FetchExam=()=>{
         setName("")
         setRollNo(0)
     }
-
+const HandleSearch=()=>{
+        setSearchView("block")
+      const data={Class,regNo,examName}
+    axios.post('http://localhost:7000/api/v1/faculty/searchmarks',data).then((res)=>{
+        console.log(res.data.data)
+        setSearchData(res.data.data)
+    }).catch((err)=>{
+        console.log(err)
+    })
+}
     const HandleSave=()=>{
         if(marks>totalMarks){
             alert("Marks should be less than total marks")
@@ -90,6 +112,26 @@ const FetchExam=()=>{
                 })
         }
     }
+
+const handleUpdate=(data,idx)=>{
+        setIndex(idx)
+        setUpdatedExamName(data.exam_name)
+        setUpdatedMarks(data.marks)
+        setUpdatedSubject(data.subject)
+    setBeforeUpdate("none")
+    setAfterUpdate("block")
+}
+const handleUpdateSave=()=>{
+
+}
+const handleUpdateCancel=()=>{
+    setUpdatedExamName("")
+    setUpdatedMarks(0)
+    setUpdatedSubject("")
+    setBeforeUpdate("block")
+    setAfterUpdate("none")
+    setIndex(null)
+}
     let totalMarks=0
     return(
         <div style={{display: view}}>
@@ -180,10 +222,77 @@ const FetchExam=()=>{
                     <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
                     <td>
                         <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
+                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button>
                     </td>
                 </tr>
                 </tbody>
             </table>
+            <div style={{display:searchView}}>
+            <table className="table-60">
+                <thead>
+                <tr>
+                    <th>Exam Name</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    searchData.map((data, idx) => {
+                        return (
+
+                            <tr key={idx}>
+                                <td>
+                                    {index === idx ? <div>
+                                            <select onChange={(e) => setUpdatedExamName(e.target.value)} value={updatedExamName}>
+                                                <option>Exam Name</option>
+                                                {allExam.map((data, index) => (
+                                                    totalMarks = data.int_exam_marks,
+                                                        <option value={data.internal_exam_name} key={index}>
+                                                            {data.internal_exam_name}
+                                                        </option>
+                                                ))}
+                                            </select>
+                                        </div>: data.exam_name}
+                                </td>
+                                <td>
+                                    {index === idx ? <div>
+                                            <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
+                                                <option>Subject</option>
+                                                {allSubject.map((data, index) => (
+                                                    <option value={data.subject} key={index}>
+                                                        {data.subject}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>:
+                                        data.subject}
+                                </td>
+                                <td>{index===idx ? <input type="number" value={updatedMarks} onChange={(e) => setUpdatedMarks(e.target.value)}/>:
+                                    data.marks
+                                }
+                                </td>
+                                <td>
+                                    <button className='dashboard-btn btn-warning' style={{display:beforeUpdate}}
+                                            onClick={() => handleUpdate(data, idx)}>Marks Update
+                                    </button>
+                                    <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
+                                            onClick={() => handleUpdateSave()}>Save
+                                    </button>
+                                    <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
+                                            onClick={() => handleUpdateCancel()}>Cancel
+                                    </button>
+                                </td>
+                            </tr>
+
+                        )
+
+                    })
+                }
+                </tbody>
+            </table>
+            </div>
         </div>
     )
 }

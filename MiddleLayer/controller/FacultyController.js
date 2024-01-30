@@ -329,3 +329,28 @@ exports.CreateMarks = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//search marks for Update
+exports.MarksSearch = (req, res) => {
+    try{
+        const {regNo,examName,Class}=req.body
+        if(regNo && examName && Class){
+            let query = `SELECT * FROM Marks WHERE regNo='${regNo}' AND exam_name='${examName}' AND class='${Class}'`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Marks Fetched",data:result})
+                }
+            })
+        }
+        else{
+            res.status(400).json({message:"All Fields are required"})
+        }
+    }catch(err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
