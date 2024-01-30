@@ -25,8 +25,8 @@ const ViewExternalExam=(props)=>{
             })
     }
     useEffect(() => {
-        if(props.view==="block" && props.view40==="block" && props.data1.length>0 ||props.data.length >0){
-            console.log(props.view,props.data,props.view40)
+        if(props.view==="block" && props.view40==="block" && (props.data1.length>0 ||props.data.length >0)){
+            console.log(props.view,props.data,props.view40,props.data1,"alik laha")
             setView("block")
         }
         else{
