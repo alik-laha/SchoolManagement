@@ -7,8 +7,13 @@ const MasterStudentEntry= (props) => {
     const [religion, setReligion] = useState('');
     const [dob, setDob] = useState('');
     const [cast, setCast] = useState('');
+
     const [physicallyChallenged, setPhysicallyChallenged] = useState(0);
     const [orphanage, setOrphanage] = useState(0);
+    const [pchallenged, setpchallenged] = useState(false);
+    const [orphan, setorphan] = useState(false);
+
+
     const [fatherName, setFatherName] = useState('');
     const [fatherQualification, setFatherQualification] = useState('');
     const [fatherOcupation, setFatherOcupation] = useState('');
@@ -35,6 +40,18 @@ const MasterStudentEntry= (props) => {
     const [ifscCode, setIfscCode] = useState('');
     
 
+    const handlepchallenge = (e) => {
+        e.preventDefault();
+        setpchallenged(!pchallenged)
+        e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)
+
+    }
+
+    const handleorphan = (e) => {
+        e.preventDefault();
+        e.target.checked === true ? setOrphanage(1) : setOrphanage(0)
+        setorphan(!orphan)
+    }
 
     const handleEntry = (e) => {
         e.preventDefault();
@@ -146,6 +163,8 @@ const MasterStudentEntry= (props) => {
                         setBrunch('');
                         setIfscCode('');
                         setRegNo('');
+                        setorphan(false)
+                        setpchallenged(false)
                         
                                                
 
@@ -298,8 +317,10 @@ const MasterStudentEntry= (props) => {
                     <input 
                         type="checkbox"
                         placeholder="physically challenged"
-                        onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
-                        value={physicallyChallenged}
+                        
+                        onChange={handlepchallenge}
+                        
+                        checked={pchallenged}
                         
                     />
                 </div>
@@ -309,8 +330,10 @@ const MasterStudentEntry= (props) => {
                     <input
                         type="checkbox"
                         placeholder="orphanage"
-                        onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
-                        value={orphanage}
+                        // onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
+                        onChange={handleorphan}
+                        checked={orphan}
+                        
                         
                     />
                 </div>
