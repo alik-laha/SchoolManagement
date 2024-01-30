@@ -19,14 +19,14 @@ const PromoteNextClassView= (props) => {
 
 
       useEffect(()=> {
-        console.log(props.academicallview,props.view)
-        if (props.academicallview === "block" && props.view === "block") {
+        console.log(props.PromoteView,props.view)
+        if (props.PromoteView === "block" && props.view === "block") {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.academicallview,props.view])
+    },[props.PromoteView,props.view])
 
 
     return(
@@ -54,7 +54,7 @@ const PromoteNextClassView= (props) => {
                         <th>Section</th>
                         <th>Roll No</th>
                         <th>Current Year of Study</th>
-                        <th>Hostel Entry</th>
+                        
                         
                     </tr>
                     </thead>
@@ -72,7 +72,7 @@ const PromoteNextClassView= (props) => {
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
                                     <td>{data.current_academic_year}</td>
-                                    <td>{data.hostelentry === 1 ? 'Y' : 'N'}</td>
+                                    
     
                                 </tr>
                             )

@@ -45,7 +45,7 @@ import ViewExternalExam from "../FACULTY/CreateAndViewExam/ViewExternalExam.jsx"
 import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMarks.jsx";
 import CreateInternalMarksSearch from "../FACULTY/CreateInternalMarks/CreateInternalMarksSearch.jsx";
 import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
-import PromoteNextClassView from "../PromoteNextClass/../PromoteNextClassView,jsx"
+import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
 
 
 const DashBoardMain = (props) => {
@@ -407,7 +407,7 @@ const PromoteNextClassSearchData=(data)=>{
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
             <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
-            <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={PromoteViewData}/>
+            <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={promoteViewData}/>
          {/* Student End*/} 
 
           {/* Faculty Start*/} 

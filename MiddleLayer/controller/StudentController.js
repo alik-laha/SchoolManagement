@@ -384,7 +384,7 @@ exports.GetPromoteStudentAdmisson= (req, res) => {
     try{
         let query=`SELECT * 
         FROM Student_Admission
-        WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and and active=1`
+        WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and active=1`
         
         Database.query(query, (err, result) => {
             if (err) {
