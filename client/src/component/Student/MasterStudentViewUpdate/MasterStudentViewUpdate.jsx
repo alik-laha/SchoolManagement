@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const MasterStudentViewUpdate = (props) => {
     const [view,setView]=useState();
@@ -53,6 +54,13 @@ const MasterStudentViewUpdate = (props) => {
        setMasterStudent(props.data);
 
     }, [props.data]);
+
+
+    const clearTable = () => {
+        if(updateView==='none')
+        setMasterStudent([]);
+      };
+
     const Handleedit=(item)=>{
         setAllview("none")
         setUpdateView("block")
@@ -437,8 +445,18 @@ const MasterStudentViewUpdate = (props) => {
     return(
         <div style={{display: view}}>
             <div style={{display:allView}}>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+               <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn btn-warning excel-btn"
+                table="master-student-view"
+                filename="master-student-details"
+                sheet="tablexls"
+                buttonText="Excel Import"
+            />
             <table className="table-60" >
                 <thead>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Student Id</th>
                     <th>Student Name</th>
@@ -855,6 +873,95 @@ const MasterStudentViewUpdate = (props) => {
                     <button onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">cancel</button>
                 </form>
             </div>
+
+
+            <table className="table-60" style={{display:'block'}} id="master-student-view">
+                    <thead style={{display:'block'}}>
+                   
+                        <tr>
+                            <th>Student ID</th>
+                            <th>Applied Class</th>
+                            <th>Admission Year</th>
+                            <th>Date of Admission</th>
+                            <th>Registration No.</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Religion</th>
+                            <th>Date of Birth</th>
+                            <th>Age</th>
+                            <th>Cast</th>
+                            <th>Blood Group</th>
+                            <th>Address</th>
+                            <th>Pin No.</th>
+                            <th>BSP ID</th>
+                            <th>Physically Challenged</th>
+                            <th>Orphanage</th>
+                            <th>Guradian Name</th>
+                            <th>Relationship with Student</th>
+                            <th>Guardian Contact No.</th>
+                            <th>Father's Name</th>
+                            <th>Father's Qualification</th>
+                            <th>Father's Occupation</th>
+                            <th>Father's Contact No.</th>
+                            <th>Father's Monthly Income</th>
+                            <th>Mothers's Name</th>
+                            <th>Mothers's Qualification</th>
+                            <th>Mothers's Occupation</th>
+                            <th>Mothers's Contact No.</th>
+                            <th>Mothers's Monthly Income</th>
+                            <th>Aadhar No.</th>
+                            <th>Bank Account No.</th>
+                            <th>Branch</th>
+                            <th>IFSC</th>
+                            
+                        </tr>
+                    </thead>
+                     <tbody style={{display:'block'}}>
+                        {masterStudent.map((item) => (
+                            <tr key={item.serial_no}>
+                                <td>{item.serial_no}</td>
+                                <td>{item.applied_class}</td>
+                                <td>{item.admisson_year}</td>
+                                <td>{item.admisson_date}</td>
+                                <td>{item.registration_no}</td>
+                                <td>{item.student_Name}</td>
+                                <td>{item.sex}</td>
+                                <td>{item.religion}</td>
+                                <td>{item.dob}</td>
+                                <td>{item.age}</td>
+                                <td>{item.cast}</td>
+                                <td>{item.blood_group}</td>
+                                <td>{item.address}</td>
+                                <td>{item.pin_no}</td>
+                                <td>{item.bsp_id}</td>
+                                <td>{item.physically_challenged}</td>
+                                <td>{item.orphanage}</td>
+
+                                <td >{item.guardian_name}</td>
+                                <td >{item.relationship}</td>
+                                <td >{item.guardian_contact}</td>
+                                <td >{item.father_name}</td>
+                                <td >{item.father_qualification}</td>
+                                <td >{item.father_ocupation}</td>
+                                <td>{item.father_contact}</td>
+                                <td>{item.father_monthlyIncome}</td>
+                                <td >{item.mother_name}</td>
+                                <td >{item.mother_qualification}</td>
+                                <td >{item.mother_ocupation}</td>
+                                <td>{item.mother_contact}</td>
+                                <td>{item.mother_monthlyIncome}</td>
+
+                                <td >{item.adhar_no}</td>
+                                <td >{item.acount_no}</td>
+                                <td >{item.branch}</td>
+                                <td >{item.ifsc}</td>
+                            </tr>
+                        ))}
+                    </tbody> 
+                    </table>
+
+
+
         </div>
 
     )

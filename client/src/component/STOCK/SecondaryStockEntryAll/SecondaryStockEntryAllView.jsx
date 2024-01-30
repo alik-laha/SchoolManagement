@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import axios from "axios";
+
 
 
 const SecondaryStockEntryAllView= (props) => {
@@ -35,7 +35,7 @@ const SecondaryStockEntryAllView= (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="secondary-stock-view"
-                filename="primasecondaryry-stock-excel-report"
+                filename="secondaryry-stock-excel-report"
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
