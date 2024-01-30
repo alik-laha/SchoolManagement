@@ -10,6 +10,7 @@ const [allSubject,setAllSubject]=useState([])
 const [allExam,setAllExam]=useState([])
 const [searchData,setSearchData]=useState([])
 const [searchView,setSearchView]=useState("none")
+const [totalMarks,setTotalMarks]=useState(0)
 
 const [Class,setClass]=useState(0)
 const [regNo,setRegNo]=useState("")
@@ -130,8 +131,28 @@ const handleUpdate=(data,idx)=>{
     setBeforeUpdate("none")
     setAfterUpdate("block")
 }
-const handleUpdateSave=()=>{
-
+const handleUpdateSave=(id)=>{
+        console.log(totalMarks)
+      if(updatedMarks>totalMarks){
+            alert("Marks should be less than total marks")
+            setUpdatedMarks(0)
+          console.log(id)
+            return
+        }
+        else {
+            axios.post("http://localhost:7000/api/v1/faculty/updatemarks",{subject:updatedSubject,examName:updatedExamName,marks:updatedMarks,id:id}).then((res)=>{
+                alert(res.data.message)
+                setUpdatedMarks(0)
+                setUpdatedSubject("")
+                setUpdatedExamName("")
+                setBeforeUpdate("block")
+                setAfterUpdate("none")
+                setIndex(null)
+            })
+                .catch((err)=>{
+                    console.log(err)
+                })
+        }
 }
 const handleUpdateCancel=()=>{
     setUpdatedExamName("")
@@ -141,7 +162,6 @@ const handleUpdateCancel=()=>{
     setAfterUpdate("none")
     setIndex(null)
 }
-    let totalMarks=0
     return(
         <div style={{display: view}}>
             <table className="table-60">
@@ -201,7 +221,6 @@ const handleUpdateCancel=()=>{
                             <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
-                                    totalMarks=data.int_exam_marks,
                                     <option value={data.internal_exam_name} key={index}>
                                         {data.internal_exam_name}
                                     </option>
@@ -240,7 +259,6 @@ const handleUpdateCancel=()=>{
                             <select onChange={(e) => setExamName(e.target.value)} value={examName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
-                                    totalMarks=data.int_exam_marks,
                                     <option value={data.internal_exam_name} key={index}>
                                         {data.internal_exam_name}
                                     </option>
@@ -289,7 +307,6 @@ const handleUpdateCancel=()=>{
                                             <select onChange={(e) => setUpdatedExamName(e.target.value)} value={updatedExamName}>
                                                 <option>Exam Name</option>
                                                 {allExam.map((data, index) => (
-                                                    totalMarks = data.int_exam_marks,
                                                         <option value={data.internal_exam_name} key={index}>
                                                             {data.internal_exam_name}
                                                         </option>
@@ -319,7 +336,7 @@ const handleUpdateCancel=()=>{
                                             onClick={() => handleUpdate(data, idx)}>Marks Update
                                     </button>
                                     <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
-                                            onClick={() => handleUpdateSave()}>Save
+                                            onClick={() => handleUpdateSave(data.id)}>Save
                                     </button>
                                     <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
                                             onClick={() => handleUpdateCancel()}>Cancel

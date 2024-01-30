@@ -354,3 +354,29 @@ exports.MarksSearch = (req, res) => {
         res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//update marks
+exports.UpdateMarks=(req,res)=>{
+    try{
+        const {subject,marks,examName,id}=req.body
+        if(!subject || !marks || !examName || !id){
+            return res.status(400).json({message:"All Fields are required"})
+        }
+        else {
+            let query= `UPDATE Marks SET subject='${subject}',marks='${marks}',exam_name='${examName}' WHERE id=${id}`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    res.status(200).json({message:"Marks Updated"})
+                }
+            })
+        }
+
+    }catch(err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
