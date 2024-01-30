@@ -330,38 +330,41 @@ const InternalMarksView=(data)=>{
 
 
         <div id = 'dashboard-main-60' className="dashboard-main-60">
-        {/* User Start*/} 
-            {/* View User*/}     
-            <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
-        {/* User End*/}  
+          {/* User Start*/} 
+              {/* View User*/}     
+              <ViewAllUser data={data} UserView={view} View={allusershow} AllRoles={allRoles} />
+          {/* User End*/}  
 
-        {/* Noticeboard Start*/}
-            {/* View Notice*/}     
-            <NoticeManupulation60 Publish={props.Notice}/>
-        {/* Noticeboard End*/}
+          {/* Noticeboard Start*/}
+              {/* View Notice*/}     
+              <NoticeManupulation60 Publish={props.Notice}/>
+          {/* Noticeboard End*/}
 
-        {/* Stock Start*/}
-            {/* View Vendor */}     
-            <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
-            {/* View Item */}
-            <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData}/>
-            {/* View Primary Stock */}
-            <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
-            {/* View Secondary Stock */}
-            <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-            {/* View ExportSecondary Stock */}
-            <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={scndStockData}/>
-            {/* View Modify Stock */}
-            <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
-            {/* View Pending Balance */}
-            <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
-         {/* Vendor End*/}    
+          {/* Stock Start*/}
+              {/* View Vendor */}     
+              <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
+              {/* View Item */}
+              <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData}/>
+              {/* View Primary Stock */}
+              <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
+              {/* View Secondary Stock */}
+              <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
+              {/* View ExportSecondary Stock */}
+              <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={scndStockData}/>
+              {/* View Modify Stock */}
+              <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+              {/* View Pending Balance */}
+              <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
+          {/* Vendor End*/}    
 
-         {/* Hostel Start*/}   
-            <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
-            <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
-            <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
-         {/* Hostel End*/}
+          {/* Hostel Start*/}
+              {/* View Bed Status */}   
+              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
+              {/* View Hostel Entry */}  
+              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
+              {/* View Export Hostel Entry */}  
+              <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
+          {/* Hostel End*/}
 
          {/* Student Start*/} 
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />

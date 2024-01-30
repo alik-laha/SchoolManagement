@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const ViewBedStatus60 = (props) => {
     const [view, setView] = useState("none");
@@ -86,6 +87,15 @@ const ViewBedStatus60 = (props) => {
     return(
         <>
             <div style={{display:view}}>
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+               <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn btn-warning excel-btn"
+                table="bed-status-hostel"
+                filename="hotel-bedstatus-excel-report"
+                sheet="tablexls"
+                buttonText="Excel Import"
+            />
                 <table className="table-60">
                     <thead style={{display: mainView}}>
                     <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
@@ -157,6 +167,33 @@ const ViewBedStatus60 = (props) => {
                     </tbody>
                 </table>
                 {bedstock.length===0 ? <div className="no-data">No Data Exists</div> : null}
+                
+                <table className="table-60" style={{display:'none'}} id="bed-status-hostel">
+                    <thead style={{display:'block'}}>
+                        <tr>
+                            <th>Room Id</th>
+                            <th>Bulding</th>
+                            <th>Floor</th>
+                            <th>Room Number</th>
+                            <th>Total Bed</th>
+                            <th>Occupied Bed</th>
+                            <th>Available Bed</th>
+                        </tr>
+                    </thead>
+                    <tbody style={{display:'block'}}>
+                        {bedstock.map((item) => (
+                            <tr key={item.id}>
+                                <td>{item.id}</td>
+                                <td>{item.building}</td>
+                                <td>{item.floor}</td>
+                                <td>{item.room_no}</td>
+                                <td>{item.total_bed}</td>
+                                <td>{item.occupied_bed}</td>
+                                <td >{item.available_bed}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                    </table>
             </div>
         </>
     )
