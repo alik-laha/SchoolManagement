@@ -22,6 +22,7 @@ const [rollNo,setRollNo]=useState(0)
 const [updatedMarks,setUpdatedMarks]=useState(0)
 const [updatedSubject,setUpdatedSubject]=useState("")
 const [updatedExamName,setUpdatedExamName]=useState("")
+const [updatedsearchExamName,setUpdatedsearchExamName]=useState("")
 const [index,setIndex]=useState(null)
 
 const [beforeUpdate,setBeforeUpdate]=useState("block")
@@ -86,8 +87,16 @@ const FetchExam=()=>{
         setRollNo(0)
     }
 const HandleSearch=()=>{
-        setSearchView("block")
-      const data={Class,regNo,examName}
+    setSearchView('block')
+    if(updatedsearchExamName=='Exam Name')
+    {
+        alert("Please Choose Exam Name")
+        setSearchView("none")
+        return
+    }
+        
+        
+      const data={Class,regNo,examName:updatedsearchExamName}
     axios.post('http://localhost:7000/api/v1/faculty/searchmarks',data).then((res)=>{
         console.log(res.data.data)
         setSearchData(res.data.data)
@@ -175,6 +184,38 @@ const handleUpdateCancel=()=>{
 
 
                 </tbody>
+                
+                <thead style={{display:hideView}}>
+                    <tr><th>Search by</th>
+                    <th>
+                        Action
+                    </th>
+                    </tr>
+
+                                    
+                </thead>
+                <tbody style={{display:hideView}}>
+                    <tr>
+                        <td>
+                        <div>
+                            <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
+                                <option>Exam Name</option>
+                                {allExam.map((data, index) => (
+                                    totalMarks=data.int_exam_marks,
+                                    <option value={data.internal_exam_name} key={index}>
+                                        {data.internal_exam_name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        </td>
+                        <td>
+
+                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button>
+                        </td>
+                    </tr>
+
+                </tbody>
                 <thead style={{display:hideView}}>
                 <button onClick={handleCancel}>cancel</button>
                 <tr>
@@ -222,7 +263,7 @@ const handleUpdateCancel=()=>{
                     <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
                     <td>
                         <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
-                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button>
+                        
                     </td>
                 </tr>
                 </tbody>

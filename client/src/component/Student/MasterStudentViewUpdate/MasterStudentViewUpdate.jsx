@@ -875,8 +875,8 @@ const MasterStudentViewUpdate = (props) => {
             </div>
 
 
-            <table className="table-60" style={{display:'block'}} id="master-student-view">
-                    <thead style={{display:'block'}}>
+            <table className="table-60" style={{display:'none'}} id="master-student-view">
+                    <thead style={{display:'contents'}}>
                    
                         <tr>
                             <th>Student ID</th>
@@ -916,18 +916,18 @@ const MasterStudentViewUpdate = (props) => {
                             
                         </tr>
                     </thead>
-                     <tbody style={{display:'block'}}>
+                     <tbody style={{display:'contents'}}>
                         {masterStudent.map((item) => (
                             <tr key={item.serial_no}>
                                 <td>{item.serial_no}</td>
                                 <td>{item.applied_class}</td>
                                 <td>{item.admisson_year}</td>
-                                <td>{item.admisson_date}</td>
+                                <td>{item.admisson_date.slice(0,10)}</td>
                                 <td>{item.registration_no}</td>
                                 <td>{item.student_Name}</td>
                                 <td>{item.sex}</td>
                                 <td>{item.religion}</td>
-                                <td>{item.dob}</td>
+                                <td>{item.dob.slice(0,10)}</td>
                                 <td>{item.age}</td>
                                 <td>{item.cast}</td>
                                 <td>{item.blood_group}</td>
