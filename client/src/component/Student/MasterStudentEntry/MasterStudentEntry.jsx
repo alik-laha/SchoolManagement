@@ -41,14 +41,17 @@ const MasterStudentEntry= (props) => {
     
 
     const handlepchallenge = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         setpchallenged(!pchallenged)
+        
         e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)
+        console.log(pchallenged)
+        console.log(physicallyChallenged)
 
     }
 
     const handleorphan = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         e.target.checked === true ? setOrphanage(1) : setOrphanage(0)
         setorphan(!orphan)
     }
@@ -163,8 +166,8 @@ const MasterStudentEntry= (props) => {
                         setBrunch('');
                         setIfscCode('');
                         setRegNo('');
-                        setorphan(false)
-                        setpchallenged(false)
+                        setorphan(true)
+                        setpchallenged(true)
                         
                                                
 
@@ -320,7 +323,7 @@ const MasterStudentEntry= (props) => {
                         
                         onChange={handlepchallenge}
                         
-                        checked={pchallenged}
+                        checked={physicallyChallenged === 1 ? true : false}
                         
                     />
                 </div>
@@ -332,7 +335,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="orphanage"
                         // onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
                         onChange={handleorphan}
-                        checked={orphan}
+                        checked={orphanage === 1 ? true : false}
                         
                         
                     />
