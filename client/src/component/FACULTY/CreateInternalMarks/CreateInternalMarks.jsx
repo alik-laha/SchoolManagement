@@ -235,7 +235,22 @@ const setExamnameFunction=(e)=>{
 
 
                 </tbody>
-                
+                {/* <div className="dashbrd-40-colm">
+                <form onSubmit={HandleSearch} style={{display:hideView}}>
+                        <div >
+                        <label>Search By Internal Exam Name</label>
+                        <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
+                                <option>Exam Name</option>
+                                {allExam.map((data, index) => (
+                                    <option value={data.internal_exam_name} key={index}>
+                                        {data.internal_exam_name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <button className="dashboard-btn dashboard-btn-scss">Search</button>
+                </form>
+                </div> */}
                 <thead style={{display:hideView}}>
                     <tr><th>Search by</th>
                     <th>
@@ -245,6 +260,7 @@ const setExamnameFunction=(e)=>{
 
                                     
                 </thead>
+            
                 <tbody style={{display:hideView}}>
                     <tr>
                         <td>
