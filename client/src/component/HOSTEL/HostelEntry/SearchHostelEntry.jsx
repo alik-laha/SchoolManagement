@@ -34,9 +34,9 @@ const HandaleSubmit=(e)=>{
                     </div>
                     <div>
                         <label>
-                            Search By Admission Year
+                            Search By Current Academic Year
                         </label>
-                        <input placeholder="Admission Year" type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                        <input placeholder="Current Acedemic Year" type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
                     </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>

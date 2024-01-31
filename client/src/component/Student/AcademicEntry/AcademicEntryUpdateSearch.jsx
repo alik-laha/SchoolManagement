@@ -38,9 +38,9 @@ const AcademicEntryUpdateSearch= (props) => {
 
                     <div>
                         <label>
-                            Search By Admission Year.
+                            Search By Current Academic Year
                         </label>
-                        <input placeholder='Admission Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
                     </div>
                     <div>
                         <label>
