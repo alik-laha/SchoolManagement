@@ -46,6 +46,7 @@ import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMa
 import CreateInternalMarksSearch from "../FACULTY/CreateInternalMarks/CreateInternalMarksSearch.jsx";
 import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
 import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
+import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
 
 
 const DashBoardMain = (props) => {
@@ -362,6 +363,8 @@ const PromoteNextClassSearchData=(data)=>{
             <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
             {/* External Exam Search*/}
             <CreateInternalMarksSearch view={props.CreateInternalMarks} setInternalMarks={InternalMarksData} setInternalMarksView={InternalMarksView}/>
+
+            <CreateExternalMarksSearch view={props.CreateExternalMarks}/>
           {/* Faculty End */} 
         </div>
 

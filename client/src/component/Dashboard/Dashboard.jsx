@@ -45,6 +45,7 @@ const [viewFaculty,setViewFaculty]=useState('none')
 const [CreateSubject,setCreateSubject]=useState('none')
 const [CreateExam,setCreateExam]=useState("none")
 const [CreateInternalMarks,setCreateInternalMarks]=useState("none")
+const [CreateExternalMarks,setCreateExternalMarks]=useState("none")
 const [promote,setpromote]=useState("none")
  const logoutVisiblity = () => {
   
@@ -108,6 +109,7 @@ const handleCreateSubject=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else{
         setCreateSubject('none')
@@ -143,6 +145,7 @@ if(search==='none'){
     setCreateSubject('none')
     setCreateInternalMarks("none")
     setpromote("none")
+    setCreateExternalMarks("none")
 
 }
 else{
@@ -180,6 +183,7 @@ const handaleCreateUser=()=>{
          setCreateExam("none")
          setCreateInternalMarks("none")
          setpromote("none")
+         setCreateExternalMarks("none")
      }
      else{
          setCreateUser("none")
@@ -216,6 +220,7 @@ const handalePublish=()=>{
          setCreateExam("none")
          setCreateInternalMarks("none")
          setpromote("none")
+         setCreateExternalMarks("none")
      }
      else{
          setPublish('none')
@@ -251,6 +256,7 @@ const HandleVendorCreate=()=>{
          setCreateExam("none")
          setCreateInternalMarks("none")
          setpromote("none")
+         setCreateExternalMarks("none")
      }
         else{
             setVendorDisplay('none')
@@ -286,6 +292,7 @@ const handaleNotice=()=>{
          setCreateExam("none")
          setCreateInternalMarks("none")
          setpromote("none")
+         setCreateExternalMarks("none")
      }
         else{
             setNotice('none')
@@ -320,6 +327,7 @@ const handleItemCreate=()=>{
             setCreateExam("none")
             setCreateInternalMarks("none")
             setpromote("none")
+            setCreateExternalMarks("none")
         }
             else{
                 setItemCreate('none')
@@ -354,6 +362,7 @@ const handleStockEntry=()=>{
             setCreateExam("none")
             setCreateInternalMarks("none")
             setpromote("none")
+            setCreateExternalMarks("none")
         }
             else{
                 setStockEntry('none')
@@ -388,6 +397,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setbedview('none')
@@ -421,6 +431,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setStockView('none')
@@ -455,6 +466,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setacademicEntryUpdate('none')
@@ -489,6 +501,7 @@ const handleStockEntry=()=>{
         setCreateSubject('none')
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setSecondstockEntry('none')
@@ -525,6 +538,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       sethostelentrycreate('none')
@@ -558,6 +572,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setSecondStockView('none')
@@ -594,6 +609,7 @@ const handleStockEntry=()=>{
         setCreateInternalMarks("none")
         setCreateExam("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setmodifySearchView('none')
@@ -631,6 +647,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setbedentry('none')
@@ -666,6 +683,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       sethostelview('none')
@@ -702,6 +720,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setcheckpending('none')
@@ -737,6 +756,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setacademicview('none')
@@ -771,6 +791,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
     else {
       setstudententry('none')
@@ -803,6 +824,7 @@ const handleStockEntry=()=>{
         setCreateExam("none")
         setCreateInternalMarks("none")
         setpromote("none")
+        setCreateExternalMarks("none")
 
     }
     else {
@@ -836,6 +858,7 @@ const handleCreateFaculty=()=>{
        setCreateSubject('none')
        setCreateInternalMarks("none")
        setpromote("none")
+       setCreateExternalMarks("none")
    }
     else{
         setCreateFaculty('none')
@@ -868,6 +891,7 @@ const handleViewFaculty=()=>{
         setCreateInternalMarks("none")
         setCreateExam("none")
         setpromote("none")
+        setCreateExternalMarks("none")
     }
      else{
           setViewFaculty('none')
@@ -900,6 +924,7 @@ const handleCreateExam =()=>{
          setViewFaculty('none')
          setCreateInternalMarks("none")
          setpromote("none")
+         setCreateExternalMarks("none")
      }
      else{
          setCreateExam("none")
@@ -932,6 +957,7 @@ const handleCreateInternalMarksEntry =()=>{
             setCreateSubject('none')
             setViewFaculty('none')
             setpromote("none")
+         setCreateExternalMarks("none")
      }
      else {
             setCreateInternalMarks("none")
@@ -964,12 +990,46 @@ const handlePromote =()=>{
          setacademicEntryUpdate('none')
          setCreateSubject('none')
          setViewFaculty('none')
+      setCreateExternalMarks("none")
   }
   else {
          setpromote("none")
   }
 }
 
+const handleCreateExternalMarks =()=>{
+     if (CreateExternalMarks==="none"){
+            setCreateExternalMarks("block")
+            setCreateInternalMarks("none")
+            setCreateExam("none")
+            setCreateFaculty('none')
+            setmasterstudentview('none')
+            setacademicview('none')
+            setStockEntry('none')
+            setItemCreate('none')
+            setCreateUser('none')
+            setVendorDisplay('none')
+            setPublish('none')
+            setSearch('none')
+            setNotice('none')
+            setStockView('none')
+            setSecondstockEntry("none")
+            setbedview('none')
+            setbedentry('none')
+            sethostelentrycreate('none')
+            sethostelview('none')
+            setmodifySearchView('none')
+            setSecondStockView("none")
+            setstudententry('none')
+            setacademicEntryUpdate('none')
+            setCreateSubject('none')
+            setViewFaculty('none')
+            setpromote("none")
+     }
+        else {
+                setCreateExternalMarks("none")
+        }
+}
   return (
     <>
     <div className="dashboard-root">
@@ -1005,7 +1065,7 @@ const handlePromote =()=>{
                  onAcademicView={handleacademicview}  onMasterStudentEntry={handleaStudentEntry} onMasterStudentView={handleMasterStudentView}
                  onAcademicEntryUpdate={AcademicEntryUpdate} onCreateFaculty={handleCreateFaculty} onViewFaculty={handleViewFaculty}
                  onCreateSubject={handleCreateSubject} onCreateExam={handleCreateExam} onCreateInternalMarksEntry={handleCreateInternalMarksEntry} 
-                 onPromote={handlePromote}
+                 onPromote={handlePromote} onCreateExternalMarksEntry={handleCreateExternalMarks}
         />
 
 
@@ -1018,7 +1078,7 @@ const handlePromote =()=>{
                        HostelEntryCreate={hostelentrycreate} HostelentryView={hostelentryview} Academicview={academicview}
                        StudentEntry={studententry} MasterStudentView={masterstudentview} AcademicEntryUpdate={academicEntryUpdate}
                        CreateFaculty={CreateFaculty} ViewFaculty={viewFaculty} CreateSubject={CreateSubject} CreateExam={CreateExam}
-                          CreateInternalMarks={CreateInternalMarks} PromoteView={promote}
+                          CreateInternalMarks={CreateInternalMarks} PromoteView={promote} CreateExternalMarks={CreateExternalMarks}
         />
 
       </div>
