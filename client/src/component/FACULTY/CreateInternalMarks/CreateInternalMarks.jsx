@@ -92,7 +92,8 @@ const FetchExam=()=>{
         setRollNo(0)
         setTotalMarks(0)
     }
-const HandleSearch=()=>{
+const HandleSearch=(e)=>{
+    e.preventDefault();
     setSearchView('block')
     if(updatedsearchExamName==='Exam Name')
     {
@@ -235,8 +236,11 @@ const setExamnameFunction=(e)=>{
 
 
                 </tbody>
-                {/* <div className="dashbrd-40-colm">
-                <form onSubmit={HandleSearch} style={{display:hideView}}>
+
+            </table>
+            <button className="dashboard-btn dashboard-btn-scss" style={{float:'right'}}onClick={handleCancel}>cancel</button>
+                <div className="dashbrd-40-colm" style={{display:hideView}}>
+                <form onSubmit={HandleSearch} >
                         <div >
                         <label>Search By Internal Exam Name</label>
                         <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
@@ -250,90 +254,8 @@ const setExamnameFunction=(e)=>{
                         </div>
                         <button className="dashboard-btn dashboard-btn-scss">Search</button>
                 </form>
-                </div> */}
-                <thead style={{display:hideView}}>
-                    <tr><th>Search by</th>
-                    <th>
-                        Action
-                    </th>
-                    </tr>
-
-                                    
-                </thead>
-            
-                <tbody style={{display:hideView}}>
-                    <tr>
-                        <td>
-                        <div>
-                            <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
-                                <option>Exam Name</option>
-                                {allExam.map((data, index) => (
-                                    <option value={data.internal_exam_name} key={index}>
-                                        {data.internal_exam_name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        </td>
-                        <td>
-
-                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button>
-                        </td>
-                    </tr>
-
-                </tbody>
-                <thead style={{display:hideView}}>
-                <button onClick={handleCancel}>cancel</button>
-                <tr>
-                    <th>Name</th>
-                    <th>Rgistration No</th>
-                    <th>Class</th>
-                    <th>Roll Number</th>
-                    <th>Exam Name</th>
-                    <th>Subject</th>
-                    <th>Marks</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody style={{display:hideView}}>
-                <tr>
-                    <td>{name}</td>
-                    <td>{regNo}</td>
-                    <td>{Class}</td>
-                    <td>{rollNo}</td>
-                    <td>
-                        <div>
-                            <select onChange={setExamnameFunction} value={examName}>
-                                <option>Exam Name</option>
-                                {allExam.map((data, index) => (
-                                    <option value={data.internal_exam_name} key={index}>
-                                        {data.internal_exam_name}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </td>
-                    <td>
-                        <div>
-                            <select onChange={(e) => setSubject(e.target.value)} value={subject}>
-                                <option>Subject</option>
-                                {allSubject.map((data, index) => (
-                                    <option value={data.subject} key={index}>
-                                        {data.subject}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </td>
-                    <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
-                    <td>
-                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
-                        
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div style={{display:searchView}}>
+                </div>
+                <div style={{display:searchView}}>
             <table className="table-60">
                 <thead>
                 <tr>
@@ -397,7 +319,71 @@ const setExamnameFunction=(e)=>{
                 }
                 </tbody>
             </table>
+            
             </div>
+                <table>
+                {/* <thead style={{display:hideView}}>
+                    <tr><th>Search by</th>
+                    <th> Action</th></tr>          
+                </thead>
+                <tbody style={{display:hideView}}>
+                    <tr> <td><div>
+                            <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
+                                <option>Exam Name</option>{allExam.map((data, index) => (
+                                    <option value={data.internal_exam_name} key={index}>{data.internal_exam_name}</option>))}</select></div> </td> <td>
+                    <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button></td></tr> </tbody> */}
+                <thead style={{display:hideView}}>
+                
+                <tr>
+                    <th>Name</th>
+                    <th>Rgistration No</th>
+                    <th>Class</th>
+                    <th>Roll Number</th>
+                    <th>Exam Name</th>
+                    <th>Subject</th>
+                    <th>Marks</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody style={{display:hideView}}>
+                <tr>
+                    <td>{name}</td>
+                    <td>{regNo}</td>
+                    <td>{Class}</td>
+                    <td>{rollNo}</td>
+                    <td>
+                        <div>
+                            <select onChange={setExamnameFunction} value={examName}>
+                                <option>Exam Name</option>
+                                {allExam.map((data, index) => (
+                                    <option value={data.internal_exam_name} key={index}>
+                                        {data.internal_exam_name}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <select onChange={(e) => setSubject(e.target.value)} value={subject}>
+                                <option>Subject</option>
+                                {allSubject.map((data, index) => (
+                                    <option value={data.subject} key={index}>
+                                        {data.subject}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </td>
+                    <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
+                    <td>
+                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
+                        
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
     )
 }
