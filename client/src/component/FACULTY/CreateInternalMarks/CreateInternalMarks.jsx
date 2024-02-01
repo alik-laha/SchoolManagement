@@ -238,7 +238,9 @@ const setExamnameFunction=(e)=>{
                 </tbody>
 
             </table>
-            <button className="dashboard-btn dashboard-btn-scss" style={{float:'right'}}onClick={handleCancel}>cancel</button>
+            {/* <hr style={{marginTop:'-60px',marginBottom:'20px',borderTop:'1px solid grey'}}/> */}
+            <div style={{backgroundColor:'whitesmoke'}}>
+            <span className="marks-window"><button className="dashboard-btn dashboard-btn-scss" style={{background:'darkcyan'}} onClick={handleCancel}>Close Marks Window</button></span>
                 <div className="dashbrd-40-colm" style={{display:hideView}}>
                 <form onSubmit={HandleSearch} >
                         <div >
@@ -256,49 +258,49 @@ const setExamnameFunction=(e)=>{
                 </form>
                 </div>
                 <div style={{display:searchView}}>
-            <table className="table-60">
-                <thead>
-                <tr>
-                    <th>Exam Name</th>
-                    <th>Subject</th>
-                    <th>Marks</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    searchData.map((data, idx) => {
-                        return (
+                    <table className="table-60" style={{marginTop:'20px'}}>
+                        <thead>
+                            <tr>
+                            <th>Exam Name</th>
+                            <th>Subject</th>
+                            <th>Marks</th>
+                            <th>Action</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        {
+                            searchData.map((data, idx) => {
+                                return (
 
-                            <tr key={idx}>
-                                <td>
-                                    {index === idx ? <div>
-                                            <select onChange={setExamnameFunction2} value={updatedExamName}>
-                                                <option>Exam Name</option>
-                                                {allExam.map((data, index) => (
-                                                        <option value={data.internal_exam_name} key={index}>
-                                                            {data.internal_exam_name}
-                                                        </option>
-                                                ))}
-                                            </select>
-                                        </div>: data.exam_name}
-                                </td>
-                                <td>
-                                    {index === idx ? <div>
-                                            <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
-                                                <option>Subject</option>
-                                                {allSubject.map((data, index) => (
-                                                    <option value={data.subject} key={index}>
-                                                        {data.subject}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>:
-                                        data.subject}
-                                </td>
-                                <td>{index===idx ? <input type="number" value={updatedMarks} onChange={(e) => setUpdatedMarks(e.target.value)}/>:
-                                    data.marks
-                                }
+                                    <tr key={idx}>
+                                        <td>
+                                            {index === idx ? <div>
+                                                    <select onChange={setExamnameFunction2} value={updatedExamName}>
+                                                        <option>Exam Name</option>
+                                                        {allExam.map((data, index) => (
+                                                                <option value={data.internal_exam_name} key={index}>
+                                                                    {data.internal_exam_name}
+                                                                </option>
+                                                        ))}
+                                                    </select>
+                                                </div>: data.exam_name}
+                                        </td>
+                                        <td>
+                                            {index === idx ? <div>
+                                                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
+                                                        <option>Subject</option>
+                                                        {allSubject.map((data, index) => (
+                                                            <option value={data.subject} key={index}>
+                                                                {data.subject}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </div>:
+                                                data.subject}
+                                        </td>
+                                        <td>{index===idx ? <input type="number" value={updatedMarks} onChange={(e) => setUpdatedMarks(e.target.value)}/>:
+                                            data.marks
+                                        }
                                 </td>
                                 <td>
                                     <button className='dashboard-btn btn-warning' style={{display:beforeUpdate}}
@@ -383,6 +385,7 @@ const setExamnameFunction=(e)=>{
                 </tr>
                 </tbody>
             </table>
+            </div>
 
         </div>
     )

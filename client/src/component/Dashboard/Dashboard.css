@@ -245,6 +245,12 @@
 .special-25-div{
     
 }
+.marks-window{
+    display: block;
+    text-align: center;
+    background-color: lightgray;
+    padding: 10px;
+}
 
 .read-only{
     background: lightyellow!important;
