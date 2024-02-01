@@ -75,6 +75,7 @@ const FetchExam=()=>{
         setHideView("contents")
         setName(data.student_Name)
         setRollNo(data.roll_no)
+        setentermarks('none')
 
     }
     const marksentry=()=>{
@@ -155,6 +156,10 @@ const handleUpdate=(data,idx)=>{
         setUpdatedSubject(data.subject)
     setBeforeUpdate("none")
     setAfterUpdate("block")
+}
+
+const HandleMarksCancel=()=>{
+   setentermarks('none')
 }
 const handleUpdateSave=(id)=>{
         console.log(totalMarks)
@@ -258,7 +263,7 @@ const setExamnameFunction=(e)=>{
                 <div className="dashbrd-40-colm" >
                 <form style={{display:'block',textAlign:'center'}} onSubmit={HandleSearch} >
                         <div >
-                        <label>Search By Internal Exam Name</label>
+                        <label>Search Internal Exam Marks</label>
                         <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
@@ -271,7 +276,7 @@ const setExamnameFunction=(e)=>{
                         <button className="dashboard-btn dashboard-btn-scss">Search</button>
                         
                 </form>
-                <span><button className="dashboard-btn dashboard-btn-scss btn-warning" onClick={marksentry}>Marks Entry</button></span>
+                <span><button className="dashboard-btn dashboard-btn-scss btn-warning" onClick={marksentry}>New Marks Entry</button></span>
                 </div>
                 <div style={{display:searchView}}>
                     <table className="table-60" style={{marginTop:'20px'}}>
@@ -339,7 +344,7 @@ const setExamnameFunction=(e)=>{
             </table>
             
             </div>
-                <table>
+                <table style={{width:'-webkit-fill-available'}}>
                 {/* <thead style={{display:hideView}}>
                     <tr><th>Search by</th>
                     <th> Action</th></tr>          
@@ -354,7 +359,7 @@ const setExamnameFunction=(e)=>{
                 
                 <tr>
                     <th>Name</th>
-                    <th>Rgistration No</th>
+                    <th>Registration No</th>
                     <th>Class</th>
                     <th>Roll Number</th>
                     <th>Exam Name</th>
@@ -396,6 +401,7 @@ const setExamnameFunction=(e)=>{
                     <td><input type="text" value={marks} onChange={(e) => setMarks(e.target.value)}/></td>
                     <td>
                         <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSave}>Save</button>
+                        <button className="dashboard-btn dashboard-btn-scss" onClick={HandleMarksCancel}>Cancel</button>
                         
                     </td>
                 </tr>
