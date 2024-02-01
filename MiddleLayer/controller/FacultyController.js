@@ -55,37 +55,44 @@ exports.DeleteFaculty = (req, res) => {
 exports.UpdateFaculty = (req, res) => {
     const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate}=req.body
     try{
-        if(id && name && qualification && joinDate && email && specialized && contactNo){
-            let query = `UPDATE faculty_admin SET name='${name}',heighst_qualification='${qualification}',join_date='${joinDate}',email='${email}',specialized_field='${specialized}',contact_no='${contactNo}' WHERE id=${id}`
-            Database.query(query,(err,result)=>{
-                if(err){
-                    console.log(err)
-                    res.status(400).json({message:"Error Occured"})
-                }
-                else{
-                    if(releseDate){
-                        let query=`UPDATE faculty_admin SET relese_date='${releseDate}',active='0' WHERE id=${id}`
-                        Database.query(query,(err,result)=>{
-                            if(err){
-                                console.log(err)
-                                res.status(400).json({message:"Error Occured"})
-                            }
-                            else{
-                                res.status(200).json({message:"Faculty Updated"})
-                            }
+        let query
+        if(id && name && qualification && joinDate && email && specialized && contactNo && !releseDate) {
+            query = `UPDATE faculty_admin
+                         SET name='${name}',
+                             heighst_qualification='${qualification}',
+                             join_date='${joinDate}',
+                             email='${email}',
+                             specialized_field='${specialized}',
+                             contact_no='${contactNo}'
+                         WHERE id = ${id}`
 
-                        })
-                    }
-                    else{
-                        res.status(200).json({message:"Faculty Updated"})
-                    }
+        }
+        else{
+            query = `UPDATE faculty_admin
+                         SET name='${name}',
+                             heighst_qualification='${qualification}',
+                             join_date='${joinDate}',
+                             email='${email}',
+                             specialized_field='${specialized}',
+                             contact_no='${contactNo}',
+                             relese_Date='${releseDate}',
+                             active='0'
+                         WHERE id = ${id}`
+        }
+        Database.query(query,(err,res)=>{
+            if(err){
+                return res.status(400).json({
+                    err:err,
+                    msg:"error while Update"
+                })
+            }else{
+                return res.status(200).json({
+                    msg:"updated sucessfully",
+                    res:res
+                })
+            }
+        })
 
-                }
-            })
-        }
-        else {
-            res.status(400).json({message:"All Fields are required"})
-        }
     }catch (err){
         console.log(err)
         res.status(400).json({message:"Error Occured",err:err})
