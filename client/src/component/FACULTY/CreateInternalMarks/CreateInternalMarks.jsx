@@ -81,6 +81,9 @@ const FetchExam=()=>{
     }
     const marksentry=()=>{
         setentermarks('contents')
+        setBeforeUpdate('block')
+        setAfterUpdate('none')
+        setIndex(null)
         if(searchView==='contents')
         {
             setSearchView('none')
@@ -103,6 +106,10 @@ const FetchExam=()=>{
         setRollNo(0)
         setTotalMarks(0)
         setentermarks('none')
+        setBeforeUpdate('block')
+        setAfterUpdate('none')
+        setIndex(null)
+        setSearchData([])
       
     }
 const HandleSearch=(e)=>{
@@ -164,6 +171,9 @@ const handleUpdate=(data,idx)=>{
 
 const HandleMarksCancel=()=>{
    setentermarks('none')
+   setBeforeUpdate('block')
+   setAfterUpdate('none')
+   setIndex(null)
 }
 const handleUpdateSave=(id)=>{
         console.log(totalMarks)
