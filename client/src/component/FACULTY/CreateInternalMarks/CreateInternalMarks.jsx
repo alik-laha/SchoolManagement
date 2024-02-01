@@ -239,9 +239,9 @@ const setExamnameFunction=(e)=>{
 
             </table>
             {/* <hr style={{marginTop:'-60px',marginBottom:'20px',borderTop:'1px solid grey'}}/> */}
-            <div style={{backgroundColor:'whitesmoke'}}>
+            <div style={{backgroundColor:'whitesmoke'}} style={{display:hideView}}>
             <span className="marks-window"><button className="dashboard-btn dashboard-btn-scss" style={{background:'darkcyan'}} onClick={handleCancel}>Close Marks Window</button></span>
-                <div className="dashbrd-40-colm" style={{display:hideView}}>
+                <div className="dashbrd-40-colm" >
                 <form onSubmit={HandleSearch} >
                         <div >
                         <label>Search By Internal Exam Name</label>
