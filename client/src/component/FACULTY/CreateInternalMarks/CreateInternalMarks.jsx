@@ -119,7 +119,7 @@ const HandleSearch=(e)=>{
     {
         setentermarks('none')
     }
-    if(updatedsearchExamName==='Exam Name')
+    if(updatedsearchExamName==='Exam Name' || updatedsearchExamName==='')
     {
         alert("Please Choose Exam Name")
         setSearchView("none")
@@ -175,6 +175,7 @@ const HandleMarksCancel=()=>{
    setAfterUpdate('none')
    setIndex(null)
 }
+
 const handleUpdateSave=(id)=>{
         console.log(totalMarks)
       if(updatedMarks>target2){
