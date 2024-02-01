@@ -15,6 +15,7 @@ const[specialized_field, setSpecialized_field] = useState("");
 const[mainView, setMainView] = useState("contents");
 const[editView, setEditView] = useState("none");
 const [join_date, setJoin_date] = useState("");
+const [released_date, setReleased_date] = useState("");
 
     useEffect(() => {
         if(props.view === "block" && props.data.length > 0) {
@@ -54,7 +55,7 @@ const handaleDelete = (id) => {
         })
 }
 const handaleUpdate = () => {
-const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date};
+const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date};
 axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
         .then((res) => {
             if(res){
@@ -87,8 +88,8 @@ const handaleCancel = () => {
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
-            <table className="table-60">
-                <thead>
+            <table className="table-60" >
+                <thead style={{display: mainView}}>
                 <tr>
                     <th>Faculty ID</th>
                     <th>Faculty Name</th>
@@ -110,7 +111,7 @@ const handaleCancel = () => {
                         <td>{item.contact_no}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
-                        <td>{item.join_date.slice(0,10)}</td>
+                        <td>{item.join_date.slice(0, 10)}</td>
                         <td>
                             <button className="dashboard-btn dashboard-btn-scss"
                                     onClick={() => handaleEdit(item.id)}>Edit
@@ -122,6 +123,20 @@ const handaleCancel = () => {
                     </tr>
                 ))}
                 </tbody>
+                <thead style={{display:editView}}>
+                <tr>
+                    <th>Faculty ID</th>
+                    <th>Faculty Name</th>
+                    <th>Faculty Email</th>
+                    <th>Faculty Phone</th>
+                    <th>Faculty Qualification</th>
+                    <th>Faculty Department</th>
+                    <th>Join Date</th>
+                    <th>Released Date</th>
+                    <th>Action</th>
+
+                </tr>
+                </thead>
                 <tbody style={{display: editView}}>
                 <tr>
                     <td>{id}</td>
@@ -133,6 +148,7 @@ const handaleCancel = () => {
                     <td><input type="text" value={specialized_field}
                                onChange={(e) => setSpecialized_field(e.target.value)}/></td>
                     <td><input type="date" value={join_date} onChange={(e) => setJoin_date(e.target.value)}/></td>
+                    <td><input type="date" value={released_date} onChange={(e) => setReleased_date(e.target.value)}/></td>
                     <td>
                         <button className="dashboard-btn dashboard-btn-scss" onClick={handaleUpdate}>Update</button>
                         <button className='dashboard-btn btn-warning' onClick={handaleCancel}>Cancel</button>
@@ -140,7 +156,7 @@ const handaleCancel = () => {
                 </tr>
                 </tbody>
             </table>
-            <table className="table-60" id="faculty-view" style={{display:"none"}}>
+            <table className="table-60" id="faculty-view" style={{display: "none"}}>
                 <thead>
                 <tr>
                     <th>Faculty ID</th>

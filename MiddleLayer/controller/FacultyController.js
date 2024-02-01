@@ -53,7 +53,7 @@ exports.DeleteFaculty = (req, res) => {
 
 //update faculty
 exports.UpdateFaculty = (req, res) => {
-    const {id,name,qualification,joinDate,email,specialized,contactNo}=req.body
+    const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate}=req.body
     try{
         if(id && name && qualification && joinDate && email && specialized && contactNo){
             let query = `UPDATE faculty_admin SET name='${name}',heighst_qualification='${qualification}',join_date='${joinDate}',email='${email}',specialized_field='${specialized}',contact_no='${contactNo}' WHERE id=${id}`
@@ -63,7 +63,23 @@ exports.UpdateFaculty = (req, res) => {
                     res.status(400).json({message:"Error Occured"})
                 }
                 else{
-                    res.status(200).json({message:"Faculty Updated"})
+                    if(releseDate){
+                        let query=`UPDATE faculty_admin SET relese_date='${releseDate}',active='0' WHERE id=${id}`
+                        Database.query(query,(err,result)=>{
+                            if(err){
+                                console.log(err)
+                                res.status(400).json({message:"Error Occured"})
+                            }
+                            else{
+                                res.status(200).json({message:"Faculty Updated"})
+                            }
+
+                        })
+                    }
+                    else{
+                        res.status(200).json({message:"Faculty Updated"})
+                    }
+
                 }
             })
         }
