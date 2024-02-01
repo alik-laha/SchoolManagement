@@ -14,7 +14,7 @@ const[heighst_qualification, setHeighst_qualification] = useState("");
 const[specialized_field, setSpecialized_field] = useState("");
 const[mainView, setMainView] = useState("contents");
 const[editView, setEditView] = useState("none");
-
+const [join_date, setJoin_date] = useState("");
 
     useEffect(() => {
         if(props.view === "block" && props.data.length > 0) {
@@ -37,6 +37,7 @@ const handaleEdit = (id) => {
                 setContact_no(item.contact_no);
                 setHeighst_qualification(item.heighst_qualification);
                 setSpecialized_field(item.specialized_field);
+                setJoin_date(item.join_date.slice(0,10));
             }
         })
     setMainView("none");
@@ -53,7 +54,16 @@ const handaleDelete = (id) => {
         })
 }
 const handaleUpdate = () => {
-
+const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date};
+axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
+        .then((res) => {
+            if(res){
+                alert("Faculty Updated Successfully");
+                setEditView("none");
+                setMainView("contents");
+                setView("none")
+            }
+        })
 }
 const handaleCancel = () => {
         setMainView("contents");
@@ -63,6 +73,8 @@ const handaleCancel = () => {
         setContact_no("");
         setHeighst_qualification("");
         setSpecialized_field("");
+        setJoin_date("");
+        setId("");
 }
     return(
         <div style={{display: View}}>
@@ -84,6 +96,7 @@ const handaleCancel = () => {
                     <th>Faculty Phone</th>
                     <th>Faculty Qualification</th>
                     <th>Faculty Department</th>
+                    <th>Join Date</th>
                     <th>Action</th>
 
                 </tr>
@@ -97,6 +110,7 @@ const handaleCancel = () => {
                         <td>{item.contact_no}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
+                        <td>{item.join_date.slice(0,10)}</td>
                         <td>
                             <button className="dashboard-btn dashboard-btn-scss"
                                     onClick={() => handaleEdit(item.id)}>Edit
@@ -118,6 +132,7 @@ const handaleCancel = () => {
                                onChange={(e) => setHeighst_qualification(e.target.value)}/></td>
                     <td><input type="text" value={specialized_field}
                                onChange={(e) => setSpecialized_field(e.target.value)}/></td>
+                    <td><input type="date" value={join_date} onChange={(e) => setJoin_date(e.target.value)}/></td>
                     <td>
                         <button className="dashboard-btn dashboard-btn-scss" onClick={handaleUpdate}>Update</button>
                         <button className='dashboard-btn btn-warning' onClick={handaleCancel}>Cancel</button>
