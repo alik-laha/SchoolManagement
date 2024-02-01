@@ -31,6 +31,7 @@ const [index,setIndex]=useState(null)
 
 const [beforeUpdate,setBeforeUpdate]=useState("block")
 const [afterUpdate,setAfterUpdate]=useState("none")
+const [entermarks,setentermarks]=useState("none")
     useEffect(() => {
         if(props.data.length>0 && props.view==="block" && props.view40==="block"){
             setView("block")
@@ -76,6 +77,14 @@ const FetchExam=()=>{
         setRollNo(data.roll_no)
 
     }
+    const marksentry=()=>{
+        setentermarks('contents')
+        if(searchView==='contents')
+        {
+            setSearchView('none')
+        }
+
+    }
     const handleCancel=()=>{
         setSearchView("none")
         setAllView("contents")
@@ -91,10 +100,15 @@ const FetchExam=()=>{
         setName("")
         setRollNo(0)
         setTotalMarks(0)
+        setentermarks('none')
     }
 const HandleSearch=(e)=>{
     e.preventDefault();
-    setSearchView('block')
+    setSearchView('contents')
+    if(entermarks==='contents')
+    {
+        setentermarks('none')
+    }
     if(updatedsearchExamName==='Exam Name')
     {
         alert("Please Choose Exam Name")
@@ -239,10 +253,10 @@ const setExamnameFunction=(e)=>{
 
             </table>
             {/* <hr style={{marginTop:'-60px',marginBottom:'20px',borderTop:'1px solid grey'}}/> */}
-            <div style={{backgroundColor:'whitesmoke'}} style={{display:hideView}}>
+            <div style={{backgroundColor:'whitesmoke',display:hideView}}>
             <span className="marks-window"><button className="dashboard-btn dashboard-btn-scss" style={{background:'darkcyan'}} onClick={handleCancel}>Close Marks Window</button></span>
                 <div className="dashbrd-40-colm" >
-                <form onSubmit={HandleSearch} >
+                <form style={{display:'block',textAlign:'center'}} onSubmit={HandleSearch} >
                         <div >
                         <label>Search By Internal Exam Name</label>
                         <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
@@ -255,7 +269,9 @@ const setExamnameFunction=(e)=>{
                             </select>
                         </div>
                         <button className="dashboard-btn dashboard-btn-scss">Search</button>
+                        
                 </form>
+                <span><button className="dashboard-btn dashboard-btn-scss btn-warning" onClick={marksentry}>Marks Entry</button></span>
                 </div>
                 <div style={{display:searchView}}>
                     <table className="table-60" style={{marginTop:'20px'}}>
@@ -334,7 +350,7 @@ const setExamnameFunction=(e)=>{
                                 <option>Exam Name</option>{allExam.map((data, index) => (
                                     <option value={data.internal_exam_name} key={index}>{data.internal_exam_name}</option>))}</select></div> </td> <td>
                     <button className="dashboard-btn dashboard-btn-scss" onClick={HandleSearch}>Search</button></td></tr> </tbody> */}
-                <thead style={{display:hideView}}>
+                <thead style={{display:entermarks}}>
                 
                 <tr>
                     <th>Name</th>
@@ -347,7 +363,7 @@ const setExamnameFunction=(e)=>{
                     <th>Action</th>
                 </tr>
                 </thead>
-                <tbody style={{display:hideView}}>
+                <tbody style={{display:entermarks}}>
                 <tr>
                     <td>{name}</td>
                     <td>{regNo}</td>
