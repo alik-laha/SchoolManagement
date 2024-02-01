@@ -98,10 +98,10 @@ exports.GetAllFaculty = (req, res) => {
     try{
         let query
         if(search){
-         query=`SELECT * FROM faculty_admin WHERE active=1 AND name LIKE '%${search}%'`
+         query=`SELECT * FROM faculty_admin WHERE name LIKE '%${search}%'`
         }
         else{
-             query = `SELECT * FROM faculty_admin WHERE active=1`
+             query = `SELECT * FROM faculty_admin`
         }
         Database.query(query,(err,result)=>{
             if(err){
@@ -392,6 +392,31 @@ exports.UpdateMarks=(req,res)=>{
         }
 
     }catch(err){
+        console.log(err)
+        res.status(400).json({message:"Error Occured",err:err})
+    }
+}
+//get all faculty middlelayer
+exports.GetAllFacultyMiddleLayer = (req, res) => {
+    const {search}=req.body
+    try{
+        let query
+        if(search){
+         query=`SELECT * FROM faculty_admin WHERE active=1 AND name LIKE '%${search}%'`
+        }
+        else{
+             query = `SELECT * FROM faculty_admin WHERE active=1`
+        }
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+                res.status(400).json({message:"Error Occured"})
+            }
+            else{
+                res.status(200).json({message:"Faculty Fetched",data:result})
+            }
+        })
+    }catch (err){
         console.log(err)
         res.status(400).json({message:"Error Occured",err:err})
     }

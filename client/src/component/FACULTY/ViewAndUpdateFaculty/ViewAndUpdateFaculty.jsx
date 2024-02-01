@@ -92,12 +92,14 @@ const handaleCancel = () => {
                 <thead style={{display: mainView}}>
                 <tr>
                     <th>Faculty ID</th>
-                    <th>Faculty Name</th>
-                    <th>Faculty Email</th>
-                    <th>Faculty Phone</th>
-                    <th>Faculty Qualification</th>
-                    <th>Faculty Department</th>
-                    <th>Join Date</th>
+                    <th>Active Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Qualification</th>
+                    <th>Area Of Interest</th>
+                    <th>Joining Date</th>
+                    
                     <th>Action</th>
 
                 </tr>
@@ -106,17 +108,20 @@ const handaleCancel = () => {
                 {data.map((item, index) => (
                     <tr key={index}>
                         <td>{item.id}</td>
+                        <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
                         <td>{item.email}</td>
                         <td>{item.contact_no}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
                         <td>{item.join_date.slice(0, 10)}</td>
+                        {/* <td>{item.relese_Date}</td> */}
+                        
                         <td>
-                            <button className="dashboard-btn dashboard-btn-scss"
+                            <button className="dashboard-btn dashboard-btn-scss btn-warning"
                                     onClick={() => handaleEdit(item.id)}>Edit
                             </button>
-                            <button className='dashboard-btn btn-warning'
+                            <button className='dashboard-btn dashboard-btn-scss btn-warning'
                                     onClick={() => handaleDelete(item.id)}>Delete
                             </button>
                         </td>
@@ -159,23 +164,30 @@ const handaleCancel = () => {
             <table className="table-60" id="faculty-view" style={{display: "none"}}>
                 <thead>
                 <tr>
-                    <th>Faculty ID</th>
+                <th>Faculty ID</th>
+                    <th>Active Status</th>
                     <th>Faculty Name</th>
                     <th>Faculty Email</th>
                     <th>Faculty Phone</th>
                     <th>Faculty Qualification</th>
-                    <th>Faculty Department</th>
+                    <th>Area Of Interest</th>
+                    <th>Joining Date</th>
+                    <th>Release Date</th>
                 </tr>
                 </thead>
                 <tbody>
                 {data.map((item, index) => (
                     <tr key={index}>
                         <td>{item.id}</td>
+                        <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
                         <td>{item.email}</td>
                         <td>{item.contact_no}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
+                        <td>{item.join_date.slice(0, 10)}</td>
+                        {/* <td>{item.relese_Date}</td> */}
+                        <td>{item.relese_Date !== null ? item.relese_Date.slice(0, 10):''}</td>
 
                     </tr>
                 ))}

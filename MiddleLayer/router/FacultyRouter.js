@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,GetAllExternalExam,DeleteExternalExam,
+const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,GetAllExternalExam,DeleteExternalExam,GetAllFacultyMiddleLayer,
     CreateExam,CreateMarks,
     MarksSearch,
     UpdateMarks
@@ -50,5 +50,9 @@ router.post('/searchmarks',MarksSearch)
 
 //Update Marks
 router.post('/updatemarks',UpdateMarks)
+
+
+//Update Marks
+router.post('/getallfacultyactive',GetAllFacultyMiddleLayer)
 
 module.exports = router
