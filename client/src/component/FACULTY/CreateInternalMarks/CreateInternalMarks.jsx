@@ -76,6 +76,7 @@ const FetchExam=()=>{
         setName(data.student_Name)
         setRollNo(data.roll_no)
         setentermarks('none')
+        
 
     }
     const marksentry=()=>{
@@ -102,6 +103,7 @@ const FetchExam=()=>{
         setRollNo(0)
         setTotalMarks(0)
         setentermarks('none')
+      
     }
 const HandleSearch=(e)=>{
     e.preventDefault();
@@ -137,6 +139,8 @@ const HandleSearch=(e)=>{
                 alert(res.data.message)
                 setMarks(0)
                 setSubject("")
+                setentermarks('none')
+                setExamName('')
             })
                 .catch((err)=>{
                     console.log(err)
@@ -363,8 +367,9 @@ const setExamnameFunction=(e)=>{
                     <th>Class</th>
                     <th>Roll Number</th>
                     <th>Exam Name</th>
+                    <th>Total Marks</th>
                     <th>Subject</th>
-                    <th>Marks</th>
+                    <th>Marks Obtained</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -386,6 +391,7 @@ const setExamnameFunction=(e)=>{
                             </select>
                         </div>
                     </td>
+                    <td>{totalMarks}</td>
                     <td>
                         <div>
                             <select onChange={(e) => setSubject(e.target.value)} value={subject}>
