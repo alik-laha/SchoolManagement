@@ -318,16 +318,16 @@ const setExamnameFunction=(e)=>{
                                             data.marks
                                         }
                                 </td>
-                                <td>
-                                    <button className='dashboard-btn btn-warning' style={{display:beforeUpdate}}
+                                <td >
+                                    <span style={{display:'inline-block',textAlign:'center'}}><button className='dashboard-btn btn-warning' style={{display:beforeUpdate}}
                                             onClick={() => handleUpdate(data, idx)}>Marks Update
                                     </button>
-                                    <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
+                                    <span style={{display:'flex'}}><button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
                                             onClick={() => handleUpdateSave(data.id)}>Save
                                     </button>
                                     <button className='dashboard-btn btn-warning' style={{display:afterUpdate}}
                                             onClick={() => handleUpdateCancel()}>Cancel
-                                    </button>
+                                    </button></span></span>
                                 </td>
                             </tr>
 
