@@ -315,7 +315,7 @@ const MasterStudentViewUpdate = (props) => {
         }
         axios.post("http://localhost:7000/api/v1/student/updatestudent",data)
             .then((res)=>{
-                if(releaseDate!==""){
+                if(releaseDate){
                     axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno",{regNo})
                         .then((res)=>{
                             alert('Student Details Edited Successfully')
@@ -361,7 +361,9 @@ const MasterStudentViewUpdate = (props) => {
                             console.log(err);
                         })
                 }
-
+                else{
+                    alert('Student Details Edited Successfully')
+                }
             })
             .catch((err)=>{
                 console.log(err);

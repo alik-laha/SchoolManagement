@@ -332,7 +332,7 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                  applied_class='${applyClass}',
                                  age='${age}',
                                  admisson_date='${admissonDate}',
-                                 release_date='${releaseDate}',
+                                
                                  blood_group='${bloodGroup}',
                                  acount_no='${bankAcountNo}',
                                  branch='${brunch}',
@@ -351,7 +351,7 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                 console.log(err)
                             }
                           else{
-                              let querry=`UPDATE master_student SET active=0 WHERE registration_no='${regNo}'`
+                              let querry=`UPDATE master_student SET active=0, release_date='${releaseDate}' WHERE registration_no='${regNo}'`
                                 Database.query(querry,(err,result)=>{
                                   if(err){
                                       console.log(err)
@@ -363,6 +363,11 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                     }
                                 })
                             }
+                        })
+                    }
+                    else{
+                        return res.status(200).json({
+                            msg: "student admission successfully updated"
                         })
                     }
                 }
