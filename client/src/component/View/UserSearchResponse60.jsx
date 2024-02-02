@@ -102,12 +102,13 @@ const UserSearchResponse60=(props)=>{
             .catch((error) => {
                 console.log(error);
             });
-        alert("User Updated Successfully");
+        alert("User has been Updated Successfully");
         if(disp==="block"){
             setdisp("none");
         }
         setVisiblity("none");
         setmainsvisibility('contents')
+        setPassVisi("password")
     };
     const handleEdit = (data) => {
         setVisiblity("contents");
@@ -121,8 +122,9 @@ const UserSearchResponse60=(props)=>{
         <div style={{display: disp}}>
             
             <table className="table-60">
-            <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+            
                 <thead style={{display: mainsvisibility}}>
+                <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>User Id</th>
                     <th>User Name</th>
