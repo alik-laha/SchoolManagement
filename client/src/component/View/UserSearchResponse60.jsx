@@ -152,8 +152,8 @@ const UserSearchResponse60=(props)=>{
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                         <td>
-                            <button className='dashboard-btn btn-warning' onClick={() => handleEdit(item)}>Edit</button>
-                            <button className="dashboard-btn btn-warning"
+                            <button className='dashboard-btn btn-warning clear-gradient' onClick={() => handleEdit(item)}>Edit</button>
+                            <button className="dashboard-btn btn-warning clear-gradient"
                                     onClick={() => {
                                         const confirmBox = window.confirm(
                                             "Do you really want to delete this User: "+item.user_name +"?"

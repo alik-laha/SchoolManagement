@@ -445,7 +445,7 @@ const MasterStudentViewUpdate = (props) => {
     return(
         <div style={{display: view}}>
             <div style={{display:allView}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+            {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
@@ -480,7 +480,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.registration_no}</td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
                                 <td>
-                                    <button className='dashboard-btn btn-warning' onClick={()=>Handleedit(item)}>Edit</button>
+                                    <button className='dashboard-btn btn-warning clear-gradient' onClick={()=>Handleedit(item)}>Edit</button>
                                     <button onClick={() => {
                                         const confirmBox = window.confirm(
                                             "Do you really want to delete this Student: "+item.student_Name +"?"
@@ -490,7 +490,7 @@ const MasterStudentViewUpdate = (props) => {
                                         }
                                     }}
                                     
-                                     className="dashboard-btn btn-warning">Delete</button>
+                                     className="dashboard-btn btn-warning clear-gradient">Delete</button>
                                 </td>
                             </tr>
                         )

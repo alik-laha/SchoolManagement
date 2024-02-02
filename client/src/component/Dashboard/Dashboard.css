@@ -209,8 +209,13 @@
 .clear-gradient{
 
     /* background: repeating-linear-gradient(45deg, red, transparent 100px)!important; */
-    background-color: rgb(148, 182, 13);
-   
+    background-color: rgb(171, 209, 17)!important;
+    
+    border-color: rgb(148, 182, 13)!important;
+}
+
+.clear-gradient:hover{
+    background-color:rgb(220, 233, 137)!important;
     
 }
 
