@@ -1,5 +1,6 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const ViewAllVendor=(props)=>{
     const [view,setView]=useState("none")
 
@@ -27,6 +28,14 @@ const ViewAllVendor=(props)=>{
     },[props.createView,props.View])
     return(
         <div style={{display:view}}>
+              <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn btn-warning excel-btn"
+                table="vendor-view"
+                filename="vendor-report"
+                sheet="tablexls"
+                buttonText="Excel Import"
+            />
             <table className="table-60">
                 <thead >
                 <tr>
@@ -46,6 +55,29 @@ const ViewAllVendor=(props)=>{
                             <td>
                                 <button className='btn-warning dashboard-btn' onClick={()=>handleDelete(vendor.vendor_id,vendor.vendor_name)}>Delete</button>
                             </td>
+                        </tr>
+                    )
+                })}
+                </tbody>
+
+            </table>
+            <table style={{display:'none'}} className="table-60" id='vendor-view'>
+                <thead >
+                <tr>
+                    <th>Vendor Id</th>
+                    <th>Vendor Name</th>
+                    <th>Vendor Address</th>
+                   
+                </tr>
+                </thead>
+                <tbody >
+                {props.Vendor.map((vendor)=>{
+                    return(
+                        <tr key={vendor.vendor_id}>
+                            <td>{vendor.vendor_id}</td>
+                            <td>{vendor.vendor_name}</td>
+                            <td>{vendor.vendor_address}</td>
+                           
                         </tr>
                     )
                 })}

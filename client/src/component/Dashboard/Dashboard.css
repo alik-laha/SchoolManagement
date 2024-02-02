@@ -187,7 +187,32 @@
     float: right;
    
 }
+.btn-warning{
+    background-color: #f39c12;
+    border-color: #e08e0b;
+    
+    /* background-color: rgb(19, 103, 131); */
+    color: white;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+    /* background: repeating-linear-gradient(45deg, orange, transparent 100px); */
+   
+    
+}
+.btn-warning:hover{
+    background-color:rgb(233, 187, 127);
+    /* background-color: rgb(13, 81, 103); */
+    /* background-color: rgb(127, 207, 234); */
+}
 
+.clear-gradient{
+
+    /* background: repeating-linear-gradient(45deg, red, transparent 100px)!important; */
+    background-color: rgb(148, 182, 13);
+   
+    
+}
 
 
 .dashboard-btn-default
@@ -397,18 +422,4 @@
     background-color: whitesmoke;
 }
 
-
-.btn-warning{
-    background-color: #f39c12;
-    border-color: #e08e0b;
-    color: white;
-    text-align: center;
-    margin-left: 5px;
-    margin-right: 5px;
-   
-    
-}
-.btn-warning:hover{
-    background-color:rgb(233, 187, 127);
-}
 

@@ -57,7 +57,7 @@ const CreateVendor = (props) => {
             
             <form onSubmit={handleCreateVendor}>
               <div >
-                <label>Create Vendor</label>
+                <label>Vendor Name </label>
                 <input
                     type="text"
                     placeholder="Vendor Name"
@@ -67,7 +67,7 @@ const CreateVendor = (props) => {
                 />
               </div>
               <div style={{width:'39%'}}>
-                <label>Address</label>
+                <label>Vendor Address</label>
                 <input
                     type="textarea"
                     placeholder="Address"
