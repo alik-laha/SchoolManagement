@@ -126,18 +126,19 @@ const UserSearchResponse60=(props)=>{
             <table className="table-60">
                 
                 <thead style={{display: mainsvisibility}}>
+                <tr style={{display:'table-caption'}}>
                 <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="User-Profile"
                 filename="User-Profile"
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
                 
             />
               
                 <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss " onClick={clearTable}> Clear Result </button>
-              
+                </tr>
                 <tr>
                     <th>User Id</th>
                     <th>User Name</th>

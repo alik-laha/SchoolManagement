@@ -227,8 +227,8 @@
 .user-profile-export{
 
     margin-top: -40px!important;
-    /* margin-left: -120px!important; */
-    float: left!important;
+    /* margin-left: 200%!important; */
+    float: right!important;
 }
 .dashboard-btn-default
 {
