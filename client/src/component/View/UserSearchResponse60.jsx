@@ -1,6 +1,7 @@
 import {useState,useEffect} from 'react'
 import axios from 'axios'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const UserSearchResponse60=(props)=>{
     const [allData,setAllData]=useState([])
@@ -122,9 +123,20 @@ const UserSearchResponse60=(props)=>{
         <div style={{display: disp}}>
             
             <table className="table-60">
-            
+                
                 <thead style={{display: mainsvisibility}}>
-                <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn " onClick={clearTable}> Clear Result </button>
+                   
+                <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn dashboard-btn-scss btn-warning excel-btn user-profile-export"
+                table="User-Profile"
+                filename="User-Profile"
+                sheet="tablexls"
+                buttonText="Excel Import"
+                
+            />
+                <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss " onClick={clearTable}> Clear Result </button>
+              
                 <tr>
                     <th>User Id</th>
                     <th>User Name</th>
@@ -231,6 +243,27 @@ const UserSearchResponse60=(props)=>{
             </table>
             {view.length===0 ? <div className="no-data">No Data Exists</div> : null}
 
+            <table className="table-60" id='User-Profile' style={{display:'none'}}>
+            <thead style={{display: mainsvisibility}} id='hidden-table-60'>
+                <tr>
+                    <th>User Id</th>
+                    <th>User Name</th>
+                    <th>User Role</th>
+                   
+                </tr>
+                </thead>
+                <tbody style={{display: mainsvisibility}}>
+                {view.map((item) => (
+                    <tr key={item.user_id}>
+                        <td>{item.user_id}</td>
+                        <td>{item.user_name}</td>
+                        <td>{item.roletype_name}</td>
+                       
+                    </tr>
+                ))}
+                </tbody>
+                
+            </table>                        
 
         </div>
     )
