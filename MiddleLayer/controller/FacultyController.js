@@ -79,17 +79,11 @@ exports.UpdateFaculty = (req, res) => {
                              active='0'
                          WHERE id = ${id}`
         }
-        Database.query(query,(err,res)=>{
+        Database.query(query,(err,result)=>{
             if(err){
-                return res.status(400).json({
-                    err:err,
-                    msg:"error while Update"
-                })
+                return res.status(400).json({message:"Error Occured",err:err})
             }else{
-                return res.status(200).json({
-                    msg:"updated sucessfully",
-                    res:res
-                })
+                return res.status(200).json({message:"Faculty Updated"})
             }
         })
 
@@ -113,15 +107,15 @@ exports.GetAllFaculty = (req, res) => {
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
-                res.status(400).json({message:"Error Occured"})
+               return res.status(400).json({message:"Error Occured"})
             }
             else{
-                res.status(200).json({message:"Faculty Fetched",data:result})
+               return res.status(200).json({message:"Faculty Fetched",data:result})
             }
         })
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+       return res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -134,19 +128,19 @@ exports.createSubject = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured",err:err})
+                    return res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
-                    res.status(200).json({message:"Subject Created"})
+                    return res.status(200).json({message:"Subject Created"})
                 }
             })
         }
         else{
-            res.status(400).json({message:"All Fields are required",Body:req.body})
+           return res.status(400).json({message:"All Fields are required",Body:req.body})
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+       return res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -158,15 +152,15 @@ exports.GetAllSubject = (req, res) => {
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)
-                res.status(400).json({message: "Error Occured"})
+              return  res.status(400).json({message: "Error Occured"})
             } else {
-                res.status(200).json({message: "Subject Fetched", data: result})
+               return res.status(200).json({message: "Subject Fetched", data: result})
             }
         })
     }
     catch (err) {
         console.log(err)
-        res.status(400).json({message: "Error Occured", err: err})
+      return  res.status(400).json({message: "Error Occured", err: err})
     }
 }
 
@@ -179,19 +173,19 @@ exports.DeleteSubject = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured"})
+                   return res.status(400).json({message:"Error Occured"})
                 }
                 else{
-                    res.status(200).json({message:"Subject Deleted"})
+                  return  res.status(200).json({message:"Subject Deleted"})
                 }
             })
         }
         else {
-            res.status(400).json({message:"All Fields are required"})
+          return  res.status(400).json({message:"All Fields are required"})
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+       return res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -203,15 +197,15 @@ exports.GetAllInternalExam = (req, res) => {
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)
-                res.status(400).json({message: "Error Occured"})
+               return res.status(400).json({message: "Error Occured"})
             } else {
-                res.status(200).json({message: "Subject Fetched", data: result})
+              return  res.status(200).json({message: "Subject Fetched", data: result})
             }
         })
     }
     catch (err) {
         console.log(err)
-        res.status(400).json({message: "Error Occured", err: err})
+       return res.status(400).json({message: "Error Occured", err: err})
     }
 }
 
@@ -224,19 +218,19 @@ exports.DeleteInternalExam = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured"})
+                  return  res.status(400).json({message:"Error Occured"})
                 }
                 else{
-                    res.status(200).json({message:"Subject Deleted"})
+                  return  res.status(200).json({message:"Subject Deleted"})
                 }
             })
         }
         else {
-            res.status(400).json({message:"All Fields are required"})
+            return res.status(400).json({message:"All Fields are required"})
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -249,15 +243,15 @@ exports.GetAllExternalExam = (req, res) => {
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)
-                res.status(400).json({message: "Error Occured"})
+                return  res.status(400).json({message: "Error Occured"})
             } else {
-                res.status(200).json({message: "Subject Fetched", data: result})
+                return  res.status(200).json({message: "Subject Fetched", data: result})
             }
         })
     }
     catch (err) {
         console.log(err)
-        res.status(400).json({message: "Error Occured", err: err})
+        return res.status(400).json({message: "Error Occured", err: err})
     }
 }
 
@@ -270,19 +264,19 @@ exports.DeleteExternalExam = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured"})
+                    return  res.status(400).json({message:"Error Occured"})
                 }
                 else{
-                    res.status(200).json({message:"Subject Deleted"})
+                    return  res.status(200).json({message:"Subject Deleted"})
                 }
             })
         }
         else {
-            res.status(400).json({message:"All Fields are required"})
+            return  res.status(400).json({message:"All Fields are required"})
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -297,10 +291,10 @@ exports.CreateExam = (req, res) => {
                 Database.query(query,(err,result)=>{
                     if(err){
                         console.log(err)
-                        res.status(400).json({message:"Error Occured",err:err})
+                        return res.status(400).json({message:"Error Occured",err:err})
                     }
                     else{
-                        res.status(200).json({message:"Examination Created"})
+                        return res.status(200).json({message:"Examination Created"})
                     }
                 })
             }
@@ -309,10 +303,10 @@ exports.CreateExam = (req, res) => {
                 Database.query(query,(err,result)=>{
                     if(err){
                         console.log(err)
-                        res.status(400).json({message:"Error Occured",err:err})
+                        return  res.status(400).json({message:"Error Occured",err:err})
                     }
                     else{
-                        res.status(200).json({message:"Examination Created"})
+                        return  res.status(200).json({message:"Examination Created"})
                     }
                 })
             }
@@ -322,7 +316,7 @@ exports.CreateExam = (req, res) => {
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return  res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -340,16 +334,16 @@ exports.CreateMarks = (req, res) => {
                 Database.query(query, (err, result) => {
                     if (err) {
                         console.log(err)
-                        res.status(400).json({message: "Error Occured", err: err})
+                        return res.status(400).json({message: "Error Occured", err: err})
                     } else {
-                        res.status(200).json({message: "Marks Created"})
+                        return res.status(200).json({message: "Marks Created"})
                     }
                 })
             }
         }
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return  res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -362,19 +356,19 @@ exports.MarksSearch = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured",err:err})
+                    return  res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
-                    res.status(200).json({message:"Marks Fetched",data:result})
+                    return  res.status(200).json({message:"Marks Fetched",data:result})
                 }
             })
         }
         else{
-            res.status(400).json({message:"All Fields are required"})
+            return  res.status(400).json({message:"All Fields are required"})
         }
     }catch(err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return  res.status(400).json({message:"Error Occured",err:err})
     }
 }
 
@@ -390,17 +384,17 @@ exports.UpdateMarks=(req,res)=>{
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured",err:err})
+                    return res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
-                    res.status(200).json({message:"Marks Updated"})
+                    return  res.status(200).json({message:"Marks Updated"})
                 }
             })
         }
 
     }catch(err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return  res.status(400).json({message:"Error Occured",err:err})
     }
 }
 //get all faculty middlelayer
@@ -417,14 +411,14 @@ exports.GetAllFacultyMiddleLayer = (req, res) => {
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
-                res.status(400).json({message:"Error Occured"})
+                return res.status(400).json({message:"Error Occured"})
             }
             else{
-                res.status(200).json({message:"Faculty Fetched",data:result})
+                return res.status(200).json({message:"Faculty Fetched",data:result})
             }
         })
     }catch (err){
         console.log(err)
-        res.status(400).json({message:"Error Occured",err:err})
+        return res.status(400).json({message:"Error Occured",err:err})
     }
 }

@@ -40,6 +40,7 @@ const MasterStudentViewUpdate = (props) => {
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
     const[allView,setAllview]=useState("block")
+    const[releaseDate,setReleaseDate]=useState("");
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
@@ -112,14 +113,14 @@ const MasterStudentViewUpdate = (props) => {
             setPhysicallyChallenged(item.physically_challenged);
         }
         else{
-            setPhysicallyChallenged('');
+            setPhysicallyChallenged(0);
         }
         if(item.orphanage!=='')
         {
             setOrphanage(item.orphanage);
         }
         else{
-            setOrphanage('');
+            setOrphanage(0);
         }
         if(item.father_name!=='')
         {
@@ -147,14 +148,14 @@ const MasterStudentViewUpdate = (props) => {
             setFatherMonthlyIncome(item.father_monthlyIncome);
         }
         else{
-            setFatherMonthlyIncome('');
+            setFatherMonthlyIncome(0);
         }
         if(item.father_contact!=='' )
         {
             setFatherContactNo(item.father_contact);
         }
         else{
-            setFatherContactNo('');
+            setFatherContactNo(0);
         }
         if(item.mother_name!=='' )
         {
@@ -182,14 +183,14 @@ const MasterStudentViewUpdate = (props) => {
             setMotherMonthlyIncome(item.mother_monthlyIncome);
         }
         else{
-            setMotherMonthlyIncome('');
+            setMotherMonthlyIncome(0);
         }
         if(item.mother_contact!=='null')
         {
             setMotherContactNo(item.mother_contact);
         }
         else{
-            setMotherContactNo('');
+            setMotherContactNo(0);
         }
         if(item.guardian_name!=='null')
         {
@@ -261,10 +262,14 @@ const MasterStudentViewUpdate = (props) => {
         else{
             setAge('');
         }
-        
-        
+        if(item.bank_acount_no !=="undefined"){
+            setBankAcountNo(item.bank_acount_no);
+        }
+        else{
+            setBankAcountNo(0)
+        }
         setBloodGroup(item.blood_group);
-        setBankAcountNo(item.bank_acount_no);
+        setReleaseDate(item.release_date);
         setBrunch(item.branch);
         setIfscCode(item.ifsc);
 
@@ -305,7 +310,8 @@ const MasterStudentViewUpdate = (props) => {
             bloodGroup,
             bankAcountNo,
             brunch,
-            ifscCode
+            ifscCode,
+            releaseDate
         }
         axios.post("http://localhost:7000/api/v1/student/updatestudent",data)
             .then((res)=>{
@@ -314,43 +320,45 @@ const MasterStudentViewUpdate = (props) => {
                 setAllview("block")
                 setUpdateView("none")
                 setView('none')
+                setName('');
+                setAdharNo('');
+                setSex('');
+                setReligion('');
+                setDob('');
+                setCast('');
+                setPhysicallyChallenged(0);
+                setOrphanage(0);
+                setFatherName('');
+                setFatherQualification('');
+                setFatherOcupation('');
+                setFatherMonthlyIncome(0);
+                setFatherContactNo(0);
+                setMotherName('');
+                setMotherQualification('');
+                setMotherOcupation('');
+                setMotherMonthlyIncome(0);
+                setMotherContactNo(0);
+                setGuardianName('');
+                setRelationship('');
+                setGuardianContactNo('');
+                setAddress('');
+                setPinNo('');
+                setBspId('');
+                setApplyClass('');
+                setAdmissionYear('');
+                setAdmissonDate(new Date().toISOString().slice(0, 10));
+                setAge('');
+                setBloodGroup('');
+                setBankAcountNo(0);
+                setBrunch('');
+                setIfscCode('');
+                setRegNo('');
+                setReleaseDate("");
             })
             .catch((err)=>{
                 console.log(err);
             })
-            setName('');
-            setAdharNo('');
-            setSex('');
-            setReligion('');
-            setDob('');
-            setCast('');
-            setPhysicallyChallenged(0);
-            setOrphanage(0);
-            setFatherName('');
-            setFatherQualification('');
-            setFatherOcupation('');
-            setFatherMonthlyIncome(0);
-            setFatherContactNo(0);
-            setMotherName('');
-            setMotherQualification('');
-            setMotherOcupation('');
-            setMotherMonthlyIncome(0);
-            setMotherContactNo(0);
-            setGuardianName('');
-            setRelationship('');
-            setGuardianContactNo('');
-            setAddress('');
-            setPinNo('');
-            setBspId('');
-            setApplyClass('');
-            setAdmissionYear('');
-            setAdmissonDate(new Date().toISOString().slice(0, 10));
-            setAge('');
-            setBloodGroup('');
-            setBankAcountNo(0);
-            setBrunch('');
-            setIfscCode('');
-            setRegNo('');
+
     }
     const handaleDelete=(regNo,name)=>{
         setAllview("block")
@@ -370,77 +378,79 @@ const MasterStudentViewUpdate = (props) => {
             .catch((err)=>{
                 console.log(err);
             })
-        setName(null);
-        setAdharNo(null);
-        setSex(null);
-        setReligion(null);
-        setDob(null);
-        setCast(null);
+        setName('');
+        setAdharNo('');
+        setSex('');
+        setReligion('');
+        setDob('');
+        setCast('');
         setPhysicallyChallenged(0);
         setOrphanage(0);
-        setFatherName(null);
-        setFatherQualification(null);
-        setFatherOcupation(null);
+        setFatherName('');
+        setFatherQualification('');
+        setFatherOcupation('');
         setFatherMonthlyIncome(0);
         setFatherContactNo(0);
-        setMotherName(null);
-        setMotherQualification(null);
-        setMotherOcupation(null);
+        setMotherName('');
+        setMotherQualification('');
+        setMotherOcupation('');
         setMotherMonthlyIncome(0);
         setMotherContactNo(0);
-        setGuardianName(null);
-        setRelationship(null);
-        setGuardianContactNo(null);
-        setAddress(null);
-        setPinNo(null);
-        setBspId(null);
-        setApplyClass(null);
-        setAdmissionYear(null);
+        setGuardianName('');
+        setRelationship('');
+        setGuardianContactNo('');
+        setAddress('');
+        setPinNo('');
+        setBspId('');
+        setApplyClass('');
+        setAdmissionYear('');
         setAdmissonDate(new Date().toISOString().slice(0, 10));
-        setAge(null);
-        setBloodGroup(null);
+        setAge('');
+        setBloodGroup('');
         setBankAcountNo(0);
-        setBrunch(null);
-        setIfscCode(null);
-        setRegNo(null);
+        setBrunch('');
+        setIfscCode('');
+        setRegNo('');
+        setReleaseDate("");
     }
     const handaleCancel=()=>{
     setAllview("block")
         setUpdateView("none")
 
-        setName(null);
-        setAdharNo(null);
-        setSex(null);
-        setReligion(null);
-        setDob(null);
-        setCast(null);
+        setName('');
+        setAdharNo('');
+        setSex('');
+        setReligion('');
+        setDob('');
+        setCast('');
         setPhysicallyChallenged(0);
         setOrphanage(0);
-        setFatherName(null);
-        setFatherQualification(null);
-        setFatherOcupation(null);
+        setFatherName('');
+        setFatherQualification('');
+        setFatherOcupation('');
         setFatherMonthlyIncome(0);
         setFatherContactNo(0);
-        setMotherName(null);
-        setMotherQualification(null);
-        setMotherOcupation(null);
+        setMotherName('');
+        setMotherQualification('');
+        setMotherOcupation('');
         setMotherMonthlyIncome(0);
         setMotherContactNo(0);
-        setGuardianName(null);
-        setRelationship(null);
-        setGuardianContactNo(null);
-        setAddress(null);
-        setPinNo(null);
-        setBspId(null);
-        setApplyClass(null);
-        setAdmissionYear(null);
+        setGuardianName('');
+        setRelationship('');
+        setGuardianContactNo('');
+        setAddress('');
+        setPinNo('');
+        setBspId('');
+        setApplyClass('');
+        setAdmissionYear('');
         setAdmissonDate(new Date().toISOString().slice(0, 10));
-        setAge(null);
-        setBloodGroup(null);
+        setAge('');
+        setBloodGroup('');
         setBankAcountNo(0);
-        setBrunch(null);
-        setIfscCode(null);
-        setRegNo(null);
+        setBrunch('');
+        setIfscCode('');
+        setRegNo('');
+        setReleaseDate("");
     }
     return(
         <div style={{display: view}}>
@@ -505,16 +515,16 @@ const MasterStudentViewUpdate = (props) => {
             <button style={{marginBottom:'8px'}}
             onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
             <hr></hr>
-                
-                
+
+
                 <form onSubmit={handleUpdate}>
-                    
-                <p className="customize-centre">Edit Student Details</p>
-                <p>Basic Details</p>
+
+                    <p className="customize-centre">Edit Student Details</p>
+                    <p>Basic Details</p>
                     <div>
                         <label>Student Name*</label>
                         <input
-                        className="read-only"
+                            className="read-only"
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
@@ -523,7 +533,7 @@ const MasterStudentViewUpdate = (props) => {
                             readOnly
                         />
                     </div>
-                 
+
 
                     <div>
                         <label>Gender*</label>
@@ -637,7 +647,7 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="B.S.P Id"
                         />
                     </div>
-                  
+
 
                     <div className="div-25">
                         <label>Physically Challenged</label>
@@ -738,7 +748,6 @@ const MasterStudentViewUpdate = (props) => {
                     </div>
                     <hr className="division-2"/>
 
-                 
 
                     <div>
                         <label>Mother's Name</label>
@@ -778,7 +787,7 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="Mother contact No"
                         />
                     </div>
-                   
+
 
                     <div>
                         <label>Mother's Monthly Income</label>
@@ -790,11 +799,11 @@ const MasterStudentViewUpdate = (props) => {
                         />
                     </div>
                     <hr className="division-2"/>
-                
-                <hr className="division"/>
-                <p>Other Details</p>
-                    
-                <div>
+
+                    <hr className="division"/>
+                    <p>Other Details</p>
+
+                    <div>
                         <label>Aadhar Number*</label>
                         <input
                             type="number"
@@ -823,16 +832,16 @@ const MasterStudentViewUpdate = (props) => {
                         />
                     </div>
                     <div>
-                    
-                    <label>IFSC Code</label>
-                    <input
-                        type="text"
-                        value={ifscCode}
-                        onChange={(e) => setIfscCode(e.target.value)}
-                        placeholder="Ifsc code"
-                    />
-                </div>
-          
+
+                        <label>IFSC Code</label>
+                        <input
+                            type="text"
+                            value={ifscCode}
+                            onChange={(e) => setIfscCode(e.target.value)}
+                            placeholder="Ifsc code"
+                        />
+                    </div>
+
                     <div>
                         <label>Applied Class*</label>
                         <input
@@ -857,7 +866,7 @@ const MasterStudentViewUpdate = (props) => {
                             readOnly
                         />
                     </div>
-                
+
                     <div>
                         <label>Admission Date*</label>
                         <input
@@ -869,23 +878,30 @@ const MasterStudentViewUpdate = (props) => {
                             required={true}
                         />
                     </div>
-                
-                 
+                    <div>
+                        <label>Release Date</label>
+                        <input
+                            type="date"
+                            value={releaseDate}
+                            onChange={(e) => setReleaseDate(e.target.value)}
+                        />
+                    </div>
+
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
-                    
+
                 </form>
             </div>
 
 
-            <table className="table-60" style={{display:'none'}} id="master-student-view">
-                    <thead style={{display:'contents'}}>
-                   
-                        <tr>
-                            <th>Student ID</th>
-                            <th>Applied Class</th>
-                            <th>Admission Year</th>
-                            <th>Date of Admission</th>
-                            <th>Registration No.</th>
+            <table className="table-60" style={{display: 'none'}} id="master-student-view">
+                <thead style={{display: 'contents'}}>
+
+                <tr>
+                    <th>Student ID</th>
+                    <th>Applied Class</th>
+                    <th>Admission Year</th>
+                    <th>Date of Admission</th>
+                    <th>Registration No.</th>
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Religion</th>
