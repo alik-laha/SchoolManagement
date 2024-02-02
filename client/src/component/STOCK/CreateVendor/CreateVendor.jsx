@@ -4,15 +4,19 @@ import axios from "axios";
 
 const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
+    const [vendoraddress,setVendoraddress]=useState("")
 
     const handleCreateVendor = (e) => {
         e.preventDefault()
         axios.post("http://localhost:7000/api/v1/stock/createvendor",{
-            vendor:vendor
+            vendor:vendor,
+            vendoraddress:vendoraddress
+
         })
             .then((res) => {
                 alert(`Vendor created with Name : ${vendor}`)
-                setVendor("");
+                setVendor("")
+                setVendoraddress("")
                 {handleViewVendoronCreate()}
             })
             .catch((err) => {
@@ -20,6 +24,7 @@ const CreateVendor = (props) => {
                     alert("Vendor " + vendor+" Already Exists");
                  }
                  setVendor("")
+                 setVendoraddress("")
                 
             });
     }
@@ -51,7 +56,7 @@ const CreateVendor = (props) => {
         <div className="dashbrd-40-colm" style={{display:props.createView}}>
             
             <form onSubmit={handleCreateVendor}>
-              <div>
+              <div >
                 <label>Create Vendor</label>
                 <input
                     type="text"
@@ -61,8 +66,18 @@ const CreateVendor = (props) => {
                     required
                 />
               </div>
+              <div style={{width:'39%'}}>
+                <label>Address</label>
+                <input
+                    type="textarea"
+                    placeholder="Address"
+                    onChange={(e) => setVendoraddress(e.target.value)}
+                    value={vendoraddress}
+                    required
+                />
+              </div>
             
-            <span><button className="dashboard-btn dashboard-btn-scss " type="submit">Create Vendor</button></span>
+            <span style={{marginTop:'10px'}}><button className="dashboard-btn dashboard-btn-scss " type="submit">Create Vendor</button></span>
 
             </form>
        <div>

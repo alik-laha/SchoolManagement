@@ -57,14 +57,14 @@ exports.GetItem = (req, res) => {
 
 //create vendor
 exports.CreateVendor = (req, res) => {
-    const { vendor } = req.body
+    const { vendor,vendoraddress } = req.body
 
         if (! vendor || vendor === " ") {
             return res.json({msg:"all data needed"})
         }
                 query = `
-                    INSERT INTO vendor (vendor_name)
-                    VALUES ("${vendor}")`;
+                    INSERT INTO vendor (vendor_name,vendor_address)
+                    VALUES ("${vendor}","${vendoraddress}")`;
                 Database.query(query, function (error, data) {
                     if (error) {
 

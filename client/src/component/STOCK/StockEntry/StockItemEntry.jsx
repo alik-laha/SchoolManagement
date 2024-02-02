@@ -126,7 +126,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Unit Cost(Per Pc/Kg/Ltr/Mtr)</label>
+                    <label>Unit Item Cost ( Per Pc / Kg / Ltr / Mtr )</label>
                     <input
                         id="UnitCost"
                         type="number"
@@ -137,7 +137,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Quantity (Pc/Kg/Ltr/Mtr)</label>
+                    <label>Total Quantity ( Pc / Kg / Ltr / Mtr )</label>
                     <input
                         id="Quantity"
                         type="number"
