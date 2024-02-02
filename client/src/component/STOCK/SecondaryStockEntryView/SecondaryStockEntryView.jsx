@@ -24,7 +24,7 @@ const SecondaryStockEntryView= (props) => {
     },[props.SearchebyData])
 
     useEffect(()=> {
-        console.log(props.secondarystocksearch,props.view)
+        //console.log(props.secondarystocksearch,props.view)
         if (props.secondarystocksearch === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setVisible("block")
         }
