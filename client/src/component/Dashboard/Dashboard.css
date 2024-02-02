@@ -208,19 +208,21 @@
 
 .clear-gradient{
 
-    background: repeating-linear-gradient(-45deg, rgb(156, 127, 9), transparent 100px)!important;
+    background: rgb(59, 59, 204)!important;
     /* background: repeating-linear-gradient(45deg, rgb(9, 84, 224), transparent 100px)!important; */
     /* background-color: rgb(171, 209, 17)!important; */
-    width: 70px!important;
+    /* width: 70px!important; */
     border-color: rgb(176, 182, 13)!important;
     /* border-color: rgb(9, 84, 224)!important; */
 }
 
 .clear-gradient:hover{
-    background-color:rgb(215, 219, 186)!important;
+    background-color:rgb(36, 176, 236)!important;
     
 }
-
+.fix-width{
+    width: 70px!important;
+}
 .margin-vendor-adjust{
     margin-top: -50px!important;
 }

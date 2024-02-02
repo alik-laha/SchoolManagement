@@ -125,8 +125,8 @@ const ViewBedStatus60 = (props) => {
                                 <td style={{color:'red'}}>{item.available_bed}</td>
                                 
                                 <td>
-                                    <button className='dashboard-btn btn-warning clear-gradient' onClick={()=>handaleEdit(item)}>Edit</button>
-                                    <button className='dashboard-btn btn-warning clear-gradient' onClick={()=>handaleDelete(item.id)}>Delete</button>
+                                    <button className='dashboard-btn btn-warning fix-width' onClick={()=>handaleEdit(item)}>Edit</button>
+                                    <button className='dashboard-btn btn-warning fix-width' onClick={()=>handaleDelete(item.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
