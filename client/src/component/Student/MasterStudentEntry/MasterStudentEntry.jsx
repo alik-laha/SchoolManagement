@@ -67,7 +67,14 @@ const MasterStudentEntry= (props) => {
         let regNo;
         axios.get("http://localhost:7000/api/v1/student/lastid")
             .then((res) => {
-                id=(res.data.result[0].serial_no+1);
+                if(!res.data.result[0])
+                {
+                    id=1
+                }
+                else{
+                    id=(res.data.result[0].serial_no+1);
+                }
+                
                 const schoolName = "AHM"
                 const Class = applyClass.toString()
                 const year = admissionYear.toString()
