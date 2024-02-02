@@ -386,6 +386,29 @@ exports.GetPromoteStudentAdmisson= (req, res) => {
         FROM Student_Admission
         WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and active=1`
         
+
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(200).json({ result })
+                
+            }
+        })
+
+    }catch (err){
+        console.log(err)
+    }
+}
+
+
+//Update next Class
+exports.updateNextClass= (req, res) => {
+    const{Class,academicYear,regNo}=req.body
+    try{
+        let query=
+        `UPDATE Student_Admission SET Class = '${Class+1}', current_academic_year = '${academicYear+1}' WHERE registration_no='${regNo}'`
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)

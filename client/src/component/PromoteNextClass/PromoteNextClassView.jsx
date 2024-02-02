@@ -27,7 +27,16 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view])
 
     const HandleEdit=()=>{
-       
+        const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date};
+        axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
+                .then((res) => {
+                    if(res){
+                        alert("Faculty Updated Successfully");
+                        setEditView("none");
+                        setMainView("contents");
+                        setView("none")
+                    }
+                })
 
 
     }
