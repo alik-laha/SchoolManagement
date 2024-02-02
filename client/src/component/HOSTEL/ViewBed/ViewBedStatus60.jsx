@@ -87,18 +87,20 @@ const ViewBedStatus60 = (props) => {
     return(
         <>
             <div style={{display:view}}>
-            
+           
+                <table className="table-60">
+                    <thead style={{display: mainView}}>
+                    <tr style={{display:'table-caption'}}>
                <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="bed-status-hostel"
                 filename="hotel-bedstatus-excel-report"
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
-                <table className="table-60">
-                    <thead style={{display: mainView}}>
-                    <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                    <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                    </tr>
                         <tr>
                             <th>Room Id</th>
                             <th>Bulding</th>
@@ -123,8 +125,8 @@ const ViewBedStatus60 = (props) => {
                                 <td style={{color:'red'}}>{item.available_bed}</td>
                                 
                                 <td>
-                                    <button className='dashboard-btn btn-warning' onClick={()=>handaleEdit(item)}>Edit</button>
-                                    <button className='dashboard-btn btn-warning' onClick={()=>handaleDelete(item.id)}>Delete</button>
+                                    <button className='dashboard-btn btn-warning clear-gradient' onClick={()=>handaleEdit(item)}>Edit</button>
+                                    <button className='dashboard-btn btn-warning clear-gradient' onClick={()=>handaleDelete(item.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

@@ -208,11 +208,12 @@
 
 .clear-gradient{
 
-    background: repeating-linear-gradient(-45deg, rgb(156, 127, 9), transparent 100px)!important;
-    /* background: repeating-linear-gradient(45deg, rgb(224, 20, 115), transparent 100px)!important; */
+    /* background: repeating-linear-gradient(-45deg, rgb(156, 127, 9), transparent 100px)!important; */
+    background: repeating-linear-gradient(45deg, rgb(9, 84, 224), transparent 100px)!important;
     /* background-color: rgb(171, 209, 17)!important; */
     width: 70px!important;
-    border-color: rgb(176, 182, 13)!important;
+    /* border-color: rgb(176, 182, 13)!important; */
+    border-color: rgb(9, 84, 224)!important;
 }
 
 .clear-gradient:hover{
