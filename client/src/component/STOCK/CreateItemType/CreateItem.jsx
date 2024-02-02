@@ -56,7 +56,7 @@ const CreateItem = (props) => {
         </form>
    
             <div>
-                <button style={{backgroundColor:'lightseagreen'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitem}>View / Delete Item Type</button>
+                <button style={{backgroundColor:'orange'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitem}>View / Delete Item Type</button>
             </div>
             
         </div>
