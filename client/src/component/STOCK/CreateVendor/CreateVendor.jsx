@@ -13,6 +13,7 @@ const CreateVendor = (props) => {
             .then((res) => {
                 alert(`Vendor created with Name : ${vendor}`)
                 setVendor("");
+                {handleViewVendoronCreate()}
             })
             .catch((err) => {
                 if(err.response.data.message.errno === 1062){
@@ -22,6 +23,19 @@ const CreateVendor = (props) => {
                 
             });
     }
+    const handleViewVendoronCreate = () => {
+        axios.post("http://localhost:7000/api/v1/stock/getallvendor")
+            .then((res)=>{
+                props.setVendorData(res.data.data);
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+    
+
+    }
+
+
     const handleViewVendor = () => {
         axios.post("http://localhost:7000/api/v1/stock/getallvendor")
             .then((res)=>{

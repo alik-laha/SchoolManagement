@@ -12,6 +12,7 @@ const CreateItem = (props) => {
         }).then((response)=>{
             setItem("")
             alert(`Item Type Created with Name ${item}`)
+            {handaleitemCreate()}
             
         })
         .catch((err) => {
@@ -23,6 +24,14 @@ const CreateItem = (props) => {
        })
 
 
+    }
+
+    const handaleitemCreate=()=>{
+        axios.post("http://localhost:7000/api/v1/stock/getallitem")
+            .then((data)=>{
+                props.setItemData(data.data.data);
+            })
+        
     }
     const handaleitem=()=>{
         axios.post("http://localhost:7000/api/v1/stock/getallitem")
