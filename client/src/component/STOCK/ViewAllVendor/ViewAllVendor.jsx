@@ -30,7 +30,7 @@ const ViewAllVendor=(props)=>{
         <div style={{display:view}}>
               <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn btn-warning excel-btn margin-vendor-adjust"
                 table="vendor-view"
                 filename="vendor-report"
                 sheet="tablexls"

@@ -36,12 +36,12 @@ let sum=0;
                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
-                table="secondary-stock-view"
-                filename="primasecondaryry-stock-excel-report"
+                table="pending-stock-view"
+                filename="pending-balance-stock-excel-report"
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
-            <table className="table-60" id="secondary-stock-view">
+            <table className="table-60" id="pending-stock-view">
                 <thead>
                 <tr>
                     <th>Item Id</th>

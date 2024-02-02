@@ -29,8 +29,8 @@ const ViewAllItem=(props)=>{
             <table className="table-60">
                 <thead >
                 <tr>
-                    <th>ItemType Id</th>
-                    <th>ItemType Name</th>
+                    <th>Item Type ID</th>
+                    <th>Item Type</th>
                     <th>Action</th>
                 </tr>
                 </thead>
