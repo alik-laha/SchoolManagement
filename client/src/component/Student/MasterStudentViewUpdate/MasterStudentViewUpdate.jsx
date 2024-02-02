@@ -315,45 +315,53 @@ const MasterStudentViewUpdate = (props) => {
         }
         axios.post("http://localhost:7000/api/v1/student/updatestudent",data)
             .then((res)=>{
-                alert('Student Details Edited Successfully')
-                console.log(res.data);
-                setAllview("block")
-                setUpdateView("none")
-                setView('none')
-                setName('');
-                setAdharNo('');
-                setSex('');
-                setReligion('');
-                setDob('');
-                setCast('');
-                setPhysicallyChallenged(0);
-                setOrphanage(0);
-                setFatherName('');
-                setFatherQualification('');
-                setFatherOcupation('');
-                setFatherMonthlyIncome(0);
-                setFatherContactNo(0);
-                setMotherName('');
-                setMotherQualification('');
-                setMotherOcupation('');
-                setMotherMonthlyIncome(0);
-                setMotherContactNo(0);
-                setGuardianName('');
-                setRelationship('');
-                setGuardianContactNo('');
-                setAddress('');
-                setPinNo('');
-                setBspId('');
-                setApplyClass('');
-                setAdmissionYear('');
-                setAdmissonDate(new Date().toISOString().slice(0, 10));
-                setAge('');
-                setBloodGroup('');
-                setBankAcountNo(0);
-                setBrunch('');
-                setIfscCode('');
-                setRegNo('');
-                setReleaseDate("");
+                if(releaseDate!==""){
+                    axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno",{regNo})
+                        .then((res)=>{
+                            alert('Student Details Edited Successfully')
+                            console.log(res.data);
+                            setAllview("block")
+                            setUpdateView("none")
+                            setView('none')
+                            setName('');
+                            setAdharNo('');
+                            setSex('');
+                            setReligion('');
+                            setDob('');
+                            setCast('');
+                            setPhysicallyChallenged(0);
+                            setOrphanage(0);
+                            setFatherName('');
+                            setFatherQualification('');
+                            setFatherOcupation('');
+                            setFatherMonthlyIncome(0);
+                            setFatherContactNo(0);
+                            setMotherName('');
+                            setMotherQualification('');
+                            setMotherOcupation('');
+                            setMotherMonthlyIncome(0);
+                            setMotherContactNo(0);
+                            setGuardianName('');
+                            setRelationship('');
+                            setGuardianContactNo('');
+                            setAddress('');
+                            setPinNo('');
+                            setBspId('');
+                            setApplyClass('');
+                            setAdmissionYear('');
+                            setAdmissonDate(new Date().toISOString().slice(0, 10));
+                            setAge('');
+                            setBloodGroup('');
+                            setBankAcountNo(0);
+                            setBrunch('');
+                            setIfscCode('');
+                            setRegNo('');
+                            setReleaseDate("");
+                        }).catch((err)=>{
+                            console.log(err);
+                        })
+                }
+
             })
             .catch((err)=>{
                 console.log(err);
