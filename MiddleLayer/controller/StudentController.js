@@ -291,7 +291,8 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
             bloodGroup,
             bankAcountNo,
             brunch,
-            ifscCode
+            ifscCode,
+            releaseDate
         } = req.body
 
         if (!name || !regNo || !adharNo || !sex || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissonDate || !age) {
@@ -301,16 +302,61 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
             })
         }
         else{
-            let query = `UPDATE master_student SET adhar_no='${adharNo}',registration_no='${regNo}', sex='${sex}', religion='${religion}', dob='${dob}', cast='${cast}', physically_challenged='${physicallyChallenged}', orphanage='${orphanage}', father_name='${fatherName}', father_qualification='${fatherQualification}', father_ocupation='${fatherOcupation}', father_monthlyIncome='${fatherMonthlyIncome}', father_contact='${fatherContactNo}', mother_name='${motherName}', mother_qualification='${motherQualification}', mother_ocupation='${motherOcupation}', mother_monthlyIncome='${motherMonthlyIncome}', mother_contact='${motherContactNo}', guardian_name='${guardianName}', relationship='${relationship}', guardian_contact='${guardianContactNo}', address='${address}', pin_no='${pinNo}', bsp_id='${bspId}', applied_class='${applyClass}', age='${age}', admisson_date='${admissonDate}', blood_group='${bloodGroup}', acount_no='${bankAcountNo}', branch='${brunch}', ifsc='${ifscCode}' WHERE registration_no='${regNo}'`
+            let query
+
+                 query = `UPDATE master_student
+                             SET adhar_no='${adharNo}',
+                                 registration_no='${regNo}',
+                                 sex='${sex}',
+                                 religion='${religion}',
+                                 dob='${dob}',
+                                 cast='${cast}',
+                                 physically_challenged='${physicallyChallenged}',
+                                 orphanage='${orphanage}',
+                                 father_name='${fatherName}',
+                                 father_qualification='${fatherQualification}',
+                                 father_ocupation='${fatherOcupation}',
+                                 father_monthlyIncome='${fatherMonthlyIncome}',
+                                 father_contact='${fatherContactNo}',
+                                 mother_name='${motherName}',
+                                 mother_qualification='${motherQualification}',
+                                 mother_ocupation='${motherOcupation}',
+                                 mother_monthlyIncome='${motherMonthlyIncome}',
+                                 mother_contact='${motherContactNo}',
+                                 guardian_name='${guardianName}',
+                                 relationship='${relationship}',
+                                 guardian_contact='${guardianContactNo}',
+                                 address='${address}',
+                                 pin_no='${pinNo}',
+                                 bsp_id='${bspId}',
+                                 applied_class='${applyClass}',
+                                 age='${age}',
+                                 admisson_date='${admissonDate}',
+                                 release_date='${releaseDate}',
+                                 blood_group='${bloodGroup}',
+                                 acount_no='${bankAcountNo}',
+                                 branch='${brunch}',
+                                 ifsc='${ifscCode}'
+                             WHERE registration_no = '${regNo}'`
             Database.query(query, (err, result) => {
                 if (err) {
                     return res.status(500).json({
                         err: err
                     })
                 } else {
-                    return res.status(200).json({
-                        msg: "student admission successfully updated"
-                    })
+                    if(releaseDate){
+                        let querry=`UPDATE Student_Admission SET active=0 WHERE registration_no='${regNo}'`
+                        Database.query(querry,(err,result)=>{
+                            if(err){
+                                console.log(err)
+                            }
+                          else{
+                            return res.status(200).json({
+                                msg: "student admission successfully updated"
+                            })
+                            }
+                        })
+                    }
                 }
             })
         }
