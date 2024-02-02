@@ -160,31 +160,31 @@ exports.GetMasterStudentAdmisson= (req, res) => {
     try{
         let query
         if (!regNo && !admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE active=1`
+            query = `SELECT * FROM master_student`
         }
         else if (regNo && !admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}' and active=1`
+            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}'`
         }
 
         else if (!regNo && admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}' and active=1`
+            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}'`
         }
         else if (!regNo && !admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' and active=1 `
+            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' `
         }
 
         else if (regNo && admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' and active=1`
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}'`
         }
         else if (!regNo && admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and applied_class='${applyClass}' and active=1`
+            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and applied_class='${applyClass}'`
         }
         else if (regNo && !admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and applied_class='${applyClass}' and active=1`
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and applied_class='${applyClass}'`
         }
 
         else {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' and active=1 `
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' and applied_class='${applyClass}'  `
         }
         Database.query(query, (err, result) => {
             if (err) {
@@ -332,7 +332,7 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                  applied_class='${applyClass}',
                                  age='${age}',
                                  admisson_date='${admissonDate}',
-                                
+                                 release_date='${releaseDate}',
                                  blood_group='${bloodGroup}',
                                  acount_no='${bankAcountNo}',
                                  branch='${brunch}',

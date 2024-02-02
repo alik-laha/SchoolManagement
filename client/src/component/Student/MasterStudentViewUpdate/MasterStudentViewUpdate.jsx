@@ -3,7 +3,7 @@ import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const MasterStudentViewUpdate = (props) => {
-    const [view,setView]=useState();
+    const [view,setView]=useState('none');
     const [masterStudent,setMasterStudent]=useState([]);
     const [updateView,setUpdateView]=useState("none")
 
@@ -363,6 +363,9 @@ const MasterStudentViewUpdate = (props) => {
                 }
                 else{
                     alert('Student Details Edited Successfully')
+                    setAllview("block")
+        setUpdateView("none")
+                    setView('none')
                 }
             })
             .catch((err)=>{
@@ -480,6 +483,7 @@ const MasterStudentViewUpdate = (props) => {
                 <tr>
                     <th>Student Id</th>
                     <th>Student Name</th>
+                    <th>Active Status</th>
                     <th>Applied Class</th>
                     <th>Year of Admission</th>
                     <th>Registration No</th>
@@ -495,6 +499,7 @@ const MasterStudentViewUpdate = (props) => {
                             <tr key={index}>
                                 <td>{item.serial_no}</td>
                                 <td>{item.student_Name}</td>
+                                <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                                 <td>{item.applied_class}</td>
                                 <td>{item.admisson_year}</td>
                                 <td>{item.registration_no}</td>
