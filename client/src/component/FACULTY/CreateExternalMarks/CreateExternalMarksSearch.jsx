@@ -9,8 +9,8 @@ const CreateExternalMarks=(props)=>{
     const handleSubmit=(e)=>{
         e.preventDefault();
         axios.post(`http://localhost:7000/api/v1/student/getallstudent`,{Class,regNo,year}).then((res)=>{
-            props.setInternalMarks(res.data.result)
-            props.setInternalMarksView("block")
+            props.setExternalMarks(res.data.result)
+            props.setExternalMarksView("block")
         }).catch((err)=>{
             console.log(err)
         })

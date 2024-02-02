@@ -211,8 +211,8 @@ const CreateExternalMarks=(props)=>{
     const setExamnameFunction=(e)=>{
         let idx= e.target.value;
         allExam.find((data,index)=>{
-            if(data.internal_exam_name===idx){
-                setTotalMarks(data.int_exam_marks)
+            if(data.external_exam_name===idx){
+                setTotalMarks(data.ext_exam_marks)
             }
         })
         setExamName(e.target.value)
@@ -220,9 +220,9 @@ const CreateExternalMarks=(props)=>{
     const setExamnameFunction2=(e)=>{
         const idx= e.target.value;
         allExam.find((data,index)=>{
-            if(data.internal_exam_name===idx){
-                settarget2(data.int_exam_marks)
-                console.log(data.int_exam_marks)
+            if(data.external_exam_name===idx){
+                settarget2(data.ext_exam_marks)
+                console.log(data.ext_exam_marks)
             }
         })
         setUpdatedExamName(e.target.value)
@@ -282,8 +282,8 @@ const CreateExternalMarks=(props)=>{
                             <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
-                                    <option value={data.internal_exam_name} key={index}>
-                                        {data.internal_exam_name}
+                                    <option value={data.external_exam_name} key={index}>
+                                        {data.external_exam_name}
                                     </option>
                                 ))}
                             </select>
@@ -314,8 +314,8 @@ const CreateExternalMarks=(props)=>{
                                                 <select onChange={setExamnameFunction2} value={updatedExamName}>
                                                     <option>Exam Name</option>
                                                     {allExam.map((data, index) => (
-                                                        <option value={data.internal_exam_name} key={index}>
-                                                            {data.internal_exam_name}
+                                                        <option value={data.external_exam_name} key={index}>
+                                                            {data.external_exam_name}
                                                         </option>
                                                     ))}
                                                 </select>
@@ -395,8 +395,8 @@ const CreateExternalMarks=(props)=>{
                                 <select onChange={setExamnameFunction} value={examName}>
                                     <option>Exam Name</option>
                                     {allExam.map((data, index) => (
-                                        <option value={data.internal_exam_name} key={index}>
-                                            {data.internal_exam_name}
+                                        <option value={data.external_exam_name} key={index}>
+                                            {data.external_exam_name}
                                         </option>
                                     ))}
                                 </select>
