@@ -121,7 +121,12 @@ const UserSearchResponse60=(props)=>{
     };
     return (
         <div style={{display: disp}}>
-              <ReactHTMLTableToExcel
+              
+            
+            <table className="table-60">
+                
+                <thead style={{display: mainsvisibility}}>
+                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="User-Profile"
@@ -130,11 +135,6 @@ const UserSearchResponse60=(props)=>{
                 buttonText="Excel Import"
                 
             />
-            
-            <table className="table-60">
-                
-                <thead style={{display: mainsvisibility}}>
-                   
               
                 <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss " onClick={clearTable}> Clear Result </button>
               
