@@ -42,14 +42,14 @@ const HostelView= (props) => {
                 <table className="table-60" id="hostel-entry-view">
                     <thead>
                     <tr>
-                        <th>Student Id</th>
+                        <th>Entry Id</th>
                         <th>Student Name</th>
                         <th>Class</th>
+                        <th>Academic Year</th>
+                        <th>Section</th>
+                        <th>Roll No.</th>
+                        <th>Registration No</th>           
                         <th>Year of Admission</th>
-                        
-                        
-                        <th>Registration No</th>
-                        <th>Current Year of Study</th>
                         <th>Room No</th>
                         <th>Bed No</th>
                         <th>Hostel Entry Date</th>
@@ -64,11 +64,15 @@ const HostelView= (props) => {
                                     <td>{data.id}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.class}</td>
-                                    <td>{data.academic_year}</td>
-                                    
-                                    
-                                    <td>{data.registration_no}</td>                        
                                     <td>{data.crnt_yr}</td>
+                                    <td>{data.section}</td>
+                                    <td>{data.roll_no}</td>
+                                    
+                                    
+                                    
+                                    <td>{data.registration_no}</td> 
+                                    <td>{data.admission_year}</td>                       
+                                    
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
                                     <td>{data.entry_date.slice(0,10)}</td>           

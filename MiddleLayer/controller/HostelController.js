@@ -155,13 +155,19 @@ exports.GetHostelEntry=(req,res)=>{
     try {
         let query
         if(!Class && !academicYear && !regNo && !roomNo){
-            query = `SELECT *
-                     FROM master_hostel`
+            query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
+                     FROM master_hostel
+                     LEFT JOIN Student_Admission 
+             ON Student_Admission.registration_no = master_hostel.registration_no 
+             order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
         }
         else if(!Class && !academicYear && regNo && !roomNo){
-            query = `SELECT *
+            query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
-                     WHERE registration_no regexp '${regNo}'`
+                     LEFT JOIN Student_Admission 
+             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.registration_no regexp '${regNo}'
+             order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
+           
         }
         else if(!Class && academicYear && !regNo && !roomNo){
             query = `SELECT * 
@@ -216,10 +222,10 @@ exports.GetHostelEntry=(req,res)=>{
 //create hostel entry
 exports.CreateHostelEntry=(req,res)=>{
     try{
-        const{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate}=req.body
+        const{Class,academicYear,roomNo,bedNo,regNo,entrydate}=req.body
 
-        if(!Class || !academicYear || !roomNo || !bedNo || !studentName || !regNo || !entrydate){
-            return res.status(400).json({msg:"Please fill all fields",data:{Class,academicYear,roomNo,bedNo,studentName,regNo,entrydate}})
+        if(!Class || !academicYear || !roomNo || !bedNo || !regNo || !entrydate){
+            return res.status(400).json({msg:"Please fill all fields",data:{Class,academicYear,roomNo,bedNo,regNo,entrydate}})
         }
         else{
             let query=`select available_bed,occupied_bed from bed_availability where room_no='${roomNo}'`
@@ -234,7 +240,7 @@ exports.CreateHostelEntry=(req,res)=>{
                       return res.status(400).json({msg:"No Bed Available"})
                   }
                   else{
-                    query=`INSERT INTO master_hostel (Class,crnt_yr,academic_year,room_no,bed_no,student_name,registration_no,entry_date) VALUES ('${Class}','${academicYear}','${academicYear}','${roomNo}','${bedNo}','${studentName}','${regNo}','${entrydate}')`
+                    query=`INSERT INTO master_hostel (Class,academic_year,room_no,bed_no,registration_no,entry_date) VALUES ('${Class}','${academicYear}','${roomNo}','${bedNo}','${regNo}','${entrydate}')`
                       Database.query(query,(err,result)=>{
                           if(err){
                               console.log(err)
