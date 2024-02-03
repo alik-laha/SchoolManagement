@@ -384,9 +384,16 @@ const MasterStudentViewUpdate = (props) => {
             .then((res)=>{
         axios.post("http://localhost:7000/api/v1/student/deletestudent",{regNo})
             .then((res)=>{
+                axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno",{regNo}).then((res)=>{
+                    // alert('Student : '+ name + ' Deleted Successfully' )
+                    console.log(res.data);
+                    setView('none')
+                    
+                })
                 alert('Student : '+ name + ' Deleted Successfully' )
-                console.log(res.data);
-                setView('none')
+                    console.log(res.data);
+                    setView('none')
+               
             })
             .catch((err)=>{
                 console.log(err);

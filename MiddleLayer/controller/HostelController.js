@@ -371,6 +371,9 @@ exports.DeleteHostelEntryByRegNo=(req,res)=>{
                     console.log(err)
                 }
                 else{
+                    if(result[0]){
+
+                    
                     let room_no=result[0].room_no
                     query=`delete from master_hostel where registration_no='${regNo}'`
                     Database.query(query,(err,result)=>{
@@ -401,6 +404,10 @@ exports.DeleteHostelEntryByRegNo=(req,res)=>{
                             })
                         }
                     })
+                }
+                else{
+                    return
+                }
                 }
             })
         }

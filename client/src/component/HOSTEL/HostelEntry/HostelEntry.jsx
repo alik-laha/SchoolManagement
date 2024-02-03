@@ -258,7 +258,7 @@ const HostelEntry = (props) => {
                                        onChange={(e) => setEntryDate(e.target.value)} readOnly/></td>
                             <td>
                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
-                                <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button>
+                                {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
                                 <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
                             </td>
                         </tr>
