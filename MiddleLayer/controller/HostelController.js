@@ -468,3 +468,116 @@ exports.UpdateHostelEntry=(req,res)=>{
         console.log(err)
     }
     }
+
+
+
+
+    //left join
+//get all students byclass and registration
+exports.GetAllCombinedHostelStudent = (req, res) => {
+    const { Class, regNo, year } = req.body
+    let query
+    try {
+        if (!Class && !regNo && !year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+        }
+        else if (Class && !regNo && !year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.Class='${Class}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+
+        else if (!Class && regNo && !year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+
+        else if (Class && regNo && !year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' and Student_Admission.Class = '${Class}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && regNo && year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (Class && !regNo && year) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+        }
+
+        else {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.registration_no regexp '${regNo}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(200).json({ result })
+            }
+        })
+    }
+    catch (err) {
+        console.log(err)
+    }
+}
