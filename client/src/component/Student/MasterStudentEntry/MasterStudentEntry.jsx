@@ -38,6 +38,20 @@ const MasterStudentEntry= (props) => {
     const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
+
+    const [dataUri, setDataUri] = useState("");
+    const onImageChange = (file,e) => {
+        setFile(e.target.files[0]);
+        if (!file) {
+          setDataUri("");
+          return;
+        }
+          // Convert the file to a blob object
+    const blob = URL.createObjectURL(file);
+
+    // Set the dataUri state to the blob object
+    setDataUri(blob);
+  };
     
 
     const handlepchallenge = (e) => {
@@ -130,7 +144,8 @@ const MasterStudentEntry= (props) => {
                     bloodGroup,
                     bankAcountNo,
                     brunch,
-                    ifscCode
+                    ifscCode,
+                    dataUri
                 }
                 const data1 = {
                     regNo,
@@ -440,7 +455,6 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 <hr className="division-2"/>
-
                 <div>
                     <label>Mother's Name</label>
                     <input
@@ -450,7 +464,6 @@ const MasterStudentEntry= (props) => {
                         placeholder="Name"
                     />
                 </div>
-
                 <div>
                     <label>Mother's Qualification</label>
                     <input
@@ -460,7 +473,6 @@ const MasterStudentEntry= (props) => {
                         placeholder="Qualification"
                     />
                 </div>
-
                 <div>
                     <label>Mother's Occupation</label>
                     <input
@@ -470,9 +482,6 @@ const MasterStudentEntry= (props) => {
                         placeholder="Occupation"
                     />
                 </div>
-
-          
-
                 <div>
                     <label>Mother's contact No</label>
                     <input
@@ -482,7 +491,6 @@ const MasterStudentEntry= (props) => {
                         placeholder="Mother contact No"
                     />
                 </div>
-
                 <div>
                     <label>Mother's Monthly Income</label>
                     <input
@@ -492,17 +500,9 @@ const MasterStudentEntry= (props) => {
                         placeholder="Mother Monthly Income"
                     />
                 </div>
-                <hr className="division-2"/>
-                
+                <hr className="division-2"/>        
                 <hr className="division"/>
-                <p>Other Details</p>
-            
-           
-        
-        
-               
-              
-              
+                <p>Other Details</p> 
                 <div>
                     <label>Aadhar Number*</label>
                     <input
@@ -572,15 +572,16 @@ const MasterStudentEntry= (props) => {
                 </div>
                 <div><label>Upload Student Image</label>
                 
-                <input ref={fileRef} accept="application/pdf" style={{border:'none'}}
-          type="file"
-          onChange={(e) => {
-            setFile(e.target.files[0]);
-          }}
-        /> 
-        <label style={{width:'max-content', fontSize:'12px',color:'red'}}>(Only PDF Files are Allowed)</label>
-        
-        </div>
+                    <input ref={fileRef} accept="image/png, image/jpeg ,image/jpg" style={{ border: 'none' }}
+                        type="file"
+                        onChange={(e) => {
+                            onImageChange(e.target.files[0],e )
+                            // setFile(e.target.files[0]);
+                        }}
+                    />
+                    <label style={{ width: 'max-content', fontSize: '12px', color: 'red' }}>(Only jpg/jpeg files are Allowed)</label>
+
+                </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>

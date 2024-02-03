@@ -41,6 +41,7 @@ const MasterStudentViewUpdate = (props) => {
     const [ifscCode, setIfscCode] = useState('');
     const[allView,setAllview]=useState("block")
     const[releaseDate,setReleaseDate]=useState("");
+    const[imagebuffer,setimagebuffer]=useState([]);
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
@@ -280,6 +281,23 @@ const MasterStudentViewUpdate = (props) => {
         }
        
         console.log(item)
+        if(item.image!==null){
+            // console.log(item.image)
+            // console.log(item.image.data)
+            //setimagebuffer(item.image.data)
+            const base64String = Buffer.from(item.image.data).toString('base64');
+            //const base64String = btoa(String.fromCharCode(...new Uint8Array(item.image.data)));
+            console.log(base64String)
+            const contentType = 'image/png';
+            const blob = b64toBlob(base64String, contentType);
+            const blobUrl = URL.createObjectURL(blob);
+
+            const img = document.createElement('img');
+            img.src = blobUrl;
+            const divElement = document.getElementById('image-from-db')
+            divElement.appendChild(img);
+        }
+        
     }
     const handleUpdate=(e)=>{
         e.preventDefault();
@@ -478,6 +496,25 @@ const MasterStudentViewUpdate = (props) => {
         setRegNo('');
         setReleaseDate("");
     }
+    const b64toBlob = (b64Data, contentType='', sliceSize=512) => {
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+      
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+          const slice = byteCharacters.slice(offset, offset + sliceSize);
+      
+          const byteNumbers = new Array(slice.length);
+          for (let i = 0; i < slice.length; i++) {
+            byteNumbers[i] = slice.charCodeAt(i);
+          }
+      
+          const byteArray = new Uint8Array(byteNumbers);
+          byteArrays.push(byteArray);
+        }
+          
+        const blob = new Blob(byteArrays, {type: contentType});
+        return blob;
+      }
     return(
         <div style={{display: view}}>
             <div style={{display:allView}}>
@@ -495,6 +532,7 @@ const MasterStudentViewUpdate = (props) => {
                 <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Student Id</th>
+                    
                     <th>Student Name</th>
                     <th>Active Status</th>
                     <th>Applied Class</th>
@@ -508,9 +546,11 @@ const MasterStudentViewUpdate = (props) => {
                 <tbody>
                 {
                     masterStudent.map((item, index) => {
+                        console.log(item.image)
                         return (
                             <tr key={index}>
                                 <td>{item.serial_no}</td>
+                                
                                 <td>{item.student_Name}</td>
                                 <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                                 <td>{item.applied_class}</td>
@@ -560,6 +600,10 @@ const MasterStudentViewUpdate = (props) => {
                             required={true}
                             readOnly
                         />
+                    </div>
+
+                    <div id="image-from-db">
+                        
                     </div>
 
 
