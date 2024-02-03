@@ -13,23 +13,13 @@ const StockItemEntry= (props) => {
     const [projectedCost, setProjectedCost] = useState(0);
     const [primaryEntryDate, setprimaryEntryDate] = useState(new Date().toISOString().slice(0, 10) );
     const [modifiedDate, setModifiedDate] = useState(new Date().toISOString().slice(0, 10) );
-    useEffect(()=>{
 
-    axios.post("http://localhost:7000/api/v1/stock/getallvendor")
-        .then((res)=>{
-            setAllVendorName(res.data.data);
-            props.setAllVendorName(res.data.data);
-        })
-        .catch((err)=>{
-          console.log(err);
-        })
-
-        axios.post("http://localhost:7000/api/v1/stock/getallitem")
-            .then((data)=>{
-                setAllItemType(data.data.data);
-                props.setAllItemType(data.data.data);
-            })
-    },[])
+  
+    
+    useEffect(() => {
+        setAllVendorName(props.setAllVendorName);
+        setAllItemType(props.setAllItemType);
+    }, [props.setAllVendorName, props.setAllItemType])
 
     useEffect(()=>{
         setProjectedCost(unitCost*quantity)

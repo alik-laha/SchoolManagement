@@ -1,9 +1,12 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import axios from "axios";
 
 
 const CreateItem = (props) => {
     const [item,setItem]=useState("")
+    useEffect(() => {
+        handaleitem() 
+    }, [])
 
     const handleCreateItem = (e) => {
         e.preventDefault()

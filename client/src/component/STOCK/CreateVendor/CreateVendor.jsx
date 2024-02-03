@@ -1,10 +1,14 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 
 const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
     const [vendoraddress,setVendoraddress]=useState("")
+
+    useEffect(() => {
+        handleViewVendor() 
+    }, [])
 
     const handleCreateVendor = (e) => {
         e.preventDefault()

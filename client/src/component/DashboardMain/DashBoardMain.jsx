@@ -324,17 +324,17 @@ const PromoteNextClassSearchData=(data)=>{
             {/* Create Item */} 
             <CreateItem itemCreateView={props.ItemCreateDisplay} handleItemView={Viewallitemtype} setItemData={ItemData}/>
             {/* Primary Stock Entry */} 
-            <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={handleVendor} setAllItemType={handleItemType}/>
+            <StockItemEntry stockEntryView={props.EntryStock} setAllVendorName={VendorDatas} setAllItemType={itemData}/>
             {/* Export Primary Stock Search */} 
-            <StockSearch StockView={props.StockView} Vendor={allVendorName} Item={allItemType} setStockData={handleprimaryStockData} buttonClick={stockViewShow}/>
+            <StockSearch StockView={props.StockView} Vendor={VendorDatas} Item={itemData} setStockData={handleprimaryStockData} buttonClick={stockViewShow}/>
             {/* Secondary Stock Entry Search */} 
             <SecondaryStockEntrySearch SecondstockEntrySearch={props.SecondstockEntrySearch} setStockData={handleSecondaryViewStockData} buttonClick={secondaryStockEntryViewShow}/>
             {/* Export Secondary Stock Search */} 
-            <SecondaryStockEntryAllSearch  Vendor={allVendorName} Item={allItemType} setStockData={handleseconadryStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
+            <SecondaryStockEntryAllSearch  Vendor={VendorDatas} Item={itemData} setStockData={handleseconadryStockData} SecondStockView={props.SecondStockView} buttonClick={stockallshow}/> 
             {/* Modify Stock Entry Search */} 
             <ModifyStockEntrySearch ModifyStockSearch={props.modifyStock} setStockData={handlemodifysearchStockData} buttonClick={modifyStockEntryShow}/>
              {/* Check Pending Search */}
-            <CheckPendingSearch view={props.checkpending} Vendor={allVendorName} Item={allItemType} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
+            <CheckPendingSearch view={props.checkpending} Vendor={VendorDatas} Item={itemData} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
         {/* Stock End*/}
 
         {/* Hostel Start*/}  
