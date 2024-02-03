@@ -4,7 +4,8 @@ const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, G
     CreateExam,CreateMarks,
     MarksSearch,
     UpdateMarks,
-    GetAllMarks
+    GetAllMarks,
+    GetAllExamForMarks
 } = require('../controller/FacultyController')
 
 //create faculty
@@ -57,5 +58,8 @@ router.post("/getallmarks",GetAllMarks)
 
 //Update Marks
 router.post('/getallfacultyactive',GetAllFacultyMiddleLayer)
+
+//Get all Exam
+router.get('/getallexam',GetAllExamForMarks)
 
 module.exports = router

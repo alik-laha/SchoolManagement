@@ -490,3 +490,21 @@ exports.GetAllMarks = (req, res) => {
         console.log(err)
     }
 }
+
+//get all Exam for Marks
+exports.GetAllExamForMarks = (req, res) => {
+    try{
+        let query = `SELECT * FROM internal_exam UNION SELECT * FROM external_exam`
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+                return res.status(400).json({message:"Error Occured"})
+            }
+            else{
+                return res.status(200).json({message:"Exam Fetched",data:result})
+            }
+        })
+    }catch (err){
+        console.log(err)
+    }
+}
