@@ -434,26 +434,47 @@ exports.GetAllMarks = (req, res) => {
             })
         }
         else {
-            if (!regNo || Class || !examName) {
-                query =`SELECT * FROM Marks WHERE class="${Class}"`
+            if (!regNo && Class && !examName) {
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                     FROM Marks
+                     LEFT JOIN Student_Admission 
+             ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.class="${Class}"`
             }
-            else if(!Class || !examName){
-                query =`SELECT * FROM Marks WHERE regNo="${regNo}"`
+            else if(!Class && !examName && regNo){
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.regNo="${regNo}"`
             }
-            else if(!regNo || !Class){
-                query =`SELECT * FROM Marks WHERE exam_name="${examName}"`
+            else if(!regNo && !Class && examName){
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}"`
             }
-            else if(!regNo){
-                query =`SELECT * FROM Marks WHERE class="${Class}" AND exam_name="${examName}"`
+            else if(!regNo && examName && Class){
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.class="${Class}"`
             }
-            else if(!examName){
-                query =`SELECT * FROM Marks WHERE class="${Class}" AND regNo="${regNo}"`
+            else if(!examName && regNo && Class){
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.regNo="${regNo}" AND Marks.class="${Class}"`
             }
-            else if(!Class){
-                query =`SELECT * FROM Marks WHERE regNo="${regNo}" AND exam_name="${examName}"`
+            else if(!Class && examName && regNo){
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}"`
             }
             else{
-                query =`SELECT * FROM Marks WHERE regNo="${regNo}" AND exam_name="${examName}" AND class="${Class}"`
+                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                        FROM Marks
+                                 LEFT JOIN Student_Admission
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"`
             }
             Database.query(query,(err,result)=>{
                 if(err){
