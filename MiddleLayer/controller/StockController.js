@@ -146,62 +146,62 @@ exports.StockEntry=(req,res)=>{
                 const{itemType,fromDate,toDate,billId,vendorName}=req.body
 
                     if(billId && !itemType && !fromDate && !toDate && !vendorName){
-                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" `
+                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" ORDER BY bill_date,bill_id ASC  `
                     }
                     else if(itemType && !fromDate && !toDate && !vendorName){
-                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" `
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(fromDate && toDate && !itemType  && !vendorName){
-                        query=`SELECT * FROM stock WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                        query=`SELECT * FROM stock WHERE bill_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(vendorName && !fromDate && !toDate  && !itemType){
-                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}"`
+                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}" ORDER BY bill_date,bill_id ASC`
                     }
 
 
 
                     else if(itemType  && billId && !fromDate && !toDate  && !vendorName){
-                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_id REGEXP "${billId}"`
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_id REGEXP "${billId}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(itemType && fromDate && toDate  && !vendorName && !billId){
-                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                        query=`SELECT * FROM stock WHERE item_Type = "${itemType}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(itemType && vendorName && !fromDate && !toDate  && !billId){
-                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}"`
+                        query=`SELECT * FROM stock WHERE item_Type="${itemType}" AND vendor_name="${vendorName}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(fromDate && toDate && vendorName && !itemType && !billId){
-                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(!fromDate && !toDate && vendorName && !itemType && billId){
-                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_id REGEXP "${billId}"`
+                        query=`SELECT * FROM stock WHERE  vendor_name="${vendorName}" AND bill_id REGEXP "${billId}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(fromDate && toDate && !vendorName && !itemType && billId){
-                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY bill_date,bill_id ASC`
                     }
 
 
 
 
                     else if(fromDate && toDate && vendorName && !itemType && billId){
-                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND vendor_name="${vendorName}"`
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND vendor_name="${vendorName}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(fromDate && toDate && !vendorName && itemType && billId){
-                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}"`
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(!fromDate && !toDate && vendorName && itemType && billId){
-                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND vendor_name="${vendorName}" AND item_Type="${itemType}"`
+                        query=`SELECT * FROM stock WHERE  bill_id REGEXP "${billId}" AND vendor_name="${vendorName}" AND item_Type="${itemType}" ORDER BY bill_date,bill_id ASC`
                     }
                     else if(fromDate && toDate && vendorName && itemType && !billId){
-                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}"`
+                        query=`SELECT * FROM stock WHERE vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" AND item_Type="${itemType}" ORDER BY  bill_date,bill_id ASC`
                     }
 
 
 
                     else if(itemType && fromDate && toDate && vendorName && billId){
-                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" AND item_Type="${itemType}" AND vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}"`
+                        query=`SELECT * FROM stock WHERE bill_id REGEXP "${billId}" AND item_Type="${itemType}" AND vendor_name="${vendorName}" AND bill_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY bill_date,bill_id ASC`
                     }
                     else{
-                        query=`SELECT * FROM stock`
+                        query=`SELECT * FROM stock ORDER BY bill_date,bill_id ASC`
                     }
 
                 Database.query(query,function(error,data){
