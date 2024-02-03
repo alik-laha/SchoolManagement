@@ -95,7 +95,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Items</label>
+                    <label>Type Of Item </label>
                     <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
                         <option value="">Item Type</option>
                         {allItemType.map((data) => (
@@ -106,7 +106,7 @@ const StockItemEntry= (props) => {
                     </select>
                 </div>
                 <div>
-                    <label>Bill No</label>
+                    <label>Bill No. / Memo No. </label>
                     <input
                         type="text"
                         placeholder="Bill No."

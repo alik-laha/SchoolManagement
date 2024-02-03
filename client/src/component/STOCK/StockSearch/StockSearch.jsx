@@ -31,10 +31,10 @@ const StockSearch = (props) => {
         <div className="dashbrd-40-colm" style={{display: props.StockView}}>
             <form onSubmit={HandleEdit}>
             <div>
-                <label>Search By Bill Id</label>
+                <label>Search By Bill No. / Memo No.</label>
                 <input
                     type="text"
-                    placeholder="Bill Id"
+                    placeholder="Bill No."
                     value={billId}
                     onChange={(e) => setBillid(e.target.value)}
                 />
