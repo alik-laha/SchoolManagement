@@ -28,10 +28,10 @@ const SecondaryStockEntrySearch = (props) => {
         <div className="dashbrd-40-colm" style={{display: props.SecondstockEntrySearch}}>
             <form onSubmit={HandleEdit}>
             <div>
-                <label>Search By Bill Id</label>
+                <label>Search By Bill / Memo No.</label>
                 <input
                     type="text"
-                    placeholder="Bill Id"
+                    placeholder="Bill No."
                     value={billId}
                     onChange={(e) => setBillid(e.target.value)}
                 />

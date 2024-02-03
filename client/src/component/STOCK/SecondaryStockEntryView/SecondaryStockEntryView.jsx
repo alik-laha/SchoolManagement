@@ -179,15 +179,15 @@ const SecondaryStockEntryView= (props) => {
                 <thead style={{display: mainsvisibility}}>
                 <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
-                    <th>Item Id</th>
-                    <th>Bill Id</th>
+                    <th>Entry Id</th>
+                    <th>Bill / Memo No.</th>
                     <th>Cash Entry</th>
                     
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
-                    <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
+                    <th>Bill / Memo Date</th>
+                    <th>Per Unit Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
                     <th>Cash Entry Date</th>

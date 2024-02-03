@@ -38,12 +38,12 @@ const StockView= (props) => {
                 <thead>
                 <tr>
                     <th>Entry Id</th>
-                    <th>Bill no./Memo No. of Stock</th>
+                    <th>Bill /Memo No.</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
-                    <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
+                    <th>Bill / Memo Date</th>
+                    <th>Per Unit Cost</th>
                     <th>Quantity</th>
                     <th>Total Price(Estimated)</th>
                     <th>Primary Stock Entry Date</th>
