@@ -42,13 +42,13 @@ const SecondaryStockEntryAllView= (props) => {
             <table className="table-60" id="secondary-stock-view">
                 <thead>
                 <tr>
-                    <th>Item Id</th>
-                    <th>Bill Id</th>
+                    <th>Entry Id</th>
+                    <th>Bill / Memo No.</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
                     <th>Vendor Name</th>
-                    <th>Bill Date</th>
-                    <th>Unit Per Cost</th>
+                    <th>Bill / Memo Date</th>
+                    <th>Per Unit Cost</th>
                     <th>Quantity</th>
                     <th>Estimated Price</th>
                     <th>Discounted Amount</th>

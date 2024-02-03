@@ -163,14 +163,14 @@ const ModifyStockEntryView= (props) => {
                 <thead >
                 <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
-                    <th>Item Id</th>
-                    <th>Bill Id</th>
-                    <th>Bill Date</th>
+                    <th>Entry Id</th>
+                    <th>Bill / Memo No. </th>
+                    <th>Bill / Memo Date</th>
                     <th>Cash Entry</th>
                     <th>Item Name</th>
                     {/* <th>Item Type</th>
                     <th>Vendor Name</th> */}  
-                    <th>Unit Per Cost</th>
+                    <th>Per Unit Cost</th>
                     <th>Quantity</th>
                     {/* <th>Estimated Price</th> */}
                     <th>Discounted Amount</th>
@@ -220,7 +220,7 @@ const ModifyStockEntryView= (props) => {
                 <p className="customize-centre">Edit Stock Details</p>
                 
                 <div>
-                    <label>Bill Id*</label>
+                    <label>Bill /Memo No.*</label>
                     <input
                         type="text"
                         value={billid}
@@ -262,7 +262,7 @@ const ModifyStockEntryView= (props) => {
                         </select>
                 </div>
                 <div>
-                    <label>Bill Date</label>
+                    <label>Bill / Memo Date</label>
                     <input
                         type="date" 
                         placeholder="Bill Entry date"
