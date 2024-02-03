@@ -422,3 +422,50 @@ exports.GetAllFacultyMiddleLayer = (req, res) => {
         return res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+//get all marks for regNo Class and examName
+exports.GetAllMarks = (req, res) => {
+    const {regNo,Class,examName}=req.body
+    try{
+        let query
+        if(!Class){
+            return res.status(400).json({
+                msg:"Please Provide the Class"
+            })
+        }
+        else {
+            if (!regNo || Class || !examName) {
+                query =`SELECT * FROM Marks WHERE class="${Class}"`
+            }
+            else if(!Class || !examName){
+                query =`SELECT * FROM Marks WHERE regNo="${regNo}"`
+            }
+            else if(!regNo || !Class){
+                query =`SELECT * FROM Marks WHERE exam_name="${examName}"`
+            }
+            else if(!regNo){
+                query =`SELECT * FROM Marks WHERE class="${Class}" AND exam_name="${examName}"`
+            }
+            else if(!examName){
+                query =`SELECT * FROM Marks WHERE class="${Class}" AND regNo="${regNo}"`
+            }
+            else if(!Class){
+                query =`SELECT * FROM Marks WHERE regNo="${regNo}" AND exam_name="${examName}"`
+            }
+            else{
+                query =`SELECT * FROM Marks WHERE regNo="${regNo}" AND exam_name="${examName}" AND class="${Class}"`
+            }
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    return res.status(400).json({message:"Error Occured"})
+                }
+                else{
+                    return res.status(200).json({message:"Marks Fetched",data:result})
+                }
+            })
+        }
+    }catch (err){
+        console.log(err)
+    }
+}

@@ -3,7 +3,8 @@ const router = express.Router()
 const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,GetAllExternalExam,DeleteExternalExam,GetAllFacultyMiddleLayer,
     CreateExam,CreateMarks,
     MarksSearch,
-    UpdateMarks
+    UpdateMarks,
+    GetAllMarks
 } = require('../controller/FacultyController')
 
 //create faculty
@@ -51,6 +52,8 @@ router.post('/searchmarks',MarksSearch)
 //Update Marks
 router.post('/updatemarks',UpdateMarks)
 
+//get all Marks
+router.post("/getallmarks",GetAllMarks)
 
 //Update Marks
 router.post('/getallfacultyactive',GetAllFacultyMiddleLayer)
