@@ -473,8 +473,15 @@ exports.updateNextClass= (req, res) => {
                 console.log(err)
             }
             else {
-                return res.status(200).json({ result })
-                
+                query=`UPDATE master_hostel SET class='${Class+1}',crnt_yr ='${academicYear+1}' WHERE registration_no='${regNo}'`
+                Database.query(query ,(err,result)=>{
+                    if(err){
+                        console.log(err)
+                    }
+                    else{
+                        return res.status(200).json({ msg:"student promote successfully" })
+                    }
+                })
             }
         })
 
