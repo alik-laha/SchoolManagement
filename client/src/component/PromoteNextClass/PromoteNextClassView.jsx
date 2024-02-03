@@ -1,15 +1,18 @@
 import {useEffect, useState} from "react";
-
+import axios from "axios"
 
 
 
 const PromoteNextClassView= (props) => {
     const [view,setView]=useState("none")
     const [academicAll,setAcademicAll]=useState([])
-
-
+    const [Class,setClass]=useState(0)
+    const [academicYear,setAcademicYear]=useState(0)
   
-    
+  useEffect(()=>{
+    setClass(props.Class)
+    setAcademicYear(props.AcademicYear)
+  },[props.Class,props.AcademicYear])
 
     useEffect(()=>{
         setAcademicAll(props.SearchebyData)
@@ -27,18 +30,18 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view])
 
     const HandleEdit=()=>{
-        const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date};
-        axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
-                .then((res) => {
-                    if(res){
-                        alert("Faculty Updated Successfully");
-                        setEditView("none");
-                        setMainView("contents");
-                        setView("none")
-                    }
-                })
-
-
+        axios.post("http://localhost:7000/api/v1/student/getcount",{Class,academicYear})
+            .then((res)=>{
+                // console.log(res.data[0].count)
+                if(res.data[0].count===0){
+                    academicAll.map((data)=>{
+                        axios.post("http://localhost:7000/api/v1/student/updatepromotion",{Class:data.class,regNo:data.registration_no,academicYear:data.current_academic_year})
+                            .then((res)=>{
+                                console.log("done")
+                            })
+                    })
+                }
+            })
     }
     return(
         <>
@@ -69,14 +72,10 @@ const PromoteNextClassView= (props) => {
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td>
                                     <td>{data.current_academic_year}</td>
-                                    
-                                   
                                     <td>{data.class}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
                                     <td>{data.admission_year}</td>
-                                    
-                                    
                                 </tr>
                             )
 

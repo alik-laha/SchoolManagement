@@ -12,7 +12,7 @@ const PromoteNextClassSearch= (props) => {
             }
         axios.post("http://localhost:7000/api/v1/student/getpromotesearch",data)
             .then((res)=>{
-                props.setPromoteData(res.data.result)
+                props.setPromoteData(res.data.result,Class,academicYear)
             })
             .catch((error)=>{
                 console.log(error)

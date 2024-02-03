@@ -99,7 +99,8 @@ const DashBoardMain = (props) => {
   const [externalMarksData,setExternalMarksData]=useState([])
     const [externalMarksView,setExternalMarksView]=useState("")
   const [RoomManupulation,setRoomManupulation]=useState("none")
-
+  const [Class,setClass]=useState(0)
+    const [academicYear,setAcademicYear]=useState(0)
   {/* User Start */}
 
   //get all roles
@@ -294,8 +295,10 @@ const InternalMarksView=(data)=>{
     setInternalMarksView(data)
 }
 
-const PromoteNextClassSearchData=(data)=>{
+const PromoteNextClassSearchData=(data,d1,d2)=>{
   setPromoteViewData(data)
+    setClass(d1)
+    setAcademicYear(d2)
 }
    const ExternalMarksData=(data)=>{
     setExternalMarksData(data)
@@ -425,7 +428,7 @@ const PromoteNextClassSearchData=(data)=>{
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
             <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
             <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
-            <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={promoteViewData}/>
+            <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={promoteViewData} Class={Class} AcademicYear={academicYear} />
          {/* Student End*/} 
 
           {/* Faculty Start*/} 

@@ -501,24 +501,7 @@ exports.CheckPromote = (req, res) => {
                 console.log(err)
             }
             else {
-                let count=result[0].count
-                if(count==0) {
-                    query = `SELECT *
-                             FROM Student_Admission
-                             WHERE class = '${Class}'
-                               and current_academic_year = '${academicYear}'
-                               and active = 1`
-                    Database.query(query, (err, result) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            return res.status(200).json({result: result, count})
-                        }
-                    })
-                }
-                else{
-                    return res.status(200).json({count})
-                }
+                return res.status(200).send(result)
             }
         })
     }catch (err){
