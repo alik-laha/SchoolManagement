@@ -272,7 +272,11 @@ const MasterStudentViewUpdate = (props) => {
         setReleaseDate(item.release_date);
         setBrunch(item.branch);
         setIfscCode(item.ifsc);
-
+        if(item.release_date!==''){
+            setReleaseDate(item.release_date.slice(0, 10));
+        }else{
+            setReleaseDate("");
+        }
         setRegNo(item.registration_no);
     }
     const handleUpdate=(e)=>{
