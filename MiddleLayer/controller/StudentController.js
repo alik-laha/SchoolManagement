@@ -493,15 +493,32 @@ exports.updateNextClass= (req, res) => {
 //Check Student is promoted or not
 
 exports.CheckPromote = (req, res) => {
-    const {Class}=req.body
+    const {Class,academicYear}=req.body
     try{
-        let query=`SELECT COUNT(class) as count FROM Student_Admission WHERE class='${Class}'`
+        let query=`SELECT COUNT(class) as count FROM Student_Admission WHERE class='${Class+1}'and current_academic_year='${academicYear+1}' and active=1`
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)
             }
             else {
-                return res.status(200).json({ result })
+                let count=result[0].count
+                if(count==0) {
+                    query = `SELECT *
+                             FROM Student_Admission
+                             WHERE class = '${Class}'
+                               and current_academic_year = '${academicYear}'
+                               and active = 1`
+                    Database.query(query, (err, result) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            return res.status(200).json({result: result, count})
+                        }
+                    })
+                }
+                else{
+                    return res.status(200).json({count})
+                }
             }
         })
     }catch (err){
