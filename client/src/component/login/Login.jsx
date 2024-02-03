@@ -108,7 +108,7 @@ const Login = () => {
               </button>
             </section>
           </div>
-          <p style={{display:errormsg,color:"red",fontSize:"15px"}}>sumthing went wrong</p>
+          <p style={{display:errormsg,color:"red",fontSize:"15px"}}>Invalid Credentials</p>
           <input className="dashboard-btn dashboard-btn-scss" type="submit" placeholder="Sign In" />
         </form>
       </div>
