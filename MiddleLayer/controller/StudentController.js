@@ -332,7 +332,7 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                  applied_class='${applyClass}',
                                  age='${age}',
                                  admisson_date='${admissonDate}',
-                                 release_date='${releaseDate}',
+                                 
                                  blood_group='${bloodGroup}',
                                  acount_no='${bankAcountNo}',
                                  branch='${brunch}',

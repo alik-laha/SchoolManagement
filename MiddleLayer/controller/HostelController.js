@@ -406,7 +406,7 @@ exports.DeleteHostelEntryByRegNo=(req,res)=>{
                     })
                 }
                 else{
-                    return
+                    return res.status(200).json({msg:"Student Released Successfully"})
                 }
                 }
             })
