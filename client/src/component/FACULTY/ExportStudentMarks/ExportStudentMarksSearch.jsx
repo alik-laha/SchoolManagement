@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 const ExportStudentMarksSearch = (props) => {
-    const [Class, setClass] = useState(0);
+    const [Class, setClass] = useState(null);
     const [examName, setExamName] = useState("");
     const [regNo, setRegNo] = useState("");
     const [examData,setExamData]=useState([])
@@ -15,6 +15,17 @@ const ExportStudentMarksSearch = (props) => {
             console.log(err)
         })
     }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
+            // props.setStudentMarks(res.data.result)
+            // props.setStudentMarksView("block")
+            console.log(res.data.data)
+        }).catch((err) => {
+            console.log(err)
+        })
+    }
     useEffect(() => {
         if(props.view==="block"){
             FetchExamData()
@@ -22,7 +33,7 @@ const ExportStudentMarksSearch = (props) => {
     }, [props.view]);
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label>Rgestration No</label>
                     <input type="text" placeholder="Enter Rgestration Number" value={regNo}
@@ -31,7 +42,7 @@ const ExportStudentMarksSearch = (props) => {
                 <div>
                     <label>Class</label>
                     <input type="number" placeholder="Enter Class" value={Class}
-                           onChange={(e) => setClass(e.target.value)}/>
+                           onChange={(e) => setClass(e.target.value)} required={true}/>
                 </div>
                 <div>
                     <select onChange={(e)=>setExamName(e.target.value)} value={examName}>
