@@ -33,12 +33,12 @@ exports.GetBed= (req, res) => {
     try{
         if(!room) {
             query = `SELECT *
-                         FROM bed_availability`
+                         FROM bed_availability order by building, floor, room_no`
         }
         else{
             query = `SELECT *
                          FROM bed_availability
-                         WHERE room_no regexp '${room}'`
+                         WHERE room_no regexp '${room}' order by building, floor, room_no`
         }
         Database.query(query,(err,result)=>{
             if(err){

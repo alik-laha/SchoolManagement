@@ -164,7 +164,7 @@ const HostelEntry = (props) => {
                         <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
                             <th>Entry Id</th>
-                            <th>Hostel Entry Status</th>
+                            <th>Hostel Entry</th>
                             
                             <th>Class</th>
                             <th>Student Name</th>
