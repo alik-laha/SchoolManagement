@@ -163,10 +163,13 @@ const HostelEntry = (props) => {
                         <thead style={{display:allView}}>
                         <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
-                            <th>Id</th>
-                            <th>Entry status</th>
-                            <th>Student Name</th>
+                            <th>Entry Id</th>
+                            <th>Hostel Entry Status</th>
                             <th>Class</th>
+                            <th>Student Name</th>
+                            <th>Academic Year</th>
+                            <th>Roll</th>
+                            <th>Section</th>
                             <th>Registration No</th>
                             <th>Admisson Year</th>
                             
@@ -183,8 +186,11 @@ const HostelEntry = (props) => {
                                         <td>{data.student_id}</td>
                                         <td><input type='checkbox'
                                                    checked={data.hostelentry === 1 ? true : false}></input></td>
+                                                   <td>{data.class}</td>
                                         <td>{data.student_Name}</td>
-                                        <td>{data.class}</td>
+                                        <td>{data.current_academic_year}</td>
+                                        <td>{data.roll_no}</td>
+                                        <td>{data.section}</td>
                                         <td>{data.registration_no}</td>
                                         <td>{data.admission_year}</td>
                                         
