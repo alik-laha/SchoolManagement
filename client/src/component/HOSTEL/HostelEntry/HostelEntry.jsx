@@ -85,6 +85,7 @@ const HostelEntry = (props) => {
                     }
                 })
                 .catch((err) => {
+                    console.log(err)
                     alert(err.response.data.msg);
                 })
         }
