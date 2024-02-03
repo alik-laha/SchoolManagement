@@ -54,7 +54,7 @@ import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStuden
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
   const [search,setSearch]=useState("none")
-  const[view,setView]=useState('none')
+  const [view,setView]=useState('none')
   const [allRoles, setAllRoles] = useState([]);
   const [ViewVendor,setViewVendor]=useState("none")
   const [itemView,setitemView]=useState("none")
@@ -84,7 +84,7 @@ const DashBoardMain = (props) => {
   
   const [MasterStudentSearchDatas,setMasterStudentSearchData]=useState([])
   const [VendorDatas,setVendorData]=useState([])
-  const[itemData,setItemData]=useState([])
+  const [itemData,setItemData]=useState([])
   const [academicEntryUpdateData, setacademicEntryUpdateData] = useState([]);
   const [academicEntryUpdateShow, setacademicEntryUpdateShow] = useState("none");
   const [facultyData, setFacultyData] = useState([]);
@@ -98,6 +98,7 @@ const DashBoardMain = (props) => {
   const [internalMarksView,setInternalMarksView]=useState("")
   const [externalMarksData,setExternalMarksData]=useState([])
     const [externalMarksView,setExternalMarksView]=useState("")
+  const [RoomManupulation,setRoomManupulation]=useState("none")
 
   {/* User Start */}
 
@@ -302,6 +303,9 @@ const PromoteNextClassSearchData=(data)=>{
     const ExternalMarksView=(data)=>{
      setExternalMarksView(data)
     }
+  const handleGetroom=(data)=>{
+    setRoomManupulation(data)
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -340,7 +344,7 @@ const PromoteNextClassSearchData=(data)=>{
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
-            <CreateBed40 createbed={props.createbed}/>
+            <CreateBed40 createbed={props.createbed} setCreatebed={handleGetroom} />
             {/* Search Room */} 
             <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} data={roomData} />
             {/* Search Hostel Entry */}
@@ -410,9 +414,9 @@ const PromoteNextClassSearchData=(data)=>{
 
           {/* Hostel Start*/}
               {/* View Bed Status */}   
-              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData}/>
+              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} setCreatebed={handleGetroom} />
               {/* View Hostel Entry */}  
-              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} />
+              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} room={RoomManupulation} />
               {/* View Export Hostel Entry */}  
               <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
           {/* Hostel End*/}

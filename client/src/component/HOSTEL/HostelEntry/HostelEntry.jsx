@@ -156,7 +156,7 @@ const HostelEntry = (props) => {
             .catch((err) => {
                 console.log(err);
             })
-    }, []);
+    }, [props.room]);
     return(
         <>
                 <div style={{display:view}} >

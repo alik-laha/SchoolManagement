@@ -17,6 +17,7 @@ const CreateBed40 = (props) => {
             setFloor("");
             setRoom("");
             setTotalBed("");
+            props.setCreatebed("nothing");
         }).catch((err) => {
             if(err.response.data.msg.errno===1062){
                 alert(`Room No. ${room} already exists`)
