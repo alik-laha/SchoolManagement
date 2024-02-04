@@ -65,12 +65,15 @@ const AcademicEntryUpdate = (props) => {
                <tr>
                    <th>Student Id</th>
                    <th>Student Name</th>
+                   <th>Stream</th>
                    <th>Registration No</th>
-                   <th>Year of Admission</th>
+                   <th>Current Year of Study</th>
+                   
+                   {/* <th>Year of Admission</th> */}
                    <th>Class</th>
                    <th>Section</th>
                    <th>Roll No</th>
-                   <th>Current Year of Study</th>
+                   
                     <th>Action</th>
                </tr>
                </thead>
@@ -81,8 +84,11 @@ const AcademicEntryUpdate = (props) => {
                            <tr key={data.student_id}>
                                <td>{data.student_id}</td>
                                <td>{data.student_Name}</td>
+                               <td>{data.stream}</td>
                                <td>{data.registration_no}</td>
-                               <td>{data.admission_year}</td>
+                               <td>{data.current_academic_year}</td>
+                               
+                               {/* <td>{data.admission_year}</td> */}
                                <td>{data.class}</td>
                                <td>{editedIndex!==index ? (
                                    data.section
@@ -104,7 +110,7 @@ const AcademicEntryUpdate = (props) => {
                                    />
                                )
                                }</td>
-                               <td>{data.current_academic_year}</td>
+                               
                                <td>
                                    {editedIndex === index ? (
                                        <>

@@ -30,14 +30,21 @@ exports.GetAllStudent = (req, res) => {
     let query
     try {
         if (!Class && !regNo && !year) {
-            query = `SELECT * FROM Student_Admission WHERE active=1`
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1`
         }
         else if (Class && !regNo && !year) {
-            query = `SELECT * FROM Student_Admission WHERE Class='${Class}' and active=1`
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1 and Student_Admission.Class='${Class}'`
         }
 
         else if (!Class && regNo && !year) {
-            query = `SELECT * FROM Student_Admission WHERE registration_no regexp '${regNo}' and active=1`
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}'`
+           
         }
         else if (!Class && !regNo && year) {
             query = `SELECT * FROM Student_Admission WHERE current_academic_year regexp '${year}' and active=1`
