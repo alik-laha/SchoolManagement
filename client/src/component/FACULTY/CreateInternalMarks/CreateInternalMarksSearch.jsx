@@ -20,17 +20,17 @@ const handleSubmit=(e)=>{
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Rgestration No</label>
-                    <input type="text" placeholder="Enter Rgestration Number" value={regNo}
+                    <input type="text" placeholder="Reg No." value={regNo}
                            onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
                 <div>
-                    <label>Class</label>
-                    <input type="number" placeholder="Enter Class" value={Class}
+                    <label>Current Class</label>
+                    <input type="number" placeholder="Class" value={Class}
                            onChange={(e) => setClass(e.target.value)}/>
                 </div>
                 <div>
-                    <label>Current year of Study</label>
-                    <input type="text" placeholder="Enter Section" value={year}
+                    <label>Current Academic Year</label>
+                    <input type="text" placeholder="Current Year" value={year}
                            onChange={(e) => setYear(e.target.value)}/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
