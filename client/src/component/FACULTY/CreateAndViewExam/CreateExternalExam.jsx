@@ -18,7 +18,7 @@ const CreateExternalExam=(props)=>{
             examType
         }
         axios.post("http://localhost:7000/api/v1/faculty/createexam",data).then(()=>{
-            alert("External Exam Added")
+            alert("New Exam Type Category has been Created")
             setName("")
             settotalMarks(0)
             handleView()
