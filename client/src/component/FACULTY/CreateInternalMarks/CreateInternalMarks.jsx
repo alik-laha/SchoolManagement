@@ -137,7 +137,7 @@ const HandleSearch=(e)=>{
 }
     const HandleSave=()=>{
         if(marks>totalMarks){
-            alert("Marks should be less than total marks")
+            alert("Obtained Marks should be less than Total Marks")
             setMarks(0)
             return
         }
@@ -151,7 +151,7 @@ const HandleSearch=(e)=>{
             })
                 .catch((err)=>{
                     if(err.response.data.err.errno===1062){
-                        alert("Marks already entered for Same Exam and Subject")
+                        alert("Marks has Already Entered for the Exam and Subject Combination")
                     }
                 })
         }
@@ -181,7 +181,7 @@ const HandleMarksCancel=()=>{
 const handleUpdateSave=(id)=>{
         console.log(totalMarks)
       if(updatedMarks>target2){
-            alert("Marks should be less than total marks")
+            alert("Obtained Marks Should be less than Total Marks")
             setUpdatedMarks(0)
           console.log(id)
             return
@@ -240,7 +240,9 @@ const setExamnameFunction=(e)=>{
                     <th>Student Name</th>
                     <th>Class</th>
                     <th>Registration No</th>
-                    <th>Admisson Year</th>
+                    <th>Current Academic Year</th>
+                    <th>Section</th>
+                    <th>Roll No.</th>
 
                     <th>Actions</th>
                 </tr>
@@ -256,7 +258,9 @@ const setExamnameFunction=(e)=>{
                                 <td>{data.student_Name}</td>
                                 <td>{data.class}</td>
                                 <td>{data.registration_no}</td>
-                                <td>{data.admission_year}</td>
+                                <td>{data.current_academic_year}</td>
+                                <td>{data.section}</td>
+                                <td>{data.roll_no}</td>
 
                                 <td>
                                     <button className='dashboard-btn btn-warning'
