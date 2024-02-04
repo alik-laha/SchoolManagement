@@ -8,6 +8,7 @@ const PromoteNextClassView= (props) => {
     const [academicAll,setAcademicAll]=useState([])
     const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
+    const [promotehide,setPromotehide]=useState('inline-block')
   
   useEffect(()=>{
     setClass(props.Class)
@@ -16,6 +17,13 @@ const PromoteNextClassView= (props) => {
 
     useEffect(()=>{
         setAcademicAll(props.SearchebyData)
+        if(props.SearchebyData.length<=0)
+        {
+            setPromotehide('none')
+        }
+        else{
+            setPromotehide('inline-block')
+        }
       },[props.SearchebyData])
 
 
@@ -95,7 +103,7 @@ const PromoteNextClassView= (props) => {
                     </tbody>
                 </table>
                 <div style={{display:'block',textAlign:'center'}}>
-                <button  className="dashboard-btn btn-warning" onClick={() => {
+                <button  style={{display:promotehide}} className="dashboard-btn btn-warning" onClick={() => {
                                         const confirmBox = window.confirm(
                                             "Do you really want to Promote these Students to next Class ?"
                                         );
