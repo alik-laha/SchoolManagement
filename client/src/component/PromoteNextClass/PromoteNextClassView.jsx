@@ -37,7 +37,6 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view,view])
 
     const HandleEdit=()=> {
-        let manupulate=0;
         let count=0;
         let data_length=academicAll.length
         if (Class < 12){
