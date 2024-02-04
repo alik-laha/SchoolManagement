@@ -122,13 +122,16 @@ const HostelEntry = (props) => {
         setacademic(data.current_academic_year);
 
         if(data.hostelentry===1){
-            const rgi=data.registration_no
+            // const rgi=data.registration_no
             setEntryStatus(1)
-            axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
-                setRoomNo(res.data.result[0].room_no)
-                setBedNo(res.data.result[0].bed_no)
-                setEntryDate(res.data.result[0].entry_date.slice(0,10))
-            })
+            // axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
+            //     setRoomNo(res.data.result[0].room_no)
+            //     setBedNo(res.data.result[0].bed_no)
+            //     setEntryDate(res.data.result[0].entry_date.slice(0,10))
+            // })
+                setRoomNo(data.room_no)
+                setBedNo(data.bed_no)
+                setEntryDate(data.entry_date.slice(0,10))
 
         }else{
             setEntryStatus(0)
