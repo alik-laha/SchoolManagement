@@ -29,20 +29,31 @@ const PromoteNextClassView= (props) => {
         }
     },[props.PromoteView,props.view])
 
-    const HandleEdit=()=>{
-        axios.post("http://localhost:7000/api/v1/student/getcount",{Class,academicYear})
-            .then((res)=>{
-                // console.log(res.data[0].count)
-                if(res.data[0].count===0){
-                    academicAll.map((data)=>{
-                        axios.post("http://localhost:7000/api/v1/student/updatepromotion",{Class:data.class,regNo:data.registration_no,academicYear:data.current_academic_year})
-                            .then((res)=>{
-                                console.log("done")
-                            })
+    const HandleEdit=()=> {
+        if (Class < 12){
+            academicAll.map((data) => {
+                axios.post("http://localhost:7000/api/v1/student/updatepromotion", {
+                    Class: data.class,
+                    regNo: data.registration_no,
+                    academicYear: data.current_academic_year
+                })
+                    .then((res) => {
+                        console.log("done")
                     })
-                }
             })
     }
+    else
+    {
+        academicAll.map((data) => {
+            axios.post("http://localhost:7000/api/v1/student/updatepromotion", {regNo: data.registration_no})
+                .then((res) => {
+                    axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
+                    console.log("done")
+                })
+        })
+
+    }
+            }
     return(
         <>
         

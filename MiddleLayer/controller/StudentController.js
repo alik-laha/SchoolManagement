@@ -466,24 +466,49 @@ exports.GetPromoteStudentAdmisson= (req, res) => {
 exports.updateNextClass= (req, res) => {
     const{Class,academicYear,regNo}=req.body
     try{
-        let query=
-        `UPDATE Student_Admission SET Class = '${Class+1}', current_academic_year = '${academicYear+1}' WHERE registration_no='${regNo}'`
-        Database.query(query, (err, result) => {
-            if (err) {
-                console.log(err)
-            }
-            else {
-                query=`UPDATE master_hostel SET class='${Class+1}',crnt_yr ='${academicYear+1}' WHERE registration_no='${regNo}'`
-                Database.query(query ,(err,result)=>{
-                    if(err){
-                        console.log(err)
-                    }
-                    else{
-                        return res.status(200).json({ msg:"student promote successfully" })
-                    }
-                })
-            }
-        })
+        if(Class<12) {
+            let query =
+                `UPDATE Student_Admission
+                 SET Class                 = '${Class + 1}',
+                     current_academic_year = '${academicYear + 1}'
+                 WHERE registration_no = '${regNo}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    console.log(err)
+                } else {
+                    query = `UPDATE master_hostel
+                             SET class='${Class + 1}',
+                                 crnt_yr ='${academicYear + 1}'
+                             WHERE registration_no = '${regNo}'`
+                    Database.query(query, (err, result) => {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            return res.status(200).json({msg: "student promote successfully"})
+                        }
+                    })
+                }
+            })
+        }
+        else{
+            let query=`DELETE FROM Student_Admission WHERE registration_no='${regNo}'`
+            Database.query(query,(err,result)=>{
+              if(err){
+                  console.log(err)
+              }
+                else{
+                    query=`UPDATE master_student SET active=0, release_date=CURDATE() WHERE registration_no='${regNo}'`
+                    Database.query(query,(err,result)=>{
+                        if(err){
+                            console.log(err)
+                        }
+                        else{
+                            return res.status(200).json({msg: "student promote successfully",class:Class})
+                        }
+                    })
+                }
+            })
+        }
 
     }catch (err){
         console.log(err)
