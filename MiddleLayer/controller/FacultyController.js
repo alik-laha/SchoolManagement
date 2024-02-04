@@ -63,7 +63,11 @@ exports.UpdateFaculty = (req, res) => {
                              join_date='${joinDate}',
                              email='${email}',
                              specialized_field='${specialized}',
-                             contact_no='${contactNo}'
+                             contact_no='${contactNo}',
+                             aadhar='${aadharno}',
+                                address='${address}',
+                                dob='${dob}',
+                                pan='${pan}'
                          WHERE id = ${id}`
 
         }
@@ -76,7 +80,11 @@ exports.UpdateFaculty = (req, res) => {
                              specialized_field='${specialized}',
                              contact_no='${contactNo}',
                              relese_Date='${releseDate}',
-                             active='0'
+                             active='0',
+                                aaadhar='${aadharno}',
+                                address='${address}',
+                                dob='${dob}',
+                                pan='${pan}'
                          WHERE id = ${id}`
         }
         Database.query(query,(err,result)=>{
