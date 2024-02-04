@@ -113,6 +113,7 @@ const handleCreateSubject=()=>{
         setpromote("none")
         setCreateExternalMarks("none")
         setExportStudentMarks("none")
+        setcheckpending('none')
     }
     else{
         setCreateSubject('none')
@@ -778,6 +779,7 @@ const handleStockEntry=()=>{
         setpromote("none")
         setCreateExternalMarks("none")
         setExportStudentMarks("none")
+        setcheckpending('none')
     }
     else {
       setacademicview('none')
@@ -814,6 +816,7 @@ const handleStockEntry=()=>{
         setpromote("none")
         setCreateExternalMarks("none")
         setExportStudentMarks("none")
+        setcheckpending('none')
     }
     else {
       setstudententry('none')
@@ -848,6 +851,7 @@ const handleStockEntry=()=>{
         setpromote("none")
         setCreateExternalMarks("none")
         setExportStudentMarks("none")
+        setcheckpending('none')
     }
     else {
       setmasterstudentview('none')
@@ -873,6 +877,7 @@ const handleCreateFaculty=()=>{
         sethostelview('none')
         setmodifySearchView('none')
         setSecondStockView("none")
+        
         setstudententry('none')
         setacademicEntryUpdate('none')
        setViewFaculty('none')
@@ -882,6 +887,7 @@ const handleCreateFaculty=()=>{
        setpromote("none")
        setCreateExternalMarks("none")
        setExportStudentMarks("none")
+       setcheckpending('none')
    }
     else{
         setCreateFaculty('none')
@@ -916,6 +922,7 @@ const handleViewFaculty=()=>{
         setpromote("none")
         setCreateExternalMarks("none")
         setExportStudentMarks("none")
+        setcheckpending('none')
     }
      else{
           setViewFaculty('none')
@@ -950,6 +957,7 @@ const handleCreateExam =()=>{
          setpromote("none")
          setCreateExternalMarks("none")
          setExportStudentMarks("none")
+         setcheckpending('none')
      }
      else{
          setCreateExam("none")
@@ -984,6 +992,7 @@ const handleCreateInternalMarksEntry =()=>{
             setpromote("none")
          setCreateExternalMarks("none")
          setExportStudentMarks("none")
+         setcheckpending('none')
      }
      else {
             setCreateInternalMarks("none")
@@ -1018,6 +1027,7 @@ const handlePromote =()=>{
          setViewFaculty('none')
       setCreateExternalMarks("none")
       setExportStudentMarks("none")
+      setcheckpending('none')
   }
   else {
          setpromote("none")
@@ -1053,6 +1063,7 @@ const handleCreateExternalMarks =()=>{
             setViewFaculty('none')
             setpromote("none")
          setExportStudentMarks("none")
+         setcheckpending('none')
      }
         else {
                 setCreateExternalMarks("none")
@@ -1088,6 +1099,7 @@ const handleExportStudentMarks =()=>{
             setCreateSubject('none')
             setViewFaculty('none')
             setpromote("none")
+            setcheckpending('none')
      }else {
             setExportStudentMarks("none")
      }
