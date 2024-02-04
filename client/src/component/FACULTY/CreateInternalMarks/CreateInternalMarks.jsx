@@ -150,7 +150,9 @@ const HandleSearch=(e)=>{
                 setExamName('')
             })
                 .catch((err)=>{
-                    console.log(err)
+                    if(err.response.data.err.errno===1062){
+                        alert("Marks already entered for Same Exam and Subject")
+                    }
                 })
         }
     }
@@ -187,6 +189,7 @@ const handleUpdateSave=(id)=>{
         else {
             axios.post("http://localhost:7000/api/v1/faculty/updatemarks",{subject:updatedSubject,examName:updatedExamName,marks:updatedMarks,id:id}).then((res)=>{
                 alert(res.data.message)
+                setSearchView("none")
                 setUpdatedMarks(0)
                 setUpdatedSubject("")
                 setUpdatedExamName("")
@@ -357,7 +360,7 @@ const setExamnameFunction=(e)=>{
                 }
                 </tbody>
             </table>
-            
+                    {searchData.length===0 ? <h3 style={{textAlign:'center',color:'red'}}>No Data Found</h3>:null}
             </div>
                 <table style={{width:'-webkit-fill-available'}}>
                 {/* <thead style={{display:hideView}}>
