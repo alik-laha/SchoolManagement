@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+
 const HostelEntry = (props) => {
     const [allView, setAllView] = useState("contents");
     const [entryView, setEntryView] = useState("none");
@@ -16,16 +17,17 @@ const HostelEntry = (props) => {
     const [viewStock,setViewStock]=useState([])
 
     useEffect(() => {
-      if (props.data.length > 0 && props.view==="block") {
+      if (props.view==="block") {
           setView("block")
       }
       else{
           setView("none")
       }
-    }, [props.data,props.view]);
+    }, [props.view]);
 
     useEffect(()=>{
         setViewStock(props.data)
+        console.log(viewStock.length)
   
     },[props.data])
 
@@ -162,7 +164,7 @@ const HostelEntry = (props) => {
             })
     }, [props.room]);
     return(
-        <>
+        
                 <div style={{display:view}} >
                     <table className="table-60" >
                         <thead style={{display:allView}}>
@@ -264,8 +266,8 @@ const HostelEntry = (props) => {
                     </table>
                     {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
                 </div>
-            {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
-       </>
+            
+       
     )
 }
 
