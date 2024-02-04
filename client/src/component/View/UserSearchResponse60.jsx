@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const UserSearchResponse60=(props)=>{
+    const currDate = new Date().toLocaleDateString();
     const [allData,setAllData]=useState([])
     const [view,setView]=useState([])
     const [visiblity, setVisiblity] = useState("none");
@@ -131,7 +132,7 @@ const UserSearchResponse60=(props)=>{
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="User-Profile"
-                filename="User-Profile"
+                filename={"User_ProfileReport_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
                 

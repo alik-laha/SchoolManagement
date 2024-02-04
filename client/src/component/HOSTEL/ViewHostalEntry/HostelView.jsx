@@ -6,6 +6,7 @@ import axios from "axios";
 const HostelView= (props) => {
     const [view,setView]=useState("none")
     const [hostelexportall,sethostelexportall]=useState([])
+    const currDate = new Date().toLocaleDateString();
     const clearTable = () => {
         sethostelexportall([]);
       };
@@ -35,7 +36,7 @@ const HostelView= (props) => {
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
                     table="hostel-entry-view"
-                    filename="hostel-excel-report"
+                    filename={`Hostel_Entry_Report_${currDate}`}
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />

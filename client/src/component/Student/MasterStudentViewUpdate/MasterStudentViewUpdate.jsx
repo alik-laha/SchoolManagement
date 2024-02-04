@@ -3,6 +3,7 @@ import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const MasterStudentViewUpdate = (props) => {
+    const currDate = new Date().toLocaleDateString();
     const [view,setView]=useState('none');
     const [masterStudent,setMasterStudent]=useState([]);
     const [updateView,setUpdateView]=useState("none")
@@ -498,7 +499,7 @@ const MasterStudentViewUpdate = (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn clear-gradient"
                 table="master-student-view"
-                filename="master-student-details"
+                filename={"Student_Master_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
