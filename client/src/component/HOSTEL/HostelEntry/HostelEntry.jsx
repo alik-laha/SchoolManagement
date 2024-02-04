@@ -119,7 +119,8 @@ const HostelEntry = (props) => {
         setStudentName(data.student_Name);
         setRegNo(data.registration_no);
         setClass(data.class);
-        setacademic(data.admission_year);
+        setacademic(data.current_academic_year);
+
         if(data.hostelentry===1){
             const rgi=data.registration_no
             setEntryStatus(1)
@@ -166,19 +167,14 @@ const HostelEntry = (props) => {
                         <tr>
                             <th>Entry Id</th>
                             <th>Hostel Entry</th>
-                            
                             <th>Class</th>
                             <th>Student Name</th>
                             <th>Academic Year</th>
                             <th>Section</th>
                             <th>Roll</th>
-                            
                             <th>Registration No</th>
-                            
-                           
                             <th>Room No.</th>
-                            <th>Bed No.</th>
-                            
+                            <th>Bed No.</th> 
                             <th>Actions</th>
                         </tr>
                         </thead>
@@ -198,9 +194,7 @@ const HostelEntry = (props) => {
                                         <td>{data.current_academic_year}</td>
                                         <td>{data.section}</td>
                                         <td>{data.roll_no}</td>
-                                        
                                         <td>{data.registration_no}</td>
-                                        
                                         <td>{data.room_no}</td>
                                         <td>{data.bed_no}</td>
                                         
@@ -227,10 +221,9 @@ const HostelEntry = (props) => {
                             <th>Student Name</th>
                             <th>Class</th>
                             <th>Registration No</th>
-                            <th>Admisson Year</th>
+                            <th>Academic Year</th>
                             <th>Room No</th>
                             <th>Bed No</th>
-                            
                             <th>Hostel Entry Date</th>
                             <th>Actions</th>
                         </tr>

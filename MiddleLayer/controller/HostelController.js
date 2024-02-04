@@ -523,7 +523,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -533,7 +533,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -545,7 +545,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -556,7 +556,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -568,7 +568,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -579,7 +579,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -590,7 +590,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
@@ -601,7 +601,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
-            master_hostel.room_no,master_hostel.bed_no
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
