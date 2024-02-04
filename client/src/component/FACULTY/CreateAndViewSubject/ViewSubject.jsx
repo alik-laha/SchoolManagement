@@ -33,10 +33,8 @@ const ViewSubject = (props) => {
     }
     return (
         <div className="dashbrd-40-colm" style={{display: view}}>
-            <button className="dashboard-btn dashboard-btn-scss"
-                    onClick={handleCancel}>Clear result
-            </button>
-            <table className="table table-bordered">
+           <button style={{float:'left'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
+            <table className="table-60">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -52,7 +50,7 @@ const ViewSubject = (props) => {
                                 <td>{item.id}</td>
                                 <td>{item.subject}</td>
                                 <td>
-                                    <button className="dashboard-btn dashboard-btn-scss"
+                                    <button className="dashboard-btn dashboard-btn-scss btn-warning"
                                             onClick={() => handleDelete(item.id)}>Delete
                                     </button>
                                 </td>

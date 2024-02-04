@@ -7,7 +7,7 @@ const CreateSubject = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post("http://localhost:7000/api/v1/faculty/createsubject",{name}).then(() => {
-            alert("Subject Added")
+            alert("Subject Name : "+ name + " has been Added Successfully")
             setName("")
             handleView()
         }).catch((err) => {
@@ -33,7 +33,7 @@ const CreateSubject = (props) => {
                 <div>
                     <label>Subject Name</label>
                     <input type="text" placeholder="Enter Subject Name" value={name}
-                           onChange={(e) => setName(e.target.value)}/>
+                           onChange={(e) => setName(e.target.value)} required/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss"
                               type="submit">Submit</button></span>
