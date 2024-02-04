@@ -170,11 +170,12 @@ const HostelEntry = (props) => {
                             <th>Class</th>
                             <th>Student Name</th>
                             <th>Academic Year</th>
-                            <th>Roll</th>
                             <th>Section</th>
+                            <th>Roll</th>
+                            
                             <th>Registration No</th>
                             
-                            <th>Admisson Year</th>
+                           
                             <th>Room No.</th>
                             <th>Bed No.</th>
                             
@@ -195,10 +196,11 @@ const HostelEntry = (props) => {
                                                    
                                         <td>{data.student_Name}</td>
                                         <td>{data.current_academic_year}</td>
-                                        <td>{data.roll_no}</td>
                                         <td>{data.section}</td>
+                                        <td>{data.roll_no}</td>
+                                        
                                         <td>{data.registration_no}</td>
-                                        <td>{data.admission_year}</td>
+                                        
                                         <td>{data.room_no}</td>
                                         <td>{data.bed_no}</td>
                                         

@@ -269,6 +269,8 @@ exports.CreateHostelEntry=(req,res)=>{
                       Database.query(query,(err,result)=>{
                           if(err){
                               console.log(err)
+                              
+                                return res.status(400).json({msg:"Bed No. Already Alloted in the Room"})
                           }
                           else{
                             available_bed=available_bed-1

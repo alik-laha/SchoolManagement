@@ -12,6 +12,7 @@ const ViewBedStatus60 = (props) => {
     const [room, setRoom] = useState("");
     const [totalbed, setTotal_bed] = useState("");
     const [bedstock, setbedstock] = useState([]);
+    const currDate = new Date().toLocaleDateString();
 
     useEffect(()=>{
         setbedstock(props.BedData)
@@ -96,7 +97,7 @@ const ViewBedStatus60 = (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="bed-status-hostel"
-                filename="hotel-bedstatus-excel-report"
+                filename={"Hostel_Bed_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
