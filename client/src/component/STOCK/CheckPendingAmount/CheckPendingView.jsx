@@ -6,7 +6,7 @@ const CheckPendingView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
-   
+    const currDate = new Date().toLocaleDateString();
     
     const clearTable = () => {
         setViewStock([]);
@@ -37,7 +37,7 @@ let sum=0;
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="pending-stock-view"
-                filename="pending-balance-stock-excel-report"
+                filename={"Pending_Balance_Stock_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
