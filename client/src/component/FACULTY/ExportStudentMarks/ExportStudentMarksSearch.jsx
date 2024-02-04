@@ -46,7 +46,7 @@ const ExportStudentMarksSearch = (props) => {
                 </div>
                 <div>
                     <select onChange={(e)=>setExamName(e.target.value)} value={examName}>
-                        <option>Exam Name</option>
+                        <option value="">Exam Name</option>
                         {examData.map((data, index) => (
                             <option value={data.internal_exam_name} key={index}>
                                 {data.internal_exam_name}
