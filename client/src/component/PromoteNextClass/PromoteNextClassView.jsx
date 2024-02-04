@@ -28,16 +28,16 @@ const PromoteNextClassView= (props) => {
 
 
       useEffect(()=> {
-        console.log(props.PromoteView,props.view)
         if (props.PromoteView === "block" && props.view === "block") {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.PromoteView,props.view])
+    },[props.PromoteView,props.view,view])
 
     const HandleEdit=()=> {
+        let manupulate=0;
         let count=0;
         let data_length=academicAll.length
         if (Class < 12){
@@ -51,13 +51,14 @@ const PromoteNextClassView= (props) => {
                     .then((res) => {
                         console.log("done")
                         count=count+1
+                        if(count===data_length){
+                            alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to
+                Class ${Class+1} and Academic Year ${academicYear+1}`)
+                        }
                        
                     })
             })
-            if(count===data_length){
-                alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to
-                Class ${Class+1} and Academic Year ${academicYear+1}`)
-            }
+
 
     }
     else
@@ -69,16 +70,15 @@ const PromoteNextClassView= (props) => {
                     .then((res) => {
                         console.log("done")
                         count=count+1
+                        if(count===data_length){
+                            alert(`All the Final Year Students of Class ${Class} and Academic Year ${academicYear} are now Passout and Hence Released From the Institute`)
+                        }
                        
                     })
-                }).then((res) => {
-                    if(count===data_length){
-                        alert(`All the Final Year Students of Class ${Class} and Academic Year ${academicYear} are now Passout and Hence Released From the Institute`)
-                    }
                 })
                 
         })
-       
+
 
     }
             }
