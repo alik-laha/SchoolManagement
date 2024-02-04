@@ -8,6 +8,10 @@ const CreateExternalExam=(props)=>{
     const [examType,setExamtype]=useState("")
     const handleSubmit=(e)=>{
         e.preventDefault()
+        if(totalMarks<=0){
+            alert('Total Marks cannot be Less than or Equal to 0')
+            return
+        }
         const data={
             name,
             totalMarks,
@@ -21,7 +25,7 @@ const CreateExternalExam=(props)=>{
         }).catch((err)=>{
             console.log(err)
             if(err.response.data.err.errno===1062){
-                alert("Subject Name "+ name+" Already Exists")
+                alert("Exam Name "+ name+" Already Exists")
             }
         })
     }
@@ -49,16 +53,16 @@ const CreateExternalExam=(props)=>{
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Exam Name</label>
-                    <input type="text" placeholder="Enter Subject Name" value={name}
+                    <input type="text" placeholder="Exam Name" value={name}
                            onChange={(e) => setName(e.target.value)} required/>
                 </div>
                 <div>
-                    <label>Total number</label>
-                    <input type="number" placeholder="Enter Subject Name" value={totalMarks}
+                    <label>Total Exam Marks</label>
+                    <input type="number" placeholder="Total Marks" value={totalMarks}
                            onChange={(e) => settotalMarks(e.target.value)} required/>
                 </div>
                 <div>
-                    <label>Examination Type</label>
+                    <label>Type of Examination</label>
                     <select onChange={(e) => setExamtype(e.target.value)} required value={examType}>
                         <option value="">Examination Type</option>
                         <option value="External">
@@ -75,7 +79,7 @@ const CreateExternalExam=(props)=>{
             <div>
                 <button style={{backgroundColor: 'lightseagreen'}} className="dashboard-btn dashboard-btn-scss"
                         onClick={handleView}>
-                    View / Delete Subject
+                    View / Delete Exam
                 </button>
             </div>
         </div>
