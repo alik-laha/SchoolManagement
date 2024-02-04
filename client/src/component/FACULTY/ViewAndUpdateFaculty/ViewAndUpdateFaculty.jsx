@@ -63,7 +63,8 @@ const handaleDelete = (id) => {
             }
         })
 }
-const handaleUpdate = () => {
+const handaleUpdate = (e) => {
+    e.preventDefault();
 const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date,aadharno:aadhar,pan,address,dob};
 axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
         .then((res) => {
@@ -260,6 +261,16 @@ const handaleCancel = () => {
                         onChange={(e) => setJoin_date(e.target.value)}
                         placeholder="Joining Date"
                         required={true}
+                    />
+                </div>
+                <div>
+                    <label>Release date*</label>
+                    <input
+                        type="date"
+                        value={released_date}
+                        onChange={(e) => setReleased_date(e.target.value)}
+                        placeholder="Release Date"
+                        
                     />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Update</button></span>

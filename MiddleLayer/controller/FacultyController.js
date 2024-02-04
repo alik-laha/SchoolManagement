@@ -81,7 +81,7 @@ exports.UpdateFaculty = (req, res) => {
                              contact_no='${contactNo}',
                              relese_Date='${releseDate}',
                              active='0',
-                                aaadhar='${aadharno}',
+                                aadhar='${aadharno}',
                                 address='${address}',
                                 dob='${dob}',
                                 pan='${pan}'
