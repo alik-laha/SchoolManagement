@@ -185,6 +185,7 @@ exports.GetHostelEntry=(req,res)=>{
              order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
           
         }
+        
         else if(Class && academicYear && !regNo && !roomNo){
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
@@ -197,7 +198,7 @@ exports.GetHostelEntry=(req,res)=>{
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
                      LEFT JOIN Student_Admission 
-             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.Class='${Class}' and master_hostel.room_no regexp '${roomNo}'
+             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.Class='${Class}' and master_hostel.room_no = '${roomNo}'
              order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
       
         }
@@ -205,7 +206,7 @@ exports.GetHostelEntry=(req,res)=>{
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
                      LEFT JOIN Student_Admission 
-             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.room_no regexp '${roomNo}' and master_hostel.crnt_yr regexp '${academicYear}'
+             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.room_no = '${roomNo}' and master_hostel.crnt_yr regexp '${academicYear}'
              order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
             
         }
@@ -213,11 +214,9 @@ exports.GetHostelEntry=(req,res)=>{
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
                      LEFT JOIN Student_Admission 
-             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.Class='${Class}' and master_hostel.crnt_yr regexp '${academicYear}'
+             ON Student_Admission.registration_no = master_hostel.registration_no WHERE master_hostel.room_no='${roomNo}' 
              order by master_hostel.room_no,master_hostel.bed_no,master_hostel.class,Student_Admission.section,Student_Admission.roll_no`
-            query = `SELECT * 
-                        FROM master_hostel
-                        WHERE room_no regexp '${roomNo}'`
+            
         }
         else if(Class && academicYear && !regNo && roomNo){
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name

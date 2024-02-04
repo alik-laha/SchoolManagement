@@ -38,7 +38,10 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view])
 
     const HandleEdit=()=> {
+        let count=0;
+        let data_length=academicAll.length
         if (Class < 12){
+            
             academicAll.map((data) => {
                 axios.post("http://localhost:7000/api/v1/student/updatepromotion", {
                     Class: data.class,
@@ -47,8 +50,15 @@ const PromoteNextClassView= (props) => {
                 })
                     .then((res) => {
                         console.log("done")
+                        count=count+1
+                       
                     })
             })
+            if(count===data_length){
+                alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to
+                Class ${Class+1} and Academic Year ${academicYear+1}`)
+            }
+
     }
     else
     {
@@ -56,9 +66,19 @@ const PromoteNextClassView= (props) => {
             axios.post("http://localhost:7000/api/v1/student/updatepromotion", {regNo: data.registration_no})
                 .then((res) => {
                     axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
-                    console.log("done")
+                    .then((res) => {
+                        console.log("done")
+                        count=count+1
+                       
+                    })
+                }).then((res) => {
+                    if(count===data_length){
+                        alert(`All the Final Year Students of Class ${Class} and Academic Year ${academicYear} are now Passout and Hence Released From the Institute`)
+                    }
                 })
+                
         })
+       
 
     }
             }
