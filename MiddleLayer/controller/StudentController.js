@@ -32,18 +32,21 @@ exports.GetAllStudent = (req, res) => {
         if (!Class && !regNo && !year) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
-            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1`
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC `
         }
         else if (Class && !regNo && !year) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
-            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1 and Student_Admission.Class='${Class}'`
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.Class='${Class}' order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
         }
 
         else if (!Class && regNo && !year) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
-            ON master_student.registration_no = Student_Admission.registration_no WHERE Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}'`
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
         else if (!Class && !regNo && year) {
