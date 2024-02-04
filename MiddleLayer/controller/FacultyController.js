@@ -3,17 +3,17 @@ const Database = require('../Config/Dbconnection')
 //Create Faculty
 
 exports.createFaculty = (req, res) => {
-    const {name,qualification,joinDate,email,specialized,contactNo}=req.body
+    const {name,qualification,joinDate,email,specialized,contactNo,aadharno,pan,address,dob}=req.body
     try{
-        if(name && qualification && joinDate && email && specialized && contactNo){
-            let query = `INSERT INTO faculty_admin (name,heighst_qualification,join_date,email,specialized_field,contact_no,active) VALUES ('${name}','${qualification}','${joinDate}','${email}','${specialized}','${contactNo}',1)`
+        if(1){
+            let query = `INSERT INTO faculty_admin (name,heighst_qualification,join_date,email,specialized_field,contact_no,active,aadhar,address,dob,pan) VALUES ('${name}','${qualification}','${joinDate}','${email}','${specialized}','${contactNo}',1,'${aadharno}','${address}','${dob}','${pan}')`
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
                     res.status(400).json({message:"Error Occured"})
                 }
                 else{
-                    res.status(200).json({message:"Faculty Created"})
+                    res.status(200).json({message:"Faculty has been Created"})
                 }
             })
         }
@@ -53,7 +53,7 @@ exports.DeleteFaculty = (req, res) => {
 
 //update faculty
 exports.UpdateFaculty = (req, res) => {
-    const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate}=req.body
+    const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate,aadharno,pan,address,dob}=req.body
     try{
         let query
         if(id && name && qualification && joinDate && email && specialized && contactNo && !releseDate) {
