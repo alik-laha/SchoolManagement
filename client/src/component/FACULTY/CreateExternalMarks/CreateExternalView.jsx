@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const CreateExternalMarks=(props)=>{
+const CreateInternalMarks=(props)=>{
     const [view,setView]=useState("none")
     const [data,setData]=useState([])
     const [allView,setAllView]=useState("contents")
@@ -150,7 +150,6 @@ const CreateExternalMarks=(props)=>{
                 setExamName('')
             })
                 .catch((err)=>{
-                    console.log(err)
                     if(err.response.data.err.errno===1062){
                         alert("Marks already entered for Same Exam and Subject")
                     }
@@ -161,8 +160,8 @@ const CreateExternalMarks=(props)=>{
     const handleUpdate=(data,idx)=>{
         setIndex(idx)
         allExam.find((data1,index)=>{
-            if(data1.internal_exam_name===data.exam_name){
-                settarget2(data1.int_exam_marks)
+            if(data1.external_exam_name===data.exam_name){
+                settarget2(data1.ext_exam_marks)
             }
         })
         setUpdatedExamName(data.exam_name)
@@ -180,18 +179,16 @@ const CreateExternalMarks=(props)=>{
     }
 
     const handleUpdateSave=(id)=>{
-        console.log(totalMarks)
         if(updatedMarks>target2){
             alert("Marks should be less than total marks")
             setUpdatedMarks(0)
+            console.log("alik")
             console.log(id)
-            return
         }
         else {
-            axios.post("http://localhost:7000/api/v1/faculty/updatemarks",{subject:updatedSubject,examName:updatedExamName,marks:updatedMarks,id:id})
-                .then((res)=>{
-                setSearchView("none")
+            axios.post("http://localhost:7000/api/v1/faculty/updatemarks",{subject:updatedSubject,examName:updatedExamName,marks:updatedMarks,id:id}).then((res)=>{
                 alert(res.data.message)
+                setSearchView("none")
                 setUpdatedMarks(0)
                 setUpdatedSubject("")
                 setUpdatedExamName("")
@@ -283,7 +280,7 @@ const CreateExternalMarks=(props)=>{
                 <div className="dashbrd-40-colm" >
                     <form style={{display:'block',textAlign:'center'}} onSubmit={HandleSearch} >
                         <div >
-                            <label>Search Internal Exam Marks</label>
+                            <label>Search External Exam Marks</label>
                             <select onChange={(e) => setUpdatedsearchExamName(e.target.value)} value={updatedsearchExamName}>
                                 <option>Exam Name</option>
                                 {allExam.map((data, index) => (
@@ -434,4 +431,4 @@ const CreateExternalMarks=(props)=>{
         </div>
     )
 }
-export default CreateExternalMarks
+export default CreateInternalMarks
