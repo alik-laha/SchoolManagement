@@ -20,6 +20,7 @@ const [dob, setDob] = useState("");
 const [address, setAddress] = useState("");
 const [pan, setPan] = useState("");
 const [aadhar, setAadhar] = useState("");
+const [rdonly, setRdonly] = useState(false);
 
 
     useEffect(() => {
@@ -48,6 +49,13 @@ const handaleEdit = (id) => {
                 setPan(item.pan)
                 setAddress(item.address)
                 setDob(item.dob.slice(0,10))
+                if(item.relese_Date!==null){
+                    setReleased_date(item.relese_Date.slice(0,10))
+                    setRdonly(true)
+                }
+                else{
+                    setRdonly(false) 
+                }
             }
         })
     setMainView("none");
@@ -274,7 +282,7 @@ const handaleCancel = () => {
                         type="date"
                         value={released_date}
                         onChange={(e) => setReleased_date(e.target.value)}
-                        placeholder="Release Date"
+                        placeholder="Release Date" readOnly={rdonly}
                         
                     />
                 </div>
