@@ -190,8 +190,12 @@ const MasterStudentEntry= (props) => {
                     })
                     .catch((err) => {
                         console.log(err)
+                        
                     })
                     }).catch((err) => {
+                        if(err.response.data.err.errno===1062){
+                            alert(`Duplicate Aadhar No. - ${adharNo}. It already exists`)
+                        }
                     console.log(err)
                 })
 

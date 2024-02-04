@@ -375,6 +375,7 @@ const MasterStudentViewUpdate = (props) => {
                             setRegNo('');
                             setReleaseDate("");
                         }).catch((err)=>{
+                            
                             console.log(err);
                         })
                 }
@@ -386,6 +387,9 @@ const MasterStudentViewUpdate = (props) => {
                 }
             })
             .catch((err)=>{
+                if(err.response.data.err.errno===1062){
+                    alert(`Aadhar No. - ${adharNo} already exists`)
+                }
                 console.log(err);
             })
 
