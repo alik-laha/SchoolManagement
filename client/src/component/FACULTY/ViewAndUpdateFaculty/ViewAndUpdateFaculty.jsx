@@ -94,8 +94,6 @@ const handaleCancel = () => {
                     <th>Faculty ID</th>
                     <th>Active Status</th>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
                     <th>Qualification</th>
                     <th>Area Of Interest</th>
                     <th>Joining Date</th>
@@ -110,8 +108,8 @@ const handaleCancel = () => {
                         <td>{item.id}</td>
                         <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
-                        <td>{item.email}</td>
-                        <td>{item.contact_no}</td>
+                        
+                        
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
                         <td>{item.join_date.slice(0, 10)}</td>
