@@ -30,18 +30,27 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view])
 
     const HandleEdit=()=>{
-        axios.post("http://localhost:7000/api/v1/student/getcount",{Class,academicYear})
-            .then((res)=>{
-                // console.log(res.data[0].count)
-                if(res.data[0].count===0){
+        
+                try{
                     academicAll.map((data)=>{
-                        axios.post("http://localhost:7000/api/v1/student/updatepromotion",{Class:data.class,regNo:data.registration_no,academicYear:data.current_academic_year})
-                            .then((res)=>{
-                                console.log("done")
-                            })
-                    })
+                    axios.post("http://localhost:7000/api/v1/student/updatepromotion",{Class:data.class,regNo:data.registration_no,academicYear:data.current_academic_year})
+                        .then((res)=>{
+                            
+                            console.log("done")
+                        })
+
+                })
+                alert('Students are Promoted Successfully')
+                setView('none')
+            }
+                catch(err){
+                    console.log(err)
                 }
-            })
+
+                
+                    
+                
+         
     }
     return(
         <>
