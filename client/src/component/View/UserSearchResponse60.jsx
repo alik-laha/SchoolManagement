@@ -132,7 +132,7 @@ const UserSearchResponse60=(props)=>{
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="User-Profile"
-                filename={"User_ProfileReport_"+currDate}
+                filename={"User_Profile_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
                 

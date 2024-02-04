@@ -45,15 +45,17 @@ const NoticeManupulation60=(props)=>{
            <table className="table-60">
            <thead>
                 <tr>
+                <th>Notice Id</th>
                     <th>Notice Name</th>
-                    <th>Action(Delete)</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
 
                 <tbody>
                 {file.map((fileName, index) => (
                     <tr key={index}>
-                        <td>
+                        <td>{index+1}</td>
+                        <td style={{textAlign:'left'}}>
                             {fileName}
                             
                         </td>
