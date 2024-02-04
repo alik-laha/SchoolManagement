@@ -1,4 +1,4 @@
-import {useState,useRef} from "react";
+import {useState} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState('');
@@ -50,11 +50,11 @@ const MasterStudentEntry= (props) => {
         console.log(physicallyChallenged)
 
     }
-    const [file, setFile] = useState(null);
-    const fileRef=useRef();
-    const handleReset = () => {
-        fileRef.current.value = null;
-    };
+    //const [file, setFile] = useState(null);
+    //const fileRef=useRef();
+    // const handleReset = () => {
+    //     fileRef.current.value = null;
+    // };
 
     const handleorphan = (e) => {
         // e.preventDefault();
@@ -183,7 +183,7 @@ const MasterStudentEntry= (props) => {
                         setRegNo('');
                         setorphan(true)
                         setpchallenged(true)
-                        handleReset();
+                        //handleReset();
                         
                                                
 
@@ -591,7 +591,7 @@ const MasterStudentEntry= (props) => {
                         required={true}
                     />
                 </div>
-                <div><label>Upload Student Image</label>
+                {/* <div><label>Upload Student Image</label>
                 
                 <input ref={fileRef} accept="application/pdf" style={{border:'none'}}
           type="file"
@@ -601,7 +601,7 @@ const MasterStudentEntry= (props) => {
         /> 
         <label style={{width:'max-content', fontSize:'12px',color:'red'}}>(Only PDF Files are Allowed)</label>
         
-        </div>
+        </div> */}
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>

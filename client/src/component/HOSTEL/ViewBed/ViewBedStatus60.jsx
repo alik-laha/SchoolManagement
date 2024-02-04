@@ -84,6 +84,7 @@ const ViewBedStatus60 = (props) => {
             })
             .catch((error) => {
                 console.log(error);
+                alert(error.response.data.msg)
             });
     }
     return(
