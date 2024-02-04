@@ -74,6 +74,11 @@ axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
                 setMainView("contents");
                 setView("none")
             }
+        }).catch((err) => {
+            console.log(err);
+            if(err.response.data.err.errno===1062){
+                alert(`Duplicate Aadhar or PAN No. It already exists`)
+            }
         })
 }
 const handaleCancel = () => {

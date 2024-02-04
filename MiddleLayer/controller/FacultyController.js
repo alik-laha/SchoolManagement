@@ -10,7 +10,7 @@ exports.createFaculty = (req, res) => {
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    res.status(400).json({message:"Error Occured"})
+                    res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
                     res.status(200).json({message:"Faculty has been Created"})

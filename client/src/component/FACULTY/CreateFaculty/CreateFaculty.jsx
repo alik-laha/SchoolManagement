@@ -21,6 +21,9 @@ const handleSubmit = (e) => {
         alert("Faculty Added Successfully");
     }).catch((err) => {
         console.log(err);
+        if(err.response.data.err.errno===1062){
+            alert(`Duplicate Aadhar or PAN No. It already exists`)
+        }
     })
     setName("");
     setQualification("");
