@@ -9,6 +9,7 @@ const CreateBed40 = (props) => {
 
 
     const handaleSubmit = (e) => {
+        let count=-2000;
         e.preventDefault()
         axios.post("http://localhost:7000/api/v1/hostel/createbed", {bulding,floor,room,totalbed})
             .then((res) => {
@@ -17,7 +18,9 @@ const CreateBed40 = (props) => {
             setFloor("");
             setRoom("");
             setTotalBed("");
-            props.setCreatebed("nothing");
+            console.log(res.data);
+            props.setCreatebed(count);
+            count=count+1;
         }).catch((err) => {
             if(err.response.data.msg.errno===1062){
                 alert(`Room No. ${room} already exists`)

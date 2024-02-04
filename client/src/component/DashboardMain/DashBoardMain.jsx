@@ -98,7 +98,7 @@ const DashBoardMain = (props) => {
   const [internalMarksView,setInternalMarksView]=useState("")
   const [externalMarksData,setExternalMarksData]=useState([])
     const [externalMarksView,setExternalMarksView]=useState("")
-  const [RoomManupulation,setRoomManupulation]=useState("none")
+  const [RoomManupulation,setRoomManupulation]=useState(null)
   const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
   {/* User Start */}
