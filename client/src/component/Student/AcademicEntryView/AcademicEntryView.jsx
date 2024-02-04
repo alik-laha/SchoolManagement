@@ -35,10 +35,10 @@ const AcademicEntryView= (props) => {
             <div style={{display:view}}>
             <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <ReactHTMLTableToExcel
-                    id="hostel"
+                    id="acacdemic"
                     className="dashboard-btn btn-warning excel-btn"
                     table="academic-entry-view"
-                    filename="hostel-excel-report"
+                    filename="academic-excel-report"
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />
