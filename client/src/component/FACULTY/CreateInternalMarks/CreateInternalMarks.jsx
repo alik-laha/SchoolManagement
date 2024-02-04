@@ -110,6 +110,7 @@ const FetchExam=()=>{
         setAfterUpdate('none')
         setIndex(null)
         setSearchData([])
+        setUpdatedsearchExamName("")
       
     }
 const HandleSearch=(e)=>{

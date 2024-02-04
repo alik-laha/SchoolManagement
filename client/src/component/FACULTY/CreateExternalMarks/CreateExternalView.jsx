@@ -110,7 +110,7 @@ const CreateInternalMarks=(props)=>{
         setAfterUpdate('none')
         setIndex(null)
         setSearchData([])
-
+        setUpdatedsearchExamName("")
     }
     const HandleSearch=(e)=>{
         e.preventDefault();
