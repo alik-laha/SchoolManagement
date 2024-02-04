@@ -3,6 +3,7 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import axios from "axios";
 
 const ViewAndUpdateFaculty = (props) => {
+    const currDate = new Date().toLocaleDateString();
 const [data, setData] = useState([]);
 const [View, setView] = useState("none");
 
@@ -107,18 +108,22 @@ const handaleCancel = () => {
     return(
         <div style={{display: View}}>
             
+            
+            <div style={{display: mainView}}>
             <ReactHTMLTableToExcel
                 id="hostel"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn btn-warning excel-btn clear-gradient"
                 table="faculty-view"
-                filename="Faculty-excel-report"
+                filename={'Faculty_Details_Report_'+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <div style={{display: mainView}}>
             <table className="table-60" >
+           
                 <thead >
-                <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
+            
                 <tr>
                     <th>Faculty ID</th>
                     <th>Active Status</th>
@@ -161,6 +166,8 @@ const handaleCancel = () => {
 
                     {/* hidden div view */}
             <div style={{display: editView,background:'blue'}} className="dashbrd-40-colm">
+            <button style={{marginBottom:'8px'}}
+            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
                 <hr></hr>
 
 
@@ -287,7 +294,7 @@ const handaleCancel = () => {
                     />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Update</button></span>
-                <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
+                {/* <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button> */}
                 </form>
             </div>
 
@@ -298,10 +305,14 @@ const handaleCancel = () => {
                 <th>Faculty ID</th>
                     <th>Active Status</th>
                     <th>Faculty Name</th>
+                    <th>Date of Birth</th>
+                    <th>Address</th>
                     <th>Faculty Email</th>
                     <th>Faculty Phone</th>
                     <th>Faculty Qualification</th>
-                    <th>Area Of Interest</th>
+                    <th>Subject Specializationt</th>
+                    <th>Aadhar No.</th>
+                    <th>PAN No.</th>
                     <th>Joining Date</th>
                     <th>Release Date</th>
                 </tr>
@@ -312,11 +323,18 @@ const handaleCancel = () => {
                         <td>{item.id}</td>
                         <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
+                        <td>{item.dob.slice(0,10)}</td>
+                        <td>{item.address}</td>
+
                         <td>{item.email}</td>
                         <td>{item.contact_no}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
+                        <td>{item.aadhar}</td>
+                        <td>{item.pan}</td>
+                        
                         <td>{item.join_date.slice(0, 10)}</td>
+
                         {/* <td>{item.relese_Date}</td> */}
                         <td>{item.relese_Date !== null ? item.relese_Date.slice(0, 10):''}</td>
 
