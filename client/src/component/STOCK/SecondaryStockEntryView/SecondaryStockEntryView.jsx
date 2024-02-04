@@ -147,7 +147,7 @@ const SecondaryStockEntryView= (props) => {
 
      const handaleSubmit = (e) => {
        e.preventDefault();
-          if(!modifieddate || !cashentrydate || !balamt|| !paidamt|| !discountamt){
+          if(!modifieddate || !cashentrydate || !balamt|| !discountamt){
            alert("Please fill all the fields")
           return
             }
@@ -242,7 +242,7 @@ const SecondaryStockEntryView= (props) => {
                    <td>{billid}</td>
                    <td>{estimatedamt}</td>
                    <td> <input type="number" value={discountamt} placeholder='Discounted Amount' onChange={(e) => setdiscountamt(e.target.value)} required/></td>
-                   <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} required/></td>
+                   <td> <input type="number" value={paidamt} placeholder='Paid Amount' onChange={(e) => setpaidamt(e.target.value)} /></td>
                    <td><input type="number" value={balamt} placeholder='Balance Amount' onChange={(e) => setbalamt(e.target.value)} required readOnly/>{}</td>
                    <td><input
                         type="date" 

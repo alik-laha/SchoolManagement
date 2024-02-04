@@ -7,6 +7,7 @@ const SecondaryStockEntryAllView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+    const currDate = new Date().toLocaleDateString();
     
     const clearTable = () => {
         setViewStock([]);
@@ -35,7 +36,7 @@ const SecondaryStockEntryAllView= (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="secondary-stock-view"
-                filename="secondaryry-stock-excel-report"
+                filename={"Secondary_Stock_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />

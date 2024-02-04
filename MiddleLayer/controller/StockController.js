@@ -328,7 +328,7 @@ exports.UpdateSecondaryStockEntry=(req,res)=>{
     const{itemid,paidamt,discountamt,balamt,cashentrydate,modifieddate}=req.body
 
         
-    if (!{itemid,paidamt,discountamt,balamt,cashentrydate,modifieddate}) {
+    if (!{itemid,discountamt,balamt,cashentrydate,modifieddate}) {
         return res.message("all data needed")
     }
             query = `
