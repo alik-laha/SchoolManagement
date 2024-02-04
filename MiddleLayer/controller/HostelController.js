@@ -447,12 +447,14 @@ exports.UpdateHostelEntry=(req,res)=>{
                         })
                     }
                     else{
+                        console.log(roomNo+"update")
                         query=`select available_bed,occupied_bed from bed_availability where room_no='${roomNo}'`
                         Database.query(query,(err,result)=>{
                           if(err){
                               console.log(err)
                           }
                           else{
+
                               let available_bed=result[0].available_bed
                               let occupied_bed=result[0].occupied_bed
                               if(available_bed===0){
@@ -467,6 +469,7 @@ exports.UpdateHostelEntry=(req,res)=>{
                                           console.log(err)
                                       }
                                       else{
+                                          console.log(room_no+"update")
                                           query=`select available_bed,occupied_bed from bed_availability where room_no='${room_no}'`
                                           Database.query(query,(err,result)=>{
                                               if(err){
@@ -482,6 +485,7 @@ exports.UpdateHostelEntry=(req,res)=>{
                                                         if (err) {
                                                             console.log(err)
                                                         } else {
+                                                            console.log(regNo+"update")
                                                             query = `update master_hostel set room_no='${roomNo}',bed_no='${bedNo}',entry_date='${entrydate}' where registration_no='${regNo}'`
                                                             Database.query(query, (err, result) => {
                                                                 if (err) {
