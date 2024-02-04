@@ -6,6 +6,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const AcademicEntryView= (props) => {
     const [view,setView]=useState("none")
     const [academicAll,setAcademicAll]=useState([])
+    const currDate = new Date().toLocaleDateString();
 
 
     const clearTable = () => {
@@ -38,7 +39,7 @@ const AcademicEntryView= (props) => {
                     id="acacdemic"
                     className="dashboard-btn btn-warning excel-btn"
                     table="academic-entry-view"
-                    filename="academic-excel-report"
+                    filename={"Academic_Student_Report_"+currDate}
                     sheet="tablexls"
                     buttonText="Excel Export"
                 />
@@ -81,10 +82,6 @@ const AcademicEntryView= (props) => {
                                     <td>{data.roll_no}</td>
                                     <td>{data.admission_year}</td>
                                     <td>{data.hostelentry === 1 ? 'Y' : 'N'}</td>
-
-
-                                    
-                                   
                                 </tr>
                             )
 

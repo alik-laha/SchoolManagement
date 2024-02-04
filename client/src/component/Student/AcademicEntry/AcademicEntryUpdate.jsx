@@ -59,7 +59,7 @@ const AcademicEntryUpdate = (props) => {
     }
     return(
        <div style={{display:view}}>
-           <table className="table-60" id="academic-entry-view">
+           <table className="table-60">
                <thead>
                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                <tr>
