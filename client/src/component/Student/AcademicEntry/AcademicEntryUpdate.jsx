@@ -17,13 +17,13 @@ const AcademicEntryUpdate = (props) => {
 
     useEffect(()=> {
         console.log(props.academicallview,props.view)
-        if (props.academicallview === "block" && props.view === "block" && props.SearchebyData.length>0) {
+        if (props.academicallview === "block" && props.view === "block") {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.academicallview,props.view,props.SearchebyData])
+    },[props.academicallview,props.view])
 
     const clearTable = () => {
         setAcademicAll([]);

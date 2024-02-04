@@ -46,13 +46,13 @@ const MasterStudentViewUpdate = (props) => {
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
-       if(props.view==="block" && props.View40==="block" && props.data.length>0) {
+       if(props.view==="block" && props.View40==="block" ) {
                 setView("block");
             }
             else {
                 setView("none");
             }
-    }, [props.view,props.View40,props.data]);
+    }, [props.view,props.View40]);
     useEffect(() => {
        setMasterStudent(props.data);
 
