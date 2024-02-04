@@ -4,6 +4,7 @@ const StockView= (props) => {
 
     const [viewStock,setViewStock]=useState([])
     const [visible,setVisible]=useState("none")
+    const currDate = new Date().toLocaleDateString();
 
     const clearTable = () => {
         setViewStock([]);
@@ -30,9 +31,9 @@ const StockView= (props) => {
                 id="alik"
                 className="dashboard-btn btn-warning excel-btn"
                 table="primary-stock-view"
-                filename="primary-stock-excel-report"
+                filename={"Primary_Stock_Report_"+currDate}
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60" id="primary-stock-view">
                 <thead>

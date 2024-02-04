@@ -501,7 +501,7 @@ const MasterStudentViewUpdate = (props) => {
                 table="master-student-view"
                 filename={"Student_Master_Report_"+currDate}
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60" >
                 <thead>

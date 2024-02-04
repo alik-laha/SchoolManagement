@@ -98,7 +98,7 @@ const ViewBedStatus60 = (props) => {
                 table="bed-status-hostel"
                 filename="hotel-bedstatus-excel-report"
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
                     <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                     </tr>

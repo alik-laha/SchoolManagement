@@ -34,9 +34,9 @@ const ViewAllVendor=(props)=>{
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn margin-vendor-adjust"
                 table="vendor-view"
-                filename={"Vendor-Details-Report_"+currDate}
+                filename={"Vendor_Details_Report_"+currDate}
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60">
                 <thead >

@@ -37,7 +37,7 @@ const SecondaryStockEntryAllView= (props) => {
                 table="secondary-stock-view"
                 filename="secondaryry-stock-excel-report"
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60" id="secondary-stock-view">
                 <thead>

@@ -38,7 +38,7 @@ const HostelView= (props) => {
                     table="hostel-entry-view"
                     filename={`Hostel_Entry_Report_${currDate}`}
                     sheet="tablexls"
-                    buttonText="Excel Import"
+                    buttonText="Excel Export"
                 />
                 <table className="table-60" id="hostel-entry-view">
                     <thead>

@@ -40,7 +40,7 @@ const AcademicEntryView= (props) => {
                     table="academic-entry-view"
                     filename="academic-excel-report"
                     sheet="tablexls"
-                    buttonText="Excel Import"
+                    buttonText="Excel Export"
                 />
                 <table className="table-60" id="academic-entry-view">
                     <thead>

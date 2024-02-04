@@ -86,7 +86,7 @@ const handaleCancel = () => {
                 table="faculty-view"
                 filename="Faculty-excel-report"
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60" >
                 <thead style={{display: mainView}}>

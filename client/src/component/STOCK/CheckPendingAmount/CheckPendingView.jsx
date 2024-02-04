@@ -39,7 +39,7 @@ let sum=0;
                 table="pending-stock-view"
                 filename="pending-balance-stock-excel-report"
                 sheet="tablexls"
-                buttonText="Excel Import"
+                buttonText="Excel Export"
             />
             <table className="table-60" id="pending-stock-view">
                 <thead>

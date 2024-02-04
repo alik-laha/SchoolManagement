@@ -403,11 +403,11 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
               {/* View Item */}
               <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData}/>
-              {/* View Primary Stock */}
+              {/* Export Primary Stock */}
               <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
               {/* View Secondary Stock */}
               <SecondaryStockEntryView secondarystocksearch={props.SecondstockEntrySearch} view={secondStockEntryViewShow} SearchebyData={secondarysearchstockdata}/>
-              {/* View ExportSecondary Stock */}
+              {/* Export Secondary Stock */}
               <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={scndStockData}/>
               {/* View Modify Stock */}
               <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
