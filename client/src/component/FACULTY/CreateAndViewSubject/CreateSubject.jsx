@@ -9,6 +9,7 @@ const CreateSubject = (props) => {
         axios.post("http://localhost:7000/api/v1/faculty/createsubject",{name}).then(() => {
             alert("Subject Added")
             setName("")
+            handleView()
         }).catch((err) => {
             console.log(err)
             if(err.response.data.err.errno===1062){

@@ -17,6 +17,7 @@ const CreateExternalExam=(props)=>{
             alert("External Exam Added")
             setName("")
             settotalMarks(0)
+            handleView()
         }).catch((err)=>{
             console.log(err)
             if(err.response.data.err.errno===1062){
