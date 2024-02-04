@@ -43,14 +43,18 @@ const ViewBedStatus60 = (props) => {
         setRoom(data.room_no)
         setTotal_bed(data.total_bed)
     }
-    const handaleDelete = (id) => {
-        let count=0;
+    const handaleDelete = (data) => {
+        console.log(data)
+        const id=data.id
+        if(data.occupied_bed!==0){
+           alert("Room is Occupied, can't be Deleted") 
+            return
+        }
         axios
-            .post("http://localhost:7000/api/v1/hostel/deletebed",{id} )
+            .post("http://localhost:7000/api/v1/hostel/deletebed",{id})
             .then((res) => {
                 alert("Room No : "+room+" Deleted Successfully")
-                props.setCreatebed(count);
-                count=count+1;
+                props.setCreatebed("block");
                 setView("none");
             })
             .catch((error) => {
@@ -131,7 +135,7 @@ const ViewBedStatus60 = (props) => {
                                 
                                 <td>
                                     <button className='dashboard-btn btn-warning fix-width' onClick={()=>handaleEdit(item)}>Edit</button>
-                                    <button className='dashboard-btn btn-warning fix-width' onClick={()=>handaleDelete(item.id)}>Delete</button>
+                                    <button className='dashboard-btn btn-warning fix-width' onClick={()=>handaleDelete(item)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
