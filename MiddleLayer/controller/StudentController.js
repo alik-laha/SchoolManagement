@@ -198,31 +198,31 @@ exports.GetMasterStudentAdmisson= (req, res) => {
     try{
         let query
         if (!regNo && !admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student`
+            query = `SELECT * FROM master_student order by admisson_year desc,applied_class asc, registration_no asc `
         }
         else if (regNo && !admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}'`
+            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
 
         else if (!regNo && admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}'`
+            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' `
+            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
 
         else if (regNo && admissionYear && !applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}'`
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
         else if (!regNo && admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and applied_class='${applyClass}'`
+            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
         else if (regNo && !admissionYear && applyClass) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and applied_class='${applyClass}'`
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc`
         }
 
         else {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' and applied_class='${applyClass}'  `
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc  `
         }
         Database.query(query, (err, result) => {
             if (err) {
