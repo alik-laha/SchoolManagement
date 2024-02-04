@@ -10,6 +10,7 @@ const MasterStudentViewUpdate = (props) => {
     const [name, setName] = useState('');
     const [adharNo, setAdharNo] = useState('');
     const [sex, setSex] = useState('');
+    const [stream, setStream] = useState('');
     const [religion, setReligion] = useState('');
     const [dob, setDob] = useState('');
     const [cast, setCast] = useState('');
@@ -86,6 +87,13 @@ const MasterStudentViewUpdate = (props) => {
         }
         else{
             setSex('');
+        }
+        if(item.stream!=='')
+        {
+            setStream(item.stream);
+        }
+        else{
+            setStream('');
         }
         if(item.religion!=='')
         {
@@ -288,6 +296,7 @@ const MasterStudentViewUpdate = (props) => {
             regNo,
             adharNo,
             sex,
+            stream,
             religion,
             dob,
             cast,
@@ -332,6 +341,7 @@ const MasterStudentViewUpdate = (props) => {
                             setName('');
                             setAdharNo('');
                             setSex('');
+                            setStream('')
                             setReligion('');
                             setDob('');
                             setCast('');
@@ -407,6 +417,7 @@ const MasterStudentViewUpdate = (props) => {
         setName('');
         setAdharNo('');
         setSex('');
+        setStream('')
         setReligion('');
         setDob('');
         setCast('');
@@ -446,6 +457,7 @@ const MasterStudentViewUpdate = (props) => {
         setName('');
         setAdharNo('');
         setSex('');
+        setStream('')
         setReligion('');
         setDob('');
         setCast('');
@@ -883,6 +895,24 @@ const MasterStudentViewUpdate = (props) => {
                         />
                     </div>
                     <div>
+                    <label>Applied for Stream*</label>
+                    <select onChange={(e) => setStream(e.target.value)} required value={stream}>
+                        <option value="">Stream</option>
+                        <option value="Arts">
+                            Arts
+                        </option>
+                        <option value="Commerce">
+                            Commerce
+                        </option>
+                        <option value="Science">
+                            Science
+                        </option>
+                        <option value="General">
+                        General (Upto Secondary)
+                        </option>
+                    </select>
+                </div>
+                    <div>
                         <label>Admission Year*</label>
                         <input
                             type="number"
@@ -927,6 +957,7 @@ const MasterStudentViewUpdate = (props) => {
                 <tr>
                     <th>Student ID</th>
                     <th>Applied Class</th>
+                    <th>Applied Stream</th>
                     <th>Admission Year</th>
                     <th>Date of Admission</th>
                     <th>Registration No.</th>
@@ -967,6 +998,7 @@ const MasterStudentViewUpdate = (props) => {
                             <tr key={item.serial_no}>
                                 <td>{item.serial_no}</td>
                                 <td>{item.applied_class}</td>
+                                <td>{item.stream}</td>
                                 <td>{item.admisson_year}</td>
                                 <td>{item.admisson_date.slice(0,10)}</td>
                                 <td>{item.registration_no}</td>

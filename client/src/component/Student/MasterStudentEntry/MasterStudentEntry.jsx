@@ -4,6 +4,7 @@ const MasterStudentEntry= (props) => {
     const [name, setName] = useState('');
     const [adharNo, setAdharNo] = useState('');
     const [sex, setSex] = useState('');
+    const [stream, setStream] = useState('');
     const [religion, setReligion] = useState('');
     const [dob, setDob] = useState('');
     const [cast, setCast] = useState('');
@@ -102,6 +103,7 @@ const MasterStudentEntry= (props) => {
                     regNo,
                     adharNo,
                     sex,
+                    stream,
                     religion,
                     dob,
                     cast,
@@ -148,6 +150,7 @@ const MasterStudentEntry= (props) => {
                         setName('');
                         setAdharNo('');
                         setSex('');
+                        setStream('');
                         setReligion('');
                         setDob('');
                         setCast('');
@@ -539,6 +542,24 @@ const MasterStudentEntry= (props) => {
                         onChange={(e) => setIfscCode(e.target.value)}
                         placeholder="Ifsc code"
                     />
+                </div>
+                <div>
+                    <label>Applied for Stream*</label>
+                    <select onChange={(e) => setStream(e.target.value)} required value={stream}>
+                        <option value="">Stream</option>
+                        <option value="Arts">
+                            Arts
+                        </option>
+                        <option value="Commerce">
+                            Commerce
+                        </option>
+                        <option value="Science">
+                            Science
+                        </option>
+                        <option value="General">
+                            General (Upto Secondary)
+                        </option>
+                    </select>
                 </div>
                 <div>
                     <label>Applied For Class*</label>
