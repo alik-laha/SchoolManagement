@@ -25,7 +25,7 @@ const HostelView= (props) => {
         }
     },[props.hostelexportview,props.view])
 
-
+    const currDate = new Date().toLocaleDateString();
 
     return(
         <>
@@ -35,7 +35,7 @@ const HostelView= (props) => {
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
                     table="hostel-entry-view"
-                    filename="hostel-excel-report"
+                    filename={`Hostel_Entry_${currDate}`}
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />

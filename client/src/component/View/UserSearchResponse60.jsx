@@ -119,6 +119,7 @@ const UserSearchResponse60=(props)=>{
         setrole(data.roletype_name);
         setpassword(data.password);
     };
+    const currDate = new Date().toLocaleDateString();
     return (
         <div style={{display: disp}}>
               
@@ -131,7 +132,7 @@ const UserSearchResponse60=(props)=>{
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn user-profile-export"
                 table="User-Profile"
-                filename="User-Profile"
+                filename={"User-Profile-"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
                 

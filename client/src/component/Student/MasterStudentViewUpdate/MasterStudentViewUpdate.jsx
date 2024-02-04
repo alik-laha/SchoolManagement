@@ -490,6 +490,7 @@ const MasterStudentViewUpdate = (props) => {
         setRegNo('');
         setReleaseDate("");
     }
+    const currDate = new Date().toLocaleDateString();
     return(
         <div style={{display: view}}>
             <div style={{display:allView}}>
@@ -498,7 +499,7 @@ const MasterStudentViewUpdate = (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn clear-gradient"
                 table="master-student-view"
-                filename="master-student-details"
+                filename={"Master Student"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Import"
             />

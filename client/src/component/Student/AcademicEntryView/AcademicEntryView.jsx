@@ -28,7 +28,7 @@ const AcademicEntryView= (props) => {
         }
     },[props.academicallview,props.view])
 
-
+    const currDate = new Date().toLocaleDateString();
     return(
         <>
         
@@ -38,7 +38,7 @@ const AcademicEntryView= (props) => {
                     id="hostel"
                     className="dashboard-btn btn-warning excel-btn"
                     table="academic-entry-view"
-                    filename="hostel-excel-report"
+                    filename={`Academic_Entry_${currDate}`}
                     sheet="tablexls"
                     buttonText="Excel Import"
                 />
