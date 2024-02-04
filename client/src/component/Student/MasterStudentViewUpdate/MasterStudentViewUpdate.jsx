@@ -43,6 +43,7 @@ const MasterStudentViewUpdate = (props) => {
     const [ifscCode, setIfscCode] = useState('');
     const[allView,setAllview]=useState("block")
     const[releaseDate,setReleaseDate]=useState("");
+    const[rdonly,setRdonly]=useState(false);
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
@@ -278,14 +279,16 @@ const MasterStudentViewUpdate = (props) => {
             setBankAcountNo(0)
         }
         setBloodGroup(item.blood_group);
-        setReleaseDate(item.release_date);
+        
         setBrunch(item.branch);
         setIfscCode(item.ifsc);
         setRegNo(item.registration_no);
         if(item.release_date!==null){
             setReleaseDate(item.release_date.slice(0, 10));
+            setRdonly(true)
         }else{
             setReleaseDate('');
+            setRdonly(false)
         }
        
         console.log(item)
@@ -946,7 +949,7 @@ const MasterStudentViewUpdate = (props) => {
                         <input
                             type="date"
                             value={releaseDate}
-                            onChange={(e) => setReleaseDate(e.target.value)}
+                            onChange={(e) => setReleaseDate(e.target.value)} readOnly={rdonly}
                         />
                     </div>
 
