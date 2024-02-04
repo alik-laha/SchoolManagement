@@ -5,6 +5,7 @@ import axios from "axios";
 const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
     const [vendoraddress,setVendoraddress]=useState("")
+    
 
     useEffect(() => {
         handleViewVendor() 

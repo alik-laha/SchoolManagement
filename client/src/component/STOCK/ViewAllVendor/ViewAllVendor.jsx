@@ -1,8 +1,10 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 const ViewAllVendor=(props)=>{
     const [view,setView]=useState("none")
+    const currDate = new Date().toLocaleDateString();
 
     const handleDelete = (vendorId,vendor_name) => {
         axios
@@ -32,7 +34,7 @@ const ViewAllVendor=(props)=>{
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn margin-vendor-adjust"
                 table="vendor-view"
-                filename="vendor-report"
+                filename={"Vendor-Details-Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Import"
             />
