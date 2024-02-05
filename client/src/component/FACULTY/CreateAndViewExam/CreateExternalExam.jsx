@@ -29,6 +29,7 @@ const CreateExternalExam=(props)=>{
             }
         })
     }
+    
     const handleView=()=>{
         axios.post("http://localhost:7000/api/v1/faculty/getallexternalexam")
             .then((res)=>{

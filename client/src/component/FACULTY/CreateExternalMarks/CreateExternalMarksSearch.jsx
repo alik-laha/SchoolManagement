@@ -5,6 +5,7 @@ const CreateExternalMarks=(props)=>{
     const [regNo,setRegNo]=useState("")
     const [Class,setClass]=useState("")
     const [year,setYear]=useState("")
+    
 
     const handleSubmit=(e)=>{
         e.preventDefault();
@@ -18,18 +19,19 @@ const CreateExternalMarks=(props)=>{
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
+            
                 <div>
-                    <label>Rgestration No</label>
-                    <input type="text" placeholder="Enter Rgestration Number" value={regNo}
+                    <label>Registration No.</label>
+                    <input type="text" placeholder="Reg No." value={regNo}
                            onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
                 <div>
-                    <label>Class</label>
-                    <input type="number" placeholder="Enter Class" value={Class}
+                    <label>Current Class</label>
+                    <input type="number" placeholder="Class" value={Class}
                            onChange={(e) => setClass(e.target.value)}/>
                 </div>
                 <div>
-                    <label>Current year of Study</label>
+                    <label>Current Academic Year</label>
                     <input type="text" placeholder="Current Year" value={year}
                            onChange={(e) => setYear(e.target.value)}/>
                 </div>

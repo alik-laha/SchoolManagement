@@ -19,7 +19,7 @@ const handleSubmit=(e)=>{
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Rgestration No</label>
+                    <label>Registration No</label>
                     <input type="text" placeholder="Reg No." value={regNo}
                            onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
