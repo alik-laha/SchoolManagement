@@ -71,6 +71,8 @@ const ExportStudentMarksView= (props) => {
     //   };
 
     let sum_v1=0;
+    let sum_tot_v1=0;
+    
 
       return(
         <div style={{display: view}}>
@@ -95,7 +97,7 @@ const ExportStudentMarksView= (props) => {
                 </thead>
                 <tbody>
                 {data.map((item,idx) => (
-                    sum_v1=sum_v1+item.marks,
+                    sum_v1=sum_v1+item.marks,sum_tot_v1=sum_tot_v1+item.int_exam_marks,
                     <tr key={item.id}>
                         <td>{idx+1}</td>
                         <td>{item.student_Name}</td>
@@ -106,8 +108,10 @@ const ExportStudentMarksView= (props) => {
                         <td>{item.exam_name}</td>
                         <td>{item.subject}</td>
                         <td>{item.marks}</td>
+                        
 
-                        <td>{}</td>
+                        <td>{item.int_exam_marks}</td>
+                        <td>{((item.marks/item.int_exam_marks)*100).toString().slice(0,2).concat("%")}</td>
                         
                     </tr>
                     
@@ -122,6 +126,9 @@ const ExportStudentMarksView= (props) => {
                 <td></td>
                     <td style={{backgroundColor:'#f39c12',color:'white',border:'1px solid black'}}><b>Total Marks:</b></td>
                     <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{sum_v1}</b></td>
+                    
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{sum_tot_v1}</b></td>
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{((sum_v1/sum_tot_v1)*100).toString().slice(0,2).concat("%")}</b></td>
                 </tr>
                 </tbody>
 

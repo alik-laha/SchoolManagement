@@ -464,11 +464,20 @@ exports.GetAllMarks = (req, res) => {
             }
             
             else{
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                        FROM Marks
-                                 LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"
-                                           order by Marks.id`
+
+
+                query = `SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name,combine.int_exam_marks
+                FROM Marks
+                         LEFT JOIN Student_Admission
+                                   ON Student_Admission.registration_no = Marks.regNo  
+                         LEFT JOIN (SELECT internal_exam_name,int_exam_marks FROM internal_exam
+                         UNION ALL
+                         SELECT external_exam_name,ext_exam_marks FROM external_exam) as combine
+                                   ON Marks.exam_name = combine.internal_exam_name 
+                         WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"
+                                   order by Marks.id`
+
+        
             }
             Database.query(query,(err,result)=>{
                 if(err){
