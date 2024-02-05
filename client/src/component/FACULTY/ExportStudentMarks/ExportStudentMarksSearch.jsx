@@ -6,11 +6,10 @@ const ExportStudentMarksSearch = (props) => {
     const [examName, setExamName] = useState("");
     const [regNo, setRegNo] = useState("");
     const [examData,setExamData]=useState([])
-    
 
     const FetchExamData=()=>{
         axios.get(`http://localhost:7000/api/v1/faculty/getallexam`).then((res)=>{
-            //console.log(res.data.data[3].internal_exam_name)
+            console.log(res.data.data[3].internal_exam_name)
             setExamData(res.data.data)
         }).catch((err)=>{
             console.log(err)
@@ -18,52 +17,46 @@ const ExportStudentMarksSearch = (props) => {
 
     }
 
+    
+    // const setExamnameFunction2=(e)=>{
+    //     const idx= e.target.value;
+    //     allExam.find((data,index)=>{
+    //         if(data.internal_exam_name===idx){
+    //             settarget2(data.int_exam_marks)
+    //             console.log(data.int_exam_marks)
+    //         }
+    //     })
+    //     setUpdatedExamName(e.target.value)
 
+    // }
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
 
         if(Class && regNo && examName)
         {
             props.setSearchcombination('cl_reg_ex')
-            axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            props.setStudentMarks(res.data.data,examName,Class)
-            props.setStudentMarksView("block")
-            console.log(res.data.data)
-            }).catch((err) => {
-            console.log(err)
-        })
         }
         else if(Class && regNo && !examName)
         {
             props.setSearchcombination('cl_reg')
-            axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            props.setStudentMarks(res.data.data,examName,Class)
-            props.setStudentMarksView("block")
-            console.log(res.data.data)
-            }).catch((err) => {
-            console.log(err)
-        })
-            
         }
         else if(Class && !regNo && examName)
         {
             props.setSearchcombination('cl_ex')
-            axios.post("http://localhost:7000/api/v1/student/getallregNo",{Class}).then((res)=>{
-            props.setStudentMarks(res.data,examName,Class)
-            props.setStudentMarksView("block")
-            console.log(res.data.data)
-            }).catch((err) => {
-            console.log(err)
-        })
-
         }
         else if(Class && !regNo && !examName)
         {
             props.setSearchcombination('cl')
         }
 
-        
+        axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
+            props.setStudentMarks(res.data.data)
+            props.setStudentMarksView("block")
+            console.log(res.data.data)
+        }).catch((err) => {
+            console.log(err)
+        })
     }
     useEffect(() => {
         if(props.view==="block"){

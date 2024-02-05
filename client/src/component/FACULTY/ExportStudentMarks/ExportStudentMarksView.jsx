@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import axios, { all } from "axios";
+
 
 
 const ExportStudentMarksView= (props) => {
@@ -12,23 +12,7 @@ const ExportStudentMarksView= (props) => {
     const [ClassRegExam,setClassRegExam]=useState('none')
     const [ClassExam,setClassExam]=useState('none')
     const [ClassReg,setClassReg]=useState('none')
-    let allData=[]
     
-    useEffect(()=>{
-      
-        if(props.examName && props.classmarks && props.data){
-           
-            props.data.map((data) => {
-            axios.post(`http://localhost:7000/api/v1/faculty/getmarkswithoutsub`, {Class:props.classmarks, regNo:data.registration_no,examName:props.examName}).
-            then((res) => {
-                    
-                allData=[...allData,res.data.data]
-            })
-
-        })
-    }
-
-    },[props.data,props.examName,props.classmarks])
 
 
     useEffect(()=>{
@@ -54,7 +38,6 @@ const ExportStudentMarksView= (props) => {
         setClassRegExam('none')
       }
       else if(props.type==='cl_ex'){
-        
         setClass('none')
         setClassExam('block')
         setClassReg('none')
@@ -70,8 +53,6 @@ const ExportStudentMarksView= (props) => {
 
 
     },[props.type])
-
-
 
 
     // props.data.length>0
@@ -211,10 +192,7 @@ const ExportStudentMarksView= (props) => {
                 </tr>
                 </tbody>
             </table>
-            <table className="table-60" style={{display:ClassExam}}>
-
-                {console.log(allData)}
-            </table>
+            <table className="table-60" style={{display:ClassExam}}></table>
             <table className="table-60" style={{display:Class}}></table>
 
         
