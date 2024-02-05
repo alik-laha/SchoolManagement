@@ -78,7 +78,7 @@ const ExportStudentMarksView= (props) => {
 
     let sum_v3=0;
     let sum_tot_v3=0;
-    
+
 
       return(
         <div style={{display: view}}>
@@ -237,15 +237,54 @@ const ExportStudentMarksView= (props) => {
                 
                 </tbody>
             </table>
-            <table className="table-60" style={{display:Class}}></table>
+            <table className="table-60" style={{display: Class}}>
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Student Name</th>
+                    <th>Registration No.</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                    <th>Roll No.</th>
+                    <th>Exam Name</th>
 
-        
-        
+                    <th>Total Obtained Marks</th>
+                    <th>Total Marks</th>
+                    <th>Percentage</th>
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {data.map((item, idx) => (
+                    sum_v3 = sum_v3 + Number(item.obtained_mark), sum_tot_v3 = sum_tot_v3 + Number(item.total_marks),
+                        <tr key={item.id}>
+                            <td>{idx + 1}</td>
+                            <td>{item.student_Name}</td>
+                            <td>{item.registration_no}</td>
+                            <td>{item.class}</td>
+                            <td>{item.section}</td>
+                            <td>{item.roll_no}</td>
+                            <td>{item.exam_name}</td>
+
+                            <td>{item.obtained_mark}</td>
+
+
+                            <td>{item.total_marks}</td>
+                            <td>{((item.obtained_mark / item.total_marks) * 100).toString().slice(0, 2).concat("%")}</td>
+
+                        </tr>
+
+                ))}
+
+                </tbody>
+            </table>
+
+
         </div>
 
 
-
       )
-    
+
 }
 export default ExportStudentMarksView;
