@@ -45,6 +45,7 @@ const ExportStudentMarksSearch = (props) => {
                            onChange={(e) => setClass(e.target.value)} required={true}/>
                 </div>
                 <div>
+                    <label>Exam Name </label>
                     <select onChange={(e)=>setExamName(e.target.value)} value={examName}>
                         <option value="">Exam Name</option>
                         {examData.map((data, index) => (

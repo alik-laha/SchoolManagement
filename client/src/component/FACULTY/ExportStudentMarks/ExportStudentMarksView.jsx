@@ -10,6 +10,7 @@ const ExportStudentMarksView= (props) => {
 
     useEffect(()=>{
         setData(props.data)
+        console.log(data)
 
     },[props.data])
 
