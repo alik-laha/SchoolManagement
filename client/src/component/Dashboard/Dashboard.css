@@ -302,7 +302,7 @@
 }
 
 .special-25-div div{
-    width: 25%!important;
+    width: 25%;
 }
 .dashbrd-40-colm label{
     display: inline-block;
@@ -316,7 +316,7 @@
     padding: 10px;
 }
 
-.dashbrd-40-colm input,.dashbrd-40-colm select{
+.dashbrd-40-colm input,.dashbrd-40-colm select,.dashbrd-40-colm textarea{
     border-radius: 4px;
     box-shadow: none;
     border-color: #d2d6de;

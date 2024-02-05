@@ -303,17 +303,6 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 <div>
-                    <label>Address*</label>
-                    <input
-                        type="textbox"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Address"
-                        required={true}
-                    />
-                </div>
-
-                <div>
                     <label>Pin Number*</label>
                     <input
                         type="number"
@@ -323,18 +312,24 @@ const MasterStudentEntry= (props) => {
                         required={true}
                     />
                 </div>
-             
-                <div>
-                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
-                    <input
-                        type="text"
-                        value={bspId}
-                        onChange={(e) => setBspId(e.target.value)}
-                        placeholder="B.S.P Id"
+               
+                <div style={{width:'50%'}}>
+                    <label>Address*</label>
+                    <textarea style={{height:'80px',rows:"3"}}
+                        type="textarea" 
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Address"
+                        required={true}
                     />
                 </div>
+
+            
+              
          
 
+                
+                <hr className="division-2"/>
                 <div className="div-25">
                     <label>Physically Challenged</label>
                     <input 
@@ -361,6 +356,7 @@ const MasterStudentEntry= (props) => {
                     />
                 </div>
                 
+             
                 <hr className="division"/>
                 <p>Guardian Details</p>
                 <div>
@@ -503,8 +499,16 @@ const MasterStudentEntry= (props) => {
                 
                 <hr className="division"/>
                 <p>Other Details</p>
-            
-           
+              
+                <div>
+                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
+                    <input
+                        type="text"
+                        value={bspId}
+                        onChange={(e) => setBspId(e.target.value)}
+                        placeholder="B.S.P Id"
+                    />
+                </div>
         
         
                
