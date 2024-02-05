@@ -250,11 +250,11 @@ const SideBar = (props) => {
         <div style={{ display: facultyVisi }}>
           <div className="Items" style={{ display: admin }} onClick={props.onCreateFaculty}>&#x3e;&nbsp;&nbsp;Create Faculty Profile</div>
           <div className="Items" style={{ display: admin }} onClick={props.onViewFaculty}>&#x3e;&nbsp;&nbsp;View/Edit Faculty Profile</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onCreateSubject}>&#x3e;&nbsp;&nbsp;Create Subject</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onCreateExam}>&#x3e;&nbsp;&nbsp;Create Exam</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Create Internal Marks Entry</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Create External Marks Entry</div>
-          <div className="Items" style={{ display: admin }} onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onCreateSubject}>&#x3e;&nbsp;&nbsp;Create Subject</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onCreateExam}>&#x3e;&nbsp;&nbsp;Create Exam</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Create Internal Marks Entry</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Create External Marks Entry</div>
+          <div className="Items" style={{ display: facultyAdmin }} onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks</div>
         </div>
 
 
@@ -287,7 +287,7 @@ const SideBar = (props) => {
           <div className="Items" style={{ display: cashAdmin }} onClick={props.onSecondStockEntry}>&#x3e;&nbsp;&nbsp;Secondary Stock (Cash)</div>
           <div className="Items" style={{ display: cashAdmin }} onClick={props.onSecondStockView}>&#x3e;&nbsp;&nbsp;Export Secondary Stock</div>
           <div className="Items" style={{  display: admin }} onClick={props.onModifySeachEntry}>&#x3e;&nbsp;&nbsp;Modify Stock Entry</div>
-          <div className="Items" style={{  display: admin }} onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>
+          <div className="Items" style={{  display: cashstockAdmin }} onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount</div>
         </div>
 
 
