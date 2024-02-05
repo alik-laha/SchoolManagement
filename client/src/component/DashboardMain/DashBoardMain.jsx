@@ -103,6 +103,8 @@ const DashBoardMain = (props) => {
   const [RoomManupulation,setRoomManupulation]=useState(null)
   const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
+    const [marksFlag,setMarksFlag]=useState('')
+
   {/* User Start */}
 
   //get all roles
@@ -318,6 +320,12 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handleGetroom=(data)=>{
     setRoomManupulation(data)
   }
+
+  const handaleMarksFlag=(data)=>{
+    setMarksFlag(data)
+  }
+
+  
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -392,7 +400,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             {/* External Exam Search*/}
             <CreateExternalMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
             {/* Export Exam Search*/}
-            <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} />
+            <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} setSearchcombination={handaleMarksFlag}/>
           {/* Faculty End */} 
         </div>
 
@@ -447,7 +455,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
             <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} />
-            <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData}/>
+            <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
           {/* Faculty End*/} 
         </div>
       </div>

@@ -18,6 +18,24 @@ const ExportStudentMarksSearch = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(Class && regNo && examName)
+        {
+            props.setSearchcombination('cl_reg_ex')
+        }
+        else if(Class && regNo && !examName)
+        {
+            props.setSearchcombination('cl_reg')
+        }
+        else if(Class && !regNo && examName)
+        {
+            props.setSearchcombination('cl_ex')
+        }
+        else if(Class && !regNo && !examName)
+        {
+            props.setSearchcombination('cl')
+        }
+
         axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
             props.setStudentMarks(res.data.result)
             props.setStudentMarksView("block")
