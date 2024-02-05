@@ -239,7 +239,9 @@ const CreateInternalMarks=(props)=>{
                     <th>Student Name</th>
                     <th>Class</th>
                     <th>Registration No</th>
-                    <th>Admisson Year</th>
+                    <th>Current Academic Year</th>
+                    <th>Section</th>
+                    <th>Roll No.</th>
 
                     <th>Actions</th>
                 </tr>
@@ -255,7 +257,9 @@ const CreateInternalMarks=(props)=>{
                                 <td>{data.student_Name}</td>
                                 <td>{data.class}</td>
                                 <td>{data.registration_no}</td>
-                                <td>{data.admission_year}</td>
+                                <td>{data.current_academic_year}</td>
+                                <td>{data.section}</td>
+                                <td>{data.roll_no}</td>
 
                                 <td>
                                     <button className='dashboard-btn btn-warning'
