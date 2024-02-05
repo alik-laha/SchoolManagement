@@ -448,18 +448,8 @@ exports.GetAllMarks = (req, res) => {
                      LEFT JOIN Student_Admission 
              ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.class="${Class}"`
             }
-            else if(!Class && !examName && regNo){
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                        FROM Marks
-                                 LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.regNo="${regNo}"`
-            }
-            else if(!regNo && !Class && examName){
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                        FROM Marks
-                                 LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}"`
-            }
+            
+          
             else if(!regNo && examName && Class){
                 query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
                         FROM Marks
@@ -472,22 +462,18 @@ exports.GetAllMarks = (req, res) => {
                                  LEFT JOIN Student_Admission
                                            ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.regNo="${regNo}" AND Marks.class="${Class}"`
             }
-            else if(!Class && examName && regNo){
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                        FROM Marks
-                                 LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}"`
-            }
+            
             else{
                 query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
                         FROM Marks
                                  LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"`
+                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"
+                                           order by Marks.id`
             }
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
-                    return res.status(400).json({message:"Error Occured"})
+                    return res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
                     return res.status(200).json({message:"Marks Fetched",data:result})

@@ -15,6 +15,17 @@ const ExportStudentMarksSearch = (props) => {
             console.log(err)
         })
     }
+    // const setExamnameFunction2=(e)=>{
+    //     const idx= e.target.value;
+    //     allExam.find((data,index)=>{
+    //         if(data.internal_exam_name===idx){
+    //             settarget2(data.int_exam_marks)
+    //             console.log(data.int_exam_marks)
+    //         }
+    //     })
+    //     setUpdatedExamName(e.target.value)
+
+    // }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -37,7 +48,7 @@ const ExportStudentMarksSearch = (props) => {
         }
 
         axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            props.setStudentMarks(res.data.result)
+            props.setStudentMarks(res.data.data)
             props.setStudentMarksView("block")
             console.log(res.data.data)
         }).catch((err) => {
