@@ -40,6 +40,10 @@ const [entermarks,setentermarks]=useState("none")
             setView("none")
         }
     }, [props.data,props.view,props.view40]);
+    const clearTable = () => {
+        if(hideView==='none')
+        setData([]);
+      };
 
 const FetchExam=()=>{
    axios.post(`http://localhost:7000/api/v1/faculty/getallinternalexam`).then((res)=>{
@@ -236,6 +240,7 @@ const setExamnameFunction=(e)=>{
         <div style={{display: view}}>
             <table className="table-60">
                 <thead style={{display: allView}}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Id</th>
                     <th>Student Name</th>
@@ -280,6 +285,7 @@ const setExamnameFunction=(e)=>{
                 </tbody>
 
             </table>
+            {data.length===0 ? <div className="no-data">No Data Exists</div> : null}
             {/* <hr style={{marginTop:'-60px',marginBottom:'20px',borderTop:'1px solid grey'}}/> */}
             <div style={{backgroundColor:'whitesmoke',display:hideView}}>
             <span className="marks-window"><button className="dashboard-btn dashboard-btn-scss" style={{background:'darkcyan'}} onClick={handleCancel}>Close Marks Window</button></span>
