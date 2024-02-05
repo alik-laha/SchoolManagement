@@ -63,18 +63,19 @@ const handleSubmit = (e) => {
                     />
                 </div>
                 <div>
-                    <label>Contact No.*</label>
+                    <label>Joining date*</label>
                     <input
-                        type="number"
-                        value={contactNo}
-                        onChange={(e) => setContactNo(e.target.value)}
-                        placeholder="Contact No"
+                        type="date"
+                        value={joinDate}
+                        onChange={(e) => setJoinDate(e.target.value)}
+                        placeholder="Joining Date"
                         required={true}
                     />
                 </div>
-                <div style={{width:'45%'}}>
+              
+                <div style={{width:'50%'}}>
                     <label>Address*</label>
-                    <input
+                    <textarea style={{height:'80px',rows:"3"}}
                         type="text"
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
@@ -82,16 +83,7 @@ const handleSubmit = (e) => {
                         required={true}
                     />
                 </div>
-                <div>
-                    <label>Email Address*</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email Address"
-                        required={true}
-                    />
-                </div>
+               
                 <hr className="division"/>
                 <p>Academic Details</p>
                 <div>
@@ -118,6 +110,26 @@ const handleSubmit = (e) => {
                 <hr className="division"/>
                 <p>Other Details</p>
                 <div>
+                    <label>Contact No.*</label>
+                    <input
+                        type="number"
+                        value={contactNo}
+                        onChange={(e) => setContactNo(e.target.value)}
+                        placeholder="Contact No"
+                        required={true}
+                    />
+                </div>
+                <div>
+                    <label>Email Address*</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email Address"
+                        required={true}
+                    />
+                </div>
+                <div>
                     <label>Aadhar No.*</label>
                     <input
                         type="number"
@@ -141,16 +153,7 @@ const handleSubmit = (e) => {
                     />
                 </div>
                 
-                <div>
-                    <label>Joining date*</label>
-                    <input
-                        type="date"
-                        value={joinDate}
-                        onChange={(e) => setJoinDate(e.target.value)}
-                        placeholder="Joining Date"
-                        required={true}
-                    />
-                </div>
+              
               
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
