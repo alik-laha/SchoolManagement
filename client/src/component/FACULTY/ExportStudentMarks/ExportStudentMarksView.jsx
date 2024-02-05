@@ -12,7 +12,7 @@ const ExportStudentMarksView= (props) => {
     const [ClassRegExam,setClassRegExam]=useState('none')
     const [ClassExam,setClassExam]=useState('none')
     const [ClassReg,setClassReg]=useState('none')
-    
+    const [id,setId]=useState('')
 
 
     useEffect(()=>{
@@ -29,6 +29,7 @@ const ExportStudentMarksView= (props) => {
         setClassExam('none')
         setClassReg('none')
         setClassRegExam('inline-table')
+          setId('table_one')
       }
       else if(props.type==='cl_reg')
       {
@@ -36,12 +37,14 @@ const ExportStudentMarksView= (props) => {
         setClassExam('none')
         setClassReg('inline-table')
         setClassRegExam('none')
+        setId('table_two')
       }
       else if(props.type==='cl_ex'){
         setClass('none')
         setClassExam('inline-table')
         setClassReg('none')
         setClassRegExam('none')
+        setId('table_three')
       }
       else if(props.type==='cl')
       {
@@ -49,6 +52,7 @@ const ExportStudentMarksView= (props) => {
         setClassExam('none')
         setClassReg('none')
         setClassRegExam('none')
+        setId('table_four')
       }
 
 
@@ -78,12 +82,19 @@ const ExportStudentMarksView= (props) => {
 
     let sum_v3=0;
     let sum_tot_v3=0;
-
+    const currDate = new Date().toLocaleDateString();
 
       return(
         <div style={{display: view}}>
-            
-            <table className="table-60" style={{display:ClassRegExam}}>
+            <ReactHTMLTableToExcel
+                id="hostel"
+                className="dashboard-btn btn-warning excel-btn clear-gradient"
+                table={id}
+                filename={'Student_Marks_Report'+currDate}
+                sheet="tablexls"
+                buttonText="Excel Export"
+            />
+            <table className="table-60" style={{display:ClassRegExam}} id="table_one">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -140,7 +151,7 @@ const ExportStudentMarksView= (props) => {
 
 
             </table>
-            <table className="table-60" style={{display:ClassReg}}>
+            <table className="table-60" style={{display:ClassReg}} id="table_two">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -195,7 +206,7 @@ const ExportStudentMarksView= (props) => {
                 </tr>
                 </tbody>
             </table>
-            <table className="table-60" style={{display:ClassExam}}>
+            <table className="table-60" style={{display:ClassExam}} id="table_three">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -237,7 +248,7 @@ const ExportStudentMarksView= (props) => {
                 
                 </tbody>
             </table>
-            <table className="table-60" style={{display: Class}}>
+            <table className="table-60" style={{display: Class}} id="table_four">
                 <thead>
                 <tr>
                     <th>Id</th>
