@@ -20,27 +20,32 @@ const PromoteNextClassView= (props) => {
         if(props.SearchebyData.length<=0)
         {
             setPromotehide('none')
+            
         }
         else{
             setPromotehide('inline-block')
+            
         }
       },[props.SearchebyData])
 
 
       useEffect(()=> {
-        if (props.PromoteView === "block" && props.view === "block") {
+        console.log(props.PromoteView)
+        console.log(props.view )
+        if (props.PromoteView === "block" && props.view === "block" && props.SearchebyData.length>0) {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.PromoteView,props.view,view])
+    },[props.PromoteView,props.view,props.SearchebyData])
 
-    const HandleEdit=()=> {
-       
+    const HandleEdit=(academicAll)=> {
+        
+        let count=0;
+        let data_length=academicAll.length
         if (Class < 12){
-            let count=0;
-            let data_length=academicAll.length
+          
             
             academicAll.map((data) => {
                 axios.post("http://localhost:7000/api/v1/student/updatepromotion", {
@@ -52,12 +57,12 @@ const PromoteNextClassView= (props) => {
                         console.log("done")
                         count=count+1
                         if(count===data_length){
-                            alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to
-                            Next Class and Academic Year `)
+                            alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to Next Class and Academic Year `)
+                            setView('none')
                             
                         }
                       
-                        setView('none')
+                       
                     })
             })
           
@@ -66,8 +71,7 @@ const PromoteNextClassView= (props) => {
     }
     else
     {
-        let count=0;
-            let data_length=academicAll.length
+        
         academicAll.map((data) => {
             axios.post("http://localhost:7000/api/v1/student/updatepromotion", {regNo: data.registration_no})
                 .then((res) => {
@@ -76,11 +80,11 @@ const PromoteNextClassView= (props) => {
                         console.log("done")
                         count=count+1
                         if(count===data_length){
-                            alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to
-                            Next Class and Academic Year `)
+                            alert(`All the Students of Class ${Class} and Academic Year ${academicYear} has been Promoted to Next Class and Academic Year `)
+                            setView('none')
                             
                         }
-                        setView('none')
+                    
                        
                     })
                 })
@@ -131,17 +135,18 @@ const PromoteNextClassView= (props) => {
                     }
                     </tbody>
                 </table>
+                {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
                 <div style={{display:'block',textAlign:'center'}}>
                 <button  style={{display:promotehide}} className="dashboard-btn btn-warning" onClick={() => {
                                         const confirmBox = window.confirm(
                                             "Do you really want to Promote these Students to next Class ?"
                                         );
                                         if (confirmBox === true) {
-                                            HandleEdit();
+                                            HandleEdit(academicAll);
                                         }
                                     }}>Promote To Next Class</button></div>
                 
-                {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
+                
             </div>
             
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
