@@ -6,12 +6,12 @@ const CreateUser = ({showCreate,AllRoles}) => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const [dOB,setdOB]=useState('');
+  
   const [suceessflag,setsuceessflag]= useState('none');
 
   const handaleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:7000/api/v1/createuser", {name,password,role,dOB}).then((res) => {
+    axios.post("http://localhost:7000/api/v1/createuser", {name,password,role}).then((res) => {
       alert(`User [${name}] has been Created Successfully`);
       if(res.status==='success' && suceessflag==='none'){
         setsuceessflag('block');
@@ -19,7 +19,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
         setName("");
         setPassword("");
         setRole("");
-        setdOB('');
+        
   }).catch(err=>{
     if(err.response.data.msg.errno===1062){
       alert(`User [${name}] Already Exists`)
@@ -31,6 +31,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
     <>
       <div className="dashbrd-40-colm">
       <form onSubmit={handaleSubmit} style={{display:showCreate}}>
+      
         <div >
           <label>Create User Name</label>
         <input
@@ -52,16 +53,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
         />
         </div>
 
-        <div >
-          <label>Date Of Birth</label>
-        <input
-          type="date"
-          placeholder="Date of Birth"
-          onChange={(e) => setdOB(e.target.value)}
-          value={dOB}
-          required
-        />
-        </div>
+      
 
         <div>
         <label>Create Role</label>

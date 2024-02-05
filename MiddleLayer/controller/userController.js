@@ -36,15 +36,15 @@ exports.Login = (req, res) => {
 
 //create user
     exports.CreateUser = (req, res) => {
-        const {name, password, role, dOB} = req.body
+        const {name, password, role} = req.body
 
 
-            if (!{name, password, role, dOB}) {
+            if (!{name, password, role}) {
                 return res.message("all data needed")
             }
                     query = `
-                        INSERT INTO user (user_name, password, roletype_name, date_of_Birth)
-                        VALUES ("${name}", "${password}", "${role}", "${dOB}")`;
+                        INSERT INTO user (user_name, password, roletype_name)
+                        VALUES ("${name}", "${password}", "${role}")`;
                     Database.query(query, function (error, data) {
                         if (error) {
 
@@ -190,7 +190,7 @@ exports.Login = (req, res) => {
 
 //get all role
     exports.GetUserRole = (req, res) => {
-                query = ` SELECT *FROM role`;
+                query = ` SELECT * FROM role`;
                 Database.query(query, function (error, data) {
                     if (error) {
                         res.status(400).send(error)
