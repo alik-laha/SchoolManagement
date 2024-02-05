@@ -30,7 +30,7 @@ const CreateExternalMarks=(props)=>{
                 </div>
                 <div>
                     <label>Current year of Study</label>
-                    <input type="text" placeholder="Enter Section" value={year}
+                    <input type="text" placeholder="Current Year" value={year}
                            onChange={(e) => setYear(e.target.value)}/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
