@@ -38,6 +38,7 @@ const ExportStudentMarksView= (props) => {
         setClassRegExam('none')
       }
       else if(props.type==='cl_ex'){
+        
         setClass('none')
         setClassExam('block')
         setClassReg('none')
@@ -53,6 +54,8 @@ const ExportStudentMarksView= (props) => {
 
 
     },[props.type])
+
+
 
 
     // props.data.length>0

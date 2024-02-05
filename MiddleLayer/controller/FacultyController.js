@@ -539,3 +539,42 @@ exports.GetFaculty = (req, res) => {
         console.log(err)
     }
 }
+
+
+//get subject less export view
+
+exports.GetMarksWithoutSubject= (req, res) => {
+    try{
+        const {regNo,examName,Class}=req.body
+        if(regNo && examName && Class){
+           
+            let query=`SELECT Marks.class,Marks.regNo,Marks.exam_name,SUM(Marks.marks) AS obtained_marks,sum(combine.int_exam_marks) as total_marks,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                FROM Marks
+                         LEFT JOIN Student_Admission
+                                   ON Student_Admission.registration_no = Marks.regNo  
+                         LEFT JOIN (SELECT internal_exam_name,int_exam_marks FROM internal_exam
+                         UNION ALL
+                         SELECT external_exam_name,ext_exam_marks FROM external_exam) as combine
+                                   ON Marks.exam_name = combine.internal_exam_name 
+			
+			
+                         WHERE Marks.regNo = '${regNo}' AND Marks.class='${Class}'AND exam_name='${examName}'
+                                   group by Marks.exam_name order by Marks.exam_name`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    return  res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    return  res.status(200).json({message:"Marks Fetched",data:result})
+                }
+            })
+        }
+        else{
+            return  res.status(400).json({message:"All Fields are required"})
+        }
+    }catch(err){
+        console.log(err)
+        return  res.status(400).json({message:"Error Occured",err:err})
+    }
+}

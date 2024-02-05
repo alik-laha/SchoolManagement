@@ -573,3 +573,23 @@ exports.CheckPromote = (req, res) => {
         console.log(err)
     }
 }
+
+
+//Check Student is promoted or not
+
+exports.GetAllRegistration = (req, res) => {
+    const {Class}=req.body
+    try{
+        let query=`SELECT registration_no FROM Student_Admission WHERE class='${Class}' and active=1 order by registration_no`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                return res.status(200).send(result)
+            }
+        })
+    }catch (err){
+        console.log(err)
+    }
+}
