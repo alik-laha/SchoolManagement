@@ -40,7 +40,7 @@ const CreateBed40 = (props) => {
                     </div>
                     <div>
                         <label>Floor No.</label>
-                        <input type="text" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
+                        <input type="number" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
                     </div>
 
                     <div>
@@ -49,7 +49,7 @@ const CreateBed40 = (props) => {
                     </div>
                     <div>
                         <label>Total Bed Available</label>
-                        <input type="text" placeholder="Total Bed No." value={totalbed} onChange={(e)=>setTotalBed(e.target.value)} required/>
+                        <input type="number" placeholder="Total Bed Available" value={totalbed} onChange={(e)=>setTotalBed(e.target.value)} required/>
                     </div>
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                     {/* <input className="dashboard-btn dashboard-btn-scss" type="submit" value="Submit"/> */}
