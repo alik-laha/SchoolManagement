@@ -40,7 +40,7 @@ const CreateBed40 = (props) => {
                     </div>
                     <div>
                         <label>Floor No.</label>
-                        <input type="text" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
+                        <input type="number" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
                     </div>
 
                     <div>
