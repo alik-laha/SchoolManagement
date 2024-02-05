@@ -77,7 +77,10 @@ const MasterStudentEntry= (props) => {
                 }
                 
                 const schoolName = "AHM"
-                const Class = applyClass.toString()
+                let Class = applyClass.toString()
+                if(Class.length === 1){
+                    Class = "0" + Class
+                }
                 const year = admissionYear.toString()
                 const ID = id.toString()
                 if (ID.length === 1) {
