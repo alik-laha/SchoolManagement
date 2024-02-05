@@ -5,7 +5,8 @@ const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, G
     MarksSearch,
     UpdateMarks,
     GetAllMarks,
-    GetAllExamForMarks
+    GetAllExamForMarks,
+    GetFaculty
 } = require('../controller/FacultyController')
 
 //create faculty
@@ -61,5 +62,8 @@ router.post('/getallfacultyactive',GetAllFacultyMiddleLayer)
 
 //Get all Exam
 router.get('/getallexam',GetAllExamForMarks)
+
+//Get Faculty For Frontend
+router.get('/getfaculty',GetFaculty)
 
 module.exports = router

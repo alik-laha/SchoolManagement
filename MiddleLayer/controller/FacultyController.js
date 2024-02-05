@@ -511,3 +511,23 @@ exports.GetAllExamForMarks = (req, res) => {
         console.log(err)
     }
 }
+
+//get Faculty
+
+exports.GetFaculty = (req, res) => {
+    try{
+        let query = `SELECT name,heighst_qualification,specialized_field ,email FROM faculty_admin`
+
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+                return res.status(400).json({message:"Error Occured"})
+            }
+            else{
+                return res.status(200).json({message:"Faculty Fetched",data:result})
+            }
+        })
+    }catch (err){
+        console.log(err)
+    }
+}
