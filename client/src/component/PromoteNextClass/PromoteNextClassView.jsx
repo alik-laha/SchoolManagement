@@ -20,6 +20,7 @@ const PromoteNextClassView= (props) => {
         if(props.SearchebyData.length<=0)
         {
             setPromotehide('none')
+            alert('No Data Exists')
             
         }
         else{
