@@ -136,6 +136,7 @@ const PromoteNextClassView= (props) => {
                         })
                     }
                     </tbody>
+                   
                 </table>
                 {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
                 <div style={{display:'block',textAlign:'center'}}>
