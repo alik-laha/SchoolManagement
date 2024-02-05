@@ -451,10 +451,20 @@ exports.GetAllMarks = (req, res) => {
             
           
             else if(!regNo && examName && Class){
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                        FROM Marks
-                                 LEFT JOIN Student_Admission
-                                           ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.class="${Class}"`
+                query =`SELECT Student_Admission.student_Name,Student_Admission.registration_no,obtained_mark,newcombine.total_marks FROM Student_Admission
+                LEFT JOIN (SELECT SUM(Marks.marks) as obtained_mark,Marks.regNo from Marks where Marks.exam_name="${examName}"  and Marks.class="${Class}" group by Marks.regNo) AS combine
+                ON Student_Admission.registration_no=combine.regNo 
+                LEFT JOIN 
+                
+                (SELECT Marks.regNo,Marks.exam_name,sum(combine.int_exam_marks) as total_marks FROM Marks 
+                LEFT JOIN (
+                SELECT internal_exam_name,int_exam_marks FROM internal_exam
+                UNION ALL
+                SELECT external_exam_name,ext_exam_marks FROM external_exam) AS combine ON Marks.exam_name=combine.internal_exam_name 
+                where Marks.exam_name="${examName}"  and Marks.class="${Class}" group by Marks.regNo) AS newcombine
+                ON Student_Admission.registration_no=newcombine.regNo
+                
+                where Student_Admission.class="${Class}"`
             }
             else if(!examName && regNo && Class){
                 query=`SELECT Marks.class,Marks.regNo,Marks.exam_name,SUM(Marks.marks) AS obtained_marks,sum(combine.int_exam_marks) as total_marks,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
