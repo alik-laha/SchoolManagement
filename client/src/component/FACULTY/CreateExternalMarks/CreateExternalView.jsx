@@ -135,6 +135,10 @@ const CreateInternalMarks=(props)=>{
             console.log(err)
         })
     }
+    const clearTable = () => {
+        if(hideView==='none')
+        setData([]);
+      };
     const HandleSave=()=>{
         if(marks>totalMarks){
             alert("Marks should be less than total marks")
@@ -234,6 +238,7 @@ const CreateInternalMarks=(props)=>{
         <div style={{display: view}}>
             <table className="table-60">
                 <thead style={{display: allView}}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Id</th>
                     <th>Student Name</th>
@@ -263,7 +268,7 @@ const CreateInternalMarks=(props)=>{
 
                                 <td>
                                     <button className='dashboard-btn btn-warning'
-                                            onClick={() => handleClick(data)}>Marks Entry
+                                            onClick={() => handleClick(data)}> External Marks Entry
                                     </button>
                                 </td>
 
@@ -278,6 +283,7 @@ const CreateInternalMarks=(props)=>{
                 </tbody>
 
             </table>
+            {data.length===0 ? <div className="no-data">No Data Exists</div> : null}
             {/* <hr style={{marginTop:'-60px',marginBottom:'20px',borderTop:'1px solid grey'}}/> */}
             <div style={{backgroundColor:'whitesmoke',display:hideView}}>
                 <span className="marks-window"><button className="dashboard-btn dashboard-btn-scss" style={{background:'darkcyan'}} onClick={handleCancel}>Close Marks Window</button></span>

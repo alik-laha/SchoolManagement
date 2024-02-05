@@ -270,7 +270,7 @@ const setExamnameFunction=(e)=>{
 
                                 <td>
                                     <button className='dashboard-btn btn-warning'
-                                            onClick={() => handleClick(data)}>Marks Entry
+                                            onClick={() => handleClick(data)}>Internal Marks Entry
                                     </button>
                                 </td>
 
