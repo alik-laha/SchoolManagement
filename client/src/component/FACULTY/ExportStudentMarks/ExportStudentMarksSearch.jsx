@@ -6,7 +6,7 @@ const ExportStudentMarksSearch = (props) => {
     const [examName, setExamName] = useState("");
     const [regNo, setRegNo] = useState("");
     const [examData,setExamData]=useState([])
-    const [array,setArray]=useState([])
+    
 
     const FetchExamData=()=>{
         axios.get(`http://localhost:7000/api/v1/faculty/getallexam`).then((res)=>{
@@ -16,13 +16,8 @@ const ExportStudentMarksSearch = (props) => {
             console.log(err)
         })
 
-
-
-
     }
 
-
-       
 
 
     const handleSubmit = (e) => {
@@ -32,7 +27,7 @@ const ExportStudentMarksSearch = (props) => {
         {
             props.setSearchcombination('cl_reg_ex')
             axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            props.setStudentMarks(res.data.data)
+            props.setStudentMarks(res.data.data,examName,Class)
             props.setStudentMarksView("block")
             console.log(res.data.data)
             }).catch((err) => {
@@ -43,7 +38,7 @@ const ExportStudentMarksSearch = (props) => {
         {
             props.setSearchcombination('cl_reg')
             axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            props.setStudentMarks(res.data.data)
+            props.setStudentMarks(res.data.data,examName,Class)
             props.setStudentMarksView("block")
             console.log(res.data.data)
             }).catch((err) => {
@@ -55,7 +50,7 @@ const ExportStudentMarksSearch = (props) => {
         {
             props.setSearchcombination('cl_ex')
             axios.post("http://localhost:7000/api/v1/student/getallregNo",{Class}).then((res)=>{
-            props.setStudentMarks(res.data)
+            props.setStudentMarks(res.data,examName,Class)
             props.setStudentMarksView("block")
             console.log(res.data.data)
             }).catch((err) => {

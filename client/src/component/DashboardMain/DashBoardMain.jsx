@@ -105,6 +105,9 @@ const DashBoardMain = (props) => {
     const [academicYear,setAcademicYear]=useState(0)
     const [marksFlag,setMarksFlag]=useState('')
 
+    const [classMarks,setClassMarks]=useState('')
+    const [examname,setExamname]=useState('')
+
   {/* User Start */}
 
   //get all roles
@@ -307,8 +310,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
    const ExternalMarksData=(data)=>{
     setExternalMarksData(data)
    }
-   const MarksData=(data)=>{
+   const MarksData=(data,examname,Class)=>{
     setMarksData(data)
+    setClassMarks(Class)
+    setExamname(examname)
    }
    const MarksView=(data)=>{
     setMarksView(data)
@@ -455,7 +460,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
             <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} />
-            <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
+            <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag} classmarks={classMarks} examName={examname}/>
           {/* Faculty End*/} 
         </div>
       </div>
