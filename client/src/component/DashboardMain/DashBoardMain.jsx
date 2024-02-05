@@ -49,7 +49,7 @@ import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
 import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
 import CreateExternalMarksView from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
-
+import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx"'
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -98,6 +98,8 @@ const DashBoardMain = (props) => {
   const [internalMarksView,setInternalMarksView]=useState("")
   const [externalMarksData,setExternalMarksData]=useState([])
     const [externalMarksView,setExternalMarksView]=useState("")
+    const [marksData,setMarksData]=useState([])
+    const [marksView,setMarksView]=useState("")
   const [RoomManupulation,setRoomManupulation]=useState(null)
   const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
@@ -303,6 +305,13 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
    const ExternalMarksData=(data)=>{
     setExternalMarksData(data)
    }
+   const MarksData=(data)=>{
+    setMarksData(data)
+   }
+   const MarksView=(data)=>{
+    setMarksView(data)
+   }
+
     const ExternalMarksView=(data)=>{
      setExternalMarksView(data)
     }
@@ -376,13 +385,14 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewAndUpdateFacultysearch view={props.ViewFaculty} facultyData={facultySearchedData}/>
             {/* Create Subject*/}
             <CreateSubject view={props.CreateSubject} setSubject={handleSubjectData} setSubjectView={handleSubjectView}/>
-            {/* Create External Exam*/}
+            {/* Create Exam Name */}
             <CreateExternalExam view={props.CreateExam} setExternalExam={ExternalExamData} setExternalView={ExternalExamView} setInternalExam={InternalExamData}/>
-            {/* External Exam Search*/}
+            {/* Internal Exam Search*/}
             <CreateInternalMarksSearch view={props.CreateInternalMarks} setInternalMarks={InternalMarksData} setInternalMarksView={InternalMarksView}/>
-
+            {/* External Exam Search*/}
             <CreateExternalMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
-            <ExportStudentMarksSearch view={props.ExportStudentMarks} />
+            {/* Export Exam Search*/}
+            <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} />
           {/* Faculty End */} 
         </div>
 
@@ -437,6 +447,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
             <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} />
+            <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData}/>
           {/* Faculty End*/} 
         </div>
       </div>

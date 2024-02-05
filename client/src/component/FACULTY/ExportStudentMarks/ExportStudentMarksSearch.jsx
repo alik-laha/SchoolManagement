@@ -19,8 +19,8 @@ const ExportStudentMarksSearch = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
-            // props.setStudentMarks(res.data.result)
-            // props.setStudentMarksView("block")
+            props.setStudentMarks(res.data.result)
+            props.setStudentMarksView("block")
             console.log(res.data.data)
         }).catch((err) => {
             console.log(err)
@@ -35,13 +35,13 @@ const ExportStudentMarksSearch = (props) => {
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Rgestration No</label>
-                    <input type="text" placeholder="Enter Rgestration Number" value={regNo}
+                    <label>Registration No.</label>
+                    <input type="text" placeholder="Reg No." value={regNo}
                            onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
                 <div>
-                    <label>Class</label>
-                    <input type="number" placeholder="Enter Class" value={Class}
+                    <label>Current Class* (Mandatory)</label>
+                    <input type="number" placeholder="Class" value={Class}
                            onChange={(e) => setClass(e.target.value)} required={true}/>
                 </div>
                 <div>
