@@ -457,7 +457,7 @@ exports.GetAllMarks = (req, res) => {
                                            ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.exam_name="${examName}" AND Marks.class="${Class}"`
             }
             else if(!examName && regNo && Class){
-                query=`SELECT Marks.exam_name,SUM(Marks.marks) AS obtained_marks,sum(combine.int_exam_marks) as total_marks,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
+                query=`SELECT Marks.class,Marks.regNo,Marks.exam_name,SUM(Marks.marks) AS obtained_marks,sum(combine.int_exam_marks) as total_marks,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
                 FROM Marks
                          LEFT JOIN Student_Admission
                                    ON Student_Admission.registration_no = Marks.regNo  
