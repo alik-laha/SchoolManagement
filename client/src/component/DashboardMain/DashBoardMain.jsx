@@ -49,7 +49,7 @@ import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
 import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
 import CreateExternalMarksView from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
-import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx"'
+import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx'
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
