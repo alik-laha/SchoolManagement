@@ -20,7 +20,7 @@ const PromoteNextClassView= (props) => {
         if(props.SearchebyData.length<=0)
         {
             setPromotehide('none')
-            alert('No Data Exists')
+            
             
         }
         else{
@@ -39,6 +39,7 @@ const PromoteNextClassView= (props) => {
         else {
             setView("none")
         }
+       
     },[props.PromoteView,props.view,props.SearchebyData])
 
     const HandleEdit=(academicAll)=> {
