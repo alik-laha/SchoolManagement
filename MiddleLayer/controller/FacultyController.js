@@ -443,10 +443,21 @@ exports.GetAllMarks = (req, res) => {
         }
         else {
             if (!regNo && Class && !examName) {
-                query =`SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
-                     FROM Marks
-                     LEFT JOIN Student_Admission 
-             ON Student_Admission.registration_no = Marks.regNo  WHERE Marks.class="${Class}"`
+                query =`SELECT Student_Admission.student_Name,Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,
+                Student_Admission.roll_no,newcombine.exam_name,obtained_mark,newcombine.total_marks FROM Student_Admission
+                LEFT JOIN (SELECT SUM(Marks.marks) as obtained_mark,Marks.regNo from Marks where Marks.class="${Class}" group by Marks.regNo,Marks.exam_name) AS combine
+                ON Student_Admission.registration_no=combine.regNo 
+                LEFT JOIN 
+                
+                (SELECT Marks.regNo,Marks.exam_name,sum(combine.int_exam_marks) as total_marks FROM Marks 
+                LEFT JOIN (
+                SELECT internal_exam_name,int_exam_marks FROM internal_exam
+                UNION ALL
+                SELECT external_exam_name,ext_exam_marks FROM external_exam) AS combine ON Marks.exam_name=combine.internal_exam_name 
+                where Marks.class="${Class}" group by Marks.regNo,Marks.exam_name) AS newcombine
+                ON Student_Admission.registration_no=newcombine.regNo
+                
+                where Student_Admission.class="${Class}"`
             }
             
           
