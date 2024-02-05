@@ -34,7 +34,7 @@ const ExportStudentMarksView= (props) => {
       {
         setClass('none')
         setClassExam('none')
-        setClassReg('block')
+        setClassReg('inline-table')
         setClassRegExam('none')
       }
       else if(props.type==='cl_ex'){
@@ -72,6 +72,9 @@ const ExportStudentMarksView= (props) => {
 
     let sum_v1=0;
     let sum_tot_v1=0;
+
+    let sum_v2=0;
+    let sum_tot_v2=0;
     
 
       return(
@@ -134,7 +137,61 @@ const ExportStudentMarksView= (props) => {
 
 
             </table>
-            <table className="table-60" style={{display:ClassReg}}></table>
+            <table className="table-60" style={{display:ClassReg}}>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Student Name</th>
+                    <th>Registration No.</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                    <th>Roll No.</th>
+                    <th>Exam Name</th>
+                    
+                    <th>Total Obtained Marks</th>
+                    <th>Total Marks</th>
+                    <th>Percentage </th>
+                    
+                    
+                </tr>
+                </thead>
+                <tbody>
+                {data.map((item,idx) => (
+                    sum_v2=sum_v2+Number(item.obtained_marks),sum_tot_v2=sum_tot_v2+Number(item.total_marks),
+                    <tr key={item.id}>
+                        <td>{idx+1}</td>
+                        <td>{item.student_Name}</td>
+                        <td>{item.regNo}</td>
+                        <td>{item.class}</td>
+                        <td>{item.section}</td>
+                        <td>{item.roll_no}</td>
+                        <td>{item.exam_name}</td>
+                        
+                        <td>{item.obtained_marks}</td>
+                        
+
+                        <td>{item.total_marks}</td>
+                        <td>{((item.obtained_marks/item.total_marks)*100).toString().slice(0,2).concat("%")}</td>
+                        
+                    </tr>
+                    
+                ))}
+                <tr>
+                <td style={{border:'none'}}></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+                    <td style={{backgroundColor:'#f39c12',color:'white',border:'1px solid black'}}><b>Total Marks:</b></td>
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{sum_v2}</b></td>
+                    
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{sum_tot_v2}</b></td>
+                    <td style={{backgroundColor:'ghostwhite',border:'1px solid black'}}><b>{((sum_v2/sum_tot_v2)*100).toString().slice(0,2).concat("%")}</b></td>
+                </tr>
+                </tbody>
+            </table>
             <table className="table-60" style={{display:ClassExam}}></table>
             <table className="table-60" style={{display:Class}}></table>
 
