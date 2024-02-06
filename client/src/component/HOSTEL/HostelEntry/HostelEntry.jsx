@@ -16,13 +16,13 @@ const HostelEntry = (props) => {
     const [viewStock,setViewStock]=useState([])
 
     useEffect(() => {
-      if (props.view==="block") {
+      if (props.view==="block" && props.data.length>0) {
           setView("block")
       }
       else{
           setView("none")
       }
-    }, [props.view]);
+    }, [props.view,props.data]);
 
     useEffect(()=>{
         setViewStock(props.data)
