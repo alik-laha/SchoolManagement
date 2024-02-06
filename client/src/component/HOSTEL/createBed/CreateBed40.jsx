@@ -32,7 +32,7 @@ const CreateBed40 = (props) => {
     }
 useEffect(() => {
  handaleViewBed()
-})
+}, [])
     const handaleViewBed = () => {
             axios.get("http://localhost:7000/api/v1/hostel/getroomno")
                 .then((res) => {

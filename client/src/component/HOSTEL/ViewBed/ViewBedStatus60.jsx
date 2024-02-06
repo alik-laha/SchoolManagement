@@ -56,6 +56,7 @@ const ViewBedStatus60 = (props) => {
                 alert("Room No : "+room+" Deleted Successfully")
                 // props.setCreatebed("block");
                 setView("none");
+
             })
             .catch((error) => {
                 console.log(error);
