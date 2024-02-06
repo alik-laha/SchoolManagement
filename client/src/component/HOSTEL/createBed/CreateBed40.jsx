@@ -14,13 +14,14 @@ const CreateBed40 = (props) => {
         axios.post("http://localhost:7000/api/v1/hostel/createbed", {bulding,floor,room,totalbed})
             .then((res) => {
             alert("Room No."+ room +" Created Successfully with Total Bed :"+totalbed);
+                { handaleViewBed()}
             setBulding("");
             setFloor("");
             setRoom("");
             setTotalBed("");
             console.log(res.data);
             props.setCreatebed(count);
-            handaleViewBed();
+
         }).catch((err) => {
             if(err.response.data.msg.errno===1062){
                 alert(`Room No. ${room} already exists`)
