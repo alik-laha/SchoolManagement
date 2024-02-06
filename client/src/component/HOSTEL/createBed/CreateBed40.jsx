@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 const CreateBed40 = (props) => {
@@ -20,7 +20,7 @@ const CreateBed40 = (props) => {
             setTotalBed("");
             console.log(res.data);
             props.setCreatebed(count);
-            count=count+1;
+            handaleViewBed();
         }).catch((err) => {
             if(err.response.data.msg.errno===1062){
                 alert(`Room No. ${room} already exists`)
@@ -30,6 +30,19 @@ const CreateBed40 = (props) => {
             
         });
     }
+useEffect(() => {
+ handaleViewBed()
+})
+    const handaleViewBed = () => {
+            axios.get("http://localhost:7000/api/v1/hostel/getroomno")
+                .then((res) => {
+                    props.allRoomData(res.data.result)
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+    }
+
     return (
         <>
             <div className="dashbrd-40-colm" style={{display:props.createbed}}>

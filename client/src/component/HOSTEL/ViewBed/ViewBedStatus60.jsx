@@ -54,7 +54,7 @@ const ViewBedStatus60 = (props) => {
             .post("http://localhost:7000/api/v1/hostel/deletebed",{id})
             .then((res) => {
                 alert("Room No : "+room+" Deleted Successfully")
-                props.setCreatebed("block");
+                // props.setCreatebed("block");
                 setView("none");
             })
             .catch((error) => {

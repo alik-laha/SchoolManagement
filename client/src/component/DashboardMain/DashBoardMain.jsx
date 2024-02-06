@@ -100,7 +100,6 @@ const DashBoardMain = (props) => {
     const [externalMarksView,setExternalMarksView]=useState("")
     const [marksData,setMarksData]=useState([])
     const [marksView,setMarksView]=useState("")
-  const [RoomManupulation,setRoomManupulation]=useState(null)
   const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
     const [marksFlag,setMarksFlag]=useState('')
@@ -318,9 +317,6 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
     const ExternalMarksView=(data)=>{
      setExternalMarksView(data)
     }
-  const handleGetroom=(data)=>{
-    setRoomManupulation(data)
-  }
 
   const handaleMarksFlag=(data)=>{
     setMarksFlag(data)
@@ -365,7 +361,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
-            <CreateBed40 createbed={props.createbed} setCreatebed={handleGetroom} />
+            <CreateBed40 createbed={props.createbed} allRoomData={getAllRoom} />
             {/* Search Room */} 
             <SearchBed setSearch={handalesearchBed} viewBed={props.viewbed} data={roomData} />
             {/* Search Hostel Entry */}
@@ -436,9 +432,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
           {/* Hostel Start*/}
               {/* View Bed Status */}   
-              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} setCreatebed={handleGetroom} />
+              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} />
               {/* View Hostel Entry */}  
-              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} allRoomData={getAllRoom} room={RoomManupulation} />
+              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} room={roomData} />
               {/* View Export Hostel Entry */}  
               <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
           {/* Hostel End*/}

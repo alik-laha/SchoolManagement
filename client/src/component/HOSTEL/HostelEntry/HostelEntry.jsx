@@ -12,7 +12,6 @@ const HostelEntry = (props) => {
     const [entryStatus, setEntryStatus] = useState(0);
     const [academicYear, setacademic] = useState("");
     const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
-    const [roomData, setRoomData] = useState([])
     const [view, setView] = useState("none");
     const [viewStock,setViewStock]=useState([])
 
@@ -153,16 +152,7 @@ const HostelEntry = (props) => {
         setEntryStatus(0);
         setEntryDate(new Date().toISOString().slice(0, 10));
     }
-    useEffect(() => {
-        axios.get("http://localhost:7000/api/v1/hostel/getroomno")
-            .then((res) => {
-                props.allRoomData(res.data.result)
-                setRoomData(res.data.result)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }, [props.room]);
+
     return(
         
                 <div style={{display:view}} >
@@ -243,7 +233,7 @@ const HostelEntry = (props) => {
                                 <div>
                                     <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>
                                         <option>All</option>
-                                        {roomData.map((data, index) => (
+                                        {props.room.map((data, index) => (
                                             <option value={data.room_no} key={index}>
                                                 {data.room_no}
                                             </option>
