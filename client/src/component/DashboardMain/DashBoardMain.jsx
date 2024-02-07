@@ -432,7 +432,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               {/* Export Secondary Stock */}
               <SecondaryStockEntryAllView StockView={props.SecondStockView} view={viewallStock} SearchebyData={scndStockData}/>
               {/* View Modify Stock */}
-              <ModifyStockEntryView  Vendor={allVendorName} Item={allItemType} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
+              <ModifyStockEntryView  Vendor={VendorDatas} Item={itemData} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
               {/* View Pending Balance */}
               <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
           {/* Vendor End*/}    
