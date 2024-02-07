@@ -13,8 +13,7 @@ const StockItemEntry= (props) => {
     const [projectedCost, setProjectedCost] = useState(0);
     const [primaryEntryDate, setprimaryEntryDate] = useState(new Date().toISOString().slice(0, 10) );
     const [modifiedDate, setModifiedDate] = useState(new Date().toISOString().slice(0, 10) );
-
-  
+    const [itemNames, setItemNames] = useState([]);
     
     useEffect(() => {
         setAllVendorName(props.setAllVendorName);
@@ -56,17 +55,28 @@ const StockItemEntry= (props) => {
                  if(err.response.data.message.errno === 1062){
                     alert("Bill No. " + billNo+" Already Exists");
                  }
-
+                else{
+                   console.log(err);
+                }
             })
     }
-
+    const handleItemtype = (e) => {
+        setItemType(e.target.value);
+        axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+            .then((res) => {
+                setItemNames(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
     return(
         <div style={{display:props.stockEntryView}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Vendor</label>
-                    <select onChange={(e) => setVendorName(e.target.value)} required value={vendorName}>
-                        <option >Vendor</option>
+                    <select onChange={(e) => setVendorName(e.target.value)} required={true} value={vendorName}>
+                        <option value="">Vendor</option>
                         {allVendorName.map((data) => (
                             <option value={data.vendor_name} key={data.vendor_id}>
                                 {data.vendor_name}
@@ -75,18 +85,8 @@ const StockItemEntry= (props) => {
                     </select>
                 </div>
                 <div>
-                    <label>Item Name</label>
-                    <input
-                        type="text"
-                        placeholder="Item Name"
-                        onChange={(e) => setItemName(e.target.value)}
-                        value={itemName}
-                        required
-                    />
-                </div>
-                <div>
                     <label>Type Of Item </label>
-                    <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
+                    <select onChange={handleItemtype} required={true} value={itemType}>
                         <option value="">Item Type</option>
                         {allItemType.map((data) => (
                             <option value={data.item_Type} key={data.type_id}>
@@ -95,6 +95,18 @@ const StockItemEntry= (props) => {
                         ))}
                     </select>
                 </div>
+                <div>
+                    <label>Item name </label>
+                    <select onChange={(e)=>setItemName(e.target.value)} required={true} value={itemName}>
+                        <option value="">Item Name</option>
+                        {itemNames.map((data) => (
+                            <option value={data.item_name} key={data.id}>
+                                {data.item_name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+
                 <div>
                     <label>Bill No. / Memo No. </label>
                     <input
@@ -149,7 +161,7 @@ const StockItemEntry= (props) => {
                     />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
-                
+
             </form>
 
         </div>
