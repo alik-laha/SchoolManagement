@@ -455,3 +455,44 @@ exports.CreateItemName = (req, res) => {
         console.log(err)
     }
 }
+
+//get all item name
+exports.GetItemName = (req, res) => {
+    query = `
+                SELECT *
+                FROM Item_Name ORDER BY item_id ASC`;
+    Database.query(query, function (error, data) {
+        if (error) {
+            return res.status(400).json({
+                status: "error at geting item",
+                message: error
+            });
+        } else if (data) {
+            return res.status(200).json({
+                status: "got all item",
+                data: data
+            });
+        }
+    })
+}
+
+//get Item Name where item type is given
+exports.GetItemNameByType = (req, res) => {
+    const {itemType} = req.body
+    query = `
+                SELECT item_name
+                FROM Item_Name WHERE item_type="${itemType}" ORDER BY item_id ASC`;
+    Database.query(query, function (error, data) {
+        if (error) {
+            return res.status(400).json({
+                status: "error at geting item",
+                message: error
+            });
+        } else if (data) {
+            return res.status(200).json({
+                status: "got all item",
+                data: data
+            });
+        }
+    })
+}
