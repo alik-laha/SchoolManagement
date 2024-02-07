@@ -425,3 +425,33 @@ exports.ModifyStock=(req,res)=>{
                 })
             }
 }
+
+
+//Create Item Name
+exports.CreateItemName = (req, res) => {
+    try{
+        const {itemType, itemName} = req.body
+        if (!itemType || !itemName) {
+            return res.json({msg:"all data needed"})
+        }
+        query = `
+                    INSERT INTO  Item_Name (item_type, item_name)
+                    VALUES ("${itemType}", "${itemName}")`;
+        Database.query(query, function (error, data) {
+            if (error) {
+                return res.status(400).json({
+                    status: "error at creating item",
+                    message: error
+                });
+            }
+            if (data) {
+                return res.status(200).json({
+                    status: "item created",
+                    data: data
+                });
+            }
+        })
+    }catch(err){
+        console.log(err)
+    }
+}

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 
 const CreateItemName = (props) => {
@@ -7,7 +8,21 @@ const CreateItemName = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios.post("http://localhost:7000/api/v1/stock/createitemname", { itemType, itemName })
+        .then((res) => {
+            alert(`Item Name created with Name : ${itemName}`);
+            setItemType("");
+            setItemName("");
 
+        })
+        .catch((err) => {
+            if (err.response.data.message.errno === 1062) {
+                alert("Item Name " + itemName + " Already Exists");
+            }
+            setItemType("");
+            setItemName("");
+
+        });
   }
   const handleViewItemName = () => {
 
