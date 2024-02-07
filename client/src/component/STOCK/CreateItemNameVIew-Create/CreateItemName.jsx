@@ -25,7 +25,14 @@ const CreateItemName = (props) => {
         });
   }
   const handleViewItemName = () => {
-
+    axios.get("http://localhost:7000/api/v1/stock/getallitemname")
+        .then((res) => {
+           props.ItemNameData(res.data.data);
+           // console.log(res.data.data);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
   }
     return(
         <div style={{display: props.view}} className="dashbrd-40-colm">

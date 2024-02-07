@@ -104,7 +104,7 @@ const DashBoardMain = (props) => {
   const [Class,setClass]=useState(0)
     const [academicYear,setAcademicYear]=useState(0)
     const [marksFlag,setMarksFlag]=useState('')
-    
+    const [itemNameData,setItemNameData]=useState([])
 
   {/* User Start */}
 
@@ -322,7 +322,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handaleMarksFlag=(data)=>{
     setMarksFlag(data)
   }
-
+  const handleItemname=(data)=>{
+      setItemNameData(data)
+  }
   
   return (
     <>
@@ -343,7 +345,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
         {/* Stock Start*/}
             {/*  Create Item Name*/}
-            <CreateItemName view={props.CretaeItemName} Item={itemData}/>
+            <CreateItemName view={props.CretaeItemName} Item={itemData} ItemNameData={handleItemname}/>
             {/* Create Vendor */} 
             <CreateVendor createView={props.VendorCreateDisplay} onclick={viewallVendor} setVendorData={VendorData}/>
             {/* Create Item */} 

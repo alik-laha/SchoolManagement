@@ -460,7 +460,7 @@ exports.CreateItemName = (req, res) => {
 exports.GetItemName = (req, res) => {
     query = `
                 SELECT *
-                FROM Item_Name ORDER BY item_id ASC`;
+                FROM Item_Name  ORDER BY id ASC`;
     Database.query(query, function (error, data) {
         if (error) {
             return res.status(400).json({
@@ -481,7 +481,7 @@ exports.GetItemNameByType = (req, res) => {
     const {itemType} = req.body
     query = `
                 SELECT item_name
-                FROM Item_Name WHERE item_type="${itemType}" ORDER BY item_id ASC`;
+                FROM Item_Name WHERE item_type="${itemType}" ORDER BY id ASC`;
     Database.query(query, function (error, data) {
         if (error) {
             return res.status(400).json({
