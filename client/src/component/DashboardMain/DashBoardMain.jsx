@@ -50,6 +50,7 @@ import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExte
 import CreateExternalMarksView from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
 import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx'
+import CreateItemName from "../STOCK/CreateItemNameVIew-Create/CreateItemName.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -414,6 +415,8 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
           {/* Noticeboard End*/}
 
           {/* Stock Start*/}
+              {/*  Create Item Name*/}
+                <CreateItemName view={props.CretaeItemName}/>
               {/* View Vendor */}     
               <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
               {/* View Item */}
