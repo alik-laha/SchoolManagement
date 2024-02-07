@@ -60,6 +60,7 @@ const ViewSubject = (props) => {
                 }
                 </tbody>
             </table>
+            {data.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }
