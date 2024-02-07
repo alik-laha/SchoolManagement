@@ -7,12 +7,13 @@ const CreateItemName = (props) => {
   const [itemName, setItemName] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+      e.preventDefault()
     axios.post("http://localhost:7000/api/v1/stock/createitemname", { itemType, itemName })
         .then((res) => {
             alert(`Item Name created with Name : ${itemName}`);
             setItemType("");
             setItemName("");
+            {handleViewItemName()}
 
         })
         .catch((err) => {
