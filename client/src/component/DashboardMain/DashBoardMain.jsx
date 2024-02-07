@@ -60,8 +60,6 @@ const DashBoardMain = (props) => {
   const [allRoles, setAllRoles] = useState([]);
   const [ViewVendor,setViewVendor]=useState("none")
   const [itemView,setitemView]=useState("none")
-  const [allVendorName, setAllVendorName] = useState([]);
-  const [allItemType, setAllItemType] = useState([]);
   const [pmyStockData,setpmyStockData]=useState([]);
   const [scndStockData,setscndStockData]=useState([]);
   const [secondarysearchstockdata,setsecondarysearchstockdata]=useState([]);
@@ -144,13 +142,6 @@ const DashBoardMain = (props) => {
     else {
       setitemView("none");
     }
-  }
-  //Search-Data  
-  const handleVendor = (data) => {
-    setAllVendorName(data);
-  }
-  const handleItemType = (data) => {
-    setAllItemType(data);
   }
 
   const handleprimaryStockData = (data) => {
