@@ -342,6 +342,8 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         {/* NoticeBoard End*/}
 
         {/* Stock Start*/}
+            {/*  Create Item Name*/}
+            <CreateItemName view={props.CretaeItemName} Item={itemData}/>
             {/* Create Vendor */} 
             <CreateVendor createView={props.VendorCreateDisplay} onclick={viewallVendor} setVendorData={VendorData}/>
             {/* Create Item */} 
@@ -415,8 +417,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
           {/* Noticeboard End*/}
 
           {/* Stock Start*/}
-              {/*  Create Item Name*/}
-                <CreateItemName view={props.CretaeItemName}/>
+
               {/* View Vendor */}     
               <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas}  />
               {/* View Item */}
