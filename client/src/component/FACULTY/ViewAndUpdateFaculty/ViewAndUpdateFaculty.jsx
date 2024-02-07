@@ -25,14 +25,19 @@ const [rdonly, setRdonly] = useState(false);
 
 
     useEffect(() => {
-        if(props.view === "block" && props.data.length > 0) {
-            setView("block");
+        if(props.data.length > 0){
             setData(props.data);
+        }
+    }, [props.data]);
+
+    useEffect(() => {
+        if(props.view === "block" &&props.data.length > 0) {
+            setView("block");
         }
         else{
             setView("none");
         }
-    },[props.view, props.data])
+    },[props.view, props.data]);
 const clearTable = () => {
         setData([]);
 }
