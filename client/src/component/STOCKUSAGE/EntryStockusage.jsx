@@ -1,14 +1,59 @@
 import {useState} from "react";
+import axios from "axios";
 
 
 const EntryStockUsage = (props) => {
+    const [itemName, setItemName] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [ItemNames, setItemNames] = useState([]);
 
+    const handleItemtype = (e) => {
+        axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+            .then((res) => {
+                setItemNames(res.data.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     return(
         <div style={{display:props.view}}>
-            <h1>Stock Usage Entry</h1>
+            <form className="dashbrd-40-colm">
+                <div>
+                    <label>Type Of Item </label>
+                    <select onChange={handleItemtype} required={true}>
+                        <option value="">Item Type</option>
+                        {props.Item.map((data,idx) => (
+                            <option value={data.item_Type} key={idx}>
+                                {data.item_Type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>Item name </label>
+                    <select onChange={(e)=>setItemName(e.target.value)} required={true} value={itemName}>
+                        <option value="">Item Name</option>
+                        {ItemNames.map((data,idx) => (
+                            <option value={data.item_name} key={idx}>
+                                {data.item_name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>Usage Quantity ( Pc / Kg / Ltr / Mtr ) </label>
+                    <input
+                        type="number"
+                        placeholder="Quantity"
+                        onChange={(e) => setQuantity(e.target.value)}
+                        value={quantity}
+                    />
+                </div>
+            </form>
         </div>
-    )
+)
 }
 
 export default EntryStockUsage;

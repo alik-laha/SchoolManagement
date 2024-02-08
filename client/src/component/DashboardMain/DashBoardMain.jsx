@@ -358,8 +358,8 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CheckPendingSearch view={props.checkpending} Vendor={VendorDatas} Item={itemData} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
         {/* Stock End*/}
         {/*stock usage*/}
-            <EntryStockUsage view={props.StockUsageEntry}/>
-            <StockUsageSearch view={props.StockUsageView}/>
+            <EntryStockUsage view={props.StockUsageEntry} Item={itemData}/>
+            <StockUsageSearch view={props.StockUsageView} />
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
