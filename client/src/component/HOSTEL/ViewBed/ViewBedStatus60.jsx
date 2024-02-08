@@ -57,7 +57,6 @@ const ViewBedStatus60 = (props) => {
                 // props.setCreatebed("block");
                 console.log(res.data.result)
                 props.allRoomData(res.data.result)
-                setView("none");
 
             })
             .catch((error) => {

@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BedSearch= (props) => {
     const [search, setSearch] = useState("");
-    const [roomData,setRoomData]=useState([])
+
 
     const handaleSubmit = (e) => {
         e.preventDefault();
