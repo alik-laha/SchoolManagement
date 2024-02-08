@@ -19,7 +19,7 @@ const ViewAllVendor=(props)=>{
         setView("none")
     }
     useEffect(()=>{
-        if(props.createView==="block" && props.View==="block"){
+        if(props.createView==="block" && props.Vendor.length>0){
             setView("block")
 
         }
@@ -27,7 +27,7 @@ const ViewAllVendor=(props)=>{
             setView("none")
 
         }
-    },[props.createView,props.View])
+    },[props.createView,props.Vendor])
     return(
         <div style={{display:view}}>
               <ReactHTMLTableToExcel
