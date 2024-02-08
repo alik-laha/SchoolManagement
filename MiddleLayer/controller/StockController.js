@@ -570,6 +570,20 @@ exports.DeleteItemName=(req,res)=>{
         }
         else{
             const query=``;
+            Database.query(query,function(error,data){
+                if(error){
+                    return res.status(400).json({
+                        status:"error at creating stock usage",
+                        message:error
+                    })
+                }
+                if(data){
+                    return res.status(200).json({
+                        status:"stock usage created",
+                        data:data
+                    })
+                }
+            })
         }
     }catch(err){
         console.log(err)
