@@ -19,6 +19,14 @@ const EntryStockUsage = (props) => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
+        axios.post("http://localhost:7000/api/v1/stock/entrystockusage",{itemName, quantity, usageDate})
+            .then((res) => {
+                alert("Stock Usage has been Insterted Successfully");
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
 
     }
 

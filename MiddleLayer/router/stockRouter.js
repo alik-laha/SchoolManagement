@@ -2,7 +2,8 @@ const express = require('express')
 const {CreateItem, GetItem, CreateVendor, GetVendor,ModifyStock,StockEntry,DeleteVendor, DeleteItem,GetStock,GetSecondaryStockEntry,UpdateSecondaryStockEntry,
     CreateItemName,
     GetItemName,GetItemNameByType,
-    DeleteItemName
+    DeleteItemName,
+    CreateStockUsage
 } = require("../controller/StockController");
 const router = express.Router()
 
@@ -50,5 +51,8 @@ router.post('/getitemnamebytype',GetItemNameByType)
 
 //delete item name
 router.post('/deleteitemname',DeleteItemName)
+
+//Entry Stock Usage
+router.post('/entrystockusage',CreateStockUsage)
 
 module.exports = router

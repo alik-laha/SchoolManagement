@@ -557,3 +557,21 @@ exports.DeleteItemName=(req,res)=>{
         })
     }
 }
+
+
+//Create Stock Usage
+ exports.CreateStockUsage = (req, res) => {
+    try{
+        const {itemName,quantity,usageDate}=req.body
+        if(!itemName || !quantity || !usageDate){
+            return res.status(400).json({
+                status:"all data needed"
+            })
+        }
+        else{
+            const query=``;
+        }
+    }catch(err){
+        console.log(err)
+    }
+ }
