@@ -377,10 +377,10 @@ const stockUsageVisiblity = () => {
                 style={{display: cashstockAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock Usage<p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>
             <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
+                 onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
             </div>
             <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Stock Usage View
+                 onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View
             </div>
           </div>
 

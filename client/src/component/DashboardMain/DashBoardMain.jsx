@@ -52,6 +52,8 @@ import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStuden
 import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx'
 import CreateItemName from "../STOCK/CreateItemNameVIew-Create/CreateItemName.jsx";
 import ItemNameView from "../STOCK/CreateItemNameVIew-Create/ItemNameView.jsx";
+import EntryStockUsage from "../STOCKUSAGE/EntryStockusage.jsx";
+import StockUsageSearch from "../STOCKUSAGE/StockUsageView/StockUsageSearch.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -355,6 +357,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
              {/* Check Pending Search */}
             <CheckPendingSearch view={props.checkpending} Vendor={VendorDatas} Item={itemData} setPendingStockData={handlePendingViewStockData} buttonClick={pendingViewShow}/>
         {/* Stock End*/}
+        {/*stock usage*/}
+            <EntryStockUsage view={props.StockUsageEntry}/>
+            <StockUsageSearch view={props.StockUsageView}/>
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
