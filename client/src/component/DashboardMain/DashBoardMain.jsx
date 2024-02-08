@@ -359,7 +359,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         {/* Stock End*/}
         {/*stock usage*/}
             <EntryStockUsage view={props.StockUsageEntry} Item={itemData}/>
-            <StockUsageSearch view={props.StockUsageView} />
+            <StockUsageSearch view={props.StockUsageView} ItemNames={itemNameData} />
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
