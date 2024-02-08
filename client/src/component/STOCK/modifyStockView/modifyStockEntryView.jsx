@@ -169,13 +169,13 @@ const ModifyStockEntryView= (props) => {
      },[item])
     const handleItemtype = (e) => {
         setitem(e.target.value);
-        axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
-            .then((res) => {
-                setItemNames(res.data.data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        // axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+        //     .then((res) => {
+        //         setItemNames(res.data.data);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     })
     }
 
     return (
