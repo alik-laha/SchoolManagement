@@ -231,7 +231,7 @@ exports.DeleteVendor=(req,res)=>{
         })
     }
     else{
-        query=`DELETE FROM vendor WHERE vendor_id="${vendorId}"`
+        let query=`DELETE FROM vendor WHERE vendor_id="${vendorId}"`
         Database.query(query,function(error,data){
             if(error){
                 return res.status(400).json({
@@ -240,9 +240,20 @@ exports.DeleteVendor=(req,res)=>{
                 })
             }
             if(data){
-                return res.status(200).json({
-                    status:"vendor deleted",
-                    data:data
+                query=`select * from vendor`
+                Database.query(query,function(error,data){
+                    if(error){
+                        return res.status(400).json({
+                            status:"error at getting vendor",
+                            message:error
+                        })
+                    }
+                    if(data){
+                        return res.status(200).json({
+                            status:"vendor deleted",
+                            data:data
+                        })
+                    }
                 })
             }
 
@@ -259,7 +270,7 @@ exports.DeleteItem=(req,res)=>{
         })
     }
     else{
-        query=`DELETE FROM itemType WHERE type_id="${itemId}"`
+      let query=`DELETE FROM itemType WHERE type_id="${itemId}"`
         Database.query(query,function(error,data){
             if(error){
                 return res.status(400).json({
