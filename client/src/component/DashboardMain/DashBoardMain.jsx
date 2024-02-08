@@ -415,7 +415,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               {/* View Vendor */}     
               <ViewAllVendor createView={props.VendorCreateDisplay} View={ViewVendor} Vendor={VendorDatas} setVendorData={VendorData}  />
               {/* View Item */}
-              <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData}/>
+              <ViewAllItem itemCreateView={props.ItemCreateDisplay} View={itemView} Item={itemData} setItemData={ItemData}/>
               {/* Export Primary Stock */}
               <StockView StockView={props.StockView} view={ViewStock} SearchebyData={pmyStockData}/>
               {/* View Secondary Stock */}

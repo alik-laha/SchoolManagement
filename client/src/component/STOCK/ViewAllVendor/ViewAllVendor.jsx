@@ -12,12 +12,12 @@ const ViewAllVendor=(props)=>{
             .then((res) => {
                 console.log(res);
                 props.setVendorData(res.data.data);
+                alert("Vendor "+vendor_name+ " Deleted Successfully")
             })
             .catch((error) => {
                 console.log(error);
             });
-        alert("Vendor "+vendor_name+ " Deleted Successfully")
-        setView("none")
+
     }
     useEffect(()=>{
         if(props.createView==="block" && props.Vendor.length>0){

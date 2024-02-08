@@ -17,12 +17,12 @@ const ViewAllItem=(props)=>{
             .post("http://localhost:7000/api/v1/stock/deleteitem", { itemId ,item_Type})
             .then((res) => {
                 console.log(res);
+                props.setItemData(res.data.data)
             })
             .catch((error) => {
                 console.log(error);
             });
         alert("Item type "+item_Type+ " Deleted Successfully")
-        setView("none")
     }
     return(
         <div style={{display:View}}>
@@ -35,9 +35,9 @@ const ViewAllItem=(props)=>{
                 </tr>
                 </thead>
                 <tbody >
-                {props.Item.map((vendor)=>{
+                {props.Item.map((vendor,idx)=>{
                     return(
-                        <tr key={vendor.type_id}>
+                        <tr key={idx}>
                             <td>{vendor.type_id}</td>
                             <td>{vendor.item_Type}</td>
                             <td>
