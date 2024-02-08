@@ -4,14 +4,14 @@ const ViewAllItem=(props)=>{
     const [allItem,setAllItem]=useState([])
     const [View,setView]=useState("none")
 
-    useEffect(() => {
-        if(props.itemCreateView==="block" && props.View==="block"){
-           setView("block")
-        }
-        else{
-            setView("none")
-        }
-    }, [props.View,props.itemCreateView]);
+    useEffect(()=>{
+    if(props.Item.length>0 && props.itemCreateView==="block") {
+        setView("block")
+    }
+    else{
+        setView("none")
+    }
+    },[props.Item,props.itemCreateView])
     const handleDelete = (itemId,item_Type) => {
         axios
             .post("http://localhost:7000/api/v1/stock/deleteitem", { itemId ,item_Type})

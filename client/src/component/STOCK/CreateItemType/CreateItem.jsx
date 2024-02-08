@@ -4,8 +4,10 @@ import axios from "axios";
 
 const CreateItem = (props) => {
     const [item,setItem]=useState("")
+
+
     useEffect(() => {
-        handaleitem() 
+        handaleitemCreate()
     }, [])
 
     const handleCreateItem = (e) => {
@@ -34,15 +36,15 @@ const CreateItem = (props) => {
             .then((data)=>{
                 props.setItemData(data.data.data);
             })
-        
+
     }
-    const handaleitem=()=>{
-        axios.post("http://localhost:7000/api/v1/stock/getallitem")
-            .then((data)=>{
-                props.setItemData(data.data.data);
-            })
-        props.handleItemView("block")
-    }
+    // const handaleitem=()=>{
+    //     axios.post("http://localhost:7000/api/v1/stock/getallitem")
+    //         .then((data)=>{
+    //             props.setItemData(data.data.data);
+    //         })
+    //     props.handleItemView("block")
+    // }
 
     return(
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
@@ -59,7 +61,7 @@ const CreateItem = (props) => {
         </form>
    
             <div>
-                <button style={{backgroundColor:'orange'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitem}>View / Delete Item Type</button>
+                <button style={{backgroundColor:'orange'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitemCreate}>View / Delete Item Type</button>
             </div>
             
         </div>
