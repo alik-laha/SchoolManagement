@@ -496,3 +496,31 @@ exports.GetItemNameByType = (req, res) => {
         }
     })
 }
+
+//delete item name
+exports.DeleteItemName=(req,res)=>{
+    const {id}=req.body
+    if(!id){
+        return res.status(400).json({
+            status:"item id needed"
+        })
+    }
+    else{
+        query=`DELETE FROM Item_Name WHERE id="${id}"`
+        Database.query(query,function(error,data){
+            if(error){
+                return res.status(400).json({
+                    status:"error at deleting item",
+                    message:error
+                })
+            }
+            if(data){
+                return res.status(200).json({
+                    status:"item deleted",
+                    data:data
+                })
+            }
+
+        })
+    }
+}

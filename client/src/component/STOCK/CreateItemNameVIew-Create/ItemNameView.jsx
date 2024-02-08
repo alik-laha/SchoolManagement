@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import axios from "axios";
 
 const ItemNameView = (props) => {
 const [data, setData] = useState([]);
@@ -17,6 +18,14 @@ const [view, setView] = useState("none");
         }
     },[props.Item, props.view])
     const currDate = new Date().toLocaleDateString();
+    const deleteItemName = (id) => {
+        axios.post("http://localhost:7000/api/v1/stock/deleteitemname", {id:id})
+            .then((res) => {
+              alert("Item Name Deleted Successfully")
+            }).catch((err) => {
+                console.log(err)
+            })
+    }
     return(
         <div style={{display:view}}>
             <ReactHTMLTableToExcel
@@ -33,6 +42,7 @@ const [view, setView] = useState("none");
                     <th>Id</th>
                     <th>Item Type</th>
                     <th>Item Name</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +51,9 @@ const [view, setView] = useState("none");
                         <td>{data.id}</td>
                         <td>{data.item_type}</td>
                         <td>{data.item_name}</td>
+                        <td>
+                            <button className='btn-warning dashboard-btn clear-gradient' onClick={() => deleteItemName(data.id)}>Delete</button>
+                        </td>
                     </tr>
                 ))}
             </tbody>
