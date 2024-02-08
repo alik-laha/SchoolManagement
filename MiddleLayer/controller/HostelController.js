@@ -140,7 +140,16 @@ exports.DeleteBed= (req, res) => {
                 if (err) {
                     console.log(err)
                 } else {
-                    return res.status(200).json({msg: "Room has been Deleted Successfully"})
+                    query = `SELECT room_no
+                 FROM bed_availability`
+                    Database.query(query,(err,result)=>{
+                        if(err){
+                            console.log(err)
+                        }
+                        else{
+                            return res.status(200).json({result})
+                        }
+                    })
                 }
             })
         }

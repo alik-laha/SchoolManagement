@@ -55,6 +55,8 @@ const ViewBedStatus60 = (props) => {
             .then((res) => {
                 alert("Room No : "+room+" Deleted Successfully")
                 // props.setCreatebed("block");
+                console.log(res.data.result)
+                props.allRoomData(res.data.result)
                 setView("none");
 
             })

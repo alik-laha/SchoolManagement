@@ -430,7 +430,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
           {/* Hostel Start*/}
               {/* View Bed Status */}   
-              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} />
+              <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} allRoomData={getAllRoom} />
               {/* View Hostel Entry */}  
               <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} room={roomData} />
               {/* View Export Hostel Entry */}  
