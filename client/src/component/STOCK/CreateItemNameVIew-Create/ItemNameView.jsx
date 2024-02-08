@@ -22,7 +22,7 @@ const [view, setView] = useState("none");
         axios.post("http://localhost:7000/api/v1/stock/deleteitemname", {id:id})
             .then((res) => {
               alert("Item Name Deleted Successfully")
-                setView("none")
+               props.ItemNameData(res.data.data);
             }).catch((err) => {
                 console.log(err)
             })

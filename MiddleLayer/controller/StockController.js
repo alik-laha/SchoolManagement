@@ -537,9 +537,20 @@ exports.DeleteItemName=(req,res)=>{
                 })
             }
             if(data){
-                return res.status(200).json({
-                    status:"item deleted",
-                    data:data
+                query=`select * from Item_Name`
+                Database.query(query,function(error,data){
+                    if(error){
+                        return res.status(400).json({
+                            status:"error at getting item",
+                            message:error
+                        })
+                    }
+                    if(data){
+                        return res.status(200).json({
+                            status:"item deleted",
+                            data:data
+                        })
+                    }
                 })
             }
 
