@@ -383,12 +383,12 @@ exports.MarksSearch = (req, res) => {
 //update marks
 exports.UpdateMarks=(req,res)=>{
     try{
-        const {subject,marks,examName,id}=req.body
-        if(!subject || !marks || !examName || !id){
+        const {subject,marks,examName,reg}=req.body
+        if(!subject || !marks || !examName || !reg){
             return res.status(400).json({message:"All Fields are required"})
         }
         else {
-            let query= `UPDATE Marks SET subject='${subject}',marks='${marks}',exam_name='${examName}' WHERE id=${id}`
+            let query= `UPDATE Marks SET marks='${marks}' WHERE regNo='${reg}' AND exam_name='${examName}' AND subject='${subject}'`
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
