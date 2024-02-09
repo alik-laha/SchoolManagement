@@ -67,7 +67,7 @@ const handleSubmit=(e)=>{
                 </div>
                 <div>
                     <label>Section</label>
-                    <input type="text" placeholder="Section" value={section} onChange={(e) => setSection(e.target.value)}/>
+                    <input type="text" placeholder="Section" value={section} onChange={(e) => setSection(e.target.value)} required={true}/>
                 </div>
                 <div>
                     <label>Current Academic Year</label>
