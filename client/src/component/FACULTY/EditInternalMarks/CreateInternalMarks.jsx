@@ -83,8 +83,8 @@ const handleDelete=(data)=>{
                         <td>{props.Exam}</td>
                         <td>{props.Subject}</td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
-                        <td>{index!==Index ?(<button onClick={()=>handleEdit(data,index)}>Edit</button>):
-                            (<div><button onClick={()=>handleUpdate(data)}>Save</button> <button onClick={handleCancel}>Cancel</button> <button onClick={()=>handleDelete(data)}>Delete</button></div>)}</td>
+                        <td>{index!==Index ?(<button onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
+                            (<div><button onClick={()=>handleUpdate(data)} className="dashboard-btn dashboard-btn-scss">Save</button> <button onClick={handleCancel} >Cancel</button> <button onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning">Delete</button></div>)}</td>
                     </tr>
                 ))}
                 </tbody>
