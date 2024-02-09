@@ -42,8 +42,8 @@ import CreateSubject from "../FACULTY/CreateAndViewSubject/CreateSubject.jsx";
 import ViewSubject from "../FACULTY/CreateAndViewSubject/ViewSubject.jsx";
 import CreateExternalExam from "../FACULTY/CreateAndViewExam/CreateExternalExam.jsx";
 import ViewExternalExam from "../FACULTY/CreateAndViewExam/ViewExternalExam.jsx";
-import CreateInternalMarks from "../FACULTY/CreateInternalMarks/CreateInternalMarks.jsx";
-import CreateInternalMarksSearch from "../FACULTY/CreateInternalMarks/CreateInternalMarksSearch.jsx";
+import CreateInternalMarks from "../FACULTY/EditInternalMarks/CreateInternalMarks.jsx";
+import CreateInternalMarksSearch from "../FACULTY/EditInternalMarks/CreateInternalMarksSearch.jsx";
 import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
 import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
 import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
@@ -106,6 +106,9 @@ const DashBoardMain = (props) => {
     const [academicYear,setAcademicYear]=useState(0)
     const [marksFlag,setMarksFlag]=useState('')
     const [itemNameData,setItemNameData]=useState([])
+    const [editExamName,setEditExamName]=useState("")
+    const [editSubjectName,setEditSubjectName]=useState("")
+    const [editMarks,setEditMarks]=useState(0)
 
   {/* User Start */}
 
@@ -286,9 +289,13 @@ const getAllRoom=(data)=>{
   }
 const InternalExamData=(data)=>{
     setInternalExamData(data)
+
 }
-const InternalMarksData=(data)=>{
+const InternalMarksData=(data,data1,data2,data3)=>{
       setInternalMarksData(data)
+    setEditExamName(data1)
+    setEditSubjectName(data2)
+    setEditMarks(data3)
 }
 const InternalMarksView=(data)=>{
     setInternalMarksView(data)
@@ -453,7 +460,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
-            <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} />
+            <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} Exam={editExamName} Subject={editSubjectName} Marks={editMarks}/>
             <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} />
             <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
           {/* Faculty End*/} 

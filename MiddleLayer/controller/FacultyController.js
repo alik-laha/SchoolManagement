@@ -600,3 +600,50 @@ exports.GetMarksWithoutSubject= (req, res) => {
         return  res.status(400).json({message:"Error Occured",err:err})
     }
 }
+
+
+//get Marks for edit
+exports.GetMarksForEdit= (req, res) => {
+try{
+    const {Class,examName,subject,academicYear,section}=req.body
+    if(!Class || !examName || !subject || !academicYear || !section){
+        return res.status(400).json({message:"All Fields are required"})
+    }
+    else{
+        let query=`SELECT 
+    Student_Admission.student_Name,
+    Student_Admission.registration_no,
+    Student_Admission.current_academic_year,
+    Student_Admission.roll_no,
+    Student_Admission.section,
+    Marks.marks 
+FROM 
+    Student_Admission 
+LEFT JOIN 
+    Marks ON Marks.regNo = Student_Admission.registration_no 
+WHERE 
+    Student_Admission.class = '${Class}' 
+    AND Student_Admission.current_academic_year = '${academicYear}'
+    AND Marks.subject = '${subject}'
+    AND Marks.exam_name = '${examName}' 
+    AND Student_Admission.active = 1 
+    AND Marks.class = '${Class}'
+  AND Student_Admission.section = '${section}'
+    AND Marks.regNo = Student_Admission.registration_no 
+ORDER BY 
+    Student_Admission.roll_no;`
+        Database.query(query,(err,result)=>{
+            if(err){
+                console.log(err)
+                return res.status(400).json({message:"Error Occured",err:err})
+            }
+            else{
+                return res.status(200).json({message:"Marks Fetched",data:result})
+            }
+        })
+    }
+
+}catch (err) {
+    console.log(err)
+}
+}
