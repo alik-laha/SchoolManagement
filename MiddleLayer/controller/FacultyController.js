@@ -383,12 +383,12 @@ exports.MarksSearch = (req, res) => {
 //update marks
 exports.UpdateMarks=(req,res)=>{
     try{
-        const {subject,marks,examName,reg}=req.body
-        if(!subject || !marks || !examName || !reg){
+        const {subject,marks,examName,reg,Class}=req.body
+        if(!subject || !marks || !examName || !reg || !Class){
             return res.status(400).json({message:"All Fields are required"})
         }
         else {
-            let query= `UPDATE Marks SET marks='${marks}' WHERE regNo='${reg}' AND exam_name='${examName}' AND subject='${subject}'`
+            let query= `UPDATE Marks SET marks='${marks}' WHERE regNo='${reg}' AND exam_name='${examName}' AND subject='${subject}' AND class='${Class}'`
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
@@ -616,6 +616,7 @@ try{
     Student_Admission.current_academic_year,
     Student_Admission.roll_no,
     Student_Admission.section,
+    Student_Admission.class,
     Marks.marks 
 FROM 
     Student_Admission 
@@ -646,4 +647,32 @@ ORDER BY
 }catch (err) {
     console.log(err)
 }
+}
+
+
+
+//Delete Marks
+exports.DeleteMarks = (req, res) => {
+    const {regNo, exam, subject, Class} = req.body
+    try {
+        if (regNo && exam && subject && Class) {
+            let query = `DELETE
+                         FROM Marks
+                         WHERE regNo = '${regNo}' AND exam_name = '${exam}' AND subject = '${subject}' AND class = '${Class}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return res.status(400).json({message: "Error Occured"})
+                } else {
+                    return res.status(200).json({message: "Marks Deleted"})
+                }
+            })
+        } else {
+            return res.status(400).json({message: "All Fields are required"})
+        }
+    } catch (err) {
+        console.log(err)
+        return res.status(400).json({message: "Error Occured", err: err})
+
+    }
 }

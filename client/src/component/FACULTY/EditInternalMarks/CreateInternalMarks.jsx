@@ -49,14 +49,21 @@ const handleCancel=()=>{
         setIndex(null)
         setMarks(0)
 }
-const handleDelete=()=>{
-
+const handleDelete=(data)=>{
+    axios.post("http://localhost:7000/api/v1/faculty/deletemarks",{subject:props.Subject,exam:props.Exam,regNo:data.registration_no,Class:data.class  }).then((res)=>{
+        alert("Marks Deleted Successfully")
+        setView("none")
+        setIndex(null)
+    }).catch((err)=>{
+        console.log(err)
+    })
 }
     return(
         <div style={{display:view}}>
             <table className="table-60">
                 <thead>
                 <tr>
+                    <th>Class</th>
                     <th>Registration No</th>
                     <th>Student Name</th>
                     <th>Roll No</th>
@@ -69,6 +76,7 @@ const handleDelete=()=>{
                 <tbody>
                 {data.map((data,index)=>(
                     <tr key={index}>
+                        <td>{data.class}</td>
                         <td>{data.registration_no}</td>
                         <td>{data.student_Name}</td>
                         <td>{data.roll_no}</td>
@@ -76,7 +84,7 @@ const handleDelete=()=>{
                         <td>{props.Subject}</td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
                         <td>{index!==Index ?(<button onClick={()=>handleEdit(data,index)}>Edit</button>):
-                            (<div><button onClick={()=>handleUpdate(data)}>Save</button> <button onClick={handleCancel}>Cancel</button> <button onClick={handleDelete}>Delete</button></div>)}</td>
+                            (<div><button onClick={()=>handleUpdate(data)}>Save</button> <button onClick={handleCancel}>Cancel</button> <button onClick={()=>handleDelete(data)}>Delete</button></div>)}</td>
                     </tr>
                 ))}
                 </tbody>

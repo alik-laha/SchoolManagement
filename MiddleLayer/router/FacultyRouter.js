@@ -8,7 +8,8 @@ const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, G
     GetAllExamForMarks,
     GetFaculty,
     GetMarksWithoutSubject,
-    GetMarksForEdit
+    GetMarksForEdit,
+    DeleteMarks
 } = require('../controller/FacultyController')
 
 //create faculty
@@ -74,5 +75,9 @@ router.post('/getmarkswithoutsub',GetMarksWithoutSubject)
 
 //get all Marks for edit
 router.post("/getallmarksforedit",GetMarksForEdit)
+
+
+//Delete Marks
+router.post('/deletemarks',DeleteMarks)
 
 module.exports = router
