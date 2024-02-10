@@ -44,16 +44,17 @@ const MasterStudentViewUpdate = (props) => {
     const[allView,setAllview]=useState("block")
     const[releaseDate,setReleaseDate]=useState("");
     const[rdonly,setRdonly]=useState(false);
+    const [readmit,setReadmit]=useState("none");
 
     const [regNo,setRegNo]=useState(null);
     useEffect(() => {
-       if(props.view==="block" && props.View40==="block" ) {
+       if(props.view==="block" && props.View40==="block" && props.data.length>0){
                 setView("block");
             }
             else {
                 setView("none");
             }
-    }, [props.view,props.View40]);
+    }, [props.view,props.View40,props.data]);
     useEffect(() => {
        setMasterStudent(props.data);
 
@@ -286,6 +287,7 @@ const MasterStudentViewUpdate = (props) => {
         if(item.release_date!==null){
             setReleaseDate(item.release_date.slice(0, 10));
             setRdonly(true)
+            setReadmit('block')
         }else{
             setReleaseDate('');
             setRdonly(false)
@@ -293,6 +295,12 @@ const MasterStudentViewUpdate = (props) => {
        
         console.log(item)
     }
+
+    const handleReadmisson=(e)=>{
+        e.preventDefault();
+
+    }
+
     const handleUpdate=(e)=>{
         e.preventDefault();
         const data = {
@@ -565,7 +573,7 @@ const MasterStudentViewUpdate = (props) => {
             <hr></hr>
 
 
-                <form onSubmit={handleUpdate}>
+                <form >
 
                     <p className="customize-centre">Edit Student Details</p>
                     <p>Basic Details</p>
@@ -952,8 +960,11 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setReleaseDate(e.target.value)} readOnly={rdonly}
                         />
                     </div>
+                    <div style={{display:readmit}}>
+                        <button className="dashboard-btn btn-warning" onClick={handleReadmisson}>Re-Admisson</button>
+                    </div>
 
-                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                    <span><button className="dashboard-btn dashboard-btn-scss" onClick={handleUpdate}>Submit</button></span>
 
                 </form>
             </div>
