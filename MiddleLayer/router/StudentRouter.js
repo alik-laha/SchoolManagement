@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {GetAllStudent,MasterStudentAdmission, LastId,GetMasterStudentAdmisson,StudentAdmission, UpdateStudentAdmission,
     DeleteStudentAdmission, DeleteMasterStudentAdmission, UpdateMasterStudentAdmission,GetPromoteStudentAdmisson,updateNextClass,
-    CheckPromote,GetAllRegistration} = require('../controller/StudentController')
+    CheckPromote,GetAllRegistration,PromoteFail} = require('../controller/StudentController')
 
 //get all students
 router.post('/getallstudent',GetAllStudent)
@@ -40,7 +40,10 @@ router.post('/updatepromotion',updateNextClass)
 //get count of students
 router.post('/getcount',CheckPromote)
 
-//
+//Promote Fail Student
+router.post('/promotefail',PromoteFail)
+
+
 //get count of students
 router.post('/getallregNo',GetAllRegistration)
 

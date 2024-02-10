@@ -99,8 +99,18 @@ const PromoteNextClassView= (props) => {
 
           }
           }
-        const handleFail=()=>{
-            handaleSubmit()
+        const handleFail=(data)=>{
+            axios.post("http://localhost:7000/api/v1/student/promotefail", {
+                regNo: data.registration_no,
+                year:data.current_academic_year
+            })
+                .then((res) => {
+                    console.log("done")
+                    alert(`Student has been Promoted to Next Class and Academic Year `)
+                    handaleSubmit()
+                }).catch((error)=>{
+                    console.log(error)
+                })
         }
 
     return(

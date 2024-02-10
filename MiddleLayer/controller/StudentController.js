@@ -593,3 +593,25 @@ exports.GetAllRegistration = (req, res) => {
         console.log(err)
     }
 }
+
+
+
+//promote fail student
+exports.PromoteFail = (req, res) => {
+    const {year, regNo} = req.body
+    try {
+        let query = `UPDATE Student_Admission
+                     SET current_academic_year='${year+1}'
+                     WHERE registration_no = '${regNo}'`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                return res.status(200).json({msg: "Student Promote Fail"})
+            }
+        })
+
+    }catch(err){
+        console.log(err)
+    }
+}
