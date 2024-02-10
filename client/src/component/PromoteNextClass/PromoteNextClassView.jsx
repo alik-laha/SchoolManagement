@@ -158,7 +158,7 @@ const PromoteNextClassView= (props) => {
                     </tbody>
                    
                 </table>
-
+                {academicAll.length===0 ? <div className="no-data">No Data Found</div> : null}
             </div>
 
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}
