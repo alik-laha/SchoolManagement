@@ -383,12 +383,12 @@ exports.MarksSearch = (req, res) => {
 //update marks
 exports.UpdateMarks=(req,res)=>{
     try{
-        const {subject,marks,examName,reg,Class}=req.body
-        if(!subject || !marks || !examName || !reg || !Class){
+        const {subject,marks,examName,reg,Class,year}=req.body
+        if(!subject || !marks || !examName || !reg || !Class || !year){
             return res.status(400).json({message:"All Fields are required"})
         }
         else {
-            let query= `UPDATE Marks SET marks='${marks}' WHERE regNo='${reg}' AND exam_name='${examName}' AND subject='${subject}' AND class='${Class}'`
+            let query= `UPDATE Marks SET marks='${marks}' WHERE regNo='${reg}' AND exam_name='${examName}' AND subject='${subject}' AND class='${Class}' AND Year='${year}'`
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)
@@ -617,6 +617,7 @@ try{
     Student_Admission.roll_no,
     Student_Admission.section,
     Student_Admission.class,
+    Student_Admission.current_academic_year,
     Marks.marks 
 FROM 
     Student_Admission 
@@ -653,12 +654,12 @@ ORDER BY
 
 //Delete Marks
 exports.DeleteMarks = (req, res) => {
-    const {regNo, exam, subject, Class} = req.body
+    const {regNo, exam, subject, Class,year} = req.body
     try {
-        if (regNo && exam && subject && Class) {
+        if (regNo && exam && subject && Class && year) {
             let query = `DELETE
                          FROM Marks
-                         WHERE regNo = '${regNo}' AND exam_name = '${exam}' AND subject = '${subject}' AND class = '${Class}'`
+                         WHERE regNo = '${regNo}' AND exam_name = '${exam}' AND subject = '${subject}' AND class = '${Class}' AND Year = '${year}'`
             Database.query(query, (err, result) => {
                 if (err) {
                     console.log(err)
