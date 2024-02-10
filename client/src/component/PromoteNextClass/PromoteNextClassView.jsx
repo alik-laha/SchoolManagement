@@ -106,7 +106,7 @@ const PromoteNextClassView= (props) => {
             })
                 .then((res) => {
                     console.log("done")
-                    alert(`Student has been Promoted to Next Class and Academic Year `)
+                    alert(`Student Academic Year Increased by ${data.current_academic_year+1} And Class is ${data.class}`)
                     handaleSubmit()
                 }).catch((error)=>{
                     console.log(error)

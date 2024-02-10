@@ -607,7 +607,14 @@ exports.PromoteFail = (req, res) => {
             if (err) {
                 console.log(err)
             } else {
-                return res.status(200).json({msg: "Student Promote Fail"})
+               query=`Update master_hostel set crnt_yr='${year+1}' where registration_no='${regNo}'`
+                Database.query(query, (err, result) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        return res.status(200).json({msg: "student promote successfully"})
+                    }
+                })
             }
         })
 
