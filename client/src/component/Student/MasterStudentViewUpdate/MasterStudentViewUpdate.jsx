@@ -289,13 +289,14 @@ const MasterStudentViewUpdate = (props) => {
         setBrunch(item.branch);
         setIfscCode(item.ifsc);
         setRegNo(item.registration_no);
-        if(item.release_date!==null){
+        if(item.release_date!==null && item.release_date!=='' && item.release_date!==undefined){
             setReleaseDate(item.release_date.slice(0, 10));
             setRdonly(true)
             setReadmit('block')
         }else{
             setReleaseDate('');
             setRdonly(false)
+            setReadmit('none')
         }
        
         console.log(item)
@@ -514,6 +515,25 @@ const MasterStudentViewUpdate = (props) => {
     }
 
     const handleReadmit=(e)=>{
+        e.preventDefault()
+        const data={
+            regNo,
+            name,
+            Class:readmitClass,
+            admisson:admissionYear,
+            year:readmitAcademicYear
+        }
+        axios.post("http://localhost:7000/api/v1/student/readmitstudent",data)
+            .then((res)=>{
+                alert('Student Re-Admitted Successfully')
+                setPopup("none")
+                setUpdateView("none")
+                setAllview("block")
+                setView('none')
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
 
     }
     const handleReadmitCancel=(e)=>{
@@ -594,9 +614,9 @@ const MasterStudentViewUpdate = (props) => {
                         <input type={"number"} value={readmitAcademicYear}
                                onChange={(e) => setReadmitAcademicYear(e.target.value)}/>
                     </div>
-                    <span><button className="dashboard-btn dashboard-btn-scss"
+                    <span><button className="dashboard-btn btn-warning"
                                   onClick={handleReadmit}>Submit</button></span>
-                    <button onClick={handleReadmitCancel}  className="dashboard-btn btn-warning"> Cancel</button>
+                    <button onClick={handleReadmitCancel}  className="dashboard-btn dashboard-btn-scss"> Cancel</button>
                 </form>
             </div>
 

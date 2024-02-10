@@ -622,3 +622,28 @@ exports.PromoteFail = (req, res) => {
         console.log(err)
     }
 }
+
+//Readmit Student
+exports.ReadmitStudent = (req, res) => {
+    const {regNo,year,Class,name,admisson}=req.body
+    try {
+        let query = `UPDATE master_student SET active=1, release_date=NULL WHERE registration_no='${regNo}'`
+        Database.query(query, (err, result) => {
+            if (err) {
+                console.log(err)
+            } else {
+                query=`Update Student_Admission set active=1, current_academic_year='${year}', class='${Class}' where registration_no='${regNo}'`
+                Database.query(query ,(err, result) => {
+                    if (err) {
+                        console.log(err)
+                    } else {
+                        return res.status(200).json({msg: "student promote successfully"})
+                    }
+                })
+            }
+        })
+
+    }catch(err){
+        console.log(err)
+    }
+}
