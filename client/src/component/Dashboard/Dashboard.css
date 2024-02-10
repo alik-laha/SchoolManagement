@@ -440,4 +440,10 @@
     background-color: whitesmoke;
 }
 
-
+.popup{
+     width: 100vw;
+     height: 100vh;
+     position: fixed;
+    justify-content: center;
+    align-items: center;
+}

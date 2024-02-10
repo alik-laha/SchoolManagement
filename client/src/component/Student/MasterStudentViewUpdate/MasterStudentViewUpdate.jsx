@@ -45,8 +45,13 @@ const MasterStudentViewUpdate = (props) => {
     const[releaseDate,setReleaseDate]=useState("");
     const[rdonly,setRdonly]=useState(false);
     const [readmit,setReadmit]=useState("none");
-
+    const [popup,setPopup]=useState("none");
     const [regNo,setRegNo]=useState(null);
+    const [readmitClass,setReadmitClass]=useState(0);
+    const [readmitAcademicYear,setReadmitAcademicYear]=useState(0);
+
+
+
     useEffect(() => {
        if(props.view==="block" && props.View40==="block" && props.data.length>0){
                 setView("block");
@@ -298,7 +303,8 @@ const MasterStudentViewUpdate = (props) => {
 
     const handleReadmisson=(e)=>{
         e.preventDefault();
-
+       setPopup("block")
+        setUpdateView("none")
     }
 
     const handleUpdate=(e)=>{
@@ -506,6 +512,17 @@ const MasterStudentViewUpdate = (props) => {
         setRegNo('');
         setReleaseDate("");
     }
+
+    const handleReadmit=(e)=>{
+
+    }
+    const handleReadmitCancel=(e)=>{
+        e.preventDefault()
+        setPopup("none")
+        setUpdateView("block")
+    }
+
+
     return(
         <div style={{display: view}}>
             <div style={{display:allView}}>
@@ -566,12 +583,28 @@ const MasterStudentViewUpdate = (props) => {
             </table>
                 {masterStudent.length === 0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
+            <div style={{display:popup}} className="dashbrd-40-colm special-25-div">
+                <form>
+                    <div>
+                        <label>Admisson Class</label>
+                        <input type={"number"} value={readmitClass} onChange={(e) => setReadmitClass(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Admisson Year</label>
+                        <input type={"number"} value={readmitAcademicYear}
+                               onChange={(e) => setReadmitAcademicYear(e.target.value)}/>
+                    </div>
+                    <span><button className="dashboard-btn dashboard-btn-scss"
+                                  onClick={handleReadmit}>Submit</button></span>
+                    <button onClick={handleReadmitCancel}  className="dashboard-btn btn-warning"> Cancel</button>
+                </form>
+            </div>
+
 
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
             <button style={{marginBottom:'8px'}}
             onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
             <hr></hr>
-
 
                 <form >
 
