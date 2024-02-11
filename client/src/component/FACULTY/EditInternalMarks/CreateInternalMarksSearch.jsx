@@ -2,7 +2,6 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 
 const CreateInternalMarks=(props)=>{
-const [regNo,setRegNo]=useState("")
 const [Class,setClass]=useState("")
 const [year,setYear]=useState("")
 const [updatedExamName,setUpdatedExamName]=useState("")
