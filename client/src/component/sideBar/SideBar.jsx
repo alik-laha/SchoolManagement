@@ -295,7 +295,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Update/Delete
             </div>
             <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Create External Marks Entry
+                 onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Entry
             </div>
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks

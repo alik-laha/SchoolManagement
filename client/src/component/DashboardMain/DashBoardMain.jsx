@@ -46,7 +46,7 @@ import CreateInternalMarks from "../FACULTY/EditInternalMarks/CreateInternalMark
 import CreateInternalMarksSearch from "../FACULTY/EditInternalMarks/CreateInternalMarksSearch.jsx";
 import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
 import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
-import CreateExternalMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
+import CreateMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
 import CreateExternalMarksView from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
 import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx'
@@ -404,7 +404,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             {/* Internal Exam Search*/}
             <CreateInternalMarksSearch view={props.CreateInternalMarks} setInternalMarks={InternalMarksData} setInternalMarksView={InternalMarksView}/>
             {/* External Exam Search*/}
-            <CreateExternalMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
+            <CreateMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
             {/* Export Exam Search*/}
             <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} setSearchcombination={handaleMarksFlag}/>
           {/* Faculty End */} 
