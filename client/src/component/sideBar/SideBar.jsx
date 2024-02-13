@@ -345,12 +345,12 @@ const stockUsageVisiblity = () => {
           <span onClick={stockVisiblity} className="user"
                 style={{display: cashstockAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
           <div style={{display: stockVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Vendor
+            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Vendor Creation
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Item type
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Item Type Creation
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}>&#x3e;&nbsp;&nbsp;Item
-              Name
+              Name Creation
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary
               Stock (Qty.)
@@ -371,17 +371,18 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount
             </div>
-          </div>
-          {/*Stock usage*/}
-          <span onClick={stockUsageVisiblity} className="user"
-                style={{display: cashstockAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock Usage<p>{dropArrowstockUsage}</p></span>
-          <div style={{display: stockUsageVisi}}>
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
             </div>
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View
             </div>
+          </div>
+          {/*Stock usage*/}
+          <span onClick={stockUsageVisiblity} className="user"
+                style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Fee Payment<p>{dropArrowstockUsage}</p></span>
+          <div style={{display: stockUsageVisi}}>
+            
           </div>
 
         </div>
