@@ -120,6 +120,9 @@ const UserSearchResponse60=(props)=>{
         setrole(data.roletype_name);
         setpassword(data.password);
     };
+
+
+    
     return (
         <div style={{display: disp}}>
               
@@ -141,7 +144,7 @@ const UserSearchResponse60=(props)=>{
                 <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss " onClick={clearTable}> Clear Result </button>
                 </tr>
                 <tr>
-                    <th>User Id</th>
+                    <th>Sl. No.</th>
                     <th>User Name</th>
                     <th>User Role</th>
                     <th>Action</th>
@@ -149,9 +152,10 @@ const UserSearchResponse60=(props)=>{
                 </thead>
 
                 <tbody style={{display: mainsvisibility}}>
-                {view.map((item) => (
-                    <tr key={item.user_id}>
-                        <td>{item.user_id}</td>
+                {view.map((item,index) => (
+                    
+                    <tr key={index}>
+                        <td>{index+1}</td>
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                         <td>

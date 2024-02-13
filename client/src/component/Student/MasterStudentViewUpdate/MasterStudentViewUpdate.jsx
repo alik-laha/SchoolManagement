@@ -412,6 +412,7 @@ const MasterStudentViewUpdate = (props) => {
                 }
             })
             .catch((err)=>{
+                console.log(err)
                 if(err.response.data.err.errno===1062){
                     alert(`Aadhar No. - ${adharNo} already exists`)
                 }
