@@ -149,7 +149,7 @@ exports.MasterStudentAdmission = (req, res) => {
         ifscCode
     } = req.body
     try {
-        if (!name || !regNo || !adharNo || !sex || !stream || !religion || !dob || !cast || !guardianName || !relationship || !guardianContactNo || !address || !pinNo || !applyClass || !admissionYear || !admissonDate || !age) {
+        if (!name || !regNo || !sex || !stream || !religion  || !cast || !guardianName || !relationship || !guardianContactNo || !address || !applyClass || !admissionYear || !admissonDate ) {
             return res.status(400).json({
                 msg: "please fill all the importent field",
                 data: name, regNo, adharNo, sex, stream ,religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age

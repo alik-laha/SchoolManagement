@@ -475,4 +475,37 @@ dl {
 
   }
 
+  .dashboard-modal {
+    position: relative;
+    max-width: 90%;
+    padding: 2rem;
+    border: 0;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem 0.25rem hsl(0 0% 0% / 10%);
+  }
+  .dashboard-modal-close-btn {
+    font-size: .90em;
+    position: absolute;
+    top: 0.85em;
+    right: 0.85em;
+    float: right;
+    font-weight: 700;
+    line-height: 1;
+    color: #d81738;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: 0.8;
+  }
+  .dashboard-modal::backdrop {
+    background: hsl(0 0% 0% / 60%);
+  }
+
+  .dashboard-modal-close-btn:hover{
+
+    opacity:1
+  }
+
+
+
+
   

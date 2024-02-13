@@ -2,7 +2,7 @@ import {useState,useEffect} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState('');
-    const [adharNo, setAdharNo] = useState('');
+    const [adharNo, setAdharNo] = useState(0);
     const [sex, setSex] = useState('');
     const [stream, setStream] = useState('');
     const [religion, setReligion] = useState('');
@@ -29,7 +29,7 @@ const MasterStudentEntry= (props) => {
     const [relationship, setRelationship] = useState('');
     const [guardianContactNo, setGuardianContactNo] = useState('');
     const [address, setAddress] = useState('');
-    const [pinNo, setPinNo] = useState('');
+    const [pinNo, setPinNo] = useState(0);
     const [bspId, setBspId] = useState('');
     const [applyClass, setApplyClass] = useState('');
     const [admissionYear, setAdmissionYear] = useState('');
@@ -39,6 +39,8 @@ const MasterStudentEntry= (props) => {
     const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
+    const [regstn, setregstn] = useState('');
+    
     
 
     const handlepchallenge = (e) => {
@@ -69,10 +71,25 @@ const MasterStudentEntry= (props) => {
         const birthDate = new Date(dob);
 
     const ageYears = differenceInYears(today, birthDate);
+    
         setAge(ageYears)
     },[dob])
 
+    useEffect(()=>{
+        const admission_date = new Date(admissonDate);
+        setAdmissionYear(admission_date.getFullYear())
+    },[admissonDate])
 
+    const dialog = document.getElementById('myDialog');
+    const closeDialogButton = document.getElementById('closeDialog');
+    if(closeDialogButton){
+        closeDialogButton.addEventListener('click', () => {
+            dialog.close();
+          });
+    }
+
+    
+    
 
     const differenceInYears = (today,birthDate) => {
         
@@ -174,9 +191,11 @@ const MasterStudentEntry= (props) => {
                             .then((res) => {
                                 console.log(res)
                                 
-                        alert("Student Admitted Successfully and Registration no. Generated :"+regNo);
+                        // alert("Student Admitted Successfully and Registration no. Generated :"+regNo);
+                        setregstn(regNo)
+                        dialog.showModal();
                         setName('');
-                        setAdharNo('');
+                        setAdharNo(0);
                         setSex('');
                         setStream('');
                         setReligion('');
@@ -198,7 +217,7 @@ const MasterStudentEntry= (props) => {
                         setRelationship('');
                         setGuardianContactNo('');
                         setAddress('');
-                        setPinNo('');
+                        setPinNo(0);
                         setBspId('');
                         setApplyClass('');
                         setAdmissionYear('');
@@ -208,7 +227,7 @@ const MasterStudentEntry= (props) => {
                         setBankAcountNo(0);
                         setBrunch('');
                         setIfscCode('');
-                        setRegNo('');
+                        //setRegNo('');
                         setorphan(true)
                         setpchallenged(true)
                         //handleReset();
@@ -274,22 +293,22 @@ const MasterStudentEntry= (props) => {
                         </option>
                     </select></dd>
 
-                    <dt><label>Date of Birth*</label></dt>
+                    <dt><label>Date of Birth</label></dt>
                     <dd><input
                         type="date"
                         value={dob}
                         onChange={(e) => setDob(e.target.value)}
                         placeholder="Date of Birth"
-                        required={true}
+                        
                     /></dd>
 
-                     <dt><label>Age*</label></dt>
+                     <dt><label>Age</label></dt>
                     <dd> <input
                         type="number"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
                         placeholder="Age"
-                        required={true}
+                        
                     /></dd>
                         
                      <dt><label>Cast*</label></dt>
@@ -323,13 +342,13 @@ const MasterStudentEntry= (props) => {
                         placeholder="Blood Group"
                     /></dd>
 
-                    <dt><label>Pin Number*</label></dt>
+                    <dt><label>Pin Number</label></dt>
                     <dd> <input
                         type="number"
                         value={pinNo}
                         onChange={(e) => setPinNo(e.target.value)}
                         placeholder="Pin Number"
-                        required={true}
+                        
                     /></dd>
                     <dt><label>Address*</label></dt>
                     <dd> <textarea style={{height:'80px',rows:"3"}}
@@ -477,13 +496,13 @@ const MasterStudentEntry= (props) => {
                         onChange={(e) => setBspId(e.target.value)}
                         placeholder="B.S.P Id"
                     /></dd>
-                    <dt><label>Aadhar Number*</label></dt>
+                    <dt><label>Aadhar Number</label></dt>
                    <dd><input
                         type="number"
                         value={adharNo}
                         onChange={(e) => setAdharNo(e.target.value)}
                         placeholder="Aadhar Number"
-                        required={true}
+                        
                     /></dd>
                      <dt><label>Bank Account No.</label></dt>
                    <dd> <input
@@ -515,7 +534,7 @@ const MasterStudentEntry= (props) => {
               
                 <p>Office Details</p>
                 <dl class="dl-horizontal">
-                <dt><label>Applying For Stream</label></dt>
+                <dt><label>Applying Stream*</label></dt>
                     <dd> <select onChange={(e) => setStream(e.target.value)} required value={stream}>
                         <option value="">Stream</option>
                         <option value="Arts">
@@ -531,7 +550,7 @@ const MasterStudentEntry= (props) => {
                             General (Upto Secondary)
                         </option>
                     </select></dd>
-                    <dt><label>Applying For Class*</label></dt>
+                    <dt><label>Applying Class*</label></dt>
                     <dd>  <select onChange={(e) => setApplyClass(parseInt(e.target.value))} required value={applyClass}>
                         <option value="">Class</option>
                         <option value="1">
@@ -574,6 +593,14 @@ const MasterStudentEntry= (props) => {
                         </option>
                         
                     </select> </dd>
+                    <dt><label>Admission Date*</label></dt>
+                    <dd>   <input
+                        type="date"
+                        value={admissonDate}
+                        onChange={(e) => setAdmissonDate(e.target.value)}
+                        placeholder="Admission Date"
+                        required={true}
+                    /></dd>
                      <dt><label>Admission Year*</label></dt>
                     <dd>   <input
                         type="number"
@@ -582,14 +609,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="Admission Year"
                         required={true}
                     /></dd>
-                     <dt><label>Admission Date*</label></dt>
-                    <dd>   <input
-                        type="date"
-                        value={admissonDate}
-                        onChange={(e) => setAdmissonDate(e.target.value)}
-                        placeholder="Admission Date"
-                        required={true}
-                    /></dd>
+                     
 
 
                 </dl>
@@ -614,6 +634,11 @@ const MasterStudentEntry= (props) => {
         </div> */}
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
+            <dialog id="myDialog" class="dashboard-modal">
+                <button id="closeDialog" class="dashboard-modal-close-btn ">X </button>
+                <p id="modal-text" style={{color:'black'}}> Student Admitted and Registration no. : <p className={{color:'red!important'}}>{regstn}</p> Generated Successfully</p>
+                {/* <!-- Add more elements as needed --> */}
+            </dialog>
         </div>
 
     )
