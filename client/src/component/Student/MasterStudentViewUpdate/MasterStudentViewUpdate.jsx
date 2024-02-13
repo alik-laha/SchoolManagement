@@ -65,7 +65,13 @@ const MasterStudentViewUpdate = (props) => {
 
     }, [props.data]);
 
-
+    const dialog = document.getElementById('myDialog-master-update');
+    const closeDialogButton = document.getElementById('closeDialog-master-update');
+    if(closeDialogButton){
+        closeDialogButton.addEventListener('click', () => {
+            dialog.close();
+          });
+    }
     const clearTable = () => {
         if(updateView==='none')
         setMasterStudent([]);
@@ -304,8 +310,9 @@ const MasterStudentViewUpdate = (props) => {
 
     const handleReadmisson=(e)=>{
         e.preventDefault();
-       setPopup("block")
-        setUpdateView("none")
+       //setPopup("block")
+        //setUpdateView("none")
+        dialog.showModal();
     }
 
     const handleUpdate=(e)=>{
@@ -516,6 +523,7 @@ const MasterStudentViewUpdate = (props) => {
 
     const handleReadmit=(e)=>{
         e.preventDefault()
+        
         const data={
             regNo,
             name,
@@ -526,7 +534,8 @@ const MasterStudentViewUpdate = (props) => {
         axios.post("http://localhost:7000/api/v1/student/readmitstudent",data)
             .then((res)=>{
                 alert('Student Re-Admitted Successfully')
-                setPopup("none")
+                display.close();
+                //setPopup("none")
                 setUpdateView("none")
                 setAllview("block")
                 setView('none')
@@ -536,11 +545,12 @@ const MasterStudentViewUpdate = (props) => {
             })
 
     }
-    const handleReadmitCancel=(e)=>{
-        e.preventDefault()
-        setPopup("none")
-        setUpdateView("block")
-    }
+    // const handleReadmitCancel=(e)=>{
+    //     e.preventDefault()
+        
+    //     setPopup("none")
+    //     setUpdateView("block")
+    // }
 
 
     return(
@@ -603,7 +613,7 @@ const MasterStudentViewUpdate = (props) => {
             </table>
                 {masterStudent.length === 0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
-            <div style={{display:popup}} className="dashbrd-40-colm special-25-div">
+            {/* <div style={{display:popup}} className="dashbrd-40-colm special-25-div">
                 <form>
                     <div>
                         <label>Admisson Class</label>
@@ -618,7 +628,7 @@ const MasterStudentViewUpdate = (props) => {
                                   onClick={handleReadmit}>Submit</button></span>
                     <button onClick={handleReadmitCancel}  className="dashboard-btn dashboard-btn-scss"> Cancel</button>
                 </form>
-            </div>
+            </div> */}
 
 
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
@@ -1020,6 +1030,7 @@ const MasterStudentViewUpdate = (props) => {
                     <span><button className="dashboard-btn dashboard-btn-scss" onClick={handleUpdate}>Submit</button></span>
 
                 </form>
+          
             </div>
 
 
@@ -1110,6 +1121,26 @@ const MasterStudentViewUpdate = (props) => {
                     </tbody> 
                     </table>
 
+
+            <dialog id="myDialog-master-update" class="dashboard-modal">
+                <button id="closeDialog-master-update"  class="dashboard-modal-close-btn ">X </button>
+                <form>
+                    <div>
+                        <label>Admisson Class</label>
+                        <input type={"number"} value={readmitClass} onChange={(e) => setReadmitClass(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Admisson Year</label>
+                        <input type={"number"} value={readmitAcademicYear}
+                               onChange={(e) => setReadmitAcademicYear(e.target.value)}/>
+                    </div>
+                    <span><button className="dashboard-btn btn-warning"
+                                  onClick={handleReadmit}>Submit</button></span>
+                    {/* <button onClick={handleReadmitCancel}  className="dashboard-btn dashboard-btn-scss"> Cancel</button> */}
+                </form>
+               
+                {/* <!-- Add more elements as needed --> */}
+            </dialog>
 
 
         </div>

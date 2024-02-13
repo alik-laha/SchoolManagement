@@ -637,7 +637,7 @@ exports.ReadmitStudent = (req, res) => {
                     if (err) {
                         console.log(err)
                     } else {
-                        return res.status(200).json({msg: "student promote successfully"})
+                        return res.status(200).json({msg: "student promoted successfully"})
                     }
                 })
             }
