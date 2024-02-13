@@ -41,7 +41,7 @@ const ViewAllVendor=(props)=>{
             <table className="table-60">
                 <thead >
                 <tr>
-                    <th>Vendor Id</th>
+                    {/* <th>Vendor Id</th> */}
                     <th>Vendor Name</th>
                     <th>Vendor Address</th>
                     <th>Action</th>
@@ -51,7 +51,7 @@ const ViewAllVendor=(props)=>{
                 {props.Vendor.map((vendor)=>{
                     return(
                         <tr key={vendor.vendor_id}>
-                            <td>{vendor.vendor_id}</td>
+                            {/* <td>{vendor.vendor_id}</td> */}
                             <td>{vendor.vendor_name}</td>
                             <td>{vendor.vendor_address}</td>
                             <td>

@@ -252,7 +252,7 @@ const handaleCancel = () => {
                 <div>
                     <label>Aadhar No.*</label>
                     <input
-                        type="number"
+                        type="text"
                         value={aadhar}
                         onChange={(e) => setAadhar(e.target.value)}
                         placeholder="Aadhar No."
