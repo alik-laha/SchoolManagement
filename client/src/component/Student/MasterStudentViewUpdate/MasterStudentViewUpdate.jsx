@@ -70,6 +70,7 @@ const MasterStudentViewUpdate = (props) => {
     if(closeDialogButton){
         closeDialogButton.addEventListener('click', () => {
             dialog.close();
+            setUpdateView('block')
           });
     }
     const clearTable = () => {
@@ -634,7 +635,7 @@ const MasterStudentViewUpdate = (props) => {
 
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
             <button style={{marginBottom:'8px'}}
-            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
+            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
             <hr></hr>
 
                 <form style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
@@ -1063,18 +1064,66 @@ const MasterStudentViewUpdate = (props) => {
 
 
             <dialog id="myDialog-master-update" class="dashboard-modal">
+
                 <button id="closeDialog-master-update"  class="dashboard-modal-close-btn ">X </button>
-                <form>
-                    <div>
-                        <label>Admisson Class</label>
-                        <input type={"number"} value={readmitClass} onChange={(e) => setReadmitClass(e.target.value)}/>
-                    </div>
-                    <div>
-                        <label>Admisson Year</label>
-                        <input type={"number"} value={readmitAcademicYear}
-                               onChange={(e) => setReadmitAcademicYear(e.target.value)}/>
-                    </div>
-                    <span><button className="dashboard-btn btn-warning"
+
+                <form style={{display:'grid',color:'#3c8dbc'}}>
+                <p style={{fontSize:'17px',textAlign:'center',color:'red'}}>Re-Admission Details</p>
+                <dl class="modal-padding">
+
+                    <dt class="modal-width"><label>Re-admisson Class</label></dt>
+                    <dd class="modal-width">
+                        <select onChange={(e) => setReadmitClass(parseInt(e.target.value))} required value={readmitClass}>
+                        <option value="">Class</option>
+                        <option value="1">
+                        I
+                        </option>
+                        <option value="2">
+                            II
+                        </option>
+                        <option value="3">
+                            III
+                        </option>
+                        <option value="4">
+                            IV
+                        </option>
+                        <option value="5">
+                            V
+                        </option>
+                        <option value="6">
+                            VI
+                        </option>
+                        v
+                        <option value="7">
+                            VII
+                        </option>
+                        
+                        <option value="8">
+                            VIII
+                        </option>
+                        <option value="9">
+                            IX
+                        </option>
+                        <option value="10">
+                            X
+                        </option>
+                        <option value="11">
+                            XI
+                        </option>
+                        <option value="12">
+                            XII
+                        </option>
+                        
+                    </select> 
+                        {/* <input type={"number"} value={readmitClass} onChange={(e) => setReadmitClass(e.target.value)}/> */}
+                        </dd>
+                    <dt class="modal-width"><label>Re-admisson Year</label></dt>
+                    <dd class="modal-width">  <input type={"number"} value={readmitAcademicYear}
+                               onChange={(e) => setReadmitAcademicYear(e.target.value)}/></dd>   
+                        
+                        </dl>
+                   
+                    <span style={{display:'table',margin:'0 auto'}}><button className="dashboard-btn btn-warning"
                                   onClick={handleReadmit}>Submit</button></span>
                     {/* <button onClick={handleReadmitCancel}  className="dashboard-btn dashboard-btn-scss"> Cancel</button> */}
                 </form>

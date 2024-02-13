@@ -316,7 +316,7 @@
     padding: 10px;
 }
 
-.dashbrd-40-colm input,.dashbrd-40-colm select,.dashbrd-40-colm textarea{
+.dashbrd-40-colm input,.dashbrd-40-colm select,.dashbrd-40-colm textarea,.dashboard-modal input,.dashboard-modal select{
     border-radius: 4px;
     box-shadow: none;
     border-color: #d2d6de;
@@ -506,7 +506,13 @@ dl {
     opacity:1
   }
 
+  .modal-padding{
 
+    padding-left:0%!important;
+  }
+  .modal-width{
 
+    width:35%!important;
+  }
 
   
