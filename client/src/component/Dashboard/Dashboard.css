@@ -447,3 +447,30 @@
     justify-content: center;
     align-items: center;
 }
+
+
+dl {
+    /* border: 1px double #ccc; */
+    padding-left: 10%;
+    padding-top: 20px;
+  }
+  dt {
+    float: left;
+    clear: left;
+    width: 14%;
+    text-align: left;
+    /* font-weight: bold; */
+    color: green;
+  }
+  dt::after {
+    content: ":";
+  }
+  dd {
+    margin: 0 0 0 110px;
+    padding: 0 0 0.5em 0;
+    width: 30%;
+    float: inline-start;
+
+  }
+
+  

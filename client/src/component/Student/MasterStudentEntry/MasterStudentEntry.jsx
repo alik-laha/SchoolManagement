@@ -210,20 +210,19 @@ const MasterStudentEntry= (props) => {
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
             <form onSubmit={handleEntry}>
                 <p>Basic Details</p>
-                <div>
-                    <label>Student Name*</label>
-                    <input
+                <dl class="dl-horizontal">
+                   
+                    <dt><label>Student Name*</label></dt>
+                    <dd><input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Student Name"
                         required={true}
-                    />
-                </div>
-              
+                    /></dd>
 
-                <div>
-                    <label>Gender*</label>
+                    <dt><label>Gender*</label></dt>
+                    <dd>
                     <select onChange={(e) => setSex(e.target.value)} required value={sex}>
                         <option value="">Gender</option>
                         <option value="male">
@@ -236,11 +235,11 @@ const MasterStudentEntry= (props) => {
                             Other
                         </option>
                     </select>
-                </div>
+                    </dd>
 
-                <div>
-                    <label>Religion*</label>
-                    <select onChange={(e) => setReligion(e.target.value)} required value={religion}>
+
+                    <dt><label>Religion*</label></dt>
+                    <dd><select onChange={(e) => setReligion(e.target.value)} required value={religion}>
                         <option value="">Religion</option>
                         <option value="islam">
                             Islam
@@ -248,33 +247,28 @@ const MasterStudentEntry= (props) => {
                         <option value="other">
                             Other
                         </option>
-                    </select>
-                </div>
+                    </select></dd>
 
-                <div>
-                    <label>Date of Birth*</label>
-                    <input
+                    <dt><label>Date of Birth*</label></dt>
+                    <dd><input
                         type="date"
                         value={dob}
                         onChange={(e) => setDob(e.target.value)}
                         placeholder="Date of Birth"
                         required={true}
-                    />
-                </div>
-                <div>
-                    <label>Age*</label>
-                    <input
+                    /></dd>
+
+                     <dt><label>Age*</label></dt>
+                    <dd> <input
                         type="number"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
                         placeholder="Age"
                         required={true}
-                    />
-                </div>
-
-                <div>
-                    <label>Cast*</label>
-                    <select onChange={(e) => setCast(e.target.value)} required value={cast}>
+                    /></dd>
+                        
+                     <dt><label>Cast*</label></dt>
+                    <dd> <select onChange={(e) => setCast(e.target.value)} required value={cast}>
                         <option value="">Cast</option>
                         <option value="gen">
                             General
@@ -294,48 +288,34 @@ const MasterStudentEntry= (props) => {
                         <option value="other">
                             Other
                         </option>
-                    </select>
-                </div>
-                <div>
-                    <label>Blood Group</label>
-                    <input
+                    </select></dd>
+
+                    <dt><label>Blood Group</label></dt>
+                    <dd> <input
                         type="text"
                         value={bloodGroup}
                         onChange={(e) => setBloodGroup(e.target.value)}
                         placeholder="Blood Group"
-                    />
-                </div>
-                <div>
-                    <label>Pin Number*</label>
-                    <input
+                    /></dd>
+
+                    <dt><label>Pin Number*</label></dt>
+                    <dd> <input
                         type="number"
                         value={pinNo}
                         onChange={(e) => setPinNo(e.target.value)}
                         placeholder="Pin Number"
                         required={true}
-                    />
-                </div>
-               
-                <div style={{width:'50%'}}>
-                    <label>Address*</label>
-                    <textarea style={{height:'80px',rows:"3"}}
+                    /></dd>
+                    <dt><label>Address*</label></dt>
+                    <dd> <textarea style={{height:'80px',rows:"3"}}
                         type="textarea" 
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                         placeholder="Address"
                         required={true}
-                    />
-                </div>
-
-            
-              
-         
-
-                
-                <hr className="division-2"/>
-                <div className="div-25">
-                    <label>Physically Challenged</label>
-                    <input 
+                    /></dd>
+                    <dt><label>Physically Challenged</label></dt>
+                    <dd> <input 
                         type="checkbox"
                         placeholder="physically challenged"
                         
@@ -343,12 +323,9 @@ const MasterStudentEntry= (props) => {
                         
                         checked={physicallyChallenged === 1 ? true : false}
                         
-                    />
-                </div>
-
-                <div className="div-25">
-                    <label>Orphanage Child</label>
-                    <input
+                    /></dd>
+                    <dt><label>Orphanage Child</label></dt>
+                    <dd> <input
                         type="checkbox"
                         placeholder="orphanage"
                         // onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
@@ -356,8 +333,13 @@ const MasterStudentEntry= (props) => {
                         checked={orphanage === 1 ? true : false}
                         
                         
-                    />
-                </div>
+                    /></dd>
+                
+                </dl>
+                
+                
+                <hr className="division-2"/>
+                
                 
              
                 <hr className="division"/>
