@@ -349,6 +349,7 @@
     font-weight: 500;
     text-align: center;
     
+    
 }
 .customize-centre{
     text-align: center;
@@ -459,9 +460,9 @@ dl {
   dt {
     float: left;
     clear: left;
-    width: 18%;
+    width: 20%;
     text-align: left;
-    /* font-weight: bold; */
+     font-weight: bold; 
     /* color: green; */
   }
   dt::after {

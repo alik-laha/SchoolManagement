@@ -252,8 +252,8 @@ const MasterStudentEntry= (props) => {
 
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
-            <form onSubmit={handleEntry} style={{display:'grid'}}>
-                <p >Basic Details</p>
+            <form onSubmit={handleEntry} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+                <p style={{fontSize:'17px'}}>Basic Details</p>
                 <dl class="dl-horizontal">
                    
                     <dt><label>Student Name*</label></dt>
@@ -387,7 +387,7 @@ const MasterStudentEntry= (props) => {
                 
                 </dl>
             
-                <p>Guardian Details</p>
+                <p style={{fontSize:'17px'}}>Guardian Details</p>
                 <dl class="dl-horizontal">
                    
                    <dt><label>Guardian Name*</label></dt>
@@ -398,7 +398,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="Name"
                         required={true}
                     /></dd>
-                    <dt><label>Relationship *</label></dt>
+                    <dt><label>Relationship*</label></dt>
                    <dd> <input
                         type="text"
                         value={relationship}
@@ -487,7 +487,7 @@ const MasterStudentEntry= (props) => {
                 
                    </dl>
             
-                <p>Other Details</p>
+                <p style={{fontSize:'17px'}}>Other Details</p>
                 <dl class="dl-horizontal">
                 <dt><label>B.S.P. Id</label></dt>
                    <dd> <input
