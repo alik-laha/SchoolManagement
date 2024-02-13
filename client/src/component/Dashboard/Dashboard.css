@@ -347,6 +347,7 @@
     padding: 15px;
     color: red;
     font-weight: 500;
+    text-align: center;
     
 }
 .customize-centre{
@@ -451,16 +452,17 @@
 
 dl {
     /* border: 1px double #ccc; */
-    padding-left: 10%;
+    padding-left: 25%;
     padding-top: 20px;
+    padding-bottom: 20px;
   }
   dt {
     float: left;
     clear: left;
-    width: 14%;
+    width: 18%;
     text-align: left;
     /* font-weight: bold; */
-    color: green;
+    /* color: green; */
   }
   dt::after {
     content: ":";

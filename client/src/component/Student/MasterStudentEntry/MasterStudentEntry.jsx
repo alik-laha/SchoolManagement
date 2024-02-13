@@ -208,8 +208,8 @@ const MasterStudentEntry= (props) => {
 
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
-            <form onSubmit={handleEntry}>
-                <p>Basic Details</p>
+            <form onSubmit={handleEntry} style={{display:'grid'}}>
+                <p >Basic Details</p>
                 <dl class="dl-horizontal">
                    
                     <dt><label>Student Name*</label></dt>
@@ -314,7 +314,7 @@ const MasterStudentEntry= (props) => {
                         placeholder="Address"
                         required={true}
                     /></dd>
-                    <dt><label>Physically Challenged</label></dt>
+                    <dt><label>Handicapped</label></dt>
                     <dd> <input 
                         type="checkbox"
                         placeholder="physically challenged"
@@ -336,206 +336,167 @@ const MasterStudentEntry= (props) => {
                     /></dd>
                 
                 </dl>
-                
-                
-                <hr className="division-2"/>
-                
-                
-             
-                <hr className="division"/>
+            
                 <p>Guardian Details</p>
-                <div>
-                    <label>Guardian Name*</label>
-                    <input
+                <dl class="dl-horizontal">
+                   
+                   <dt><label>Guardian Name*</label></dt>
+                   <dd> <input
                         type="text"
                         value={guardianName}
                         onChange={(e) => setGuardianName(e.target.value)}
                         placeholder="Name"
                         required={true}
-                    />
-                </div>
-
-                <div>
-                    <label>Relationship With Student*</label>
-                    <input
+                    /></dd>
+                    <dt><label>Relationship *</label></dt>
+                   <dd> <input
                         type="text"
                         value={relationship}
                         onChange={(e) => setRelationship(e.target.value)}
                         placeholder="Relationship"
                         required={true}
-                    />
-                </div>
-
-                <div>
-                    <label>Guardian's Contact No*</label>
-                    <input
+                    /></dd>
+                    <dt><label>Guardian Contact No.*</label></dt>
+                   <dd><input
                         type="number"
                         value={guardianContactNo}
                         onChange={(e) => setGuardianContactNo(e.target.value)}
                         placeholder="Contact No"
                         required={true}
-                    />
-                </div>
-                <hr className="division-2"/>
-                <div>
-                    <label>Father's Name</label>
-                    <input
+                    /></dd>
+                    <dt><label>Father Name</label></dt>
+                   <dd><input
                         type="text"
                         value={fatherName}
                         onChange={(e) => setFatherName(e.target.value)}
                         placeholder="Name"
-                    />
-                </div>
-
-                <div>
-                    <label>Father's Qualification</label>
-                    <input
+                    /></dd>
+                    <dt><label>Father Qualification</label></dt>
+                   <dd><input
                         type="text"
                         value={fatherQualification}
                         onChange={(e) => setFatherQualification(e.target.value)}
                         placeholder="Qualification"
-                    />
-                </div>
-
-                <div>
-                    <label>Father's Occupation</label>
-                    <input
+                    /></dd>
+                    <dt><label>Father Occupation</label></dt>
+                   <dd><input
                         type="text"
                         value={fatherOcupation}
                         onChange={(e) => setFatherOcupation(e.target.value)}
                         placeholder="Occupation"
-                    />
-                </div>
-
-
-                <div>
-                    <label>Father's contact No</label>
-                    <input
+                    /></dd>
+                    <dt><label>Father Contact No.</label></dt>
+                   <dd><input
                         type="number"
                         value={fatherContactNo}
                         onChange={(e) => setFatherContactNo(e.target.value)}
                         
-                    />
-                </div>
-                
-                <div>
-                    <label>Father's Monthly Income</label>
-                    <input
+                    /></dd>
+                    <dt><label>Monthly Income</label></dt>
+                   <dd><input
                         type="number"
                         value={fatherMonthlyIncome}
                         onChange={(e) => setFatherMonthlyIncome(e.target.value)}
                         placeholder="Father Monthly Income"
-                    />
-                </div>
-                <hr className="division-2"/>
-
-                <div>
-                    <label>Mother's Name</label>
-                    <input
+                    /></dd>
+                    
+                    <dt><label>Mother Name</label></dt>
+                   <dd><input
                         type="text"
                         value={motherName}
                         onChange={(e) => setMotherName(e.target.value)}
                         placeholder="Name"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother's Qualification</label>
-                    <input
+                    /></dd>
+                    <dt><label>Mother Qualification</label></dt>
+                   <dd> <input
                         type="text"
                         value={motherQualification}
                         onChange={(e) => setMotherQualification(e.target.value)}
                         placeholder="Qualification"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother's Occupation</label>
-                    <input
+                    /></dd><dt><label>Mother Occupation</label></dt>
+                    <dd> <input
                         type="text"
                         value={motherOcupation}
                         onChange={(e) => setMotherOcupation(e.target.value)}
                         placeholder="Occupation"
-                    />
-                </div>
-
-          
-
-                <div>
-                    <label>Mother's contact No</label>
-                    <input
+                    /></dd>
+                    <dt><label>Mother Contact No.</label></dt>
+                    <dd> <input
                         type="number"
                         value={motherContactNo}
                         onChange={(e) => setMotherContactNo(e.target.value)}
                         placeholder="Mother contact No"
-                    />
-                </div>
-
-                <div>
-                    <label>Mother's Monthly Income</label>
-                    <input
+                    /></dd>
+                    <dt><label>Monthly Income</label></dt>
+                    <dd>  <input
                         type="number"
                         value={motherMonthlyIncome}
                         onChange={(e) => setMotherMonthlyIncome(e.target.value)}
                         placeholder="Mother Monthly Income"
-                    />
-                </div>
-                <hr className="division-2"/>
+                    /></dd>
                 
-                <hr className="division"/>
+                   </dl>
+            
                 <p>Other Details</p>
-              
-                <div>
-                    <label>Bangla Sikkha Portal (B.S.P.) ID</label>
-                    <input
+                <dl class="dl-horizontal">
+                <dt><label>B.S.P. Id</label></dt>
+                   <dd> <input
                         type="text"
                         value={bspId}
                         onChange={(e) => setBspId(e.target.value)}
                         placeholder="B.S.P Id"
-                    />
-                </div>
-        
-        
-               
-              
-              
-                <div>
-                    <label>Aadhar Number*</label>
-                    <input
+                    /></dd>
+                    <dt><label>Aadhar Number*</label></dt>
+                   <dd><input
                         type="number"
                         value={adharNo}
                         onChange={(e) => setAdharNo(e.target.value)}
                         placeholder="Aadhar Number"
                         required={true}
-                    />
-                </div>
-                <div>
-                    <label>Bank Account No.</label>
-                    <input
+                    /></dd>
+                     <dt><label>Bank Account No.</label></dt>
+                   <dd> <input
                         type="text"
                         value={bankAcountNo}
                         onChange={(e) => setBankAcountNo(e.target.value)}
                         placeholder="Bank Account No"
-                    />
-                </div>
-                <div>
-                    <label>Branch Name</label>
-                    <input
+                    /></dd>
+                     <dt><label>Branch Name</label></dt>
+                   <dd>  <input
                         type="text"
                         value={brunch}
                         onChange={(e) => setBrunch(e.target.value)}
                         placeholder="Branch"
-                    />
-                </div>
-                <div>
-                    <label>IFSC code</label>
-                    <input
+                    /></dd>
+                    <dt><label>Branch Name</label></dt>
+                   <dd>  <input
+                        type="text"
+                        value={brunch}
+                        onChange={(e) => setBrunch(e.target.value)}
+                        placeholder="Branch"
+                    /></dd>
+                    <dt><label>IFSC code</label></dt>
+                   <dd> <input
                         type="text"
                         value={ifscCode}
                         onChange={(e) => setIfscCode(e.target.value)}
                         placeholder="Ifsc code"
-                    />
-                </div>
+                    /></dd>
+
+                    
+            
+
+                </dl>
+              
+              
+        
+        
+               
+              
+              
+             
+                
+                
                 <div>
                     <label>Applied for Stream*</label>
                     <select onChange={(e) => setStream(e.target.value)} required value={stream}>
