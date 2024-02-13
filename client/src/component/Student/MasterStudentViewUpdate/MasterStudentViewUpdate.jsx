@@ -570,7 +570,7 @@ const MasterStudentViewUpdate = (props) => {
                 <thead>
                 <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
-                    <th>Student Id</th>
+                    <th>Sl. No.</th>
                     <th>Student Name</th>
                     <th>Active Status</th>
                     <th>Applied Class</th>
@@ -586,7 +586,7 @@ const MasterStudentViewUpdate = (props) => {
                     masterStudent.map((item, index) => {
                         return (
                             <tr key={index}>
-                                <td>{item.serial_no}</td>
+                                <td>{index+1}</td>
                                 <td>{item.student_Name}</td>
                                 <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                                 <td>{item.applied_class}</td>
@@ -637,13 +637,13 @@ const MasterStudentViewUpdate = (props) => {
             onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
             <hr></hr>
 
-                <form >
+                <form style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
 
-                    <p className="customize-centre">Edit Student Details</p>
-                    <p>Basic Details</p>
-                    <div>
-                        <label>Student Name*</label>
-                        <input
+                    <p style={{fontSize:'17px'}} className="customize-centre">Edit Student Details</p>
+                    <p style={{fontSize:'17px'}}>Basic Details</p>
+                    <dl class="dl-horizontal">
+                    <dt><label>Student Name*</label></dt>
+                    <dd> <input
                             className="read-only"
                             type="text"
                             value={name}
@@ -651,13 +651,10 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="Student Name"
                             required={true}
                             readOnly
-                        />
-                    </div>
+                        /></dd>
 
-
-                    <div>
-                        <label>Gender*</label>
-                        <select onChange={(e) => setSex(e.target.value)} required value={sex}>
+                        <dt><label>Gender*</label></dt>
+                        <dd>  <select onChange={(e) => setSex(e.target.value)} required value={sex}>
                             <option value="">Gender</option>
                             <option value="male">
                                 Male
@@ -668,12 +665,10 @@ const MasterStudentViewUpdate = (props) => {
                             <option value="other">
                                 Other
                             </option>
-                        </select>
-                    </div>
+                        </select></dd>
 
-                    <div>
-                        <label>Religion*</label>
-                        <select onChange={(e) => setReligion(e.target.value)} required value={religion}>
+                        <dt><label>Religion*</label></dt>
+                        <dd>  <select onChange={(e) => setReligion(e.target.value)} required value={religion}>
                             <option value="">Religion</option>
                             <option value="islam">
                                 Islam
@@ -681,32 +676,25 @@ const MasterStudentViewUpdate = (props) => {
                             <option value="other">
                                 Other
                             </option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label>Date of Birth*</label>
-                        <input
+                        </select></dd>
+                        <dt><label>Date of Birth*</label></dt>
+                        <dd>  <input
                             type="date"
                             value={dob}
                             onChange={(e) => setDob(e.target.value)}
                             placeholder="Date of Birth"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Age*</label>
-                        <input
+                        /></dd>
+                         <dt><label>Age*</label></dt>
+                        <dd>  <input
                             type="number"
                             value={age}
                             onChange={(e) => setAge(e.target.value)}
                             placeholder="Age"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Cast*</label>
-                        <select onChange={(e) => setCast(e.target.value)} required value={cast}>
+                        /></dd>
+                         <dt> <label>Cast*</label></dt>
+                        <dd>  <select onChange={(e) => setCast(e.target.value)} required value={cast}>
                             <option value="">Cast</option>
                             <option value="gen">
                                 General
@@ -726,257 +714,198 @@ const MasterStudentViewUpdate = (props) => {
                             <option value="other">
                                 Other
                             </option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Blood Group</label>
-                        <input
+                        </select></dd>
+                         <dt><label>Blood Group</label></dt>
+                        <dd>    <input
                             type="text"
                             value={bloodGroup}
                             onChange={(e) => setBloodGroup(e.target.value)}
                             placeholder="Blood Group"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Address*</label>
-                        <input
-                            type="text"
+                        /></dd>
+                         
+                         <dt><label>Address*</label></dt>
+                        <dd>   <textarea style={{height:'80px',rows:"3"}}
+                            type="textarea"
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             placeholder="Address"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Pin Number*</label>
-                        <input
+                        /></dd>
+                         <dt><label>Pin Number*</label></dt>
+                        <dd>   <input
                             type="number"
                             value={pinNo}
                             onChange={(e) => setPinNo(e.target.value)}
                             placeholder="Pin Number"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Banglas Sikkha Portal (B.S.P) ID</label>
-                        <input
+                        /></dd>
+                        <dt><label>B.S.P. ID</label></dt>
+                        <dd>   <input
                             type="text"
                             value={bspId}
                             onChange={(e) => setBspId(e.target.value)}
                             placeholder="B.S.P Id"
-                        />
-                    </div>
-
-
-                    <div className="div-25">
-                        <label>Physically Challenged</label>
-                        <input type='checkbox'
+                        /></dd>
+                        <dt><label>Physically Challenged</label></dt>
+                        <dd>    <input type='checkbox'
                                onChange={(e) => e.target.checked === true ? setPhysicallyChallenged(1) : setPhysicallyChallenged(0)}
-                               checked={physicallyChallenged}/>
-                    </div>
-
-                    <div className="div-25">
-                        <label>Orphanage Child</label>
-                        <input type='checkbox'
+                               checked={physicallyChallenged}/></dd>
+                        <dt><label>Orphanage Child</label></dt>
+                        <dd>   <input type='checkbox'
                                onChange={(e) => e.target.checked === true ? setOrphanage(1) : setOrphanage(0)}
-                               checked={orphanage}/>
-                    </div>
-                    <hr className="division"/>
-                    <p>Guardian Details</p>
-                    <div>
-                        <label>Guardian Name*</label>
-                        <input
+                               checked={orphanage}/></dd>
+
+                    </dl>
+                
+                    <p style={{fontSize:'17px'}}>Guardian Details</p>
+                    <dl class="dl-horizontal">
+                    <dt><label>Guardian Name*</label></dt>
+                        <dd>    <input
                             type="text"
                             value={guardianName}
                             onChange={(e) => setGuardianName(e.target.value)}
                             placeholder="Guardian Name"
                             required={true}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Relationship With Student*</label>
-                        <input
+                        /></dd>
+                        <dt><label>Relationship*</label></dt>
+                        <dd>   <input
                             type="text"
                             value={relationship}
                             onChange={(e) => setRelationship(e.target.value)}
                             placeholder="relationship"
                             required={true}
-                        />
-                    </div>
-
-                    <div>
-                        <label>Guardian Contact No*</label>
-                        <input
+                        /></dd>
+                        <dt><label>Guardian Contact No*</label></dt>
+                        <dd>    <input
                             type="number"
                             value={guardianContactNo}
                             onChange={(e) => setGuardianContactNo(e.target.value)}
                             placeholder="Guardian Contact No"
                             required={true}
-                        />
-                    </div>
-
-                    <hr className="division-2"/>
-                    <div>
-                        <label>Father's Name</label>
-                        <input
+                        /></dd>
+                        <dt><label>Father Name</label></dt>
+                        <dd>  <input
                             type="text"
                             value={fatherName}
                             onChange={(e) => setFatherName(e.target.value)}
                             placeholder="Father Name"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Father's Qualification</label>
-                        <input
+                        /></dd>
+                        <dt><label>Father Qualification</label></dt>
+                        <dd>  <input
                             type="text"
                             value={fatherQualification}
                             onChange={(e) => setFatherQualification(e.target.value)}
                             placeholder="Father Qualification"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Father's Ocupation</label>
-                        <input
+                        /></dd>
+                        <dt><label>Father Ocupation</label></dt>
+                        <dd>    <input
                             type="text"
                             value={fatherOcupation}
                             onChange={(e) => setFatherOcupation(e.target.value)}
                             placeholder="Father Ocupation"
-                        />
-                    </div>
-                    <div>
-                        <label>Father's Contact No.</label>
-                        <input
+                        /></dd>
+                        <dt><label>Father Contact No.</label></dt>
+                        <dd>   <input
                             type="number"
                             value={fatherContactNo}
                             onChange={(e) => setFatherContactNo(e.target.value)}
                             placeholder="Father contact No"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Father's Monthly Income</label>
-                        <input
+                        /></dd>
+                        <dt><label>Father Monthly Income</label></dt>
+                        <dd> <input
                             type="number"
                             value={fatherMonthlyIncome}
                             onChange={(e) => setFatherMonthlyIncome(e.target.value)}
                             placeholder="Father Monthly Income"
-                        />
-                    </div>
-                    <hr className="division-2"/>
-
-
-                    <div>
-                        <label>Mother's Name</label>
-                        <input
+                        /></dd>
+                      <dt><label>Mother Name</label></dt>
+                        <dd><input
                             type="text"
                             value={motherName}
                             onChange={(e) => setMotherName(e.target.value)}
                             placeholder="Mother Name"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Mother's Qualification</label>
-                        <input
+                        /></dd>
+                        <dt><label>Mother Qualification</label></dt>
+                        <dd> <input
                             type="text"
                             value={motherQualification}
                             onChange={(e) => setMotherQualification(e.target.value)}
                             placeholder="Mother Qualification"
-                        />
-                    </div>
-
-                    <div>
-                        <label>Mother's Occupation</label>
-                        <input
+                        /></dd>
+                        <dt><label>Mother Ocupation</label></dt>
+                        <dd>    <input
                             type="text"
                             value={motherOcupation}
                             onChange={(e) => setMotherOcupation(e.target.value)}
                             placeholder="Mother Ocupation"
-                        />
-                    </div>
-                    <div>
-                        <label>Mother's contact No</label>
-                        <input
+                        /></dd>
+                        <dt><label>Mother Contact No.</label></dt>
+                        <dd>    <input
                             type="number"
                             value={motherContactNo}
                             onChange={(e) => setMotherContactNo(e.target.value)}
                             placeholder="Mother contact No"
-                        />
-                    </div>
-
-
-                    <div>
-                        <label>Mother's Monthly Income</label>
-                        <input
+                        /></dd>
+                        <dt><label>Mother Monthly Income</label></dt>
+                        <dd> <input
                             type="number"
                             value={motherMonthlyIncome}
                             onChange={(e) => setMotherMonthlyIncome(e.target.value)}
                             placeholder="Mother Monthly Income"
-                        />
-                    </div>
-                    <hr className="division-2"/>
+                        /></dd>
+                        
+                    </dl>
+                   
 
-                    <hr className="division"/>
-                    <p>Other Details</p>
-
-                    <div>
-                        <label>Aadhar Number*</label>
-                        <input
+                    <p style={{fontSize:'17px'}}>Other Details</p>
+                    <dl>
+                        <dt><label>Aadhar Number</label></dt>
+                        <dd> <input
                             type="number"
                             value={adharNo}
                             onChange={(e) => setAdharNo(e.target.value)}
                             placeholder="Adhar Number"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Bank Account No.</label>
-                        <input
+                        /></dd>
+                        <dt><label>Bank Account No.</label></dt>
+                        <dd> <input
                             type="text"
                             value={bankAcountNo}
                             onChange={(e) => setBankAcountNo(e.target.value)}
                             placeholder="Bank Acount No"
-                        />
-                    </div>
-                    <div>
-                        <label>Branch Name</label>
-                        <input
+                        /></dd>
+                        <dt><label>Branch Name</label></dt>
+                        <dd><input
                             type="text"
                             value={brunch}
                             onChange={(e) => setBrunch(e.target.value)}
-                            placeholder="Brunch"
-                        />
-                    </div>
-                    <div>
-
-                        <label>IFSC Code</label>
-                        <input
+                            placeholder="Branch"
+                        /></dd>
+                        <dt><label>Branch Name</label></dt>
+                        <dd><input
+                            type="text"
+                            value={brunch}
+                            onChange={(e) => setBrunch(e.target.value)}
+                            placeholder="Branch"
+                        /></dd>
+                        <dt><label>IFSC Code</label></dt>
+                        <dd>  <input
                             type="text"
                             value={ifscCode}
                             onChange={(e) => setIfscCode(e.target.value)}
                             placeholder="Ifsc code"
-                        />
-                    </div>
+                        /></dd>
+                        
 
-                    <div>
-                        <label>Applied Class*</label>
-                        <input
-                            type="number"
-                            className="read-only"
-                            value={applyClass}
-                            onChange={(e) => setApplyClass(e.target.value)}
-                            placeholder="Applied Class"
-                            required={true}
-                            readOnly
-                        />
-                    </div>
-                    <div>
-                    <label>Applied for Stream*</label>
-                    <select onChange={(e) => setStream(e.target.value)} required value={stream}>
+
+                        
+                        
+                        </dl>
+
+                        <p style={{fontSize:'17px'}}>Other Details</p>
+                        <dl>
+                        <dt><label>Applied for Stream*</label></dt>
+                        <dd> <select onChange={(e) => setStream(e.target.value)} required value={stream}>
                         <option value="">Stream</option>
                         <option value="Arts">
                             Arts
@@ -990,11 +919,19 @@ const MasterStudentViewUpdate = (props) => {
                         <option value="General">
                         General (Upto Secondary)
                         </option>
-                    </select>
-                </div>
-                    <div>
-                        <label>Admission Year*</label>
-                        <input
+                    </select></dd>
+                        <dt> <label>Applied Class*</label></dt>
+                        <dd> <input
+                            type="number"
+                            className="read-only"
+                            value={applyClass}
+                            onChange={(e) => setApplyClass(e.target.value)}
+                            placeholder="Applied Class"
+                            required={true}
+                            readOnly
+                        /></dd>
+                         <dt> <label>Admission Year*</label></dt>
+                        <dd> <input
                             type="number"
                             className="read-only"
                             value={admissionYear}
@@ -1002,31 +939,33 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="Admission Year"
                             required={true}
                             readOnly
-                        />
-                    </div>
-
-                    <div>
-                        <label>Admission Date*</label>
-                        <input
+                        /></dd>
+                        <dt> <label>Admission Date*</label></dt>
+                        <dd>   <input
                             type="date"
                             className="read-only"
                             value={admissonDate}
                             onChange={(e) => setAdmissonDate(e.target.value)}
                             placeholder="Admission Date"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Release Date</label>
-                        <input
+                        /></dd>
+                        <dt><label>Release Date</label></dt>
+                        <dd>    <input
                             type="date"
                             value={releaseDate}
                             onChange={(e) => setReleaseDate(e.target.value)} readOnly={rdonly}
-                        />
-                    </div>
-                    <div style={{display:readmit}}>
+                        /></dd>
+                        <dd style={{display:readmit,width:'0px'}}>
                         <button className="dashboard-btn btn-warning" onClick={handleReadmisson}>Re-Admisson</button>
-                    </div>
+                    </dd>
+
+                        
+                        </dl>
+                        
+
+                 
+
+                    
 
                     <span><button className="dashboard-btn dashboard-btn-scss" onClick={handleUpdate}>Submit</button></span>
 
