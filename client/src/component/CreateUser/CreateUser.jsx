@@ -30,42 +30,43 @@ const CreateUser = ({showCreate,AllRoles}) => {
   return (
     <>
       <div className="dashbrd-40-colm">
-      <form onSubmit={handaleSubmit} style={{display:showCreate}}>
+      <form onSubmit={handaleSubmit} style={{display:showCreate,color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+      <p style={{fontSize:'17px'}}>User Details</p>
+          <dl class="dl-horizontal">
+
+            <dt><label>Create User Name</label></dt>
+            <dd> <input
+              type="text"
+              placeholder="User Name"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              required
+            /></dd>
+            <dt> <label>Create Password</label></dt>
+            <dd><input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              required
+            /></dd>
+
+
+            <dt> <label>Create Role</label></dt>
+            <dd><select onChange={(e) => setRole(e.target.value)} required value={role}>
+              <option value="">Role</option>
+              {AllRoles.map((data) => (
+                <option value={data.roletype_name} key={data.roletype_name}>
+                  {data.roletype_name}
+                </option>
+              ))}
+            </select></dd>
+          </dl>
       
-        <div >
-          <label>Create User Name</label>
-        <input
-          type="text"
-          placeholder="User Name"
-          onChange={(e) => setName(e.target.value)}
-          value={name}
-          required
-        />
-        </div>
-        <div >
-          <label>Create Password</label>
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-        </div>
+       
 
       
 
-        <div>
-        <label>Create Role</label>
-        <select onChange={(e) => setRole(e.target.value)} required value={role}>
-          <option value="">Role</option>
-          {AllRoles.map((data) => (
-            <option value={data.roletype_name} key={data.roletype_name}>
-              {data.roletype_name}
-            </option>
-          ))}
-        </select>
-        </div>
 
         <span>
         <button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button>
