@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useState,useEffect} from "react";
 import axios from "axios";
 const MasterStudentEntry= (props) => {
     const [name, setName] = useState('');
@@ -61,6 +61,31 @@ const MasterStudentEntry= (props) => {
         e.target.checked === true ? setOrphanage(1) : setOrphanage(0)
         setorphan(!orphan)
     }
+
+
+    useEffect(()=>{
+
+        const today = new Date();
+        const birthDate = new Date(dob);
+
+    const ageYears = differenceInYears(today, birthDate);
+        setAge(ageYears)
+    },[dob])
+
+
+
+    const differenceInYears = (today,birthDate) => {
+        
+        
+        var age_now = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            age_now--;
+        }
+        console.log(age_now);
+        return age_now;
+      }
 
     const handleEntry = (e) => {
         e.preventDefault();
