@@ -46,7 +46,7 @@ const AcademicEntryView= (props) => {
                 <table className="table-60" id="academic-entry-view">
                     <thead>
                     <tr>
-                        <th>Student Id</th>
+                        <th>Sl. No.</th>
                         <th>Student Name</th>
                         
                         <th>Registration No</th>
@@ -65,10 +65,10 @@ const AcademicEntryView= (props) => {
                     </thead>
                     <tbody>
                     {
-                        academicAll.map((data)=> {
+                        academicAll.map((data,index)=> {
                             return(
-                                <tr key={data.student_id}>
-                                    <td>{data.student_id}</td>
+                                <tr key={index}>
+                                    <td>{index+1}</td>
                                     <td>{data.student_Name}</td>
                                     
                                     <td>{data.registration_no}</td>

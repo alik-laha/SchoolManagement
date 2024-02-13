@@ -122,33 +122,33 @@ const PromoteNextClassView= (props) => {
                 <table className="table-60" id="academic-entry-view">
                     <thead>
                     <tr>
-                        <th>Student Id</th>
+                        <th>Sl. No.</th>
                         <th>Student Name</th>
                         <th>Registration No</th>
                         <th>Current Year of Study</th>
                         <th>Class</th>
                         <th>Section</th>
                         <th>Roll No</th>
-                        <th>Year of Admission</th>
+                        
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     {
-                        academicAll.map((data)=> {
+                        academicAll.map((data,index)=> {
                             return(
-                                <tr key={data.student_id}>
-                                    <td>{data.student_id}</td>
+                                <tr key={index}>
+                                    <td>{index+1}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td>
                                     <td>{data.current_academic_year}</td>
                                     <td>{data.class}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
-                                    <td>{data.admission_year}</td>
+                                    
                                     <td>
-                                        <button onClick={()=>handlePass(data)}  className="dashboard-btn dashboard-btn-scss">Pass</button>
-                                        <button onClick={()=>handleFail(data)} className="dashboard-btn btn-warning">Fail</button>
+                                        <button onClick={()=>handlePass(data)}  className="dashboard-btn dashboard-btn-scss fix-width">Pass</button>
+                                        <button onClick={()=>handleFail(data)} className="dashboard-btn btn-warning fix-width">Retain</button>
                                     </td>
                                 </tr>
                             )

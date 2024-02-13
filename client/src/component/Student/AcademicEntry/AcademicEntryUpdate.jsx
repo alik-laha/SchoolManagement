@@ -63,7 +63,7 @@ const AcademicEntryUpdate = (props) => {
                <thead>
                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                <tr>
-                   <th>Student Id</th>
+                   <th>Sl. No.</th>
                    <th>Student Name</th>
                    <th>Stream</th>
                    <th>Registration No</th>
@@ -81,8 +81,8 @@ const AcademicEntryUpdate = (props) => {
                {
                    academicAll.map((data,index) => {
                        return (
-                           <tr key={data.student_id}>
-                               <td>{data.student_id}</td>
+                           <tr key={index}>
+                               <td>{index+1}</td>
                                <td>{data.student_Name}</td>
                                <td>{data.stream}</td>
                                <td>{data.registration_no}</td>
