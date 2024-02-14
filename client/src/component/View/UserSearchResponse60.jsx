@@ -265,7 +265,7 @@ const UserSearchResponse60=(props)=>{
                 <tbody style={{display: mainsvisibility}}>
                 {view.map((item,index) => (
                     <tr key={index}>
-                        <td>{index}</td>
+                        <td>{index+1}</td>
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                        
