@@ -994,11 +994,12 @@ const MasterStudentViewUpdate = (props) => {
 
                 <tr>
                     <th>Sl. No.</th>
+                    <th>Registration No.</th>
                     <th>Applied Class</th>
                     <th>Applied Stream</th>
                     <th>Admission Year</th>
                     <th>Date of Admission</th>
-                    <th>Registration No.</th>
+                    
                             <th>Name</th>
                             <th>Gender</th>
                             <th>Religion</th>
@@ -1035,11 +1036,12 @@ const MasterStudentViewUpdate = (props) => {
                         {masterStudent.map((item,idx) => (
                             <tr key={idx}>
                                 <td>{idx+1}</td>
-                                <td>{item.applied_class}</td>
+                                <td>{item.registration_no}</td>
+                                <td>{convertToRoman(item.applied_class)}</td>
                                 <td>{item.stream}</td>
                                 <td>{item.admisson_year}</td>
                                 <td>{item.admisson_date.slice(0,10)}</td>
-                                <td>{item.registration_no}</td>
+                                
                                 <td>{item.student_Name}</td>
                                 <td>{item.sex}</td>
                                 <td>{item.religion}</td>
@@ -1050,8 +1052,10 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.address}</td>
                                 <td>{item.pin_no}</td>
                                 <td>{item.bsp_id}</td>
-                                <td>{item.physically_challenged}</td>
-                                <td>{item.orphanage}</td>
+                                <td><input type='checkbox' checked={item.physically_challenged === 1 ? true : false}></input></td>
+                                {/* <td>{item.physically_challenged}</td> */}
+                                <td><input type='checkbox' checked={item.orphanage === 1 ? true : false}></input></td>
+                                {/* <td>{item.orphanage}</td> */}
 
                                 <td >{item.guardian_name}</td>
                                 <td >{item.relationship}</td>
