@@ -16,6 +16,8 @@ const UserSearchResponse60=(props)=>{
     const [allRoles, setAllRoles] = useState([]);
     const [passVisi, setPassVisi] = useState("password");
     const [disp,setdisp]=useState("none")
+    
+    const [userindex,setuserindex]=useState(0)
 
     const clearTable = () => {
         setView([]);
@@ -112,13 +114,14 @@ const UserSearchResponse60=(props)=>{
         setmainsvisibility('contents')
         setPassVisi("password")
     };
-    const handleEdit = (data) => {
+    const handleEdit = (data,index) => {
         setVisiblity("contents");
         setmainsvisibility('none')
         setid(data.user_id);
         setname(data.user_name);
         setrole(data.roletype_name);
         setpassword(data.password);
+        setuserindex(index);
     };
 
 
@@ -159,7 +162,7 @@ const UserSearchResponse60=(props)=>{
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                         <td>
-                            <button className='dashboard-btn btn-warning fix-width' onClick={() => handleEdit(item)}>Edit</button>
+                            <button className='dashboard-btn btn-warning fix-width' onClick={() => handleEdit(item,index+1)}>Edit</button>
                             <button className='dashboard-btn btn-warning fix-width'
                                     onClick={() => {
                                         const confirmBox = window.confirm(
@@ -182,7 +185,7 @@ const UserSearchResponse60=(props)=>{
 
                 <thead style={{display: visiblity}} id='hidden-table-60'>
                 <tr>
-                    <th>User Id</th>
+                    <th>Sl. No.</th>
                     <th>User Name</th>
                     <th>User Role</th>
                     <th>Password</th>
@@ -194,7 +197,7 @@ const UserSearchResponse60=(props)=>{
                 <tbody style={{display: visiblity}} >
 
                 <tr>
-                    <td>{id}</td>
+                    <td>{userindex}</td>
                     
                     <td>
                         <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true}/>
@@ -253,16 +256,16 @@ const UserSearchResponse60=(props)=>{
             <table className="table-60" id='User-Profile' style={{display:'none'}}>
             <thead style={{display: mainsvisibility}} id='hidden-table-60'>
                 <tr>
-                    <th>User Id</th>
+                    <th>Sl. No.</th>
                     <th>User Name</th>
                     <th>User Role</th>
                    
                 </tr>
                 </thead>
                 <tbody style={{display: mainsvisibility}}>
-                {view.map((item) => (
-                    <tr key={item.user_id}>
-                        <td>{item.user_id}</td>
+                {view.map((item,index) => (
+                    <tr key={index}>
+                        <td>{index}</td>
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                        
