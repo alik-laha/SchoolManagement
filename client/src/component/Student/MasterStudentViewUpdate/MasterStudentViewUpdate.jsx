@@ -51,6 +51,34 @@ const MasterStudentViewUpdate = (props) => {
     const [readmitAcademicYear,setReadmitAcademicYear]=useState(0);
 
 
+    useEffect(()=>{
+
+        const today = new Date();
+        const birthDate = new Date(dob);
+
+    const ageYears = differenceInYears(today, birthDate);
+    
+        setAge(ageYears)
+    },[dob])
+
+    useEffect(()=>{
+        const admission_date = new Date(admissonDate);
+        setAdmissionYear(admission_date.getFullYear())
+    },[admissonDate])
+
+    const differenceInYears = (today,birthDate) => {
+        
+        
+        var age_now = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+        {
+            age_now--;
+        }
+        console.log(age_now);
+        return age_now;
+      }
+
 
     useEffect(() => {
        if(props.view==="block" && props.View40==="block" && props.data.length>0){

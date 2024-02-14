@@ -220,7 +220,7 @@ const MasterStudentEntry= (props) => {
                         setPinNo(0);
                         setBspId('');
                         setApplyClass('');
-                        setAdmissionYear('');
+                        setAdmissionYear(new Date().getFullYear());
                         setAdmissonDate(new Date().toISOString().slice(0, 10));
                         setAge('');
                         setBloodGroup('');
