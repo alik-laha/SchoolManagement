@@ -113,7 +113,7 @@ const ViewBedStatus60 = (props) => {
                     <button style={{marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                     </tr>
                         <tr>
-                            <th>Room Id</th>
+                            <th>Sl No.</th>
                             <th>Bulding</th>
                             <th>Floor</th>
                             <th>Room Number</th>
@@ -125,9 +125,9 @@ const ViewBedStatus60 = (props) => {
                         </tr>
                     </thead>
                     <tbody style={{display:mainView}}>
-                        {bedstock.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
+                        {bedstock.map((item,idx) => (
+                            <tr key={idx}>
+                                <td>{idx+1}</td>
                                 <td>{item.building}</td>
                                 <td>{item.floor}</td>
                                 <td>{item.room_no}</td>
@@ -146,7 +146,7 @@ const ViewBedStatus60 = (props) => {
 
                 <thead style={{display: editView}} id='hidden-table-60'>
                 <tr>
-                            <th>Room Id</th>
+                            <th>Sl. No.</th>
                             <th>Bulding</th>
                             <th>Floor</th>
                             <th>Room Number</th>
@@ -194,9 +194,9 @@ const ViewBedStatus60 = (props) => {
                         </tr>
                     </thead>
                     <tbody style={{display:'block'}}>
-                        {bedstock.map((item) => (
-                            <tr key={item.id}>
-                                <td>{item.id}</td>
+                        {bedstock.map((item,idx) => (
+                            <tr key={idx}>
+                                <td>{idx+1}</td>
                                 <td>{item.building}</td>
                                 <td>{item.floor}</td>
                                 <td>{item.room_no}</td>
