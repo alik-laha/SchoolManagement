@@ -45,7 +45,7 @@ const MasterStudentViewUpdate = (props) => {
     const[releaseDate,setReleaseDate]=useState("");
     const[rdonly,setRdonly]=useState(false);
     const [readmit,setReadmit]=useState("none");
-    const [popup,setPopup]=useState("none");
+    // const [popup,setPopup]=useState("none");
     const [regNo,setRegNo]=useState(null);
     const [readmitClass,setReadmitClass]=useState(0);
     const [readmitAcademicYear,setReadmitAcademicYear]=useState(0);
@@ -64,6 +64,20 @@ const MasterStudentViewUpdate = (props) => {
        setMasterStudent(props.data);
 
     }, [props.data]);
+
+    function convertToRoman(num) {
+        var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+        roman = '',
+        i;
+        for ( i in lookup ) {
+          while ( num >= lookup[i] ) {
+            roman += i;
+            num -= lookup[i];
+          }
+        }
+        return roman;
+      }
+      
 
     const dialog = document.getElementById('myDialog-master-update');
     const closeDialogButton = document.getElementById('closeDialog-master-update');
@@ -259,7 +273,7 @@ const MasterStudentViewUpdate = (props) => {
         }
         if(item.applied_class!=='')
         {
-            setApplyClass(item.applied_class);
+            setApplyClass(convertToRoman(item.applied_class));
         }
         else{
             setApplyClass('');
@@ -590,7 +604,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{index+1}</td>
                                 <td>{item.student_Name}</td>
                                 <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
-                                <td>{item.applied_class}</td>
+                                <td>{convertToRoman(item.applied_class)}</td>
                                 <td>{item.admisson_year}</td>
                                 <td>{item.registration_no}</td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
@@ -923,7 +937,7 @@ const MasterStudentViewUpdate = (props) => {
                     </select></dd>
                         <dt> <label>Applied Class*</label></dt>
                         <dd> <input
-                            type="number"
+                            type="text"
                             className="read-only"
                             value={applyClass}
                             onChange={(e) => setApplyClass(e.target.value)}
@@ -979,7 +993,7 @@ const MasterStudentViewUpdate = (props) => {
                 <thead style={{display: 'contents'}}>
 
                 <tr>
-                    <th>Student ID</th>
+                    <th>Sl. No.</th>
                     <th>Applied Class</th>
                     <th>Applied Stream</th>
                     <th>Admission Year</th>
@@ -1018,9 +1032,9 @@ const MasterStudentViewUpdate = (props) => {
                         </tr>
                     </thead>
                      <tbody style={{display:'contents'}}>
-                        {masterStudent.map((item) => (
-                            <tr key={item.serial_no}>
-                                <td>{item.serial_no}</td>
+                        {masterStudent.map((item,idx) => (
+                            <tr key={idx}>
+                                <td>{idx+1}</td>
                                 <td>{item.applied_class}</td>
                                 <td>{item.stream}</td>
                                 <td>{item.admisson_year}</td>

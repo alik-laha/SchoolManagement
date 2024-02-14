@@ -1,5 +1,5 @@
 import "../Dashboard/Dashboard.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const CreateUser = ({showCreate,AllRoles}) => {
@@ -8,11 +8,22 @@ const CreateUser = ({showCreate,AllRoles}) => {
   const [role, setRole] = useState("");
   
   const [suceessflag,setsuceessflag]= useState('none');
+  const [dialogusername,setdialogusername]= useState("");
+
+  const dialog = document.getElementById('userDialog');
+    const closeDialogButton = document.getElementById('closeUserDialog');
+    if(closeDialogButton){
+        closeDialogButton.addEventListener('click', () => {
+            dialog.close();
+          });
+    }
 
   const handaleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:7000/api/v1/createuser", {name,password,role}).then((res) => {
-      alert(`User [${name}] has been Created Successfully`);
+      setdialogusername(name)
+      dialog.showModal();
+      //alert(`User [${name}] has been Created Successfully`);
       if(res.status==='success' && suceessflag==='none'){
         setsuceessflag('block');
       }
@@ -73,7 +84,11 @@ const CreateUser = ({showCreate,AllRoles}) => {
             </span>
             <span style={{display:suceessflag}}>User Created Successfully</span>
       </form>
-      
+      <dialog id="userDialog" class="dashboard-modal">
+                <button id="closeUserDialog" class="dashboard-modal-close-btn ">X </button>
+                <p id="modal-text" style={{color:'black'}}> New User with UserName : <p className={{color:'red!important'}}>{dialogusername}</p> has Created Successfully</p>
+                {/* <!-- Add more elements as needed --> */}
+            </dialog>
       </div>
       
     </>
