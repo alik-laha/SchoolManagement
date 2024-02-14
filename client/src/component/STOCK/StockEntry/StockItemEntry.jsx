@@ -150,17 +150,7 @@ const StockItemEntry= (props) => {
 
                     </dl>
                 
-                
             
-                
-                <div>
-                   
-                    
-                </div>
-                <div>
-                   
-                   
-                </div>
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
 
             </form>

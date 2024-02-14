@@ -35,22 +35,31 @@ const StudentInputNotice = ({Publish}) => {
   return (
     <div className="dashbrd-40-colm" style={{display:Publish}}>
       
-      <div>
-      <label>Institute Notice Upload </label>
       
-      <form onSubmit={HandaleSubmit} >
-         <input ref={fileRef} accept="application/pdf" style={{border:'none'}}
+      {/* <label>Institute Notice Upload </label> */}
+      
+      <form onSubmit={HandaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+      <p style={{fontSize:'17px'}}>Institute Notice Upload </p>
+      <dl class="dl-horizontal">
+
+      <dt><label>Notice Upload</label></dt>
+                    <dd> <input ref={fileRef} accept="application/pdf" style={{border:'none'}}
           type="file"
           onChange={(e) => {
             setFile(e.target.files[0]);
           }}
-        /> 
-        <span style={{width:'max-content', fontSize:'14px',color:'red'}}>(Only PDF Files are Allowed)</span>
-        <div style={{paddingLeft:'150%'}}><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button>
-        </div>
+          
+        /> </dd>
+       <span style={{ fontSize:'15px',color:'red'}}>(Only PDF Files are Allowed)</span> 
+        </dl>
+
+         
+        <span><button className="dashboard-btn dashboard-btn-scss" type="submit" >Submit</button>
+        </span>
+        
        
       </form>
-      </div>
+      
       
       
      
