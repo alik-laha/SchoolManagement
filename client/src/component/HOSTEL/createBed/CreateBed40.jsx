@@ -47,24 +47,27 @@ useEffect(() => {
     return (
         <>
             <div className="dashbrd-40-colm" style={{display:props.createbed}}>
-                <form onSubmit={handaleSubmit}>
-                    <div>
-                        <label>Bulding No.</label>
-                        <input type="text" placeholder="Bulding No." value={bulding} onChange={(e)=>setBulding(e.target.value)} required/>
-                    </div>
-                    <div>
-                        <label>Floor No.</label>
-                        <input type="number" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
-                    </div>
+                <form onSubmit={handaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+                <p style={{fontSize:'17px'}}> Room and Bed Details </p>
 
-                    <div>
-                        <label>Room No.</label>
-                        <input type="text" placeholder="Room No." value={room} onChange={(e)=>setRoom(e.target.value)} required/>
-                    </div>
-                    <div>
-                        <label>Total Bed Available</label>
-                        <input type="number" placeholder="Total Bed Available" value={totalbed} onChange={(e)=>setTotalBed(e.target.value)} required/>
-                    </div>
+                <dl class="dl-horizontal">
+                   
+                    <dt><label>Bulding</label></dt>
+                    <dd> <input type="text" placeholder="Bulding No." value={bulding} onChange={(e)=>setBulding(e.target.value)} required/>
+                    </dd>
+                    <dt><label>Floor</label></dt>
+                    <dd> <input type="number" placeholder="Floor No." value={floor} onChange={(e)=>setFloor(e.target.value)} required/>
+                    </dd>
+                    <dt><label>Room No.</label></dt>
+                    <dd> <input type="text" placeholder="Room No." value={room} onChange={(e)=>setRoom(e.target.value)} required/>
+                    </dd>
+                    <dt><label>Bed Available</label></dt>
+                    <dd> <input type="number" placeholder="Total Bed Available" value={totalbed} onChange={(e)=>setTotalBed(e.target.value)} required/>
+                    </dd>
+
+
+                   </dl> 
+                    
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                     {/* <input className="dashboard-btn dashboard-btn-scss" type="submit" value="Submit"/> */}
                 </form>
