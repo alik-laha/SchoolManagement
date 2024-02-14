@@ -273,7 +273,7 @@ const MasterStudentViewUpdate = (props) => {
         }
         if(item.applied_class!=='')
         {
-            setApplyClass(convertToRoman(item.applied_class));
+            setApplyClass(item.applied_class);
         }
         else{
             setApplyClass('');
@@ -939,7 +939,7 @@ const MasterStudentViewUpdate = (props) => {
                         <dd> <input
                             type="text"
                             className="read-only"
-                            value={applyClass}
+                            value={convertToRoman(applyClass)}
                             onChange={(e) => setApplyClass(e.target.value)}
                             placeholder="Applied Class"
                             required={true}
