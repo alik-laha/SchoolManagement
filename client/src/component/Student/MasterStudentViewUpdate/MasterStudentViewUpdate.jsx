@@ -433,7 +433,7 @@ const MasterStudentViewUpdate = (props) => {
                             setPinNo('');
                             setBspId('');
                             setApplyClass('');
-                            setAdmissionYear('');
+                            setAdmissionYear(new Date().getFullYear());
                             setAdmissonDate(new Date().toISOString().slice(0, 10));
                             setAge('');
                             setBloodGroup('');
