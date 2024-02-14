@@ -7,7 +7,18 @@ const AcademicEntryView= (props) => {
     const [view,setView]=useState("none")
     const [academicAll,setAcademicAll]=useState([])
     const currDate = new Date().toLocaleDateString();
-
+    function convertToRoman(num) {
+        var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+        roman = '',
+        i;
+        for ( i in lookup ) {
+          while ( num >= lookup[i] ) {
+            roman += i;
+            num -= lookup[i];
+          }
+        }
+        return roman;
+      }
 
     const clearTable = () => {
         setAcademicAll([]);
@@ -77,11 +88,12 @@ const AcademicEntryView= (props) => {
                                     <td>{data.current_academic_year}</td>
                                     
                                    
-                                    <td>{data.class}</td>
+                                    <td>{convertToRoman(data.class)}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
                                     <td>{data.admission_year}</td>
-                                    <td>{data.hostelentry === 1 ? 'Y' : 'N'}</td>
+                                    <td><input type='checkbox' checked={data.hostelentry === 1 ? true : false}></input></td>
+                                    {/* <td>{data.hostelentry === 1 ? 'Yes' : 'No'}</td> */}
                                 </tr>
                             )
 
