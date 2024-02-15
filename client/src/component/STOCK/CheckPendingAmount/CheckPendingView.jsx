@@ -55,10 +55,10 @@ let sum=0;
                 </tr>
                 </thead>
                 <tbody>
-                {viewStock.map((item) => (
+                {viewStock.map((item,idx) => (
                     sum=sum+item.pending_amount,
-                    <tr key={item.stock_id}>
-                        <td>{item.stock_id}</td>
+                    <tr key={idx}>
+                        <td>{idx+1}</td>
                         <td>{item.bill_id}</td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>
                         <td>{item.item_Name}</td>

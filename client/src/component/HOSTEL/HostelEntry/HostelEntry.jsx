@@ -180,7 +180,7 @@ const HostelEntry = (props) => {
                                 return(
 
                                     <tr key={idx}>
-                                        <td>{data.student_id}</td>
+                                        <td>{idx+1}</td>
                                         <td><input type='checkbox'
                                                    checked={data.hostelentry === 1 ? true : false}></input></td>
                                                    <td>{data.class}</td>

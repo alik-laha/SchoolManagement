@@ -38,7 +38,7 @@ const ViewAllItem=(props)=>{
                 {props.Item.map((vendor,idx)=>{
                     return(
                         <tr key={idx}>
-                            <td>{vendor.type_id}</td>
+                            <td>{idx+1}</td>
                             <td>{vendor.item_Type}</td>
                             <td>
                                 <button className='btn-warning dashboard-btn clear-gradient' onClick={()=>handleDelete(vendor.type_id,vendor.item_Type)}>Delete</button>

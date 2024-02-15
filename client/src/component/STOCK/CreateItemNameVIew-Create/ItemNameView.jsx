@@ -47,9 +47,9 @@ const [view, setView] = useState("none");
                 </tr>
             </thead>
             <tbody>
-                {data.map((data) => (
-                    <tr key={data.id}>
-                        <td>{data.id}</td>
+                {data.map((data,idx) => (
+                    <tr key={idx}>
+                        <td>{idx+1}</td>
                         <td>{data.item_type}</td>
                         <td>{data.item_name}</td>
                         <td>

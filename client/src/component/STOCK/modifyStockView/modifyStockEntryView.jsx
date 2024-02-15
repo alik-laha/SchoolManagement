@@ -205,9 +205,9 @@ const ModifyStockEntryView= (props) => {
                 </tr>
                 </thead>
                 <tbody style={{display: mainsvisibility}}>
-                {viewStock.map((item) => (
-                    <tr key={item.stock_id}>
-                        <td>{item.stock_id}</td>
+                {viewStock.map((item,idx) => (
+                    <tr key={idx}>
+                        <td>{idx+1}</td>
                         <td>{item.bill_id}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
                         <td><input type='checkbox' checked={item.cash_entry_flag === 1 ? true : false}></input></td>

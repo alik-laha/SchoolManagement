@@ -61,9 +61,9 @@ const SecondaryStockEntryAllView= (props) => {
                 </tr>
                 </thead>
                 <tbody>
-                {viewStock.map((item) => (
-                    <tr key={item.stock_id}>
-                        <td>{item.stock_id}</td>
+                {viewStock.map((item,idx) => (
+                    <tr key={idx}>
+                        <td>{idx+1}</td>
                         <td>{item.bill_id}</td>
                         <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
