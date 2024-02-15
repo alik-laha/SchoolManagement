@@ -690,7 +690,15 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
      AND b.exam_name = '${examName}'
      AND b.Year = '${year}'
      AND b.class = 2) and a.section = '${section}'`
-
+    Database.query(query,(err,result)=>{
+        if(err){
+            console.log(err)
+            return res.status(400).json({message:"Error Occured",err:err})
+        }
+        else{
+            return res.status(200).json({message:"Marks Fetched",data:result})
+        }
+    })
     }catch (err){
         console.log(err)
     }

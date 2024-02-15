@@ -9,7 +9,6 @@ const ExportStudentMarksSearch = (props) => {
 
     const FetchExamData=()=>{
         axios.get(`http://localhost:7000/api/v1/faculty/getallexam`).then((res)=>{
-            console.log(res.data.data[3].internal_exam_name)
             setExamData(res.data.data)
         }).catch((err)=>{
             console.log(err)

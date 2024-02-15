@@ -47,13 +47,13 @@ import CreateInternalMarksSearch from "../FACULTY/EditInternalMarks/CreateIntern
 import PromoteNextClassSearch from "../PromoteNextClass/PromoteNextClassSearch.jsx";
 import PromoteNextClassView from '../PromoteNextClass/PromoteNextClassView.jsx'
 import CreateMarksSearch from "../FACULTY/CreateExternalMarks/CreateExternalMarksSearch.jsx";
-import CreateExternalMarksView from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import ExportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
 import ExportStudentMarksView from '../FACULTY/ExportStudentMarks/ExportStudentMarksView.jsx'
 import CreateItemName from "../STOCK/CreateItemNameVIew-Create/CreateItemName.jsx";
 import ItemNameView from "../STOCK/CreateItemNameVIew-Create/ItemNameView.jsx";
 import EntryStockUsage from "../STOCKUSAGE/EntryStockusage.jsx";
 import StockUsageSearch from "../STOCKUSAGE/StockUsageView/StockUsageSearch.jsx";
+import CreateMarks from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -109,8 +109,8 @@ const DashBoardMain = (props) => {
     const [editExamName,setEditExamName]=useState("")
     const [editSubjectName,setEditSubjectName]=useState("")
     const [editMarks,setEditMarks]=useState(0)
-    const [entexam,setEntexam]=useState(0)
-    const [entSubject,setEntSubject]=useState(0)
+    const [entexam,setEntexam]=useState('')
+    const [entSubject,setEntSubject]=useState('')
     const [enttarget,setEnttarget]=useState(0)
 
   {/* User Start */}
@@ -467,7 +467,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} Exam={editExamName} Subject={editSubjectName} Marks={editMarks}/>
-            <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} exam={entexam} subject={entSubject} total={enttarget} />
+            <CreateMarks view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} exam={entexam} subject={entSubject} total={enttarget} />
             <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
           {/* Faculty End*/} 
         </div>
