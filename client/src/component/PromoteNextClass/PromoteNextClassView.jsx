@@ -46,7 +46,7 @@ const PromoteNextClassView= (props) => {
       useEffect(()=> {
         console.log(props.PromoteView)
         console.log(props.view )
-        if (props.PromoteView === "block" && props.view === "block" && props.SearchebyData.length>0) {
+        if (props.PromoteView === "block" && props.view === "block" ) {
             setView("block")
         }
         else {

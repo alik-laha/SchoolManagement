@@ -81,7 +81,7 @@ const MasterStudentViewUpdate = (props) => {
 
 
     useEffect(() => {
-       if(props.view==="block" && props.View40==="block" && props.data.length>0){
+       if(props.view==="block" && props.View40==="block"){
                 setView("block");
             }
             else {
