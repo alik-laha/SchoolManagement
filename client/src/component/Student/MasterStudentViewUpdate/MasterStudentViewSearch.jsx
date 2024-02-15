@@ -4,14 +4,16 @@ const MasterStudentViewSearch = (props) => {
     const [regNo,setRegNo]=useState("");
     const [admissionYear,setAdmissionYear]=useState("");
     const [applyClass,setApplyClass]=useState("")
+    const [inactivated,setInactivated]=useState(0);
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={
             regNo,
             admissionYear,
-            applyClass
+            applyClass,
+            active:inactivated
         }
-        axios.post("http://localhost:7000/api/v1/student/getmasterstudent",data)
+        axios.post("http://localhost:7000/api/v1/student/getstudentbyactive",data)
             .then((res)=>{
                 props.setMasterStudentData(res.data.result)
             })
@@ -86,8 +88,12 @@ const MasterStudentViewSearch = (props) => {
                         
                     </select> 
                 </div>
-
-
+                <div>
+                    <label>
+                        Student inactivated
+                    </label>
+                    <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} />
+                </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
 
             </form>
