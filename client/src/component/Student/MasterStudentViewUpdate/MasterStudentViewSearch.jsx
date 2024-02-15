@@ -4,7 +4,7 @@ const MasterStudentViewSearch = (props) => {
     const [regNo,setRegNo]=useState("");
     const [admissionYear,setAdmissionYear]=useState("");
     const [applyClass,setApplyClass]=useState("")
-    const [inactivated,setInactivated]=useState(0);
+    const [inactivated,setInactivated]=useState(1);
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={
@@ -92,7 +92,7 @@ const MasterStudentViewSearch = (props) => {
                     <label>
                         Student inactivated
                     </label>
-                    <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} />
+                    <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} checked={inactivated===1?true:false} />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
 
