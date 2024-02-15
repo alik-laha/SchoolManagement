@@ -991,6 +991,7 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setAdmissonDate(e.target.value)}
                             placeholder="Admission Date"
                             required={true}
+                            readOnly
                         /></dd>
                         <dt><label>Release Date</label></dt>
                         <dd>    <input
