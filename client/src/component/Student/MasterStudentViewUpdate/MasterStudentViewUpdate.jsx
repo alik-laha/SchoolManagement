@@ -159,7 +159,7 @@ const MasterStudentViewUpdate = (props) => {
         else{
             setReligion('');
         }
-        if(item.dob!=='')
+        if(item.dob!=='' || item.dob!=null || item.dob!==undefined )
         {
             setDob(item.dob.slice(0, 10))
         }
@@ -360,6 +360,7 @@ const MasterStudentViewUpdate = (props) => {
 
     const handleUpdate=(e)=>{
         e.preventDefault();
+        console.log(dob)
         const data = {
             name,
             regNo,
@@ -1074,7 +1075,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.student_Name}</td>
                                 <td>{item.sex}</td>
                                 <td>{item.religion}</td>
-                                <td>{item.dob.slice(0,10)}</td>
+                                <td>{item.dob===null ? item.dob:item.dob.slice(0,10)}</td>
                                 <td>{item.age}</td>
                                 <td>{item.cast}</td>
                                 <td>{item.blood_group}</td>

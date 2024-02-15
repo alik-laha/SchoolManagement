@@ -110,7 +110,6 @@ exports.GetAllStudent = (req, res) => {
 
 
 //Master student admission
-
 exports.MasterStudentAdmission = (req, res) => {
     const {
         name,
@@ -155,6 +154,20 @@ exports.MasterStudentAdmission = (req, res) => {
                 data: name, regNo, adharNo, sex, stream ,religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age
             })
         } else {
+            let DOB
+            let Age
+            if(dob===""){
+                DOB=null
+            }
+            else{
+                DOB=dob
+            }
+            if(age ===null){
+                Age=0
+            }
+            else{
+                Age=age
+            }
             let query = `
                 INSERT INTO master_student (
                     student_Name, adhar_no, registration_no, sex, stream, religion, dob, cast, physically_challenged, orphanage,
@@ -163,11 +176,11 @@ exports.MasterStudentAdmission = (req, res) => {
                     guardian_name, relationship, guardian_contact, address, pin_no, bsp_id, applied_class, admisson_year,
                      age,admisson_date, blood_group, acount_no, branch, ifsc
                 ) VALUES (
-                             "${name}", "${adharNo}", "${regNo}", "${sex}", "${stream}","${religion}", "${dob}", "${cast}", "${physicallyChallenged}",
+                             "${name}", "${adharNo}", "${regNo}", "${sex}", "${stream}","${religion}", ${DOB==null?"NULL":`'${DOB}'`}, "${cast}", "${physicallyChallenged}",
                              "${orphanage}", "${fatherName}", "${fatherQualification}", "${fatherOcupation}", "${fatherMonthlyIncome}",
                              "${fatherContactNo}", "${motherName}", "${motherQualification}", "${motherOcupation}", "${motherMonthlyIncome}",
                              "${motherContactNo}", "${guardianName}", "${relationship}", "${guardianContactNo}", "${address}", "${pinNo}",
-                             "${bspId}", "${applyClass}", "${admissionYear}", "${age}", "${admissonDate}", "${bloodGroup}",
+                             "${bspId}", "${applyClass}", "${admissionYear}", "${Age}", "${admissonDate}", "${bloodGroup}",
                              "${bankAcountNo}", "${brunch}", "${ifscCode}"
                          )`;
             Database.query(query, (err, result) => {
@@ -388,6 +401,20 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
             })
         }
         else{
+            let DOB
+            let Age
+            if(dob===""){
+                DOB=null
+            }
+            else{
+                DOB=dob
+            }
+            if(age ===null){
+                Age=0
+            }
+            else{
+                Age=age
+            }
             let query
 
                  query = `UPDATE master_student
@@ -396,7 +423,7 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                  sex='${sex}',
                                  stream='${stream}',
                                  religion='${religion}',
-                                 dob='${dob}',
+                                 dob=${DOB==null?"NULL":`'${DOB}'`},
                                  cast='${cast}',
                                  physically_challenged='${physicallyChallenged}',
                                  orphanage='${orphanage}',
@@ -417,9 +444,8 @@ exports.UpdateMasterStudentAdmission = (req, res) => {
                                  pin_no='${pinNo}',
                                  bsp_id='${bspId}',
                                  applied_class='${applyClass}',
-                                 age='${age}',
+                                 age='${Age}',
                                  admisson_date='${admissonDate}',
-                                 
                                  blood_group='${bloodGroup}',
                                  acount_no='${bankAcountNo}',
                                  branch='${brunch}',
