@@ -32,6 +32,7 @@ const CreateInternalMarks=(props)=>{
     const [beforeUpdate,setBeforeUpdate]=useState("block")
     const [afterUpdate,setAfterUpdate]=useState("none")
     const [entermarks,setentermarks]=useState("none")
+
     useEffect(() => {
         if(props.data.length>0 && props.view==="block" && props.view40==="block"){
             setView("block")

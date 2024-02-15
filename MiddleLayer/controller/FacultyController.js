@@ -329,7 +329,6 @@ exports.CreateExam = (req, res) => {
 }
 
 //create Marks
-
 exports.CreateMarks = (req, res) => {
     const {examName,subject,regNo,marks,Class}=req.body
     try{
@@ -675,5 +674,24 @@ exports.DeleteMarks = (req, res) => {
         console.log(err)
         return res.status(400).json({message: "Error Occured", err: err})
 
+    }
+}
+
+//marks entry for student
+exports.MarksEntry = (req, res) => {
+    const {examName,subject,Class,year,section}=req.body
+    try{
+        query=`SELECT a.student_Name, a.roll_no, a.section, a.registration_no ,a.class
+FROM Student_Admission a 
+WHERE a.class='${Class}' and a.registration_no NOT IN 
+    (SELECT b.regNo 
+     FROM Marks b 
+     WHERE b.subject = '${subject}'
+     AND b.exam_name = '${examName}'
+     AND b.Year = '${year}'
+     AND b.class = 2) and a.section = '${section}'`
+
+    }catch (err){
+        console.log(err)
     }
 }

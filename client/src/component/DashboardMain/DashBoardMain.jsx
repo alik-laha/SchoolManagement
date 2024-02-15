@@ -109,6 +109,9 @@ const DashBoardMain = (props) => {
     const [editExamName,setEditExamName]=useState("")
     const [editSubjectName,setEditSubjectName]=useState("")
     const [editMarks,setEditMarks]=useState(0)
+    const [entexam,setEntexam]=useState(0)
+    const [entSubject,setEntSubject]=useState(0)
+    const [enttarget,setEnttarget]=useState(0)
 
   {/* User Start */}
 
@@ -306,8 +309,11 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
     setClass(d1)
     setAcademicYear(d2)
 }
-   const ExternalMarksData=(data)=>{
+   const ExternalMarksData=(data,d1,d2,d3)=>{
     setExternalMarksData(data)
+      setEntexam(d1)
+        setEntSubject(d2)
+        setEnttarget(d3)
    }
    const MarksData=(data)=>{
     setMarksData(data)
@@ -461,7 +467,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} Exam={editExamName} Subject={editSubjectName} Marks={editMarks}/>
-            <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} />
+            <CreateExternalMarksView view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} exam={entexam} subject={entSubject} total={enttarget} />
             <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
           {/* Faculty End*/} 
         </div>

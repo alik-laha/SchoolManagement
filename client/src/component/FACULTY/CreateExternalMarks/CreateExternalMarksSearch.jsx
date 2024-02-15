@@ -14,8 +14,8 @@ const CreateMarks=(props)=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post(`Url`,{Class,academicYear:year,subject:updatedSubject,examName:updatedExamName,section}).then((res)=>{
-            props.setInternalMarks(res.data.data,updatedExamName,updatedSubject,target)
+        axios.post(`http://localhost:7000/api/v1/faculty/marksentry`,{Class,year,subject:updatedSubject,examName:updatedExamName,section}).then((res)=>{
+            props.setExternalMarks(res.data.data,updatedExamName,updatedSubject,target)
             console.log(res)
             props.setInternalMarksView("block")
         }).catch((err)=>{
