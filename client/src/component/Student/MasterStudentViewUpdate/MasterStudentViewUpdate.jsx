@@ -20,13 +20,13 @@ const MasterStudentViewUpdate = (props) => {
     const [fatherName, setFatherName] = useState('');
     const [fatherQualification, setFatherQualification] = useState('');
     const [fatherOcupation, setFatherOcupation] = useState('');
-    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState(0);
+    const [fatherMonthlyIncome, setFatherMonthlyIncome] = useState('');
     const [fatherContactNo, setFatherContactNo] = useState(0);
     const [motherName, setMotherName] = useState('');
     const [motherQualification, setMotherQualification] = useState('');
     const [motherOcupation, setMotherOcupation] = useState('');
-    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState(0);
-    const [motherContactNo, setMotherContactNo] = useState(0);
+    const [motherMonthlyIncome, setMotherMonthlyIncome] = useState('');
+    const [motherContactNo, setMotherContactNo] = useState('');
     const [guardianName, setGuardianName] = useState('');
     const [relationship, setRelationship] = useState('');
     const [guardianContactNo, setGuardianContactNo] = useState('');
@@ -38,7 +38,7 @@ const MasterStudentViewUpdate = (props) => {
     const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
     const [age, setAge] = useState('');
     const [bloodGroup, setBloodGroup] = useState('');
-    const [bankAcountNo, setBankAcountNo] = useState(0);
+    const [bankAcountNo, setBankAcountNo] = useState('');
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
     const[allView,setAllview]=useState("block")
@@ -213,14 +213,14 @@ const MasterStudentViewUpdate = (props) => {
             setFatherMonthlyIncome(item.father_monthlyIncome);
         }
         else{
-            setFatherMonthlyIncome(0);
+            setFatherMonthlyIncome('');
         }
         if(item.father_contact!=='' )
         {
             setFatherContactNo(item.father_contact);
         }
         else{
-            setFatherContactNo(0);
+            setFatherContactNo('');
         }
         if(item.mother_name!=='' )
         {
@@ -248,7 +248,7 @@ const MasterStudentViewUpdate = (props) => {
             setMotherMonthlyIncome(item.mother_monthlyIncome);
         }
         else{
-            setMotherMonthlyIncome(0);
+            setMotherMonthlyIncome('');
         }
         if(item.mother_contact!=='null')
         {
@@ -331,7 +331,7 @@ const MasterStudentViewUpdate = (props) => {
             setBankAcountNo(item.bank_acount_no);
         }
         else{
-            setBankAcountNo(0)
+            setBankAcountNo('')
         }
         setBloodGroup(item.blood_group);
         
