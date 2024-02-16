@@ -112,7 +112,9 @@ const DashBoardMain = (props) => {
     const [entexam,setEntexam]=useState('')
     const [entSubject,setEntSubject]=useState('')
     const [enttarget,setEnttarget]=useState(0)
-
+    const [acClass,setAcClass]=useState(0)
+    const [acYear,setAcYear]=useState(0)
+    const [acRegNo,setAcRegNo]=useState('')
   {/* User Start */}
 
   //get all roles
@@ -251,9 +253,11 @@ const academicEntryUpdate=(data)=>{
     setacademicEntryUpdateShow(data)
 
 }
-  const academicEntryUpdateView=(data)=>{
-
+  const academicEntryUpdateView=(data,d1,d2,d3)=>{
       setacademicEntryUpdateData(data);
+        setAcClass(d1)
+        setAcYear(d3)
+        setAcRegNo(d2)
   }
 const academicAllShow=(data)=>{
   setviewallacademicEntryShow(data);
@@ -457,7 +461,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
          {/* Student Start*/} 
             <MasterStudentViewUpdate data={MasterStudentSearchDatas} view={masterStudentViewShow} View40={props.MasterStudentView} />
-            <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate}/>
+            <AcademicEntryUpdate SearchebyData={academicEntryUpdateData} view={academicEntryUpdateShow} academicallview={props.AcademicEntryUpdate} Class={acClass} regNo={acRegNo} year={acYear} />
             <AcademicEntryView academicallview={props.Academicview} view={viewallacademicEntryShow} SearchebyData={academicentrydata}/>
             <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={promoteViewData} Class={Class} AcademicYear={academicYear} />
          {/* Student End*/} 

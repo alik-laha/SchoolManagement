@@ -41,12 +41,28 @@ const AcademicEntryUpdate = (props) => {
         setRollNo(0)
         setRegNo("")
     }
+
+    const fetchnewData=()=>{
+        const data={
+            Class:props.Class,
+            regNo:props.regNo,
+            year:props.year
+        }
+        axios.post("http://localhost:7000/api/v1/student/getallstudent",data)
+            .then((res)=>{
+                setAcademicAll(res.data.result)
+            })
+            .catch((error)=>{
+                console.log(error)
+            } )
+    }
     const HandleSubmit=(index)=>{
         if(index===editedIndex) {
             axios.post("http://localhost:7000/api/v1/student/academecentry", {section, rollNo,regNo})
                 .then((res) => {
                     alert("Student Details Updated Successfully")
                     setEditedIndex(null)
+                    fetchnewData();
                 })
                 .catch((err) => {
                     console.log(err)

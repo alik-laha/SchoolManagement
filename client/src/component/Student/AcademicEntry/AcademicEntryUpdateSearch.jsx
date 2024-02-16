@@ -16,7 +16,7 @@ const AcademicEntryUpdateSearch= (props) => {
         }
         axios.post("http://localhost:7000/api/v1/student/getallstudent",data)
             .then((res)=>{
-                props.setAcademicEntryData(res.data.result)
+                props.setAcademicEntryData(res.data.result,Class,regNo,year)
             })
             .catch((error)=>{
                 console.log(error)
