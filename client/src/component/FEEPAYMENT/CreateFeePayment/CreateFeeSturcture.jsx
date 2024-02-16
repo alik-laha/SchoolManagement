@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const CreateFeeSturcture = (props) => {
     const [Class,setClass]=useState("")
@@ -23,6 +24,29 @@ const CreateFeeSturcture = (props) => {
     const [Total,setTotal]=useState(0)
     const HandleSubmit=(e)=>{
         e.preventDefault()
+        const data={
+            Class:Class,
+            year:Year,
+            FeeType:FeeType,
+            AdmissonFee:AdmissonFee,
+            hostelCharge:hostelCharge,
+            TutionFee:TutionFee,
+            CautionMoney:CautionMoney,
+            ExaminationFee:ExaminationFee,
+            GamesSportsExicursion:GamesSportsExicursion,
+            ElectricCharge:ElectricCharge,
+            LibraryFees:LibraryFees,
+            ComputerFees:ComputerFees,
+            DevelopmentFees:DevelopmentFees,
+            Miscellaneous:Miscellaneous,
+            LaundryCharge:LaundryCharge,
+            MedicalCharge:MedicalCharge,
+            Uniform:Uniform,
+            SessionCharge:SessionCharge,
+            BedFee:BedFee,
+            Total:Total
+        }
+        axios.post("http://localhost:7000/api/v1/fee/createfeestructure",data)
     }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
