@@ -382,7 +382,9 @@ const stockUsageVisiblity = () => {
           <span onClick={stockUsageVisiblity} className="user"
                 style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Fee Payment<p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>
-            
+            <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}>&#x3e;&nbsp;&nbsp;
+              Create fee Structure
+            </div>
           </div>
 
         </div>

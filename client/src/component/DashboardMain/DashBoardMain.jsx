@@ -54,6 +54,7 @@ import ItemNameView from "../STOCK/CreateItemNameVIew-Create/ItemNameView.jsx";
 import EntryStockUsage from "../STOCKUSAGE/EntryStockusage.jsx";
 import StockUsageSearch from "../STOCKUSAGE/StockUsageView/StockUsageSearch.jsx";
 import CreateMarks from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
+import CreateFeeSturcture from "../FEEPAYMENT/CreateFeePayment/CreateFeeSturcture.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -417,7 +418,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CreateMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
             {/* Export Exam Search*/}
             <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} setSearchcombination={handaleMarksFlag}/>
-          {/* Faculty End */} 
+          {/* Faculty End */}
+
+            {/*fee payment Start*/}
+            <CreateFeeSturcture view={props.CreateFeeStructure}/>
         </div>
 
 
