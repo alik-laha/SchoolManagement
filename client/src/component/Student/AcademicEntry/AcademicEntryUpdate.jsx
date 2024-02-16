@@ -10,20 +10,18 @@ const AcademicEntryUpdate = (props) => {
     const [regNo,setRegNo]=useState("")
 
     useEffect(()=>{
-        console.log(props)
         setAcademicAll(props.SearchebyData)
     },[props.SearchebyData])
 
 
     useEffect(()=> {
-        console.log(props.academicallview,props.view)
-        if (props.academicallview === "block" && props.view === "block") {
+        if (props.academicallview === "block" && props.view === "block" && props.SearchebyData.length > 0) {
             setView("block")
         }
         else {
             setView("none")
         }
-    },[props.academicallview,props.view])
+    },[props.academicallview,props.view,props.SearchebyData])
 
     const clearTable = () => {
         setAcademicAll([]);
@@ -48,9 +46,7 @@ const AcademicEntryUpdate = (props) => {
             axios.post("http://localhost:7000/api/v1/student/academecentry", {section, rollNo,regNo})
                 .then((res) => {
                     alert("Student Details Updated Successfully")
-                    console.log(res)
                     setEditedIndex(null)
-                    setView('none')
                 })
                 .catch((err) => {
                     console.log(err)
