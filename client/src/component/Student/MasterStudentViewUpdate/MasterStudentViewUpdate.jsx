@@ -159,7 +159,7 @@ const MasterStudentViewUpdate = (props) => {
         else{
             setReligion('');
         }
-        if(item.dob!=='' || item.dob!=null || item.dob!==undefined )
+        if( item.dob!=null  )
         {
             setDob(item.dob.slice(0, 10))
         }
