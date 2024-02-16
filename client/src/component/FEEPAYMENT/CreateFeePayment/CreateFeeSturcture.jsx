@@ -21,11 +21,12 @@ const CreateFeeSturcture = (props) => {
     const [SessionCharge,setSessionCharge]=useState(0)
     const [BedFee,setBedFee]=useState(0)
     const [Total,setTotal]=useState(0)
-
-
+    const HandleSubmit=(e)=>{
+        e.preventDefault()
+    }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
-            <form>
+            <form onSubmit={HandleSubmit}>
                 <div>
                     <label>Class</label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} required value={Class}>
@@ -48,7 +49,6 @@ const CreateFeeSturcture = (props) => {
                         <option value="6">
                             VI
                         </option>
-                        v
                         <option value="7">
                             VII
                         </option>
@@ -106,7 +106,8 @@ const CreateFeeSturcture = (props) => {
                 </div>
                 <div>
                     <label>Games,Sports & Exicursion</label>
-                    <input type="number" value={GamesSportsExicursion} onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
+                    <input type="number" value={GamesSportsExicursion}
+                           onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
                 </div>
                 <div>
                     <label>Electric Charge</label>
@@ -152,6 +153,7 @@ const CreateFeeSturcture = (props) => {
                     <label>Total</label>
                     <input type="number" value={Total} readOnly={true}/>
                 </div>
+                <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>
     )
