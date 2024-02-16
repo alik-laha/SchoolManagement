@@ -8,7 +8,7 @@ const CreateFeeSturcture = (props) => {
            <form className="dashbrd-40-colm">
                <div>
                      <label>Class</label>
-                     <input type="text" value={Class} onChange={(e)=>setClass(e.target.value)} />
+                     <input type="number" value={Class} onChange={(e)=>setClass(e.target.value)} />
                </div>
                <div>
                    <label>Payment Type</label>
