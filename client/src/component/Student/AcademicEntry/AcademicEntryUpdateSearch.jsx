@@ -33,7 +33,49 @@ const AcademicEntryUpdateSearch= (props) => {
                         <label>
                             Search By Class.
                         </label>
-                        <input placeholder='Class' type="text" value={Class} onChange={(e) => setClass(e.target.value)}/>
+                        {/* <input placeholder='Class' type="text" value={Class} onChange={(e) => setClass(e.target.value)}/> */}
+                        <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class}>
+                        <option value="">Class</option>
+                        <option value="1">
+                        I
+                        </option>
+                        <option value="2">
+                            II
+                        </option>
+                        <option value="3">
+                            III
+                        </option>
+                        <option value="4">
+                            IV
+                        </option>
+                        <option value="5">
+                            V
+                        </option>
+                        <option value="6">
+                            VI
+                        </option>
+                        v
+                        <option value="7">
+                            VII
+                        </option>
+                        
+                        <option value="8">
+                            VIII
+                        </option>
+                        <option value="9">
+                            IX
+                        </option>
+                        <option value="10">
+                            X
+                        </option>
+                        <option value="11">
+                            XI
+                        </option>
+                        <option value="12">
+                            XII
+                        </option>
+                        
+                    </select> 
                     </div>
 
                     <div>
