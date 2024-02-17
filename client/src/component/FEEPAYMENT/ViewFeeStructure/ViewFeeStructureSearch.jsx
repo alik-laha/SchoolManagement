@@ -9,7 +9,7 @@ const ViewFeeStructureSearch = (props) => {
         e.preventDefault()
        axios.post("http://localhost:7000/api/v1/fee/getfeestructure",{Class,year:Year})
            .then((res)=>{
-               console.log(res)
+               props.viewFeeStructure(res.data.result,"block")
            })
               .catch((error)=>{
                 console.log(error)

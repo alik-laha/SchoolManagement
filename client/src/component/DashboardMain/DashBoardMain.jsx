@@ -56,6 +56,7 @@ import StockUsageSearch from "../STOCKUSAGE/StockUsageView/StockUsageSearch.jsx"
 import CreateMarks from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import CreateFeeSturcture from "../FEEPAYMENT/CreateFeePayment/CreateFeeSturcture.jsx";
 import ViewFeeStructureSearch from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructureSearch.jsx";
+import ViewFeeStructure from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructure.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -117,6 +118,11 @@ const DashBoardMain = (props) => {
     const [acClass,setAcClass]=useState(0)
     const [acYear,setAcYear]=useState(0)
     const [acRegNo,setAcRegNo]=useState('')
+
+    const [viewStructData,setViewStructData]=useState([])
+    const [ViewStructView,setViewStructView]=useState("none")
+
+
   {/* User Start */}
 
   //get all roles
@@ -338,6 +344,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handleItemname=(data)=>{
       setItemNameData(data)
   }
+  const handleViewFeeStructData=(data,d1)=>{
+      setViewStructData(data)
+      setViewStructView(d1)
+  }
   
   return (
     <>
@@ -423,7 +433,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
             {/*fee payment Start*/}
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
-            <ViewFeeStructureSearch view={props.ViewFeeStructure}/>
+            <ViewFeeStructureSearch view={props.ViewFeeStructure} viewFeeStructure={handleViewFeeStructData}/>
         </div>
 
 
@@ -479,7 +489,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} Exam={editExamName} Subject={editSubjectName} Marks={editMarks}/>
             <CreateMarks view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} exam={entexam} subject={entSubject} total={enttarget} />
             <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
-          {/* Faculty End*/} 
+          {/* Faculty End*/}
+
+
+            <ViewFeeStructure data={viewStructData} view40={props.ViewFeeStructure} view={ViewStructView} />
         </div>
       </div>
     </>
