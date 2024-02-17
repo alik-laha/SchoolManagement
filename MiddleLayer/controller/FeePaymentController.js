@@ -20,3 +20,40 @@ exports.CreateFeeStructure = (req, res) => {
         console.log(error)
     }
 }
+
+
+//Get Fee Structure
+exports.GetFeeStructure = (req, res) => {
+    try{
+        const {Class,year} = req.body
+        let query
+        if(Class && year) {
+            query = `SELECT *
+                     FROM fee_structure
+                     WHERE Class = '${Class}' AND year = '${year}'`
+        }
+        else if(Class){
+            query = `SELECT *
+                     FROM fee_structure
+                     WHERE Class = '${Class}'`
+        }
+        else if(year){
+            query = `SELECT *
+                     FROM fee_structure
+                     WHERE year = '${year}'`
+        }
+        else{
+            query = `SELECT *
+                     FROM fee_structure`
+        }
+        Database.query(query,(err,result)=>{
+            if(err){
+                return res.status(400).json({msg:err})
+            }else{
+                return res.status(200).json({result})
+            }
+        })
+    }catch (error) {
+        console.log(error)
+    }
+}

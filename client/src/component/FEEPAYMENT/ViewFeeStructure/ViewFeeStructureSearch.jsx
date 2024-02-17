@@ -1,16 +1,27 @@
 import {useState} from "react";
+import axios from "axios";
 
 const ViewFeeStructureSearch = (props) => {
     const [Class,setClass]=useState(0)
     const [Year,setYear]=useState(null)
 
+    const handleSearch=(e)=>{
+        e.preventDefault()
+       axios.post("http://localhost:7000/api/v1/fee/getfeestructure",{Class,year:Year})
+           .then((res)=>{
+               console.log(res)
+           })
+              .catch((error)=>{
+                console.log(error)
+              })
+    }
 
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
-            <form>
+            <form onSubmit={handleSearch}>
                 <div>
                     <label>Class</label>
-                    <select onChange={(e) => setClass(parseInt(e.target.value))} required value={Class}>
+                    <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class}>
                         <option value="">Class</option>
                         <option value="1">
                             I
