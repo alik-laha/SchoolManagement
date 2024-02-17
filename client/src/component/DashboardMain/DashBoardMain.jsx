@@ -58,6 +58,7 @@ import CreateFeeSturcture from "../FEEPAYMENT/CreateFeePayment/CreateFeeSturctur
 import ViewFeeStructureSearch from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructureSearch.jsx";
 import ViewFeeStructure from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructure.jsx";
 import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntry.jsx";
+import ViewFeePaymentSearch from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePaymentSearch.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -436,6 +437,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
             <ViewFeeStructureSearch view={props.ViewFeeStructure} viewFeeStructure={handleViewFeeStructData}/>
             <StudentFeePaymentEntry view={props.EntryFeePayment}/>
+            <ViewFeePaymentSearch view={props.ViewFeePayment}/>
         </div>
 
 
