@@ -1,6 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
-
 const CreateFeeSturcture = (props) => {
     const [Class,setClass]=useState("")
     const [FeeType,setFeeType]=useState("")
@@ -22,6 +21,32 @@ const CreateFeeSturcture = (props) => {
     const [SessionCharge,setSessionCharge]=useState(0)
     const [BedFee,setBedFee]=useState(0)
     const [Total,setTotal]=useState(0)
+
+
+    const calculateTotal = () => {
+        setTotal(
+                Number(AdmissonFee) +
+                Number(hostelCharge) +
+                Number(TutionFee) +
+                Number(CautionMoney) +
+                Number(ExaminationFee) +
+                Number(GamesSportsExicursion) +
+                Number(ElectricCharge) +
+                Number(LibraryFees) +
+                Number(ComputerFees) +
+                Number(DevelopmentFees) +
+                Number(Miscellaneous) +
+                Number(LaundryCharge) +
+                Number(MedicalCharge) +
+                Number(Uniform) +
+                Number(SessionCharge) +
+                Number(BedFee)
+        )
+    };
+
+    useEffect(() => {
+        calculateTotal()
+    }, [AdmissonFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee]);
     const HandleSubmit=(e)=>{
         e.preventDefault()
         const data={
@@ -69,7 +94,7 @@ const CreateFeeSturcture = (props) => {
                 setUniform(0)
                 setSessionCharge(0)
                 setBedFee(0)
-                setTotal(0)
+                // setTotal(0)
             }).catch((error)=>{
             console.log(error)
         })
