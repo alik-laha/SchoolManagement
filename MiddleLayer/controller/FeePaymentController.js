@@ -57,3 +57,59 @@ exports.GetFeeStructure = (req, res) => {
         console.log(error)
     }
 }
+
+//Edit Fee Structure
+exports.EditFeeStructure = (req, res) => {
+    try {
+        const {
+            id,
+            AdmissonFee,
+            hostelCharge,
+            TutionFee,
+            CautionMoney,
+            ExaminationFee,
+            GamesSportsExicursion,
+            ElectricCharge,
+            LibraryFees,
+            ComputerFees,
+            DevelopmentFees,
+            Miscellaneous,
+            LaundryCharge,
+            MedicalCharge,
+            Uniform,
+            SessionCharge,
+            BedFee,
+            Total
+        } = req.body
+        let query = `UPDATE fee_structure
+                     SET
+                        admission_fee='${AdmissonFee}',
+                         hostel_fee='${hostelCharge}',
+                         tution_fee='${TutionFee}',
+                         caution_fee='${CautionMoney}',
+                         examination_fee='${ExaminationFee}',
+                         sports_fee='${GamesSportsExicursion}',
+                         electric_fee='${ElectricCharge}',
+                         library_fee='${LibraryFees}',
+                         computer_fee='${ComputerFees}',
+                         development_fee='${DevelopmentFees}',
+                         miscellaneous_fee='${Miscellaneous}',
+                         laundry_fee='${LaundryCharge}',
+                         madical_fee='${MedicalCharge}',
+                         uniform_fee='${Uniform}',
+                         session_fee='${SessionCharge}',
+                         bed_fee='${BedFee}',
+                         total_fee='${Total}'
+                     WHERE id = '${id}'`
+        Database.query(query, (err, result) => {
+            if (err) {
+                return res.status(400).json({msg: err})
+            } else {
+                return res.status(200).json({msg: "Fee Structure Updated Successfully"})
+            }
+        })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
