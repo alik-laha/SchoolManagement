@@ -307,7 +307,7 @@ const MasterStudentEntry= (props) => {
                         type="number"
                         value={age}
                         onChange={(e) => setAge(e.target.value)}
-                        placeholder="Age"
+                        placeholder="Age" readOnly
                         
                     /></dd>
                         
@@ -440,7 +440,7 @@ const MasterStudentEntry= (props) => {
                         type="number"
                         value={fatherContactNo}
                         onChange={(e) => setFatherContactNo(e.target.value)}
-                        
+                        placeholder="Father Contact No."      
                     /></dd>
                     <dt><label>Monthly Income</label></dt>
                    <dd><input

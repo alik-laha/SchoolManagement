@@ -327,8 +327,8 @@ const MasterStudentViewUpdate = (props) => {
         else{
             setAge('');
         }
-        if(item.bank_acount_no !=="undefined"){
-            setBankAcountNo(item.bank_acount_no);
+        if(item.acount_no !=="undefined"){
+            setBankAcountNo(item.acount_no);
         }
         else{
             setBankAcountNo('')
@@ -735,7 +735,7 @@ const MasterStudentViewUpdate = (props) => {
                             value={age}
                             onChange={(e) => setAge(e.target.value)}
                             placeholder="Age"
-                            required={true}
+                            required={true} readOnly
                         /></dd>
                          <dt> <label>Cast*</label></dt>
                         <dd>  <select onChange={(e) => setCast(e.target.value)} required value={cast}>
@@ -777,7 +777,7 @@ const MasterStudentViewUpdate = (props) => {
                         /></dd>
                          <dt><label>Pin Number*</label></dt>
                         <dd>   <input
-                            type="number"
+                            type="text"
                             value={pinNo}
                             onChange={(e) => setPinNo(e.target.value)}
                             placeholder="Pin Number"
@@ -821,7 +821,7 @@ const MasterStudentViewUpdate = (props) => {
                         /></dd>
                         <dt><label>Guardian Contact No*</label></dt>
                         <dd>    <input
-                            type="number"
+                            type="text"
                             value={guardianContactNo}
                             onChange={(e) => setGuardianContactNo(e.target.value)}
                             placeholder="Guardian Contact No"
@@ -850,14 +850,14 @@ const MasterStudentViewUpdate = (props) => {
                         /></dd>
                         <dt><label>Father Contact No.</label></dt>
                         <dd>   <input
-                            type="number"
+                            type="text"
                             value={fatherContactNo}
                             onChange={(e) => setFatherContactNo(e.target.value)}
                             placeholder="Father contact No"
                         /></dd>
                         <dt><label>Father Monthly Income</label></dt>
                         <dd> <input
-                            type="number"
+                            type="text"
                             value={fatherMonthlyIncome}
                             onChange={(e) => setFatherMonthlyIncome(e.target.value)}
                             placeholder="Father Monthly Income"
@@ -885,14 +885,14 @@ const MasterStudentViewUpdate = (props) => {
                         /></dd>
                         <dt><label>Mother Contact No.</label></dt>
                         <dd>    <input
-                            type="number"
+                            type="text"
                             value={motherContactNo}
                             onChange={(e) => setMotherContactNo(e.target.value)}
                             placeholder="Mother contact No"
                         /></dd>
                         <dt><label>Mother Monthly Income</label></dt>
                         <dd> <input
-                            type="number"
+                            type="text"
                             value={motherMonthlyIncome}
                             onChange={(e) => setMotherMonthlyIncome(e.target.value)}
                             placeholder="Mother Monthly Income"
@@ -905,7 +905,7 @@ const MasterStudentViewUpdate = (props) => {
                     <dl>
                         <dt><label>Aadhar Number</label></dt>
                         <dd> <input
-                            type="number"
+                            type="text"
                             value={adharNo}
                             onChange={(e) => setAdharNo(e.target.value)}
                             placeholder="Adhar Number"
@@ -925,13 +925,7 @@ const MasterStudentViewUpdate = (props) => {
                             onChange={(e) => setBrunch(e.target.value)}
                             placeholder="Branch"
                         /></dd>
-                        <dt><label>Branch Name</label></dt>
-                        <dd><input
-                            type="text"
-                            value={brunch}
-                            onChange={(e) => setBrunch(e.target.value)}
-                            placeholder="Branch"
-                        /></dd>
+                        
                         <dt><label>IFSC Code</label></dt>
                         <dd>  <input
                             type="text"
