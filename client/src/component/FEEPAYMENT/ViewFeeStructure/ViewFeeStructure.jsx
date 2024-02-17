@@ -29,7 +29,7 @@ const ViewFeeStructure = (props) => {
     },[props.data])
 
     useEffect(() => {
-        if (props.view === "block"&& props.view40==="block") {
+        if ( props.data.length>0 && props.view40==="block") {
             setView("block")
         }
         else {
@@ -113,6 +113,7 @@ const ViewFeeStructure = (props) => {
    }
 
     return(
+        <>
         <div style={{display:view}}>
             <table className="table-60">
                 <thead>
@@ -181,6 +182,7 @@ const ViewFeeStructure = (props) => {
                 </tbody>
             </table>
         </div>
+        </>
     )
 }
 export default ViewFeeStructure;
