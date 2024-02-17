@@ -13,6 +13,18 @@ const AcademicEntryUpdate = (props) => {
         setAcademicAll(props.SearchebyData)
     },[props.SearchebyData])
 
+    function convertToRoman(num) {
+        var lookup = {M:1000,CM:900,D:500,CD:400,C:100,XC:90,L:50,XL:40,X:10,IX:9,V:5,IV:4,I:1},
+        roman = '',
+        i;
+        for ( i in lookup ) {
+          while ( num >= lookup[i] ) {
+            roman += i;
+            num -= lookup[i];
+          }
+        }
+        return roman;
+      }
 
     useEffect(()=> {
         if (props.academicallview === "block" && props.view === "block" && props.SearchebyData.length > 0) {
@@ -101,7 +113,7 @@ const AcademicEntryUpdate = (props) => {
                                <td>{data.current_academic_year}</td>
                                
                                {/* <td>{data.admission_year}</td> */}
-                               <td>{data.class}</td>
+                               <td>{convertToRoman(data.class)}</td>
                                <td>{editedIndex!==index ? (
                                    data.section
                                ):(
