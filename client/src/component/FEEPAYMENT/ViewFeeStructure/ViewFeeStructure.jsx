@@ -56,7 +56,32 @@ const ViewFeeStructure = (props) => {
     setSessionFee(data.session_fee)
     setBedFee(data.bed_fee)
     setTotalFee(data.total_fee)
+
    }
+
+   const handleCancel=()=>{
+         setEditedIndex(null)
+       setAdmissionFee(0)
+       setHostelFee(0)
+       setTutionFee(0)
+       setCautionFee(0)
+       setExaminationFee(0)
+       setSportsFee(0)
+       setElectricFee(0)
+       setLibraryFee(0)
+       setComputerFee(0)
+       setDevelopmentFee(0)
+       setMiscellaneousFee(0)
+       setLaundryFee(0)
+       setMedicalFee(0)
+       setUniformFee(0)
+       setSessionFee(0)
+       setBedFee(0)
+       setTotalFee(0)
+
+   }
+
+
     return(
         <div style={{display:view}}>
             <table className="table-60">
@@ -93,24 +118,32 @@ const ViewFeeStructure = (props) => {
                             <td>{data.year}</td>
                             <td>{data.fee_type}</td>
                             <td>{index===editedIndex ? <input value={admissionFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.admission_fee}</td>
-                            <td>{data.hostel_fee}</td>
-                            <td>{data.tution_fee}</td>
-                            <td>{data.caution_fee}</td>
-                            <td>{data.examination_fee}</td>
-                            <td>{data.sports_fee}</td>
-                            <td>{data.electric_fee}</td>
-                            <td>{data.library_fee}</td>
-                            <td>{data.computer_fee}</td>
-                            <td>{data.development_fee}</td>
-                            <td>{data.miscellaneous_fee}</td>
-                            <td>{data.laundry_fee}</td>
-                            <td>{data.madical_fee}</td>
-                            <td>{data.uniform_fee}</td>
-                            <td>{data.session_fee}</td>
-                            <td>{data.bed_fee}</td>
+                            <td>{index===editedIndex ? <input value={hostelFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.hostel_fee}</td>
+                            <td>{index===editedIndex ? <input value={tutionFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.tution_fee}</td>
+                            <td>{index===editedIndex ? <input value={cautionFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.caution_fee}</td>
+                            <td>{index===editedIndex ? <input value={examinationFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.examination_fee}</td>
+                            <td>{index===editedIndex ? <input value={sportsFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.sports_fee}</td>
+                            <td>{index===editedIndex ? <input value={electricFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.electric_fee}</td>
+                            <td>{index===editedIndex ? <input value={libraryFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.library_fee}</td>
+                            <td>{index===editedIndex ? <input value={computerFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.computer_fee}</td>
+                            <td>{index===editedIndex ? <input value={developmentFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.development_fee}</td>
+                            <td>{index===editedIndex ? <input value={miscellaneousFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.miscellaneous_fee}</td>
+                            <td>{index===editedIndex ? <input value={laundryFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.laundry_fee}</td>
+                            <td>{index===editedIndex ? <input value={medicalFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.madical_fee}</td>
+                            <td>{index===editedIndex ? <input value={uniformFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.uniform_fee}</td>
+                            <td>{index===editedIndex ? <input value={sessionFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.session_fee}</td>
+                            <td>{index===editedIndex ? <input value={bedFee} onChange={(e)=>setAdmissionFee(e.target.value)}/>:data.bed_fee}</td>
                             <td>{data.total_fee}</td>
-                            <td>
-                                <button className="dashboard-btn dashboard-btn-scss" onClick={()=>editFeeStructure(data,index)}>Edit</button>
+                            <td>{
+                                index===editedIndex ? (
+                                    <>
+                                    <button className="dashboard-btn dashboard-btn-scss" onClick={handleCancel}>Cancel</button>
+                                    <button className="dashboard-btn dashboard-btn-scss" onClick={()=>setEditedIndex(null)}>Submit</button>
+                                    </>
+                                ):(
+                                    <button className="dashboard-btn dashboard-btn-scss" onClick={()=>editFeeStructure(data,index)}>Edit</button>
+                                )
+                            }
                             </td>
                         </tr>
                     )
