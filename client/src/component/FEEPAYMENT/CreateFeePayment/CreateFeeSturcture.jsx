@@ -47,6 +47,11 @@ const CreateFeeSturcture = (props) => {
             Total:Total
         }
         axios.post("http://localhost:7000/api/v1/fee/createfeestructure",data)
+            .then((res)=>{
+                console.log(res)
+            }).catch((error)=>{
+            console.log(error)
+        })
     }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
