@@ -34,7 +34,7 @@ const MasterStudentEntry= (props) => {
     const [applyClass, setApplyClass] = useState('');
     const [admissionYear, setAdmissionYear] = useState('');
     const [admissonDate, setAdmissonDate] = useState(new Date().toISOString().slice(0, 10));
-    const [age, setAge] = useState('');
+    const [age, setAge] = useState(0);
     const [bloodGroup, setBloodGroup] = useState('');
     const [bankAcountNo, setBankAcountNo] = useState("");
     const [brunch, setBrunch] = useState('');
