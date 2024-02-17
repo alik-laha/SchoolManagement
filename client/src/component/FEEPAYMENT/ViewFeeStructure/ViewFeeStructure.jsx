@@ -23,6 +23,30 @@ const ViewFeeStructure = (props) => {
     const [bedFee,setBedFee]=useState(0)
     const [totalFee,setTotalFee]=useState(0)
 
+    const calculateTotal = () => {
+        setTotalFee(
+            Number(admissionFee) +
+            Number(hostelFee) +
+            Number(tutionFee) +
+            Number(cautionFee) +
+            Number(examinationFee) +
+            Number(sportsFee) +
+            Number(electricFee) +
+            Number(libraryFee) +
+            Number(computerFee) +
+            Number(developmentFee) +
+            Number(miscellaneousFee) +
+            Number(laundryFee) +
+            Number(medicalFee) +
+            Number(uniformFee) +
+            Number(sessionFee) +
+            Number(bedFee)
+        )
+    };
+
+    useEffect(() => {
+        calculateTotal()
+    }, [admissionFee,hostelFee,tutionFee,cautionFee,examinationFee,sportsFee,electricFee,libraryFee,computerFee,developmentFee,miscellaneousFee,laundryFee,medicalFee,uniformFee,sessionFee,bedFee]);
 
     useEffect(() => {
         setFeeStructure(props.data)
@@ -164,7 +188,7 @@ const ViewFeeStructure = (props) => {
                             <td>{index===editedIndex ? <input value={uniformFee} onChange={(e)=>setUniformFee(e.target.value)}/>:data.uniform_fee}</td>
                             <td>{index===editedIndex ? <input value={sessionFee} onChange={(e)=>setSessionFee(e.target.value)}/>:data.session_fee}</td>
                             <td>{index===editedIndex ? <input value={bedFee} onChange={(e)=>setBedFee(e.target.value)}/>:data.bed_fee}</td>
-                            <td>{data.total_fee}</td>
+                            <td>{index===editedIndex ? totalFee:data.total_fee}</td>
                             <td>{
                                 index===editedIndex ? (
                                     <>
