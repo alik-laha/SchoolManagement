@@ -3,10 +3,58 @@ const Database = require('../Config/Dbconnection')
 //Create a new Fee Structure
 exports.CreateFeeStructure = (req, res) => {
     try{
-        const {Class,year,FeeType,AdmissonFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
+        let {Class,year,FeeType,AdmissonFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
         if(!Class || !year || !FeeType){
             return res.status(400).json({msg:"Please Enter All Fields"})
         }else{
+            if(AdmissonFee===""){
+                AdmissonFee=0
+            }
+            if(hostelCharge===""){
+                hostelCharge=0
+            }
+            if(TutionFee===""){
+                TutionFee=0
+            }
+            if(CautionMoney===""){
+                CautionMoney=0
+            }
+            if(ExaminationFee===""){
+                ExaminationFee=0
+            }
+            if(GamesSportsExicursion===""){
+                GamesSportsExicursion=0
+            }
+            if(ElectricCharge===""){
+                ElectricCharge=0
+            }
+            if(LibraryFees===""){
+                LibraryFees=0
+            }
+            if(ComputerFees===""){
+                ComputerFees=0
+            }
+            if(DevelopmentFees===""){
+                DevelopmentFees=0
+            }
+            if(Miscellaneous===""){
+                Miscellaneous=0
+            }
+            if(LaundryCharge===""){
+                LaundryCharge=0
+            }
+            if(MedicalCharge===""){
+                MedicalCharge=0
+            }
+            if(Uniform===""){
+                Uniform=0
+            }
+            if(SessionCharge===""){
+                SessionCharge=0
+            }
+            if(BedFee===""){
+                BedFee=0
+            }
             let query= `INSERT INTO fee_structure (Class,year,fee_type,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee) VALUES ('${Class}','${year}','${FeeType}','${AdmissonFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}')`
             Database.query(query,(err,result)=>{
                 if(err){
@@ -61,7 +109,7 @@ exports.GetFeeStructure = (req, res) => {
 //Edit Fee Structure
 exports.EditFeeStructure = (req, res) => {
     try {
-        const {
+        let {
             id,
             AdmissonFee,
             hostelCharge,
@@ -81,6 +129,54 @@ exports.EditFeeStructure = (req, res) => {
             BedFee,
             Total
         } = req.body
+        if(AdmissonFee===""){
+            AdmissonFee=0
+        }
+        if(hostelCharge===""){
+            hostelCharge=0
+        }
+        if(TutionFee===""){
+            TutionFee=0
+        }
+        if(CautionMoney===""){
+            CautionMoney=0
+        }
+        if(ExaminationFee===""){
+            ExaminationFee=0
+        }
+        if(GamesSportsExicursion===""){
+            GamesSportsExicursion=0
+        }
+        if(ElectricCharge===""){
+            ElectricCharge=0
+        }
+        if(LibraryFees===""){
+            LibraryFees=0
+        }
+        if(ComputerFees===""){
+            ComputerFees=0
+        }
+        if(DevelopmentFees===""){
+            DevelopmentFees=0
+        }
+        if(Miscellaneous===""){
+            Miscellaneous=0
+        }
+        if(LaundryCharge===""){
+            LaundryCharge=0
+        }
+        if(MedicalCharge===""){
+            MedicalCharge=0
+        }
+        if(Uniform===""){
+            Uniform=0
+        }
+        if(SessionCharge===""){
+            SessionCharge=0
+        }
+        if(BedFee===""){
+            BedFee=0
+        }
         let query = `UPDATE fee_structure
                      SET
                         admission_fee='${AdmissonFee}',
