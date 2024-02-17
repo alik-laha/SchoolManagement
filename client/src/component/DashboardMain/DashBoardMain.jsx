@@ -55,6 +55,7 @@ import EntryStockUsage from "../STOCKUSAGE/EntryStockusage.jsx";
 import StockUsageSearch from "../STOCKUSAGE/StockUsageView/StockUsageSearch.jsx";
 import CreateMarks from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import CreateFeeSturcture from "../FEEPAYMENT/CreateFeePayment/CreateFeeSturcture.jsx";
+import ViewFeeStructureSearch from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructureSearch.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -422,6 +423,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
             {/*fee payment Start*/}
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
+            <ViewFeeStructureSearch view={props.ViewFeeStructure}/>
         </div>
 
 

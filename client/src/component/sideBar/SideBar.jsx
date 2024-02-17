@@ -385,6 +385,9 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}>&#x3e;&nbsp;&nbsp;
               Create fee Structure
             </div>
+            <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}>&#x3e;&nbsp;&nbsp;
+              View/edit fee Structure
+            </div>
           </div>
 
         </div>
