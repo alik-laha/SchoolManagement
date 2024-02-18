@@ -14,13 +14,42 @@ const StudentFeePaymentEntry = (props) => {
     }, [props.view,props.data]);
 
     useEffect(() => {
+        console.log(props.data)
         setData(props.data)
     },[props.data])
 
+    const handleClick=()=>{
+
+    }
 
     return(
         <div style={{display:view}}>
-            <h1>Alik laha</h1>
+            <table className="table-60">
+                <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Name</th>
+                    <th>Reg No</th>
+                    <th>Year</th>
+                   <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {
+                    data.map((item,index)=>{
+                        return(
+                            <tr key={index}>
+                                <td>{item.class}</td>
+                                <td>{item.student_Name}</td>
+                                <td>{item.registration_no}</td>
+                                <td>{item.current_academic_year}</td>
+                                <td><button onClick={handleClick} className="dashboard-btn dashboard-btn-scss">Select</button></td>
+                            </tr>
+                        )
+                    })
+                }
+                </tbody>
+            </table>
         </div>
     )
 }
