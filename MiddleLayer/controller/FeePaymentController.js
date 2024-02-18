@@ -216,46 +216,139 @@ exports.GetStudentForFeeEntry = (req, res) => {
     try{
         const{Class,year,feeType,regNo} = req.body
         let tableName
-        if(feeType==="Monthly"){
-           tableName = "monthly_fee"
-        }
-        else if(feeType==="NewAdmission"){
-            tableName = "new_admission_fee"
-        }
-        else {
-            tableName = "re_admission_fee"
-        }
+
         let query
         if(Class && year && feeType && regNo) {
-            query = `SELECT 
+
+
+            if(feeType==="Monthly"){
+
+
+                query = `SELECT 
     a.student_Name, 
     a.roll_no, 
     a.section, 
     a.registration_no,
     a.class,
+    a.current_academic_year as year,
     (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
-    (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+    (SELECT c.status  FROM monthly_fee c WHERE c.regNo=a.registration_no) AS status
 FROM 
     Student_Admission a 
 WHERE 
     a.class = ${Class} AND 
     a.current_academic_year = ${year}
     AND a.registration_no = '${regNo}';`
-        }else{
-            query = `SELECT 
+
+
+            }
+
+
+            else if(feeType==="NewAdmission"){
+
+
+                query = `SELECT 
     a.student_Name, 
     a.roll_no, 
     a.section, 
-    a.registration_no, 
+    a.registration_no,
     a.class,
-    a.current_academic_year AS year,
+    a.current_academic_year as year,
     (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
-    (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+    (SELECT c.status  FROM  new_admission_fee c WHERE c.regNo=a.registration_no) AS status
+FROM 
+    Student_Admission a 
+WHERE 
+    a.class = ${Class} AND 
+    a.current_academic_year = ${year}
+    AND a.registration_no = '${regNo}';`
+
+            }
+
+            else {
+
+                query = `SELECT 
+    a.student_Name, 
+    a.roll_no, 
+    a.section, 
+    a.registration_no,
+    a.class,
+    a.current_academic_year as year,
+    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
+    (SELECT c.status  FROM re_admission_fee c WHERE c.regNo=a.registration_no) AS status
+FROM 
+    Student_Admission a 
+WHERE 
+    a.class = ${Class} AND 
+    a.current_academic_year = ${year}
+    AND a.registration_no = '${regNo}';`
+
+            }
+
+        }else{
+
+            if(feeType==="Monthly"){
+
+
+                query = `SELECT 
+    a.student_Name, 
+    a.roll_no, 
+    a.section, 
+    a.registration_no,
+    a.class,
+    a.current_academic_year as year,
+    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
+    (SELECT c.status  FROM monthly_fee c WHERE c.regNo=a.registration_no) AS status
 FROM 
     Student_Admission a 
 WHERE 
     a.class = ${Class} AND 
     a.current_academic_year = ${year};`
+
+
+            }
+
+
+            else if(feeType==="NewAdmission"){
+
+
+                query = `SELECT 
+    a.student_Name, 
+    a.roll_no, 
+    a.section, 
+    a.registration_no,
+    a.class,
+    a.current_academic_year as year,
+    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
+    (SELECT c.status  FROM  new_admission_fee c WHERE c.regNo=a.registration_no) AS status
+FROM 
+    Student_Admission a 
+WHERE 
+    a.class = ${Class} AND 
+    a.current_academic_year = ${year};`
+
+            }
+
+            else {
+
+                query = `SELECT 
+    a.student_Name, 
+    a.roll_no, 
+    a.section, 
+    a.registration_no,
+    a.class,
+    a.current_academic_year as year,
+    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
+    (SELECT c.status  FROM re_admission_fee c WHERE c.regNo=a.registration_no) AS status
+FROM 
+    Student_Admission a 
+WHERE 
+    a.class = ${Class} AND 
+    a.current_academic_year = ${year};`
+
+            }
+
+
         }
 Database.query(query,(err,result)=>{
     if(err){
