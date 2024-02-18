@@ -93,7 +93,7 @@ const handlesubmit = (e) => {
 
                 <div>
                     <label>Registration No</label>
-                    <input type="number" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
+                    <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>

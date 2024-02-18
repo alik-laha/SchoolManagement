@@ -231,15 +231,16 @@ exports.GetStudentForFeeEntry = (req, res) => {
     a.student_Name, 
     a.roll_no, 
     a.section, 
-    a.registration_no, 
+    a.registration_no,
     a.class,
-    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee
+    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
+    (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
 FROM 
     Student_Admission a 
 WHERE 
     a.class = ${Class} AND 
     a.current_academic_year = ${year}
-    AND a.registration_no = ${regNo};`
+    AND a.registration_no = '${regNo}';`
         }else{
             query = `SELECT 
     a.student_Name, 
