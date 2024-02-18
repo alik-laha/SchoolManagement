@@ -68,12 +68,8 @@ const HostelView= (props) => {
                                     <td>{data.crnt_yr}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
-                                    
-                                    
-                                    
                                     <td>{data.registration_no}</td> 
-                                    <td>{data.admission_year}</td>                       
-                                    
+                                    <td>{data.admission_year}</td>
                                     <td>{data.room_no}</td>
                                     <td>{data.bed_no}</td>
                                     <td>{data.entry_date.slice(0,10)}</td>           
