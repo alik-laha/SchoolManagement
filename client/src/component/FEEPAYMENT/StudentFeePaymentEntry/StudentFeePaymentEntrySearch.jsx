@@ -6,17 +6,19 @@ const StudentFeePaymentEntrySearch = (props) => {
 const [Class, setClass] = useState(0);
 const [year, setYear] = useState(0);
 const [regNo, setRegNo] = useState(0);
-
+const [feeType, setFeeType] = useState("");
 
 const handlesubmit = (e) => {
     e.preventDefault();
     const data = {
         Class,
         regNo,
+        feeType,
         year
     }
-    axios.post("/api/v1/student/getallstudent", data)
+    axios.post("/api/v1/fee/getstudentforfeeEntry", data)
         .then((res) => {
+            console.log(res)
             props.setFeePaymentData(res.data.result, Class, regNo, year)
         })
         .catch((error) => {
@@ -30,7 +32,7 @@ const handlesubmit = (e) => {
                     <label>
                         Search By Class.
                     </label>
-                    <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class}>
+                    <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
                         <option value="">Class</option>
                         <option value="1">
                             I
@@ -76,7 +78,17 @@ const handlesubmit = (e) => {
 
                 <div>
                     <label>Academic Year</label>
-                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)}/>
+                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required/>
+                </div>
+
+                <div>
+                    <label>Fee Type</label>
+                    <select value={feeType} onChange={(e) => setFeeType(e.target.value)} required>
+                        <option value="">Select</option>
+                        <option value="Monthly">Monthly</option>
+                        <option value="NewAdmission">New-Admisson</option>
+                        <option value="ReAdmisson">Re-Admisson</option>
+                    </select>
                 </div>
 
                 <div>
