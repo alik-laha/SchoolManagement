@@ -57,8 +57,9 @@ import CreateMarks from "../FACULTY/CreateExternalMarks/CreateExternalView.jsx";
 import CreateFeeSturcture from "../FEEPAYMENT/CreateFeePayment/CreateFeeSturcture.jsx";
 import ViewFeeStructureSearch from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructureSearch.jsx";
 import ViewFeeStructure from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructure.jsx";
-import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntry.jsx";
+import StudentFeePaymentEntrySearch from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntrySearch.jsx";
 import ViewFeePaymentSearch from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePaymentSearch.jsx";
+import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntry.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -126,6 +127,7 @@ const DashBoardMain = (props) => {
     const [hostelClass,setHostelClass]=useState(0)
     const [hostelYear,setHostelYear]=useState(0)
     const [hostelRegNo,setHostelregNo]=useState("")
+    const [FeePaymentData,setFeePaymentData]=useState([])
 
 
   {/* User Start */}
@@ -356,7 +358,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
       setViewStructData(data)
       setViewStructView(d1)
   }
-  
+
+  const handleFeePaymentData=(data)=> {
+        setFeePaymentData(data)
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -442,7 +447,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             {/*fee payment Start*/}
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
             <ViewFeeStructureSearch view={props.ViewFeeStructure} viewFeeStructure={handleViewFeeStructData}/>
-            <StudentFeePaymentEntry view={props.EntryFeePayment}/>
+            <StudentFeePaymentEntrySearch view={props.EntryFeePayment} setFeePaymentData={handleFeePaymentData}/>
             <ViewFeePaymentSearch view={props.ViewFeePayment}/>
         </div>
 
@@ -503,6 +508,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
 
             <ViewFeeStructure data={viewStructData} view40={props.ViewFeeStructure} view={ViewStructView} />
+            <StudentFeePaymentEntry data={FeePaymentData} view={props.EntryFeePayment} />
         </div>
       </div>
     </>
