@@ -14,6 +14,7 @@ const HostelEntry = (props) => {
     const [entrydate, setEntryDate] = useState(new Date().toISOString().slice(0, 10));
     const [view, setView] = useState("none");
     const [viewStock,setViewStock]=useState([])
+    const [editIndex,setEditIndex]=useState(null)
 
     useEffect(() => {
       if (props.view==="block" && props.data.length>0) {
@@ -26,8 +27,6 @@ const HostelEntry = (props) => {
 
     useEffect(()=>{
         setViewStock(props.data)
-        console.log(viewStock.length)
-  
     },[props.data])
 
 
@@ -36,6 +35,13 @@ const HostelEntry = (props) => {
         setViewStock([]);
       };
 
+    const HandleSubmit=()=>{
+        console.log(regNo)
+        axios.post(`http://localhost:7000/api/v1/hostel/getAllCombinedHostelStudent`,{Class:props.Class,regNo:props.regNo,year:props.year}).then((res)=>{
+            setViewStock(res.data.result)
+        })
+
+    }
     const handaleUpdate = (e) => {
         e.preventDefault()
         if (entryStatus === 0) {
@@ -50,19 +56,16 @@ const HostelEntry = (props) => {
             })
                 .then((res) => {
                     alert(res.data.msg+' for Student Reg. Id : '+ regNo);
-                    
+                    setEditIndex(null)
                     setAllView("contents");
-                    setEntryView("none");
                     setStudentName("");
+                    HandleSubmit()
                     setRegNo("");
                     setRoomNo("");
                     setBedNo("");
                     setClass(0);
                     setacademic("");
                     setEntryDate(new Date().toISOString().slice(0, 10));
-                    if(view==="block"){
-                        setView("none");
-                    }
                 })
                 .catch((err) => {
                     alert(err.response.data.msg);
@@ -73,7 +76,8 @@ const HostelEntry = (props) => {
                 .then((res) => {
                     alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                     setAllView("contents");
-                    setEntryView("none");
+                    setEditIndex(null)
+                    HandleSubmit()
                     setStudentName("");
                     setRegNo("");
                     setRoomNo("");
@@ -81,9 +85,6 @@ const HostelEntry = (props) => {
                     setClass(0);
                     setacademic("");
                     setEntryDate(new Date().toISOString().slice(0, 10));
-                    if(view==="block"){
-                        setView("none");
-                    }
                 })
                 .catch((err) => {
                     console.log(err)
@@ -92,30 +93,30 @@ const HostelEntry = (props) => {
         }
     }
 
-    const handleDelete = (regNo,roomNo) => {
-        axios.post('http://localhost:7000/api/v1/hostel/deletehostelentry', {regNo,roomNo})
-            .then((res) => {
-                alert(res.data.msg+' for Student Reg. Id : '+ regNo);
-                setAllView("contents");
-                setEntryView("none");
-                setStudentName("");
-                setRegNo("");
-                setRoomNo("");
-                setBedNo("");
-                setClass(0);
-                setacademic("");
-                setEntryDate(new Date().toISOString().slice(0, 10));
-                if(view==="block"){
-                    setView("none");
-                }
-            })
-            .catch((err) => {
-                alert(err.response.msg);
-            })
-
-    }
-    const handaleClick = (data) => {
-        setAllView("none");
+    // const handleDelete = (regNo,roomNo) => {
+    //     axios.post('http://localhost:7000/api/v1/hostel/deletehostelentry', {regNo,roomNo})
+    //         .then((res) => {
+    //             alert(res.data.msg+' for Student Reg. Id : '+ regNo);
+    //             setAllView("contents");
+    //             setEntryView("none");
+    //             setStudentName("");
+    //             setRegNo("");
+    //             setRoomNo("");
+    //             setBedNo("");
+    //             setClass(0);
+    //             setacademic("");
+    //             setEntryDate(new Date().toISOString().slice(0, 10));
+    //             if(view==="block"){
+    //                 setView("none");
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             alert(err.response.msg);
+    //         })
+    //
+    // }
+    const handaleClick = (data,index) => {
+        setEditIndex(index)
         setEntryView("contents");
         setStudentName(data.student_Name);
         setRegNo(data.registration_no);
@@ -141,6 +142,7 @@ const HostelEntry = (props) => {
 
     }
     const handaleCancel = () => {
+        setEditIndex(null)
         setAllView("contents");
         setEntryView("none");
         setStudentName("");
@@ -190,13 +192,32 @@ const HostelEntry = (props) => {
                                         <td>{data.section}</td>
                                         <td>{data.roll_no}</td>
                                         <td>{data.registration_no}</td>
-                                        <td>{data.room_no}</td>
-                                        <td>{data.bed_no}</td>
+                                        <td>{idx!==editIndex ? data.room_no :(
+                                            <div>
+                                                                <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>
+                                                                    <option>All</option>
+                                                                    {props.room.map((data, index) => (
+                                                                        <option value={data.room_no} key={index}>
+                                                                            {data.room_no}
+                                                                        </option>
+                                                                    ))}
+                                                                </select>
+                                                            </div>
+                                        )}</td>
+                                        <td>{idx!==editIndex ? data.bed_no : (
+                                            <input type='text' placeholder="Bed No" value={bedNo}
+                                                           onChange={(e) => setBedNo(e.target.value)}/>
+                                        )}</td>
                                         
-                                        <td>
-                                            <button className='dashboard-btn btn-warning'
-                                                    onClick={() => handaleClick(data)}>Hostel Entry
-                                            </button>
+                                        <td>{idx!==editIndex ?
+                                            ( <button className='dashboard-btn btn-warning'
+                                                    onClick={() => handaleClick(data,idx)}>Hostel Entry
+                                            </button>):(<>
+                                                <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
+                                                    {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
+                                                    <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
+                                                </>
+                                            )}
                                         </td>
                                         <></>
 
@@ -210,49 +231,49 @@ const HostelEntry = (props) => {
 
                         </tbody>
                         
-                   
-                        <thead style={{display:entryView}} id='hidden-table-60'>
-                        <tr>
-                            <th>Student Name</th>
-                            <th>Class</th>
-                            <th>Registration No</th>
-                            <th>Academic Year</th>
-                            <th>Room No</th>
-                            <th>Bed No</th>
-                            <th>Hostel Entry Date</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody style={{display:entryView}}>
-                        <tr>
-                            <td>{studentName}</td>
-                            <td>{Class}</td>
-                            <td>{regNo}</td>
-                            <td>{academicYear}</td>
-                            <td>
-                                <div>
-                                    <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>
-                                        <option>All</option>
-                                        {props.room.map((data, index) => (
-                                            <option value={data.room_no} key={index}>
-                                                {data.room_no}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            </td>
-                            <td><input type='text' placeholder="Bed No" value={bedNo}
-                                       onChange={(e) => setBedNo(e.target.value)}/></td>
-                            
-                            <td><input type='date' placeholder="Entry Date" value={entrydate}
-                                       onChange={(e) => setEntryDate(e.target.value)} readOnly/></td>
-                            <td>
-                                <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
-                                {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
-                                <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
-                            </td>
-                        </tr>
-                        </tbody>
+
+                    {/*    <thead style={{display:entryView}} id='hidden-table-60'>*/}
+                    {/*    <tr>*/}
+                    {/*        <th>Student Name</th>*/}
+                    {/*        <th>Class</th>*/}
+                    {/*        <th>Registration No</th>*/}
+                    {/*        <th>Academic Year</th>*/}
+                    {/*        <th>Room No</th>*/}
+                    {/*        <th>Bed No</th>*/}
+                    {/*        <th>Hostel Entry Date</th>*/}
+                    {/*        <th>Actions</th>*/}
+                    {/*    </tr>*/}
+                    {/*    </thead>*/}
+                    {/*    <tbody style={{display:entryView}}>*/}
+                    {/*    <tr>*/}
+                    {/*        <td>{studentName}</td>*/}
+                    {/*        <td>{Class}</td>*/}
+                    {/*        <td>{regNo}</td>*/}
+                    {/*        <td>{academicYear}</td>*/}
+                    {/*        <td>*/}
+                    {/*            <div>*/}
+                    {/*                <select onChange={(e) => setRoomNo(e.target.value)} value={roomNo}>*/}
+                    {/*                    <option>All</option>*/}
+                    {/*                    {props.room.map((data, index) => (*/}
+                    {/*                        <option value={data.room_no} key={index}>*/}
+                    {/*                            {data.room_no}*/}
+                    {/*                        </option>*/}
+                    {/*                    ))}*/}
+                    {/*                </select>*/}
+                    {/*            </div>*/}
+                    {/*        </td>*/}
+                    {/*        <td><input type='text' placeholder="Bed No" value={bedNo}*/}
+                    {/*                   onChange={(e) => setBedNo(e.target.value)}/></td>*/}
+                    {/*        */}
+                    {/*        <td><input type='date' placeholder="Entry Date" value={entrydate}*/}
+                    {/*                   onChange={(e) => setEntryDate(e.target.value)} readOnly/></td>*/}
+                    {/*        <td>*/}
+                    {/*            <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>*/}
+                    {/*            /!* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> *!/*/}
+                    {/*            <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>*/}
+                    {/*        </td>*/}
+                    {/*    </tr>*/}
+                    {/*    </tbody>*/}
                     </table>
                     {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
                 </div>

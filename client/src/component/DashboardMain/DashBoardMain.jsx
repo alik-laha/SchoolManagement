@@ -123,6 +123,9 @@ const DashBoardMain = (props) => {
 
     const [viewStructData,setViewStructData]=useState([])
     const [ViewStructView,setViewStructView]=useState("none")
+    const [hostelClass,setHostelClass]=useState(0)
+    const [hostelYear,setHostelYear]=useState(0)
+    const [hostelRegNo,setHostelregNo]=useState("")
 
 
   {/* User Start */}
@@ -208,8 +211,11 @@ const DashBoardMain = (props) => {
 
 {/* Hostel Start */}
 
-const HostelStudentData=(data)=>{
+const HostelStudentData=(data,cl,re,ye)=>{
   setHostelStudentData(data);
+  setHostelClass(cl)
+    setHostelYear(ye)
+    setHostelregNo(re)
 }
 const handalesearchBed=(room)=>{
   axios.post("http://localhost:7000/api/v1/hostel/searchBed",{room}).then((res)=>{
@@ -474,8 +480,8 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               {/* View Bed Status */}   
               <ViewBedStatus60 viewbed={props.viewbed} BedData={bedData} allRoomData={getAllRoom} />
               {/* View Hostel Entry */}  
-              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} room={roomData} />
-              {/* View Export Hostel Entry */}  
+              <HostelEntry data={hostelStudentData} view={props.HostelEntryCreate} room={roomData} Class={hostelClass} year={hostelYear} regNo={hostelRegNo} />
+              {/* View Export Hostel Entry */}
               <HostelView hostelexportview={props.HostelentryView} view={hostelexportshow} SearchebyData={hostelenrtydata} />
           {/* Hostel End*/}
 
