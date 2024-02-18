@@ -36,7 +36,7 @@ const HostelEntry = (props) => {
 
     const HandleSubmit=()=>{
         console.log(regNo)
-        axios.post(`http://localhost:7000/api/v1/hostel/getAllCombinedHostelStudent`,{Class:props.Class,regNo:props.regNo,year:props.year}).then((res)=>{
+        axios.post(`/api/v1/hostel/getAllCombinedHostelStudent`,{Class:props.Class,regNo:props.regNo,year:props.year}).then((res)=>{
             setViewStock(res.data.result)
         })
 
@@ -44,7 +44,7 @@ const HostelEntry = (props) => {
     const handaleUpdate = (e) => {
         e.preventDefault()
         if (entryStatus === 0) {
-            axios.post("http://localhost:7000/api/v1/hostel/createhostelentry", {
+            axios.post("/api/v1/hostel/createhostelentry", {
                 Class,
                 academicYear,
                 roomNo,
@@ -71,7 +71,7 @@ const HostelEntry = (props) => {
                 })
         }
         else {
-            axios.post("http://localhost:7000/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate})
+            axios.post("/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate})
                 .then((res) => {
                     alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                     setAllView("contents");
@@ -93,7 +93,7 @@ const HostelEntry = (props) => {
     }
 
     // const handleDelete = (regNo,roomNo) => {
-    //     axios.post('http://localhost:7000/api/v1/hostel/deletehostelentry', {regNo,roomNo})
+    //     axios.post('/api/v1/hostel/deletehostelentry', {regNo,roomNo})
     //         .then((res) => {
     //             alert(res.data.msg+' for Student Reg. Id : '+ regNo);
     //             setAllView("contents");
@@ -125,7 +125,7 @@ const HostelEntry = (props) => {
         if(data.hostelentry===1){
             // const rgi=data.registration_no
             setEntryStatus(1)
-            // axios.post('http://localhost:7000/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
+            // axios.post('/api/v1/hostel/gethostelentry',{regNo:rgi}).then(res=>{
             //     setRoomNo(res.data.result[0].room_no)
             //     setBedNo(res.data.result[0].bed_no)
             //     setEntryDate(res.data.result[0].entry_date.slice(0,10))

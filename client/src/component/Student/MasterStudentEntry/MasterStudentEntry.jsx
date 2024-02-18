@@ -108,7 +108,7 @@ const MasterStudentEntry= (props) => {
         e.preventDefault();
         let id;
         let regNo;
-        axios.get("http://localhost:7000/api/v1/student/lastid")
+        axios.get("/api/v1/student/lastid")
             .then((res) => {
                 if(!res.data.result[0])
                 {
@@ -185,9 +185,9 @@ const MasterStudentEntry= (props) => {
                     applyClass,
                     admissionYear,
                 }
-                axios.post("http://localhost:7000/api/v1/student/masterstudentadmission", data)
+                axios.post("/api/v1/student/masterstudentadmission", data)
                     .then((res) => {
-                        axios.post("http://localhost:7000/api/v1/student/studentadmission", data1)
+                        axios.post("/api/v1/student/studentadmission", data1)
                             .then((res) => {
                                 console.log(res)
                                 

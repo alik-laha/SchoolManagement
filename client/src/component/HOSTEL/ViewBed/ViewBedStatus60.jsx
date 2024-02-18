@@ -51,7 +51,7 @@ const ViewBedStatus60 = (props) => {
             return
         }
         axios
-            .post("http://localhost:7000/api/v1/hostel/deletebed",{id})
+            .post("/api/v1/hostel/deletebed",{id})
             .then((res) => {
                 alert("Room No : "+room+" Deleted Successfully")
                 // props.setCreatebed("block");
@@ -80,7 +80,7 @@ const ViewBedStatus60 = (props) => {
         }
 
         axios
-            .post("http://localhost:7000/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
+            .post("/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed} )
             .then((res) => {
                 alert("Room No : "+room+" Updated Successfully")
                 setMainView("contents");

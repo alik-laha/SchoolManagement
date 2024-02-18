@@ -12,7 +12,7 @@ const ModifyStockEntrySearch = (props) => {
             fromDate,
             toDate
         }
-        axios.post("http://localhost:7000/api/v1/stock/getsecondarystockentry",data)
+        axios.post("/api/v1/stock/getsecondarystockentry",data)
             .then((res)=>{
                 props.setStockData(res.data.data)
             })

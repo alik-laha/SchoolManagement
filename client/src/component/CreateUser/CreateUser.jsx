@@ -20,7 +20,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
 
   const handaleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:7000/api/v1/createuser", {name,password,role}).then((res) => {
+    axios.post("/api/v1/createuser", {name,password,role}).then((res) => {
       setdialogusername(name)
       dialog.showModal();
       //alert(`User [${name}] has been Created Successfully`);

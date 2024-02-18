@@ -126,7 +126,7 @@ const ViewFeeStructure = (props) => {
              BedFee:bedFee,
              Total:totalFee
          }
-         axios.post("http://localhost:7000/api/v1/fee/editfeestructure",data)
+         axios.post("/api/v1/fee/editfeestructure",data)
               .then((res)=>{
                 console.log(res)
                   setEditedIndex(null)

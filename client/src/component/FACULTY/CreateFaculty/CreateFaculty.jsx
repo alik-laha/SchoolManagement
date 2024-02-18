@@ -17,7 +17,7 @@ const handleSubmit = (e) => {
     e.preventDefault();
     
     const faculty = {name, qualification, joinDate, email, specialized, contactNo,aadharno,pan,address,dob};
-    axios.post("http://localhost:7000/api/v1/faculty/createfaculty", faculty).then(() => {
+    axios.post("/api/v1/faculty/createfaculty", faculty).then(() => {
         alert("Faculty Added Successfully");
     }).catch((err) => {
         console.log(err);

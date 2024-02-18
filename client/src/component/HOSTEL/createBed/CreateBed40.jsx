@@ -11,7 +11,7 @@ const CreateBed40 = (props) => {
     const handaleSubmit = (e) => {
         let count=-2000;
         e.preventDefault()
-        axios.post("http://localhost:7000/api/v1/hostel/createbed", {bulding,floor,room,totalbed})
+        axios.post("/api/v1/hostel/createbed", {bulding,floor,room,totalbed})
             .then((res) => {
             alert("Room No."+ room +" Created Successfully with Total Bed :"+totalbed);
                 { handaleViewBed()}
@@ -35,7 +35,7 @@ useEffect(() => {
  handaleViewBed()
 }, [])
     const handaleViewBed = () => {
-            axios.get("http://localhost:7000/api/v1/hostel/getroomno")
+            axios.get("/api/v1/hostel/getroomno")
                 .then((res) => {
                     props.allRoomData(res.data.result)
                 })

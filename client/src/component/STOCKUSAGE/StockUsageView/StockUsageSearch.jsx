@@ -11,7 +11,7 @@ const [toDate, setToDate] =  useState(new Date().toISOString().slice(0, 10) );
 
     useEffect(() => {
         if(props.view === "block"){
-            axios.get("http://localhost:7000/api/v1/stock/getallitemname")
+            axios.get("/api/v1/stock/getallitemname")
                 .then((res) => {
                     setItemNames(res.data.data);
                     // console.log(res.data.data);

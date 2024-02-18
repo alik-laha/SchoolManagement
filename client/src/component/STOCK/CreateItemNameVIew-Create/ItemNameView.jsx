@@ -19,7 +19,7 @@ const [view, setView] = useState("none");
     },[props.Item, props.view])
     const currDate = new Date().toLocaleDateString();
     const deleteItemName = (id) => {
-        axios.post("http://localhost:7000/api/v1/stock/deleteitemname", {id:id})
+        axios.post("/api/v1/stock/deleteitemname", {id:id})
             .then((res) => {
               alert("Item Name Deleted Successfully")
                props.ItemNameData(res.data.data);

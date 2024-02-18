@@ -152,7 +152,7 @@ const SecondaryStockEntryView= (props) => {
           return
             }
          axios
-            .post("http://localhost:7000/api/v1/stock/updatecashentry", {
+            .post("/api/v1/stock/updatecashentry", {
                itemid,paidamt,discountamt,balamt,cashentrydate,
                modifieddate
                

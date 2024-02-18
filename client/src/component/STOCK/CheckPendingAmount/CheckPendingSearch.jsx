@@ -16,7 +16,7 @@ const CheckPendingSearch = (props) => {
             fromDate,
             toDate
         }
-        axios.post("http://localhost:7000/api/v1/stock/getstock",data)
+        axios.post("/api/v1/stock/getstock",data)
         .then((res)=>{
             props.setPendingStockData(res.data.data)
         })

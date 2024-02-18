@@ -15,7 +15,7 @@ const handlesubmit = (e) => {
         regNo,
         year
     }
-    axios.post("http://localhost:7000/api/v1/student/getallstudent", data)
+    axios.post("/api/v1/student/getallstudent", data)
         .then((res) => {
             props.setFeePaymentData(res.data.result, Class, regNo, year)
         })

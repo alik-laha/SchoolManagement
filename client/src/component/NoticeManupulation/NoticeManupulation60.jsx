@@ -21,7 +21,7 @@ const NoticeManupulation60=(props)=>{
     },[props.Publish])
 
     useEffect(()=>{
-        fetch("http://localhost:7000/api/v1/allfiles")
+        fetch("/api/v1/allfiles")
             .then((response) => response.json())
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
@@ -29,7 +29,7 @@ const NoticeManupulation60=(props)=>{
 
     const handaleDelete=(fileName)=>{
         console.log(fileName)
-        axios.post("http://localhost:7000/api/v1/deletenotice",{fileName:fileName})
+        axios.post("/api/v1/deletenotice",{fileName:fileName})
             .then(() => {
                 alert("Notice has been Deleted")
                 // setnoticevisi('none')

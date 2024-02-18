@@ -398,10 +398,10 @@ const MasterStudentViewUpdate = (props) => {
             ifscCode,
             releaseDate
         }
-        axios.post("http://localhost:7000/api/v1/student/updatestudent",data)
+        axios.post("/api/v1/student/updatestudent",data)
             .then((res)=>{
                 if(releaseDate){
-                    axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno",{regNo})
+                    axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo})
                         .then((res)=>{
                             alert('Student Details Edited Successfully')
                             console.log(res.data);
@@ -467,11 +467,11 @@ const MasterStudentViewUpdate = (props) => {
     const handaleDelete=(regNo,name)=>{
         setAllview("block")
         setUpdateView("none")
-        axios.post("http://localhost:7000/api/v1/student/deletemasterstudent",{regNo})
+        axios.post("/api/v1/student/deletemasterstudent",{regNo})
             .then((res)=>{
-        axios.post("http://localhost:7000/api/v1/student/deletestudent",{regNo})
+        axios.post("/api/v1/student/deletestudent",{regNo})
             .then((res)=>{
-                axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno",{regNo}).then((res)=>{
+                axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo}).then((res)=>{
                     // alert('Student : '+ name + ' Deleted Successfully' )
                     console.log(res.data);
                     setView('none')
@@ -576,7 +576,7 @@ const MasterStudentViewUpdate = (props) => {
             admisson:admissionYear,
             year:readmitAcademicYear
         }
-        axios.post("http://localhost:7000/api/v1/student/readmitstudent",data)
+        axios.post("/api/v1/student/readmitstudent",data)
             .then((res)=>{
                 alert('Student Re-Admitted Successfully')
                 display.close();

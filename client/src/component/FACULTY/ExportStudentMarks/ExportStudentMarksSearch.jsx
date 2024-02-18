@@ -8,7 +8,7 @@ const ExportStudentMarksSearch = (props) => {
     const [examData,setExamData]=useState([])
 
     const FetchExamData=()=>{
-        axios.get(`http://localhost:7000/api/v1/faculty/getallexam`).then((res)=>{
+        axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
             setExamData(res.data.data)
         }).catch((err)=>{
             console.log(err)
@@ -49,7 +49,7 @@ const ExportStudentMarksSearch = (props) => {
             props.setSearchcombination('cl')
         }
 
-        axios.post(`http://localhost:7000/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
+        axios.post(`/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
             props.setStudentMarks(res.data.data)
             props.setStudentMarksView("block")
             console.log(res.data.data)

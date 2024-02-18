@@ -12,14 +12,14 @@ const ViewExternalExam=(props)=>{
         setData1([])
     }
     const handleDelete=(id)=>{
-        axios.post("http://localhost:7000/api/v1/faculty/deleteexternalexam",{id})
+        axios.post("/api/v1/faculty/deleteexternalexam",{id})
             .then(()=>{
                 alert("External exam has been Deleted")
                 setView("none")
             })
     }
     const handleDelete1=(id)=>{
-        axios.post("http://localhost:7000/api/v1/faculty/deleteinternalexam",{id})
+        axios.post("/api/v1/faculty/deleteinternalexam",{id})
             .then(()=>{
                 alert("Internal Exam has been Deleted")
                 setView("none")

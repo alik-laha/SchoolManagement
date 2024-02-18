@@ -6,7 +6,7 @@ const ViewAndUpdateFacultySearch = (props) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:7000/api/v1/faculty/getallfaculty", {search})
+        axios.post("/api/v1/faculty/getallfaculty", {search})
             .then((res) => {
                 props.facultyData(res.data.data);
             })

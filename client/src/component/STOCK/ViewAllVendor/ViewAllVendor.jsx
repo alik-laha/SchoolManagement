@@ -8,7 +8,7 @@ const ViewAllVendor=(props)=>{
 
     const handleDelete = (vendorId,vendor_name) => {
         axios
-            .post("http://localhost:7000/api/v1/stock/deletevendor", { vendorId })
+            .post("/api/v1/stock/deletevendor", { vendorId })
             .then((res) => {
                 console.log(res);
                 props.setVendorData(res.data.data);

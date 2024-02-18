@@ -127,7 +127,7 @@ const ModifyStockEntryView= (props) => {
           modifiedDate:modifieddate,
           pendingamount:balamt
          }
-            axios.post("http://localhost:7000/api/v1/stock/modifystockentry",data)
+            axios.post("/api/v1/stock/modifystockentry",data)
                 .then((res) => {
                     alert("Stock Entry has been Modified Successfully");
                     setVisiblity('none');
@@ -158,7 +158,7 @@ const ModifyStockEntryView= (props) => {
 
      useEffect(()=>{
          if(item) {
-             axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:item})
+             axios.post("/api/v1/stock/getitemnamebytype", {itemType:item})
                  .then((res) => {
                      setItemNames(res.data.data);
                  })
@@ -169,7 +169,7 @@ const ModifyStockEntryView= (props) => {
      },[item])
     const handleItemtype = (e) => {
         setitem(e.target.value);
-        // axios.post("http://localhost:7000/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+        // axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
         //     .then((res) => {
         //         setItemNames(res.data.data);
         //     })

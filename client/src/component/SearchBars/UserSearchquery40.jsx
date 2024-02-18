@@ -22,7 +22,7 @@ const UserSearchquery40 = (props) => {
     }
     e.preventDefault();
     axios
-      .post("http://localhost:7000/api/v1/searchuser", { id, name, role })
+      .post("/api/v1/searchuser", { id, name, role })
       .then((res) => {
         
         window.addEventListener("unhandledrejection", function(promiseRejectionEvent) {
@@ -43,7 +43,7 @@ const UserSearchquery40 = (props) => {
 
 
   let dataFetch = () => {
-    fetch("http://localhost:7000/api/v1/getallrole")
+    fetch("/api/v1/getallrole")
       .then((res) => res.json())
       .then((data) => {
         setAllRoles(data.data);

@@ -69,7 +69,7 @@ const handaleEdit = (id) => {
 }
 
 const handaleDelete = (id) => {
-    axios.post("http://localhost:7000/api/v1/faculty/deletefaculty", {id})
+    axios.post("/api/v1/faculty/deletefaculty", {id})
         .then((res) => {
             if(res){
                 alert("Faculty Deleted Successfully");
@@ -80,7 +80,7 @@ const handaleDelete = (id) => {
 const handaleUpdate = (e) => {
     e.preventDefault();
 const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date,aadharno:aadhar,pan,address,dob};
-axios.post("http://localhost:7000/api/v1/faculty/updatefaculty", data)
+axios.post("/api/v1/faculty/updatefaculty", data)
         .then((res) => {
             if(res){
                 alert("Faculty Updated Successfully");

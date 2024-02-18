@@ -67,7 +67,7 @@ const UserSearchResponse60=(props)=>{
 
     const handleDelete = (user_id,userName) => {
         axios
-            .post("http://localhost:7000/api/v1/deleteuser", {user_id})
+            .post("/api/v1/deleteuser", {user_id})
             .then((res) => {
                 alert("User: "+userName+" Deleted Successfully");
             })
@@ -94,7 +94,7 @@ const UserSearchResponse60=(props)=>{
             return
         }
         axios
-            .post("http://localhost:7000/api/v1/updateuser", {
+            .post("/api/v1/updateuser", {
                 id,
                 name,
                 password,

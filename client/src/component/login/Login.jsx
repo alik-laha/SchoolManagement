@@ -47,7 +47,7 @@ const Login = () => {
   const handaleSubmit = (e) => {
     e.preventDefault();
     axios
-        .post("http://localhost:7000/api/v1/login", {name, pass})
+        .post("/api/v1/login", {name, pass})
         .then((result) => {
           if (result.data.data[0]) {
             sessionStorage.setItem("user", result.data.data[0].roletype_name);

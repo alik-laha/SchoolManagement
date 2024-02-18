@@ -61,7 +61,7 @@ const PromoteNextClassView= (props) => {
             Class,
             academicYear,
         }
-        axios.post("http://localhost:7000/api/v1/student/getpromotesearch",data)
+        axios.post("/api/v1/student/getpromotesearch",data)
             .then((res)=>{
                 console.log(res.data.result)
                setAcademicAll(res.data.result)
@@ -77,13 +77,13 @@ const PromoteNextClassView= (props) => {
       const handlePass=(data)=>{
           console.log(data)
           if(data.class===12){
-              axios.post("http://localhost:7000/api/v1/student/updatepromotion", {
+              axios.post("/api/v1/student/updatepromotion", {
                   Class: data.class,
                   regNo: data.registration_no,
                   academicYear: data.current_academic_year
               })
                   .then((res) => {
-                      axios.post("http://localhost:7000/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
+                      axios.post("/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
                             .then((res) => {
                                 console.log("done")
                                 alert(`Student ${data.student_Name} has been Promoted to Next Class and Academic Year `)
@@ -97,7 +97,7 @@ const PromoteNextClassView= (props) => {
                   })
               }
           else{
-                axios.post("http://localhost:7000/api/v1/student/updatepromotion", {
+                axios.post("/api/v1/student/updatepromotion", {
                     Class: data.class,
                     regNo: data.registration_no,
                     academicYear: data.current_academic_year
@@ -113,7 +113,7 @@ const PromoteNextClassView= (props) => {
           }
           }
         const handleFail=(data)=>{
-            axios.post("http://localhost:7000/api/v1/student/promotefail", {
+            axios.post("/api/v1/student/promotefail", {
                 regNo: data.registration_no,
                 year:data.current_academic_year
             })

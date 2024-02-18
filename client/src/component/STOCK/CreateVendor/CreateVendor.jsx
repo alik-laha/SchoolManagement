@@ -13,7 +13,7 @@ const CreateVendor = (props) => {
 
     const handleCreateVendor = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:7000/api/v1/stock/createvendor",{
+        axios.post("/api/v1/stock/createvendor",{
             vendor:vendor,
             vendoraddress:vendoraddress
 
@@ -34,7 +34,7 @@ const CreateVendor = (props) => {
             });
     }
     const handleViewVendoronCreate = () => {
-        axios.post("http://localhost:7000/api/v1/stock/getallvendor")
+        axios.post("/api/v1/stock/getallvendor")
             .then((res)=>{
                 props.setVendorData(res.data.data);
             })
@@ -47,7 +47,7 @@ const CreateVendor = (props) => {
 
 
     // const handleViewVendor = () => {
-    //     axios.post("http://localhost:7000/api/v1/stock/getallvendor")
+    //     axios.post("/api/v1/stock/getallvendor")
     //         .then((res)=>{
     //             props.setVendorData(res.data.data);
     //         })

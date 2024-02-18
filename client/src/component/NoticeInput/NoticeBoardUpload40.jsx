@@ -19,7 +19,7 @@ const StudentInputNotice = ({Publish}) => {
 
 
       axios
-      .post("http://localhost:7000/api/v1/studentnotice", formData).then((res) => {
+      .post("/api/v1/studentnotice", formData).then((res) => {
           console.log("file send")
         
     })

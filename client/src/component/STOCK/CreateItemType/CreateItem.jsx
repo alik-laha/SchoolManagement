@@ -12,7 +12,7 @@ const CreateItem = (props) => {
 
     const handleCreateItem = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:7000/api/v1/stock/createitem",{
+        axios.post("/api/v1/stock/createitem",{
             item:item
         }).then((response)=>{
             setItem("")
@@ -32,14 +32,14 @@ const CreateItem = (props) => {
     }
 
     const handaleitemCreate=()=>{
-        axios.post("http://localhost:7000/api/v1/stock/getallitem")
+        axios.post("/api/v1/stock/getallitem")
             .then((data)=>{
                 props.setItemData(data.data.data);
             })
 
     }
     // const handaleitem=()=>{
-    //     axios.post("http://localhost:7000/api/v1/stock/getallitem")
+    //     axios.post("/api/v1/stock/getallitem")
     //         .then((data)=>{
     //             props.setItemData(data.data.data);
     //         })

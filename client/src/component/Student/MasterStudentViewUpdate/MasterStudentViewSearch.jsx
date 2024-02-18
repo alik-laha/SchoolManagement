@@ -13,7 +13,7 @@ const MasterStudentViewSearch = (props) => {
             applyClass,
             active:inactivated
         }
-        axios.post("http://localhost:7000/api/v1/student/getstudentbyactive",data)
+        axios.post("/api/v1/student/getstudentbyactive",data)
             .then((res)=>{
                 props.setMasterStudentData(res.data.result)
             })

@@ -59,14 +59,14 @@ function NewImage({ filedate }) {
 const NoticeOutput=()=>{
     const [file,setFile]=useState([])
     useEffect(()=>{
-        fetch("http://localhost:7000/api/v1/allfiles")
+        fetch("/api/v1/allfiles")
             .then((response) => response.json())
             .then((data) => setFile(data.files))
             .catch((error) => console.error('Error fetching files:', error));
     },[])
     const handleDownload = (filename) => {
         const link = document.createElement("a");
-        link.href = `http://localhost:7000/api/v1/download?filename=${filename}`;
+        link.href = `/api/v1/download?filename=${filename}`;
         link.download = filename;
         link.click();
     };
