@@ -62,7 +62,7 @@ const handleSubmit=(e)=>{
                 <div>
                     <label>Current Class</label>
                     <input type="number" placeholder="Class" value={Class}
-                           onChange={(e) => setClass(e.target.value)}/>
+                           onChange={(e) => setClass(e.target.value)} required/>
                 </div>
                 <div>
                     <label>Section</label>
@@ -71,10 +71,10 @@ const handleSubmit=(e)=>{
                 <div>
                     <label>Current Academic Year</label>
                     <input type="text" placeholder="Current Year" value={year}
-                           onChange={(e) => setYear(e.target.value)}/>
+                           onChange={(e) => setYear(e.target.value)} required/>
                 </div>
                 <div>
-                <select onChange={setExamnameFunction2} value={updatedExamName}>
+                <select onChange={setExamnameFunction2} value={updatedExamName} required>
                     <option>Exam Name</option>
                     {allExam.map((data, index) => (
                         <option value={data.internal_exam_name} key={index}>
@@ -84,7 +84,7 @@ const handleSubmit=(e)=>{
                 </select>
                 </div>
                 <div>
-                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
+                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject} required>
                         <option>Subject</option>
                         {allSubject.map((data, index) => (
                             <option value={data.subject} key={index}>
