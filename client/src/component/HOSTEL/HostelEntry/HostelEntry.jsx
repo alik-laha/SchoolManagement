@@ -31,7 +31,6 @@ const HostelEntry = (props) => {
 
 
     const clearTable = () => {
-        if(entryView==='none')
         setViewStock([]);
       };
 
