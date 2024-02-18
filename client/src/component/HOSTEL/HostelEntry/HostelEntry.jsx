@@ -229,8 +229,6 @@ const HostelEntry = (props) => {
 
 
                         </tbody>
-                        
-
                     {/*    <thead style={{display:entryView}} id='hidden-table-60'>*/}
                     {/*    <tr>*/}
                     {/*        <th>Student Name</th>*/}

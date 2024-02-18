@@ -59,10 +59,10 @@ const HostelView= (props) => {
                     </thead>
                     <tbody>
                     {
-                        hostelexportall.map((data)=> {
+                        hostelexportall.map((data,idx)=> {
                             return(
-                                <tr key={data.id}>
-                                    <td>{data.id}</td>
+                                <tr key={idx}>
+                                    <td>{idx+1}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.class}</td>
                                     <td>{data.crnt_yr}</td>
