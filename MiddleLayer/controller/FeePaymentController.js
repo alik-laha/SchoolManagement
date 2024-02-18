@@ -247,6 +247,7 @@ WHERE
     a.section, 
     a.registration_no, 
     a.class,
+    a.current_academic_year AS year,
     (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
     (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
 FROM 

@@ -14,7 +14,6 @@ const StudentFeePaymentEntry = (props) => {
     }, [props.view,props.data]);
 
     useEffect(() => {
-        console.log(props.data)
         setData(props.data)
     },[props.data])
 
@@ -27,10 +26,15 @@ const StudentFeePaymentEntry = (props) => {
             <table className="table-60">
                 <thead>
                 <tr>
-                    <th>Class</th>
+                    <th>index</th>
                     <th>Name</th>
                     <th>Reg No</th>
+                    <th>Class</th>
+                    <th>Roll No</th>
+                    <th>Section</th>
                     <th>Year</th>
+                    <th>Total</th>
+                    <th>Entry Status</th>
                    <th>Action</th>
                 </tr>
                 </thead>
@@ -39,10 +43,15 @@ const StudentFeePaymentEntry = (props) => {
                     data.map((item,index)=>{
                         return(
                             <tr key={index}>
-                                <td>{item.class}</td>
+                                <td>{index+1}</td>
                                 <td>{item.student_Name}</td>
                                 <td>{item.registration_no}</td>
-                                <td>{item.current_academic_year}</td>
+                                <td>{item.class}</td>
+                                <td>{item.roll_no}</td>
+                                <td>{item.section}</td>
+                                <td>{item.year}</td>
+                                <td>{item.total_fee}</td>
+                                <td>{item.status}</td>
                                 <td><button onClick={handleClick} className="dashboard-btn dashboard-btn-scss">Select</button></td>
                             </tr>
                         )
