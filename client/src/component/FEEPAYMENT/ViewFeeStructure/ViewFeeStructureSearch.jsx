@@ -7,7 +7,7 @@ const ViewFeeStructureSearch = (props) => {
 
     const handleSearch=(e)=>{
         e.preventDefault()
-       axios.post("/api/v1/fee/getfeestructure",{Class,year:Year})
+       axios.post("/api/v1/fee/getfeestructure",{Class,year:Year},{headers:{"Authorization":localStorage.getItem("token")}})
            .then((res)=>{
                props.viewFeeStructure(res.data.result,"block")
            })

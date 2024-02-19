@@ -8,6 +8,7 @@ import exportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStuden
 const Dashboard = () => {
   const HandaleLogout = () => {
     sessionStorage.removeItem("user");
+    localStorage.removeItem("token");
     window.location.reload();
 
   };

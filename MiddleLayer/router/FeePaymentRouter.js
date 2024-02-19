@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
+const verifyToken = require('../Config/auth')
 const { CreateFeeStructure,GetFeeStructure ,EditFeeStructure,GetStudentForFeeEntry,NewAdmissionFeeEntry,ReAdmissionFeeEntry} = require('../controller/FeePaymentController')
 
 
 //Create a new Fee Structure
-router.post('/createfeestructure', CreateFeeStructure)
+router.post('/createfeestructure',CreateFeeStructure)
 
 //Get Fee Structure
-router.post('/getfeestructure', GetFeeStructure)
+router.post('/getfeestructure' ,verifyToken, GetFeeStructure)
 
 //Edit Fee Structure
 router.post('/editfeestructure', EditFeeStructure)

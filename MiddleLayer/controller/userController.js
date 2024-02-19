@@ -1,5 +1,6 @@
 const Database = require('../Config/Dbconnection')
 const fs = require('fs');
+const jwt = require('jsonwebtoken');
 
 //login user
 exports.Login = (req, res) => {
@@ -8,25 +9,24 @@ exports.Login = (req, res) => {
         if (!{name, pass}) {
             return res.message("all data needed")
         }
-        query = `
-            SELECT *
-            FROM user
-            WHERE user_name = "${name}"
-              AND password = "${pass}"`;
+        query = `SELECT * FROM user WHERE user_name = "${name}"`;
         Database.query(query, function (error, data) {
             if (error) {
                 return res.status(400).json({
                     status: "failed",
-                    data: "user not found"
-                });
+                    data: "User not found"
+                })
+            }else{
+                    const Password = data[0].password
+                    if (pass === Password) {
+                        const token = jwt.sign({id: data[0].user_id, role: data[0].role}, 'your-secret-key', {expiresIn: '5h'});
+                        return res.status(200).json({
+                            status: "success",
+                            data: data,
+                            token: token
+                        });
+                }
             }
-            if (data) {
-                return res.status(200).json({
-                    status: "success",
-                    data: data
-                });
-            }
-
         })
     }catch(err){
         console.log(err.message)
