@@ -235,32 +235,31 @@ exports.GetStudentForFeeEntry = (req, res) => {
     a.student_Name, 
     a.roll_no, 
     a.section, 
-    a.registration_no,
-    a.class,
-    a.current_academic_year AS year,
-    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
-    (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
-FROM 
-    Student_Admission a 
-WHERE 
-    a.class = ${Class} AND 
-    a.current_academic_year = ${year}
-    AND a.registration_no = '${regNo}';`
-        }else{
-            query = `SELECT 
-    a.student_Name, 
-    a.roll_no, 
-    a.section, 
     a.registration_no, 
     a.class,
-    a.current_academic_year AS year,
-    (SELECT b.total_fee FROM fee_structure b WHERE b.year = ${year} AND b.class = ${Class} AND b.fee_type='${feeType}') AS total_fee,
-    (SELECT c.status  FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+    b.*,
+    (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
 FROM 
     Student_Admission a 
+    JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
 WHERE 
     a.class = ${Class} AND 
-    a.current_academic_year = ${year};`
+    a.current_academic_year = ${year} AND a.registration_no="${regNo}";`
+        }else{
+            query = `SELECT
+                         a.student_Name,
+                         a.roll_no,
+                         a.section,
+                         a.registration_no,
+                         a.class,
+                         b.*,
+                         (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+                     FROM
+                         Student_Admission a
+                             JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
+                     WHERE
+                         a.class = ${Class} AND
+                         a.current_academic_year = ${year} `
         }
         Database.query(query,(err,result)=>{
             if(err){
