@@ -81,7 +81,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.total_fee}</td>
                                 <td>{ <input type='checkbox'
                                     checked={item.status === 1 ? true : false}></input>}</td>
-                                <td><button onClick={handleClick} className="dashboard-btn dashboard-btn-scss" disabled={item.status === 1 ? true : false}>Select</button></td>
+                                <td><button onClick={handleClick} className="dashboard-btn dashboard-btn-scss" disabled={item.status === 1 ? true : false}>Entry</button></td>
                             </tr>
                         )
                     })

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const StudentFeePaymentEntrySearch = (props) => {
 const [Class, setClass] = useState(0);
-const [year, setYear] = useState(0);
+const [year, setYear] = useState(null);
 const [regNo, setRegNo] = useState(0);
 const [feeType, setFeeType] = useState("");
 
@@ -78,7 +78,7 @@ const handlesubmit = (e) => {
 
                 <div>
                     <label>Academic Year</label>
-                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required/>
+                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required={true}/>
                 </div>
 
                 <div>
