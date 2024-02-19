@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 const StudentFeePaymentEntry = (props) => {
     const [view,setView]=useState("none")
@@ -47,6 +48,7 @@ const StudentFeePaymentEntry = (props) => {
     const [EditSessionCharge,setEditSessionCharge]=useState(0)
     const [EditBedFee,setEditBedFee]=useState(0)
     const [EditTotal,setEditTotal]=useState(0)
+    const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
 
     const [month,setMonth]=useState("")
 
@@ -150,6 +152,7 @@ const StudentFeePaymentEntry = (props) => {
         setEditSessionCharge(0)
         setEditBedFee(0)
         setEditTotal(0)
+        setEditDate(new Date().toISOString().slice(0, 10))
     }
 
     useEffect(() => {
@@ -185,6 +188,35 @@ const StudentFeePaymentEntry = (props) => {
     const HandleNewAdmissionFee=(e)=>{
         e.preventDefault()
         console.log(EditTotal,EdithostelCharge,EditTutionFee,EditAdmissonFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee)
+
+        const data={
+            regNo:regNo,
+            Class:Class,
+            year:year,
+            AdmissionFee:EditAdmissonFee,
+            hostelCharge:EdithostelCharge,
+            TutionFee:EditTutionFee,
+            CautionMoney:EditCautionMoney,
+            ExaminationFee:EditExaminationFee,
+            GamesSportsExicursion:EditGamesSportsExicursion,
+            ElectricCharge:EditElectricCharge,
+            LibraryFees:EditLibraryFees,
+            ComputerFees:EditComputerFees,
+            DevelopmentFees:EditDevelopmentFees,
+            Miscellaneous:EditMiscellaneous,
+            LaundryCharge:EditLaundryCharge,
+            MedicalCharge:EditMedicalCharge,
+            Uniform:EditUniform,
+            SessionCharge:EditSessionCharge,
+            BedFee:EditBedFee,
+            Total:EditTotal,
+            PaymentDate:EditDate
+        }
+        axios.post("api/v1/fee/newadmissionfeeentry",data).then((res)=>{
+            console.log(res.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
 
     const HandleReAdmissionFee=(e)=>{
@@ -406,6 +438,10 @@ const StudentFeePaymentEntry = (props) => {
                         <input type="number" value={EditTotal}
                                readOnly={true}/>
                     </div>
+                    <div>
+                        <label>Payment Date</label>
+                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
+                    </div>
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                 </form>
             </div>
@@ -532,6 +568,10 @@ const StudentFeePaymentEntry = (props) => {
                         <label>{Total}: </label>
                         <input type="number" value={EditTotal}
                                readOnly={true}/>
+                    </div>
+                    <div>
+                        <label>Payment Date</label>
+                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
                     </div>
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                 </form>
