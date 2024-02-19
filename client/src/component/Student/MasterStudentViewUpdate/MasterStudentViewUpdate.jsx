@@ -108,10 +108,11 @@ const MasterStudentViewUpdate = (props) => {
       }
       const MyDocument = () => (
         <Document>
-          <Page>
-            <Text>Hello, World!</Text>
-          </Page>
-        </Document>
+        <Page>
+          <Text>Hello, World!</Text>
+        </Page>
+      </Document>
+        
       );
       
 
