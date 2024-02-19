@@ -657,9 +657,10 @@ const MasterStudentViewUpdate = (props) => {
                                     }}
                                     
                                      className="dashboard-btn btn-warning fix-width">Delete</button>
+                                     <button className='dashboard-btn btn-warning fix-width'>
                                      <PDFDownloadLink document={<MyDocument />} fileName="document.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-      </PDFDownloadLink>
+        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
+      </PDFDownloadLink></button>
                                 </td>
                             </tr>
                         )
