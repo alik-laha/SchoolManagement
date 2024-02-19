@@ -24,6 +24,25 @@ const StudentFeePaymentEntry = (props) => {
     const [Uniform,setUniform]=useState(0)
     const [SessionCharge,setSessionCharge]=useState(0)
     const [BedFee,setBedFee]=useState(0)
+    const [Total,setTotal]=useState(0)
+
+    const [EditAdmissonFee,setEditAdmissonFee]=useState(0)
+    const [EdithostelCharge,setEditHostelCharge]=useState(0)
+    const [EditTutionFee,setEditTutionFee]=useState(0)
+    const [EditCautionMoney,setEditCautionMoney]=useState(0)
+    const [EditExaminationFee,setEditExaminationFee]=useState(0)
+    const [EditGamesSportsExicursion,setEditGamesSportsExicursion]=useState(0)
+    const [EditElectricCharge,setEditElectricCharge]=useState(0)
+    const [EditLibraryFees,setEditLibraryFees]=useState(0)
+    const [EditComputerFees,setEditComputerFees]=useState(0)
+    const [EditDevelopmentFees,setEditDevelopmentFees]=useState(0)
+    const [EditMiscellaneous,setEditMiscellaneous]=useState(0)
+    const [EditLaundryCharge,setEditLaundryCharge]=useState(0)
+    const [EditMedicalCharge,setEditMedicalCharge]=useState(0)
+    const [EditUniform,setEditUniform]=useState(0)
+    const [EditSessionCharge,setEditSessionCharge]=useState(0)
+    const [EditBedFee,setEditBedFee]=useState(0)
+    const [EditTotal,setEditTotal]=useState(0)
 
     useEffect(() => {
         if(props.view==="block" && props.data.length>0){
@@ -73,6 +92,7 @@ const StudentFeePaymentEntry = (props) => {
         setUniform(data.uniform_fee)
         setSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
+        setTotal(data.total_fee)
     }
 
     const handleCancel=()=>{
@@ -80,6 +100,36 @@ const StudentFeePaymentEntry = (props) => {
         setNewadmissionView("none")
         setReadmissionView("none")
         setTableView("block")
+    }
+
+    useEffect(() => {
+        calculateTotal()
+    },[EditAdmissonFee,EdithostelCharge,EditTutionFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee])
+
+    const calculateTotal = () => {
+        setEditTotal(
+            Number(EditAdmissonFee) +
+        Number(EdithostelCharge) +
+        Number(EditTutionFee) +
+        Number(EditCautionMoney) +
+        Number(EditExaminationFee) +
+        Number(EditGamesSportsExicursion) +
+        Number(EditElectricCharge) +
+        Number(EditLibraryFees) +
+        Number(EditComputerFees) +
+        Number(EditDevelopmentFees) +
+        Number(EditMiscellaneous) +
+        Number(EditLaundryCharge) +
+        Number(EditMedicalCharge) +
+        Number(EditUniform) +
+        Number(EditSessionCharge) +
+        Number(EditBedFee)
+        )
+    }
+
+    const HandleMonthlyPaymentSubmit=(e)=>{
+        e.preventDefault()
+        console.log(EditTotal,EdithostelCharge,EditTutionFee)
     }
 
     return(
@@ -123,13 +173,36 @@ const StudentFeePaymentEntry = (props) => {
                 </tbody>
             </table>
             </div>
-            <div style={{display: monthlyView}}>
+            <div style={{display: monthlyView}} className="dashbrd-40-colm special-25-div">
                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
-                <h1>Monthly Fee</h1>
+                <form onSubmit={HandleMonthlyPaymentSubmit}>
+                    <div>
+                        <label>Hostel Charge: </label>
+                        <label>{hostelCharge}: </label>
+                        <input type="number" value={EdithostelCharge}
+                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/>
+                    </div>
+
+                    <div>
+                        <label>Tution Charge: </label>
+                        <label>{TutionFee}: </label>
+                        <input type="number" value={EditTutionFee}
+                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/>
+                    </div>
+
+                    <div>
+                        <label>Total Fee: </label>
+                        <label>{Total}: </label>
+                        <input type="number" value={EditTotal}
+                               readOnly={true}/>
+                    </div>
+                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+
+                </form>
             </div>
             <div style={{display: NewadmissionView}}>
-                <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
+            <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
                 <h1>New Admission Fee</h1>
             </div>
