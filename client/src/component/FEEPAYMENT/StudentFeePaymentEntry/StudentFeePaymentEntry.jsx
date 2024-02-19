@@ -222,6 +222,34 @@ const StudentFeePaymentEntry = (props) => {
     const HandleReAdmissionFee=(e)=>{
         e.preventDefault()
         console.log(EditTotal,EdithostelCharge,EditTutionFee,EditAdmissonFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee)
+        const data={
+            regNo:regNo,
+            Class:Class,
+            year:year,
+            AdmissionFee:EditAdmissonFee,
+            hostelCharge:EdithostelCharge,
+            TutionFee:EditTutionFee,
+            CautionMoney:EditCautionMoney,
+            ExaminationFee:EditExaminationFee,
+            GamesSportsExicursion:EditGamesSportsExicursion,
+            ElectricCharge:EditElectricCharge,
+            LibraryFees:EditLibraryFees,
+            ComputerFees:EditComputerFees,
+            DevelopmentFees:EditDevelopmentFees,
+            Miscellaneous:EditMiscellaneous,
+            LaundryCharge:EditLaundryCharge,
+            MedicalCharge:EditMedicalCharge,
+            Uniform:EditUniform,
+            SessionCharge:EditSessionCharge,
+            BedFee:EditBedFee,
+            Total:EditTotal,
+            PaymentDate:EditDate
+        }
+        axios.post("api/v1/fee/readmissionfeeentry",data).then((res)=>{
+            console.log(res.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }
 
     return(
