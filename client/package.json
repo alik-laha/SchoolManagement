@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
+    "@react-pdf/renderer": "^3.3.8",
     "axios": "^1.6.2",
     "carousel": "^0.0.3",
     "daisyui": "^4.4.19",

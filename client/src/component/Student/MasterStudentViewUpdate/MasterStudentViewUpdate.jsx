@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import { Document, Page, Text, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 
 const MasterStudentViewUpdate = (props) => {
     const currDate = new Date().toLocaleDateString();
@@ -105,6 +106,13 @@ const MasterStudentViewUpdate = (props) => {
         }
         return roman;
       }
+      const MyDocument = () => (
+        <Document>
+          <Page>
+            <Text>Hello, World!</Text>
+          </Page>
+        </Document>
+      );
       
 
     const dialog = document.getElementById('myDialog-master-update');
@@ -649,6 +657,9 @@ const MasterStudentViewUpdate = (props) => {
                                     }}
                                     
                                      className="dashboard-btn btn-warning fix-width">Delete</button>
+                                     <PDFDownloadLink document={<MyDocument />} fileName="document.pdf">
+        {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
+      </PDFDownloadLink>
                                 </td>
                             </tr>
                         )
