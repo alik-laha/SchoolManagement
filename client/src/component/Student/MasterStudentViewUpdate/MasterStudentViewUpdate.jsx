@@ -623,11 +623,14 @@ const MasterStudentViewUpdate = (props) => {
                 <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Sl. No.</th>
+                    
                     <th>Student Name</th>
+                    <th>Registration No</th>
                     <th>Active Status</th>
                     <th>Applied Class</th>
                     <th>Year of Admission</th>
-                    <th>Registration No</th>
+                    
+                    <th>Download Report</th>
                     <th>Admisson Date</th>
                     <th>Action</th>
 
@@ -639,11 +642,17 @@ const MasterStudentViewUpdate = (props) => {
                         return (
                             <tr key={index}>
                                 <td>{index+1}</td>
+                                
                                 <td>{item.student_Name}</td>
+                                <td>{item.registration_no}</td>
                                 <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                                 <td>{convertToRoman(item.applied_class)}</td>
                                 <td>{item.admisson_year}</td>
-                                <td>{item.registration_no}</td>
+                                
+                                <td><button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
+                                    <PDFDownloadLink document={<MyDocument />} fileName="document.pdf" >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
+                                    </PDFDownloadLink></button></td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
                                 <td>
                                     <button className='dashboard-btn btn-warning fix-width' onClick={()=>Handleedit(item)}>Edit</button>
@@ -657,10 +666,7 @@ const MasterStudentViewUpdate = (props) => {
                                     }}
                                     
                                      className="dashboard-btn btn-warning fix-width">Delete</button>
-                                     <button className='dashboard-btn btn-warning fix-width'>
-                                     <PDFDownloadLink document={<MyDocument />} fileName="document.pdf">
-        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
-      </PDFDownloadLink></button>
+                                     
                                 </td>
                             </tr>
                         )
