@@ -272,3 +272,135 @@ WHERE
         console.log(error)
     }
 }
+
+
+//New Admission Fee Entry
+exports.NewAdmissionFeeEntry = (req, res) => {
+    try{
+        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate} = req.body
+        if(AdmissionFee===""){
+            AdmissionFee=0
+        }
+        if(hostelCharge==="" ){
+            hostelCharge=0
+        }
+        if(TutionFee==="" ){
+            TutionFee=0
+        }
+        if(CautionMoney===""){
+            CautionMoney=0
+        }
+        if(ExaminationFee===""){
+            ExaminationFee=0
+        }
+        if(GamesSportsExicursion===""){
+            GamesSportsExicursion=0
+        }
+        if(ElectricCharge===""){
+            ElectricCharge=0
+        }
+        if(LibraryFees===""){
+            LibraryFees=0
+        }
+        if(ComputerFees===""){
+            ComputerFees=0
+        }
+        if(DevelopmentFees===""){
+            DevelopmentFees=0
+        }
+        if(Miscellaneous===""){
+            Miscellaneous=0
+        }
+        if(LaundryCharge===""){
+            LaundryCharge=0
+        }
+        if(MedicalCharge===""){
+            MedicalCharge=0
+        }
+        if(Uniform===""){
+            Uniform=0
+        }
+        if(SessionCharge===""){
+            SessionCharge=0
+        }
+        if(BedFee===""){
+            BedFee=0
+        }
+        let query = `INSERT INTO new_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,Payment_date,status) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1)`
+        Database.query(query,(err,result)=>{
+            if(err){
+                return res.status(400).json({msg:err})
+            }else{
+                return res.status(200).json({msg:"New Admission Fee Entry Created Successfully"})
+            }
+        })
+    }catch (error) {
+        console.log(error)
+    }
+}
+
+
+//Re Admission Fee Entry
+exports.ReAdmissionFeeEntry = (req, res) => {
+    try{
+        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate} = req.body
+        if(AdmissionFee===""){
+            AdmissionFee=0
+        }
+        if(hostelCharge==="" ){
+            hostelCharge=0
+        }
+        if(TutionFee==="" ){
+            TutionFee=0
+        }
+        if(CautionMoney===""){
+            CautionMoney=0
+        }
+        if(ExaminationFee===""){
+            ExaminationFee=0
+        }
+        if(GamesSportsExicursion===""){
+            GamesSportsExicursion=0
+        }
+        if(ElectricCharge===""){
+            ElectricCharge=0
+        }
+        if(LibraryFees===""){
+            LibraryFees=0
+        }
+        if(ComputerFees===""){
+            ComputerFees=0
+        }
+        if(DevelopmentFees===""){
+            DevelopmentFees=0
+        }
+        if(Miscellaneous===""){
+            Miscellaneous=0
+        }
+        if(LaundryCharge===""){
+            LaundryCharge=0
+        }
+        if(MedicalCharge===""){
+            MedicalCharge=0
+        }
+        if(Uniform===""){
+            Uniform=0
+        }
+        if(SessionCharge===""){
+            SessionCharge=0
+        }
+        if(BedFee===""){
+            BedFee=0
+        }
+        let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,Payment_date,status) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1)`
+        Database.query(query,(err,result)=>{
+            if(err){
+                return res.status(400).json({msg:err})
+            }else{
+                return res.status(200).json({msg:"Re Admission Fee Entry Created Successfully"})
+            }
+        })
+    }catch (error) {
+        console.log(error)
+    }
+}
