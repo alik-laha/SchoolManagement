@@ -8,6 +8,22 @@ const StudentFeePaymentEntry = (props) => {
     const [monthlyView,setMonthlyView]=useState("none")
     const [NewadmissionView,setNewadmissionView]=useState("none")
     const [readmissionView,setReadmissionView]=useState("none")
+    const [AdmissonFee,setAdmissonFee]=useState(0)
+    const [hostelCharge,setHostelCharge]=useState(0)
+    const [TutionFee,setTutionFee]=useState(0)
+    const [CautionMoney,setCautionMoney]=useState(0)
+    const [ExaminationFee,setExaminationFee]=useState(0)
+    const [GamesSportsExicursion,setGamesSportsExicursion]=useState(0)
+    const [ElectricCharge,setElectricCharge]=useState(0)
+    const [LibraryFees,setLibraryFees]=useState(0)
+    const [ComputerFees,setComputerFees]=useState(0)
+    const [DevelopmentFees,setDevelopmentFees]=useState(0)
+    const [Miscellaneous,setMiscellaneous]=useState(0)
+    const [LaundryCharge,setLaundryCharge]=useState(0)
+    const [MedicalCharge,setMedicalCharge]=useState(0)
+    const [Uniform,setUniform]=useState(0)
+    const [SessionCharge,setSessionCharge]=useState(0)
+    const [BedFee,setBedFee]=useState(0)
 
     useEffect(() => {
         if(props.view==="block" && props.data.length>0){
@@ -26,7 +42,7 @@ const StudentFeePaymentEntry = (props) => {
     },[props.data])
 
 
-    const handleClick=()=>{
+    const handleClick=(data)=>{
         console.log("clicked")
         if(FeeType==="Monthly"){
             setMonthlyView("block")
@@ -39,6 +55,24 @@ const StudentFeePaymentEntry = (props) => {
             setReadmissionView("block")
         }
         setTableView("none")
+        console.log(data)
+
+        setAdmissonFee(data.admission_fee)
+        setHostelCharge(data.hostel_fee)
+        setTutionFee(data.tution_fee)
+        setCautionMoney(data.caution_fee)
+        setExaminationFee(data.examination_fee)
+        setGamesSportsExicursion(data.sports_fee)
+        setElectricCharge(data.electric_fee)
+        setLibraryFees(data.library_fee)
+        setComputerFees(data.computer_fee)
+        setDevelopmentFees(data.development_fee)
+        setMiscellaneous(data.miscellaneous_fee)
+        setLaundryCharge(data.laundry_fee)
+        setMedicalCharge(data.madical_fee)
+        setUniform(data.uniform_fee)
+        setSessionCharge(data.session_fee)
+        setBedFee(data.bed_fee)
     }
 
     const handleCancel=()=>{
@@ -81,7 +115,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.total_fee}</td>
                                 <td>{ <input type='checkbox'
                                     checked={item.status === 1 ? true : false}></input>}</td>
-                                <td><button onClick={handleClick} className="dashboard-btn dashboard-btn-scss" disabled={item.status === 1 ? true : false}>Entry</button></td>
+                                <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" disabled={item.status === 1 ? true : false}>Entry</button></td>
                             </tr>
                         )
                     })
