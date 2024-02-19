@@ -19,7 +19,7 @@ exports.Login = (req, res) => {
             }else{
                     const Password = data[0].password
                     if (pass === Password) {
-                        const token = jwt.sign({id: data[0].user_id, role: data[0].role}, 'your-secret-key', {expiresIn: '5h'});
+                        const token = jwt.sign({id: data[0].user_id, role: data[0].role},process.env.SECURITY_KEY, {expiresIn: '5h'});
                         return res.status(200).json({
                             status: "success",
                             data: data,
