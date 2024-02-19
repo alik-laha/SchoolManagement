@@ -173,6 +173,8 @@ const StudentFeePaymentEntry = (props) => {
                 </tbody>
             </table>
             </div>
+
+            // Monthly Fee Payment
             <div style={{display: monthlyView}} className="dashbrd-40-colm special-25-div">
                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
@@ -201,11 +203,15 @@ const StudentFeePaymentEntry = (props) => {
 
                 </form>
             </div>
+
+            // New Admission Fee Payment
             <div style={{display: NewadmissionView}}>
             <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
                 <h1>New Admission Fee</h1>
             </div>
+
+            // Readmission Fee Payment
             <div style={{display: readmissionView}}>
                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
