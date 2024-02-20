@@ -72,29 +72,29 @@ router.get('/download', function(req, res){
 router.post('/login', Login)
 
 // create user
-router.post('/createuser', CreateUser)
+router.post('/createuser',verifyToken, CreateUser)
 
 //search user
-router.post('/searchuser', SearchUser)
+router.post('/searchuser',verifyToken, SearchUser)
 
 
 //update user
-router.post('/updateuser', UpdateUser)
+router.post('/updateuser',verifyToken, UpdateUser)
 
 //delete user
-router.post('/deleteuser', DeleteUser)
+router.post('/deleteuser',verifyToken, DeleteUser)
 
 //create role
-router.post('/createrole', CreateUserRole)
+router.post('/createrole',verifyToken, CreateUserRole)
 
 //get all role
-router.get('/getallrole', GetUserRole)
+router.get('/getallrole',verifyToken, GetUserRole)
 
 //delete Notice
-router.post('/deletenotice',DeleteNotice )
+router.post('/deletenotice',verifyToken,DeleteNotice )
 
 //delete active Notice
-router.post('/deleteactivenotice',DeleteActiveNotice )
+router.post('/deleteactivenotice',verifyToken,DeleteActiveNotice )
 
 
 module.exports = router

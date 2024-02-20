@@ -22,7 +22,7 @@ const UserSearchquery40 = (props) => {
     }
     e.preventDefault();
     axios
-      .post("/api/v1/searchuser", { id, name, role })
+      .post("/api/v1/searchuser", { id, name, role },{headers:{"Authorization":localStorage.getItem("token")}})
       .then((res) => {
         
         window.addEventListener("unhandledrejection", function(promiseRejectionEvent) {
@@ -43,11 +43,11 @@ const UserSearchquery40 = (props) => {
 
 
   let dataFetch = () => {
-    fetch("/api/v1/getallrole")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllRoles(data.data);
-        props.allRoles(data.data);
+    axios.get("/api/v1/getallrole",{headers:{"Authorization":localStorage.getItem("token")}})
+      .then((res) => {
+        setAllRoles(res.data.data);
+          console.log(res.data.data)
+        props.allRoles(res.data.data);
       })
       .catch((error) => {
         console.log("check the backend", error);

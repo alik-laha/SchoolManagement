@@ -67,7 +67,7 @@ const UserSearchResponse60=(props)=>{
 
     const handleDelete = (user_id,userName) => {
         axios
-            .post("/api/v1/deleteuser", {user_id})
+            .post("/api/v1/deleteuser", {user_id},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 alert("User: "+userName+" Deleted Successfully");
             })
@@ -99,7 +99,7 @@ const UserSearchResponse60=(props)=>{
                 name,
                 password,
                 role,
-            })
+            },{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res);
             })
