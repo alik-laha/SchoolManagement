@@ -1,6 +1,7 @@
 const Database = require('../Config/Dbconnection')
 const fs = require('fs');
 const jwt = require('jsonwebtoken');
+const Bcrypt = require('bcryptjs');
 
 //login user
 exports.Login = (req, res) => {
@@ -10,7 +11,7 @@ exports.Login = (req, res) => {
             return res.message("all data needed")
         }
         query = `SELECT * FROM user WHERE user_name = "${name}"`;
-        Database.query(query, function (error, data) {
+        Database.query(query,async function (error, data) {
             if (error) {
                 return res.status(400).json({
                     status: "failed",
@@ -18,7 +19,8 @@ exports.Login = (req, res) => {
                 })
             }else{
                     const Password = data[0].password
-                    if (pass === Password) {
+                const passwordMatch = await Bcrypt.compare(pass, Password)
+                    if (passwordMatch) {
                         const token = jwt.sign({id: data[0].user_id, role: data[0].role},process.env.SECURITY_KEY, {expiresIn: '5h'});
                         return res.status(200).json({
                             status: "success",
@@ -26,6 +28,12 @@ exports.Login = (req, res) => {
                             token: token
                         });
                 }
+                    else{
+                        return res.status(400).json({
+                            status: "failed",
+                            data: "Password not match"
+                        })
+                    }
             }
         })
     }catch(err){
@@ -35,16 +43,17 @@ exports.Login = (req, res) => {
 }
 
 //create user
-    exports.CreateUser = (req, res) => {
+    exports.CreateUser = async (req, res) => {
         const {name, password, role} = req.body
 
 
             if (!{name, password, role}) {
                 return res.message("all data needed")
             }
+            const pass=await Bcrypt.hash(password, 10)
                     query = `
                         INSERT INTO user (user_name, password, roletype_name)
-                        VALUES ("${name}", "${password}", "${role}")`;
+                        VALUES ("${name}", "${pass}", "${role}")`;
                     Database.query(query, function (error, data) {
                         if (error) {
 
