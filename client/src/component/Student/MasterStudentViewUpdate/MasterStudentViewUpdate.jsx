@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import { Document, Page, Text, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import AdmissionPDFMainComponent from '../../../PdfComponent/AdmissionPDFMainComponent'
 
 const MasterStudentViewUpdate = (props) => {
     const currDate = new Date().toLocaleDateString();
@@ -106,14 +107,40 @@ const MasterStudentViewUpdate = (props) => {
         }
         return roman;
       }
-      const MyDocument = () => (
-        <Document>
-        <Page>
-          <Text>Hello, World!</Text>
-        </Page>
-      </Document>
+    //   const MyDocument = () => (
+    //     <Document>
+    //     <Page>
+    //       <Text>Hello, World!</Text>
+    //     </Page>
+    //   </Document>
         
-      );
+    //   );
+    const InvoiceData = {
+        id: "5df3180a09ea1",
+        invoice_no: "873512-28",
+        fullname: "John Doe",
+        email: "john@gmail.com",
+        phone: "+91 777-9999",
+        address: "lorem ipsum",
+        trans_date: "17-08-2022",
+        companyID: "10001",
+        companyName: "abc company",
+        items: [
+          {
+            sno: 1,
+            desc: "FinePix Pro2 3D Camera",
+            qty: 2,
+            rate: 1600.0
+          },
+          {
+            sno: 2,
+            desc: "Luxury Ultra thin Wrist Watch",
+            qty: 1,
+            rate: 300.99
+          }
+        ]
+      };
+      
       
 
     const dialog = document.getElementById('myDialog-master-update');
@@ -651,7 +678,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.admisson_year}</td>
                                 
                                 <td><button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
-                                    <PDFDownloadLink document={<MyDocument />} fileName="document.pdf" >
+                                    <PDFDownloadLink document={<AdmissionPDFMainComponent/>} fileName="document.pdf" >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
                                     </PDFDownloadLink></button></td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
