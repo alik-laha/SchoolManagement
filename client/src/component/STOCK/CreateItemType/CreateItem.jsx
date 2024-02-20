@@ -14,7 +14,7 @@ const CreateItem = (props) => {
         e.preventDefault()
         axios.post("/api/v1/stock/createitem",{
             item:item
-        }).then((response)=>{
+        },{headers:{"Authorization":localStorage.getItem("token")}}).then((response)=>{
             setItem("")
             alert(`Item Type Created with Name ${item}`)
             {handaleitemCreate()}
@@ -32,7 +32,7 @@ const CreateItem = (props) => {
     }
 
     const handaleitemCreate=()=>{
-        axios.post("/api/v1/stock/getallitem")
+        axios.get("/api/v1/stock/getallitem",{headers:{"Authorization":localStorage.getItem("token")}})
             .then((data)=>{
                 props.setItemData(data.data.data);
             })

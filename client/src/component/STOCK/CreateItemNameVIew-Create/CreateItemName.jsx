@@ -8,7 +8,7 @@ const CreateItemName = (props) => {
 
   const handleSubmit = (e) => {
       e.preventDefault()
-    axios.post("/api/v1/stock/createitemname", { itemType, itemName })
+    axios.post("/api/v1/stock/createitemname", { itemType, itemName },{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
             alert(`Item Name created with Name : ${itemName}`);
             setItemType("");
@@ -26,7 +26,7 @@ const CreateItemName = (props) => {
         });
   }
   const handleViewItemName = () => {
-    axios.get("/api/v1/stock/getallitemname")
+    axios.get("/api/v1/stock/getallitemname",{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
            props.ItemNameData(res.data.data);
            // console.log(res.data.data);

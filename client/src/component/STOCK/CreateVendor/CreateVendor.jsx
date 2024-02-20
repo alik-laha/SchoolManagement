@@ -17,7 +17,7 @@ const CreateVendor = (props) => {
             vendor:vendor,
             vendoraddress:vendoraddress
 
-        })
+        },{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 alert(`Vendor created with Name : ${vendor}`)
                 setVendor("")
@@ -34,7 +34,7 @@ const CreateVendor = (props) => {
             });
     }
     const handleViewVendoronCreate = () => {
-        axios.post("/api/v1/stock/getallvendor")
+        axios.get("/api/v1/stock/getallvendor",{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 props.setVendorData(res.data.data);
             })

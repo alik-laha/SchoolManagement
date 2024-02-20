@@ -38,7 +38,7 @@ const StockItemEntry= (props) => {
             primaryEntryDate,
             modifiedDate
         }
-        axios.post("/api/v1/stock/stockentry", data)
+        axios.post("/api/v1/stock/stockentry", data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                     alert("Stock has been Insterted Successfully");
                     setItemName("");
@@ -62,7 +62,7 @@ const StockItemEntry= (props) => {
     }
     const handleItemtype = (e) => {
         setItemType(e.target.value);
-        axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+        axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 setItemNames(res.data.data);
             })

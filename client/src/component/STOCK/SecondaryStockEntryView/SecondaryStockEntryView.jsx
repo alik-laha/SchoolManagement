@@ -156,7 +156,7 @@ const SecondaryStockEntryView= (props) => {
                itemid,paidamt,discountamt,balamt,cashentrydate,
                modifieddate
                
-            })
+            },{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res);
                 if(visible==='block')

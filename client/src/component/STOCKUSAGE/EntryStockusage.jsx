@@ -9,7 +9,7 @@ const EntryStockUsage = (props) => {
     const [usageDate, setUsageDate] = useState(new Date().toISOString().slice(0, 10) );
 
     const handleItemtype = (e) => {
-        axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value})
+        axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 setItemNames(res.data.data);
             })
@@ -19,7 +19,7 @@ const EntryStockUsage = (props) => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post("/api/v1/stock/entrystockusage",{itemName, quantity, usageDate})
+        axios.post("/api/v1/stock/entrystockusage",{itemName, quantity, usageDate},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 alert("Stock Usage has been Insterted Successfully");
                 console.log(res);

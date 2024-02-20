@@ -17,7 +17,7 @@ const SecondaryStockEntryAllSearch = (props) => {
             fromDate,
             toDate
         }
-        axios.post("/api/v1/stock/getstock",data)
+        axios.post("/api/v1/stock/getstock",data,{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res)=>{
             props.setStockData(res.data.data)
         })

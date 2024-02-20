@@ -14,7 +14,7 @@ const ViewAllItem=(props)=>{
     },[props.Item,props.itemCreateView])
     const handleDelete = (itemId,item_Type) => {
         axios
-            .post("/api/v1/stock/deleteitem", { itemId ,item_Type})
+            .post("/api/v1/stock/deleteitem", { itemId ,item_Type},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res);
                 props.setItemData(res.data.data)

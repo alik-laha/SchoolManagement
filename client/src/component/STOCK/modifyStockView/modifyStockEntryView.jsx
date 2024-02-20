@@ -127,7 +127,7 @@ const ModifyStockEntryView= (props) => {
           modifiedDate:modifieddate,
           pendingamount:balamt
          }
-            axios.post("/api/v1/stock/modifystockentry",data)
+            axios.post("/api/v1/stock/modifystockentry",data,{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     alert("Stock Entry has been Modified Successfully");
                     setVisiblity('none');
@@ -158,7 +158,7 @@ const ModifyStockEntryView= (props) => {
 
      useEffect(()=>{
          if(item) {
-             axios.post("/api/v1/stock/getitemnamebytype", {itemType:item})
+             axios.post("/api/v1/stock/getitemnamebytype", {itemType:item},{headers:{"Authorization":localStorage.getItem("token")}})
                  .then((res) => {
                      setItemNames(res.data.data);
                  })
