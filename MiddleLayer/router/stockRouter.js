@@ -5,6 +5,7 @@ const {CreateItem, GetItem, CreateVendor, GetVendor,ModifyStock,StockEntry,Delet
     DeleteItemName,
     CreateStockUsage
 } = require("../controller/StockController");
+const verifyToken = require('../Config/auth')
 const router = express.Router()
 
 //create item

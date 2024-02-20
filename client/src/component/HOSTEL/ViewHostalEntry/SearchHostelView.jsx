@@ -12,7 +12,7 @@ const searchHostelView= (props) => {
                 academicYear,
                 roomNo
             }
-        axios.post("/api/v1/hostel/gethostelentry",data)
+        axios.post("/api/v1/hostel/gethostelentry",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 props.setHostelEntryData(res.data.result)
             })

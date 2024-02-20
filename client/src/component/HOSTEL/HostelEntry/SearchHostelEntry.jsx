@@ -9,7 +9,7 @@ const SearchHostelEntry= (props) => {
 const HandaleSubmit=(e)=>{
     e.preventDefault();
     console.log(regNo)
-    axios.post(`/api/v1/hostel/getAllCombinedHostelStudent`,{Class,regNo,year}).then((res)=>{
+    axios.post(`/api/v1/hostel/getAllCombinedHostelStudent`,{Class,regNo,year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
         props.setStudentData(res.data.result , Class,regNo,year)
     })
 

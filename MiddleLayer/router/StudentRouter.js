@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const verifyToken = require('../Config/auth')
 const {GetAllStudent,MasterStudentAdmission, LastId,GetMasterStudentAdmisson,StudentAdmission, UpdateStudentAdmission,
     DeleteStudentAdmission, DeleteMasterStudentAdmission, UpdateMasterStudentAdmission,GetPromoteStudentAdmisson,updateNextClass,
     CheckPromote,GetAllRegistration,PromoteFail,ReadmitStudent,GetMasterStudentAdmissonByactivity} = require('../controller/StudentController')

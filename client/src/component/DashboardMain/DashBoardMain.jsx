@@ -220,7 +220,7 @@ const HostelStudentData=(data,cl,re,ye)=>{
     setHostelregNo(re)
 }
 const handalesearchBed=(room)=>{
-  axios.post("/api/v1/hostel/searchBed",{room}).then((res)=>{
+  axios.post("/api/v1/hostel/searchBed",{room},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
     setBedData(res.data.result)
     console.log(res.data.result)
   })

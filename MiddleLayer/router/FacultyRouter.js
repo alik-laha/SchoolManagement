@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const verifyToken = require('../Config/auth')
 const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, GetAllSubject,DeleteSubject,DeleteInternalExam,GetAllInternalExam,GetAllExternalExam,DeleteExternalExam,GetAllFacultyMiddleLayer,
     CreateExam,CreateMarks,
     MarksSearch,

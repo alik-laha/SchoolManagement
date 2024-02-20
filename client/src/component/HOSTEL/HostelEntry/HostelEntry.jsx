@@ -36,7 +36,7 @@ const HostelEntry = (props) => {
 
     const HandleSubmit=()=>{
         console.log(regNo)
-        axios.post(`/api/v1/hostel/getAllCombinedHostelStudent`,{Class:props.Class,regNo:props.regNo,year:props.year}).then((res)=>{
+        axios.post(`/api/v1/hostel/getAllCombinedHostelStudent`,{Class:props.Class,regNo:props.regNo,year:props.year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setViewStock(res.data.result)
         })
 
@@ -52,7 +52,7 @@ const HostelEntry = (props) => {
                 studentName,
                 regNo,
                 entrydate
-            })
+            },{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                     setEditIndex(null)
@@ -71,7 +71,7 @@ const HostelEntry = (props) => {
                 })
         }
         else {
-            axios.post("/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate})
+            axios.post("/api/v1/hostel/updatehostelentry",{regNo,roomNo,bedNo,entrydate},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     alert(res.data.msg+' for Student Reg. Id : '+ regNo);
                     setAllView("contents");

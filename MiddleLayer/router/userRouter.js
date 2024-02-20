@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const verifyToken = require('../Config/auth')
 const { Login, CreateUser, SearchUser, UpdateUser, DeleteUser, CreateUserRole, GetUserRole, DeleteNotice, DeleteActiveNotice} = require('../controller/userController')
 const multer=require('multer')
 //const activemulter=require('multer')

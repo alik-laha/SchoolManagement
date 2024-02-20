@@ -1,38 +1,39 @@
 const express = require('express')
 const router = express.Router()
+const verifyToken = require('../Config/auth')
 const{CreateBed, GetBed,DeleteBed,UpdateBed,GetRoomNo,GetHostelEntry,CreateHostelEntry,DeleteHostelEntry,DeleteHostelEntryByRegNo,UpdateHostelEntry,GetAllCombinedHostelStudent}=require('../controller/HostelController')
 
 //create bed
-router.post('/createbed',CreateBed)
+router.post('/createbed',verifyToken,CreateBed)
 
 //view Bed
-router.post('/searchBed',GetBed)
+router.post('/searchBed',verifyToken,GetBed)
 
 //update bed
-router.post('/updateBed',UpdateBed)
+router.post('/updateBed',verifyToken,UpdateBed)
 
 //delete bed
-router.post('/deleteBed',DeleteBed)
+router.post('/deleteBed',verifyToken,DeleteBed)
 
 //get room no
-router.get('/getroomno',GetRoomNo)
+router.get('/getroomno',verifyToken,GetRoomNo)
 
 //get hostel entrie view
-router.post('/gethostelentry',GetHostelEntry)
+router.post('/gethostelentry',verifyToken,GetHostelEntry)
 
 //create hostel entry
-router.post('/createhostelentry',CreateHostelEntry)
+router.post('/createhostelentry',verifyToken,CreateHostelEntry)
 
 //delete hostel entry by rgestration no
-router.post('/deletehostelentrybyregno',DeleteHostelEntryByRegNo)
+router.post('/deletehostelentrybyregno',verifyToken,DeleteHostelEntryByRegNo)
 
 //delete hostel entry
-router.post('/deletehostelentry',DeleteHostelEntry)
+router.post('/deletehostelentry',verifyToken,DeleteHostelEntry)
 
 //update hostel entry
-router.post('/updatehostelentry',UpdateHostelEntry)
+router.post('/updatehostelentry',verifyToken,UpdateHostelEntry)
 
 //search left join hostel entry
-router.post('/getAllCombinedHostelStudent',GetAllCombinedHostelStudent)
+router.post('/getAllCombinedHostelStudent',verifyToken,GetAllCombinedHostelStudent)
 
 module.exports = router
