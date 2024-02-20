@@ -407,10 +407,10 @@ const MasterStudentViewUpdate = (props) => {
             ifscCode,
             releaseDate
         }
-        axios.post("/api/v1/student/updatestudent",data)
+        axios.post("/api/v1/student/updatestudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 if(releaseDate){
-                    axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo})
+                    axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                         .then((res)=>{
                             alert('Student Details Edited Successfully')
                             console.log(res.data);
@@ -476,11 +476,11 @@ const MasterStudentViewUpdate = (props) => {
     const handaleDelete=(regNo,name)=>{
         setAllview("block")
         setUpdateView("none")
-        axios.post("/api/v1/student/deletemasterstudent",{regNo})
+        axios.post("/api/v1/student/deletemasterstudent",{regNo},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
-        axios.post("/api/v1/student/deletestudent",{regNo})
+        axios.post("/api/v1/student/deletestudent",{regNo},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
-                axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo}).then((res)=>{
+                axios.post("/api/v1/hostel/deletehostelentrybyregno",{regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                     // alert('Student : '+ name + ' Deleted Successfully' )
                     console.log(res.data);
                     setView('none')
@@ -585,7 +585,7 @@ const MasterStudentViewUpdate = (props) => {
             admisson:admissionYear,
             year:readmitAcademicYear
         }
-        axios.post("/api/v1/student/readmitstudent",data)
+        axios.post("/api/v1/student/readmitstudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 alert('Student Re-Admitted Successfully')
                 display.close();

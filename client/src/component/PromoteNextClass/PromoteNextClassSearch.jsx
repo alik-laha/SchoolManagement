@@ -10,7 +10,7 @@ const PromoteNextClassSearch= (props) => {
                 Class,
                 academicYear,
             }
-        axios.post("/api/v1/student/getpromotesearch",data)
+        axios.post("/api/v1/student/getpromotesearch",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 props.setPromoteData(res.data.result,Class,academicYear)
             })

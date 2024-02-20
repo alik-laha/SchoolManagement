@@ -49,7 +49,7 @@ const ExportStudentMarksSearch = (props) => {
             props.setSearchcombination('cl')
         }
 
-        axios.post(`/api/v1/faculty/getallmarks`, {Class, regNo,examName},{headers:{"Authorization":localStorage.getItem("token")}}).then((res) => {
+        axios.post(`/api/v1/faculty/getallmarks`, {Class, regNo,examName}).then((res) => {
             props.setStudentMarks(res.data.data)
             props.setStudentMarksView("block")
             console.log(res.data.data)

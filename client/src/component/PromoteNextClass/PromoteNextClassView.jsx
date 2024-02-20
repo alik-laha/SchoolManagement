@@ -61,7 +61,7 @@ const PromoteNextClassView= (props) => {
             Class,
             academicYear,
         }
-        axios.post("/api/v1/student/getpromotesearch",data)
+        axios.post("/api/v1/student/getpromotesearch",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res.data.result)
                setAcademicAll(res.data.result)
@@ -81,7 +81,7 @@ const PromoteNextClassView= (props) => {
                   Class: data.class,
                   regNo: data.registration_no,
                   academicYear: data.current_academic_year
-              })
+              },{headers:{"Authorization":localStorage.getItem("token")}})
                   .then((res) => {
                       axios.post("/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
                             .then((res) => {
@@ -101,7 +101,7 @@ const PromoteNextClassView= (props) => {
                     Class: data.class,
                     regNo: data.registration_no,
                     academicYear: data.current_academic_year
-                })
+                },{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
                         console.log("done")
                         alert(`Student ${data.registration_no} has been Promoted to Next Class and Academic Year `)
@@ -116,7 +116,7 @@ const PromoteNextClassView= (props) => {
             axios.post("/api/v1/student/promotefail", {
                 regNo: data.registration_no,
                 year:data.current_academic_year
-            })
+            },{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     console.log("done")
                     alert(`Student Academic Year Increased by ${data.current_academic_year+1} And Class is ${data.class}`)

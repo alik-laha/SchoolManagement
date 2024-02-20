@@ -6,52 +6,52 @@ const {GetAllStudent,MasterStudentAdmission, LastId,GetMasterStudentAdmisson,Stu
     CheckPromote,GetAllRegistration,PromoteFail,ReadmitStudent,GetMasterStudentAdmissonByactivity} = require('../controller/StudentController')
 
 //get all students
-router.post('/getallstudent',GetAllStudent)
+router.post('/getallstudent',verifyToken,GetAllStudent)
 
 //Master student admission
-router.post('/masterstudentadmission',MasterStudentAdmission)
+router.post('/masterstudentadmission',verifyToken,MasterStudentAdmission)
 
 //last id
-router .get('/lastid',LastId)
+router .get('/lastid',verifyToken,LastId)
 
 //get Master student admission
-router.post('/getmasterstudent',GetMasterStudentAdmisson)
+router.post('/getmasterstudent',verifyToken,GetMasterStudentAdmisson)
 
 //student admission entry
-router.post('/studentadmission',StudentAdmission)
+router.post('/studentadmission',verifyToken,StudentAdmission)
 
 //roll no and section update
-router.post('/academecentry',UpdateStudentAdmission)
+router.post('/academecentry',verifyToken,UpdateStudentAdmission)
 
 //delete student from master
-router.post('/deletemasterstudent',DeleteMasterStudentAdmission)
+router.post('/deletemasterstudent',verifyToken,DeleteMasterStudentAdmission)
 
 //delete student from student admission
-router.post('/deletestudent',DeleteStudentAdmission)
+router.post('/deletestudent',verifyToken,DeleteStudentAdmission)
 
 //update student admission
-router.post('/updatestudent',UpdateMasterStudentAdmission)
+router.post('/updatestudent',verifyToken,UpdateMasterStudentAdmission)
 
 //promote next search
-router.post('/getpromotesearch',GetPromoteStudentAdmisson)
+router.post('/getpromotesearch',verifyToken,GetPromoteStudentAdmisson)
 
 //update promotion
-router.post('/updatepromotion',updateNextClass)
+router.post('/updatepromotion',verifyToken,updateNextClass)
 
 //get count of students
-router.post('/getcount',CheckPromote)
+router.post('/getcount',verifyToken,CheckPromote)
 
 //Promote Fail Student
-router.post('/promotefail',PromoteFail)
+router.post('/promotefail',verifyToken,PromoteFail)
 
 
 //get count of students
-router.post('/getallregNo',GetAllRegistration)
+router.post('/getallregNo',verifyToken,GetAllRegistration)
 
 //Readmit Student
-router.post('/readmitstudent',ReadmitStudent)
+router.post('/readmitstudent',verifyToken,ReadmitStudent)
 
 //get student by active status
-router.post('/getstudentbyactive',GetMasterStudentAdmissonByactivity)
+router.post('/getstudentbyactive',verifyToken,GetMasterStudentAdmissonByactivity)
 
 module.exports = router

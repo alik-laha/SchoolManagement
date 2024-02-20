@@ -14,7 +14,7 @@ const AcademicEntrySearch= (props) => {
             regNo,
             year
         }
-        axios.post("/api/v1/student/getallstudent",data)
+        axios.post("/api/v1/student/getallstudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 props.setAcademicEntryData(res.data.result)
             })

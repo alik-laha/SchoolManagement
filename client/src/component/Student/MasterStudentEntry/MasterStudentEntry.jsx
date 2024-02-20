@@ -108,7 +108,7 @@ const MasterStudentEntry= (props) => {
         e.preventDefault();
         let id;
         let regNo;
-        axios.get("/api/v1/student/lastid")
+        axios.get("/api/v1/student/lastid",{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 if(!res.data.result[0])
                 {
@@ -185,9 +185,9 @@ const MasterStudentEntry= (props) => {
                     applyClass,
                     admissionYear,
                 }
-                axios.post("/api/v1/student/masterstudentadmission", data)
+                axios.post("/api/v1/student/masterstudentadmission", data,{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
-                        axios.post("/api/v1/student/studentadmission", data1)
+                        axios.post("/api/v1/student/studentadmission", data1,{headers:{"Authorization":localStorage.getItem("token")}})
                             .then((res) => {
                                 console.log(res)
                                 

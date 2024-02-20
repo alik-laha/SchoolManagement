@@ -53,13 +53,13 @@ router.post('/deleteexternalexam',verifyToken,DeleteExternalExam)
 router.post('/createmarks',verifyToken,CreateMarks)
 
 //search Marks for update
-router.post('/searchmarks',verifyToken,MarksSearch)
+router.post('/searchmarks',MarksSearch)
 
 //Update Marks
 router.post('/updatemarks',verifyToken,UpdateMarks)
 
 //get all Marks
-router.post("/getallmarks",verifyToken,GetAllMarks)
+router.post("/getallmarks",GetAllMarks)
 
 //Update Marks
 router.post('/getallfacultyactive',verifyToken,GetAllFacultyMiddleLayer)
@@ -71,11 +71,11 @@ router.get('/getallexam',verifyToken,GetAllExamForMarks)
 router.get('/getfaculty',verifyToken,GetFaculty)
 
 // //get marks without subject
-router.post('/getmarkswithoutsub',verifyToken,GetMarksWithoutSubject)
+router.post('/getmarkswithoutsub',GetMarksWithoutSubject)
 
 
 //get all Marks for edit
-router.post("/getallmarksforedit",verifyToken,GetMarksForEdit)
+router.post("/getallmarksforedit",GetMarksForEdit)
 
 
 //Delete Marks

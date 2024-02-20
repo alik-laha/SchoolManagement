@@ -60,7 +60,7 @@ const AcademicEntryUpdate = (props) => {
             regNo:props.regNo,
             year:props.year
         }
-        axios.post("/api/v1/student/getallstudent",data)
+        axios.post("/api/v1/student/getallstudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 setAcademicAll(res.data.result)
             })
@@ -70,7 +70,7 @@ const AcademicEntryUpdate = (props) => {
     }
     const HandleSubmit=(index)=>{
         if(index===editedIndex) {
-            axios.post("/api/v1/student/academecentry", {section, rollNo,regNo})
+            axios.post("/api/v1/student/academecentry", {section, rollNo,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     alert("Student Details Updated Successfully")
                     setEditedIndex(null)
