@@ -14,7 +14,7 @@ const [section,setSection]=useState("")
 
 const handleSubmit=(e)=>{
     e.preventDefault();
-    axios.post(`/api/v1/faculty/getallmarksforedit`,{Class,academicYear:year,subject:updatedSubject,examName:updatedExamName,section}).then((res)=>{
+    axios.post(`/api/v1/faculty/getallmarksforedit`,{Class,academicYear:year,subject:updatedSubject,examName:updatedExamName,section},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
         props.setInternalMarks(res.data.data,updatedExamName,updatedSubject,target)
         console.log(res)
         props.setInternalMarksView("block")
@@ -31,7 +31,7 @@ const handleSubmit=(e)=>{
     }, [props.view]);
 
     const FetchExam=()=>{
-        axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
+        axios.get(`/api/v1/faculty/getallexam`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setAllExam(res.data.data)
         }).catch((err)=>{
             console.log(err)
@@ -39,7 +39,7 @@ const handleSubmit=(e)=>{
     }
 
     const FetchSubject=()=>{
-        axios.post(`/api/v1/faculty/getallsubject`).then((res)=>{
+        axios.get(`/api/v1/faculty/getallsubject`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setAllSubject(res.data.data)
 
         })

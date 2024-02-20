@@ -21,7 +21,7 @@ const ViewSubject = (props) => {
     },[props.data])
 
     const handleDelete = (id) => {
-        axios.post("/api/v1/faculty/deletesubject",{id}).then((res) => {
+        axios.post("/api/v1/faculty/deletesubject",{id},{headers:{"Authorization":localStorage.getItem("token")}}).then((res) => {
             alert("Subject Deleted")
             setView("none")
         }).catch((err) => {

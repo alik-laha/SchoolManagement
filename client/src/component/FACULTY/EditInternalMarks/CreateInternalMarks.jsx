@@ -36,7 +36,7 @@ const handleUpdate=(data)=>{
          return
      }
      else{
-         axios.post("/api/v1/faculty/updatemarks",{subject:props.Subject,examName:props.Exam,marks,reg:data.registration_no,year:data.current_academic_year,Class:data.class}).then((res)=>{
+         axios.post("/api/v1/faculty/updatemarks",{subject:props.Subject,examName:props.Exam,marks,reg:data.registration_no,year:data.current_academic_year,Class:data.class},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
              alert("Marks Updated Successfully")
                 setIndex(null)
              setView("none")
@@ -50,7 +50,7 @@ const handleCancel=()=>{
         setMarks(0)
 }
 const handleDelete=(data)=>{
-    axios.post("/api/v1/faculty/deletemarks",{subject:props.Subject,exam:props.Exam,regNo:data.registration_no,Class:data.class,year:data.current_academic_year}).then((res)=>{
+    axios.post("/api/v1/faculty/deletemarks",{subject:props.Subject,exam:props.Exam,regNo:data.registration_no,Class:data.class,year:data.current_academic_year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
         alert("Marks Deleted Successfully")
         setView("none")
         setIndex(null)

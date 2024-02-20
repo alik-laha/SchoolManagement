@@ -6,7 +6,7 @@ const CreateSubject = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("/api/v1/faculty/createsubject",{name}).then(() => {
+        axios.post("/api/v1/faculty/createsubject",{name},{headers:{"Authorization":localStorage.getItem("token")}}).then(() => {
             alert("Subject Name : "+ name + " has been Added Successfully")
             setName("")
             handleView()
@@ -19,7 +19,7 @@ const CreateSubject = (props) => {
     }
 
     const handleView = () => {
-        axios.post("/api/v1/faculty/getallsubject").then((res) => {
+        axios.get("/api/v1/faculty/getallsubject",{headers:{"Authorization":localStorage.getItem("token")}}).then((res) => {
             props.setSubject(res.data.data)
             props.setSubjectView("block")
         }).catch((err) => {

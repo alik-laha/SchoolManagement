@@ -14,7 +14,7 @@ const CreateMarks=(props)=>{
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post(`/api/v1/faculty/marksentry`,{Class,year,subject:updatedSubject,examName:updatedExamName,section}).then((res)=>{
+        axios.post(`/api/v1/faculty/marksentry`,{Class,year,subject:updatedSubject,examName:updatedExamName,section},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             props.setExternalMarks(res.data.data,updatedExamName,updatedSubject,target)
             console.log(res)
             props.setInternalMarksView("block")
@@ -31,7 +31,7 @@ const CreateMarks=(props)=>{
     }, [props.view]);
 
     const FetchExam=()=>{
-        axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
+        axios.get(`/api/v1/faculty/getallexam`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setAllExam(res.data.data)
         }).catch((err)=>{
             console.log(err)
@@ -39,7 +39,7 @@ const CreateMarks=(props)=>{
     }
 
     const FetchSubject=()=>{
-        axios.post(`/api/v1/faculty/getallsubject`).then((res)=>{
+        axios.post(`/api/v1/faculty/getallsubject`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setAllSubject(res.data.data)
 
         })

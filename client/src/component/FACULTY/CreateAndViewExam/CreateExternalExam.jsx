@@ -17,7 +17,7 @@ const CreateExternalExam=(props)=>{
             totalMarks,
             examType
         }
-        axios.post("/api/v1/faculty/createexam",data).then(()=>{
+        axios.post("/api/v1/faculty/createexam",data,{headers:{"Authorization":localStorage.getItem("token")}}).then(()=>{
             alert("New Exam Type Category has been Created")
             setName("")
             settotalMarks(0)
@@ -31,7 +31,7 @@ const CreateExternalExam=(props)=>{
     }
     
     const handleView=()=>{
-        axios.post("/api/v1/faculty/getallexternalexam")
+        axios.get("/api/v1/faculty/getallexternalexam",{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res.data.data)
                 props.setExternalExam(res.data.data)
@@ -40,7 +40,7 @@ const CreateExternalExam=(props)=>{
             .catch((err)=>{
                 console.log(err)
             })
-        axios.post("/api/v1/faculty/getallinternalexam")
+        axios.get("/api/v1/faculty/getallinternalexam",{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res.data.data)
                 props.setInternalExam(res.data.data)

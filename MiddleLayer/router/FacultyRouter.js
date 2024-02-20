@@ -14,74 +14,74 @@ const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, G
 } = require('../controller/FacultyController')
 
 //create faculty
-router.post('/createfaculty',createFaculty)
+router.post('/createfaculty',verifyToken,createFaculty)
 
 //delete faculty
-router.post('/deletefaculty',DeleteFaculty)
+router.post('/deletefaculty',verifyToken,DeleteFaculty)
 
 //update faculty
-router.post('/updatefaculty',UpdateFaculty)
+router.post('/updatefaculty',verifyToken,UpdateFaculty)
 
 //get all faculty
-router.post('/getallfaculty',GetAllFaculty)
+router.post('/getallfaculty',verifyToken,GetAllFaculty)
 
 //create subject
-router.post('/createsubject',createSubject)
+router.post('/createsubject',verifyToken,createSubject)
 
 //get all subject
-router.post('/getallsubject',GetAllSubject)
+router.get('/getallsubject',verifyToken,GetAllSubject)
 
 //delete subject
-router.post('/deletesubject',DeleteSubject)
+router.post('/deletesubject',verifyToken,DeleteSubject)
 
 //get all internal exam
-router.post('/getallinternalexam',GetAllInternalExam)
+router.get('/getallinternalexam',verifyToken,GetAllInternalExam)
 
 //delete internal exam
-router.post('/deleteinternalexam',DeleteInternalExam)
+router.post('/deleteinternalexam',verifyToken,DeleteInternalExam)
 
 //create external exam
-router.post('/createexam',CreateExam)
+router.post('/createexam',verifyToken,CreateExam)
 
 //get all external exam
-router.post('/getallexternalexam',GetAllExternalExam)
+router.get('/getallexternalexam',verifyToken,GetAllExternalExam)
 
 //delete external exam
-router.post('/deleteexternalexam',DeleteExternalExam)
+router.post('/deleteexternalexam',verifyToken,DeleteExternalExam)
 
 //Create Marks
-router.post('/createmarks',CreateMarks)
+router.post('/createmarks',verifyToken,CreateMarks)
 
 //search Marks for update
-router.post('/searchmarks',MarksSearch)
+router.post('/searchmarks',verifyToken,MarksSearch)
 
 //Update Marks
-router.post('/updatemarks',UpdateMarks)
+router.post('/updatemarks',verifyToken,UpdateMarks)
 
 //get all Marks
-router.post("/getallmarks",GetAllMarks)
+router.post("/getallmarks",verifyToken,GetAllMarks)
 
 //Update Marks
-router.post('/getallfacultyactive',GetAllFacultyMiddleLayer)
+router.post('/getallfacultyactive',verifyToken,GetAllFacultyMiddleLayer)
 
 //Get all Exam
-router.get('/getallexam',GetAllExamForMarks)
+router.get('/getallexam',verifyToken,GetAllExamForMarks)
 
 //Get Faculty For Frontend
-router.get('/getfaculty',GetFaculty)
+router.get('/getfaculty',verifyToken,GetFaculty)
 
 // //get marks without subject
-router.post('/getmarkswithoutsub',GetMarksWithoutSubject)
+router.post('/getmarkswithoutsub',verifyToken,GetMarksWithoutSubject)
 
 
 //get all Marks for edit
-router.post("/getallmarksforedit",GetMarksForEdit)
+router.post("/getallmarksforedit",verifyToken,GetMarksForEdit)
 
 
 //Delete Marks
-router.post('/deletemarks',DeleteMarks)
+router.post('/deletemarks',verifyToken,DeleteMarks)
 
 //Marks entry
-router.post('/marksentry',MarksEntry)
+router.post('/marksentry',verifyToken,MarksEntry)
 
 module.exports = router
