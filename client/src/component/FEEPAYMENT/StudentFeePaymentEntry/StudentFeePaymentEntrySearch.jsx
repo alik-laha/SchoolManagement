@@ -16,7 +16,7 @@ const handlesubmit = (e) => {
         feeType,
         year
     }
-    axios.post("/api/v1/fee/getstudentforfeeEntry", data)
+    axios.post("/api/v1/fee/getstudentforfeeEntry", data,{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
             console.log(res)
             props.setFeePaymentData(res.data.result, Class, regNo, year)

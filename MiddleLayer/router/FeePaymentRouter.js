@@ -11,17 +11,17 @@ router.post('/createfeestructure',CreateFeeStructure)
 router.post('/getfeestructure' ,verifyToken, GetFeeStructure)
 
 //Edit Fee Structure
-router.post('/editfeestructure', EditFeeStructure)
+router.post('/editfeestructure',verifyToken, EditFeeStructure)
 
 //get student for fee payment entry
-router.post('/getstudentforfeeEntry', GetStudentForFeeEntry)
+router.post('/getstudentforfeeEntry',verifyToken, GetStudentForFeeEntry)
 
 
 //New admission fee Entry
-router.post('/newadmissionfeeentry', NewAdmissionFeeEntry)
+router.post('/newadmissionfeeentry',verifyToken, NewAdmissionFeeEntry)
 
 //Re Admission fee Entry
-router.post('/readmissionfeeentry', ReAdmissionFeeEntry)
+router.post('/readmissionfeeentry',verifyToken, ReAdmissionFeeEntry)
 
 
 

@@ -71,7 +71,7 @@ const CreateFeeSturcture = (props) => {
             BedFee:BedFee,
             Total:Total
         }
-        axios.post("/api/v1/fee/createfeestructure",data)
+        axios.post("/api/v1/fee/createfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
                 alert("Fee Structure Created Successfully")
