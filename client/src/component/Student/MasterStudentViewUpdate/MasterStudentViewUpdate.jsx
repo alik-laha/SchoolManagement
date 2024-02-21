@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import { Document, Page, Text, PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
+import { Document, Page, Text, View,PDFDownloadLink,StyleSheet } from '@react-pdf/renderer';
+
 
 const MasterStudentViewUpdate = (props) => {
     const currDate = new Date().toLocaleDateString();
@@ -106,14 +107,43 @@ const MasterStudentViewUpdate = (props) => {
         }
         return roman;
       }
-      const MyDocument = () => (
+
+
+      const styles = StyleSheet.create({
+        page: {
+          backgroundColor: "#fff",
+          fontFamily: "Helvetica",
+          fontSize: 11,
+          paddingTop: 30,
+          paddingLeft: 50,
+          paddingRight: 50,
+          lineHeight: 1.5,
+          flexDirection: "column"
+        },
+        logo: {
+          width: 84,
+          height: 70
+        },
+        mainHeader: {
+          display: "flex",
+          flexDirection: "row-reverse",
+          justifyContent: "space-between",
+          alignItems: "center"
+        }
+      });
+
+      const MyDocument = ({data}) => (
+        
         <Document>
         <Page>
-          <Text>Hello, World!</Text>
+        <View style={styles.mainHeader}><Text> {data}</Text></View>
+          
         </Page>
       </Document>
         
       );
+     const InvoiceData ="This is the data"
+      
       
 
     const dialog = document.getElementById('myDialog-master-update');
@@ -651,7 +681,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.admisson_year}</td>
                                 
                                 <td><button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
-                                    <PDFDownloadLink document={<MyDocument />} fileName="document.pdf" >
+                                    <PDFDownloadLink document={<MyDocument data={InvoiceData}/>} fileName="document.pdf" >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
                                     </PDFDownloadLink></button></td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
