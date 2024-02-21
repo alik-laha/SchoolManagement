@@ -244,7 +244,7 @@ const MasterStudentViewUpdate = (props) => {
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Date of Birth</Text>
-                        <Text style={styles.rowqty}>{data[0].dob}</Text> 
+                        <Text style={styles.rowqty}>{data[0].dob.slice(0,10)}</Text> 
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Cast</Text>
@@ -253,6 +253,22 @@ const MasterStudentViewUpdate = (props) => {
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Blood Group</Text>
                         <Text style={styles.rowqty}>{data[0].blood_group}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Addres</Text>
+                        <Text style={styles.rowqty}>{data[0].address}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Pin No.</Text>
+                        <Text style={styles.rowqty}>{data[0].pin_no}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>B.S.P Id</Text>
+                        <Text style={styles.rowqty}>{data[0].bsp_id}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}></Text>
+                        <Text style={styles.rowqty}>{data[0].physically_challenged}</Text> 
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Addres</Text>
