@@ -52,6 +52,9 @@ const MasterStudentViewUpdate = (props) => {
     const [regNo,setRegNo]=useState(null);
     const [readmitClass,setReadmitClass]=useState(0);
     const [readmitAcademicYear,setReadmitAcademicYear]=useState(0);
+    const [pdfdata,setPDFdata]=useState([])
+    const [pdfstate,setpdfstate]=useState(false)
+
     
 
 
@@ -167,8 +170,8 @@ const MasterStudentViewUpdate = (props) => {
           },
           qty: {
             width: "60%",
-            borderRightColor: borderColor,
-            borderRightWidth: 1,
+            
+            
             fontSize:'14',
             marginRight:'10px'
            
@@ -185,7 +188,7 @@ const MasterStudentViewUpdate = (props) => {
           },
           rowdescription: {
             width: "40%",
-            textAlign: "left",
+            textAlign: "center",
             borderRightColor: borderColor,
             borderRightWidth: 1,
             marginLeft:'10px',
@@ -195,7 +198,7 @@ const MasterStudentViewUpdate = (props) => {
             width: "60%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
-            textAlign: "right",
+            textAlign: "center",
             marginRight:'10px',
             fontSize:'12px'
           },
@@ -233,24 +236,32 @@ const MasterStudentViewUpdate = (props) => {
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Gender</Text>
-                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                        <Text style={styles.rowqty}>{data[0].sex}</Text> 
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Religion</Text>
-                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                        <Text style={styles.rowqty}>{data[0].religion}</Text> 
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Date of Birth</Text>
-                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                        <Text style={styles.rowqty}>{data[0].dob}</Text> 
                     </View>
                     <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Age</Text>
-                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                        <Text style={styles.rowdescription}>Cast</Text>
+                        <Text style={styles.rowqty}>{data[0].cast}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Blood Group</Text>
+                        <Text style={styles.rowqty}>{data[0].blood_group}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Addres</Text>
+                        <Text style={styles.rowqty}>{data[0].address}</Text> 
                     </View>
 
                     
                     
-                </View>
+                </View>s
 
 
 
@@ -278,8 +289,11 @@ const MasterStudentViewUpdate = (props) => {
       };
 
     const Handleedit=(item)=>{
+        const dataArray=[item]
+        setPDFdata(dataArray)
         setAllview("none")
         setUpdateView("block")
+        setpdfstate(true)
 
         if(item.student_Name!=='')
         {
@@ -683,6 +697,8 @@ const MasterStudentViewUpdate = (props) => {
         setReleaseDate("");
     }
     const handaleCancel=()=>{
+        setpdfstate(false)
+        setPDFdata([])
     setAllview("block")
         setUpdateView("none")
 
@@ -779,7 +795,7 @@ const MasterStudentViewUpdate = (props) => {
                     <th>Applied Class</th>
                     <th>Year of Admission</th>
                     
-                    <th>Download Report</th>
+                    
                     <th>Admisson Date</th>
                     <th>Action</th>
 
@@ -788,7 +804,7 @@ const MasterStudentViewUpdate = (props) => {
                 <tbody>
                 {
                     masterStudent.map((item, index) => {
-                        const dataArray=[item]
+                        
                         return (
                            
                             <tr key={index}>
@@ -800,10 +816,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{convertToRoman(item.applied_class)}</td>
                                 <td>{item.admisson_year}</td>
                                 
-                                <td><button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
-                                    <PDFDownloadLink document={<MyDocument data={dataArray}/>} fileName="document.pdf" >
-                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
-                                    </PDFDownloadLink></button></td>
+                                
                                 <td>{item.admisson_date.slice(0, 10)}</td>
                                 <td>
                                     <button className='dashboard-btn btn-warning fix-width' onClick={()=>Handleedit(item)}>Edit</button>
@@ -848,6 +861,11 @@ const MasterStudentViewUpdate = (props) => {
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
             <button style={{marginBottom:'8px'}}
             onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
+            { pdfstate && <button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
+                                    <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName="document.pdf" >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
+                                    </PDFDownloadLink></button>}
+           
             <hr></hr>
 
                 <form style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
