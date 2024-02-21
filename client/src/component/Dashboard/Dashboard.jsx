@@ -12,14 +12,7 @@ const Dashboard = () => {
     window.location.reload();
 
   };
-    const durationInMillis = 5 * 60 * 60 * 1000; // 5 hours
 
-// Set up a timer to clear the session storage after the specified duration
-    setTimeout(function() {
-        sessionStorage.removeItem("user");
-        localStorage.removeItem("token");
-        window.location.reload();
-    }, durationInMillis);
 
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');

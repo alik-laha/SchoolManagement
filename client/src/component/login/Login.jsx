@@ -53,6 +53,14 @@ const Login = () => {
             sessionStorage.setItem("user", result.data.data[0].roletype_name);
             localStorage.setItem("token", result.data.token)
             sessionStorage.setItem("name", result.data.data[0].user_name)
+            const durationInMillis = 5 * 60 * 60 * 1000; // 5 hours
+
+            setTimeout(function() {
+              sessionStorage.removeItem("user");
+              localStorage.removeItem("token");
+              window.location.reload();
+            }, durationInMillis);
+
             navigator("/dashboard");
           } else {
             setErrormsg("block")
