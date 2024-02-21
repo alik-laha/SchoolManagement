@@ -16,7 +16,8 @@ const UserSearchResponse60=(props)=>{
     const [allRoles, setAllRoles] = useState([]);
     const [passVisi, setPassVisi] = useState("password");
     const [disp,setdisp]=useState("none")
-    
+    const [confirmPass,setConfirmPass]=useState("")
+
     const [userindex,setuserindex]=useState(0)
 
     const clearTable = () => {
@@ -87,6 +88,7 @@ const UserSearchResponse60=(props)=>{
         setid("")
         setname("")
         setpassword("")
+        setConfirmPass("")
     };
 
 
@@ -95,6 +97,11 @@ const UserSearchResponse60=(props)=>{
         if(!name || !role){
             alert("Please fill all the fields")
             return
+        }
+        if(confirmPass!==password){
+            setConfirmPass("")
+            alert("Please Type the same Password in Confirm")
+            return;
         }
         axios
             .post("/api/v1/updateuser", {
@@ -194,6 +201,7 @@ const UserSearchResponse60=(props)=>{
                     <th>User Name</th>
                     <th>User Role</th>
                     <th>Password</th>
+                    <th>Confirm Password</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -238,6 +246,9 @@ const UserSearchResponse60=(props)=>{
                                 </button>
                             
                         
+                    </td>
+                    <td>
+                        <input type="text" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Confirm Password" />
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
