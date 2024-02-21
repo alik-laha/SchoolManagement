@@ -44,23 +44,22 @@ const Login = () => {
     change = <FaEyeSlash />;
   }
 
+  let countdownStartTime = localStorage.getItem('countdownStartTime');
+
+
+
   const handaleSubmit = (e) => {
     e.preventDefault();
     axios
         .post("/api/v1/login", {name, pass})
         .then((result) => {
           if (result.data.data[0]) {
-            sessionStorage.setItem("user", result.data.data[0].roletype_name);
+            localStorage.setItem("user", result.data.data[0].roletype_name);
             localStorage.setItem("token", result.data.token)
-            sessionStorage.setItem("name", result.data.data[0].user_name)
-            const durationInMillis = 5 * 60 * 60 * 1000; // 5 hours
-
-            setTimeout(function() {
-              sessionStorage.removeItem("user");
-              sessionStorage.removeItem("name");
-              localStorage.removeItem("token");
-              window.location.reload();
-            }, durationInMillis);
+            localStorage.setItem("name", result.data.data[0].user_name)
+            if(!countdownStartTime) {
+              localStorage.setItem('countdownStartTime', new Date().getTime());
+            }
 
             navigator("/dashboard");
           } else {
@@ -78,7 +77,6 @@ const Login = () => {
         });
     setErrormsg("none")
   }
-
 
   return (
     <div className="contain" style={{display:'inline-block'}}>

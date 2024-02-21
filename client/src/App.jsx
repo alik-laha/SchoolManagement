@@ -21,6 +21,22 @@ import NavDropdown from "./component/Home/NavDropdown.jsx";
 function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities"};
 
+    let countdownStartTime = localStorage.getItem('countdownStartTime');
+    let elapsedTime = 0;
+    const durationInMillis =5*60* 60 * 1000; // 5 hours
+    if (countdownStartTime) {
+        const currentTime = new Date().getTime();
+        elapsedTime = currentTime - parseInt(countdownStartTime);
+    }
+    let remainingTime = durationInMillis - elapsedTime;
+    setTimeout(function() {
+        localStorage.removeItem("user");
+        localStorage.removeItem("name");
+        localStorage.removeItem("token");
+        localStorage.removeItem('countdownStartTime')
+        window.location.reload();
+    }, remainingTime);
+    ``
   return (
     <BrowserRouter>
       <Routes>

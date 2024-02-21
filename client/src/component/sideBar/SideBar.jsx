@@ -29,7 +29,7 @@ const SideBar = (props) => {
   const [dropArrowhostel,setdropArrowhostel]=useState("+");
   const [dropArrowstockUsage,setdropArrowstockUsage]=useState("+");
 
-  const user = sessionStorage.getItem("user");
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
     if (user === "ADMIN") 

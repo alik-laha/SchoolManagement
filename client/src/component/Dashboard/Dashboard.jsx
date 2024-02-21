@@ -6,9 +6,10 @@ import {useState } from "react";
 
 const Dashboard = () => {
   const HandaleLogout = () => {
-    sessionStorage.removeItem("user");
+      localStorage.removeItem("user");
     localStorage.removeItem("token");
-      sessionStorage.removeItem("name");
+      localStorage.removeItem("name");
+      localStorage.removeItem('countdownStartTime')
     window.location.reload();
 
   };
@@ -1613,15 +1614,15 @@ const handleViewfeePayment=()=>{
     <>
     <div className="dashboard-root">
     <div className='dashoboard-main-header'>
-        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>{sessionStorage.getItem("user")}</span>
+        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>{localStorage.getItem("user")}</span>
         <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg dashboard-open" onClick={NavbarVisibility}>☰</span>
-        <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">{sessionStorage.getItem("name").toUpperCase()}</p><img src={icon}></img></span>
+        <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">{localStorage.getItem("name").toUpperCase()}</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>
           <ul className="dropdown-menu" style={{ display: dashbvisi}}>
             <li className="user-header">
               <span style={{textAlign:'-webkit-center'}}><img src={icon} alt='Operator Icon' className="img-header"></img></span>
-              <p className="text-logout">Welcome {sessionStorage.getItem("name")}</p>
-                <p className="text-logout">{sessionStorage.getItem("user")}</p>
+              <p className="text-logout">Welcome {localStorage.getItem("name")}</p>
+                <p className="text-logout">{localStorage.getItem("user")}</p>
             </li>
             
             <li className="user-footer"> 
