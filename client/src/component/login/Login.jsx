@@ -57,6 +57,7 @@ const Login = () => {
 
             setTimeout(function() {
               sessionStorage.removeItem("user");
+              sessionStorage.removeItem("name");
               localStorage.removeItem("token");
               window.location.reload();
             }, durationInMillis);

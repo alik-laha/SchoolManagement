@@ -9,6 +9,7 @@ const Dashboard = () => {
   const HandaleLogout = () => {
     sessionStorage.removeItem("user");
     localStorage.removeItem("token");
+      sessionStorage.removeItem("name");
     window.location.reload();
 
   };
