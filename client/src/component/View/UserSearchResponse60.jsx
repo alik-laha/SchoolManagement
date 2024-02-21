@@ -84,12 +84,15 @@ const UserSearchResponse60=(props)=>{
         setVisiblity('none');
         setmainsvisibility('contents');
         setPassVisi("password")
+        setid("")
+        setname("")
+        setpassword("")
     };
 
 
     const handaleSubmit = (e) => {
         e.preventDefault();
-        if(!name || !password || !role){
+        if(!name || !role){
             alert("Please fill all the fields")
             return
         }
@@ -102,17 +105,19 @@ const UserSearchResponse60=(props)=>{
             },{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res);
+                alert("User has been Updated Successfully");
+                setdisp("none");
+                setid("")
+                setname("")
+                setpassword("")
+                setVisiblity("none");
+                setmainsvisibility('contents')
+                setPassVisi("password")
             })
             .catch((error) => {
                 console.log(error);
             });
-        alert("User has been Updated Successfully");
-        if(disp==="block"){
-            setdisp("none");
-        }
-        setVisiblity("none");
-        setmainsvisibility('contents')
-        setPassVisi("password")
+
     };
     const handleEdit = (data,index) => {
         setVisiblity("contents");
@@ -120,7 +125,7 @@ const UserSearchResponse60=(props)=>{
         setid(data.user_id);
         setname(data.user_name);
         setrole(data.roletype_name);
-        setpassword(data.password);
+        // setpassword(data.password);
         setuserindex(index);
     };
 

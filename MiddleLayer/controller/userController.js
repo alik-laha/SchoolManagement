@@ -116,31 +116,51 @@ exports.Login = (req, res) => {
 
 //update user
 
-    exports.UpdateUser = (req, res) => {
+    exports.UpdateUser = async (req, res) => {
         const {id, name, password, role} = req.body
 
-            if (!{name, password, role, id}) {
+            if (!{name, role, id}) {
                 return res.message("all data needed")
             }
-                    query = `
-                        UPDATE user
-                        SET user_name="${name}",
-                            password="${password}",
-                            roletype_name="${role}"
-                        WHERE user_id = ${id}`;
-                    Database.query(query, function (error, data) {
-                        if (error) {
-                            connection.release();
-                            res.send(error)
-                        }
-                        if (data) {
-                            return res.status(200).json({
-                                status: "success",
-                                // data: data
-                            });
-                        }
+            if(password) {
+                const pass = await Bcrypt.hash(password, 10)
+                query = `
+                    UPDATE user
+                    SET user_name="${name}",
+                        password="${pass}",
+                        roletype_name="${role}"
+                    WHERE user_id = ${id}`;
+                Database.query(query, function (error, data) {
+                    if (error) {
+                        res.send(error)
+                    }
+                    if (data) {
+                        return res.status(200).json({
+                            status: "success",
+                            // data: data
+                        });
+                    }
 
-                    })
+                })
+            }
+            else{
+                query=`
+                    UPDATE user
+                    SET user_name="${name}",
+                        roletype_name="${role}"
+                    WHERE user_id = ${id}`;
+                Database.query(query,function(err,data){
+                    if (err) {
+                        res.send(err)
+                    }
+                    if (data) {
+                        return res.status(200).json({
+                            status: "success",
+                            // data: data
+                        });
+                    }
+                })
+            }
     }
 
 //delete user
