@@ -5,6 +5,11 @@ const ViewFeeStructure = (props) => {
     const[view,setView]=useState("none")
     const [feeStructure,setFeeStructure]=useState([])
     const [editedIndex, setEditedIndex] = useState("none");
+    const [FeeType,setFeetype]=useState("")
+    const [Class,setClass]=useState(0)
+    const [year,setYear]=useState(0)
+    const [id,setId]=useState(0)
+
     const [admissionFee,setAdmissionFee]=useState(0)
     const [hostelFee,setHostelFee]=useState(0)
     const [tutionFee,setTutionFee]=useState(0)
@@ -55,15 +60,22 @@ const ViewFeeStructure = (props) => {
     useEffect(() => {
         if ( props.data.length>0 && props.view40==="block") {
             setView("block")
+            setEditedIndex("none")
         }
         else {
             setView("none")
+            setEditedIndex("none")
         }
     }, [props.view,props.data,props.view40]);
 
     const editFeeStructure=(data,ind)=>{
         setEditedIndex("block");
         setView("none")
+        console.log(data)
+        setFeetype(data.fee_type)
+        setClass(data.class)
+        setYear(data.year)
+        setId(data.id)
         setAdmissionFee(data.admission_fee)
         setHostelFee(data.hostel_fee)
         setTutionFee(data.tution_fee)
@@ -87,6 +99,10 @@ const ViewFeeStructure = (props) => {
     const handleCancel=()=>{
         setEditedIndex("none")
         setView("block")
+        setFeetype("")
+        setClass(0)
+        setId(0)
+        setYear(0)
         setAdmissionFee(0)
         setHostelFee(0)
         setTutionFee(0)
@@ -107,9 +123,12 @@ const ViewFeeStructure = (props) => {
 
     }
 
-    const handleSubmit=(id)=>{
+    const handleSubmit=(e)=>{
+        e.preventDefault()
         const data={
             id:id,
+            Class,
+            year,
             AdmissonFee:admissionFee,
             hostelCharge:hostelFee,
             TutionFee:tutionFee,
@@ -131,6 +150,7 @@ const ViewFeeStructure = (props) => {
         axios.post("/api/v1/fee/editfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
+                alert("Updated Structure")
                 setEditedIndex("none")
                 setAdmissionFee(0)
                 setHostelFee(0)
@@ -150,6 +170,10 @@ const ViewFeeStructure = (props) => {
                 setBedFee(0)
                 setTotalFee(0)
                 setView("none")
+                setClass(0)
+                setYear(0)
+                setFeetype("")
+                setId(0)
             }).catch((error)=>{
             console.log(error)
         })
@@ -188,15 +212,144 @@ const ViewFeeStructure = (props) => {
                 </table>
 
             </div>
-            <div style={{display: editedIndex}}className="dashbrd-40-colm special-25-div">
+            <div style={{display: editedIndex}} className="dashbrd-40-colm special-25-div">
                 <button className="dashboard-btn dashboard-btn-scss"
                         onClick={handleCancel}>Cancel
                 </button>
-                <h1>Edit View</h1>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div>
+                        <label>
+                            Fee Type
+                        </label>
+                        <input type="text" value={FeeType} readOnly={true}/>
+                    </div>
+                    <div>
+                        <label>Class</label>
+                        <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class}>
+                            <option value="">Class</option>
+                            <option value="1">
+                                I
+                            </option>
+                            <option value="2">
+                                II
+                            </option>
+                            <option value="3">
+                                III
+                            </option>
+                            <option value="4">
+                                IV
+                            </option>
+                            <option value="5">
+                                V
+                            </option>
+                            <option value="6">
+                                VI
+                            </option>
+                            <option value="7">
+                                VII
+                            </option>
+
+                            <option value="8">
+                                VIII
+                            </option>
+                            <option value="9">
+                                IX
+                            </option>
+                            <option value="10">
+                                X
+                            </option>
+                            <option value="11">
+                                XI
+                            </option>
+                            <option value="12">
+                                XII
+                            </option>
+
+                        </select>
+                    </div>
+                    <div>
+                        <label>Year</label>
+                        <input type="number" value={year} onChange={(e) => setYear(e.target.value)}/>
 
                     </div>
+                    <div>
+                        <label>Admission Fee</label>
+                        <input type="number" value={admissionFee}
+                               onChange={(e) => setAdmissionFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Hostel Fee</label>
+                        <input type="number" value={hostelFee} onChange={(e) => setHostelFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Tution Fee </label>
+                        <input type="number" value={tutionFee} onChange={(e) => setTutionFee(e.target.value)}/>
+
+                    </div>
+
+                    <div>
+                        <label>Caution Fee</label>
+                        <input type="number" value={cautionFee} onChange={(e) => setCautionFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Examination Fee</label>
+                        <input type="number" value={examinationFee}
+                               onChange={(e) => setExaminationFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Games,Sports & Exicursion Fee</label>
+                        <input type="number" value={sportsFee} onChange={(e) => setSportsFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Electric Fee</label>
+                        <input type="number" value={electricFee} onChange={(e) => setElectricFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Library Fee</label>
+                        <input type="number" value={libraryFee} onChange={(e) => setLibraryFee(e.target.value)}/>
+
+                    </div>
+                    <div>
+                        <label>Computer Fee </label>
+                        <input type="number" value={computerFee} onChange={(e) => setComputerFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Development Fee </label>
+                        <input type="number" value={developmentFee}
+                               onChange={(e) => setDevelopmentFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Miscellaneous Fee </label>
+                        <input type="number" value={miscellaneousFee}
+                               onChange={(e) => setMiscellaneousFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Laundry Fee </label>
+                        <input type="number" value={laundryFee} onChange={(e) => setLaundryFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Medical Fee </label>
+                        <input type="number" value={medicalFee} onChange={(e) => setMedicalFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Uniform Fee </label>
+                        <input type="number" value={uniformFee} onChange={(e) => setUniformFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Session Fee </label>
+                        <input type="number" value={sessionFee} onChange={(e) => setSessionFee(e.target.value)}/>
+                    </div>
+                    <div>
+                        <label>Bed Fee </label>
+                        <input type="number" value={bedFee} onChange={(e) => setBedFee(e.target.value)}/>
+                    </div>
+                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                 </form>
             </div>
         </>

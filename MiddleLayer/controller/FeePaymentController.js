@@ -111,6 +111,8 @@ exports.EditFeeStructure = (req, res) => {
     try {
         let {
             id,
+            Class,
+            year,
             AdmissonFee,
             hostelCharge,
             TutionFee,
@@ -129,6 +131,9 @@ exports.EditFeeStructure = (req, res) => {
             BedFee,
             Total
         } = req.body
+        if(!Class || !year || !id){
+            return res.status(400).json({msg:"all field needed"})
+        }
         if(AdmissonFee===""){
             AdmissonFee=0
         }
@@ -179,6 +184,8 @@ exports.EditFeeStructure = (req, res) => {
         }
         let query = `UPDATE fee_structure
                      SET
+                         class='${Class}',
+                         year='${year}',
                         admission_fee='${AdmissonFee}',
                          hostel_fee='${hostelCharge}',
                          tution_fee='${TutionFee}',
