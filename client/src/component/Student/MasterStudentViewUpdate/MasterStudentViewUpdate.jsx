@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import { Document, Page, Text, View,PDFDownloadLink,StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
+import logo from '../../Home/logo_ahm.jpg'
 
 
 const MasterStudentViewUpdate = (props) => {
@@ -51,6 +52,7 @@ const MasterStudentViewUpdate = (props) => {
     const [regNo,setRegNo]=useState(null);
     const [readmitClass,setReadmitClass]=useState(0);
     const [readmitAcademicYear,setReadmitAcademicYear]=useState(0);
+    
 
 
     useEffect(()=>{
@@ -108,7 +110,7 @@ const MasterStudentViewUpdate = (props) => {
         return roman;
       }
 
-
+      const borderColor = "#3778C2";
       const styles = StyleSheet.create({
         page: {
           backgroundColor: "#fff",
@@ -121,28 +123,144 @@ const MasterStudentViewUpdate = (props) => {
           flexDirection: "column"
         },
         logo: {
-          width: 84,
-          height: 70
+          width: 60,
+          height: 60,
+          marginTop:20,
+          marginRight:20
+          
         },
         mainHeader: {
           display: "flex",
           flexDirection: "row-reverse",
           justifyContent: "space-between",
           alignItems: "center"
-        }
+        },
+
+        tableContainer: {
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 24,
+            borderWidth: 1,
+            borderColor: "#3778C2"
+          },
+          container: {
+            flexDirection: "row",
+            borderBottomColor: "#00519C",
+            backgroundColor: "#00519C",
+            color: "#fff",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 24,
+            textAlign: "center",
+            fontStyle: "bold",
+            flexGrow: 1
+          },
+          description: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'14',
+            marginLeft:'10px'
+            
+            
+            
+          },
+          qty: {
+            width: "60%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'14',
+            marginRight:'10px'
+           
+           
+          },
+          row: {
+            display:'flex',
+            flexDirection: "row",
+            borderBottomColor: "#3778C2",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 24,
+            fontStyle: "bold"
+          },
+          rowdescription: {
+            width: "40%",
+            textAlign: "left",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            marginLeft:'10px',
+            fontSize:'12px'
+          },
+          rowqty: {
+            width: "60%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            textAlign: "right",
+            marginRight:'10px',
+            fontSize:'12px'
+          },
+          rowafter: {
+            content:'Enter'
+          }
+          
       });
 
-      const MyDocument = ({data}) => (
-        
+    const MyDocument = ({ data }) => (
+
         <Document>
-        <Page>
-        <View style={styles.mainHeader}><Text> {data}</Text></View>
-          
-        </Page>
-      </Document>
-        
+            <Page>
+                <View style={styles.mainHeader}>
+                    <Image
+                        style={styles.logo}
+                        src={logo}
+                    />
+                    <Text> Al-HILAL-MISSION</Text>
+                </View>
+
+
+
+                <View style={styles.tableContainer}>
+                    {/* Invoice Table Header */}
+                    <View style={styles.container}>
+                        <Text style={styles.description}>Title</Text>
+                        <Text style={styles.qty}>Description</Text>
+
+                    </View>
+                    {/* Invoice Table Rows */}
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Student Name</Text>
+                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Gender</Text>
+                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Religion</Text>
+                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Date of Birth</Text>
+                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Age</Text>
+                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
+                    </View>
+
+                    
+                    
+                </View>
+
+
+
+
+
+            </Page>
+        </Document>
+
       );
-     const InvoiceData ="This is the data"
+   
       
       
 
@@ -670,7 +788,9 @@ const MasterStudentViewUpdate = (props) => {
                 <tbody>
                 {
                     masterStudent.map((item, index) => {
+                        const dataArray=[item]
                         return (
+                           
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 
@@ -681,7 +801,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{item.admisson_year}</td>
                                 
                                 <td><button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
-                                    <PDFDownloadLink document={<MyDocument data={InvoiceData}/>} fileName="document.pdf" >
+                                    <PDFDownloadLink document={<MyDocument data={dataArray}/>} fileName="document.pdf" >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
                                     </PDFDownloadLink></button></td>
                                 <td>{item.admisson_date.slice(0, 10)}</td>
