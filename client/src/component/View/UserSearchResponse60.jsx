@@ -248,7 +248,7 @@ const UserSearchResponse60=(props)=>{
                         
                     </td>
                     <td>
-                        <input type="text" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Confirm Password" />
+                        <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Confirm Password" />
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
