@@ -3,7 +3,6 @@ import DashBoardMain from "../DashboardMain/DashBoardMain";
 import "./Dashboard.css";
 import icon from '../Galllery/GalleryImage/operater_icon.png';
 import {useState } from "react";
-import exportStudentMarksSearch from "../FACULTY/ExportStudentMarks/ExportStudentMarksSearch.jsx";
 
 const Dashboard = () => {
   const HandaleLogout = () => {
