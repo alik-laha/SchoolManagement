@@ -417,7 +417,7 @@ const MasterStudentViewUpdate = (props) => {
                         </View>
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Aadhar Number</Text>
-                            <Text style={styles.rowqty}>{data[0].adhar_no!==undefined?'XXXXXXXX'.concat(data[0].adhar_no.substring(8,12)):''}</Text>
+                            <Text style={styles.rowqty}>{data[0].adhar_no ?('XXXXXXXX'.concat(data[0].adhar_no.substring(8,12))):('')}</Text>
                         </View>
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Bank Account Number</Text>
