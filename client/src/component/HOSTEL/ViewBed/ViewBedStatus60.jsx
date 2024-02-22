@@ -144,7 +144,7 @@ const ViewBedStatus60 = (props) => {
                     </tbody>
 
 
-                <thead style={{display: editView}} id='hidden-table-60'>
+                {/* <thead style={{display: editView}} id='hidden-table-60'>
                 <tr>
                             <th>Sl. No.</th>
                             <th>Bulding</th>
@@ -177,9 +177,35 @@ const ViewBedStatus60 = (props) => {
                             <button className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
                         </td>
                     </tr>
-                    </tbody>
+                    </tbody> */}
                 </table>
                 {bedstock.length===0 ? <div className="no-data">No Data Exists</div> : null}
+                <div style={{ display: editView }} className="dashbrd-40-colm special-25-div">
+                    <button style={{ marginBottom: '8px' }} onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
+                    <hr></hr>
+                    <form style={{ display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey' }}>
+                        <p style={{ fontSize: '17px' }} className="customize-centre">Edit Room Details</p>
+                        <dl class="dl-horizontal">
+                        <dt><label>Building</label></dt>
+                        <dd> <input type="text" placeholder="Building" value={bulding} onChange={(e)=>setBuilding(e.target.value)} /></dd>
+                        <dt><label>Floor</label></dt>
+                        <dd><input type="text" placeholder="Floor" value={floor} onChange={(e)=>setFloor(e.target.value)} /></dd>
+                        <dt><label>Room No.</label></dt>
+                        <dd>
+                        <input type="text" placeholder="Room Number" value={room} onChange={(e)=>setRoom(e.target.value)} />
+                            
+                        </dd>
+                        <dt><label>Total Bed </label></dt>
+                        <dd><input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotal_bed(e.target.value)} /></dd>
+                        </dl>
+                        <span><button type="submit" value="Update" className="dashboard-btn btn-warning"
+                                onClick={()=>handaleUpdate(editData.id)}>Update
+                        </button></span>
+                        
+
+
+                    </form>
+                </div>
                 
                 <table className="table-60" style={{display:'none'}} id="bed-status-hostel">
                     <thead style={{display:'block'}}>
