@@ -126,7 +126,7 @@ const MasterStudentViewUpdate = (props) => {
           
           fontFamily: "Helvetica",
           fontSize: 11,
-          paddingTop: 30,
+          paddingTop: 10,
           paddingLeft: 50,
           paddingRight: 50,
           lineHeight: 1.5,
@@ -161,7 +161,7 @@ const MasterStudentViewUpdate = (props) => {
             color: "#fff",
             borderBottomWidth: 1,
             alignItems: "center",
-            height: 24,
+            height: 20,
             textAlign: "center",
             fontStyle: "bold",
             flexGrow: 1
@@ -170,14 +170,13 @@ const MasterStudentViewUpdate = (props) => {
             width: "40%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
-            fontSize:'14',
+            fontSize:'12',
             marginLeft:'10px'
           },
           qty: {
             width: "60%",
-            fontSize:'14',
-            marginRight:'10px'
-           
+            fontSize:'12',
+            marginRight:'10px'   
            
           },
           row: {
@@ -186,7 +185,7 @@ const MasterStudentViewUpdate = (props) => {
             borderBottomColor: "#3778C2",
             borderBottomWidth: 1,
             alignItems: "center",
-            height: 24,
+            height: 20,
             
           },
           rowdescription: {
@@ -194,16 +193,32 @@ const MasterStudentViewUpdate = (props) => {
             textAlign: "center",
             borderRightColor: borderColor,
             borderRightWidth: 1,
-            marginLeft:'10px',
-            fontSize:'12px',
-            fontStyle: "bold"
+            backgroundColor: "azure",
+            fontSize:'10px',
+            fontWeight: "extrabold",
+            color:'#00519C'
+            
           },
           rowqty: {
             width: "60%",
             backgroundColor: "white",
             textAlign: "center",
-            
-            fontSize:'11px'
+            fontSize:'9px'
+          },
+          headerContainer: {
+            marginTop: 16,
+            justifyContent: "flex-start",
+            width: "50%"
+          },
+          billTo: {
+            marginRight: 10,
+            fontWeight:'extrabold'
+          },
+          Mainbillto: {
+            display: "flex",
+            flexDirection: "row",
+            marginTop: 2,
+            paddingBottom: 1
           }
          
           
@@ -213,120 +228,143 @@ const MasterStudentViewUpdate = (props) => {
 
         <Document>
             <Page size="A4" style={styles.page}>
-            <View style={styles.section}>   
-                <View style={styles.mainHeader}>
-                    <Image
-                        style={styles.logo}
-                        src={logo}
-                    />
-                    <Text> Al-HILAL-MISSION</Text>
+                <View style={styles.section}>
+                    <View style={styles.mainHeader}>
+                        <Image
+                            style={styles.logo}
+                            src={logo}
+                        />
+                        <Text> Al-HILAL-MISSION</Text>
+                    </View>
+                    <View style={styles.headerContainer}>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Registration Number:</Text>
+                            <Text>{data[0].registration_no}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Applied For Class:</Text>
+                            <Text>{data[0].applied_class}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Applied For Stream:</Text>
+                            <Text>{data[0].stream}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Admission Year:</Text>
+                            <Text>{data[0].admisson_year}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Date of Admission:</Text>
+                            <Text>{data[0].admisson_date.slice(0,10)}</Text>
+                        </View>
+                        
+                    </View>
+                    <View style={styles.tableContainer}>
+                        {/* Invoice Table Header */}
+                        <View style={styles.container}>
+                            <Text style={styles.description}>Title</Text>
+                            <Text style={styles.qty}>Description</Text>
+
+                        </View>
+                        {/* Invoice Table Rows */}
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Name</Text>
+                            <Text style={styles.rowqty}>{data[0].student_Name}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Gender</Text>
+                            <Text style={styles.rowqty}>{data[0].sex}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Religion</Text>
+                            <Text style={styles.rowqty}>{data[0].religion}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Date of Birth</Text>
+                            <Text style={styles.rowqty}>{data[0].dob}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Cast</Text>
+                            <Text style={styles.rowqty}>{data[0].cast}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Blood Group</Text>
+                            <Text style={styles.rowqty}>{data[0].blood_group}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Addres</Text>
+                            <Text style={styles.rowqty}>{data[0].address}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Pin No.</Text>
+                            <Text style={styles.rowqty}>{data[0].pin_no}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>B.S.P Id</Text>
+                            <Text style={styles.rowqty}>{data[0].bsp_id}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Physically Challenged</Text>
+                            <Text style={styles.rowqty}>{data[0].physically_challenged == 0 ? "No" : "Yes"}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Orphanage</Text>
+                            <Text style={styles.rowqty}>{data[0].orphanage == 0 ? "No" : "Yes"}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Guardian Name</Text>
+                            <Text style={styles.rowqty}>{data[0].guardian_name}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>RelationShip</Text>
+                            <Text style={styles.rowqty}>{data[0].relationship}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Gurdian Contact</Text>
+                            <Text style={styles.rowqty}>{data[0].guardian_contact}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Father Name</Text>
+                            <Text style={styles.rowqty}>{data[0].father_name}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Father Contact</Text>
+                            <Text style={styles.rowqty}>{data[0].father_contact}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Father Qualification</Text>
+                            <Text style={styles.rowqty}>{data[0].father_qualification}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Father ocupation</Text>
+                            <Text style={styles.rowqty}>{data[0].father_ocupation}</Text>
+                        </View>
+
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Mother Name</Text>
+                            <Text style={styles.rowqty}>{data[0].mother_name}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Mother Contact</Text>
+                            <Text style={styles.rowqty}>{data[0].mother_contact}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Mother Qualification</Text>
+                            <Text style={styles.rowqty}>{data[0].mother_qualification}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Mother ocupation</Text>
+                            <Text style={styles.rowqty}>{data[0].mother_ocupation}</Text>
+                        </View>
+
+
+
+
+                    </View>s
+
+
+
                 </View>
-                <View style={styles.tableContainer}>
-                    {/* Invoice Table Header */}
-                    <View style={styles.container}>
-                        <Text style={styles.description}>Title</Text>
-                        <Text style={styles.qty}>Description</Text>
-
-                    </View>
-                    {/* Invoice Table Rows */}
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Name</Text>
-                        <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Gender</Text>
-                        <Text style={styles.rowqty}>{data[0].sex}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Religion</Text>
-                        <Text style={styles.rowqty}>{data[0].religion}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Date of Birth</Text>
-                        <Text style={styles.rowqty}>{data[0].dob}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Cast</Text>
-                        <Text style={styles.rowqty}>{data[0].cast}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Blood Group</Text>
-                        <Text style={styles.rowqty}>{data[0].blood_group}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Addres</Text>
-                        <Text style={styles.rowqty}>{data[0].address}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Pin No.</Text>
-                        <Text style={styles.rowqty}>{data[0].pin_no}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>B.S.P Id</Text>
-                        <Text style={styles.rowqty}>{data[0].bsp_id}</Text> 
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Physically Challenged</Text>
-                        <Text style={styles.rowqty}>{data[0].physically_challenged==0 ? "No":"Yes"}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Orphanage</Text>
-                        <Text style={styles.rowqty}>{data[0].orphanage==0 ? "No":"Yes"}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Guardian Name</Text>
-                        <Text style={styles.rowqty}>{data[0].guardian_name}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>RelationShip</Text>
-                        <Text style={styles.rowqty}>{data[0].relationship}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Gurdian Contact</Text>
-                        <Text style={styles.rowqty}>{data[0].guardian_contact}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Father Name</Text>
-                        <Text style={styles.rowqty}>{data[0].father_name}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Father Contact</Text>
-                        <Text style={styles.rowqty}>{data[0].father_contact}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Father Qualification</Text>
-                        <Text style={styles.rowqty}>{data[0].father_qualification}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Father ocupation</Text>
-                        <Text style={styles.rowqty}>{data[0].father_ocupation}</Text>
-                    </View>
-
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Mother Name</Text>
-                        <Text style={styles.rowqty}>{data[0].mother_name}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Mother Contact</Text>
-                        <Text style={styles.rowqty}>{data[0].mother_contact}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Mother Qualification</Text>
-                        <Text style={styles.rowqty}>{data[0].mother_qualification}</Text>
-                    </View>
-                    <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Mother ocupation</Text>
-                        <Text style={styles.rowqty}>{data[0].mother_ocupation}</Text>
-                    </View>
-
-
-
-
-                </View>s
-
-
-
-            </View>
 
             </Page>
         </Document>
