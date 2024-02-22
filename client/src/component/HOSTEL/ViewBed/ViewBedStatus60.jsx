@@ -76,8 +76,8 @@ const ViewBedStatus60 = (props) => {
         setRoom("")
         setBuilding("")
     }
-    const handaleUpdate = (id,e) => {
-        e.preventDefault();
+    const handaleUpdate = (id) => {
+        
         if(!floor || !bulding || !totalbed || !totalbed){
             alert("Please fill all the fields")
             return
