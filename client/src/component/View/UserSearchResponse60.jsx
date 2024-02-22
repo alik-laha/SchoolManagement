@@ -195,19 +195,21 @@ const UserSearchResponse60=(props)=>{
                 {/* hidden tbody */}
 
 
-                <thead style={{display: visiblity}} id='hidden-table-60'>
+                {/* <thead style={{display: visiblity}} id='hidden-table-60'>
                 <tr>
                     <th>Sl. No.</th>
                     <th>User Name</th>
                     <th>User Role</th>
-                    <th>Password</th>
+                    <th>Reset Password</th>
                     <th>Confirm Password</th>
                     <th>Action</th>
                 </tr>
-                </thead>
+                </thead> */}
 
 
-                <tbody style={{display: visiblity}} >
+                
+
+                {/* <tbody style={{display: visiblity}} >
 
                 <tr>
                     <td>{userindex}</td>
@@ -248,7 +250,7 @@ const UserSearchResponse60=(props)=>{
                         
                     </td>
                     <td>
-                        <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Confirm Password" />
+                        <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Password" />
                     </td>
                     <td>
                         <button type="submit" value="Update" className="dashboard-btn btn-warning"
@@ -262,13 +264,50 @@ const UserSearchResponse60=(props)=>{
                 </tr>
 
 
-                </tbody>
+                </tbody> */}
 
                 {/* hidden tbody */}
 
             </table>
             {view.length===0 ? <div className="no-data">No Data Exists</div> : null}
+            <div style={{ display: visiblity }} className="dashbrd-40-colm special-25-div">
+                    <button style={{ marginBottom: '8px' }} onClick={cancelEdit} className="dashboard-btn dashboard-btn-scss">Back</button>
+                    <hr></hr>
+                    <form style={{ display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey' }}>
+                        <p style={{ fontSize: '17px' }} className="customize-centre">Edit User Details</p>
+                        <dl class="dl-horizontal">
+                        <dt><label>User Name</label></dt>
+                        <dd> <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true} /></dd>
+                        <dt><label>User Role</label></dt>
+                        <dd><select onChange={(e) => setrole(e.target.value)} value={role}>
+                            <option >All</option>
+                            {allRoles.map((data, index) => (
+                                <option value={data.roletype_name} key={index}>
+                                    {data.roletype_name}
+                                </option>
+                            ))}
+                        </select></dd>
+                        <dt><label>Reset Password</label></dt>
+                        <dd>
+                        <section style={{ display: "flex" }}>
+                        <input
+                            type={passVisi} style={{width:'85%'}} placeholder="Password" value={password} 
+                            onChange={(e) => {setpassword(e.target.value) }}/>
+                            <button style={{width:'15%',paddingLeft:'5px',border:'1px solid #ccc',borderColor:'#d2d6de',background:'white'}} onClick={passwordSee}>{change}</button>
+                        </section>
+                            
+                            </dd>
+                        <dt><label>Confirm </label></dt>
+                        <dd> <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Password" /></dd>
+                        </dl>
+                        <span><button type="submit" value="Update" className="dashboard-btn btn-warning"
+                                onClick={handaleSubmit}>Update
+                        </button></span>
+                        
 
+
+                    </form>
+                </div>
             <table className="table-60" id='User-Profile' style={{display:'none'}}>
             <thead style={{display: mainsvisibility}} id='hidden-table-60'>
                 <tr>
