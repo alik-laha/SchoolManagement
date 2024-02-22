@@ -150,7 +150,7 @@ const MasterStudentViewUpdate = (props) => {
             backgroundColor: '#E4E4E4',
             flexDirection: "row",
             flexWrap: "wrap",
-            marginTop: 24,
+            marginTop: 15,
             borderWidth: 1,
             borderColor: "#3778C2"
           },
@@ -206,7 +206,7 @@ const MasterStudentViewUpdate = (props) => {
             fontSize:'9px'
           },
           headerContainer: {
-            marginTop: 16,
+            marginTop: 10,
             justifyContent: "flex-start",
             width: "50%"
           },
@@ -219,8 +219,53 @@ const MasterStudentViewUpdate = (props) => {
             flexDirection: "row",
             marginTop: 2,
             paddingBottom: 1
+          },
+          instituteheader:{
+            textAlign:'center',
+            flexDirection:'row'
+            
+            
+          },
+          institutedesc:{
+            
+            flexDirection:'column',
+            marginLeft:'10px'
+            
+          },
+          institutename:{
+            textAlign:'center',
+            fontSize:'18',
+            fontWeight:'bold',
+            color:'#00519C',
+            marginTop: 20,
+            
+          },
+          instituteother:{
+            textAlign:'center',
+            fontSize:'10',
+            fontWeight:'bold',
+            color:'rgb(6, 21, 116)',
+            
+            
+          },
+          formDetails:{
+            marginLeft:20,
+            width:'100%',
+            marginTop: 15,
+            textAlign:'center',
+            fontSize:'12',
+            color:'red',
+            fontWeight:'bold',
+            
+            fontStyle:'cursive'
+          },
+          blankrow:{
+            width:'100%',
+            backgroundColor:'antiquewhite',
+            color:'#00519C',
+            textAlign:'center',
+            fontWeight:'bold'
           }
-         
           
       });
 
@@ -229,13 +274,29 @@ const MasterStudentViewUpdate = (props) => {
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={styles.section}>
-                    <View style={styles.mainHeader}>
-                        <Image
+                    {/* <View style={styles.mainHeader}>
+                        
+                        
+                    </View> */}
+                    <View style={styles.instituteheader}>
+                    <Image
                             style={styles.logo}
                             src={logo}
                         />
-                        <Text> Al-HILAL-MISSION</Text>
+                     <View style={styles.institutedesc}>
+                        <Text style={styles.institutename}> Al-HILAL-MISSION</Text>{"\n"}
+                        <Text style={styles.instituteother}> (An Educational, Cultural, & Social Welfare Organization) </Text>{"\n"}
+                    
+                        <Text style={styles.instituteother}> Kadambagachi, Duttapukur (Barasat), Kol-700125 </Text>{"\n"}
+                    
                     </View>
+                     
+                    
+
+                        
+                    </View>
+                    <View style={styles.formDetails}><Text> Admission Receipt for Admission Year {data[0].admisson_year} </Text></View> 
+                    
                     <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Registration Number:</Text>
@@ -292,7 +353,7 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowqty}>{data[0].blood_group}</Text>
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Addres</Text>
+                            <Text style={styles.rowdescription}>Address</Text>
                             <Text style={styles.rowqty}>{data[0].address}</Text>
                         </View>
                         <View style={styles.row}>
@@ -311,6 +372,11 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowdescription}>Orphanage</Text>
                             <Text style={styles.rowqty}>{data[0].orphanage == 0 ? "No" : "Yes"}</Text>
                         </View>
+                        {"\n"}
+                        <View style={styles.row}>
+                            <Text style={styles.blankrow}>Guardian Details</Text>
+                            
+                        </View>
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Guardian Name</Text>
                             <Text style={styles.rowqty}>{data[0].guardian_name}</Text>
@@ -323,6 +389,7 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowdescription}>Gurdian Contact</Text>
                             <Text style={styles.rowqty}>{data[0].guardian_contact}</Text>
                         </View>
+                        
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Father Name</Text>
                             <Text style={styles.rowqty}>{data[0].father_name}</Text>
@@ -336,7 +403,7 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowqty}>{data[0].father_qualification}</Text>
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Father ocupation</Text>
+                            <Text style={styles.rowdescription}>Father Occupation</Text>
                             <Text style={styles.rowqty}>{data[0].father_ocupation}</Text>
                         </View>
 
@@ -353,7 +420,7 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowqty}>{data[0].mother_qualification}</Text>
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Mother ocupation</Text>
+                            <Text style={styles.rowdescription}>Mother Ocupation</Text>
                             <Text style={styles.rowqty}>{data[0].mother_ocupation}</Text>
                         </View>
 
