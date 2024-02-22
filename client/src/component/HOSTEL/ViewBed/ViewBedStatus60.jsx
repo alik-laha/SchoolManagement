@@ -76,8 +76,9 @@ const ViewBedStatus60 = (props) => {
         setRoom("")
         setBuilding("")
     }
-    const handaleUpdate = (id) => {
-        
+    const handaleUpdate = (e) => {
+        e.preventDefault();
+        const id=editData.id
         if(!floor || !bulding || !totalbed || !totalbed){
             alert("Please fill all the fields")
             return
@@ -203,7 +204,7 @@ const ViewBedStatus60 = (props) => {
                         <dd><input type="text" placeholder="Total Bed" value={totalbed} onChange={(e)=>setTotal_bed(e.target.value)} /></dd>
                         </dl>
                         <span><button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                onClick={()=>handaleUpdate(editData.id)}>Update
+                                onClick={handaleUpdate}>Update
                         </button></span>
                         
 
