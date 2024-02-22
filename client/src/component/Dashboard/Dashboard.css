@@ -234,6 +234,11 @@
     margin-top: -40px!important;
     /* margin-left: 200%!important; */
     float: right!important;
+    background: #3c8dbc!important;
+    color: white;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .dashboard-btn-default
 {

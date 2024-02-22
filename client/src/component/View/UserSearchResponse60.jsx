@@ -148,11 +148,12 @@ const UserSearchResponse60=(props)=>{
                 <tr style={{display:'table-caption'}}>
                 <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn user-profile-export"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="User-Profile"
                 filename={"User_Profile_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
+                
                 
             />
               
@@ -170,10 +171,10 @@ const UserSearchResponse60=(props)=>{
                 {view.map((item,index) => (
                     
                     <tr key={index}>
-                        <td>{index+1}</td>
+                        <td style={{width:'10%'}}>{index+1}</td>
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
-                        <td>
+                        <td style={{width:'20%'}}>
                             <button className='dashboard-btn btn-warning fix-width' onClick={() => handleEdit(item)}>Edit</button>
                             <button className='dashboard-btn btn-warning fix-width'
                                     onClick={() => {
