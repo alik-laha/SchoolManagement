@@ -269,13 +269,13 @@ const MasterStudentEntry= (props) => {
                     <dd>
                     <select onChange={(e) => setSex(e.target.value)} required value={sex}>
                         <option value="">Gender</option>
-                        <option value="male">
+                        <option value="Male">
                             Male
                         </option>
-                        <option value="female">
+                        <option value="Female">
                             Female
                         </option>
-                        <option value="other">
+                        <option value="Other">
                             Other
                         </option>
                     </select>
@@ -285,10 +285,10 @@ const MasterStudentEntry= (props) => {
                     <dt><label>Religion*</label></dt>
                     <dd><select onChange={(e) => setReligion(e.target.value)} required value={religion}>
                         <option value="">Religion</option>
-                        <option value="islam">
+                        <option value="Islam">
                             Islam
                         </option>
-                        <option value="other">
+                        <option value="Other">
                             Other
                         </option>
                     </select></dd>
@@ -314,22 +314,22 @@ const MasterStudentEntry= (props) => {
                      <dt><label>Cast*</label></dt>
                     <dd> <select onChange={(e) => setCast(e.target.value)} required value={cast}>
                         <option value="">Cast</option>
-                        <option value="gen">
+                        <option value="General">
                             General
                         </option>
-                        <option value="obcA">
+                        <option value="OBC-A">
                             OBC-A
                         </option>
-                        <option value="obcB">
+                        <option value="OBC-B">
                             OBC-B
                         </option>
-                        <option value="sc">
+                        <option value="SC">
                             SC
                         </option>
-                        <option value="st">
+                        <option value="ST">
                             ST
                         </option>
-                        <option value="other">
+                        <option value="Other">
                             Other
                         </option>
                     </select></dd>

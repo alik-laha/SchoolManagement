@@ -115,8 +115,13 @@ const MasterStudentViewUpdate = (props) => {
 
       const borderColor = "#3778C2";
       const styles = StyleSheet.create({
+        section: {
+            margin: 10,
+            padding: 10,
+            flexGrow: 1,
+          },
         page: {
-          backgroundColor: "#fff",
+          
           fontFamily: "Helvetica",
           fontSize: 11,
           paddingTop: 30,
@@ -140,6 +145,7 @@ const MasterStudentViewUpdate = (props) => {
         },
 
         tableContainer: {
+            backgroundColor: '#E4E4E4',
             flexDirection: "row",
             flexWrap: "wrap",
             marginTop: 24,
@@ -164,14 +170,9 @@ const MasterStudentViewUpdate = (props) => {
             borderRightWidth: 1,
             fontSize:'14',
             marginLeft:'10px'
-            
-            
-            
           },
           qty: {
             width: "60%",
-            
-            
             fontSize:'14',
             marginRight:'10px'
            
@@ -184,7 +185,7 @@ const MasterStudentViewUpdate = (props) => {
             borderBottomWidth: 1,
             alignItems: "center",
             height: 24,
-            fontStyle: "bold"
+            
           },
           rowdescription: {
             width: "40%",
@@ -192,26 +193,25 @@ const MasterStudentViewUpdate = (props) => {
             borderRightColor: borderColor,
             borderRightWidth: 1,
             marginLeft:'10px',
-            fontSize:'12px'
+            fontSize:'12px',
+            fontStyle: "bold"
           },
           rowqty: {
             width: "60%",
-            borderRightColor: borderColor,
-            borderRightWidth: 1,
+            backgroundColor: "white",
             textAlign: "center",
-            marginRight:'10px',
-            fontSize:'12px'
-          },
-          rowafter: {
-            content:'Enter'
+            
+            fontSize:'11px'
           }
+         
           
       });
 
     const MyDocument = ({ data }) => (
 
         <Document>
-            <Page>
+            <Page size="A4" style={styles.page}>
+            <View style={styles.section}>   
                 <View style={styles.mainHeader}>
                     <Image
                         style={styles.logo}
@@ -219,9 +219,6 @@ const MasterStudentViewUpdate = (props) => {
                     />
                     <Text> Al-HILAL-MISSION</Text>
                 </View>
-
-
-
                 <View style={styles.tableContainer}>
                     {/* Invoice Table Header */}
                     <View style={styles.container}>
@@ -231,7 +228,7 @@ const MasterStudentViewUpdate = (props) => {
                     </View>
                     {/* Invoice Table Rows */}
                     <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Student Name</Text>
+                        <Text style={styles.rowdescription}>Name</Text>
                         <Text style={styles.rowqty}>{data[0].student_Name}</Text> 
                     </View>
                     <View style={styles.row}>
@@ -244,7 +241,7 @@ const MasterStudentViewUpdate = (props) => {
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Date of Birth</Text>
-                        <Text style={styles.rowqty}>{data[0].dob.slice(0,10)}</Text> 
+                        <Text style={styles.rowqty}>{data[0].dob}</Text> 
                     </View>
                     <View style={styles.row}>
                         <Text style={styles.rowdescription}>Cast</Text>
@@ -281,7 +278,7 @@ const MasterStudentViewUpdate = (props) => {
 
 
 
-
+            </View>
 
             </Page>
         </Document>
@@ -876,9 +873,9 @@ const MasterStudentViewUpdate = (props) => {
 
             <div style={{display: updateView}} className="dashbrd-40-colm special-25-div">
             <button style={{marginBottom:'8px'}}
-            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
-            { pdfstate && <button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white'}}>
-                                    <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName="document.pdf" >
+            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss fix-width">Back</button>
+            { pdfstate && <button className='dashboard-btn fix-width' style={{background:'lightsalmon',color:'white',marginBottom:'8px'}}>
+                                    <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName={"Student_Admission_Report_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Report')}
                                     </PDFDownloadLink></button>}
            

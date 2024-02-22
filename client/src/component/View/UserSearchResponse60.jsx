@@ -18,7 +18,7 @@ const UserSearchResponse60=(props)=>{
     const [disp,setdisp]=useState("none")
     const [confirmPass,setConfirmPass]=useState("")
 
-    const [userindex,setuserindex]=useState(0)
+    
 
     const clearTable = () => {
         setView([]);
@@ -100,7 +100,7 @@ const UserSearchResponse60=(props)=>{
         }
         if(confirmPass!==password){
             setConfirmPass("")
-            alert("Please Type the same Password in Confirm")
+            alert("Password Does not Match")
             return;
         }
         axios
@@ -126,14 +126,14 @@ const UserSearchResponse60=(props)=>{
             });
 
     };
-    const handleEdit = (data,index) => {
+    const handleEdit = (data) => {
         setVisiblity("contents");
         setmainsvisibility('none')
         setid(data.user_id);
         setname(data.user_name);
         setrole(data.roletype_name);
         // setpassword(data.password);
-        setuserindex(index);
+        
     };
 
 
@@ -174,7 +174,7 @@ const UserSearchResponse60=(props)=>{
                         <td>{item.user_name}</td>
                         <td>{item.roletype_name}</td>
                         <td>
-                            <button className='dashboard-btn btn-warning fix-width' onClick={() => handleEdit(item,index+1)}>Edit</button>
+                            <button className='dashboard-btn btn-warning fix-width' onClick={() => handleEdit(item)}>Edit</button>
                             <button className='dashboard-btn btn-warning fix-width'
                                     onClick={() => {
                                         const confirmBox = window.confirm(
@@ -192,82 +192,7 @@ const UserSearchResponse60=(props)=>{
                 ))}
                 </tbody>
 
-                {/* hidden tbody */}
-
-
-                {/* <thead style={{display: visiblity}} id='hidden-table-60'>
-                <tr>
-                    <th>Sl. No.</th>
-                    <th>User Name</th>
-                    <th>User Role</th>
-                    <th>Reset Password</th>
-                    <th>Confirm Password</th>
-                    <th>Action</th>
-                </tr>
-                </thead> */}
-
-
                 
-
-                {/* <tbody style={{display: visiblity}} >
-
-                <tr>
-                    <td>{userindex}</td>
-                    
-                    <td>
-                        <input type="text" value={name} onChange={(e) => setname(e.target.value)} required={true}/>
-                    </td>
-
-                    <td>
-                        <select onChange={(e) => setrole(e.target.value)} value={role}>
-                            <option >All</option>
-                            {allRoles.map((data,index) => (
-                                <option value={data.roletype_name} key={index}>
-                                    {data.roletype_name}
-                                </option>
-                            ))}
-                        </select>
-                    </td>
-                    <td>
-                        
-                           
-                                <input
-                                    type={passVisi}
-                                    placeholder="Password"
-                                    
-                                    value={password}
-                                    onChange={(e)=>{
-                                       setpassword( e.target.value)
-                                    }} 
-                                />
-                                <button
-                                    onClick={passwordSee}
-                                  
-                                >
-                                    {change}
-                                </button>
-                            
-                        
-                    </td>
-                    <td>
-                        <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Password" />
-                    </td>
-                    <td>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                onClick={handaleSubmit}>Update
-                        </button>
-                        <button type="submit" value="Update" className="dashboard-btn btn-warning"
-                                onClick={cancelEdit}>Cancel
-                        </button>
-                    </td>
-
-                </tr>
-
-
-                </tbody> */}
-
-                {/* hidden tbody */}
-
             </table>
             {view.length===0 ? <div className="no-data">No Data Exists</div> : null}
             <div style={{ display: visiblity }} className="dashbrd-40-colm special-25-div">
@@ -291,14 +216,14 @@ const UserSearchResponse60=(props)=>{
                         <dd>
                         <section style={{ display: "flex" }}>
                         <input
-                            type={passVisi} style={{width:'85%'}} placeholder="Password" value={password} 
+                            type={passVisi} style={{width:'85%'}} placeholder="Enter New Password" value={password} 
                             onChange={(e) => {setpassword(e.target.value) }}/>
-                            <button style={{width:'15%',paddingLeft:'5px',border:'1px solid #ccc',borderColor:'#d2d6de',background:'white'}} onClick={passwordSee}>{change}</button>
+                            <button style={{width:'15%',paddingLeft:'4%',border:'1px solid #ccc',borderColor:'#d2d6de',background:'white'}} onClick={passwordSee}>{change}</button>
                         </section>
                             
                             </dd>
                         <dt><label>Confirm </label></dt>
-                        <dd> <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Password" /></dd>
+                        <dd> <input type="password" value={confirmPass} onChange={(e)=>setConfirmPass(e.target.value)} placeholder="Confirm New Password" /></dd>
                         </dl>
                         <span><button type="submit" value="Update" className="dashboard-btn btn-warning"
                                 onClick={handaleSubmit}>Update
