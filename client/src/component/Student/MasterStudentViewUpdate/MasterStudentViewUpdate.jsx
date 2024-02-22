@@ -267,6 +267,21 @@ const MasterStudentViewUpdate = (props) => {
             textAlign:'center',
             fontWeight:'bold',
             fontSize:'10px'
+          },
+          footer:{
+            marginTop:'55px',
+            display:'flex',
+            flexDirection:'row',
+            textAlign:'center'
+          },
+          rightfooter:{
+            width:'50%',
+            marginLeft:'50px',
+            float:'right'
+          },
+          leftfooter:{
+            width:'50%',
+            float:'left'
           }
           
       });
@@ -432,8 +447,11 @@ const MasterStudentViewUpdate = (props) => {
 
 
 
-                    </View>s
-
+                    </View>
+                    <View style={styles.footer}>
+                        <Text style={styles.leftfooter}>Candidate and Guardian Signature</Text>
+                        <Text style={styles.rightfooter}>AL-Hilal Official Signature</Text>
+                    </View>
 
 
                 </View>
