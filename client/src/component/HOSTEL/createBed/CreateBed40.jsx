@@ -6,15 +6,27 @@ const CreateBed40 = (props) => {
     const [floor, setFloor] = useState("");
     const [room, setRoom] = useState("");
     const [totalbed, setTotalBed] = useState("");
+    const [roomname,setRoomname]= useState("");
+    const [roombedname,setRoombedname]= useState("");
 
+    const roomdialog = document.getElementById('roomDialog');
+    const closeRoomDialogButton = document.getElementById('closeRoomDialog');
+    if(closeRoomDialogButton){
+        closeRoomDialogButton.addEventListener('click', () => {
+            roomdialog.close();
+          });
+    }
 
     const handaleSubmit = (e) => {
         let count=-2000;
         e.preventDefault()
         axios.post("/api/v1/hostel/createbed", {bulding,floor,room,totalbed},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-            alert("Room No."+ room +" Created Successfully with Total Bed :"+totalbed);
+            //alert("Room No."+ room +" Created Successfully with Total Bed :"+totalbed);
+            setRoomname(room)
+            setRoombedname(totalbed)
                 { handaleViewBed()}
+                roomdialog.showModal();
             setBulding("");
             setFloor("");
             setRoom("");
@@ -71,6 +83,11 @@ useEffect(() => {
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                     {/* <input className="dashboard-btn dashboard-btn-scss" type="submit" value="Submit"/> */}
                 </form>
+                <dialog id="roomDialog" class="dashboard-modal">
+                <button id="closeRoomDialog" class="dashboard-modal-close-btn ">X </button>
+                <p id="modal-text" style={{color:'black'}}> New Room with Room No. : <p className={{color:'red!important'}}>{roomname}</p> with Total Bed :<p className={{color:'red!important'}}>{roombedname}</p>has Created Successfully</p>
+                {/* <!-- Add more elements as needed --> */}
+            </dialog>
             </div>
         </>
     )

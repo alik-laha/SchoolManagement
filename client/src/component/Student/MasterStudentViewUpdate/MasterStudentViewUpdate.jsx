@@ -948,7 +948,7 @@ const MasterStudentViewUpdate = (props) => {
             {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
                <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn clear-gradient"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="master-student-view"
                 filename={"Student_Master_Report_"+currDate}
                 sheet="tablexls"
