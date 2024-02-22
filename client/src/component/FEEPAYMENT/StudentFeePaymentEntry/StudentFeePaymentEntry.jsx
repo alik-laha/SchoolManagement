@@ -245,7 +245,7 @@ const StudentFeePaymentEntry = (props) => {
             Total:EditTotal,
             PaymentDate:EditDate
         }
-        axios.post("api/v1/fee/readmissionfeeentry",data).then((res)=>{
+        axios.post("api/v1/fee/readmissionfeeentry",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             console.log(res.data)
         }).catch((err)=>{
             console.log(err)

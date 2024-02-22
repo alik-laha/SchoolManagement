@@ -39,7 +39,7 @@ const CreateMarks=(props)=>{
     }
 
     const FetchSubject=()=>{
-        axios.post(`/api/v1/faculty/getallsubject`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+        axios.get(`/api/v1/faculty/getallsubject`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             setAllSubject(res.data.data)
 
         })
