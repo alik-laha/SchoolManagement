@@ -266,16 +266,62 @@ const MasterStudentViewUpdate = (props) => {
                         <Text style={styles.rowqty}>{data[0].bsp_id}</Text> 
                     </View>
                     <View style={styles.row}>
-                        <Text style={styles.rowdescription}></Text>
-                        <Text style={styles.rowqty}>{data[0].physically_challenged}</Text> 
+                        <Text style={styles.rowdescription}>Physically Challenged</Text>
+                        <Text style={styles.rowqty}>{data[0].physically_challenged==0 ? "No":"Yes"}</Text>
                     </View>
                     <View style={styles.row}>
-                        <Text style={styles.rowdescription}>Addres</Text>
-                        <Text style={styles.rowqty}>{data[0].address}</Text> 
+                        <Text style={styles.rowdescription}>Orphanage</Text>
+                        <Text style={styles.rowqty}>{data[0].orphanage==0 ? "No":"Yes"}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Guardian Name</Text>
+                        <Text style={styles.rowqty}>{data[0].guardian_name}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>RelationShip</Text>
+                        <Text style={styles.rowqty}>{data[0].relationship}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Gurdian Contact</Text>
+                        <Text style={styles.rowqty}>{data[0].guardian_contact}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Father Name</Text>
+                        <Text style={styles.rowqty}>{data[0].father_name}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Father Contact</Text>
+                        <Text style={styles.rowqty}>{data[0].father_contact}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Father Qualification</Text>
+                        <Text style={styles.rowqty}>{data[0].father_qualification}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Father ocupation</Text>
+                        <Text style={styles.rowqty}>{data[0].father_ocupation}</Text>
                     </View>
 
-                    
-                    
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Mother Name</Text>
+                        <Text style={styles.rowqty}>{data[0].mother_name}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Mother Contact</Text>
+                        <Text style={styles.rowqty}>{data[0].mother_contact}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Mother Qualification</Text>
+                        <Text style={styles.rowqty}>{data[0].mother_qualification}</Text>
+                    </View>
+                    <View style={styles.row}>
+                        <Text style={styles.rowdescription}>Mother ocupation</Text>
+                        <Text style={styles.rowqty}>{data[0].mother_ocupation}</Text>
+                    </View>
+
+
+
+
                 </View>s
 
 
