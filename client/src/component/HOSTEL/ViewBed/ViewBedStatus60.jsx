@@ -46,6 +46,7 @@ const ViewBedStatus60 = (props) => {
     const handaleDelete = (data) => {
         console.log(data)
         const id=data.id
+        const room_nmbr=data.room_no
         if(data.occupied_bed!==0){
            alert("Room is Occupied, can't be Deleted") 
             return
@@ -53,10 +54,13 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("/api/v1/hostel/deletebed",{id},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-                alert("Room No : "+room+" Deleted Successfully")
+                alert("Room No : "+room_nmbr+" Deleted Successfully")
                 // props.setCreatebed("block");
                 console.log(res.data.result)
                 props.allRoomData(res.data.result)
+                if(view==="block"){
+                    setView("none");
+                }
 
             })
             .catch((error) => {
