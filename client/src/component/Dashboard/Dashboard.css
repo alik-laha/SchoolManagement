@@ -240,6 +240,18 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
+.user-profile-export:hover{
+
+    background :rgb(92, 192, 254)!important;
+}
+.pdf-btn:hover{
+    background: rgb(240, 151, 49)!important;
+
+}
+.fix-width-pdf{
+    width: 100px!important;
+}
 .dashboard-btn-default
 {
     color: #666666;
