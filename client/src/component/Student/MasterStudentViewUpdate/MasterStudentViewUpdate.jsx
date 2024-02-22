@@ -147,7 +147,7 @@ const MasterStudentViewUpdate = (props) => {
         },
 
         tableContainer: {
-            backgroundColor: '#E4E4E4',
+            // backgroundColor: '#E4E4E4',
             flexDirection: "row",
             flexWrap: "wrap",
             marginTop: 15,
@@ -203,7 +203,7 @@ const MasterStudentViewUpdate = (props) => {
             width: "60%",
             backgroundColor: "white",
             textAlign: "center",
-            fontSize:'9px'
+            fontSize:'10px'
           },
           headerContainer: {
             marginTop: 10,
@@ -218,7 +218,8 @@ const MasterStudentViewUpdate = (props) => {
             display: "flex",
             flexDirection: "row",
             marginTop: 2,
-            paddingBottom: 1
+            paddingBottom: 1,
+            fontSize:'10px'
           },
           instituteheader:{
             textAlign:'center',
@@ -264,7 +265,8 @@ const MasterStudentViewUpdate = (props) => {
             backgroundColor:'antiquewhite',
             color:'#00519C',
             textAlign:'center',
-            fontWeight:'bold'
+            fontWeight:'bold',
+            fontSize:'10px'
           }
           
       });
@@ -342,7 +344,7 @@ const MasterStudentViewUpdate = (props) => {
                         </View>
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Date of Birth</Text>
-                            <Text style={styles.rowqty}>{data[0].dob}</Text>
+                            <Text style={styles.rowqty}>{data[0].dob!== null ? data[0].dob.slice(0,10): ''}</Text>
                         </View>
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Cast</Text>
@@ -374,7 +376,7 @@ const MasterStudentViewUpdate = (props) => {
                         </View>
                         {"\n"}
                         <View style={styles.row}>
-                            <Text style={styles.blankrow}>Guardian Details</Text>
+                            <Text style={styles.blankrow}></Text>
                             
                         </View>
                         <View style={styles.row}>
@@ -398,14 +400,8 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowdescription}>Father Contact</Text>
                             <Text style={styles.rowqty}>{data[0].father_contact}</Text>
                         </View>
-                        <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Father Qualification</Text>
-                            <Text style={styles.rowqty}>{data[0].father_qualification}</Text>
-                        </View>
-                        <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Father Occupation</Text>
-                            <Text style={styles.rowqty}>{data[0].father_ocupation}</Text>
-                        </View>
+                        
+                        
 
                         <View style={styles.row}>
                             <Text style={styles.rowdescription}>Mother Name</Text>
@@ -416,13 +412,22 @@ const MasterStudentViewUpdate = (props) => {
                             <Text style={styles.rowqty}>{data[0].mother_contact}</Text>
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Mother Qualification</Text>
-                            <Text style={styles.rowqty}>{data[0].mother_qualification}</Text>
+                            <Text style={styles.blankrow}></Text>
+                            
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Mother Ocupation</Text>
-                            <Text style={styles.rowqty}>{data[0].mother_ocupation}</Text>
+                            <Text style={styles.rowdescription}>Aadhar Number</Text>
+                            <Text style={styles.rowqty}>{data[0].adhar_no!==undefined?'XXXXXXXX'.concat(data[0].adhar_no.substring(8,12)):''}</Text>
                         </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Bank Account Number</Text>
+                            <Text style={styles.rowqty}>{data[0].acount_no}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Bank IFSC Number</Text>
+                            <Text style={styles.rowqty}>{data[0].ifsc}</Text>
+                        </View>
+                        
 
 
 
