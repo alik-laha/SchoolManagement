@@ -105,7 +105,7 @@ const AcademicEntryUpdateSearch= (props) => {
                             Science
                         </option>
                         <option value="Common">
-                            Common Secondary
+                            Common
                         </option>
                     
                         
