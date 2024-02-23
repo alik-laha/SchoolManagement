@@ -1332,8 +1332,8 @@ const MasterStudentViewUpdate = (props) => {
                         <option value="Science">
                             Science
                         </option>
-                        <option value="General">
-                        General (Upto Secondary)
+                        <option value="Common">
+                            Common
                         </option>
                     </select></dd>
                         <dt> <label>Applied Class*</label></dt>

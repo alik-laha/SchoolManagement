@@ -546,8 +546,8 @@ const MasterStudentEntry= (props) => {
                         <option value="Science">
                             Science
                         </option>
-                        <option value="General">
-                            General (Upto Secondary)
+                        <option value="Common Secondary">
+                            Common Secondary
                         </option>
                     </select></dd>
                     <dt><label>Applying Class*</label></dt>
