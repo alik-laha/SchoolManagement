@@ -5,6 +5,8 @@ const MasterStudentViewSearch = (props) => {
     const [admissionYear,setAdmissionYear]=useState("");
     const [applyClass,setApplyClass]=useState("")
     const [inactivated,setInactivated]=useState(1);
+    const [stream, setStream] = useState('');
+
     const HandleEdit=(e)=> {
         e.preventDefault();
         const data={
@@ -93,6 +95,27 @@ const MasterStudentViewSearch = (props) => {
                         Active Student List
                     </label>
                     <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} checked={inactivated===1?true:false} />
+                </div>
+                <div style={{width:'28%',marginTop:'-30px'}}>
+                    <label>Search By Stream</label>
+                    <select onChange={(e) => setStream(e.target.value)}  value={stream}>
+                    <option value="">Stream</option>
+                        <option value="Arts">
+                            Arts
+                        </option>
+                        <option value="Commerce">
+                            Commerce
+                        </option>
+                        <option value="Science">
+                            Science
+                        </option>
+                        <option value="General">
+                            General (Upto Secondary)
+                        </option>
+                    
+                        
+                        
+                    </select> 
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
 

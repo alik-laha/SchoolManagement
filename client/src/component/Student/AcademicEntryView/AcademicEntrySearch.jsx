@@ -5,6 +5,8 @@ const AcademicEntrySearch= (props) => {
     const [Class,setClass]=useState("")
     const [regNo,setregNo]=useState("")
     const [year,setyear]=useState("")
+    const [stream, setStream] = useState('');
+    const [section,setSection]=useState('');
     
 
     const handaleSubmit=(e)=> {
@@ -12,7 +14,7 @@ const AcademicEntrySearch= (props) => {
         const data={
             Class,
             regNo,
-            year
+            year,stream,section
         }
         axios.post("/api/v1/student/getallstudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
@@ -89,6 +91,33 @@ const AcademicEntrySearch= (props) => {
                             Search By Registration No.
                         </label>
                         <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
+                    </div>
+                    <div>
+                    <label>Search By Stream</label>
+                    <select onChange={(e) => setStream(e.target.value)} value={stream}>
+                    <option value="">Stream</option>
+                        <option value="Arts">
+                            Arts
+                        </option>
+                        <option value="Commerce">
+                            Commerce
+                        </option>
+                        <option value="Science">
+                            Science
+                        </option>
+                        <option value="General">
+                            General (Upto Secondary)
+                        </option>
+                    
+                        
+                        
+                    </select> 
+                </div>
+                <div>
+                        <label>
+                            Search By Section.
+                        </label>
+                        <input type="text" placeholder='Section' value={section} onChange={(e) => setSection(e.target.value)}/>
                     </div>
                    
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>

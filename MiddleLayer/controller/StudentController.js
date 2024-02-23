@@ -26,17 +26,17 @@ exports.LastId = (req, res) => {
 
 //get all students byclass and registration
 exports.GetAllStudent = (req, res) => {
-    const { Class, regNo, year } = req.body
+    const { Class, regNo, year,stream,section } = req.body
     let query
     try {
-        if (!Class && !regNo && !year) {
+        if (!Class && !regNo && !year && !stream && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC `
         }
-        else if (Class && !regNo && !year) {
+        else if (Class && !regNo && !year && !stream && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -44,7 +44,7 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
         }
 
-        else if (!Class && regNo && !year) {
+        else if (regNo) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -52,7 +52,7 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (!Class && !regNo && year) {
+        else if (!Class && !regNo && year && !stream && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -60,28 +60,129 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
+        else if (!Class && !regNo && !year && stream && !section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.stream regexp '${stream}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+           
+        }
+        else if (!Class && !regNo && !year && !stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.section regexp '${section}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+           
+        }
 
-        else if (Class && regNo && !year) {
+        else if (Class && !regNo && year && !stream && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.registration_no regexp '${regNo}' 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (!Class && regNo && year) {
+        else if (Class && !regNo && !year && stream && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.registration_no regexp '${regNo}' 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.stream regexp '${stream}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (Class && !regNo && year) {
+        else if (Class && !regNo && !year && !stream && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}' 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.section = '${section}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (Class && !regNo && year && stream && !section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            and Student_Admission.stream = '${stream}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (Class && !regNo && !year && stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
+            and Student_Admission.section regexp '${section}' 
+            and Student_Admission.stream = '${stream}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (Class && !regNo && year && !stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            and Student_Admission.section = '${section}' 
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (Class && !regNo && year && stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            and Student_Admission.section = '${section}'
+            and Student_Admission.stream = '${stream}'  
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && year && stream && !section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            
+            and Student_Admission.stream = '${stream}'  
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && year && !stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            and Student_Admission.section = '${section}'
+            
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && year && stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1 and  and Student_Admission.stream = '${stream}' 
+            and Student_Admission.current_academic_year regexp '${year}' 
+            and Student_Admission.section = '${section}'
+            
+            order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && !year && stream && section) {
+            query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
+            LEFT JOIN master_student 
+            ON master_student.registration_no = Student_Admission.registration_no 
+            WHERE Student_Admission.active=1  and Student_Admission.stream = '${stream}' 
+           
+            and Student_Admission.section = '${section}'
+            
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -90,7 +191,8 @@ exports.GetAllStudent = (req, res) => {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}' and Student_Admission.registration_no regexp '${regNo}'
+            WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}'
+            and Student_Admission.section = '${section}' and  Student_Admission.stream = '${stream}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }

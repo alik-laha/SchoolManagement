@@ -5,6 +5,7 @@ const AcademicEntryUpdateSearch= (props) => {
     const [Class,setClass]=useState("")
     const [regNo,setregNo]=useState("")
     const [year,setyear]=useState("")
+    const [stream, setStream] = useState('');
 
 
     const handaleSubmit=(e)=> {
@@ -90,6 +91,27 @@ const AcademicEntryUpdateSearch= (props) => {
                         </label>
                         <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
+                    <div>
+                    <label>Search By Stream</label>
+                    <select onChange={(e) => setStream(e.target.value)} value={stream}>
+                    <option value="">Stream</option>
+                        <option value="Arts">
+                            Arts
+                        </option>
+                        <option value="Commerce">
+                            Commerce
+                        </option>
+                        <option value="Science">
+                            Science
+                        </option>
+                        <option value="General">
+                            General (Upto Secondary)
+                        </option>
+                    
+                        
+                        
+                    </select> 
+                </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 </form>
