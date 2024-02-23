@@ -183,7 +183,7 @@ const MasterStudentEntry= (props) => {
                     regNo,
                     name,
                     applyClass,
-                    admissionYear,
+                    admissionYear,stream
                 }
                 axios.post("/api/v1/student/masterstudentadmission", data,{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
