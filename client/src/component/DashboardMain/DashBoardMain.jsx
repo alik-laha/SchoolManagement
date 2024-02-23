@@ -60,6 +60,7 @@ import ViewFeeStructure from "../FEEPAYMENT/ViewFeeStructure/ViewFeeStructure.js
 import StudentFeePaymentEntrySearch from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntrySearch.jsx";
 import ViewFeePaymentSearch from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePaymentSearch.jsx";
 import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntry.jsx";
+import ViewFeePayment from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePayment.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -128,6 +129,7 @@ const DashBoardMain = (props) => {
     const [hostelYear,setHostelYear]=useState(0)
     const [hostelRegNo,setHostelregNo]=useState("")
     const [FeePaymentData,setFeePaymentData]=useState([])
+    const [FeePaymentUpdateData,setFeePaymentUpdateData]=useState([])
 
 
   {/* User Start */}
@@ -362,6 +364,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handleFeePaymentData=(data)=> {
         setFeePaymentData(data)
   }
+  const handleFeePaymentUpdateData =(data)=>{
+        setFeePaymentUpdateData(data)
+    }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -448,7 +453,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
             <ViewFeeStructureSearch view={props.ViewFeeStructure} viewFeeStructure={handleViewFeeStructData}/>
             <StudentFeePaymentEntrySearch view={props.EntryFeePayment} setFeePaymentData={handleFeePaymentData}/>
-            <ViewFeePaymentSearch view={props.ViewFeePayment}/>
+            <ViewFeePaymentSearch view={props.ViewFeePayment} setFeePaymentUpdateData={handleFeePaymentUpdateData}/>
         </div>
 
 
@@ -509,6 +514,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
             <ViewFeeStructure data={viewStructData} view40={props.ViewFeeStructure} view={ViewStructView} />
             <StudentFeePaymentEntry data={FeePaymentData} view={props.EntryFeePayment} />
+            <ViewFeePayment view={props.ViewFeePayment} data={FeePaymentUpdateData}/>
         </div>
       </div>
     </>

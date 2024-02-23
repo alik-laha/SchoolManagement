@@ -58,7 +58,7 @@ const ViewFeeStructure = (props) => {
     },[props.data])
 
     useEffect(() => {
-        if ( props.data.length>0 && props.view40==="block") {
+        if ( props.data.length>=0 && props.view40==="block") {
             setView("block")
             setEditedIndex("none")
         }
