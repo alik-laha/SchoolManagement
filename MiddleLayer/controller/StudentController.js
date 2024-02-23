@@ -398,7 +398,7 @@ exports.GetMasterStudentAdmissonByactivity= (req, res) => {
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
         else if (!regNo && admissionYear && !applyClass && stream) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and active='${active}' and admisson_year='${admissionYear}' 
+            query = `SELECT * FROM master_student WHERE active='${active}' and stream='${stream}' and admisson_year='${admissionYear}' 
             order by admisson_year desc,case when stream='Common' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
