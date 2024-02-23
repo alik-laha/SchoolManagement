@@ -979,6 +979,7 @@ const MasterStudentViewUpdate = (props) => {
                     <th>Sl. No.</th>
                     
                     <th>Student Name</th>
+                    <th>Stream</th>
                     <th>Registration No</th>
                     <th>Active Status</th>
                     <th>Applied Class</th>
@@ -1000,6 +1001,7 @@ const MasterStudentViewUpdate = (props) => {
                                 <td>{index+1}</td>
                                 
                                 <td>{item.student_Name}</td>
+                                <td>{item.stream}</td>
                                 <td>{item.registration_no}</td>
                                 <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                                 <td>{convertToRoman(item.applied_class)}</td>

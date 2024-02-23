@@ -360,36 +360,44 @@ exports.GetMasterStudentAdmissonByactivity= (req, res) => {
     try{
         let query
         if (!regNo && !admissionYear && !applyClass && !stream) {
-            query = `SELECT * FROM master_student WHERE active='${active}' order by admisson_year desc,applied_class asc, registration_no asc `
+            query = `SELECT * FROM master_student WHERE active='${active}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc `
         }
         else if (regNo) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}' and active='${active}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}' and active='${active}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
 
         else if (!regNo && admissionYear && !applyClass && !stream) {
-            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}' and active='${active}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}' and active='${active}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && applyClass && !stream) {
-            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' and active='${active}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' and active='${active}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && !applyClass && stream) {
-            query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
 
     
         else if (!regNo && admissionYear && applyClass && !stream) {
-            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and active='${active}' and applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and active='${active}' and applied_class='${applyClass}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && applyClass && stream) {
-            query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' and applied_class='${applyClass}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' and applied_class='${applyClass}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
         else if (!regNo && admissionYear && !applyClass && stream) {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and active='${active}' and admisson_year='${admissionYear}' order by admisson_year desc,applied_class asc, registration_no asc`
+            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and active='${active}' and admisson_year='${admissionYear}' 
+            order by admisson_year desc,stream asc,applied_class asc, registration_no asc`
         }
 
         else {
-            query = `SELECT * FROM master_student WHERE registration_no regexp'${regNo}' and active='${active}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' and stream='${stream}' 
-            order by admisson_year desc,applied_class asc, registration_no asc  `
+            query = `SELECT * FROM master_student WHERE active='${active}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' and stream='${stream}' 
+            order by admisson_year desc,applied_class asc, registration_no asc,stream asc  `
         }
         Database.query(query, (err, result) => {
             if (err) {
