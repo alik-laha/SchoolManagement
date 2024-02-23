@@ -50,7 +50,7 @@ const StudentFeePaymentEntry = (props) => {
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
 
-    const [disableedit,setdisabledit]=useState(true)
+    const [disableedit,setdisabledit]=useState(false)
     const [month,setMonth]=useState("")
     const [status,setStatus]=useState(0)
     useEffect(() => {
@@ -122,7 +122,12 @@ const StudentFeePaymentEntry = (props) => {
             })
         }
         else if(FeeType==="ReAdmisson"){
-            //Get re admission
+            await axios.post("/api/v1/fee/getreadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                DATA = res.data.result[0]
+                console.log(DATA)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
 
         setEditAdmissonFee(DATA.admission_fee)
@@ -142,6 +147,7 @@ const StudentFeePaymentEntry = (props) => {
         setEditGamesSportsExicursion(DATA.sports_fee)
         setUniform(DATA.uniform_fee)
         setStatus(DATA.status)
+        setEditDate(DATA.entry_date.slice(0,10))
         cData = DATA.entry_date.toString()
 
         let currentDate = new Date().toISOString();
@@ -233,7 +239,7 @@ const StudentFeePaymentEntry = (props) => {
         setEditBedFee(0)
         setEditTotal(0)
         setEditDate(new Date().toISOString().slice(0, 10))
-        setdisabledit(true)
+        setdisabledit(false)
         setStatus(0)
     }
 
