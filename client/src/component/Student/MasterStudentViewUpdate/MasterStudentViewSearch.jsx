@@ -13,7 +13,7 @@ const MasterStudentViewSearch = (props) => {
             regNo,
             admissionYear,
             applyClass,
-            active:inactivated
+            active:inactivated,stream
         }
         axios.post("/api/v1/student/getstudentbyactive",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
