@@ -398,6 +398,78 @@ const StudentFeePaymentEntry = (props) => {
             })
         }else{
             console.log("update")
+            const data = {
+                regNo: regNo,
+                Class: Class,
+                year: year,
+                AdmissionFee: EditAdmissonFee,
+                hostelCharge: EdithostelCharge,
+                TutionFee: EditTutionFee,
+                CautionMoney: EditCautionMoney,
+                ExaminationFee: EditExaminationFee,
+                GamesSportsExicursion: EditGamesSportsExicursion,
+                ElectricCharge: EditElectricCharge,
+                LibraryFees: EditLibraryFees,
+                ComputerFees: EditComputerFees,
+                DevelopmentFees: EditDevelopmentFees,
+                Miscellaneous: EditMiscellaneous,
+                LaundryCharge: EditLaundryCharge,
+                MedicalCharge: EditMedicalCharge,
+                Uniform: EditUniform,
+                SessionCharge: EditSessionCharge,
+                BedFee: EditBedFee,
+                Total: EditTotal,
+                PaymentDate: EditDate
+            }
+            axios.post("/api/v1/fee/updatenewadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+              console.log(res.data)
+                setNewadmissionView("none")
+                setTableView("none")
+
+                setAdmissonFee(0)
+                setHostelCharge(0)
+                setTutionFee(0)
+                setCautionMoney(0)
+                setExaminationFee(0)
+                setGamesSportsExicursion(0)
+                setElectricCharge(0)
+                setLibraryFees(0)
+                setComputerFees(0)
+                setDevelopmentFees(0)
+                setMiscellaneous(0)
+                setLaundryCharge(0)
+                setMedicalCharge(0)
+                setUniform(0)
+                setSessionCharge(0)
+                setBedFee(0)
+                setTotal(0)
+                setRegNo("")
+                setClass(0)
+                setYear(0)
+
+                setEditAdmissonFee(0)
+                setEditHostelCharge(0)
+                setEditTutionFee(0)
+                setEditCautionMoney(0)
+                setEditExaminationFee(0)
+                setEditGamesSportsExicursion(0)
+                setEditElectricCharge(0)
+                setEditLibraryFees(0)
+                setEditComputerFees(0)
+                setEditDevelopmentFees(0)
+                setEditMiscellaneous(0)
+                setEditLaundryCharge(0)
+                setEditMedicalCharge(0)
+                setEditUniform(0)
+                setEditSessionCharge(0)
+                setEditBedFee(0)
+                setEditTotal(0)
+                setEditDate(new Date().toISOString().slice(0, 10))
+                setdisabledit(false)
+                setStatus(0)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
     }
 
