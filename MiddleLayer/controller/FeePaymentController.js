@@ -338,7 +338,7 @@ exports.NewAdmissionFeeEntry = (req, res) => {
             if(err){
                 return res.status(400).json({msg:err})
             }else{
-                return res.status(200).json({msg:"New Admission Fee Entry Created Successfully"})
+                return res.status(200).json({msg:"New Admission Fee Entry Created Successfully",data:PaymentDate})
             }
         })
     }catch (error) {
@@ -399,6 +399,7 @@ exports.ReAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
+        console.log(PaymentDate)
         let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,Payment_date,modify_date,status) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}','${PaymentDate}',1)`
         Database.query(query,(err,result)=>{
             if(err){
