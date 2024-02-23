@@ -54,8 +54,54 @@ const StudentFeePaymentEntry = (props) => {
     const [month,setMonth]=useState("")
     const [status,setStatus]=useState(0)
     useEffect(() => {
+
         if(props.view==="block" && props.data.length>0){
             setView("block")
+            setTableView("block")
+            setMonthlyView("none")
+            setNewadmissionView("none")
+            setReadmissionView("none")
+            setAdmissonFee(0)
+            setHostelCharge(0)
+            setTutionFee(0)
+            setCautionMoney(0)
+            setExaminationFee(0)
+            setGamesSportsExicursion(0)
+            setElectricCharge(0)
+            setLibraryFees(0)
+            setComputerFees(0)
+            setDevelopmentFees(0)
+            setMiscellaneous(0)
+            setLaundryCharge(0)
+            setMedicalCharge(0)
+            setUniform(0)
+            setSessionCharge(0)
+            setBedFee(0)
+            setTotal(0)
+            setRegNo("")
+            setClass(0)
+            setYear(0)
+
+            setEditAdmissonFee(0)
+            setEditHostelCharge(0)
+            setEditTutionFee(0)
+            setEditCautionMoney(0)
+            setEditExaminationFee(0)
+            setEditGamesSportsExicursion(0)
+            setEditElectricCharge(0)
+            setEditLibraryFees(0)
+            setEditComputerFees(0)
+            setEditDevelopmentFees(0)
+            setEditMiscellaneous(0)
+            setEditLaundryCharge(0)
+            setEditMedicalCharge(0)
+            setEditUniform(0)
+            setEditSessionCharge(0)
+            setEditBedFee(0)
+            setEditTotal(0)
+            setEditDate(new Date().toISOString().slice(0, 10))
+            setdisabledit(false)
+            setStatus(0)
         }
         else{
          setView("none")
@@ -105,92 +151,92 @@ const StudentFeePaymentEntry = (props) => {
         setSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
         setTotal(data.total_fee)
+       if(data.status===1) {
+           const Data = {
+               regNo: data.registration_no,
+               Class: data.class,
+               year: data.year
+           }
+           let cData
+           let DATA
+           if (FeeType === "NewAdmission") {
+               await axios.post("/api/v1/fee/getnewadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                   DATA = res.data.result[0]
+                   console.log(DATA)
+               }).catch((err) => {
+                   console.log(err)
+               })
+           } else if (FeeType === "ReAdmisson") {
+               await axios.post("/api/v1/fee/getreadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                   DATA = res.data.result[0]
+                   console.log(DATA)
+               }).catch((err) => {
+                   console.log(err)
+               })
+           }
 
-        const Data={
-            regNo:data.registration_no,
-            Class:data.class,
-            year:data.year
-        }
-        let cData
-        let DATA
-        if(FeeType==="NewAdmission") {
-            await axios.post("/api/v1/fee/getnewadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
-                DATA = res.data.result[0]
-                console.log(DATA)
-            }).catch((err) => {
-                console.log(err)
-            })
-        }
-        else if(FeeType==="ReAdmisson"){
-            await axios.post("/api/v1/fee/getreadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
-                DATA = res.data.result[0]
-                console.log(DATA)
-            }).catch((err) => {
-                console.log(err)
-            })
-        }
+           setEditAdmissonFee(DATA.admission_fee)
+           setEditBedFee(DATA.bed_fee)
+           setEditTutionFee(DATA.tution_fee)
+           setCautionMoney(DATA.caution_fee)
+           setEditComputerFees(DATA.computer_fee)
+           setEditDevelopmentFees(DATA.development_fee)
+           setEditElectricCharge(DATA.electric_fee)
+           setEditExaminationFee(DATA.examination_fee)
+           setEditHostelCharge(DATA.hostel_fee)
+           setEditLaundryCharge(DATA.laundry_fee)
+           setEditLibraryFees(DATA.library_fee)
+           setEditMedicalCharge(DATA.madical_fee)
+           setEditMiscellaneous(DATA.miscellaneous_fee)
+           setEditSessionCharge(DATA.session_fee)
+           setEditGamesSportsExicursion(DATA.sports_fee)
+           setUniform(DATA.uniform_fee)
+           setStatus(DATA.status)
+           setEditDate(DATA.entry_date.slice(0, 10))
+           cData = DATA.entry_date.toString()
 
-        setEditAdmissonFee(DATA.admission_fee)
-        setEditBedFee(DATA.bed_fee)
-        setEditTutionFee(DATA.tution_fee)
-        setCautionMoney(DATA.caution_fee)
-        setEditComputerFees(DATA.computer_fee)
-        setEditDevelopmentFees(DATA.development_fee)
-        setEditElectricCharge(DATA.electric_fee)
-        setEditExaminationFee(DATA.examination_fee)
-        setEditHostelCharge(DATA.hostel_fee)
-        setEditLaundryCharge(DATA.laundry_fee)
-        setEditLibraryFees(DATA.library_fee)
-        setEditMedicalCharge(DATA.madical_fee)
-        setEditMiscellaneous(DATA.miscellaneous_fee)
-        setEditSessionCharge(DATA.session_fee)
-        setEditGamesSportsExicursion(DATA.sports_fee)
-        setUniform(DATA.uniform_fee)
-        setStatus(DATA.status)
-        setEditDate(DATA.entry_date.slice(0,10))
-        cData = DATA.entry_date.toString()
+           let currentDate = new Date().toISOString();
+           let currentYear = currentDate.slice(0, 4);
+           let currentMonth = currentDate.slice(5, 7);
+           let currentDay = currentDate.slice(8, 10);
+           let dbYear = cData.slice(0, 4);
+           let dbMonth = cData.slice(5, 7);
+           let dbDay = cData.slice(8, 10);
 
-        let currentDate = new Date().toISOString();
-        let currentYear = currentDate.slice(0, 4);
-        let currentMonth = currentDate.slice(5, 7);
-        let currentDay = currentDate.slice(8, 10);
-        let dbYear = cData.slice(0, 4);
-        let dbMonth = cData.slice(5, 7);
-        let dbDay = cData.slice(8, 10);
+           if (dbYear < currentYear) {
+               // The database date is in a previous year, so it is older
+               setdisabledit(true);
+               console.log(1)
+           } else if (dbYear === currentYear) {
+               // The database date is in the same year, so compare the months
+               if (dbMonth < currentMonth) {
+                   // The database date is in a previous month, so it is older
+                   setdisabledit(true)
+                   console.log(2)
+               } else if (dbMonth === currentMonth) {
+                   // The database date is in the same month, so compare the days
+                   if (dbDay < currentDay) {
+                       // The database date is more than one day before the current date, so it is older
+                       setdisabledit(true)
+                       console.log(3)
+                   } else {
+                       // The database date is not older than one day
+                       setdisabledit(false);
+                       console.log(4)
 
-        if (dbYear < currentYear) {
-            // The database date is in a previous year, so it is older
-            setdisabledit(true);
-            console.log(1)
-        } else if (dbYear === currentYear) {
-            // The database date is in the same year, so compare the months
-            if (dbMonth < currentMonth) {
-                // The database date is in a previous month, so it is older
-                setdisabledit(true)
-                console.log(2)
-            } else if (dbMonth === currentMonth) {
-                // The database date is in the same month, so compare the days
-                if (dbDay < currentDay) {
-                    // The database date is more than one day before the current date, so it is older
-                    setdisabledit(true)
-                    console.log(3)
-                } else {
-                    // The database date is not older than one day
-                    setdisabledit(false);
-                    console.log(4)
-
-                }
-            } else {
-                // The database date is in a future month, so it is not older
-                setdisabledit(false);
-                console.log(5)
-            }
-        } else {
-            // The database date is in a future year, so it is not older
-            setdisabledit(false);
-            console.log(6)
-        }
-        console.log(disableedit)
+                   }
+               } else {
+                   // The database date is in a future month, so it is not older
+                   setdisabledit(false);
+                   console.log(5)
+               }
+           } else {
+               // The database date is in a future year, so it is not older
+               setdisabledit(false);
+               console.log(6)
+           }
+           console.log(disableedit)
+       }
 
     }
 
@@ -302,7 +348,51 @@ const StudentFeePaymentEntry = (props) => {
                 PaymentDate: EditDate
             }
             axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
-                console.log(res.data)
+                alert("Fee Entry of New-Admission is Successful")
+               setNewadmissionView("none")
+                setTableView("none")
+
+                setAdmissonFee(0)
+                setHostelCharge(0)
+                setTutionFee(0)
+                setCautionMoney(0)
+                setExaminationFee(0)
+                setGamesSportsExicursion(0)
+                setElectricCharge(0)
+                setLibraryFees(0)
+                setComputerFees(0)
+                setDevelopmentFees(0)
+                setMiscellaneous(0)
+                setLaundryCharge(0)
+                setMedicalCharge(0)
+                setUniform(0)
+                setSessionCharge(0)
+                setBedFee(0)
+                setTotal(0)
+                setRegNo("")
+                setClass(0)
+                setYear(0)
+
+                setEditAdmissonFee(0)
+                setEditHostelCharge(0)
+                setEditTutionFee(0)
+                setEditCautionMoney(0)
+                setEditExaminationFee(0)
+                setEditGamesSportsExicursion(0)
+                setEditElectricCharge(0)
+                setEditLibraryFees(0)
+                setEditComputerFees(0)
+                setEditDevelopmentFees(0)
+                setEditMiscellaneous(0)
+                setEditLaundryCharge(0)
+                setEditMedicalCharge(0)
+                setEditUniform(0)
+                setEditSessionCharge(0)
+                setEditBedFee(0)
+                setEditTotal(0)
+                setEditDate(new Date().toISOString().slice(0, 10))
+                setdisabledit(false)
+                setStatus(0)
             }).catch((err) => {
                 console.log(err)
             })
@@ -340,6 +430,51 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
+                alert("Fee Entry of Re-Admission is Successful")
+                setReadmissionView("none")
+                setTableView("none")
+
+                setAdmissonFee(0)
+                setHostelCharge(0)
+                setTutionFee(0)
+                setCautionMoney(0)
+                setExaminationFee(0)
+                setGamesSportsExicursion(0)
+                setElectricCharge(0)
+                setLibraryFees(0)
+                setComputerFees(0)
+                setDevelopmentFees(0)
+                setMiscellaneous(0)
+                setLaundryCharge(0)
+                setMedicalCharge(0)
+                setUniform(0)
+                setSessionCharge(0)
+                setBedFee(0)
+                setTotal(0)
+                setRegNo("")
+                setClass(0)
+                setYear(0)
+
+                setEditAdmissonFee(0)
+                setEditHostelCharge(0)
+                setEditTutionFee(0)
+                setEditCautionMoney(0)
+                setEditExaminationFee(0)
+                setEditGamesSportsExicursion(0)
+                setEditElectricCharge(0)
+                setEditLibraryFees(0)
+                setEditComputerFees(0)
+                setEditDevelopmentFees(0)
+                setEditMiscellaneous(0)
+                setEditLaundryCharge(0)
+                setEditMedicalCharge(0)
+                setEditUniform(0)
+                setEditSessionCharge(0)
+                setEditBedFee(0)
+                setEditTotal(0)
+                setEditDate(new Date().toISOString().slice(0, 10))
+                setdisabledit(false)
+                setStatus(0)
             }).catch((err) => {
                 console.log(err)
             })
@@ -698,7 +833,7 @@ const StudentFeePaymentEntry = (props) => {
                         <label>Payment Date</label>
                         <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
                     </div>
-                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                    <span><button className="dashboard-btn dashboard-btn-scss" disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
         </div>
