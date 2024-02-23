@@ -16,6 +16,14 @@ const ViewFeePaymentSearch = (props) => {
                 console.log(err)
             })
         }
+        else if(feeType==="ReAdmisson"){
+            axios.post('/api/v1/fee/getreadmissionfeeentryforupdate',{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
+                .then((res)=>{
+                    console.log(res.data)
+                }).catch((err)=>{
+                    console.log(err)
+            })
+        }
     }
 
 
