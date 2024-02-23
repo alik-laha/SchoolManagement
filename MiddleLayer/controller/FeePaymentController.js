@@ -412,3 +412,40 @@ exports.ReAdmissionFeeEntry = (req, res) => {
         console.log(error)
     }
 }
+
+
+
+
+//get New Admission Fee Entry For Update
+exports.GetNewAdmissionFeeEntryForUpdate = (req, res) => {
+    try{
+        const{Class,year,regNo} = req.body
+        if(regNo) {
+            let query = `SELECT *
+                         FROM new_admission_fee
+                         WHERE class = '${Class}' AND year = '${year}'
+                           AND regNo = '${regNo}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(400).json({msg: err})
+                } else {
+                    return res.status(200).json({result})
+                }
+            })
+        }
+        else {
+            let query = `SELECT *
+                         FROM new_admission_fee
+                         WHERE class = '${Class}' AND year = '${year}'`
+            Database.query(query, (err, result) => {
+                if (err) {
+                    return res.status(400).json({msg: err})
+                } else {
+                    return res.status(200).json({result})
+                }
+            })
+        }
+    }catch (error) {
+        console.log(error)
+    }
+}

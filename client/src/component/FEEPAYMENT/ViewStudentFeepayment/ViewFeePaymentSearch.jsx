@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from "axios";
 
 const ViewFeePaymentSearch = (props) => {
     const [Class,setClass]=useState("")
@@ -8,6 +9,13 @@ const ViewFeePaymentSearch = (props) => {
 
     const handlesubmit=(e)=>{
         e.preventDefault()
+        if(feeType==="NewAdmission"){
+            axios.post ("/api/v1/fee/getnewadmissionfeeentryforupdate",{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+               console.log(res.data)
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
     }
 
 
