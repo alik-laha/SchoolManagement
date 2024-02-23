@@ -333,7 +333,7 @@ exports.NewAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
-        let query = `INSERT INTO new_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,Payment_date,status,modify_date) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1,'${PaymentDate}')`
+        let query = `INSERT INTO new_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,status,modify_date) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1,'${PaymentDate}')`
         Database.query(query,(err,result)=>{
             if(err){
                 return res.status(400).json({msg:err})
@@ -400,7 +400,7 @@ exports.ReAdmissionFeeEntry = (req, res) => {
             BedFee=0
         }
         console.log(PaymentDate)
-        let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,Payment_date,modify_date,status) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}','${PaymentDate}',1)`
+        let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,modify_date,status) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}','${PaymentDate}',1)`
         Database.query(query,(err,result)=>{
             if(err){
                 return res.status(400).json({msg:err})

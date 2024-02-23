@@ -50,8 +50,9 @@ const StudentFeePaymentEntry = (props) => {
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
 
+    const [disableedit,setdisabledit]=useState(true)
     const [month,setMonth]=useState("")
-
+    const [status,setStatus]=useState(0)
     useEffect(() => {
         if(props.view==="block" && props.data.length>0){
             setView("block")
@@ -69,8 +70,7 @@ const StudentFeePaymentEntry = (props) => {
     },[props.data])
 
 
-    const handleClick=(data)=>{
-        console.log("clicked")
+    const handleClick=async(data)=>{
         if(FeeType==="Monthly"){
             setMonthlyView("block")
         }
@@ -82,7 +82,6 @@ const StudentFeePaymentEntry = (props) => {
             setReadmissionView("block")
         }
         setTableView("none")
-        console.log(data)
 
         setRegNo(data.registration_no)
         setClass(data.class)
@@ -106,6 +105,86 @@ const StudentFeePaymentEntry = (props) => {
         setSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
         setTotal(data.total_fee)
+
+        const Data={
+            regNo:data.registration_no,
+            Class:data.class,
+            year:data.year
+        }
+        let cData
+        let DATA
+        if(FeeType==="NewAdmission") {
+            await axios.post("/api/v1/fee/getnewadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                DATA = res.data.result[0]
+                console.log(DATA)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
+
+        setEditAdmissonFee(DATA.admission_fee)
+        setEditBedFee(DATA.bed_fee)
+        setEditTutionFee(DATA.tution_fee)
+        setCautionMoney(DATA.caution_fee)
+        setEditComputerFees(DATA.computer_fee)
+        setEditDevelopmentFees(DATA.development_fee)
+        setEditElectricCharge(DATA.electric_fee)
+        setEditExaminationFee(DATA.examination_fee)
+        setEditHostelCharge(DATA.hostel_fee)
+        setEditLaundryCharge(DATA.laundry_fee)
+        setEditLibraryFees(DATA.library_fee)
+        setEditMedicalCharge(DATA.madical_fee)
+        setEditMiscellaneous(DATA.miscellaneous_fee)
+        setEditSessionCharge(DATA.session_fee)
+        setEditGamesSportsExicursion(DATA.sports_fee)
+        setUniform(DATA.uniform_fee)
+        setStatus(DATA.status)
+        cData = DATA.entry_date.toString()
+
+        let currentDate = new Date().toISOString();
+        let currentYear = currentDate.slice(0, 4);
+        let currentMonth = currentDate.slice(5, 7);
+        let currentDay = currentDate.slice(8, 10);
+        let dbYear = cData.slice(0, 4);
+        let dbMonth = cData.slice(5, 7);
+        let dbDay = cData.slice(8, 10);
+        console.log(dbDay, dbMonth, dbYear)
+        console.log(currentYear,currentMonth,currentDay)
+
+        if (dbYear < currentYear) {
+            // The database date is in a previous year, so it is older
+            setdisabledit(true);
+            console.log(1)
+        } else if (dbYear === currentYear) {
+            // The database date is in the same year, so compare the months
+            if (dbMonth < currentMonth) {
+                // The database date is in a previous month, so it is older
+                setdisabledit(true)
+                console.log(2)
+            } else if (dbMonth === currentMonth) {
+                // The database date is in the same month, so compare the days
+                if (dbDay < currentDay) {
+                    // The database date is more than one day before the current date, so it is older
+                    setdisabledit(true)
+                    console.log(3)
+                } else {
+                    // The database date is not older than one day
+                    setdisabledit(false);
+                    console.log(4)
+
+                }
+            } else {
+                // The database date is in a future month, so it is not older
+                setdisabledit(false);
+                console.log(5)
+            }
+        } else {
+            // The database date is in a future year, so it is not older
+            setdisabledit(false);
+            console.log(6)
+        }
+        console.log(disableedit)
+
     }
 
     const handleCancel=()=>{
@@ -153,6 +232,8 @@ const StudentFeePaymentEntry = (props) => {
         setEditBedFee(0)
         setEditTotal(0)
         setEditDate(new Date().toISOString().slice(0, 10))
+        setdisabledit(true)
+        setStatus(0)
     }
 
     useEffect(() => {
@@ -161,7 +242,7 @@ const StudentFeePaymentEntry = (props) => {
 
     const calculateTotal = () => {
         setEditTotal(
-            Number(EditAdmissonFee) +
+        Number(EditAdmissonFee) +
         Number(EdithostelCharge) +
         Number(EditTutionFee) +
         Number(EditCautionMoney) +
@@ -187,69 +268,78 @@ const StudentFeePaymentEntry = (props) => {
 
     const HandleNewAdmissionFee=(e)=>{
         e.preventDefault()
-        console.log(EditTotal,EdithostelCharge,EditTutionFee,EditAdmissonFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee)
+        if(!status) {
+            console.log(EditTotal, EdithostelCharge, EditTutionFee, EditAdmissonFee, EditCautionMoney, EditExaminationFee, EditGamesSportsExicursion, EditElectricCharge, EditLibraryFees, EditComputerFees, EditDevelopmentFees, EditMiscellaneous, EditLaundryCharge, EditMedicalCharge, EditUniform, EditSessionCharge, EditBedFee)
 
-        const data={
-            regNo:regNo,
-            Class:Class,
-            year:year,
-            AdmissionFee:EditAdmissonFee,
-            hostelCharge:EdithostelCharge,
-            TutionFee:EditTutionFee,
-            CautionMoney:EditCautionMoney,
-            ExaminationFee:EditExaminationFee,
-            GamesSportsExicursion:EditGamesSportsExicursion,
-            ElectricCharge:EditElectricCharge,
-            LibraryFees:EditLibraryFees,
-            ComputerFees:EditComputerFees,
-            DevelopmentFees:EditDevelopmentFees,
-            Miscellaneous:EditMiscellaneous,
-            LaundryCharge:EditLaundryCharge,
-            MedicalCharge:EditMedicalCharge,
-            Uniform:EditUniform,
-            SessionCharge:EditSessionCharge,
-            BedFee:EditBedFee,
-            Total:EditTotal,
-            PaymentDate:EditDate
+            const data = {
+                regNo: regNo,
+                Class: Class,
+                year: year,
+                AdmissionFee: EditAdmissonFee,
+                hostelCharge: EdithostelCharge,
+                TutionFee: EditTutionFee,
+                CautionMoney: EditCautionMoney,
+                ExaminationFee: EditExaminationFee,
+                GamesSportsExicursion: EditGamesSportsExicursion,
+                ElectricCharge: EditElectricCharge,
+                LibraryFees: EditLibraryFees,
+                ComputerFees: EditComputerFees,
+                DevelopmentFees: EditDevelopmentFees,
+                Miscellaneous: EditMiscellaneous,
+                LaundryCharge: EditLaundryCharge,
+                MedicalCharge: EditMedicalCharge,
+                Uniform: EditUniform,
+                SessionCharge: EditSessionCharge,
+                BedFee: EditBedFee,
+                Total: EditTotal,
+                PaymentDate: EditDate
+            }
+            axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                console.log(res.data)
+            }).catch((err) => {
+                console.log(err)
+            })
+        }else{
+            console.log("update")
         }
-        axios.post("/api/v1/fee/newadmissionfeeentry",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-            console.log(res.data)
-        }).catch((err)=>{
-            console.log(err)
-        })
     }
 
     const HandleReAdmissionFee=(e)=>{
         e.preventDefault()
-        console.log(EditTotal,EdithostelCharge,EditTutionFee,EditAdmissonFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee)
-        const data={
-            regNo:regNo,
-            Class:Class,
-            year:year,
-            AdmissionFee:EditAdmissonFee,
-            hostelCharge:EdithostelCharge,
-            TutionFee:EditTutionFee,
-            CautionMoney:EditCautionMoney,
-            ExaminationFee:EditExaminationFee,
-            GamesSportsExicursion:EditGamesSportsExicursion,
-            ElectricCharge:EditElectricCharge,
-            LibraryFees:EditLibraryFees,
-            ComputerFees:EditComputerFees,
-            DevelopmentFees:EditDevelopmentFees,
-            Miscellaneous:EditMiscellaneous,
-            LaundryCharge:EditLaundryCharge,
-            MedicalCharge:EditMedicalCharge,
-            Uniform:EditUniform,
-            SessionCharge:EditSessionCharge,
-            BedFee:EditBedFee,
-            Total:EditTotal,
-            PaymentDate:EditDate
+        if(!status) {
+            console.log(EditTotal, EdithostelCharge, EditTutionFee, EditAdmissonFee, EditCautionMoney, EditExaminationFee, EditGamesSportsExicursion, EditElectricCharge, EditLibraryFees, EditComputerFees, EditDevelopmentFees, EditMiscellaneous, EditLaundryCharge, EditMedicalCharge, EditUniform, EditSessionCharge, EditBedFee)
+            const data = {
+                regNo: regNo,
+                Class: Class,
+                year: year,
+                AdmissionFee: EditAdmissonFee,
+                hostelCharge: EdithostelCharge,
+                TutionFee: EditTutionFee,
+                CautionMoney: EditCautionMoney,
+                ExaminationFee: EditExaminationFee,
+                GamesSportsExicursion: EditGamesSportsExicursion,
+                ElectricCharge: EditElectricCharge,
+                LibraryFees: EditLibraryFees,
+                ComputerFees: EditComputerFees,
+                DevelopmentFees: EditDevelopmentFees,
+                Miscellaneous: EditMiscellaneous,
+                LaundryCharge: EditLaundryCharge,
+                MedicalCharge: EditMedicalCharge,
+                Uniform: EditUniform,
+                SessionCharge: EditSessionCharge,
+                BedFee: EditBedFee,
+                Total: EditTotal,
+                PaymentDate: EditDate
+            }
+            axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
+                console.log(res.data)
+            }).catch((err) => {
+                console.log(err)
+            })
         }
-        axios.post("/api/v1/fee/readmissionfeeentry",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-            console.log(res.data)
-        }).catch((err)=>{
-            console.log(err)
-        })
+        else {
+            console.log("update")
+        }
     }
 
     return(
@@ -285,7 +375,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.total_fee}</td>
                                 <td>{ <input type='checkbox'
                                     checked={item.status  === 1 ? true : false}></input>}</td>
-                                <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" disabled={item.status === 1 && FeeType!=="Monthly" ? true : false}>Entry</button></td>
+                                <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
                             </tr>
                         )
                     })
@@ -470,7 +560,7 @@ const StudentFeePaymentEntry = (props) => {
                         <label>Payment Date</label>
                         <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
                     </div>
-                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                    <span><button className="dashboard-btn dashboard-btn-scss"  disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
 
