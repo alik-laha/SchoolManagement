@@ -121,6 +121,9 @@ const StudentFeePaymentEntry = (props) => {
                 console.log(err)
             })
         }
+        else if(FeeType==="ReAdmisson"){
+            //Get re admission
+        }
 
         setEditAdmissonFee(DATA.admission_fee)
         setEditBedFee(DATA.bed_fee)
@@ -148,8 +151,6 @@ const StudentFeePaymentEntry = (props) => {
         let dbYear = cData.slice(0, 4);
         let dbMonth = cData.slice(5, 7);
         let dbDay = cData.slice(8, 10);
-        console.log(dbDay, dbMonth, dbYear)
-        console.log(currentYear,currentMonth,currentDay)
 
         if (dbYear < currentYear) {
             // The database date is in a previous year, so it is older
