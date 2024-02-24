@@ -663,5 +663,101 @@ exports.UpdateReAdmissionFeeEntry = (req, res) => {
 //get student for new Admission fee entry
 
 exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
+    try {
+        const {Class, year, regNo} = req.body
+        let query
+        if (Class && year) {
+            query = `SELECT a.student_Name,
+                            a.roll_no,
+                            a.section,
+                            a.registration_no,
+                            a.class,
+                            b.*,
+                            c.total_fee AS status
+                     FROM Student_Admission a
+                              JOIN new_admission_fee b ON a.registration_no = b.regNo
+                              LEFT JOIN fee_structure c ON a.class = c.class
+                         AND c.year = "${year}"
+                         AND c.fee_type = "NewAdmission"
+                     WHERE a.class = "${Class}"
+                       AND a.current_academic_year = "${year}";`
+        } else {
+            query = `SELECT a.student_Name,
+                            a.roll_no,
+                            a.section,
+                            a.registration_no,
+                            a.class,
+                            b.*,
+                            c.total_fee AS status
+                     FROM Student_Admission a
+                              JOIN new_admission_fee b ON a.registration_no = b.regNo
+                              LEFT JOIN fee_structure c ON a.class = c.class
+                         AND c.year = "${year}"
+                         AND c.fee_type = "NewAdmission"
+                     WHERE a.class = "${Class}"
+                       AND a.current_academic_year = "${year}"
+                       AND a.registration_no = "${regNo}";`
+        }
+        Database.query(query, (err, result) => {
+            if (err) {
+                return res.status(400).json({msg: err})
+            } else {
+                return res.status(200).json({result})
+            }
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
+
+//get student for re Admission fee entry
+
+exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
+    try {
+     const{Class,year,regNo} = req.body
+     let query
+     if(Class && year) {
+         query = `SELECT a.student_Name,
+                         a.roll_no,
+                         a.section,
+                         a.registration_no,
+                         a.class,
+                         b.*,
+                         c.total_fee AS status
+                  FROM Student_Admission a
+                           JOIN re_admission_fee b ON a.registration_no = b.regNo
+                           LEFT JOIN fee_structure c ON a.class = c.class
+                      AND c.year = "${year}"
+                      AND c.fee_type = "ReAdmission"
+                  WHERE a.class = "${Class}"
+                    AND a.current_academic_year = "${year}";`
+     }
+        else {
+            query = `SELECT a.student_Name,
+                            a.roll_no,
+                            a.section,
+                            a.registration_no,
+                            a.class,
+                            b.*,
+                            c.total_fee AS status
+                    FROM Student_Admission a
+                            JOIN re_admission_fee b ON a.registration_no = b.regNo
+                            LEFT JOIN fee_structure c ON a.class = c.class
+                        AND c.year = "${year}"
+                        AND c.fee_type = "ReAdmission"
+                    WHERE a.class = "${Class}"
+                        AND a.current_academic_year = "${year}"
+                        AND a.registration_no = "${regNo}";`
+        }
+        Database.query(query, (err, result) => {
+            if (err) {
+                return res.status(400).json({msg: err})
+            } else {
+                return res.status(200).json({result})
+            }
+        })
+    }catch (error) {
+        console.log(error)
+    }
 }
