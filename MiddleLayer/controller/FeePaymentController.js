@@ -718,36 +718,42 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
      const{Class,year,regNo} = req.body
      let query
      if(Class && year) {
-         query = `SELECT a.student_Name,
+         query = `SELECT
+                      a.student_Name,
+                      a.roll_no,
+                      a.section,
+                      a.registration_no,
+                      a.class,
+                      b.*,
+                      c.total_fee AS status
+                  FROM
+                      Student_Admission a
+                          JOIN re_admission_fee b ON a.registration_no = b.regNo
+                          LEFT JOIN fee_structure c ON a.class = c.class
+                          AND c.year = "${year}"
+                          AND c.fee_type = "ReAdmisson"
+                  WHERE
+                      a.class = "${Class}"
+                    AND a.current_academic_year = "${year}" ;`
+     }
+        else {
+            query = `SELECT
+                         a.student_Name,
                          a.roll_no,
                          a.section,
                          a.registration_no,
                          a.class,
                          b.*,
                          c.total_fee AS status
-                  FROM Student_Admission a
-                           JOIN re_admission_fee b ON a.registration_no = b.regNo
-                           LEFT JOIN fee_structure c ON a.class = c.class
-                      AND c.year = "${year}"
-                      AND c.fee_type = "ReAdmission"
-                  WHERE a.class = "${Class}"
-                    AND a.current_academic_year = "${year}";`
-     }
-        else {
-            query = `SELECT a.student_Name,
-                            a.roll_no,
-                            a.section,
-                            a.registration_no,
-                            a.class,
-                            b.*,
-                            c.total_fee AS status
-                    FROM Student_Admission a
-                            JOIN re_admission_fee b ON a.registration_no = b.regNo
-                            LEFT JOIN fee_structure c ON a.class = c.class
-                        AND c.year = "${year}"
-                        AND c.fee_type = "ReAdmission"
-                    WHERE a.class = "${Class}"
-                        AND a.current_academic_year = "${year}"
+                     FROM
+                         Student_Admission a
+                             JOIN re_admission_fee b ON a.registration_no = b.regNo
+                             LEFT JOIN fee_structure c ON a.class = c.class
+                             AND c.year = "${year}"
+                             AND c.fee_type = "ReAdmisson"
+                     WHERE
+                         a.class = "${Class}"
+                       AND a.current_academic_year = "${year}"
                         AND a.registration_no = "${regNo}";`
         }
         Database.query(query, (err, result) => {
