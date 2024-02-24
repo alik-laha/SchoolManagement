@@ -58,7 +58,7 @@ const ViewFeeStructure = (props) => {
     },[props.data])
 
     useEffect(() => {
-        if ( props.data.length>=0 && props.view40==="block") {
+        if ( props.data.length>0 && props.view40==="block") {
             setView("block")
             setEditedIndex("none")
         }
@@ -180,7 +180,7 @@ const ViewFeeStructure = (props) => {
     }
 
     return(
-        <>
+        <div>
             <div style={{display: view}}>
                 <table className="table-60">
                     <thead>
@@ -352,7 +352,7 @@ const ViewFeeStructure = (props) => {
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
                 </form>
             </div>
-        </>
+        </div>
     )
 }
 export default ViewFeeStructure;

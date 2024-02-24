@@ -5,7 +5,7 @@ const AcademicEntrySearch= (props) => {
     const [Class,setClass]=useState("")
     const [regNo,setregNo]=useState("")
     const [year,setyear]=useState("")
-    const [stream, setStream] = useState('');
+    // const [stream, setStream] = useState('');
     const [section,setSection]=useState('');
     
 
