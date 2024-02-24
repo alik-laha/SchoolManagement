@@ -658,3 +658,10 @@ exports.UpdateReAdmissionFeeEntry = (req, res) => {
         console.log(error)
     }
 }
+
+
+//get student for new Admission fee entry
+
+exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
+
+}
