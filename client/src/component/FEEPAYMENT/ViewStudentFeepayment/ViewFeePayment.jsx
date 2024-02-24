@@ -3,6 +3,8 @@ import {useEffect, useState} from "react";
 const ViewFeePayment =(props)=>{
     const [view,setView]=useState("none")
     const [data,setData]=useState([])
+
+
     useEffect(() => {
         if(props.view==="block" && props.data.length>0){
             setView("block")
