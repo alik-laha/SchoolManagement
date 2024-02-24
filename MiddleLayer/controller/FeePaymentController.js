@@ -744,7 +744,7 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
                          a.registration_no,
                          a.class,
                          b.*,
-                         c.total_fee AS status
+                         c.total_fee AS status,
                      FROM
                          Student_Admission a
                              JOIN re_admission_fee b ON a.registration_no = b.regNo
