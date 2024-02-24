@@ -148,7 +148,7 @@ const MasterStudentEntry= (props) => {
                     regNo,
                     adharNo,
                     sex,
-                    stream,
+                    Stream:stream,
                     religion,
                     dob,
                     cast,
