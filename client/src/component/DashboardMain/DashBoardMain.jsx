@@ -130,7 +130,7 @@ const DashBoardMain = (props) => {
     const [hostelRegNo,setHostelregNo]=useState("")
     const [FeePaymentData,setFeePaymentData]=useState([])
     const [FeePaymentUpdateData,setFeePaymentUpdateData]=useState([])
-
+    const [FeeType,setFeeType]=useState("")
 
   {/* User Start */}
 
@@ -364,8 +364,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handleFeePaymentData=(data)=> {
         setFeePaymentData(data)
   }
-  const handleFeePaymentUpdateData =(data)=>{
+  const handleFeePaymentUpdateData =(data,d1)=>{
         setFeePaymentUpdateData(data)
+        setFeeType(d1)
     }
   return (
     <>
@@ -514,7 +515,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
 
             <ViewFeeStructure data={viewStructData} view40={props.ViewFeeStructure} view={ViewStructView} />
             <StudentFeePaymentEntry data={FeePaymentData} view={props.EntryFeePayment} />
-            <ViewFeePayment view={props.ViewFeePayment} data={FeePaymentUpdateData}/>
+            <ViewFeePayment view={props.ViewFeePayment} data={FeePaymentUpdateData} feeType={FeeType}/>
         </div>
       </div>
     </>

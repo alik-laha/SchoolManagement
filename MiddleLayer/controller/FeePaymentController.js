@@ -73,22 +73,27 @@ exports.CreateFeeStructure = (req, res) => {
 //Get Fee Structure
 exports.GetFeeStructure = (req, res) => {
     try{
-        const {Class,year} = req.body
+        const {Class,year,feeType} = req.body
         let query
-        if(Class && year) {
+        if(Class && year && !feeType) {
             query = `SELECT *
                      FROM fee_structure
                      WHERE Class = '${Class}' AND year = '${year}'`
         }
-        else if(Class){
+        else if(Class && !feeType && !year){
             query = `SELECT *
                      FROM fee_structure
                      WHERE Class = '${Class}'`
         }
-        else if(year){
+        else if(year && !Class && !feeType){
             query = `SELECT *
                      FROM fee_structure
                      WHERE year = '${year}'`
+        }
+        else if(Class && year && feeType){
+            query = `SELECT *
+                     FROM fee_structure
+                     WHERE Class = '${Class}' AND year = '${year}' AND fee_type='${feeType}'`
         }
         else{
             query = `SELECT *

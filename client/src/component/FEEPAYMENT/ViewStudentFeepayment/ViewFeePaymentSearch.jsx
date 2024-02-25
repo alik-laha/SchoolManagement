@@ -12,7 +12,7 @@ const ViewFeePaymentSearch = (props) => {
         if(feeType==="NewAdmission"){
             axios.post ("/api/v1/fee/getnewadmissionstudent",{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                console.log(res.data.result)
-              props.setFeePaymentUpdateData(res.data.result)
+              props.setFeePaymentUpdateData(res.data.result,feeType)
             }).catch((err)=>{
                 console.log(err)
             })

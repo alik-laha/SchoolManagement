@@ -6,7 +6,7 @@ const ViewFeePayment =(props)=>{
     const [data,setData]=useState([])
     const [tableView,setTableView]=useState("contents")
     const [EditView,setEditView]=useState("none")
-
+    const [feeType,setFeeType]=useState("")
 
     const [AdmissonFee,setAdmissonFee]=useState(0)
     const [hostelCharge,setHostelCharge]=useState(0)
@@ -69,48 +69,57 @@ const ViewFeePayment =(props)=>{
         setTableView("none")
         setEditView("block")
         setAdmissonFee(data.admission_fee)
-        setHostelCharge(data.hostel_charge)
+        setHostelCharge(data.hostel_fee)
         setTutionFee(data.tution_fee)
-        setCautionMoney(data.caution_money)
+        setCautionMoney(data.caution_fee)
         setExaminationFee(data.examination_fee)
-        setGamesSportsExicursion(data.games_sports_excursion)
-        setElectricCharge(data.electric_charge)
-        setLibraryFees(data.library_fees)
-        setComputerFees(data.computer_fees)
-        setDevelopmentFees(data.development_fees)
-        setMiscellaneous(data.miscellaneous)
-        setLaundryCharge(data.laundry_charge)
-        setMedicalCharge(data.medical_charge)
-        setUniform(data.uniform)
-        setSessionCharge(data.session_charge)
+        setGamesSportsExicursion(data.sports_fee)
+        setElectricCharge(data.electric_fee)
+        setLibraryFees(data.library_fee)
+        setComputerFees(data.computer_fee)
+        setDevelopmentFees(data.development_fee)
+        setMiscellaneous(data.miscellaneous_fee)
+        setLaundryCharge(data.laundry_fee)
+        setMedicalCharge(data.madical_fee)
+        setUniform(data.uniform_fee)
+        setSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
         setTotal(data.total_fee)
 
-        const data1= {
-            regNo: data.regNo,
-            Class: data.class,
-            year: data.year
+        let data1
+        if(feeType==="NewAdmission") {
+            data1 = {
+                feeType: feeType,
+                Class: data.class,
+                year: data.year
+            }
         }
-            axios.post('/api/v1/fee/getnewadmissionfeeentryforupdate', data1, {headers: {"Authorization": localStorage.getItem("token")}})
+        else{
+
+        }
+            axios.post('/api/v1/fee/getfeestructure', data1, {headers: {"Authorization": localStorage.getItem("token")}})
                 .then((res) => {
                     console.log(res.data.result)
-                    setNewAdmissionFee(res.data.result.admission_fee)
-                    setNewHostelCharge(res.data.result.hostel_charge)
-                    setNewTutionFee(res.data.result.tution_fee)
-                    setNewCautionMoney(res.data.result.caution_money)
-                    setNewExaminationFee(res.data.result.examination_fee)
-                    setNewGamesSportsExicursion(res.data.result.games_sports_excursion)
-                    setNewElectricCharge(res.data.result.electric_charge)
-                    setNewLibraryFees(res.data.result.library_fees)
-                    setNewComputerFees(res.data.result.computer_fees)
-                    setNewDevelopmentFees(res.data.result.development_fees)
-                    setNewMiscellaneous(res.data.result.miscellaneous)
-                    setNewLaundryCharge(res.data.result.laundry_charge)
-                    setNewMedicalCharge(res.data.result.medical_charge)
-                    setNewUniform(res.data.result.uniform)
-                    setNewSessionCharge(res.data.result.session_charge)
-                    setNewBedFee(res.data.result.bed_fee)
-                    setNewTotal(res.data.result.total_fee)
+                    console.log(res.data.result[0].admission_fee)
+                    console.log(res.data.result[0].examination_fee)
+                    setNewAdmissionFee(res.data.result[0].admission_fee)
+                    console.log(res.data.result[0].hostel_fee)
+                    setNewHostelCharge(res.data.result[0].hostel_fee)
+                    setNewTutionFee(res.data.result[0].tution_fee)
+                    setNewCautionMoney(res.data.result[0].caution_fee)
+                    setNewExaminationFee(res.data.result[0].examination_fee)
+                    setNewGamesSportsExicursion(res.data.result[0].sports_fee)
+                    setNewElectricCharge(res.data.result[0].electric_fee)
+                    setNewLibraryFees(res.data.result[0].library_fee)
+                    setNewComputerFees(res.data.result[0].computer_fee)
+                    setNewDevelopmentFees(res.data.result[0].development_fee)
+                    setNewMiscellaneous(res.data.result[0].miscellaneous_fee)
+                    setNewLaundryCharge(res.data.result[0].laundry_fee)
+                    setNewMedicalCharge(res.data.result[0].madical_fee)
+                    setNewUniform(res.data.result[0].uniform_fee)
+                    setNewSessionCharge(res.data.result[0].session_fee)
+                    setNewBedFee(res.data.result[0].bed_fee)
+                    setNewTotal(res.data.result[0].total_fee)
                 }).catch((err) => {
                 console.log(err)
             })
@@ -126,7 +135,8 @@ const ViewFeePayment =(props)=>{
 
     useEffect(()=>{
         setData(props.data)
-    },[props.data])
+        setFeeType(props.feeType)
+    },[props.data,props.feeType])
 
 
     const handleCancel=()=>{
@@ -196,119 +206,119 @@ const ViewFeePayment =(props)=>{
                 <form>
                     <div>
                         <label>Admission Fee: </label>
-                        <label>{AdmissonFee-NewAdmissionFee}: </label>
+                        <label>{(NewAdmissionFee-AdmissonFee)}: </label>
                         <input type="number" value={EditAdmissonFee}
-                               onChange={(e) => e.target.value <= AdmissonFee-NewAdmissionFee ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/>
+                               onChange={(e) => e.target.value <= (NewAdmissionFee-AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/>
                     </div>
 
                     <div>
                         <label>Hostel Charge: </label>
-                        <label>{hostelCharge-NewhostelCharge}: </label>
+                        <label>{(NewhostelCharge-hostelCharge)}: </label>
                         <input type="number" value={EdithostelCharge}
-                               onChange={(e) => e.target.value <= hostelCharge-NewhostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/>
+                               onChange={(e) => e.target.value <= (NewhostelCharge-hostelCharge) ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/>
                     </div>
 
                     <div>
                         <label>Tution Charge: </label>
-                        <label>{TutionFee}: </label>
+                        <label>{(NewTutionFee-TutionFee)}: </label>
                         <input type="number" value={EditTutionFee}
-                               onChange={(e) => e.target.value <= TutionFee-NewTutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/>
+                               onChange={(e) => e.target.value <= (NewTutionFee-TutionFee) ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/>
                     </div>
 
                     <div>
                         <label>Caution Money: </label>
-                        <label>{CautionMoney}: </label>
+                        <label>{(NewCautionMoney-CautionMoney)}: </label>
                         <input type="number" value={EditCautionMoney}
-                               onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should be lower then ${CautionMoney}`)}/>
+                               onChange={(e) => e.target.value <= (NewCautionMoney-CautionMoney) ? setEditCautionMoney(e.target.value) : alert(`It should be lower then ${CautionMoney}`)}/>
                     </div>
 
                     <div>
                         <label>Examination Fee: </label>
-                        <label>{ExaminationFee}: </label>
+                        <label>{(NewExaminationFee-ExaminationFee)}: </label>
                         <input type="number" value={EditExaminationFee}
-                               onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should be lower then ${ExaminationFee}`)}/>
+                               onChange={(e) => e.target.value <=(NewExaminationFee-ExaminationFee) ? setEditExaminationFee(e.target.value) : alert(`It should be lower then ${ExaminationFee}`)}/>
                     </div>
 
                     <div>
                         <label>Games Sports Exicursion: </label>
-                        <label>{GamesSportsExicursion}: </label>
+                        <label>{(NewGamesSportsExicursion-GamesSportsExicursion)}: </label>
                         <input type="number" value={EditGamesSportsExicursion}
-                               onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should be lower then ${GamesSportsExicursion}`)}/>
+                               onChange={(e) => e.target.value <= (NewGamesSportsExicursion-GamesSportsExicursion) ? setEditGamesSportsExicursion(e.target.value) : alert(`It should be lower then ${GamesSportsExicursion}`)}/>
                     </div>
 
                     <div>
                         <label>Electric Charge: </label>
-                        <label>{ElectricCharge}: </label>
+                        <label>{(NewElectricCharge-ElectricCharge)}: </label>
                         <input type="number" value={EditElectricCharge}
-                               onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should be lower then ${ElectricCharge}`)}/>
+                               onChange={(e) => e.target.value <= (NewElectricCharge-ElectricCharge) ? setEditElectricCharge(e.target.value) : alert(`It should be lower then ${ElectricCharge}`)}/>
                     </div>
 
                     <div>
                         <label>Library Fees: </label>
-                        <label>{LibraryFees}: </label>
+                        <label>{NewLibraryFees-LibraryFees}: </label>
                         <input type="number" value={EditLibraryFees}
-                               onChange={(e) => e.target.value <= LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should be lower then ${LibraryFees}`)}/>
+                               onChange={(e) => e.target.value <= NewLibraryFees-LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should be lower then ${LibraryFees}`)}/>
                     </div>
 
                     <div>
                         <label>Computer Fees: </label>
-                        <label>{ComputerFees}: </label>
+                        <label>{NewComputerFees-ComputerFees}: </label>
                         <input type="number" value={EditComputerFees}
-                               onChange={(e) => e.target.value <= ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should be lower then ${ComputerFees}`)}/>
+                               onChange={(e) => e.target.value <= NewComputerFees-ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should be lower then ${ComputerFees}`)}/>
 
                     </div>
                     <div>
                         <label>Development Fees: </label>
-                        <label>{DevelopmentFees}: </label>
+                        <label>{NewDevelopmentFees-DevelopmentFees}: </label>
                         <input type="number" value={EditDevelopmentFees}
-                               onChange={(e) => e.target.value <= DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should be lower then ${DevelopmentFees}`)}/>
+                               onChange={(e) => e.target.value <=NewDevelopmentFees-DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should be lower then ${DevelopmentFees}`)}/>
                     </div>
 
                     <div>
                         <label>Miscellaneous: </label>
-                        <label>{Miscellaneous}: </label>
+                        <label>{NewMiscellaneous-Miscellaneous}: </label>
                         <input type="number" value={EditMiscellaneous}
-                               onChange={(e) => e.target.value <= Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should be lower then ${Miscellaneous}`)}/>
+                               onChange={(e) => e.target.value <= NewMiscellaneous-Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should be lower then ${Miscellaneous}`)}/>
                     </div>
 
                     <div>
                         <label>Laundry Charge: </label>
-                        <label>{LaundryCharge}: </label>
+                        <label>{NewLaundryCharge-LaundryCharge}: </label>
                         <input type="number" value={EditLaundryCharge}
-                               onChange={(e) => e.target.value <= LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should be lower then ${LaundryCharge}`)}/>
+                               onChange={(e) => e.target.value <=NewLaundryCharge-LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should be lower then ${LaundryCharge}`)}/>
                     </div>
 
                     <div>
                         <label>Medical Charge: </label>
-                        <label>{MedicalCharge}: </label>
+                        <label>{NewMedicalCharge-MedicalCharge}: </label>
                         <input type="number" value={EditMedicalCharge}
-                               onChange={(e) => e.target.value <= MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should be lower then ${MedicalCharge}`)}/>
+                               onChange={(e) => e.target.value <=NewMedicalCharge-MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should be lower then ${MedicalCharge}`)}/>
                     </div>
 
                     <div>
                         <label>Uniform: </label>
-                        <label>{Uniform}: </label>
+                        <label>{NewUniform-Uniform}: </label>
                         <input type="number" value={EditUniform}
-                               onChange={(e) => e.target.value <= Uniform ? setEditUniform(e.target.value) : alert(`It should be lower then ${Uniform}`)}/>
+                               onChange={(e) => e.target.value <=NewUniform-Uniform ? setEditUniform(e.target.value) : alert(`It should be lower then ${Uniform}`)}/>
                     </div>
 
                     <div>
                         <label>Session Charge: </label>
-                        <label>{SessionCharge}: </label>
+                        <label>{NewSessionCharge-SessionCharge}: </label>
                         <input type="number" value={EditSessionCharge}
-                               onChange={(e) => e.target.value <= SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should be lower then ${SessionCharge}`)}/>
+                               onChange={(e) => e.target.value <=NewSessionCharge-SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should be lower then ${SessionCharge}`)}/>
                     </div>
 
                     <div>
                         <label>Bed Fee: </label>
-                        <label>{BedFee}: </label>
+                        <label>{NewBedFee-BedFee}: </label>
                         <input type="number" value={EditBedFee}
-                               onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/>
+                               onChange={(e) => e.target.value <= NewBedFee-BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/>
                     </div>
 
                     <div>
                         <label>Total Fee: </label>
-                        <label>{Total}: </label>
+                        <label>{NewTotal-Total}: </label>
                         <input type="number" value={EditTotal}
                                readOnly={true}/>
                     </div>
