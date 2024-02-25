@@ -312,7 +312,7 @@ const MasterStudentViewUpdate = (props) => {
 
                         
                     </View>
-                    <View style={styles.formDetails}><Text> Admission Receipt for Admission Year {data[0].admisson_year} </Text></View> 
+                    <View style={styles.formDetails}><Text> Admission Receipt for Academic Year {data[0].admisson_year} </Text></View> 
                     
                     <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>

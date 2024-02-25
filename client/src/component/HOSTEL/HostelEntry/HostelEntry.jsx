@@ -192,7 +192,7 @@ const HostelEntry = (props) => {
             fontSize:'10px'
           },
           footer:{
-            marginTop:'55px',
+            marginTop:'355px',
             display:'flex',
             flexDirection:'row',
             textAlign:'center'
@@ -209,7 +209,8 @@ const HostelEntry = (props) => {
           
       });
       const MyDocument = ({ data }) => (
-
+       
+        
         <Document>
             <Page size="A4" style={styles.page}>
                 <View style={styles.section}>
@@ -234,29 +235,52 @@ const HostelEntry = (props) => {
 
                         
                     </View>
-                    <View style={styles.formDetails}><Text> Hostel Receipt for Admission Year {data[0].admisson_year} </Text></View> 
+                    <View style={styles.formDetails}><Text> Hostel Receipt for Academic Year {data[0].current_academic_year} </Text></View> 
                     
                     <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Registration Number:</Text>
                             <Text>{data[0].registration_no}</Text>
                         </View>
-                        <View style={styles.Mainbillto}>
-                            <Text style={styles.billTo}>Class:</Text>
-                            <Text>{data[0].applied_class}</Text>
-                        </View>
+                        
                         
                         <View style={styles.Mainbillto}>
-                            <Text style={styles.billTo}>Admission Year:</Text>
-                            <Text>{data[0].admisson_year}</Text>
+                            <Text style={styles.billTo}>Student's Year of Admission:</Text>
+                            <Text>{data[0].admission_year}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
-                            <Text style={styles.billTo}>Date of Admission:</Text>
-                            <Text>{data[0].admisson_date.slice(0,10)}</Text>
+                            <Text style={styles.billTo}>Class:</Text>
+                            <Text>{data[0].class}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Section:</Text>
+                            <Text>{data[0].section}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Roll No:</Text>
+                            <Text>{data[0].roll_no}</Text>
                         </View>
                         
                     </View>
                     <View style={styles.tableContainer}>
+                    <View style={styles.container}>
+                            <Text style={styles.description}>Title</Text>
+                            <Text style={styles.qty}>Description</Text>
+
+                        </View>
+                        {/* Invoice Table Rows */}
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Name</Text>
+                            <Text style={styles.rowqty}>{data[0].student_Name}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Room No.</Text>
+                            <Text style={styles.rowqty}>{data[0].room_no}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Bed No.</Text>
+                            <Text style={styles.rowqty}>{data[0].bed_no}</Text>
+                        </View>
                         
                         
 
@@ -265,7 +289,7 @@ const HostelEntry = (props) => {
 
                     </View>
                     <View style={styles.footer}>
-                        <Text style={styles.leftfooter}>Candidate and Guardian Signature</Text>
+                        
                         <Text style={styles.rightfooter}>AL-Hilal Official Signature</Text>
                     </View>
 
@@ -368,6 +392,7 @@ const HostelEntry = (props) => {
         setClass(data.class);
         setacademic(data.current_academic_year);
         setpdfstate(true)
+        console.log(data)
 
         if(data.hostelentry===1){
             // const rgi=data.registration_no
