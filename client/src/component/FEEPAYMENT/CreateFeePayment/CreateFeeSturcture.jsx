@@ -101,10 +101,11 @@ const CreateFeeSturcture = (props) => {
     }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
-            <form onSubmit={HandleSubmit}>
-                <div>
-                    <label>Class</label>
-                    <select onChange={(e) => setClass(parseInt(e.target.value))} required value={Class}>
+            <form onSubmit={HandleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+                <dl className="dl-horizontal">
+
+                    <dt><label>Class</label></dt>
+                    <dd><select onChange={(e) => setClass(parseInt(e.target.value))} required value={Class}>
                         <option value="">Class</option>
                         <option value="1">
                             I
@@ -145,89 +146,93 @@ const CreateFeeSturcture = (props) => {
                         </option>
 
                     </select>
-                </div>
-                <div>
-                    <label>Year</label>
-                    <input type="number" value={Year} onChange={(e) => setYear(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Fee Type</label>
-                    <select value={FeeType} onChange={(e) => setFeeType(e.target.value)}>
+                    </dd>
+
+                    <dt><label>Year</label></dt>
+                    <dd><input type="number" value={Year} onChange={(e) => setYear(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Fee Type</label></dt>
+                    <dd><select value={FeeType} onChange={(e) => setFeeType(e.target.value)}>
                         <option value="">Select</option>
                         <option value="Monthly">Monthly</option>
                         <option value="NewAdmission">New-Admisson</option>
                         <option value="ReAdmisson">Re-Admisson</option>
                     </select>
-                </div>
-                <div>
-                    <label>Admission Fee</label>
-                    <input type="number" value={AdmissonFee} onChange={(e) => setAdmissonFee(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Hostel Charge</label>
-                    <input type="number" value={hostelCharge} onChange={(e) => setHostelCharge(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Tution Fee</label>
-                    <input type="number" value={TutionFee} onChange={(e) => setTutionFee(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Caution Money</label>
-                    <input type="number" value={CautionMoney} onChange={(e) => setCautionMoney(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Examination Fee</label>
-                    <input type="number" value={ExaminationFee} onChange={(e) => setExaminationFee(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Games,Sports & Exicursion</label>
-                    <input type="number" value={GamesSportsExicursion}
-                           onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Electric Charge</label>
-                    <input type="number" value={ElectricCharge} onChange={(e) => setElectricCharge(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Library Fees</label>
-                    <input type="number" value={LibraryFees} onChange={(e) => setLibraryFees(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Computer Fees</label>
-                    <input type="number" value={ComputerFees} onChange={(e) => setComputerFees(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Development Fees</label>
-                    <input type="number" value={DevelopmentFees} onChange={(e) => setDevelopmentFees(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Miscellaneous</label>
-                    <input type="number" value={Miscellaneous} onChange={(e) => setMiscellaneous(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Laundry Charge</label>
-                    <input type="number" value={LaundryCharge} onChange={(e) => setLaundryCharge(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Medical Charge</label>
-                    <input type="number" value={MedicalCharge} onChange={(e) => setMedicalCharge(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Uniform</label>
-                    <input type="number" value={Uniform} onChange={(e) => setUniform(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Session Charge</label>
-                    <input type="number" value={SessionCharge} onChange={(e) => setSessionCharge(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Bed Fee</label>
-                    <input type="number" value={BedFee} onChange={(e) => setBedFee(e.target.value)}/>
-                </div>
-                <div>
-                    <label>Total</label>
-                    <input type="number" value={Total} readOnly={true}/>
-                </div>
+                    </dd>
+
+                    <dt><label>Admission Fee</label></dt>
+                    <dd><input type="number" value={AdmissonFee} onChange={(e) => setAdmissonFee(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Hostel Charge</label></dt>
+                    <dd><input type="number" value={hostelCharge} onChange={(e) => setHostelCharge(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Tution Fee</label></dt>
+                    <dd><input type="number" value={TutionFee} onChange={(e) => setTutionFee(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Caution Money</label></dt>
+                    <dd><input type="number" value={CautionMoney} onChange={(e) => setCautionMoney(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Examination Fee</label></dt>
+                    <dd><input type="number" value={ExaminationFee}
+                               onChange={(e) => setExaminationFee(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Games,Sports & Exicursion</label></dt>
+                    <dd><input type="number" value={GamesSportsExicursion}
+                               onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Electric Charge</label></dt>
+                    <dd><input type="number" value={ElectricCharge}
+                               onChange={(e) => setElectricCharge(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Library Fees</label></dt>
+                    <dd><input type="number" value={LibraryFees} onChange={(e) => setLibraryFees(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Computer Fees</label></dt>
+                    <dd><input type="number" value={ComputerFees} onChange={(e) => setComputerFees(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Development Fees</label></dt>
+                    <dd><input type="number" value={DevelopmentFees}
+                               onChange={(e) => setDevelopmentFees(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Miscellaneous</label></dt>
+                    <dd><input type="number" value={Miscellaneous} onChange={(e) => setMiscellaneous(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Laundry Charge</label></dt>
+                    <dd><input type="number" value={LaundryCharge} onChange={(e) => setLaundryCharge(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Medical Charge</label></dt>
+                    <dd><input type="number" value={MedicalCharge} onChange={(e) => setMedicalCharge(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Uniform</label></dt>
+                    <dd><input type="number" value={Uniform} onChange={(e) => setUniform(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Session Charge</label></dt>
+                    <dd><input type="number" value={SessionCharge} onChange={(e) => setSessionCharge(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Bed Fee</label></dt>
+                    <dd><input type="number" value={BedFee} onChange={(e) => setBedFee(e.target.value)}/>
+                    </dd>
+
+                    <dt><label>Total</label></dt>
+                    <dd><input type="number" value={Total} readOnly={true}/>
+                    </dd>
+                </dl>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>
