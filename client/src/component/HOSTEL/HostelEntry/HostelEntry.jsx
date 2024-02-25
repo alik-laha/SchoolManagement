@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
+import logo from '../../Home/logo_ahm.jpg'
 
 const HostelEntry = (props) => {
     const [allView, setAllView] = useState("contents");
@@ -15,6 +17,8 @@ const HostelEntry = (props) => {
     const [view, setView] = useState("none");
     const [viewStock,setViewStock]=useState([])
     const [editIndex,setEditIndex]=useState(null)
+    const [pdfstate,setpdfstate]=useState(false)
+    const [pdfdata,setPDFdata]=useState([])
 
     useEffect(() => {
       if (props.view==="block" && props.data.length>0) {
@@ -33,6 +37,246 @@ const HostelEntry = (props) => {
     const clearTable = () => {
         setViewStock([]);
       };
+
+      const borderColor = "#3778C2";
+      const styles = StyleSheet.create({
+        section: {
+            margin: 10,
+            padding: 10,
+            flexGrow: 1,
+          },
+        page: {
+          
+          fontFamily: "Helvetica",
+          fontSize: 11,
+          paddingTop: 10,
+          paddingLeft: 50,
+          paddingRight: 50,
+          lineHeight: 1.5,
+          flexDirection: "column"
+        },
+        logo: {
+          width: 60,
+          height: 60,
+          marginTop:20,
+          marginRight:20
+          
+        },
+        mainHeader: {
+          display: "flex",
+          flexDirection: "row-reverse",
+          justifyContent: "space-between",
+          alignItems: "center"
+        },
+
+        tableContainer: {
+            // backgroundColor: '#E4E4E4',
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 15,
+            borderWidth: 1,
+            borderColor: "#3778C2"
+          },
+          container: {
+            flexDirection: "row",
+            borderBottomColor: "#00519C",
+            backgroundColor: "#00519C",
+            color: "#fff",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            textAlign: "center",
+            fontStyle: "bold",
+            flexGrow: 1
+          },
+          description: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'12',
+            marginLeft:'10px'
+          },
+          qty: {
+            width: "60%",
+            fontSize:'12',
+            marginRight:'10px'   
+           
+          },
+          row: {
+            display:'flex',
+            flexDirection: "row",
+            borderBottomColor: "#3778C2",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            
+          },
+          rowdescription: {
+            width: "40%",
+            textAlign: "center",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            backgroundColor: "azure",
+            fontSize:'10px',
+            fontWeight: "extrabold",
+            color:'#00519C'
+            
+          },
+          rowqty: {
+            width: "60%",
+            backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'10px'
+          },
+          headerContainer: {
+            marginTop: 10,
+            justifyContent: "flex-start",
+            width: "50%"
+          },
+          billTo: {
+            marginRight: 10,
+            fontWeight:'extrabold'
+          },
+          Mainbillto: {
+            display: "flex",
+            flexDirection: "row",
+            marginTop: 2,
+            paddingBottom: 1,
+            fontSize:'10px'
+          },
+          instituteheader:{
+            textAlign:'center',
+            flexDirection:'row'
+            
+            
+          },
+          institutedesc:{
+            
+            flexDirection:'column',
+            marginLeft:'10px'
+            
+          },
+          institutename:{
+            textAlign:'center',
+            fontSize:'18',
+            fontWeight:'bold',
+            color:'#00519C',
+            marginTop: 20,
+            
+          },
+          instituteother:{
+            textAlign:'center',
+            fontSize:'10',
+            fontWeight:'bold',
+            color:'rgb(6, 21, 116)',
+            
+            
+          },
+          formDetails:{
+            marginLeft:20,
+            width:'100%',
+            marginTop: 15,
+            textAlign:'center',
+            fontSize:'12',
+            color:'red',
+            fontWeight:'bold',
+            
+            fontStyle:'cursive'
+          },
+          blankrow:{
+            width:'100%',
+            backgroundColor:'antiquewhite',
+            color:'#00519C',
+            textAlign:'center',
+            fontWeight:'bold',
+            fontSize:'10px'
+          },
+          footer:{
+            marginTop:'55px',
+            display:'flex',
+            flexDirection:'row',
+            textAlign:'center'
+          },
+          rightfooter:{
+            width:'50%',
+            marginLeft:'50px',
+            float:'right'
+          },
+          leftfooter:{
+            width:'50%',
+            float:'left'
+          }
+          
+      });
+      const MyDocument = ({ data }) => (
+
+        <Document>
+            <Page size="A4" style={styles.page}>
+                <View style={styles.section}>
+                    {/* <View style={styles.mainHeader}>
+                        
+                        
+                    </View> */}
+                    <View style={styles.instituteheader}>
+                    <Image
+                            style={styles.logo}
+                            src={logo}
+                        />
+                     <View style={styles.institutedesc}>
+                        <Text style={styles.institutename}> Al-HILAL-MISSION</Text>{"\n"}
+                        <Text style={styles.instituteother}> (An Educational, Cultural, & Social Welfare Organization) </Text>{"\n"}
+                    
+                        <Text style={styles.instituteother}> Kadambagachi, Duttapukur (Barasat), Kol-700125 </Text>{"\n"}
+                    
+                    </View>
+                     
+                    
+
+                        
+                    </View>
+                    <View style={styles.formDetails}><Text> Hostel Receipt for Admission Year {data[0].admisson_year} </Text></View> 
+                    
+                    <View style={styles.headerContainer}>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Registration Number:</Text>
+                            <Text>{data[0].registration_no}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Class:</Text>
+                            <Text>{data[0].applied_class}</Text>
+                        </View>
+                        
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Admission Year:</Text>
+                            <Text>{data[0].admisson_year}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Date of Admission:</Text>
+                            <Text>{data[0].admisson_date.slice(0,10)}</Text>
+                        </View>
+                        
+                    </View>
+                    <View style={styles.tableContainer}>
+                        
+                        
+
+
+
+
+                    </View>
+                    <View style={styles.footer}>
+                        <Text style={styles.leftfooter}>Candidate and Guardian Signature</Text>
+                        <Text style={styles.rightfooter}>AL-Hilal Official Signature</Text>
+                    </View>
+
+
+                </View>
+
+            </Page>
+        </Document>
+
+      );
+    
 
     const HandleSubmit=()=>{
         console.log(regNo)
@@ -115,12 +359,15 @@ const HostelEntry = (props) => {
     //
     // }
     const handaleClick = (data,index) => {
+        const dataArray=[data]
+        setPDFdata(dataArray)
         setEditIndex(index)
         setEntryView("contents");
         setStudentName(data.student_Name);
         setRegNo(data.registration_no);
         setClass(data.class);
         setacademic(data.current_academic_year);
+        setpdfstate(true)
 
         if(data.hostelentry===1){
             // const rgi=data.registration_no
@@ -142,6 +389,8 @@ const HostelEntry = (props) => {
     }
     const handaleCancel = () => {
         setEditIndex(null)
+        setpdfstate(false)
+        setPDFdata([])
         setAllView("contents");
         setEntryView("none");
         setStudentName("");
@@ -215,6 +464,10 @@ const HostelEntry = (props) => {
                                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
                                                     {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
                                                     <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
+                                                    { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                                    <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName={"Hostel_Admission_Report_"+regNo+".pdf"} >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                    </PDFDownloadLink></button>}
                                                 </>
                                             )}
                                         </td>
