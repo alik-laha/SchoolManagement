@@ -26,17 +26,17 @@ exports.LastId = (req, res) => {
 
 //get all students byclass and registration
 exports.GetAllStudent = (req, res) => {
-    const { Class, regNo, year,stream,section } = req.body
+    const { Class, regNo, year,section } = req.body
     let query
     try {
-        if (!Class && !regNo && !year && !stream && !section) {
+        if (!Class && !regNo && !year&& !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC `
         }
-        else if (Class && !regNo && !year && !stream && !section) {
+        else if (Class && !regNo && !year  && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -52,7 +52,7 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (!Class && !regNo && year && !stream && !section) {
+        else if (!Class && !regNo && year  && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -60,15 +60,15 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (!Class && !regNo && !year && stream && !section) {
+        else if (!Class && !regNo && !year  && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.stream regexp '${stream}' 
+            WHERE Student_Admission.active=1 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (!Class && !regNo && !year && !stream && section) {
+        else if (!Class && !regNo && !year && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -77,7 +77,7 @@ exports.GetAllStudent = (req, res) => {
            
         }
 
-        else if (Class && !regNo && year && !stream && !section) {
+        else if (Class && !regNo && year && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -85,15 +85,15 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (Class && !regNo && !year && stream && !section) {
+        else if (Class && !regNo && !year && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.stream regexp '${stream}' 
+            WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
-        else if (Class && !regNo && !year && !stream && section) {
+        else if (Class && !regNo && !year  && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -101,27 +101,25 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (Class && !regNo && year && stream && !section) {
+        else if (Class && !regNo && year  && !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
             and Student_Admission.current_academic_year regexp '${year}' 
-            and Student_Admission.stream = '${stream}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (Class && !regNo && !year && stream && section) {
+        else if (Class && !regNo && !year && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
             and Student_Admission.section regexp '${section}' 
-            and Student_Admission.stream = '${stream}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (Class && !regNo && year && !stream && section) {
+        else if (Class && !regNo && year && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -131,29 +129,26 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (Class && !regNo && year && stream && section) {
+        else if (Class && !regNo && year  && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
             and Student_Admission.current_academic_year regexp '${year}' 
-            and Student_Admission.section = '${section}'
-            and Student_Admission.stream = '${stream}'  
+            and Student_Admission.section = '${section}' 
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && !regNo && year && stream && !section) {
+        else if (!Class && !regNo && year&& !section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             and Student_Admission.current_academic_year regexp '${year}' 
-            
-            and Student_Admission.stream = '${stream}'  
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && !regNo && year && !stream && section) {
+        else if (!Class && !regNo && year  && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
@@ -164,22 +159,22 @@ exports.GetAllStudent = (req, res) => {
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && !regNo && year && stream && section) {
+        else if (!Class && !regNo && year  && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1 and  and Student_Admission.stream = '${stream}' 
+            WHERE Student_Admission.active=1 and  
             and Student_Admission.current_academic_year regexp '${year}' 
             and Student_Admission.section = '${section}'
             
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && !regNo && !year && stream && section) {
+        else if (!Class && !regNo && !year && section) {
             query = `SELECT Student_Admission.*,master_student.stream FROM Student_Admission 
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
-            WHERE Student_Admission.active=1  and Student_Admission.stream = '${stream}' 
+            WHERE Student_Admission.active=1 
            
             and Student_Admission.section = '${section}'
             
@@ -192,7 +187,7 @@ exports.GetAllStudent = (req, res) => {
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}'
-            and Student_Admission.section = '${section}' and  Student_Admission.stream = '${stream}' 
+            and Student_Admission.section = '${section}'
             order by Student_Admission.current_academic_year DESC, Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -218,7 +213,7 @@ exports.MasterStudentAdmission = (req, res) => {
         regNo,
         adharNo,
         sex,
-        stream,
+        Stream,
         religion,
         dob,
         cast,
@@ -250,10 +245,10 @@ exports.MasterStudentAdmission = (req, res) => {
         ifscCode
     } = req.body
     try {
-        if (!name || !regNo || !sex || !stream || !religion  || !cast || !guardianName || !relationship || !guardianContactNo || !address || !applyClass || !admissionYear || !admissonDate ) {
+        if (!name || !regNo || !sex || !Stream || !religion  || !cast || !guardianName || !relationship || !guardianContactNo || !address || !applyClass || !admissionYear || !admissonDate ) {
             return res.status(400).json({
                 msg: "please fill all the importent field",
-                data: name, regNo, adharNo, sex, stream ,religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age
+                data: name, regNo, adharNo, sex, Stream ,religion, dob, cast, guardianName, relationship, guardianContactNo, address, pinNo, applyClass, admissionYear, admissonDate, age
             })
         } else {
             let DOB
@@ -278,7 +273,7 @@ exports.MasterStudentAdmission = (req, res) => {
                     guardian_name, relationship, guardian_contact, address, pin_no, bsp_id, applied_class, admisson_year,
                      age,admisson_date, blood_group, acount_no, branch, ifsc
                 ) VALUES (
-                             "${name}", "${adharNo}", "${regNo}", "${sex}", "${stream}","${religion}", ${DOB==null?"NULL":`'${DOB}'`}, "${cast}", "${physicallyChallenged}",
+                             "${name}", "${adharNo}", "${regNo}", "${sex}", "${Stream}","${religion}", ${DOB==null?"NULL":`'${DOB}'`}, "${cast}", "${physicallyChallenged}",
                              "${orphanage}", "${fatherName}", "${fatherQualification}", "${fatherOcupation}", "${fatherMonthlyIncome}",
                              "${fatherContactNo}", "${motherName}", "${motherQualification}", "${motherOcupation}", "${motherMonthlyIncome}",
                              "${motherContactNo}", "${guardianName}", "${relationship}", "${guardianContactNo}", "${address}", "${pinNo}",

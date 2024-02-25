@@ -10,16 +10,18 @@ const ViewFeePaymentSearch = (props) => {
     const handlesubmit=(e)=>{
         e.preventDefault()
         if(feeType==="NewAdmission"){
-            axios.post ("/api/v1/fee/getnewadmissionfeeentryforupdate",{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-               console.log(res.data)
+            axios.post ("/api/v1/fee/getnewadmissionstudent",{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+               console.log(res.data.result)
+              props.setFeePaymentUpdateData(res.data.result,feeType)
             }).catch((err)=>{
                 console.log(err)
             })
         }
         else if(feeType==="ReAdmisson"){
-            axios.post('/api/v1/fee/getreadmissionfeeentryforupdate',{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
+            axios.post('/api/v1/fee/getreadmissionstudent',{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res)=>{
-                    console.log(res.data)
+                    console.log(res.data.result)
+                    props.setFeePaymentUpdateData(res.data.result)
                 }).catch((err)=>{
                     console.log(err)
             })

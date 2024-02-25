@@ -148,7 +148,7 @@ const MasterStudentEntry= (props) => {
                     regNo,
                     adharNo,
                     sex,
-                    stream,
+                    Stream:stream,
                     religion,
                     dob,
                     cast,
@@ -254,7 +254,7 @@ const MasterStudentEntry= (props) => {
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
             <form onSubmit={handleEntry} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
                 <p style={{fontSize:'17px'}}>Basic Details</p>
-                <dl class="dl-horizontal">
+                <dl className="dl-horizontal">
                    
                     <dt><label>Student Name*</label></dt>
                     <dd><input

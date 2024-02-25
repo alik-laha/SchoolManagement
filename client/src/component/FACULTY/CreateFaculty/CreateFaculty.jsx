@@ -39,122 +39,123 @@ const handleSubmit = (e) => {
 }
 
     return(
-        <div style={{display: props.view}} className="dashbrd-40-colm">
-            <form onSubmit={handleSubmit}>
-            <p>Basic Details</p>
-                <div>
-                    <label>Faculty Name*</label>
-                    <input
+        <div style={{display: props.view}} className="dashbrd-40-colm special-25-div">
+            <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <p style={{fontSize:'17px'}}>Basic Details</p>
+                <dl className="dl-horizontal">
+
+                    <dt><label>Faculty Name*</label></dt>
+                    <dd><input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Faculty Name"
                         required={true}
                     />
-                </div>
-                <div>
-                    <label>Date of Birth*</label>
-                    <input
+                    </dd>
+
+                    <dt><label>Date of Birth*</label></dt>
+                    <dd><input
                         type="date"
                         value={dob}
                         onChange={(e) => setDob(e.target.value)}
                         placeholder="Date of Birth"
                         required={true}
                     />
-                </div>
-                <div>
-                    <label>Joining date*</label>
-                    <input
+                    </dd>
+
+                    <dt><label>Joining date*</label></dt>
+                    <dd><input
                         type="date"
                         value={joinDate}
                         onChange={(e) => setJoinDate(e.target.value)}
                         placeholder="Joining Date"
                         required={true}
                     />
-                </div>
-              
-                <div style={{width:'50%'}}>
-                    <label>Address*</label>
-                    <textarea style={{height:'80px',rows:"3"}}
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Address"
-                        required={true}
+                    </dd>
+
+
+                    <dt><label>Address*</label></dt>
+                    <dd style={{width: '50%'}}>  <textarea style={{height: '80px', rows: "3"}}
+                                                           type="text"
+                                                           value={address}
+                                                           onChange={(e) => setAddress(e.target.value)}
+                                                           placeholder="Address"
+                                                           required={true}
                     />
-                </div>
-               
-                <hr className="division"/>
-                <p>Academic Details</p>
-                <div>
-                    <label>Highest Qualification*</label>
-                    <input
+                    </dd>
+                </dl>
+                    {/*<hr className="division"/>*/}
+            <dl>
+                    <p style={{fontSize:'17px'}}>Academic Details</p>
+
+                    <dt><label>Qualification*</label></dt>
+                    <dd><input
                         type="text"
                         value={qualification}
                         onChange={(e) => setQualification(e.target.value)}
                         placeholder="Qualification"
                         required={true}
                     />
-                </div>
-                <div>
-                    <label>Subject Specialization*</label>
-                    <input
+                    </dd>
+
+                    <dt><label>Specialization*</label></dt>
+                    <dd><input
                         type="text"
                         value={specialized}
                         onChange={(e) => setspecialized(e.target.value)}
                         placeholder="Subjects"
                         required={true}
                     />
-                </div>
-               
-                <hr className="division"/>
-                <p>Other Details</p>
-                <div>
-                    <label>Contact No.*</label>
-                    <input
+                    </dd>
+            </dl>
+                    {/*<hr className="division"/>*/}
+                <dl>
+                    <p style={{fontSize:'17px'}}>Other Details</p>
+
+                    <dt><label>Contact No.*</label></dt>
+                    <dd><input
                         type="number"
                         value={contactNo}
                         onChange={(e) => setContactNo(e.target.value)}
                         placeholder="Contact No"
                         required={true}
                     />
-                </div>
-                <div>
-                    <label>Email Address*</label>
-                    <input
+                    </dd>
+                    <dt>
+                        <label>Email Address*</label></dt>
+                    <dd><input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Email Address"
                         required={true}
                     />
-                </div>
-                <div>
-                    <label>Aadhar No.*</label>
-                    <input
+                    </dd>
+
+                    <dt><label>Aadhar No.*</label></dt>
+                    <dd><input
                         type="number"
                         value={aadharno}
                         onChange={(e) => setAadharno(e.target.value)}
                         placeholder="Aadhar No."
                         required={true}
                     />
-                </div>
-                
-              
-                
-                <div>
-                    <label>Pan No.*</label>
-                    <input
+                    </dd>
+
+
+                    <dt><label>Pan No.*</label></dt>
+                    <dd><input
                         type="text"
                         value={pan}
                         onChange={(e) => setPan(e.target.value)}
                         placeholder="Pan No."
                         required={true}
                     />
-                </div>
-                
-              
-              
+                    </dd>
+
+                </dl>
+
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>

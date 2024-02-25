@@ -112,9 +112,7 @@ const MasterStudentViewSearch = (props) => {
                         <option value="Common">
                             Common
                         </option>
-                    
-                        
-                        
+
                     </select> 
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
