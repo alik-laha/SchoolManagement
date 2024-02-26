@@ -349,6 +349,7 @@
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
+    box-sizing: border-box;
    
 }
  .dashbrd-40-colm input[type=checkbox]{

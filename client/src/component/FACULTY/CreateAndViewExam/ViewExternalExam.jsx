@@ -10,6 +10,9 @@ const ViewExternalExam=(props)=>{
     const handleCancel=()=>{
         setData([])
         setData1([])
+        if(view=='block'){
+            setView('none')
+        }
     }
     const handleDelete=(id)=>{
         axios.post("/api/v1/faculty/deleteexternalexam",{id},{headers:{"Authorization":localStorage.getItem("token")}})
@@ -42,12 +45,12 @@ const ViewExternalExam=(props)=>{
         setData1(props.data1)
     },[props.data,props.data1])
     return (
-        <div className="dashbrd-40-colm" style={{display: view}}>
-           <button style={{float:'left'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
+        <div className="dashbrd-40-colm" style={{display: view,marginTop:'120px'}}>
+           <button style={{float:'right'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
             <table className="table-60">
                 <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>Sl. No.</th>
                     <th>Exam Type</th>
                     <th>Exam Name</th>
                     <th>Total Marks of Exam</th>

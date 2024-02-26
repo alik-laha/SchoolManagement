@@ -51,20 +51,18 @@ const CreateExternalExam=(props)=>{
     }
     return (
         <div style={{display: props.view}} className="dashbrd-40-colm">
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Exam Name</label>
-                    <input type="text" placeholder="Exam Name" value={name}
-                           onChange={(e) => setName(e.target.value)} required/>
-                </div>
-                <div>
-                    <label>Total Exam Marks</label>
-                    <input type="number" placeholder="Total Marks" value={totalMarks}
-                           onChange={(e) => settotalMarks(e.target.value)} required/>
-                </div>
-                <div>
-                    <label>Type of Examination</label>
-                    <select onChange={(e) => setExamtype(e.target.value)} required value={examType}>
+            
+            <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+            <p style={{fontSize:'17px'}}>Create Examination </p>
+            <dl class="dl-horizontal">
+                    <dt><label>Exam Name</label></dt>
+                    <dd> <input type="text" placeholder="Exam Name" value={name}
+                           onChange={(e) => setName(e.target.value)} required/> </dd>
+                    <dt><label>Total Exam Marks</label></dt>
+                    <dd> <input type="number" placeholder="Total Marks" value={totalMarks}
+                           onChange={(e) => settotalMarks(e.target.value)} required/> </dd>
+                           <dt><label>Examination Type</label></dt>
+                    <dd> <select onChange={(e) => setExamtype(e.target.value)} required value={examType}>
                         <option value="">Examination Type</option>
                         <option value="External">
                             External Examination
@@ -72,13 +70,16 @@ const CreateExternalExam=(props)=>{
                         <option value="Internal">
                             Internal Examination
                         </option>
-                    </select>
-                </div>
+                    </select> </dd>
+                
+             </dl>   
+                
+            
                 <span><button className="dashboard-btn dashboard-btn-scss"
                               type="submit">Submit</button></span>
             </form>
             <div>
-                <button style={{backgroundColor: 'lightseagreen'}} className="dashboard-btn dashboard-btn-scss"
+                <button style={{backgroundColor: 'lightseagreen',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss"
                         onClick={handleView}>
                     View / Delete Exam
                 </button>
