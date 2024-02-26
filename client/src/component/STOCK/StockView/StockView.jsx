@@ -38,7 +38,7 @@ const StockView= (props) => {
             <table className="table-60" id="primary-stock-view">
                 <thead>
                 <tr>
-                    <th>Entry Id</th>
+                    <th>Entry Sl No.</th>
                     <th>Bill /Memo No.</th>
                     <th>Item Name</th>
                     <th>Item Type</th>
