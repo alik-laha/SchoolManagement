@@ -528,10 +528,10 @@ exports.UpdateHostelEntry=(req,res)=>{
     //left join
 //get all students byclass and registration
 exports.GetAllCombinedHostelStudent = (req, res) => {
-    const { Class, regNo, year } = req.body
+    const { Class, regNo, year,section } = req.body
     let query
     try {
-        if (!Class && !regNo && !year) {
+        if (!Class && !regNo && !year && !section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -541,7 +541,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              ON master_hostel.registration_no = Student_Admission.registration_no
              where Student_Admission.active=1 order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
         }
-        else if (Class && !regNo && !year) {
+        else if (Class && !regNo && !year && !section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -553,7 +553,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
             
         }
 
-        else if (!Class && regNo && !year) {
+        else if (regNo) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -564,7 +564,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && !regNo && year) {
+        else if (!Class && !regNo && year && !section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -575,8 +575,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              where Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-
-        else if (Class && regNo && !year) {
+        else if (!Class && !regNo && !year && section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -584,10 +583,11 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
-             where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' and Student_Admission.Class = '${Class}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+             where Student_Admission.active=1 and Student_Admission.section = '${section}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (!Class && regNo && year) {
+
+        else if (Class && !regNo && year && !section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -595,10 +595,10 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
-             where Student_Admission.active=1 and Student_Admission.registration_no regexp '${regNo}' and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+             where Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
-        else if (Class && !regNo && year) {
+        else if (Class && !regNo && !year && section) {
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -606,10 +606,21 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
-             where Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+             where Student_Admission.active=1 and Student_Admission.section = '${section}' and Student_Admission.Class = '${Class}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+            
+        }
+        else if (!Class && !regNo && year && section) {
+            query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
+            Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
+            Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
+            master_hostel.room_no,master_hostel.bed_no,master_hostel.entry_date
+             FROM Student_Admission 
+             LEFT JOIN master_hostel 
+             ON master_hostel.registration_no = Student_Admission.registration_no
+             where Student_Admission.active=1 and Student_Admission.section = '${section}' and Student_Admission.current_academic_year regexp '${year}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
         }
 
-        else {
+        else if (Class && !regNo && year && section){
             query = `SELECT Student_Admission.student_id,Student_Admission.student_Name,
             Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no,
             Student_Admission.admission_year,Student_Admission.hostelentry,Student_Admission.current_academic_year,
@@ -617,7 +628,7 @@ exports.GetAllCombinedHostelStudent = (req, res) => {
              FROM Student_Admission 
              LEFT JOIN master_hostel 
              ON master_hostel.registration_no = Student_Admission.registration_no
-             where Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.registration_no regexp '${regNo}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
+             where Student_Admission.active=1 and Student_Admission.Class = '${Class}' and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.section = '${section}' order by Student_Admission.current_academic_year DESC,Student_Admission.class ASC,Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
 

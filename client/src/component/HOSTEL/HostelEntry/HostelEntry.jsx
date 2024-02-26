@@ -33,6 +33,20 @@ const HostelEntry = (props) => {
     useEffect(()=>{
         setViewStock(props.data)
     },[props.data])
+    function convertToRoman(num) {
+      const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+      let roman = ''
+      let i
+      
+      for ( i in lookup ) {
+       if(num==i){
+          roman=lookup[i]
+          break
+       }
+         
+      }
+      return roman;
+    }
 
 
     const clearTable = () => {
@@ -441,6 +455,7 @@ const HostelEntry = (props) => {
                             <th>Class</th>
                             <th>Student Name</th>
                             <th>Academic Year</th>
+                           
                             <th>Section</th>
                             <th>Roll</th>
                             <th>Registration No</th>
@@ -459,10 +474,11 @@ const HostelEntry = (props) => {
                                         <td>{idx+1}</td>
                                         <td><input type='checkbox'
                                                    checked={data.hostelentry === 1 ? true : false}></input></td>
-                                                   <td>{data.class}</td>
+                                                   <td>{convertToRoman(data.class)}</td>
                                                    
                                         <td>{data.student_Name}</td>
                                         <td>{data.current_academic_year}</td>
+                                        
                                         <td>{data.section}</td>
                                         <td>{data.roll_no}</td>
                                         <td>{data.registration_no}</td>
