@@ -22,7 +22,7 @@ const [address, setAddress] = useState("");
 const [pan, setPan] = useState("");
 const [aadhar, setAadhar] = useState("");
 const [rdonly, setRdonly] = useState(false);
-
+const [Type, setType] = useState("");
 
     useEffect(() => {
         if(props.data.length > 0){
@@ -55,6 +55,7 @@ const handaleEdit = (id) => {
                 setPan(item.pan)
                 setAddress(item.address)
                 setDob(item.dob.slice(0,10))
+                setType(item.type)
                 if(item.relese_Date!==null){
                     setReleased_date(item.relese_Date.slice(0,10))
                     setRdonly(true)
@@ -79,7 +80,7 @@ const handaleDelete = (id) => {
 }
 const handaleUpdate = (e) => {
     e.preventDefault();
-const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date,aadharno:aadhar,pan,address,dob};
+const data = {id, name, email, contactNo:contact_no, qualification:heighst_qualification,specialized:specialized_field,joinDate:join_date,releseDate:released_date,aadharno:aadhar,pan,address,dob,Type};
 axios.post("/api/v1/faculty/updatefaculty", data,{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
             if(res){
@@ -87,6 +88,18 @@ axios.post("/api/v1/faculty/updatefaculty", data,{headers:{"Authorization":local
                 setEditView("none");
                 setMainView("contents");
                 setView("none")
+                setName("");
+                setEmail("");
+                setContact_no("");
+                setHeighst_qualification("");
+                setSpecialized_field("");
+                setJoin_date("");
+                setId("");
+                setDob("")
+                setAddress("")
+                setPan('')
+                setAadhar('')
+                setType('')
             }
         }).catch((err) => {
             console.log(err);
@@ -109,6 +122,7 @@ const handaleCancel = () => {
         setAddress("")
         setPan('')
         setAadhar('')
+    setType('')
 }
     return(
         <div style={{display: View}}>
@@ -130,9 +144,10 @@ const handaleCancel = () => {
                 {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
             
                 <tr>
-                    <th>Faculty ID</th>
+                    <th>Employ ID</th>
                     <th>Active Status</th>
                     <th>Name</th>
+                    <th>Employ Type</th>
                     <th>Qualification</th>
                     <th>Area Of Interest</th>
                     <th>Joining Date</th>
@@ -147,8 +162,7 @@ const handaleCancel = () => {
                         <td>{item.id}</td>
                         <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
-                        
-                        
+                        <td>{item.type}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>
                         <td>{item.join_date.slice(0, 10)}</td>
@@ -177,137 +191,145 @@ const handaleCancel = () => {
 
 
                 <form onSubmit={handaleUpdate}>
-                <p className="customize-centre">Edit Faculty Details</p>
-                <p>Basic Details</p>
-                <div>
-                    <label>Faculty Name*</label>
-                    <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Faculty Name"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Date of Birth*</label>
-                    <input
-                        type="date"
-                        value={dob}
-                        onChange={(e) => setDob(e.target.value)}
-                        placeholder="Date of Birth"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Contact No.*</label>
-                    <input
-                        type="number"
-                        value={contact_no}
-                        onChange={(e) => setContact_no(e.target.value)}
-                        placeholder="Contact No"
-                        required={true}
-                    />
-                </div>
-                <div style={{width:'45%'}}>
-                    <label>Address*</label>
-                    <input
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        placeholder="Address"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Email Address*</label>
-                    <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Email Address"
-                        required={true}
-                    />
-                </div>
-                <hr className="division"/>
-                <p>Academic Details</p>
-                <div>
-                    <label>Highest Qualification*</label>
-                    <input
-                        type="text"
-                        value={heighst_qualification}
-                        onChange={(e) => setHeighst_qualification(e.target.value)}
-                        placeholder="Qualification"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Subject Specialization*</label>
-                    <input
-                        type="text"
-                        value={specialized_field}
-                        onChange={(e) => setSpecialized_field(e.target.value)}
-                        placeholder="Subjects"
-                        required={true}
-                    />
-                </div>
-               
-                <hr className="division"/>
-                <p>Other Details</p>
-                <div>
-                    <label>Aadhar No.*</label>
-                    <input
-                        type="number"
-                        value={aadhar}
-                        onChange={(e) => setAadhar(e.target.value)}
-                        placeholder="Aadhar No."
-                        required={true}
-                    />
-                </div>
-                
-              
-                
-                <div>
-                    <label>Pan No.*</label>
-                    <input
-                        type="text"
-                        value={pan}
-                        onChange={(e) => setPan(e.target.value)}
-                        placeholder="Pan No."
-                        required={true}
-                    />
-                </div>
-                
-                <div>
-                    <label>Joining date*</label>
-                    <input
-                        type="date"
-                        value={join_date}
-                        onChange={(e) => setJoin_date(e.target.value)}
-                        placeholder="Joining Date"
-                        required={true}
-                    />
-                </div>
-                <div>
-                    <label>Release date*</label>
-                    <input
-                        type="date"
-                        value={released_date}
-                        onChange={(e) => setReleased_date(e.target.value)}
-                        placeholder="Release Date" readOnly={rdonly}
-                        
-                    />
-                </div>
-                <span><button className="dashboard-btn dashboard-btn-scss">Update</button></span>
-                {/* <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button> */}
+                    <p className="customize-centre">Edit Faculty Details</p>
+                    <p>Basic Details</p>
+                    <div>
+                        <label>Faculty Name*</label>
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Faculty Name"
+                            required={true}
+                        />
+                    </div>
+                    <dt><label>Employ Type*</label></dt>
+                    <dd>
+                        <select onChange={(e) => setType(e.target.value)} value={Type}>
+                            <option value="">Employ Type</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </dd>
+                    <div>
+                        <label>Date of Birth*</label>
+                        <input
+                            type="date"
+                            value={dob}
+                            onChange={(e) => setDob(e.target.value)}
+                            placeholder="Date of Birth"
+                            required={true}
+                        />
+                    </div>
+                    <div>
+                        <label>Contact No.*</label>
+                        <input
+                            type="number"
+                            value={contact_no}
+                            onChange={(e) => setContact_no(e.target.value)}
+                            placeholder="Contact No"
+                            required={true}
+                        />
+                    </div>
+                    <div style={{width: '45%'}}>
+                        <label>Address*</label>
+                        <input
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            placeholder="Address"
+                            required={true}
+                        />
+                    </div>
+                    <div>
+                        <label>Email Address*</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email Address"
+                            required={true}
+                        />
+                    </div>
+                    <hr className="division"/>
+                    <p>Academic Details</p>
+                    <div>
+                        <label>Highest Qualification*</label>
+                        <input
+                            type="text"
+                            value={heighst_qualification}
+                            onChange={(e) => setHeighst_qualification(e.target.value)}
+                            placeholder="Qualification"
+                            required={true}
+                        />
+                    </div>
+                    <div>
+                        <label>Subject Specialization*</label>
+                        <input
+                            type="text"
+                            value={specialized_field}
+                            onChange={(e) => setSpecialized_field(e.target.value)}
+                            placeholder="Subjects"
+                            required={true}
+                        />
+                    </div>
+
+                    <hr className="division"/>
+                    <p>Other Details</p>
+                    <div>
+                        <label>Aadhar No.*</label>
+                        <input
+                            type="number"
+                            value={aadhar}
+                            onChange={(e) => setAadhar(e.target.value)}
+                            placeholder="Aadhar No."
+                            required={true}
+                        />
+                    </div>
+
+
+                    <div>
+                        <label>Pan No.*</label>
+                        <input
+                            type="text"
+                            value={pan}
+                            onChange={(e) => setPan(e.target.value)}
+                            placeholder="Pan No."
+                            required={true}
+                        />
+                    </div>
+
+                    <div>
+                        <label>Joining date*</label>
+                        <input
+                            type="date"
+                            value={join_date}
+                            onChange={(e) => setJoin_date(e.target.value)}
+                            placeholder="Joining Date"
+                            required={true}
+                        />
+                    </div>
+                    <div>
+                        <label>Release date*</label>
+                        <input
+                            type="date"
+                            value={released_date}
+                            onChange={(e) => setReleased_date(e.target.value)}
+                            placeholder="Release Date" readOnly={rdonly}
+
+                        />
+                    </div>
+                    <span><button className="dashboard-btn dashboard-btn-scss">Update</button></span>
+                    {/* <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button> */}
                 </form>
             </div>
 
-                    
+
             <table className="table-60" id="faculty-view" style={{display: "none"}}>
                 <thead>
                 <tr>
-                <th>Faculty ID</th>
+                    <th>Faculty ID</th>
                     <th>Active Status</th>
                     <th>Faculty Name</th>
                     <th>Date of Birth</th>

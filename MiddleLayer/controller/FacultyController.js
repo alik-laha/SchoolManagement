@@ -53,7 +53,7 @@ exports.DeleteFaculty = (req, res) => {
 
 //update faculty
 exports.UpdateFaculty = (req, res) => {
-    const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate,aadharno,pan,address,dob}=req.body
+    const {id,name,qualification,joinDate,email,specialized,contactNo,releseDate,aadharno,pan,address,dob,Type}=req.body
     try{
         let query
         if(id && name && qualification && joinDate && email && specialized && contactNo && !releseDate) {
@@ -67,7 +67,8 @@ exports.UpdateFaculty = (req, res) => {
                              aadhar='${aadharno}',
                                 address='${address}',
                                 dob='${dob}',
-                                pan='${pan}'
+                                pan='${pan}',
+                                type='${Type}'
                          WHERE id = ${id}`
 
         }
