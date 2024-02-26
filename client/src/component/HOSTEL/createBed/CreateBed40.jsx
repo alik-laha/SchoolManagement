@@ -59,7 +59,7 @@ useEffect(() => {
     return (
         <>
             <div className="dashbrd-40-colm" style={{display:props.createbed}}>
-                <form onSubmit={handaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+                <form onSubmit={handaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
                 <p style={{fontSize:'17px'}}> Room and Bed Details </p>
 
                 <dl class="dl-horizontal">

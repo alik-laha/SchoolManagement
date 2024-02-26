@@ -38,7 +38,7 @@ const StudentInputNotice = ({Publish}) => {
       
       {/* <label>Institute Notice Upload </label> */}
       
-      <form onSubmit={HandaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+      <form onSubmit={HandaleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
       <p style={{fontSize:'17px'}}>Institute Notice Upload </p>
       <dl class="dl-horizontal">
 

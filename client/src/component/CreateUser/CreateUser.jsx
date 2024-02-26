@@ -41,7 +41,7 @@ const CreateUser = ({showCreate,AllRoles}) => {
   return (
     <>
       <div className="dashbrd-40-colm">
-      <form onSubmit={handaleSubmit} style={{display:showCreate,color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+      <form onSubmit={handaleSubmit} style={{display:showCreate,color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
       <p style={{fontSize:'17px'}}>User Details</p>
           <dl className="dl-horizontal">
 
