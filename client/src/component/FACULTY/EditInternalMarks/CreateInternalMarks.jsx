@@ -59,7 +59,7 @@ const handleDelete=(data)=>{
     })
 }
     return(
-        <div style={{display:view}}>
+        <div style={{display:view,marginTop:'35px'}}>
             <table className="table-60">
                 <thead>
                 <tr>

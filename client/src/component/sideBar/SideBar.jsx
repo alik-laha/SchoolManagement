@@ -283,7 +283,7 @@ const stockUsageVisiblity = () => {
 
           {/* Faculty */}
           <span onClick={facultyVisiblity} className="user"
-                style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks Portal<p>{dropArrowfaculty}</p></span>
+                style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks<p>{dropArrowfaculty}</p></span>
           <div style={{display: facultyVisi}}>
             
             <div className="Items" style={{display: facultyAdmin}}
@@ -293,11 +293,12 @@ const stockUsageVisiblity = () => {
               Exam
             </div>
             <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Update/Delete
-            </div>
-            <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Entry
             </div>
+            <div className="Items" style={{display: facultyAdmin}}
+                 onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Update/Delete
+            </div>
+            
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks
             </div>
@@ -390,10 +391,10 @@ const stockUsageVisiblity = () => {
               View/edit fee Structure
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onEntryFeePayment}>&#x3e;&nbsp;&nbsp;
-              Entry Fee Payment
+              Entry/View Fee Payment
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onViewFeePayment}>&#x3e;&nbsp;&nbsp;
-              View/edit fee Payment
+              Modify fee Payment
             </div>
           </div>
 
