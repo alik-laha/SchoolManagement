@@ -118,33 +118,88 @@ const AcademicEntryUpdate = (props) => {
                                <td>{convertToRoman(data.class)}</td>
                                <td>{editedIndex!==index ? (
                                    data.section
-                               ):(
-                                   <input
-                                       type="text"
-                                       onChange={(e)=>setSection(e.target.value)}
-                                       value={section}
-                                   />
+                               ): (
+                                   <select onChange={(e) => setSection(e.target.value)} required
+                                           value={section}>
+                                       <option value="">Section</option>
+                                       <option value="A">
+                                           A
+                                       </option>
+                                       <option value="B">
+                                           B
+                                       </option>
+                                       <option value="C">
+                                           C
+                                       </option>
+                                       <option value="D">
+                                           D
+                                       </option>
+                                       <option value="E">
+                                           E
+                                       </option>
+                                       <option value="F">
+                                           F
+                                       </option>
+                                       v
+                                       <option value="Art-A">
+                                           Art-A
+                                       </option>
+
+                                       <option value="Art-B">
+                                           Art-B
+                                       </option>
+                                       <option value="Art-C">
+                                           Art-C
+                                       </option>
+                                       <option value="Com-A">
+                                           Com-A
+                                       </option>
+                                       <option value="Com-B">
+                                           Com-B
+                                       </option>
+                                       <option value="Com-C">
+                                           Com-C
+                                       </option>
+                                       <option value="Sci-A">
+                                           Sci-A
+                                       </option>
+                                       <option value="Sci-B">
+                                             Sci-B
+                                       </option>
+                                       <option value="Sci-C">
+                                             Sci-C
+                                       </option>
+
+                                   </select>
                                )
                                }</td>
-                               <td>{editedIndex!==index ? (
+                               <td>{editedIndex !== index ? (
                                    data.roll_no
-                               ):(
+                               ) : (
                                    <input
-                                   type="number"
-                                   onChange={(e)=>setRollNo(e.target.value)}
-                                   value={rollNo}
+                                       type="number"
+                                       onChange={(e) => setRollNo(e.target.value)}
+                                       value={rollNo}
                                    />
                                )
                                }</td>
-                               
+
                                <td>
                                    {editedIndex === index ? (
                                        <>
-                                           <div style={{display:'flex'}}><button className="dashboard-btn dashboard-btn-scss" onClick={HandaleCancel}> Cancel </button>
-                                           <button style={{marginLeft:'5px'}} className="dashboard-btn dashboard-btn-scss" onClick={()=>HandleSubmit(index)}> Submit </button></div>
+                                           <div style={{display: 'flex'}}>
+                                               <button className="dashboard-btn dashboard-btn-scss"
+                                                       onClick={HandaleCancel}> Cancel
+                                               </button>
+                                               <button style={{marginLeft: '5px'}}
+                                                       className="dashboard-btn dashboard-btn-scss"
+                                                       onClick={() => HandleSubmit(index)}> Submit
+                                               </button>
+                                           </div>
                                        </>
                                    ) : (
-                                       <button className="dashboard-btn btn-warning" onClick={() => HandleEdit(index,data)}>Edit</button>
+                                       <button className="dashboard-btn btn-warning"
+                                               onClick={() => HandleEdit(index, data)}>Edit</button>
                                    )}
                                </td>
 
