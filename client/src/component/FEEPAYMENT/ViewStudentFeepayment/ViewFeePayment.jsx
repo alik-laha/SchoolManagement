@@ -9,6 +9,7 @@ const ViewFeePayment =(props)=>{
     const [feeType,setFeeType]=useState("")
     const [Class,setClass]=useState(0)
     const [year,setYear]=useState(0)
+    const [regNo,setRegNo]=useState("")
 
     const [AdmissonFee,setAdmissonFee]=useState(0)
     const [hostelCharge,setHostelCharge]=useState(0)
@@ -63,7 +64,7 @@ const ViewFeePayment =(props)=>{
     const [EditSessionCharge,setEditSessionCharge]=useState(0)
     const [EditBedFee,setEditBedFee]=useState(0)
     const [EditTotal,setEditTotal]=useState(0)
-    const [EditDate,setEditDate]=useState("")
+    const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
 
 
     useEffect(()=>{
@@ -92,7 +93,9 @@ const ViewFeePayment =(props)=>{
         setSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
         setTotal(data.total_fee)
-
+        setClass(data.class)
+        setYear(data.year)
+        setRegNo(data.regNo)
         let data1
             console.log(feeType)
             data1 = {
@@ -133,6 +136,31 @@ const ViewFeePayment =(props)=>{
     }, [props.view,props.data]);
 
 
+    useEffect(() => {
+        calculateTotal()
+    },[EditAdmissonFee,EdithostelCharge,EditTutionFee,EditCautionMoney,EditExaminationFee,EditGamesSportsExicursion,EditElectricCharge,EditLibraryFees,EditComputerFees,EditDevelopmentFees,EditMiscellaneous,EditLaundryCharge,EditMedicalCharge,EditUniform,EditSessionCharge,EditBedFee])
+
+    const calculateTotal = () => {
+        setEditTotal(
+            Number(EditAdmissonFee) +
+            Number(EdithostelCharge) +
+            Number(EditTutionFee) +
+            Number(EditCautionMoney) +
+            Number(EditExaminationFee) +
+            Number(EditGamesSportsExicursion) +
+            Number(EditElectricCharge) +
+            Number(EditLibraryFees) +
+            Number(EditComputerFees) +
+            Number(EditDevelopmentFees) +
+            Number(EditMiscellaneous) +
+            Number(EditLaundryCharge) +
+            Number(EditMedicalCharge) +
+            Number(EditUniform) +
+            Number(EditSessionCharge) +
+            Number(EditBedFee)
+        )
+    }
+
 
 
     const handleCancel=()=>{
@@ -155,39 +183,95 @@ const ViewFeePayment =(props)=>{
         setNewSessionCharge(0)
         setNewBedFee(0)
         setNewTotal(0)
+
+        setAdmissonFee(0)
+        setHostelCharge(0)
+        setTutionFee(0)
+        setCautionMoney(0)
+        setExaminationFee(0)
+        setGamesSportsExicursion(0)
+        setElectricCharge(0)
+        setLibraryFees(0)
+        setComputerFees(0)
+        setDevelopmentFees(0)
+        setMiscellaneous(0)
+        setLaundryCharge(0)
+        setMedicalCharge(0)
+        setUniform(0)
+        setSessionCharge(0)
+        setBedFee(0)
+        setTotal(0)
+
     }
 
     const handlesubmit=(e)=>{
         e.preventDefault()
         if(feeType==="NewAdmission"){
             let data={
-                admission_fee:EditAdmissonFee,
-                hostel_fee:EdithostelCharge,
-                tution_fee:EditTutionFee,
-                caution_fee:EditCautionMoney,
-                examination_fee:EditExaminationFee,
-                sports_fee:EditGamesSportsExicursion,
-                electric_fee:EditElectricCharge,
-                library_fee:EditLibraryFees,
-                computer_fee:EditComputerFees,
-                development_fee:EditDevelopmentFees,
-                miscellaneous_fee:EditMiscellaneous,
-                laundry_fee:EditLaundryCharge,
-                madical_fee:EditMedicalCharge,
-                uniform_fee:EditUniform,
-                session_fee:EditSessionCharge,
-                bed_fee:EditBedFee,
-                total_fee:EditTotal,
+                admission_fee:Number(EditAdmissonFee) + Number(AdmissonFee),
+                hostel_fee:EdithostelCharge + hostelCharge,
+                tution_fee:EditTutionFee +TutionFee,
+                caution_fee:EditCautionMoney +CautionMoney,
+                examination_fee:EditExaminationFee +ExaminationFee,
+                sports_fee:EditGamesSportsExicursion +GamesSportsExicursion,
+                electric_fee:EditElectricCharge +ElectricCharge,
+                library_fee:EditLibraryFees +LibraryFees,
+                computer_fee:EditComputerFees +ComputerFees,
+                development_fee:EditDevelopmentFees +DevelopmentFees,
+                miscellaneous_fee:EditMiscellaneous +Miscellaneous,
+                laundry_fee:EditLaundryCharge +LaundryCharge,
+                madical_fee:EditMedicalCharge +MedicalCharge,
+                uniform_fee:EditUniform +Uniform,
+                session_fee:EditSessionCharge +SessionCharge,
+                bed_fee:EditBedFee +BedFee,
+                total_fee:EditTotal +Total,
                 date:EditDate,
-                class:data.class,
-                year:data.year,
-                regNo:data.regNo
+                Class:Class,
+                year:year,
+                regNo:regNo
             }
-            axios.post("/api/v1/fee/updatefee",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+            axios.post("/api/v1/fee/updatenewadmissionfeeentry",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                 console.log(res.data.result)
-                props.setFeePaymentUpdateData(res.data.result,feeType)
+                setView("none")
                 setTableView("contents")
                 setEditView("none")
+
+
+                setNewAdmissionFee(0)
+                setNewHostelCharge(0)
+                setNewTutionFee(0)
+                setNewCautionMoney(0)
+                setNewExaminationFee(0)
+                setNewGamesSportsExicursion(0)
+                setNewElectricCharge(0)
+                setNewLibraryFees(0)
+                setNewComputerFees(0)
+                setNewDevelopmentFees(0)
+                setNewMiscellaneous(0)
+                setNewLaundryCharge(0)
+                setNewMedicalCharge(0)
+                setNewUniform(0)
+                setNewSessionCharge(0)
+                setNewBedFee(0)
+                setNewTotal(0)
+
+                setAdmissonFee(0)
+                setHostelCharge(0)
+                setTutionFee(0)
+                setCautionMoney(0)
+                setExaminationFee(0)
+                setGamesSportsExicursion(0)
+                setElectricCharge(0)
+                setLibraryFees(0)
+                setComputerFees(0)
+                setDevelopmentFees(0)
+                setMiscellaneous(0)
+                setLaundryCharge(0)
+                setMedicalCharge(0)
+                setUniform(0)
+                setSessionCharge(0)
+                setBedFee(0)
+                setTotal(0)
             }).catch((err)=>{
                 console.log(err)
             })
