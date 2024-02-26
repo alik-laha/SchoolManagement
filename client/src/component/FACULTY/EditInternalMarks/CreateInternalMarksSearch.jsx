@@ -177,9 +177,9 @@ const handleSubmit=(e)=>{
                 </select>
                 </div>
                 <div>
-                <label>Subject Type</label>
-                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject} required>
-                        <option>Subject</option>
+                <label>Subject Name</label>
+                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
+                        <option value="">Subject</option>
                         {allSubject.map((data, index) => (
                             <option value={data.subject} key={index}>
                                 {data.subject}
@@ -189,7 +189,7 @@ const handleSubmit=(e)=>{
                 </div>
                 <div style={{ width: '100%' }}>
 
-                    <p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
+                    <p style={{ fontSize: '15px' }}>(All fields except Subject Name are Mandatory)</p>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>

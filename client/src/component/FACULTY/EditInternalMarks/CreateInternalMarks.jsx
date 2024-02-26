@@ -7,7 +7,20 @@ const [data,setData]=useState([])
 const [Index,setIndex]=useState(null)
 const [marks,setMarks]=useState(0)
 
-
+function convertToRoman(num) {
+    const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+    let roman = ''
+    let i
+    
+    for ( i in lookup ) {
+     if(num==i){
+        roman=lookup[i]
+        break
+     }
+       
+    }
+    return roman;
+  }
     useEffect(() => {
         if(props.view==="block" && props.view40==="block"){
             setView("block")
@@ -72,25 +85,29 @@ const handleDelete=(data)=>{
             <table className="table-60">
                 <thead>
                 <tr>
+                    <th>Sl. No.</th>
                     <th>Class</th>
                     <th>Registration No</th>
                     <th>Student Name</th>
                     <th>Roll No</th>
                     <th>Exam Name</th>
                     <th>Subject</th>
-                    <th>Marks</th>
+                    <th>Total Exam Mark</th>
+                    <th>Obtained Mark</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 {data.map((data,index)=>(
                     <tr key={index}>
-                        <td>{data.class}</td>
+                        <td>{index+1}</td>
+                        <td>{convertToRoman(data.class)}</td>
                         <td>{data.registration_no}</td>
                         <td>{data.student_Name}</td>
                         <td>{data.roll_no}</td>
                         <td>{props.Exam}</td>
-                        <td>{props.Subject}</td>
+                        <td>{data.subject}</td>
+                        <td>{props.Marks}</td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
                         <td>{index!==Index ?(<button onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
                             (<div><button onClick={()=>handleUpdate(data)} className="dashboard-btn dashboard-btn-scss">Save</button> <button onClick={handleCancel} >Cancel</button> <button onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning">Delete</button></div>)}</td>
