@@ -9,7 +9,7 @@ const [marks,setMarks]=useState(0)
 
 
     useEffect(() => {
-        if(props.data.length>0 && props.view==="block" && props.view40==="block"){
+        if(props.view==="block" && props.view40==="block"){
             setView("block")
         }
         else {
@@ -45,6 +45,14 @@ const handleUpdate=(data)=>{
          })
      }
 }
+
+const handleClear = () => {
+    if(view=='block'){
+        setView('none')
+    }
+    
+
+}
 const handleCancel=()=>{
         setIndex(null)
         setMarks(0)
@@ -60,6 +68,7 @@ const handleDelete=(data)=>{
 }
     return(
         <div style={{display:view,marginTop:'35px'}}>
+            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
             <table className="table-60">
                 <thead>
                 <tr>
@@ -89,6 +98,7 @@ const handleDelete=(data)=>{
                 ))}
                 </tbody>
             </table>
+            {data.length===0 ? <div className="no-data" style={{textAlign:'center',width:'100%'}}>No Data Exists</div> : null}
         </div>
     )
 }
