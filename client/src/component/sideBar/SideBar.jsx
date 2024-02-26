@@ -261,8 +261,14 @@ const stockUsageVisiblity = () => {
                 style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
           <div style={{display: userVisi}}>
 
-            <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Users</div>
-            <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search/Modify Users</div>
+            <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Dashboard User</div>
+            <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search/Modify User</div>
+            <div className="Items" style={{display: admin}} onClick={props.onCreateFaculty}>&#x3e;&nbsp;&nbsp;Create
+              Employee
+            </div>
+            <div className="Items" style={{display: admin}} onClick={props.onViewFaculty}>&#x3e;&nbsp;&nbsp;View/Edit
+              Employee
+            </div>
           </div>
 
           {/* Notice */}
@@ -277,14 +283,9 @@ const stockUsageVisiblity = () => {
 
           {/* Faculty */}
           <span onClick={facultyVisiblity} className="user"
-                style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Faculty<p>{dropArrowfaculty}</p></span>
+                style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks Portal<p>{dropArrowfaculty}</p></span>
           <div style={{display: facultyVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onCreateFaculty}>&#x3e;&nbsp;&nbsp;Create
-              Faculty Profile
-            </div>
-            <div className="Items" style={{display: admin}} onClick={props.onViewFaculty}>&#x3e;&nbsp;&nbsp;View/Edit
-              Faculty Profile
-            </div>
+            
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateSubject}>&#x3e;&nbsp;&nbsp;Create Subject
             </div>
