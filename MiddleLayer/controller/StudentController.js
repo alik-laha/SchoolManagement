@@ -34,7 +34,7 @@ exports.GetAllStudent = (req, res) => {
             LEFT JOIN master_student 
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
-            order by Student_Admission.current_academic_year DESC, case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC, case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC `
         }
         else if (Class && !regNo && !year  && !section) {
@@ -43,7 +43,7 @@ exports.GetAllStudent = (req, res) => {
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             and Student_Admission.Class='${Class}' 
-            order by Student_Admission.current_academic_year DESC, case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC, case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
         }
 
@@ -53,7 +53,7 @@ exports.GetAllStudent = (req, res) => {
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             and Student_Admission.registration_no regexp '${regNo}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
@@ -63,7 +63,7 @@ exports.GetAllStudent = (req, res) => {
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             and Student_Admission.current_academic_year regexp '${year}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
@@ -74,7 +74,7 @@ exports.GetAllStudent = (req, res) => {
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 
             and Student_Admission.section regexp '${section}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
@@ -86,7 +86,7 @@ exports.GetAllStudent = (req, res) => {
             WHERE Student_Admission.active=1 
             and Student_Admission.Class = '${Class}' 
             and Student_Admission.current_academic_year regexp '${year}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
            
         }
@@ -98,7 +98,7 @@ exports.GetAllStudent = (req, res) => {
             WHERE Student_Admission.active=1 
             and Student_Admission.Class = '${Class}' 
             and Student_Admission.section = '${section}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -109,7 +109,7 @@ exports.GetAllStudent = (req, res) => {
             WHERE Student_Admission.active=1 
             and Student_Admission.current_academic_year regexp '${year}' 
             and Student_Admission.section = '${section}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -122,7 +122,7 @@ exports.GetAllStudent = (req, res) => {
             WHERE Student_Admission.active=1 and Student_Admission.Class = '${Class}' 
             and Student_Admission.current_academic_year regexp '${year}' 
             and Student_Admission.section = '${section}' 
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -138,7 +138,7 @@ exports.GetAllStudent = (req, res) => {
             ON master_student.registration_no = Student_Admission.registration_no 
             WHERE Student_Admission.active=1 and Student_Admission.current_academic_year regexp '${year}' and Student_Admission.Class = '${Class}'
             and Student_Admission.section = '${section}'
-            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='Common' then 1 
+            order by Student_Admission.current_academic_year DESC,  case when master_student.stream='General' then 1 
             when master_student.stream ='Arts'then 2 when master_student.stream='Commerce' then 3 when master_student.stream='Science' then 4 else 5 end,Student_Admission.class ASC, Student_Admission.section ASC, Student_Admission.roll_no ASC`
             
         }
@@ -307,51 +307,51 @@ exports.GetMasterStudentAdmissonByactivity= (req, res) => {
         let query
         if (!regNo && !admissionYear && !applyClass && !stream) {
             query = `SELECT * FROM master_student WHERE active='${active}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc `
         }
         else if (regNo) {
             query = `SELECT * FROM master_student WHERE registration_no regexp '${regNo}' and active='${active}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
 
         else if (!regNo && admissionYear && !applyClass && !stream) {
             query = `SELECT * FROM master_student WHERE admisson_year = '${admissionYear}' and active='${active}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && applyClass && !stream) {
             query = `SELECT * FROM master_student WHERE applied_class='${applyClass}' and active='${active}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && !applyClass && stream) {
             query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
 
     
         else if (!regNo && admissionYear && applyClass && !stream) {
             query = `SELECT * FROM master_student WHERE admisson_year='${admissionYear}' and active='${active}' and applied_class='${applyClass}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
         else if (!regNo && !admissionYear && applyClass && stream) {
             query = `SELECT * FROM master_student WHERE stream='${stream}' and active='${active}' and applied_class='${applyClass}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
         else if (!regNo && admissionYear && !applyClass && stream) {
             query = `SELECT * FROM master_student WHERE active='${active}' and stream='${stream}' and admisson_year='${admissionYear}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc`
         }
 
         else {
             query = `SELECT * FROM master_student WHERE active='${active}' and admisson_year='${admissionYear}' and applied_class='${applyClass}' and stream='${stream}' 
-            order by admisson_year desc,case when stream='Common' then 1 
+            order by admisson_year desc,case when stream='General' then 1 
             when stream ='Arts'then 2 when stream='Commerce' then 3 when stream='Science' then 4 else 5 end,applied_class asc, registration_no asc  `
         }
         Database.query(query, (err, result) => {
@@ -622,11 +622,25 @@ exports.DeleteStudentAdmission = (req, res) => {
 
 //get Promote Search Data
 exports.GetPromoteStudentAdmisson= (req, res) => {
-    const{Class,academicYear}=req.body
+    const{Class,academicYear,section}=req.body
     try{
-        let query=`SELECT * 
-        FROM Student_Admission
-        WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and active=1`
+        let query
+        if(!section){
+            query= `SELECT * 
+            FROM Student_Admission
+            WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and active=1
+            order by current_academic_year DESC,
+            class ASC, section ASC, roll_no ASC
+            `
+        }
+        else{
+            query= `SELECT * 
+            FROM Student_Admission
+            WHERE Class = '${Class}' and current_academic_year regexp '${academicYear}' and section = '${section}' and active=1
+            order by current_academic_year DESC,
+            class ASC, section ASC, roll_no ASC`
+        }
+       
         
 
         Database.query(query, (err, result) => {

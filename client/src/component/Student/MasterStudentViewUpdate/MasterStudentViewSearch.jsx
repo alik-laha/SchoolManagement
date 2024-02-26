@@ -109,8 +109,8 @@ const MasterStudentViewSearch = (props) => {
                         <option value="Science">
                             Science
                         </option>
-                        <option value="Common">
-                            Common
+                        <option value="General">
+                            General
                         </option>
 
                     </select> 

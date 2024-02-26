@@ -92,27 +92,7 @@ const AcademicEntrySearch= (props) => {
                         </label>
                         <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
-                {/*    <div>*/}
-                {/*    <label>Search By Stream</label>*/}
-                {/*    <select onChange={(e) => setStream(e.target.value)} value={stream}>*/}
-                {/*    <option value="">Stream</option>*/}
-                {/*        <option value="Arts">*/}
-                {/*            Arts*/}
-                {/*        </option>*/}
-                {/*        <option value="Commerce">*/}
-                {/*            Commerce*/}
-                {/*        </option>*/}
-                {/*        <option value="Science">*/}
-                {/*            Science*/}
-                {/*        </option>*/}
-                {/*        <option value="Common">*/}
-                {/*            Common*/}
-                {/*        </option>*/}
-                {/*    */}
-                {/*        */}
-                {/*        */}
-                {/*    </select> */}
-                {/*</div>*/}
+                
                 <div>
                         <label>
                             Search By Section.

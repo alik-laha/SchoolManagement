@@ -3,12 +3,13 @@ import axios from "axios";
 const PromoteNextClassSearch= (props) => {
     const [Class,setClass]=useState("")
     const [academicYear,setAcademicYear]=useState("")
+    const [section,setSection]=useState('');
 
     const handaleSubmit=(e)=>{
         e.preventDefault()
             const data={
                 Class,
-                academicYear,
+                academicYear,section
             }
         axios.post("/api/v1/student/getpromotesearch",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
@@ -79,6 +80,12 @@ const PromoteNextClassSearch= (props) => {
                             Search By Current Academic Year.
                         </label>
                         <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} placeholder="Current Year" required/>
+                    </div>
+                    <div>
+                        <label>
+                            Search By Section.
+                        </label>
+                        <input type="text" placeholder='Section' value={section} onChange={(e) => setSection(e.target.value)}/>
                     </div>
              
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
