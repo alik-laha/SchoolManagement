@@ -220,6 +220,7 @@ const ViewFeePayment =(props)=>{
         setEditSessionCharge(0)
         setEditBedFee(0)
         setEditTotal(0)
+        setEditDate(new Date().toISOString().slice(0, 10))
     }
 
     const handlesubmit=(e)=>{
@@ -244,7 +245,8 @@ const ViewFeePayment =(props)=>{
             Total:EditTotal +Total,
             Class:Class,
             year:year,
-            regNo:regNo
+            regNo:regNo,
+            Date:EditDate
         }
         if(feeType==="NewAdmission"){
 
@@ -310,7 +312,7 @@ const ViewFeePayment =(props)=>{
                 setEditSessionCharge(0)
                 setEditBedFee(0)
                 setEditTotal(0)
-
+                setEditDate(new Date().toISOString().slice(0, 10))
             }).catch((err)=>{
                 console.log(err)
             })
@@ -378,7 +380,7 @@ const ViewFeePayment =(props)=>{
                 setEditSessionCharge(0)
                 setEditBedFee(0)
                 setEditTotal(0)
-
+                setEditDate(new Date().toISOString().slice(0, 10))
             }).catch((err)=>{
                 console.log(err)
             })

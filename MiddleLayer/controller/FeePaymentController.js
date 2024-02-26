@@ -780,7 +780,7 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
 
 exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
     try {
-     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
+     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,Date} = req.body
         if(AdmissionFee===""){
             AdmissionFee=0
         }
@@ -847,7 +847,8 @@ exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
                          uniform_fee='${Uniform}',
                          session_fee='${SessionCharge}',
                          bed_fee='${BedFee}',
-                         total_fee='${Total}'
+                         total_fee='${Total}',
+                            modify_date='${Date}'
                             Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
         Database.query(query, (err, result) => {
             if (err) {
@@ -866,7 +867,7 @@ exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
 //Update Re Admission Fee Entry
 exports.UpdateReAdmissionFeeEntryForUpdate = (req, res) => {
     try {
-     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
+     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,Date} = req.body
      if (AdmissionFee === "") {
          AdmissionFee = 0
      }
@@ -933,7 +934,8 @@ exports.UpdateReAdmissionFeeEntryForUpdate = (req, res) => {
                          uniform_fee='${Uniform}',
                          session_fee='${SessionCharge}',
                          bed_fee='${BedFee}',
-                         total_fee='${Total}'
+                         total_fee='${Total}',
+                            modify_date='${Date}'
                             Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
         Database.query(query, (err, result) => {
             if (err) {
