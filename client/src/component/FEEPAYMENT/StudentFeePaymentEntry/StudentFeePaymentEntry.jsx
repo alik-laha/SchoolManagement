@@ -49,10 +49,13 @@ const StudentFeePaymentEntry = (props) => {
     const [EditBedFee,setEditBedFee]=useState(0)
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
+    const[fine,setFine]=useState(0)
 
-    const [disableedit,setdisabledit]=useState(false)
+    const [disableedit,setdisabledit]=useState(true)
     const [month,setMonth]=useState("")
     const [status,setStatus]=useState(0)
+
+    const [billDate,setBillDate]=useState(new Date().toISOString().slice(0, 10))
     useEffect(() => {
 
         if(props.view==="block" && props.data.length>0){
@@ -102,6 +105,8 @@ const StudentFeePaymentEntry = (props) => {
             setEditDate(new Date().toISOString().slice(0, 10))
             setdisabledit(false)
             setStatus(0)
+            setBillDate(new Date().toISOString().slice(0, 10))
+            setFine(0)
         }
         else{
          setView("none")
@@ -133,7 +138,7 @@ const StudentFeePaymentEntry = (props) => {
         setClass(data.class)
         setYear(data.year)
 
-
+        setBillDate(new Date().toISOString().slice(0, 10))
         setAdmissonFee(data.admission_fee)
         setHostelCharge(data.hostel_fee)
         setTutionFee(data.tution_fee)
@@ -193,7 +198,9 @@ const StudentFeePaymentEntry = (props) => {
            setUniform(DATA.uniform_fee)
            setStatus(DATA.status)
            setEditDate(DATA.entry_date.slice(0, 10))
+           setBillDate(DATA.bill_date.slice(0, 10))
            cData = DATA.entry_date.toString()
+           setFine(DATA.fine)
 
            let currentDate = new Date().toISOString();
            let currentYear = currentDate.slice(0, 4);
@@ -285,8 +292,10 @@ const StudentFeePaymentEntry = (props) => {
         setEditBedFee(0)
         setEditTotal(0)
         setEditDate(new Date().toISOString().slice(0, 10))
-        setdisabledit(false)
+        setdisabledit(true)
         setStatus(0)
+        setBillDate(new Date().toISOString().slice(0, 10))
+        setFine(0)
     }
 
     useEffect(() => {
@@ -345,7 +354,8 @@ const StudentFeePaymentEntry = (props) => {
                 SessionCharge: EditSessionCharge,
                 BedFee: EditBedFee,
                 Total: EditTotal,
-                PaymentDate: EditDate
+                PaymentDate: EditDate,
+                BillDate:billDate
             }
             axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 alert("Fee Entry of New-Admission is Successful")
@@ -419,7 +429,8 @@ const StudentFeePaymentEntry = (props) => {
                 SessionCharge: EditSessionCharge,
                 BedFee: EditBedFee,
                 Total: EditTotal,
-                PaymentDate: EditDate
+                PaymentDate: EditDate,
+                BillDate:billDate
             }
             axios.post("/api/v1/fee/updatenewadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
               console.log(res.data)
@@ -499,7 +510,8 @@ const StudentFeePaymentEntry = (props) => {
                 SessionCharge: EditSessionCharge,
                 BedFee: EditBedFee,
                 Total: EditTotal,
-                PaymentDate: EditDate
+                PaymentDate: EditDate,
+                BillDate:billDate
             }
             axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
@@ -574,7 +586,8 @@ const StudentFeePaymentEntry = (props) => {
                 SessionCharge: EditSessionCharge,
                 BedFee: EditBedFee,
                 Total: EditTotal,
-                PaymentDate: EditDate
+                PaymentDate: EditDate,
+                BillDate:billDate
             }
             axios.post("/api/v1/fee/updatereadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
@@ -844,10 +857,15 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/>
                     </div>
                     <div>
-                        <label>Payment Date</label>
-                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
+                        <label>Bill Date</label>
+                        <input type="date" value={billDate} onChange={(e) => setBillDate(e.target.value)}/>
                     </div>
-                    <span><button className="dashboard-btn dashboard-btn-scss"  disabled={disableedit}>Submit</button></span>
+                    <div>
+                        <label>Entry Date</label>
+                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)} readOnly/>
+                    </div>
+                    <span><button className="dashboard-btn dashboard-btn-scss"
+                                  disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
 
@@ -975,10 +993,20 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/>
                     </div>
                     <div>
-                        <label>Payment Date</label>
-                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)}/>
+                        <label>Bill Date</label>
+                        <input type="date" value={billDate} onChange={(e) => setBillDate(e.target.value)}/>
                     </div>
-                    <span><button className="dashboard-btn dashboard-btn-scss" disabled={disableedit}>Submit</button></span>
+                    <div>
+                        <label>Entry Date</label>
+                        <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)} readOnly/>
+                    </div>
+                    <div>
+                        <label>Fine</label>
+                        <input type="number" value={fine} onChange={(e) => setFine(e.target.value)} readOnly/>
+                    </div>
+
+                    <span><button className="dashboard-btn dashboard-btn-scss"
+                                  disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
         </div>
