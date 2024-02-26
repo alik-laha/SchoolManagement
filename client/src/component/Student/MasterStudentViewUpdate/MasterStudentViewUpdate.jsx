@@ -1065,7 +1065,7 @@ const MasterStudentViewUpdate = (props) => {
            
             <hr></hr>
 
-                <form style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+                <form style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
 
                     <p style={{fontSize:'17px'}} className="customize-centre">Edit Student Details</p>
                     <p style={{fontSize:'17px'}}>Basic Details</p>
