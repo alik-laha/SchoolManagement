@@ -398,6 +398,11 @@ const HostelEntry = (props) => {
     //
     // }
     const handaleClick = (data,index) => {
+      if(roomNo && bedNo)
+      {
+        setRoomNo('')
+        setBedNo('')
+      }
         const dataArray=[data]
         setPDFdata(dataArray)
         setEditIndex(index)
@@ -507,7 +512,7 @@ const HostelEntry = (props) => {
                                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
                                                     {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
                                                     <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
-                                                    { pdfstate && <button className='dashboard-btn btn-warning' style={{background:'lightsalmon',color:'white',float:'right'}}>
+                                                    { data.hostelentry && pdfstate && <button className='dashboard-btn btn-warning' style={{background:'lightsalmon',color:'white',float:'right'}}>
                                     <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName={"Hostel_Admission_Report_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? <MdArrowDownward /> : <MdArrowDownward />)}
                                     </PDFDownloadLink></button>}
