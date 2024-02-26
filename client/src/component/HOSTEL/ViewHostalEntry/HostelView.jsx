@@ -15,7 +15,20 @@ const HostelView= (props) => {
         sethostelexportall(props.SearchebyData)
       },[props.SearchebyData])
 
-
+      function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
 
       useEffect(()=> {
         if (props.hostelexportview === "block" && props.view === "block") {
@@ -43,16 +56,19 @@ const HostelView= (props) => {
                 <table className="table-60" id="hostel-entry-view">
                     <thead>
                     <tr>
-                        <th>Entry Id</th>
+                        <th>Sl No.</th>
+                        <th>Room No</th>
+                        <th>Bed No</th>
                         <th>Student Name</th>
+                        <th>Registration No</th>
+                        <th>Year of Admission</th>  
                         <th>Class</th>
                         <th>Academic Year</th>
                         <th>Section</th>
                         <th>Roll No.</th>
-                        <th>Registration No</th>           
-                        <th>Year of Admission</th>
-                        <th>Room No</th>
-                        <th>Bed No</th>
+                                 
+                       
+                        
                         <th>Hostel Entry Date</th>
                         
                     </tr>
@@ -63,15 +79,18 @@ const HostelView= (props) => {
                             return(
                                 <tr key={idx}>
                                     <td>{idx+1}</td>
+                                    <td>{data.room_no}</td>
+                                    <td>{data.bed_no}</td>
                                     <td>{data.student_Name}</td>
-                                    <td>{data.class}</td>
+                                    <td>{data.registration_no}</td> 
+                                    <td>{data.admission_year}</td>
+                                    <td>{convertToRoman(data.class)}</td>
                                     <td>{data.crnt_yr}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
-                                    <td>{data.registration_no}</td> 
-                                    <td>{data.admission_year}</td>
-                                    <td>{data.room_no}</td>
-                                    <td>{data.bed_no}</td>
+                                    
+                                    
+                                    
                                     <td>{data.entry_date.slice(0,10)}</td>           
                              </tr>
                             )
