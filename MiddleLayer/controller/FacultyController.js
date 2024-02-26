@@ -3,10 +3,10 @@ const Database = require('../Config/Dbconnection')
 //Create Faculty
 
 exports.createFaculty = (req, res) => {
-    const {name,qualification,joinDate,email,specialized,contactNo,aadharno,pan,address,dob}=req.body
+    const {name,qualification,joinDate,email,specialized,contactNo,aadharno,pan,address,dob,Type}=req.body
     try{
         if(1){
-            let query = `INSERT INTO faculty_admin (name,heighst_qualification,join_date,email,specialized_field,contact_no,active,aadhar,address,dob,pan) VALUES ('${name}','${qualification}','${joinDate}','${email}','${specialized}','${contactNo}',1,'${aadharno}','${address}','${dob}','${pan}')`
+            let query = `INSERT INTO faculty_admin (name,heighst_qualification,join_date,email,specialized_field,contact_no,active,aadhar,address,dob,pan,type) VALUES ('${name}','${qualification}','${joinDate}','${email}','${specialized}','${contactNo}',1,'${aadharno}','${address}','${dob}','${pan}','${Type}')`
             Database.query(query,(err,result)=>{
                 if(err){
                     console.log(err)

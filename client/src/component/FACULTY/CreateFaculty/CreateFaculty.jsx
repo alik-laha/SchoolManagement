@@ -12,11 +12,11 @@ const [aadharno, setAadharno] = useState("");
 const [pan, setPan] = useState("");
 const [address, setAddress] = useState("");
 const [dob, setDob] = useState("");
-
+const [Type, setType] = useState("");
 const handleSubmit = (e) => {
     e.preventDefault();
     
-    const faculty = {name, qualification, joinDate, email, specialized, contactNo,aadharno,pan,address,dob};
+    const faculty = {name, qualification, joinDate, email, specialized, contactNo,aadharno,pan,address,dob,Type};
     axios.post("/api/v1/faculty/createfaculty", faculty,{headers:{"Authorization":localStorage.getItem("token")}}).then(() => {
         alert("Faculty Added Successfully");
     }).catch((err) => {
@@ -44,14 +44,24 @@ const handleSubmit = (e) => {
             <p style={{fontSize:'17px'}}>Basic Details</p>
                 <dl className="dl-horizontal">
 
-                    <dt><label>Faculty Name*</label></dt>
+                    <dt><label>Employ Name*</label></dt>
                     <dd><input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Faculty Name"
+                        placeholder="Employ Name"
                         required={true}
                     />
+                    </dd>
+
+                    <dt><label>Employ Type*</label></dt>
+                    <dd>
+                        <select onChange={(e)=>setType(e.target.value)} value={Type}>
+                            <option value="">Employ Type</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Faculty">Faculty</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </dd>
 
                     <dt><label>Date of Birth*</label></dt>
