@@ -60,10 +60,11 @@ const HostelView= (props) => {
                         <th>Room No</th>
                         <th>Bed No</th>
                         <th>Student Name</th>
-                        <th>Registration No</th>
-                        <th>Year of Admission</th>  
-                        <th>Class</th>
+                        <th>Registration No.</th>
                         <th>Academic Year</th>
+                         
+                        <th>Class</th>
+                        <th>Year of Admission</th> 
                         <th>Section</th>
                         <th>Roll No.</th>
                                  
@@ -83,9 +84,10 @@ const HostelView= (props) => {
                                     <td>{data.bed_no}</td>
                                     <td>{data.student_Name}</td>
                                     <td>{data.registration_no}</td> 
-                                    <td>{data.admission_year}</td>
-                                    <td>{convertToRoman(data.class)}</td>
                                     <td>{data.crnt_yr}</td>
+                                    <td>{convertToRoman(data.class)}</td>
+                                    
+                                    <td>{data.admission_year}</td>
                                     <td>{data.section}</td>
                                     <td>{data.roll_no}</td>
                                     
