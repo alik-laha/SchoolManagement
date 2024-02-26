@@ -3,7 +3,7 @@ const router = express.Router()
 const verifyToken = require('../Config/auth')
 const { CreateFeeStructure,GetFeeStructure ,EditFeeStructure,GetStudentForFeeEntry,NewAdmissionFeeEntry
     ,ReAdmissionFeeEntry,GetNewAdmissionFeeEntryForUpdate,GetReAdmissionFeeEntryForUpdate,UpdateNewAdmissionFeeEntry
-,UpdateReAdmissionFeeEntry,GetStudentForNewAdmissionFeeEntry,GetStudentForReAdmissionFeeEntry} = require('../controller/FeePaymentController')
+,UpdateReAdmissionFeeEntry,GetStudentForNewAdmissionFeeEntry,GetStudentForReAdmissionFeeEntry,UpdateReAdmissionFeeEntryForUpdate,UpdateNewAdmissionFeeEntryForUpdate} = require('../controller/FeePaymentController')
 
 
 //Create a new Fee Structure
@@ -42,6 +42,12 @@ router.post('/getnewadmissionstudent',verifyToken, GetStudentForNewAdmissionFeeE
 
 //For update Get Re Admission Student
 router.post('/getreadmissionstudent',verifyToken, GetStudentForReAdmissionFeeEntry)
+
+//Update Re Admission Fee Entry For Update
+router.post('/updatereadmissionfeeentryforupdate',verifyToken, UpdateReAdmissionFeeEntryForUpdate)
+
+//Update New Admission Fee Entry For Update
+router.post('/updatenewadmissionfeeentryforupdate',verifyToken, UpdateNewAdmissionFeeEntryForUpdate)
 
 
 module.exports = router

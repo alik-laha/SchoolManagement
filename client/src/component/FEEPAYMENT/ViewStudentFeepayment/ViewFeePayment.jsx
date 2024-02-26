@@ -208,29 +208,28 @@ const ViewFeePayment =(props)=>{
         e.preventDefault()
         if(feeType==="NewAdmission"){
             let data={
-                admission_fee:Number(EditAdmissonFee) + Number(AdmissonFee),
-                hostel_fee:EdithostelCharge + hostelCharge,
-                tution_fee:EditTutionFee +TutionFee,
-                caution_fee:EditCautionMoney +CautionMoney,
-                examination_fee:EditExaminationFee +ExaminationFee,
-                sports_fee:EditGamesSportsExicursion +GamesSportsExicursion,
-                electric_fee:EditElectricCharge +ElectricCharge,
-                library_fee:EditLibraryFees +LibraryFees,
-                computer_fee:EditComputerFees +ComputerFees,
-                development_fee:EditDevelopmentFees +DevelopmentFees,
-                miscellaneous_fee:EditMiscellaneous +Miscellaneous,
-                laundry_fee:EditLaundryCharge +LaundryCharge,
-                madical_fee:EditMedicalCharge +MedicalCharge,
-                uniform_fee:EditUniform +Uniform,
-                session_fee:EditSessionCharge +SessionCharge,
-                bed_fee:EditBedFee +BedFee,
-                total_fee:EditTotal +Total,
-                date:EditDate,
+                AdmissionFee:Number(EditAdmissonFee) + Number(AdmissonFee),
+                hostelCharge:EdithostelCharge + hostelCharge,
+                TutionFee:EditTutionFee +TutionFee,
+                CautionMoney:EditCautionMoney +CautionMoney,
+                ExaminationFee:EditExaminationFee +ExaminationFee,
+                GamesSportsExicursion:EditGamesSportsExicursion +GamesSportsExicursion,
+                ElectricCharge:EditElectricCharge +ElectricCharge,
+                LibraryFees:EditLibraryFees +LibraryFees,
+                ComputerFees:EditComputerFees +ComputerFees,
+                DevelopmentFees:EditDevelopmentFees +DevelopmentFees,
+                Miscellaneous:EditMiscellaneous +Miscellaneous,
+                LaundryCharge:EditLaundryCharge +LaundryCharge,
+                MedicalCharge:EditMedicalCharge +MedicalCharge,
+                Uniform:EditUniform +Uniform,
+                SessionCharge:EditSessionCharge +SessionCharge,
+                BedFee:EditBedFee +BedFee,
+                Total:EditTotal +Total,
                 Class:Class,
                 year:year,
                 regNo:regNo
             }
-            axios.post("/api/v1/fee/updatenewadmissionfeeentry",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+            axios.post("/api/v1/fee/updatenewadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                 console.log(res.data.result)
                 setView("none")
                 setTableView("contents")
