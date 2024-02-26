@@ -305,7 +305,7 @@ const stockUsageVisiblity = () => {
 
           {/* Students */}
           <span onClick={studentsVisiblity} className="user"
-                style={{display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Students<p>{dropArrowstudents}</p></span>
+                style={{display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Admission<p>{dropArrowstudents}</p></span>
           <div style={{display: studentsVisi}}>
             <div className="Items" style={{display: studentAdmin}}
                  onClick={props.onMasterStudentEntry}>&#x3e;&nbsp;&nbsp;Master Admission Entry

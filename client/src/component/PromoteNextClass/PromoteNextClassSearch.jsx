@@ -26,6 +26,10 @@ const PromoteNextClassSearch= (props) => {
         <>
             <div className="dashbrd-40-colm" style={{display:props.view}}>
                 <form onSubmit={handaleSubmit}>
+               
+                        
+                        
+                    
                     <div>
                         <label>
                             Search By Class.
@@ -86,7 +90,11 @@ const PromoteNextClassSearch= (props) => {
                             Search By Section.
                         </label>
                         <input type="text" placeholder='Section' value={section} onChange={(e) => setSection(e.target.value)}/>
-                    </div>
+                    </div> 
+                    <div style={{width:'100%'}}>
+                        
+                        <p style={{fontSize:'15px'}}>(Class and Academic Year is Mandatory)</p>
+                    </div>  
              
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 </form>
