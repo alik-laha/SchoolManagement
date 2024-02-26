@@ -3,10 +3,11 @@ import axios from "axios";
 
 const ViewAndUpdateFacultySearch = (props) => {
     const [search, setSearch] = useState("");
+    const [Type,setType]=useState("")
 
     const handleSearch = (e) => {
         e.preventDefault();
-        axios.post("/api/v1/faculty/getallfaculty", {search},{headers:{"Authorization":localStorage.getItem("token")}})
+        axios.post("/api/v1/faculty/getallfaculty", {search,Type},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 props.facultyData(res.data.data);
             })
@@ -24,6 +25,15 @@ const ViewAndUpdateFacultySearch = (props) => {
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Search by Faculty Name"
                     />
+                </div>
+                <div><label>Employ Type*</label>
+
+                    <select onChange={(e) => setType(e.target.value)} value={Type}>
+                        <option value="">Employ Type</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="Other">Other</option>
+                    </select>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>

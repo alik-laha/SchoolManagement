@@ -104,11 +104,17 @@ exports.UpdateFaculty = (req, res) => {
 
 //get all faculty
 exports.GetAllFaculty = (req, res) => {
-    const {search}=req.body
+    const {search,Type}=req.body
     try{
         let query
-        if(search){
-         query=`SELECT * FROM faculty_admin WHERE name LIKE '%${search}%'`
+        if(search && !Type){
+         query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}'`
+        }
+        else if(Type && ! search){
+            query=`SELECT * FROM faculty_admin WHERE type= '${Type}'`
+        }
+        else if(Type && search){
+            query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}' AND type='${Type}'`
         }
         else{
              query = `SELECT * FROM faculty_admin`
