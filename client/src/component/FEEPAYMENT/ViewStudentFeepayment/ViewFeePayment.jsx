@@ -224,30 +224,99 @@ const ViewFeePayment =(props)=>{
 
     const handlesubmit=(e)=>{
         e.preventDefault()
+        let data={
+            AdmissionFee:Number(EditAdmissonFee) + Number(AdmissonFee),
+            hostelCharge:EdithostelCharge + hostelCharge,
+            TutionFee:EditTutionFee +TutionFee,
+            CautionMoney:EditCautionMoney +CautionMoney,
+            ExaminationFee:EditExaminationFee +ExaminationFee,
+            GamesSportsExicursion:EditGamesSportsExicursion +GamesSportsExicursion,
+            ElectricCharge:EditElectricCharge +ElectricCharge,
+            LibraryFees:EditLibraryFees +LibraryFees,
+            ComputerFees:EditComputerFees +ComputerFees,
+            DevelopmentFees:EditDevelopmentFees +DevelopmentFees,
+            Miscellaneous:EditMiscellaneous +Miscellaneous,
+            LaundryCharge:EditLaundryCharge +LaundryCharge,
+            MedicalCharge:EditMedicalCharge +MedicalCharge,
+            Uniform:EditUniform +Uniform,
+            SessionCharge:EditSessionCharge +SessionCharge,
+            BedFee:EditBedFee +BedFee,
+            Total:EditTotal +Total,
+            Class:Class,
+            year:year,
+            regNo:regNo
+        }
         if(feeType==="NewAdmission"){
-            let data={
-                AdmissionFee:Number(EditAdmissonFee) + Number(AdmissonFee),
-                hostelCharge:EdithostelCharge + hostelCharge,
-                TutionFee:EditTutionFee +TutionFee,
-                CautionMoney:EditCautionMoney +CautionMoney,
-                ExaminationFee:EditExaminationFee +ExaminationFee,
-                GamesSportsExicursion:EditGamesSportsExicursion +GamesSportsExicursion,
-                ElectricCharge:EditElectricCharge +ElectricCharge,
-                LibraryFees:EditLibraryFees +LibraryFees,
-                ComputerFees:EditComputerFees +ComputerFees,
-                DevelopmentFees:EditDevelopmentFees +DevelopmentFees,
-                Miscellaneous:EditMiscellaneous +Miscellaneous,
-                LaundryCharge:EditLaundryCharge +LaundryCharge,
-                MedicalCharge:EditMedicalCharge +MedicalCharge,
-                Uniform:EditUniform +Uniform,
-                SessionCharge:EditSessionCharge +SessionCharge,
-                BedFee:EditBedFee +BedFee,
-                Total:EditTotal +Total,
-                Class:Class,
-                year:year,
-                regNo:regNo
-            }
+
             axios.post("/api/v1/fee/updatenewadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+
+                alert("New Entry Has Been Created for New Admission " +regNo)
+
+                setView("none")
+                setTableView("contents")
+                setEditView("none")
+
+
+                setNewAdmissionFee(0)
+                setNewHostelCharge(0)
+                setNewTutionFee(0)
+                setNewCautionMoney(0)
+                setNewExaminationFee(0)
+                setNewGamesSportsExicursion(0)
+                setNewElectricCharge(0)
+                setNewLibraryFees(0)
+                setNewComputerFees(0)
+                setNewDevelopmentFees(0)
+                setNewMiscellaneous(0)
+                setNewLaundryCharge(0)
+                setNewMedicalCharge(0)
+                setNewUniform(0)
+                setNewSessionCharge(0)
+                setNewBedFee(0)
+                setNewTotal(0)
+
+                setAdmissonFee(0)
+                setHostelCharge(0)
+                setTutionFee(0)
+                setCautionMoney(0)
+                setExaminationFee(0)
+                setGamesSportsExicursion(0)
+                setElectricCharge(0)
+                setLibraryFees(0)
+                setComputerFees(0)
+                setDevelopmentFees(0)
+                setMiscellaneous(0)
+                setLaundryCharge(0)
+                setMedicalCharge(0)
+                setUniform(0)
+                setSessionCharge(0)
+                setBedFee(0)
+                setTotal(0)
+
+                setEditAdmissonFee(0)
+                setEditHostelCharge(0)
+                setEditTutionFee(0)
+                setEditCautionMoney(0)
+                setEditExaminationFee(0)
+                setEditGamesSportsExicursion(0)
+                setEditElectricCharge(0)
+                setEditLibraryFees(0)
+                setEditComputerFees(0)
+                setEditDevelopmentFees(0)
+                setEditMiscellaneous(0)
+                setEditLaundryCharge(0)
+                setEditMedicalCharge(0)
+                setEditUniform(0)
+                setEditSessionCharge(0)
+                setEditBedFee(0)
+                setEditTotal(0)
+
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+        else{
+            axios.post("/api/v1/fee/updatereadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
 
                 alert("New Entry Has Been Created for New Admission " +regNo)
 
