@@ -452,9 +452,10 @@ const HostelEntry = (props) => {
                         <tr>
                             <th>Sl. No.</th>
                             <th>Hostel Entry</th>
-                            <th>Class</th>
+                            
                             <th>Student Name</th>
                             <th>Academic Year</th>
+                            <th>Class</th>
                            
                             <th>Section</th>
                             <th>Roll</th>
@@ -474,11 +475,11 @@ const HostelEntry = (props) => {
                                         <td>{idx+1}</td>
                                         <td><input type='checkbox'
                                                    checked={data.hostelentry === 1 ? true : false}></input></td>
-                                                   <td>{convertToRoman(data.class)}</td>
+                                                   
                                                    
                                         <td>{data.student_Name}</td>
                                         <td>{data.current_academic_year}</td>
-                                        
+                                        <td>{convertToRoman(data.class)}</td>
                                         <td>{data.section}</td>
                                         <td>{data.roll_no}</td>
                                         <td>{data.registration_no}</td>
