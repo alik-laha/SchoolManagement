@@ -163,7 +163,7 @@ exports.GetHostelEntry=(req,res)=>{
     const {Class,academicYear,regNo,roomNo}=req.body
     try {
         let query
-        if(!Class && !academicYear && !regNo && !roomNo){
+        if(!Class && !academicYear && !regNo && !roomNo ){
             query = `SELECT master_hostel.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.admission_year,Student_Admission.student_Name
                      FROM master_hostel
                      LEFT JOIN Student_Admission 
