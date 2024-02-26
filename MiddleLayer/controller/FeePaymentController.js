@@ -772,3 +772,177 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
         console.log(error)
     }
 }
+
+
+//Update New Admission Fee Entry
+
+exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
+    try {
+     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
+        if(AdmissionFee===""){
+            AdmissionFee=0
+        }
+        if(hostelCharge==="" ){
+            hostelCharge=0
+        }
+        if(TutionFee==="" ){
+            TutionFee=0
+        }
+        if(CautionMoney===""){
+            CautionMoney=0
+        }
+        if(ExaminationFee===""){
+            ExaminationFee=0
+        }
+        if(GamesSportsExicursion===""){
+            GamesSportsExicursion=0
+        }
+        if(ElectricCharge===""){
+            ElectricCharge=0
+        }
+        if(LibraryFees===""){
+            LibraryFees=0
+        }
+        if(ComputerFees===""){
+            ComputerFees=0
+        }
+        if(DevelopmentFees===""){
+            DevelopmentFees=0
+        }
+        if(Miscellaneous===""){
+            Miscellaneous=0
+        }
+        if(LaundryCharge===""){
+            LaundryCharge=0
+        }
+        if(MedicalCharge===""){
+            MedicalCharge=0
+        }
+        if(Uniform===""){
+            Uniform=0
+        }
+        if(SessionCharge===""){
+            SessionCharge=0
+        }
+        if(BedFee===""){
+            BedFee=0
+        }
+        let query = `UPDATE new_admission_fee
+                     SET
+                         admission_fee='${AdmissionFee}',
+                         hostel_fee='${hostelCharge}',
+                         tution_fee='${TutionFee}',
+                         caution_fee='${CautionMoney}',
+                         examination_fee='${ExaminationFee}',
+                         sports_fee='${GamesSportsExicursion}',
+                         electric_fee='${ElectricCharge}',
+                         library_fee='${LibraryFees}',
+                         computer_fee='${ComputerFees}',
+                         development_fee='${DevelopmentFees}',
+                         miscellaneous_fee='${Miscellaneous}',
+                         laundry_fee='${LaundryCharge}',
+                         madical_fee='${MedicalCharge}',
+                         uniform_fee='${Uniform}',
+                         session_fee='${SessionCharge}',
+                         bed_fee='${BedFee}',
+                         total_fee='${Total}'
+                            Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
+        Database.query(query, (err, result) => {
+            if (err) {
+                return res.status(400).json({msg: err})
+            }
+            else
+            {
+                return res.status(200).json({msg: "New Admission Fee Entry Updated Successfully"})
+            }
+        })
+    }catch (error) {
+        console.log(error)
+    }
+}
+
+//Update Re Admission Fee Entry
+exports.UpdateReAdmissionFeeEntryForUpdate = (req, res) => {
+    try {
+     let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total} = req.body
+     if (AdmissionFee === "") {
+         AdmissionFee = 0
+     }
+        if (hostelCharge === "") {
+            hostelCharge = 0
+        }
+        if (TutionFee === "") {
+            TutionFee = 0
+        }
+        if (CautionMoney === "") {
+            CautionMoney = 0
+        }
+        if (ExaminationFee === "") {
+            ExaminationFee = 0
+        }
+        if (GamesSportsExicursion === "") {
+            GamesSportsExicursion = 0
+        }
+        if (ElectricCharge === "") {
+            ElectricCharge = 0
+        }
+        if (LibraryFees === "") {
+            LibraryFees = 0
+        }
+        if (ComputerFees === "") {
+            ComputerFees = 0
+        }
+        if (DevelopmentFees === "") {
+            DevelopmentFees = 0
+        }
+        if (Miscellaneous === "") {
+            Miscellaneous = 0
+        }
+        if (LaundryCharge === "") {
+            LaundryCharge = 0
+        }
+        if (MedicalCharge === "") {
+            MedicalCharge = 0
+        }
+        if (Uniform === "") {
+            Uniform = 0
+        }
+        if (SessionCharge === "") {
+            SessionCharge = 0
+        }
+        if (BedFee === "") {
+            BedFee = 0
+        }
+        let query = `UPDATE re_admission_fee
+                     SET
+                         admission_fee='${AdmissionFee}',
+                         hostel_fee='${hostelCharge}',
+                         tution_fee='${TutionFee}',
+                         caution_fee='${CautionMoney}',
+                         examination_fee='${ExaminationFee}',
+                         sports_fee='${GamesSportsExicursion}',
+                         electric_fee='${ElectricCharge}',
+                         library_fee='${LibraryFees}',
+                         computer_fee='${ComputerFees}',
+                         development_fee='${DevelopmentFees}',
+                         miscellaneous_fee='${Miscellaneous}',
+                         laundry_fee='${LaundryCharge}',
+                         madical_fee='${MedicalCharge}',
+                         uniform_fee='${Uniform}',
+                         session_fee='${SessionCharge}',
+                         bed_fee='${BedFee}',
+                         total_fee='${Total}'
+                            Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
+        Database.query(query, (err, result) => {
+            if (err) {
+                return res.status(400).json({msg: err})
+            } else {
+                return res.status(200).json({msg: "Re Admission Fee Entry Updated Successfully"})
+            }
+        })
+
+
+    }catch (error) {
+        console.log(error)
+    }
+}
