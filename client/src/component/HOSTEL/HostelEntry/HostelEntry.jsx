@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
 import logo from '../../Home/logo_ahm.jpg'
+import { MdArrowDownward } from "react-icons/md";
 
 const HostelEntry = (props) => {
     const [allView, setAllView] = useState("contents");
@@ -435,7 +436,7 @@ const HostelEntry = (props) => {
                         <thead style={{display:allView}}>
                         <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                         <tr>
-                            <th>Entry Id</th>
+                            <th>Sl. No.</th>
                             <th>Hostel Entry</th>
                             <th>Class</th>
                             <th>Student Name</th>
@@ -482,16 +483,16 @@ const HostelEntry = (props) => {
                                                            onChange={(e) => setBedNo(e.target.value)}/>
                                         )}</td>
                                         
-                                        <td>{idx!==editIndex ?
+                                        <td style={{display:'flex'}}>{idx!==editIndex ?
                                             ( <button className='dashboard-btn btn-warning'
                                                     onClick={() => handaleClick(data,idx)}>Hostel Entry
                                             </button>):(<>
                                                 <button className="dashboard-btn btn-warning" onClick={handaleUpdate}>Update</button>
                                                     {/* <button className="dashboard-btn btn-warning" onClick={()=>handleDelete(regNo,roomNo)}>Delete</button> */}
                                                     <button  className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button>
-                                                    { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                                                    { pdfstate && <button className='dashboard-btn btn-warning' style={{background:'lightsalmon',color:'white',float:'right'}}>
                                     <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName={"Hostel_Admission_Report_"+regNo+".pdf"} >
-                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                        {({ blob, url, loading, error }) => (loading ? <MdArrowDownward /> : <MdArrowDownward />)}
                                     </PDFDownloadLink></button>}
                                                 </>
                                             )}
