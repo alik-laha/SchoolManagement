@@ -202,6 +202,24 @@ const ViewFeePayment =(props)=>{
         setBedFee(0)
         setTotal(0)
 
+
+        setEditAdmissonFee(0)
+        setEditHostelCharge(0)
+        setEditTutionFee(0)
+        setEditCautionMoney(0)
+        setEditExaminationFee(0)
+        setEditGamesSportsExicursion(0)
+        setEditElectricCharge(0)
+        setEditLibraryFees(0)
+        setEditComputerFees(0)
+        setEditDevelopmentFees(0)
+        setEditMiscellaneous(0)
+        setEditLaundryCharge(0)
+        setEditMedicalCharge(0)
+        setEditUniform(0)
+        setEditSessionCharge(0)
+        setEditBedFee(0)
+        setEditTotal(0)
     }
 
     const handlesubmit=(e)=>{
@@ -230,7 +248,9 @@ const ViewFeePayment =(props)=>{
                 regNo:regNo
             }
             axios.post("/api/v1/fee/updatenewadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-                console.log(res.data.result)
+
+                alert("New Entry Has Been Created for New Admission " +regNo)
+
                 setView("none")
                 setTableView("contents")
                 setEditView("none")
@@ -271,6 +291,25 @@ const ViewFeePayment =(props)=>{
                 setSessionCharge(0)
                 setBedFee(0)
                 setTotal(0)
+
+                setEditAdmissonFee(0)
+                setEditHostelCharge(0)
+                setEditTutionFee(0)
+                setEditCautionMoney(0)
+                setEditExaminationFee(0)
+                setEditGamesSportsExicursion(0)
+                setEditElectricCharge(0)
+                setEditLibraryFees(0)
+                setEditComputerFees(0)
+                setEditDevelopmentFees(0)
+                setEditMiscellaneous(0)
+                setEditLaundryCharge(0)
+                setEditMedicalCharge(0)
+                setEditUniform(0)
+                setEditSessionCharge(0)
+                setEditBedFee(0)
+                setEditTotal(0)
+
             }).catch((err)=>{
                 console.log(err)
             })
