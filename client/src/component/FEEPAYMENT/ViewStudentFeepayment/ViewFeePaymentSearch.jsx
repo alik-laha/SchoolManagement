@@ -21,7 +21,7 @@ const ViewFeePaymentSearch = (props) => {
             axios.post('/api/v1/fee/getreadmissionstudent',{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res)=>{
                     console.log(res.data.result)
-                    props.setFeePaymentUpdateData(res.data.result)
+                    props.setFeePaymentUpdateData(res.data.result,feeType)
                 }).catch((err)=>{
                     console.log(err)
             })

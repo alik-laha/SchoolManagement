@@ -7,6 +7,8 @@ const ViewFeePayment =(props)=>{
     const [tableView,setTableView]=useState("contents")
     const [EditView,setEditView]=useState("none")
     const [feeType,setFeeType]=useState("")
+    const [Class,setClass]=useState(0)
+    const [year,setYear]=useState(0)
 
     const [AdmissonFee,setAdmissonFee]=useState(0)
     const [hostelCharge,setHostelCharge]=useState(0)
@@ -64,6 +66,11 @@ const ViewFeePayment =(props)=>{
     const [EditDate,setEditDate]=useState("")
 
 
+    useEffect(()=>{
+        setData(props.data)
+        setFeeType(props.feeType)
+    },[props.data,props.feeType])
+
     const handleEdit=(data)=>{
         console.log(data)
         setTableView("none")
@@ -87,23 +94,15 @@ const ViewFeePayment =(props)=>{
         setTotal(data.total_fee)
 
         let data1
-        if(feeType==="NewAdmission") {
+            console.log(feeType)
             data1 = {
                 feeType: feeType,
                 Class: data.class,
                 year: data.year
             }
-        }
-        else{
-
-        }
             axios.post('/api/v1/fee/getfeestructure', data1, {headers: {"Authorization": localStorage.getItem("token")}})
                 .then((res) => {
-                    console.log(res.data.result)
-                    console.log(res.data.result[0].admission_fee)
-                    console.log(res.data.result[0].examination_fee)
                     setNewAdmissionFee(res.data.result[0].admission_fee)
-                    console.log(res.data.result[0].hostel_fee)
                     setNewHostelCharge(res.data.result[0].hostel_fee)
                     setNewTutionFee(res.data.result[0].tution_fee)
                     setNewCautionMoney(res.data.result[0].caution_fee)
@@ -133,17 +132,67 @@ const ViewFeePayment =(props)=>{
         }
     }, [props.view,props.data]);
 
-    useEffect(()=>{
-        setData(props.data)
-        setFeeType(props.feeType)
-    },[props.data,props.feeType])
+
 
 
     const handleCancel=()=>{
         setTableView("contents")
         setEditView("none")
+        setNewAdmissionFee(0)
+        setNewHostelCharge(0)
+        setNewTutionFee(0)
+        setNewCautionMoney(0)
+        setNewExaminationFee(0)
+        setNewGamesSportsExicursion(0)
+        setNewElectricCharge(0)
+        setNewLibraryFees(0)
+        setNewComputerFees(0)
+        setNewDevelopmentFees(0)
+        setNewMiscellaneous(0)
+        setNewLaundryCharge(0)
+        setNewMedicalCharge(0)
+        setNewUniform(0)
+        setNewSessionCharge(0)
+        setNewBedFee(0)
+        setNewTotal(0)
     }
 
+    const handlesubmit=(e)=>{
+        e.preventDefault()
+        if(feeType==="NewAdmission"){
+            let data={
+                admission_fee:EditAdmissonFee,
+                hostel_fee:EdithostelCharge,
+                tution_fee:EditTutionFee,
+                caution_fee:EditCautionMoney,
+                examination_fee:EditExaminationFee,
+                sports_fee:EditGamesSportsExicursion,
+                electric_fee:EditElectricCharge,
+                library_fee:EditLibraryFees,
+                computer_fee:EditComputerFees,
+                development_fee:EditDevelopmentFees,
+                miscellaneous_fee:EditMiscellaneous,
+                laundry_fee:EditLaundryCharge,
+                madical_fee:EditMedicalCharge,
+                uniform_fee:EditUniform,
+                session_fee:EditSessionCharge,
+                bed_fee:EditBedFee,
+                total_fee:EditTotal,
+                date:EditDate,
+                class:data.class,
+                year:data.year,
+                regNo:data.regNo
+            }
+            axios.post("/api/v1/fee/updatefee",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+                console.log(res.data.result)
+                props.setFeePaymentUpdateData(res.data.result,feeType)
+                setTableView("contents")
+                setEditView("none")
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
+    }
 
     return(
         <div style={{display:view}}>
@@ -203,7 +252,7 @@ const ViewFeePayment =(props)=>{
 
             <div style={{display: EditView}} className="dashbrd-40-colm special-25-div">
                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
-                <form>
+                <form onSubmit={handlesubmit}>
                     <div>
                         <label>Admission Fee: </label>
                         <label>{(NewAdmissionFee-AdmissonFee)}: </label>
