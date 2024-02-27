@@ -751,15 +751,15 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
 
 
 //Marks Entry For student
-exports.MarksEntryForStudent = (req, res) => {
+exports.MarksEntryForStudentS = (req, res) => {
+    console.log(req.body)
     const {subject,examName,marks,Class,Year,regNo} = req.body
     try {
         if(!subject || !examName || !marks || !Class || !Year || !regNo){
             return res.status(400).json({message:"All Fields are required"})
         }
         else{
-                let query = `INSERT INTO Marks (regNo, subject, exam_name, marks,class,Year)
-                             VALUES ('${regNo}', '${subject}', '${examName}', '${marks}','${Class}','${Year}')`
+                let query = `INSERT INTO Marks (regNo, subject, exam_name, marks,class,Year) VALUES ('${regNo}', '${subject}', '${examName}', '${marks}','${Class}','${Year}')`
                 Database.query(query, (err, result) => {
                     if (err) {
                         console.log(err)

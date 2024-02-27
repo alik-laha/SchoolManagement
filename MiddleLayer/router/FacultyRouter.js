@@ -10,7 +10,7 @@ const {createFaculty, DeleteFaculty,UpdateFaculty,GetAllFaculty,createSubject, G
     GetFaculty,
     GetMarksWithoutSubject,
     GetMarksForEdit,
-    DeleteMarks,MarksEntry,MarksEntryForStudent
+    DeleteMarks,MarksEntry,MarksEntryForStudentS
 } = require('../controller/FacultyController')
 
 //create faculty
@@ -85,7 +85,7 @@ router.post('/deletemarks',verifyToken,DeleteMarks)
 router.post('/marksentry',verifyToken,MarksEntry)
 
 //Marks Entry For Exam
-router.post('/marksentryforexam',verifyToken,MarksEntryForStudent)
+router.post('/marksentryforStudentexam',verifyToken,MarksEntryForStudentS)
 
 
 module.exports = router

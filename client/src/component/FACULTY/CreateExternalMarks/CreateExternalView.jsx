@@ -39,13 +39,13 @@ const CreateMarks=(props)=>{
             return
         }
         data.map((data,index)=>{
-            axios.post(`/api/v1/faculty/createmarks`,{regNo:data.registration_no,Class:data.class,subject,examName,marks:marks[index],Year:data.current_academic_year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+            axios.post(`/api/v1/faculty/marksentryforStudentexam`,{regNo:data.registration_no,Class:data.class,subject,examName,marks:marks[index],Year:data.current_academic_year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                 console.log("Done")
             }).catch((err)=>{
                 console.log(err)
             })
         })
-       await alert("Marks Entered Successfully")
+        alert("Marks Entered Successfully")
     }
 
     return(
