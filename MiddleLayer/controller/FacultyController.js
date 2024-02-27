@@ -731,7 +731,7 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
      WHERE b.subject = '${subject}'
      AND b.exam_name = '${examName}'
      AND b.Year = '${year}'
-     AND b.class = 2) and a.section = '${section}' and a.current_academic_year='${year}' order by a.roll_no`
+     AND b.class = '${Class}') and a.section = '${section}' and a.current_academic_year='${year}' order by a.roll_no`
     Database.query(query,(err,result)=>{
         if(err){
             console.log(err)
