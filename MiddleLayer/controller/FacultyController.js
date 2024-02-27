@@ -723,7 +723,7 @@ exports.DeleteMarks = (req, res) => {
 exports.MarksEntry = (req, res) => {
     const {examName,subject,Class,year,section}=req.body
     try{
-        query=`SELECT a.student_Name, a.roll_no, a.section, a.registration_no ,a.class
+        query=`SELECT a.student_Name, a.roll_no, a.section, a.registration_no ,a.class,a.current_academic_year
 FROM Student_Admission a 
 WHERE a.class='${Class}' and a.registration_no NOT IN 
     (SELECT b.regNo 
@@ -731,7 +731,7 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
      WHERE b.subject = '${subject}'
      AND b.exam_name = '${examName}'
      AND b.Year = '${year}'
-     AND b.class = 2) and a.section = '${section}'`
+     AND b.class = 2) and a.section = '${section}' and a.active=1 and a.current_academic_year='${year}' order by a.roll_no`
     Database.query(query,(err,result)=>{
         if(err){
             console.log(err)

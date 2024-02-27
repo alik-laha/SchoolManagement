@@ -35,12 +35,10 @@ const CreateMarks=(props)=>{
     const handleSubmit=()=>{
         const marksData=data.map((data,index)=>({
                 registration_no:data.registration_no,
-                student_Name:data.student_Name,
                 class:data.class,
-                section:data.section,
                 subject:subject,
+                year:data.current_academic_year,
                 examName:examName,
-                total:target,
                 marks:marks[index]
             }))
             console.log(marksData)
@@ -51,14 +49,14 @@ const CreateMarks=(props)=>{
             <table className="table-60">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                    <th>Id</th>
                     <th>Registration No</th>
                     <th>Student Name</th>
                     <th>Class</th>
                     <th>Section</th>
                     <th>Subject</th>
                     <th>Exam Name</th>
-                     <th>Total Marks</th>
+                    <th>Total Marks</th>
                     <th>Marks</th>
                     </tr>
                 </thead>
