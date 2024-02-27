@@ -33,24 +33,19 @@ const CreateMarks=(props)=>{
     }
 
 
-    const handleSubmit=()=>{
+    const handleSubmit=async ()=>{
         if(!subject || !examName){
             alert("Please select subject and exam")
             return
         }
-        const marksData=data.map((data,index)=>({
-                registration_no:data.registration_no,
-                class:data.class,
-                subject:subject,
-                year:data.current_academic_year,
-                examName:examName,
-                marks:marks[index]
-            }))
-           axios.post(`/api/v1/faculty/marksentryforexam`,marksData,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-             console.log(res)
-           }).catch((err)=>{
+        data.map((data,index)=>{
+            axios.post(`/api/v1/faculty/createmarks`,{regNo:data.registration_no,Class:data.class,subject,examName,marks:marks[index],Year:data.current_academic_year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+                console.log("Done")
+            }).catch((err)=>{
                 console.log(err)
-           })
+            })
+        })
+       await alert("Marks Entered Successfully")
     }
 
     return(
