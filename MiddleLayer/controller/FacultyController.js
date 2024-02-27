@@ -723,6 +723,9 @@ exports.DeleteMarks = (req, res) => {
 exports.MarksEntry = (req, res) => {
     const {examName,subject,Class,year,section}=req.body
     try{
+        if(!examName || !subject || !Class || !year || !section){
+            return res.status(400).json({message:"All Fields are required"})
+        }
         query=`SELECT a.student_Name, a.roll_no, a.section, a.registration_no ,a.class,a.current_academic_year
 FROM Student_Admission a 
 WHERE a.class='${Class}' and a.registration_no NOT IN 

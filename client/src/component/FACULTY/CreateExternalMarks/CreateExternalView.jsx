@@ -34,6 +34,10 @@ const CreateMarks=(props)=>{
 
 
     const handleSubmit=()=>{
+        if(!subject || !examName){
+            alert("Please select subject and exam")
+            return
+        }
         const marksData=data.map((data,index)=>({
                 registration_no:data.registration_no,
                 class:data.class,
