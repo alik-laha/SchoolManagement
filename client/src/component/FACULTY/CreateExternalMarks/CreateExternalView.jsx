@@ -6,7 +6,7 @@ const CreateMarks=(props)=>{
     const [target,setTarget]=useState(0)
     const [subject,setSubject]=useState("")
     const [examName,setExamName]=useState("")
-    const [marks,setMarks]=useState(0)
+    const [marks,setMarks]=useState([])
 
     useEffect(() => {
         console.log(props)
@@ -25,12 +25,25 @@ const CreateMarks=(props)=>{
             setTarget(props.total)
     }, [props.data,props.subject,props.examName,props.target]);
 
-    const handaleChange=(e)=>{
-        setMarks(e.target.value)
-        if(e.target.value>target){
-            alert("Marks can not be greater than Total Marks")
-            setMarks(0)
-        }
+    const handaleChange=(e,index)=>{
+        const newMarks=[...marks]
+      newMarks[index]=e.target.value<=target ? parseInt(e.target.value):alert("Marks should be less than or equal to total marks")
+        setMarks(newMarks)
+    }
+
+
+    const handleSubmit=()=>{
+        const marksData=data.map((data,index)=>({
+                registration_no:data.registration_no,
+                student_Name:data.student_Name,
+                class:data.class,
+                section:data.section,
+                subject:subject,
+                examName:examName,
+                total:target,
+                marks:marks[index]
+            }))
+            console.log(marksData)
     }
 
     return(
@@ -61,12 +74,13 @@ const CreateMarks=(props)=>{
                             <td>{examName}</td>
                             <td>{target}</td>
                             <td>
-                                <input type="number" placeholder="Marks" value={marks} onChange={handaleChange}/>
+                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)}/>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <button className="dashboard-btn dashboard-btn-scss" onClick={handleSubmit}>Entry Marks</button>
         </div>
     )
 }
