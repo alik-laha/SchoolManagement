@@ -28,25 +28,48 @@ const CreateMarks=(props)=>{
 
     const handaleChange=(e,index)=>{
         const newMarks=[...marks]
-      newMarks[index]=e.target.value<=target ? parseInt(e.target.value):alert("Marks should be less than or equal to total marks")
-        setMarks(newMarks)
-    }
-
-
-    const handleSubmit=async ()=>{
-        if(!subject || !examName){
-            alert("Please select subject and exam")
+        if(e.target.value>target){
+            alert("Marks should be less than or equal to total marks")
             return
         }
-        data.map((data,index)=>{
-            axios.post(`/api/v1/faculty/marksentryforStudentexam`,{regNo:data.registration_no,Class:data.class,subject,examName,marks:marks[index],Year:data.current_academic_year},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-                console.log("Done")
-            }).catch((err)=>{
-                console.log(err)
-            })
-        })
-        alert("Marks Entered Successfully")
+        else{
+            newMarks[index]= parseInt(e.target.value)
+            setMarks(newMarks)
+        }
     }
+
+
+    const handleSubmit = async () => {
+        let a = 0;
+        if (!subject || !examName) {
+            alert("Please select subject and exam");
+            return;
+        }
+
+        try {
+            await Promise.all(data.map(async (data, index) => {
+                await axios.post(`/api/v1/faculty/marksentryforStudentexam`, {
+                    regNo: data.registration_no,
+                    Class: data.class,
+                    subject,
+                    examName,
+                    marks: marks[index],
+                    Year: data.current_academic_year
+                }, {
+                    headers: { "Authorization": localStorage.getItem("token") }
+                });
+                console.log("Done");
+                a = 1;
+            }));
+
+            alert("Marks Entered Successfully");
+            setView("none");
+            setMarks([]);
+            setData([]);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return(
         <div style={{display:view}}>

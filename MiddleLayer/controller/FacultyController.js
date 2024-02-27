@@ -752,7 +752,6 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
 
 //Marks Entry For student
 exports.MarksEntryForStudentS = (req, res) => {
-    console.log(req.body)
     const {subject,examName,marks,Class,Year,regNo} = req.body
     try {
         if(!subject || !examName || !marks || !Class || !Year || !regNo){
