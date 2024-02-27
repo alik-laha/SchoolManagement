@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 const CreateMarks=(props)=>{
     const [view,setView]=useState("none")
@@ -41,7 +42,11 @@ const CreateMarks=(props)=>{
                 examName:examName,
                 marks:marks[index]
             }))
-            console.log(marksData)
+           axios.post(`/api/v1/faculty/marksentryforexam`,marksData,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+             console.log(res)
+           }).catch((err)=>{
+                console.log(err)
+           })
     }
 
     return(

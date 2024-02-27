@@ -731,7 +731,7 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
      WHERE b.subject = '${subject}'
      AND b.exam_name = '${examName}'
      AND b.Year = '${year}'
-     AND b.class = 2) and a.section = '${section}' and a.active=1 and a.current_academic_year='${year}' order by a.roll_no`
+     AND b.class = 2) and a.section = '${section}' and a.current_academic_year='${year}' order by a.roll_no`
     Database.query(query,(err,result)=>{
         if(err){
             console.log(err)
@@ -742,6 +742,35 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
         }
     })
     }catch (err){
+        console.log(err)
+    }
+}
+
+
+//Marks Entry For student
+exports.MarksEntryForStudent = (req, res) => {
+    const marksData = req.body
+    try {
+        if(!marksData){
+            return res.status(400).json({message:"All Fields are required"})
+        }
+        else{
+            marksData.map((data)=>{
+                let query = `INSERT INTO Marks (regNo, subject, exam_name, marks,class,Year)
+                             VALUES ('${data.registration_no}', '${data.subject}', '${data.examName}', '${data.marks}','${data.class}','${data.year}')`
+                Database.query(query, (err, result) => {
+                    if (err) {
+                        console.log(err)
+                        return res.status(400).json({message: "Error Occured", err: err})
+                    }
+                    else {
+                        return res.status(200).json({message: "Marks Created"})
+                    }
+                })
+            })
+        }
+
+    } catch (err) {
         console.log(err)
     }
 }
