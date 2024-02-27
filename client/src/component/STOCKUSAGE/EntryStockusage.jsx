@@ -19,10 +19,12 @@ const EntryStockUsage = (props) => {
     }
     const handleSubmit=(e)=>{
         e.preventDefault();
-        axios.post("/api/v1/stock/entrystockusage",{itemName, quantity, usageDate},{headers:{"Authorization":localStorage.getItem("token")}})
+        axios.post("/api/v1/stock/entrystockusage",{itemName, quantity, usageDate,Type:"Minus"},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 alert("Stock Usage has been Insterted Successfully");
-                console.log(res);
+                setItemName("");
+                setQuantity("");
+                setUsageDate(new Date().toISOString().slice(0, 10) );
             })
             .catch((err) => {
                 console.log(err);
