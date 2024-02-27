@@ -60,13 +60,104 @@ const CreateMarks=(props)=>{
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Current Class</label>
-                    <input type="number" placeholder="Class" value={Class}
-                           onChange={(e) => setClass(e.target.value)}/>
+                    <label>Class</label>
+                    <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
+                        <option value="">Class</option>
+                        <option value="1">
+                            I
+                        </option>
+                        <option value="2">
+                            II
+                        </option>
+                        <option value="3">
+                            III
+                        </option>
+                        <option value="4">
+                            IV
+                        </option>
+                        <option value="5">
+                            V
+                        </option>
+                        <option value="6">
+                            VI
+                        </option>
+                        v
+                        <option value="7">
+                            VII
+                        </option>
+
+                        <option value="8">
+                            VIII
+                        </option>
+                        <option value="9">
+                            IX
+                        </option>
+                        <option value="10">
+                            X
+                        </option>
+                        <option value="11">
+                            XI
+                        </option>
+                        <option value="12">
+                            XII
+                        </option>
+
+                    </select>
                 </div>
                 <div>
                     <label>Section</label>
-                    <input type="text" placeholder="Section" value={section} onChange={(e) => setSection(e.target.value)} required={true}/>
+                    <select onChange={(e) => setSection(e.target.value)}
+                            value={section}>
+                        <option value="">Section</option>
+                        <option value="A">
+                            A
+                        </option>
+                        <option value="B">
+                            B
+                        </option>
+                        <option value="C">
+                            C
+                        </option>
+                        <option value="D">
+                            D
+                        </option>
+                        <option value="E">
+                            E
+                        </option>
+                        <option value="F">
+                            F
+                        </option>
+                        v
+                        <option value="Art-A">
+                            Art-A
+                        </option>
+
+                        <option value="Art-B">
+                            Art-B
+                        </option>
+                        <option value="Art-C">
+                            Art-C
+                        </option>
+                        <option value="Com-A">
+                            Com-A
+                        </option>
+                        <option value="Com-B">
+                            Com-B
+                        </option>
+                        <option value="Com-C">
+                            Com-C
+                        </option>
+                        <option value="Sci-A">
+                            Sci-A
+                        </option>
+                        <option value="Sci-B">
+                            Sci-B
+                        </option>
+                        <option value="Sci-C">
+                            Sci-C
+                        </option>
+
+                    </select>
                 </div>
                 <div>
                     <label>Current Academic Year</label>
