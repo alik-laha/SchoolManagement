@@ -562,14 +562,14 @@ exports.DeleteItemName=(req,res)=>{
 //Create Stock Usage
  exports.CreateStockUsage = (req, res) => {
     try{
-        const {itemName,quantity,usageDate}=req.body
-        if(!itemName || !quantity || !usageDate){
+        const {itemName,quantity,usageDate,Type}=req.body
+        if(!itemName || !quantity || !usageDate || !Type){
             return res.status(400).json({
                 status:"all data needed"
             })
         }
         else{
-            const query=``;
+            const query=`INSERT INTO Stock_Usage (item_Name,quantity,entry_date,type) VALUES ("${itemName}","${quantity}","${usageDate}","${Type}")`;
             Database.query(query,function(error,data){
                 if(error){
                     return res.status(400).json({

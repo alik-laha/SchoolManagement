@@ -40,16 +40,20 @@ const StockItemEntry= (props) => {
         }
         axios.post("/api/v1/stock/stockentry", data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-                    alert("Stock has been Insterted Successfully");
-                    setItemName("");
-                    setBillNo("");
-                    setBillDate(new Date().toISOString().slice(0, 10) );
-                    setVendorName("");
-                    setItemType("");
-                    setUnitCost(0);
-                    setQuantity(0);
-                    setProjectedCost(0);
-
+                axios.post("/api/v1/stock/entrystockusage", {itemName,quantity,usageDate:primaryEntryDate,Type:"Plus"},{headers:{"Authorization":localStorage.getItem("token")}})
+                    .then((res) => {
+                        alert("Stock has been Insterted Successfully");
+                        setItemName("");
+                        setBillNo("");
+                        setBillDate(new Date().toISOString().slice(0, 10) );
+                        setVendorName("");
+                        setItemType("");
+                        setUnitCost(0);
+                        setQuantity(0);
+                        setProjectedCost(0);
+                    }).catch((err) => {
+                        console.log(err);
+                    })
             })
             .catch((err) => {
                  if(err.response.data.message.errno === 1062){
