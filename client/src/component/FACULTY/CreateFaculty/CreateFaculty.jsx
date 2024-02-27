@@ -40,24 +40,24 @@ const handleSubmit = (e) => {
 
     return(
         <div style={{display: props.view}} className="dashbrd-40-colm special-25-div">
-            <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
             <p style={{fontSize:'17px'}}>Basic Details</p>
                 <dl className="dl-horizontal">
 
-                    <dt><label>Employ Name*</label></dt>
+                    <dt><label>Employee Name*</label></dt>
                     <dd><input
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="Employ Name"
+                        placeholder="Employee Name"
                         required={true}
                     />
                     </dd>
 
-                    <dt><label>Employ Type*</label></dt>
+                    <dt><label>Employee Type*</label></dt>
                     <dd>
                         <select onChange={(e)=>setType(e.target.value)} value={Type}>
-                            <option value="">Employ Type</option>
+                            <option value="">Employee Type</option>
                             <option value="Staff">Staff</option>
                             <option value="Faculty">Faculty</option>
                             <option value="Other">Other</option>
@@ -96,8 +96,9 @@ const handleSubmit = (e) => {
                     </dd>
                 </dl>
                     {/*<hr className="division"/>*/}
-            <dl>
                     <p style={{fontSize:'17px'}}>Academic Details</p>
+            <dl className="dl-horizontal">
+                    
 
                     <dt><label>Qualification*</label></dt>
                     <dd><input
@@ -119,9 +120,10 @@ const handleSubmit = (e) => {
                     />
                     </dd>
             </dl>
+            <p style={{fontSize:'17px'}}>Other Details</p>
                     {/*<hr className="division"/>*/}
-                <dl>
-                    <p style={{fontSize:'17px'}}>Other Details</p>
+                <dl className="dl-horizontal">
+                   
 
                     <dt><label>Contact No.*</label></dt>
                     <dd><input
