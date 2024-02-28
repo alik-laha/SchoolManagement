@@ -589,3 +589,42 @@ exports.DeleteItemName=(req,res)=>{
         console.log(err)
     }
  }
+
+ //get sum of posative stock and negetive stock usage
+exports.GetPosativeAndNegetiveStockSum=(req,res)=>{
+    const {itemName}=req.body
+    if(!itemName){
+        return res.status(400).json({
+            status:"item name needed"
+        })
+    }
+    else{
+        query=`SELECT SUM(quantity) as Plus FROM stock WHERE item_Name="${itemName}" AND type="Plus"`
+        Database.query(query,function(error,data){
+            if(error){
+                return res.status(400).json({
+                    status:"error at getting stock",
+                    message:error
+                })
+            }
+            if(data){
+                query=`SELECT SUM(quantity) as Minus FROM stock_usage WHERE item_Name="${itemName}" AND type="Minus"`
+                Database.query(query,function(error,data1){
+                    if(error){
+                        return res.status(400).json({
+                            status:"error at getting stock",
+                            message:error
+                        })
+                    }
+                    if(data1){
+                        return res.status(200).json({
+                            status:"got all stock",
+                            data:data,
+                            data1:data1
+                        })
+                    }
+                })
+            }
+        })
+    }
+}
