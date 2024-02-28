@@ -7,6 +7,7 @@ const EntryStockUsage = (props) => {
     const [quantity, setQuantity] = useState("");
     const [ItemNames, setItemNames] = useState([]);
     const [usageDate, setUsageDate] = useState(new Date().toISOString().slice(0, 10) );
+    const [leftStock, setLeftStock] = useState(0);
 
     const handleItemtype = (e) => {
         axios.post("/api/v1/stock/getitemnamebytype", {itemType:e.target.value},{headers:{"Authorization":localStorage.getItem("token")}})
@@ -31,6 +32,26 @@ const EntryStockUsage = (props) => {
             })
 
     }
+    const changeItemName = (e) => {
+        setItemName(e.target.value);
+        axios.post("/api/v1/stock/getplusminusstock",{itemName:e.target.value},{headers:{"Authorization":localStorage.getItem("token")}})
+            .then((res) => {
+                setLeftStock(res.data.data[0].Plus - res.data.data1[0].Minus);
+            }).catch((err) => {
+            console.log(err);
+        })
+    }
+    const HandleUsage=(e)=>{
+        if(e.target.value > leftStock){
+            alert("You can not use more than "+leftStock+" "+itemName);
+            setQuantity(leftStock);
+            return;
+        }
+        else {
+            setQuantity(e.target.value)
+        }
+
+    }
 
     return(
         <div style={{display:props.view}}>
@@ -48,7 +69,7 @@ const EntryStockUsage = (props) => {
                 </div>
                 <div>
                     <label>Item name </label>
-                    <select onChange={(e) => setItemName(e.target.value)} required={true} value={itemName}>
+                    <select onChange={changeItemName} required={true} value={itemName}>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
                             <option value={data.item_name} key={idx}>
@@ -57,12 +78,15 @@ const EntryStockUsage = (props) => {
                         ))}
                     </select>
                 </div>
+                {
+                    itemName === "" ? <p></p> : <p>left Stock of {itemName} is {leftStock}</p>
+                }
                 <div>
                     <label>Usage Quantity ( Pc / Kg / Ltr / Mtr ) </label>
                     <input
                         type="number"
                         placeholder="Quantity"
-                        onChange={(e) => setQuantity(e.target.value)}
+                        onChange={HandleUsage}
                         value={quantity}
                     />
                 </div>

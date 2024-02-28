@@ -21,24 +21,12 @@ const [toDate, setToDate] =  useState(new Date().toISOString().slice(0, 10) );
                 })
         }
     }, [props.view]);
-
-    const changeItemName = (e) => {
-        setItemName(e.target.value);
-        axios.post("/api/v1/stock/getplusminusstock",{itemName:e.target.value,fromDate,toDate},{headers:{"Authorization":localStorage.getItem("token")}})
-            .then((res) => {
-                console.log(res.data.data);
-            }).catch((err) => {
-                console.log(err);
-            })
-    }
-
-
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form>
                 <div>
                     <label>Item Name</label>
-                    <select onChange={changeItemName} required={true} value={itemName}>
+                    <select onChange={(e) => setItemName(e.target.value)} required={true} value={itemName}>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
                             <option value={data.item_name} key={idx}>

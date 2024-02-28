@@ -599,7 +599,7 @@ exports.GetPosativeAndNegetiveStockSum=(req,res)=>{
         })
     }
     else{
-        query=`SELECT SUM(quantity) as Plus FROM stock WHERE item_Name="${itemName}" AND type="Plus"`
+        query=`SELECT SUM(quantity) as Plus FROM Stock_Usage WHERE item_Name="${itemName}" AND type="Plus"`
         Database.query(query,function(error,data){
             if(error){
                 return res.status(400).json({
@@ -608,7 +608,7 @@ exports.GetPosativeAndNegetiveStockSum=(req,res)=>{
                 })
             }
             if(data){
-                query=`SELECT SUM(quantity) as Minus FROM stock_usage WHERE item_Name="${itemName}" AND type="Minus"`
+                query=`SELECT SUM(quantity) as Minus FROM Stock_Usage WHERE item_Name="${itemName}" AND type="Minus"`
                 Database.query(query,function(error,data1){
                     if(error){
                         return res.status(400).json({
