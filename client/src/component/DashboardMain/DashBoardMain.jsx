@@ -61,6 +61,7 @@ import StudentFeePaymentEntrySearch from "../FEEPAYMENT/StudentFeePaymentEntry/S
 import ViewFeePaymentSearch from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePaymentSearch.jsx";
 import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/StudentFeePaymentEntry.jsx";
 import ViewFeePayment from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePayment.jsx";
+import StockUsageView from "../STOCKUSAGE/StockUsageView/StockUsageView.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -131,6 +132,7 @@ const DashBoardMain = (props) => {
     const [FeePaymentData,setFeePaymentData]=useState([])
     const [FeePaymentUpdateData,setFeePaymentUpdateData]=useState([])
     const [FeeType,setFeeType]=useState("")
+    const [StockUsageData,setStockUsageData]=useState([])
 
   {/* User Start */}
 
@@ -368,6 +370,9 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         setFeePaymentUpdateData(data)
         setFeeType(d1)
     }
+  const handleStockUsage=(data)=>{
+    setStockUsageData(data)
+  }
   return (
     <>
       <div style={{ width: props.right}} className="dashboard-main-right">
@@ -407,7 +412,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         {/* Stock End*/}
         {/*stock usage*/}
             <EntryStockUsage view={props.StockUsageEntry} Item={itemData}/>
-            <StockUsageSearch view={props.StockUsageView} />
+            <StockUsageSearch view={props.StockUsageView} StockUsage={handleStockUsage} />
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
@@ -485,6 +490,8 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               <ModifyStockEntryView  Vendor={VendorDatas} Item={itemData} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
               {/* View Pending Balance */}
               <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
+
+            <StockUsageView view={props.StockUsageView} data={StockUsageData} />
           {/* Vendor End*/}    
 
           {/* Hostel Start*/}

@@ -628,3 +628,36 @@ exports.GetPosativeAndNegetiveStockSum=(req,res)=>{
         })
     }
 }
+
+
+//get Stock Usage
+exports.GetStockUsage=(req,res)=>{
+    const{itemName,fromDate,toDate}=req.body
+    let query;
+    if(!itemName && !fromDate && !toDate){
+        query=`SELECT * FROM Stock_Usage ORDER BY entry_date DESC`
+    }
+    else if(itemName && !fromDate && !toDate){
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" ORDER BY entry_date DESC`
+    }
+    else if(fromDate && toDate && !itemName){
+        query=`SELECT * FROM Stock_Usage WHERE entry_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY entry_date DESC`
+    }
+    else if(itemName && fromDate && toDate){
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND entry_date BETWEEN "${fromDate}" AND "${toDate}" ORDER BY entry_date DESC`
+    }
+    Database.query(query,function(error,data){
+        if(error){
+            return res.status(400).json({
+                status:"error at getting stock",
+                message:error
+            })
+        }
+        if(data){
+            return res.status(200).json({
+                status:"got all stock",
+                data:data
+            })
+        }
+    })
+}
