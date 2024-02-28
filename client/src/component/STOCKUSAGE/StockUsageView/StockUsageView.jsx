@@ -19,7 +19,30 @@ const StockUsageView = (props) => {
 
     return(
         <div style={{display:view}}>
-            StockUsageView
+            <table className="table-60">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Stock Name</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        <th>Usage Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {stockUsage.map((stock, index) => {
+                        return(
+                            <tr key={index}>
+                                <td>{index+1}</td>
+                                <td>{stock.item_name}</td>
+                                <td>{stock.quantity}</td>
+                                <td>{stock.type}</td>
+                                <td>{stock.entry_date.slice(0,10)}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
         </div>
     )
 }

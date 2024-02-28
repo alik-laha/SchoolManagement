@@ -569,7 +569,7 @@ exports.DeleteItemName=(req,res)=>{
             })
         }
         else{
-            const query=`INSERT INTO Stock_Usage (item_Name,quantity,entry_date,type) VALUES ("${itemName}","${quantity}","${usageDate}","${Type}")`;
+            const query=`INSERT INTO Stock_Usage (item_name,quantity,entry_date,type) VALUES ("${itemName}","${quantity}","${usageDate}","${Type}")`;
             Database.query(query,function(error,data){
                 if(error){
                     return res.status(400).json({
