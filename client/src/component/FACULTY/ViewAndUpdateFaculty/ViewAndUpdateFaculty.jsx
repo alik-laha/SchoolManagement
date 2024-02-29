@@ -144,10 +144,11 @@ const handaleCancel = () => {
                 {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
             
                 <tr>
-                    <th>Employ ID</th>
-                    <th>Active Status</th>
+                    <th>Sl No.</th>
+                    
                     <th>Name</th>
-                    <th>Employ Type</th>
+                    <th>Active Status</th>
+                    <th>Employee Type</th>
                     <th>Qualification</th>
                     <th>Area Of Interest</th>
                     <th>Joining Date</th>
@@ -159,9 +160,10 @@ const handaleCancel = () => {
                 <tbody style={{display: mainView}}>
                 {data.map((item, index) => (
                     <tr key={index}>
-                        <td>{item.id}</td>
-                        <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
+                        <td>{index+1}</td>
                         <td>{item.name}</td>
+                        <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
+                        
                         <td>{item.type}</td>
                         <td>{item.heighst_qualification}</td>
                         <td>{item.specialized_field}</td>

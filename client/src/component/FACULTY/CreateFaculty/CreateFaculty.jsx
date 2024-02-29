@@ -58,8 +58,9 @@ const handleSubmit = (e) => {
                     <dd>
                         <select onChange={(e)=>setType(e.target.value)} value={Type}>
                             <option value="">Employee Type</option>
-                            <option value="Staff">Staff</option>
                             <option value="Faculty">Faculty</option>
+                            <option value="Staff">Staff</option>
+                            
                             <option value="Other">Other</option>
                         </select>
                     </dd>

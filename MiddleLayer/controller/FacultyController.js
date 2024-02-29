@@ -108,16 +108,16 @@ exports.GetAllFaculty = (req, res) => {
     try{
         let query
         if(search && !Type){
-         query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}'`
+         query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}' order by type ASC,join_date DESC`
         }
         else if(Type && ! search){
-            query=`SELECT * FROM faculty_admin WHERE type= '${Type}'`
+            query=`SELECT * FROM faculty_admin WHERE type= '${Type}' order by type ASC,join_date DESC`
         }
         else if(Type && search){
-            query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}' AND type='${Type}'`
+            query=`SELECT * FROM faculty_admin WHERE name REGEXP '${search}' AND type='${Type}' order by type ASC,join_date DESC`
         }
         else{
-             query = `SELECT * FROM faculty_admin`
+             query = `SELECT * FROM faculty_admin order by type ASC,join_date DESC`
         }
         Database.query(query,(err,result)=>{
             if(err){
