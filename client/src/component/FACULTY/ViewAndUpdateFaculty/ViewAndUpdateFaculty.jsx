@@ -192,48 +192,96 @@ const handaleCancel = () => {
                 <hr></hr>
 
 
-                <form onSubmit={handaleUpdate}>
-                    <p className="customize-centre">Edit Faculty Details</p>
+                <form onSubmit={handaleUpdate} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+                    <p className="customize-centre" style={{fontSize:'17px'}}>Edit Faculty Details</p>
                     <p>Basic Details</p>
-                    <div>
-                        <label>Faculty Name*</label>
-                        <input
+
+                    <dl className="dl-horizontal">
+
+                    <dt><label>Employee Name*</label></dt>
+                    <dd><input
                             type="text"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="Faculty Name"
                             required={true}
-                        />
-                    </div>
-                    <dt><label>Employ Type*</label></dt>
+                        /></dd>
+                    <dt><label>Employee Type*</label></dt>
                     <dd>
-                        <select onChange={(e) => setType(e.target.value)} value={Type}>
-                            <option value="">Employ Type</option>
+                        <select onChange={(e) => setType(e.target.value)} value={Type} required>
+                            <option value="">Employee Type</option>
                             <option value="Staff">Staff</option>
                             <option value="Faculty">Faculty</option>
                             <option value="Other">Other</option>
                         </select>
                     </dd>
-                    <div>
-                        <label>Date of Birth*</label>
-                        <input
+                    <dt><label>Date of Birth*</label></dt>
+                    <dd><input
                             type="date"
                             value={dob}
                             onChange={(e) => setDob(e.target.value)}
                             placeholder="Date of Birth"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Contact No.*</label>
-                        <input
+                        /></dd>
+
+                    <dt><label>Contact No.*</label></dt>
+                    <dd><input
                             type="number"
                             value={contact_no}
                             onChange={(e) => setContact_no(e.target.value)}
                             placeholder="Contact No"
                             required={true}
-                        />
-                    </div>
+                        /></dd>
+                     <dt></dt>
+                    <dd></dd>
+
+                    <dt> <label>Email Address*</label></dt>
+                    <dd><input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email Address"
+                            required={true}
+                        /></dd>
+
+                    </dl>
+                    <p>Academic Details</p>
+                    <dl className="dl-horizontal">
+                    
+
+                    <dt><label>Highest Qualification*</label></dt>
+                    <dd> <input
+                            type="text"
+                            value={heighst_qualification}
+                            onChange={(e) => setHeighst_qualification(e.target.value)}
+                            placeholder="Qualification"
+                            required={true}
+                        /></dd>
+
+                    <dt> <label>Subject Specialization*</label></dt>
+                    <dd><input
+                            type="text"
+                            value={specialized_field}
+                            onChange={(e) => setSpecialized_field(e.target.value)}
+                            placeholder="Subjects"
+                            required={true}
+                        /></dd>
+
+                    <dt></dt>
+                    <dd></dd>
+
+                    <dt></dt>
+                    <dd></dd>
+
+                    <dt></dt>
+                    <dd></dd>
+
+                    <dt></dt>
+                    <dd></dd>
+
+                    </dl>
+                    
+                  
                     <div style={{width: '45%'}}>
                         <label>Address*</label>
                         <input
@@ -245,37 +293,12 @@ const handaleCancel = () => {
                         />
                     </div>
                     <div>
-                        <label>Email Address*</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder="Email Address"
-                            required={true}
-                        />
+                       
+                        
                     </div>
-                    <hr className="division"/>
-                    <p>Academic Details</p>
-                    <div>
-                        <label>Highest Qualification*</label>
-                        <input
-                            type="text"
-                            value={heighst_qualification}
-                            onChange={(e) => setHeighst_qualification(e.target.value)}
-                            placeholder="Qualification"
-                            required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Subject Specialization*</label>
-                        <input
-                            type="text"
-                            value={specialized_field}
-                            onChange={(e) => setSpecialized_field(e.target.value)}
-                            placeholder="Subjects"
-                            required={true}
-                        />
-                    </div>
+                    
+                    
+                    
 
                     <hr className="division"/>
                     <p>Other Details</p>
@@ -331,15 +354,16 @@ const handaleCancel = () => {
             <table className="table-60" id="faculty-view" style={{display: "none"}}>
                 <thead>
                 <tr>
-                    <th>Faculty ID</th>
+                    <th>Sl. No.</th>
                     <th>Active Status</th>
-                    <th>Faculty Name</th>
+                    <th>Employee Name</th>
+                    <th>Employee Type</th>
                     <th>Date of Birth</th>
                     <th>Address</th>
-                    <th>Faculty Email</th>
-                    <th>Faculty Phone</th>
-                    <th>Faculty Qualification</th>
-                    <th>Subject Specializationt</th>
+                    <th>Employee Email</th>
+                    <th>Employee Contact</th>
+                    <th>Employee Qualification</th>
+                    <th>Employee Specializationt</th>
                     <th>Aadhar No.</th>
                     <th>PAN No.</th>
                     <th>Joining Date</th>
@@ -352,6 +376,7 @@ const handaleCancel = () => {
                         <td>{item.id}</td>
                         <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
+                        <td>{item.type}</td>
                         <td>{item.dob.slice(0,10)}</td>
                         <td>{item.address}</td>
 
