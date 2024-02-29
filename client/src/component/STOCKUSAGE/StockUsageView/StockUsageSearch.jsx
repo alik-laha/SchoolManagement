@@ -38,7 +38,7 @@ const [toDate, setToDate] =  useState();
             <form onSubmit={handlesubmit}>
                 <div>
                     <label>Item Name</label>
-                    <select onChange={(e) => setItemName(e.target.value)} value={itemName}>
+                    <select onChange={(e) => setItemName(e.target.value)} value={itemName} required>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
                             <option value={data.item_name} key={idx}>
