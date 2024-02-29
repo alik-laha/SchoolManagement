@@ -393,6 +393,7 @@ const ViewFeePayment =(props)=>{
             <table className="table-60" >
                 <thead>
                 <tr>
+                    <th>Index</th>
                 <th>
                     Name
                 </th>
@@ -418,6 +419,7 @@ const ViewFeePayment =(props)=>{
                     const pendingAmount=item.status-item.total_fee
                     return(
                         <tr key={index}>
+                            <td>{index+1}</td>
                             <td>
                                 {item.student_Name}
                             </td>

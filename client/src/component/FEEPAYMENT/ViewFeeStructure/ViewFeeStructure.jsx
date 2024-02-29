@@ -185,6 +185,7 @@ const ViewFeeStructure = (props) => {
                 <table className="table-60">
                     <thead>
                     <tr>
+                        <th>Index</th>
                         <th>Class</th>
                         <th>Year</th>
                         <th>Fee Type</th>
@@ -196,6 +197,7 @@ const ViewFeeStructure = (props) => {
                     {feeStructure.map((data, index) => {
                         return (
                             <tr key={index}>
+                                <td>{index+1}</td>
                                 <td>{data.class}</td>
                                 <td>{data.year}</td>
                                 <td>{data.fee_type}</td>
