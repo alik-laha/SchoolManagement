@@ -388,7 +388,7 @@ const MasterStudentEntry= (props) => {
                 </dl>
             
                 <p style={{fontSize:'17px'}}>Guardian Details</p>
-                <dl class="dl-horizontal">
+                <dl className="dl-horizontal">
                    
                    <dt><label>Guardian Name*</label></dt>
                    <dd> <input
@@ -488,7 +488,7 @@ const MasterStudentEntry= (props) => {
                    </dl>
             
                 <p style={{fontSize:'17px'}}>Other Details</p>
-                <dl class="dl-horizontal">
+                <dl className="dl-horizontal">
                 <dt><label>B.S.P. Id</label></dt>
                    <dd> <input
                         type="text"
@@ -533,7 +533,7 @@ const MasterStudentEntry= (props) => {
                 </dl>
               
                 <p>Office Details</p>
-                <dl class="dl-horizontal">
+                <dl className="dl-horizontal">
                 <dt><label>Applying Stream*</label></dt>
                     <dd> <select onChange={(e) => setStream(e.target.value)} required value={stream}>
                         <option value="">Stream</option>

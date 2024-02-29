@@ -55,51 +55,57 @@ const EntryStockUsage = (props) => {
 
     return(
         <div style={{display:props.view}}>
-            <form className="dashbrd-40-colm" onSubmit={handleSubmit}>
-                <div>
-                    <label>Type Of Item </label>
-                    <select onChange={handleItemtype} required={true}>
+            <form className="dashbrd-40-colm" onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+                <dl className="dl-horizontal">
+                    <dt>
+                        <label>Type Of Item </label></dt>
+                    <dd><select onChange={handleItemtype} required={true}>
                         <option value="">Item Type</option>
                         {props.Item.map((data, idx) => (
                             <option value={data.item_Type} key={idx}>
                                 {data.item_Type}
                             </option>
                         ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Item name </label>
-                    <select onChange={changeItemName} required={true} value={itemName}>
+                    </select></dd>
+
+                    <dt>
+                        <label>Item name </label></dt>
+                    <dd><select onChange={changeItemName} required={true} value={itemName}>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
                             <option value={data.item_name} key={idx}>
                                 {data.item_name}
                             </option>
                         ))}
-                    </select>
-                </div>
+                    </select></dd>
+
+                </dl>
+
                 {
                     itemName === "" ? <p></p> : <p>left Stock of {itemName} is {leftStock}</p>
                 }
-                <div>
-                    <label>Usage Quantity ( Pc / Kg / Ltr / Mtr ) </label>
-                    <input
+                <dl className="dl-horizontal">
+                    <dt>
+                        <label>Usage Quantity ( Pc / Kg / Ltr / Mtr ) </label></dt>
+                    <dd><input
                         type="number"
                         placeholder="Quantity"
                         onChange={HandleUsage}
                         value={quantity}
-                    />
-                </div>
-                <div>
-                    <label>Usage Date </label>
-                    <input
+                    /></dd>
+
+                    <dt>
+                        <label>Usage Date </label></dt>
+                    <dd><input
                         type="date"
                         onChange={(e) => setUsageDate(e.target.value)}
                         value={usageDate}
                         required
-                    />
-                </div>
+                    /></dd>
+
+                </dl>
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
+
             </form>
         </div>
     )
