@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const ViewFeePayment =(props)=>{
     const [view,setView]=useState("none")
     const [data,setData]=useState([])
@@ -386,11 +386,20 @@ const ViewFeePayment =(props)=>{
             })
         }
     }
+    const currDate = new Date().toLocaleDateString();
 
     return(
         <div style={{display:view}}>
         <div style={{display:tableView}}>
-            <table className="table-60" >
+            <ReactHTMLTableToExcel
+                id="alik"
+                className="dashboard-btn btn-warning excel-btn"
+                table="Fee-Payment-view"
+                filename={"Fee_Payment_Report_"+currDate}
+                sheet="tablexls"
+                buttonText="Excel Export"
+            />
+            <table className="table-60" id="Fee-Payment-view">
                 <thead>
                 <tr>
                     <th>Index</th>
