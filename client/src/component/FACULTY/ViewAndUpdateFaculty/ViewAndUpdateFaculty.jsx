@@ -210,8 +210,9 @@ const handaleCancel = () => {
                     <dd>
                         <select onChange={(e) => setType(e.target.value)} value={Type} required>
                             <option value="">Employee Type</option>
-                            <option value="Staff">Staff</option>
                             <option value="Faculty">Faculty</option>
+                            <option value="Staff">Staff</option>
+                            
                             <option value="Other">Other</option>
                         </select>
                     </dd>
@@ -232,8 +233,14 @@ const handaleCancel = () => {
                             placeholder="Contact No"
                             required={true}
                         /></dd>
-                     <dt></dt>
-                    <dd></dd>
+                      <dt><label>Address*</label></dt>
+                    <dd><textarea style={{height:'80px',rows:"3"}}
+                        type="textarea" 
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            placeholder="Address"
+                            required={true}
+                        /></dd>
 
                     <dt> <label>Email Address*</label></dt>
                     <dd><input
@@ -267,84 +274,57 @@ const handaleCancel = () => {
                             required={true}
                         /></dd>
 
-                    <dt></dt>
-                    <dd></dd>
+                   
 
-                    <dt></dt>
-                    <dd></dd>
-
-                    <dt></dt>
-                    <dd></dd>
-
-                    <dt></dt>
-                    <dd></dd>
+                    
 
                     </dl>
                     
-                  
-                    <div style={{width: '45%'}}>
-                        <label>Address*</label>
-                        <input
-                            type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            placeholder="Address"
-                            required={true}
-                        />
-                    </div>
-                    <div>
-                       
-                        
-                    </div>
+                
                     
-                    
-                    
-
-                    <hr className="division"/>
                     <p>Other Details</p>
-                    <div>
-                        <label>Aadhar No.*</label>
-                        <input
+                    <dl className="dl-horizontal">
+                        <dt><label>Aadhar No.*</label></dt>
+                        <dd><input
                             type="number"
                             value={aadhar}
                             onChange={(e) => setAadhar(e.target.value)}
                             placeholder="Aadhar No."
                             required={true}
-                        />
-                    </div>
+                        /></dd>
 
-
-                    <div>
-                        <label>Pan No.*</label>
-                        <input
+                        <dt><label>Pan No.*</label></dt>
+                        <dd><input
                             type="text"
                             value={pan}
                             onChange={(e) => setPan(e.target.value)}
                             placeholder="Pan No."
                             required={true}
-                        />
-                    </div>
+                        /></dd>
 
-                    <div>
-                        <label>Joining date*</label>
-                        <input
+
+
+
+                        <dt><label>Joining date*</label></dt>
+                        <dd> <input
                             type="date"
                             value={join_date}
                             onChange={(e) => setJoin_date(e.target.value)}
                             placeholder="Joining Date"
                             required={true}
-                        />
-                    </div>
-                    <div>
-                        <label>Release date*</label>
-                        <input
+                        /></dd>
+
+                        <dt> <label>Release date*</label></dt>
+                        <dd> <input
                             type="date"
                             value={released_date}
                             onChange={(e) => setReleased_date(e.target.value)}
                             placeholder="Release Date" readOnly={rdonly}
 
-                        />
-                    </div>
+                        /></dd>
+                    </dl>
+                    
+
                     <span><button className="dashboard-btn dashboard-btn-scss">Update</button></span>
                     {/* <button type="submit" value="Update" className="dashboard-btn btn-warning" onClick={handaleCancel}>Cancel</button> */}
                 </form>
