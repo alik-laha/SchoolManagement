@@ -4,6 +4,7 @@ import logo from '../Home/logo_ahm.jpg'
 import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus} from "react-icons/fa";
 import { ImUserTie } from "react-icons/im";
 import { TbUserEdit } from "react-icons/tb";
+import { FaChalkboard } from "react-icons/fa6";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -280,7 +281,7 @@ const stockUsageVisiblity = () => {
 
           {/* Notice */}
 
-          <span onClick={noticeVisibility} className="user" style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;NoticeBoard<p>{dropArrowNotc}</p></span>
+          <span onClick={noticeVisibility} className="user" style={{display: admin}}><FaChalkboard/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>NoticeBoard</p><p>{dropArrowNotc}</p></span>
           <div style={{display: noticeVisi}}>
             <div className="Items" onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
             <div className="Items" onClick={props.onNoticeManupulation}>&#x3e;&nbsp;&nbsp;View/Delete Notice</div>
