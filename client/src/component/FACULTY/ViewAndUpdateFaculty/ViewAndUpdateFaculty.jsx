@@ -131,7 +131,7 @@ const handaleCancel = () => {
             <div style={{display: mainView}}>
             <ReactHTMLTableToExcel
                 id="hostel"
-                className="dashboard-btn btn-warning excel-btn clear-gradient"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="faculty-view"
                 filename={'Faculty_Details_Report_'+currDate}
                 sheet="tablexls"
@@ -188,7 +188,7 @@ const handaleCancel = () => {
                     {/* hidden div view */}
             <div style={{display: editView,background:'blue'}} className="dashbrd-40-colm">
             <button style={{marginBottom:'8px'}}
-            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
+            onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
                 <hr></hr>
 
 

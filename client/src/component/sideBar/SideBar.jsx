@@ -1,6 +1,9 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus} from "react-icons/fa";
+import { ImUserTie } from "react-icons/im";
+import { TbUserEdit } from "react-icons/tb";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -28,6 +31,9 @@ const SideBar = (props) => {
   const [dropArrowstudents,setdropArrowstudents]=useState("+");
   const [dropArrowhostel,setdropArrowhostel]=useState("+");
   const [dropArrowstockUsage,setdropArrowstockUsage]=useState("+");
+
+
+  
 
   const user = localStorage.getItem("user");
 
@@ -87,6 +93,7 @@ const SideBar = (props) => {
       sethostelVisi("none");
       setstudentsVisi("none");
       setstockUsageVisi("none");
+     
     } 
     else {SetUserVisi("none");}
 
@@ -258,16 +265,16 @@ const stockUsageVisiblity = () => {
         <div className="sidebar-main-header">
           {/* User */}
           <span onClick={userVisiblity} className="user"
-                style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;User<p>{dropArrowuser}</p></span>
+                style={{display: admin}}><FaRegUser/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>User</p><p>{dropArrowuser}</p></span>
           <div style={{display: userVisi}}>
 
-            <div className="Items" onClick={props.oncreate}>&#x3e;&nbsp;&nbsp;Create Dashboard User</div>
-            <div className="Items" onClick={props.onSearch}>&#x3e;&nbsp;&nbsp;Search/Modify User</div>
-            <div className="Items" style={{display: admin}} onClick={props.onCreateFaculty}>&#x3e;&nbsp;&nbsp;Create
-              Employee
+            <div className="Items" onClick={props.oncreate}><FaUserPlus/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Dashboard User</p></div>
+            <div className="Items" onClick={props.onSearch}><FaUserEdit/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Search/Modify User</p></div>
+            <div className="Items"  onClick={props.onCreateFaculty}><ImUserTie/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create
+              Employee</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onViewFaculty}>&#x3e;&nbsp;&nbsp;View/Edit
-              Employee
+            <div className="Items"  onClick={props.onViewFaculty}><TbUserEdit/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Edit
+              Employee</p>
             </div>
           </div>
 
@@ -307,7 +314,7 @@ const stockUsageVisiblity = () => {
 
           {/* Students */}
           <span onClick={studentsVisiblity} className="user"
-                style={{display: studentAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Admission<p>{dropArrowstudents}</p></span>
+                style={{display: studentAdmin}}><FaUserGraduate/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Admission</p><p>{dropArrowstudents}</p></span>
           <div style={{display: studentsVisi}}>
             <div className="Items" style={{display: studentAdmin}}
                  onClick={props.onMasterStudentEntry}>&#x3e;&nbsp;&nbsp;Master Admission Entry
