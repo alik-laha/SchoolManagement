@@ -411,10 +411,16 @@ exports.UpdateStudentAdmission = (req, res) => {
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
+                if(err.errno===1062){
+                    return res.status(400).json({
+                        msg:"Duplicate Roll No and Section Combination Under same Class and Academic Year"
+                    })
+                }
             }else{
                 return res.status(200).json({
                     msg:"student Roll and Section updated successfully"
                 })
+
             }
         })
     }

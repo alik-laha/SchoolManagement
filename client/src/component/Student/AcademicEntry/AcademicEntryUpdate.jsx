@@ -79,7 +79,7 @@ const AcademicEntryUpdate = (props) => {
                     fetchnewData();
                 })
                 .catch((err) => {
-                    console.log(err)
+                    alert(err.response.data.msg)
                 })
         }
     }
