@@ -107,7 +107,7 @@ const CreateMarks=(props)=>{
                 <div>
                     <label>Search By Section</label>
                     <select onChange={(e) => setSection(e.target.value)}
-                            value={section}>
+                            value={section} required>
                         <option value="">Section</option>
                         <option value="A">
                             A
@@ -162,11 +162,11 @@ const CreateMarks=(props)=>{
                 <div>
                     <label>Search By Current Academic Year</label>
                     <input type="text" placeholder="Current Year" value={year}
-                           onChange={(e) => setYear(e.target.value)}/>
+                           onChange={(e) => setYear(e.target.value)} required/>
                 </div>
                 <div>
                 <label>Search By Exam Name</label>
-                    <select onChange={setExamnameFunction2} value={updatedExamName}>
+                    <select onChange={setExamnameFunction2} value={updatedExamName} required={true}>
                         <option>Exam Name</option>
                         {allExam.map((data, index) => (
                             <option value={data.internal_exam_name} key={index}>
@@ -177,7 +177,7 @@ const CreateMarks=(props)=>{
                 </div>
                 <div>
                 <label>Search By Subject </label>
-                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
+                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject} required>
                         <option>Subject</option>
                         {allSubject.map((data, index) => (
                             <option value={data.subject} key={index}>
