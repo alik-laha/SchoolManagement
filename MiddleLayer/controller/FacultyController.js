@@ -643,7 +643,7 @@ try{
           AND Student_Admission.section = '${section}'
             AND Marks.regNo = Student_Admission.registration_no 
         ORDER BY 
-            Student_Admission.roll_no;`
+        Marks.subject,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no;`
         }
         else{
             query=`SELECT 
@@ -671,7 +671,7 @@ try{
           AND Student_Admission.section = '${section}'
             AND Marks.regNo = Student_Admission.registration_no 
         ORDER BY 
-            Student_Admission.roll_no;`
+           Marks.subject,Student_Admission.class,Student_Admission.section,Student_Admission.roll_no;`
 
         }
         

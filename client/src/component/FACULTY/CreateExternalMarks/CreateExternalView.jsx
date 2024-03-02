@@ -122,7 +122,8 @@ const CreateMarks=(props)=>{
                     ))}
                 </tbody>
             </table>
-            <button className="dashboard-btn dashboard-btn-scss" onClick={handleSubmit}>Entry Marks</button>
+            <span style={{display:'block',textAlign:'center'}}> <button  style={{background:'#3c8dbc'}} className="dashboard-btn dashboard-btn-scss" onClick={handleSubmit}>Final Submit</button></span>
+           
         </div>
     )
 }
