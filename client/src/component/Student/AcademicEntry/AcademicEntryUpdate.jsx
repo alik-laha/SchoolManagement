@@ -8,6 +8,7 @@ const AcademicEntryUpdate = (props) => {
     const [view,setView]=useState("none")
     const [editedIndex, setEditedIndex] = useState(null);
     const [regNo,setRegNo]=useState("")
+    const [error, setError] = useState('none');
 
     useEffect(()=>{
         setAcademicAll(props.SearchebyData)
@@ -35,11 +36,19 @@ const AcademicEntryUpdate = (props) => {
         else {
             setView("none")
         }
+        if(props.academicallview === "block" && props.view === "block" && props.SearchebyData.length === 0)
+        {
+            setError('block')
+        }
+        else{
+            setError('none')
+        }
     },[props.academicallview,props.view,props.SearchebyData])
 
     const clearTable = () => {
         setAcademicAll([]);
         setEditedIndex(null)
+        setView('none')
       };
 
     const HandleEdit=(index,data)=>{
@@ -84,6 +93,7 @@ const AcademicEntryUpdate = (props) => {
         }
     }
     return(
+        <>
        <div style={{display:view}}>
            <table className="table-60">
                <thead>
@@ -210,8 +220,10 @@ const AcademicEntryUpdate = (props) => {
                }
                </tbody>
            </table>
-           {academicAll.length === 0 ? <div className="no-data">No Data Exists</div> : null}
+           
 </div>
+<div style={{display:error,marginTop:'-80px'}} className="no-data">Desired Result is Not found with Given Search Combinations </div> 
+</>
 )
 }
 
