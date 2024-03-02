@@ -17,9 +17,10 @@ const CreateMarks=(props)=>{
         axios.post(`/api/v1/faculty/marksentry`,{Class,year,subject:updatedSubject,examName:updatedExamName,section},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
             props.setExternalMarks(res.data.data,updatedExamName,updatedSubject,target)
             console.log(res)
-            props.setInternalMarksView("block")
+            props.setExternalMarksView("block")
         }).catch((err)=>{
             console.log(err)
+            alert(err.response.data.message)
         })
     }
 

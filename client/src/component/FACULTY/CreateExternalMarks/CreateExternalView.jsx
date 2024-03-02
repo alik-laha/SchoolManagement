@@ -8,16 +8,26 @@ const CreateMarks=(props)=>{
     const [subject,setSubject]=useState("")
     const [examName,setExamName]=useState("")
     const [marks,setMarks]=useState([])
+    const [submitall,setSubmitall]=useState('block')
 
     useEffect(() => {
-        console.log(props)
-        if(props.view40==="block" && props.data.length>0){
+        console.log(props.view)
+
+        if(props.view40==="block" && props.view){
             setView("block")
         }
         else{
             setView("none")
         }
-    }, [props.view40,props.data]);
+
+        if(props.data.length<=0)
+        {
+            setSubmitall('none')
+        }
+        else{
+            setSubmitall('block')
+        }
+    }, [props.view40,props.view,props.data]);
 
     function convertToRoman(num) {
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
@@ -87,6 +97,7 @@ const CreateMarks=(props)=>{
     };
 
     return(
+
         <div style={{display:view,marginTop:'40px'}}>
             <table className="table-60">
                 <thead>
@@ -122,8 +133,8 @@ const CreateMarks=(props)=>{
                     ))}
                 </tbody>
             </table>
-            <span style={{display:'block',textAlign:'center'}}> <button  style={{background:'#3c8dbc'}} className="dashboard-btn dashboard-btn-scss" onClick={handleSubmit}>Final Submit</button></span>
-           
+            <span style={{display:submitall,textAlign:'center'}}> <button  style={{background:'#3c8dbc'}} className="dashboard-btn dashboard-btn-scss" onClick={handleSubmit}>Final Submit</button></span>
+            {data.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }
