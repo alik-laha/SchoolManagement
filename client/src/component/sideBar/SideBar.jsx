@@ -11,6 +11,7 @@ import { BsClipboardData } from "react-icons/bs";
 import { MdQueuePlayNext } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
+import { AiOutlineStock } from "react-icons/ai";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -323,6 +324,22 @@ const stockUsageVisiblity = () => {
           </div>
 
 
+          {/* Hostel */}
+          <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}><HiBuildingLibrary /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel</p><p>{dropArrowhostel}</p></span>
+          <div style={{display: hostelVisi}}>
+            <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}><FaRegBuilding /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Room & Bed Entry</p>
+            </div>
+            <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
+            </div>
+            <div className="Items" style={{display: hostelAdmin}}
+                 onClick={props.onHostelEntryCreate}><FaRestroom /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel Entry</p>
+            </div>
+            <div className="Items" style={{display: hostelAdmin}}
+                 onClick={props.onHostelEntryView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Hostel Entry</p>
+            </div>
+          </div>
+
+
           {/* Marks */}
           <span onClick={facultyVisiblity} className="user"
                 style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks<p>{dropArrowfaculty}</p></span>
@@ -349,31 +366,18 @@ const stockUsageVisiblity = () => {
 
           
 
-          {/* Hostel */}
-          <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}><HiBuildingLibrary /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel</p><p>{dropArrowhostel}</p></span>
-          <div style={{display: hostelVisi}}>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}><FaRegBuilding /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Room & Bed Entry</p>
-            </div>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
-            </div>
-            <div className="Items" style={{display: hostelAdmin}}
-                 onClick={props.onHostelEntryCreate}><FaRestroom /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel Entry</p>
-            </div>
-            <div className="Items" style={{display: hostelAdmin}}
-                 onClick={props.onHostelEntryView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Hostel Entry</p>
-            </div>
-          </div>
+          
 
           {/* stock */}
           <span onClick={stockVisiblity} className="user"
-                style={{display: cashstockAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Stock<p>{dropArrowstock}</p></span>
+                style={{display: cashstockAdmin}}><AiOutlineStock /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock</p><p>{dropArrowstock}</p></span>
           <div style={{display: stockVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Vendor Creation
+            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Add New Vendor
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Item Type Creation
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Add New Item Type
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}>&#x3e;&nbsp;&nbsp;Item
-              Name Creation
+            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}>&#x3e;&nbsp;&nbsp;Add New Item
+              Name 
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary
               Stock (Qty.)
