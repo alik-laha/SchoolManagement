@@ -1,7 +1,7 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
-import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom  } from "react-icons/fa";
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding  } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
@@ -352,8 +352,7 @@ const stockUsageVisiblity = () => {
           {/* Hostel */}
           <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}><HiBuildingLibrary /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel</p><p>{dropArrowhostel}</p></span>
           <div style={{display: hostelVisi}}>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}>&#x3e;&nbsp;&nbsp;Room &
-              Bed Entry
+            <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}><FaRegBuilding /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Room & Bed Entry</p>
             </div>
             <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
             </div>
@@ -361,7 +360,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onHostelEntryCreate}><FaRestroom /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel Entry</p>
             </div>
             <div className="Items" style={{display: hostelAdmin}}
-                 onClick={props.onHostelEntryView}>&#x3e;&nbsp;&nbsp;Export Hostel Entry
+                 onClick={props.onHostelEntryView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Hostel Entry</p>
             </div>
           </div>
 
