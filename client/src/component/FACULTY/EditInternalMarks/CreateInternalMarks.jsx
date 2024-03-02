@@ -96,7 +96,7 @@ const handleDelete=(data)=>{
                     <th>Subject</th>
                     <th>Total Exam Mark</th>
                     <th>Obtained Mark</th>
-                    <th>Action</th>
+                    <th style={{width:'21%'}}>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -114,9 +114,9 @@ const handleDelete=(data)=>{
                         <td>{props.Marks}</td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
                         <td>{index!==Index ?(<button  onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
-                            (<div><button style={{background:'#3c8dbc',borderColor:'none'}} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
-                            <button style={{background:'#3c8dbc',borderColor:'none'}} onClick={handleCancel} className="dashboard-btn btn-warning fix-width">Cancel</button> 
-                            <button style={{background:'#3c8dbc',borderColor:'none'}} onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning fix-width">Delete</button></div>)}</td>
+                            (<div><button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
+                            <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={handleCancel} className="dashboard-btn btn-warning fix-width">Cancel</button> 
+                            <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning fix-width">Delete</button></div>)}</td>
                     </tr>
                 ))}
                 </tbody>
