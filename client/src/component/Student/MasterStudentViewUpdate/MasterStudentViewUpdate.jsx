@@ -473,8 +473,9 @@ const MasterStudentViewUpdate = (props) => {
           });
     }
     const clearTable = () => {
-        if(updateView==='none')
-        setMasterStudent([]);
+        if(updateView==='none'){setMasterStudent([]);}
+        setView('none')
+        
       };
 
     const Handleedit=(item)=>{
@@ -1035,7 +1036,7 @@ const MasterStudentViewUpdate = (props) => {
                 }
                 </tbody>
             </table>
-                {masterStudent.length === 0 ? <div className="no-data">No Data Exists</div> : null}
+                {masterStudent.length === 0 ? <div className="no-data">No Data Exists for the Given Search Combination</div> : null}
             </div>
             {/* <div style={{display:popup}} className="dashbrd-40-colm special-25-div">
                 <form>
