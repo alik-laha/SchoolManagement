@@ -60,7 +60,7 @@ const CreateMarks=(props)=>{
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Class</label>
+                    <label>Search By Class</label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
                         <option value="">Class</option>
                         <option value="1">
@@ -105,7 +105,7 @@ const CreateMarks=(props)=>{
                     </select>
                 </div>
                 <div>
-                    <label>Section</label>
+                    <label>Search By Section</label>
                     <select onChange={(e) => setSection(e.target.value)}
                             value={section}>
                         <option value="">Section</option>
@@ -160,11 +160,12 @@ const CreateMarks=(props)=>{
                     </select>
                 </div>
                 <div>
-                    <label>Current Academic Year</label>
+                    <label>Search By Current Academic Year</label>
                     <input type="text" placeholder="Current Year" value={year}
                            onChange={(e) => setYear(e.target.value)}/>
                 </div>
                 <div>
+                <label>Search By Exam Name</label>
                     <select onChange={setExamnameFunction2} value={updatedExamName}>
                         <option>Exam Name</option>
                         {allExam.map((data, index) => (
@@ -175,6 +176,7 @@ const CreateMarks=(props)=>{
                     </select>
                 </div>
                 <div>
+                <label>Search By Subject </label>
                     <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject}>
                         <option>Subject</option>
                         {allSubject.map((data, index) => (
@@ -184,6 +186,7 @@ const CreateMarks=(props)=>{
                         ))}
                     </select>
                 </div>
+                <p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>

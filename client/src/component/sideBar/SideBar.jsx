@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
 import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding,FaChartBar,FaAddressBook   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
-import { ImUserTie } from "react-icons/im";
+import { ImUserTie ,ImListNumbered } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
@@ -352,7 +352,7 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p><p>{dropArrowfaculty}</p>
             </div>
             <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Entry
+                 onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
             </div>
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Update/Delete
