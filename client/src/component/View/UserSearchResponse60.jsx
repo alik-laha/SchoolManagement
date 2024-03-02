@@ -22,6 +22,7 @@ const UserSearchResponse60=(props)=>{
 
     const clearTable = () => {
         setView([]);
+        setdisp('none')
       };
 
     let change;
