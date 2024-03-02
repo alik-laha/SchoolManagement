@@ -1,14 +1,16 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
-import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase } from "react-icons/fa";
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom  } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie } from "react-icons/im";
-import { TbUserEdit } from "react-icons/tb";
+import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
 import { BsClipboardData } from "react-icons/bs";
 import { MdQueuePlayNext } from "react-icons/md";
+import { LuDownload } from "react-icons/lu";
+import { HiBuildingLibrary } from "react-icons/hi2";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -268,27 +270,33 @@ const stockUsageVisiblity = () => {
       
       <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p>AL-HILAL-MISSION</p></span>
         <div className="sidebar-main-header">
+          
           {/* User */}
           <span onClick={userVisiblity} className="user"
-                style={{display: admin}}><FaRegUser/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>User</p><p>{dropArrowuser}</p></span>
-          <div style={{display: userVisi}}>
-
-            <div className="Items" onClick={props.oncreate}><FaUserPlus/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Dashboard User</p></div>
-            <div className="Items" onClick={props.onSearch}><FaUserEdit/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Search/Modify User</p></div>
-            <div className="Items"  onClick={props.onCreateFaculty}><ImUserTie/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create
-              Employee</p>
-            </div>
-            <div className="Items"  onClick={props.onViewFaculty}><TbUserEdit/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Edit
-              Employee</p>
-            </div>
+                style={{display: admin}}><FaRegUser/>
+                <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>User</p><p>{dropArrowuser}</p></span>
+          
+          <div style={{ display: userVisi }}>
+            <div className="Items" onClick={props.oncreate}><FaUserPlus />
+              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Create Dashboard User</p></div>
+            <div className="Items" onClick={props.onSearch}><FaUserEdit />
+              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Search/Modify User</p></div>
+            <div className="Items" onClick={props.onCreateFaculty}><ImUserTie />
+              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Create Employee</p></div>
+            <div className="Items" onClick={props.onViewFaculty}><TbUserEdit />
+              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>View/Edit Employee</p></div>
           </div>
 
           {/* Notice */}
 
-          <span onClick={noticeVisibility} className="user" style={{display: admin}}><FaChalkboard/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>NoticeBoard</p><p>{dropArrowNotc}</p></span>
+          <span onClick={noticeVisibility} className="user" style={{display: admin}}><FaChalkboard/>
+          <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>NoticeBoard</p><p>{dropArrowNotc}</p></span>
+          
           <div style={{display: noticeVisi}}>
-            <div className="Items" onClick={props.onpublish}><FaFileUpload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Upload Notice</p></div>
-            <div className="Items" onClick={props.onNoticeManupulation}><CiViewList /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Delete Notice</p></div>
+            <div className="Items" onClick={props.onpublish}><FaFileUpload />
+            <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Upload Notice</p></div>
+            <div className="Items" onClick={props.onNoticeManupulation}><CiViewList />
+            <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Delete Notice</p></div>
 
           </div>
 
@@ -310,7 +318,7 @@ const stockUsageVisiblity = () => {
               To Next Class</p>
             </div>
             <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry
+                 onClick={props.onAcademicView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Academic Entry</p>
             </div>
           </div>
 
@@ -342,16 +350,15 @@ const stockUsageVisiblity = () => {
           
 
           {/* Hostel */}
-          <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>
+          <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}><HiBuildingLibrary /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel</p><p>{dropArrowhostel}</p></span>
           <div style={{display: hostelVisi}}>
             <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}>&#x3e;&nbsp;&nbsp;Room &
               Bed Entry
             </div>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}>&#x3e;&nbsp;&nbsp;Bed
-              Availability Status
+            <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
             </div>
             <div className="Items" style={{display: hostelAdmin}}
-                 onClick={props.onHostelEntryCreate}>&#x3e;&nbsp;&nbsp;Hostel Entry
+                 onClick={props.onHostelEntryCreate}><FaRestroom /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel Entry</p>
             </div>
             <div className="Items" style={{display: hostelAdmin}}
                  onClick={props.onHostelEntryView}>&#x3e;&nbsp;&nbsp;Export Hostel Entry
@@ -396,6 +403,8 @@ const stockUsageVisiblity = () => {
             </div>
           </div>
           {/*Stock usage*/}
+
+
           <span onClick={stockUsageVisiblity} className="user"
                 style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Fee Payment<p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>

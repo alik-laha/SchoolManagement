@@ -60,7 +60,7 @@ exports.GetRoomNo= (req, res) => {
     let query
     try{
         query = `SELECT room_no
-                 FROM bed_availability`
+                 FROM bed_availability order by room_no`
         Database.query(query,(err,result)=>{
             if(err){
                 console.log(err)
