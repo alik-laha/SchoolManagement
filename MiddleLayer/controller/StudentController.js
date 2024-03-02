@@ -413,7 +413,7 @@ exports.UpdateStudentAdmission = (req, res) => {
                 console.log(err)
             }else{
                 return res.status(200).json({
-                    msg:"student Roll and section updated successfully"
+                    msg:"student Roll and Section updated successfully"
                 })
             }
         })

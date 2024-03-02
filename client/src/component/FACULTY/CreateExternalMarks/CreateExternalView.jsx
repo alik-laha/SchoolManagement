@@ -19,6 +19,21 @@ const CreateMarks=(props)=>{
         }
     }, [props.view40,props.data]);
 
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+
     useEffect(() => {
        setData(props.data)
          setSubject(props.subject)
@@ -72,15 +87,16 @@ const CreateMarks=(props)=>{
     };
 
     return(
-        <div style={{display:view}}>
+        <div style={{display:view,marginTop:'40px'}}>
             <table className="table-60">
                 <thead>
                     <tr>
-                    <th>Id</th>
+                    <th>Sl. No.</th>
                     <th>Registration No</th>
                     <th>Student Name</th>
                     <th>Class</th>
                     <th>Section</th>
+                    <th>Roll No</th>
                     <th>Subject</th>
                     <th>Exam Name</th>
                     <th>Total Marks</th>
@@ -93,13 +109,14 @@ const CreateMarks=(props)=>{
                             <td>{index+1}</td>
                             <td>{data.registration_no}</td>
                             <td>{data.student_Name}</td>
-                            <td>{data.class}</td>
+                            <td>{convertToRoman(data.class)}</td>
                             <td>{data.section}</td>
+                            <td>{data.roll_no}</td>
                             <td>{subject}</td>
                             <td>{examName}</td>
                             <td>{target}</td>
                             <td>
-                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)}/>
+                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true}/>
                             </td>
                         </tr>
                     ))}

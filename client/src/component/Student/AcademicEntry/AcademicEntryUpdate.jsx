@@ -74,7 +74,7 @@ const AcademicEntryUpdate = (props) => {
         if(index===editedIndex) {
             axios.post("/api/v1/student/academecentry", {section, rollNo,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
-                    alert("Student Details Updated Successfully")
+                    alert("Student Academic Details Updated Successfully")
                     setEditedIndex(null)
                     fetchnewData();
                 })
