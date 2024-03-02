@@ -23,7 +23,6 @@ const [pan, setPan] = useState("");
 const [aadhar, setAadhar] = useState("");
 const [rdonly, setRdonly] = useState(false);
 const [Type, setType] = useState("");
-const [error, setError] = useState('none');
 
     useEffect(() => {
         if(props.data.length > 0){
@@ -38,19 +37,9 @@ const [error, setError] = useState('none');
         else{
             setView("none");
         }
-
-        if(props.view === "block" && props.data.length === 0)
-        {
-            setError('block')
-        }
-        else{
-            setError('none')
-        }
-
     },[props.view, props.data]);
 const clearTable = () => {
         setData([]);
-        setView('none')
 }
 const handaleEdit = (id) => {
         data.find((item)=>{
@@ -136,7 +125,6 @@ const handaleCancel = () => {
     setType('')
 }
     return(
-        <>
         <div style={{display: View}}>
             
             
@@ -204,7 +192,7 @@ const handaleCancel = () => {
                 ))}
                 </tbody>
                 </table>
-               
+                {data.length === 0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
 
                     {/* hidden div view */}
@@ -398,10 +386,8 @@ const handaleCancel = () => {
                 ))}
                 </tbody>
             </table>
-            
+                
         </div>
-        <div style={{display:error,marginTop:'-80px'}} className="no-data">Desired Result is Not found with Given Search Combinations </div> 
-        </>
 )
 }
 export default ViewAndUpdateFaculty;
