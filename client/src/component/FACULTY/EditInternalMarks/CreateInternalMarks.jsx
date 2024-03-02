@@ -86,9 +86,11 @@ const handleDelete=(data)=>{
                 <thead>
                 <tr>
                     <th>Sl. No.</th>
-                    <th>Class</th>
                     <th>Registration No</th>
                     <th>Student Name</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                   
                     <th>Roll No</th>
                     <th>Exam Name</th>
                     <th>Subject</th>
@@ -101,16 +103,20 @@ const handleDelete=(data)=>{
                 {data.map((data,index)=>(
                     <tr key={index}>
                         <td>{index+1}</td>
-                        <td>{convertToRoman(data.class)}</td>
                         <td>{data.registration_no}</td>
                         <td>{data.student_Name}</td>
+                        <td>{convertToRoman(data.class)}</td>
+                        <td>{data.section}</td>
+                       
                         <td>{data.roll_no}</td>
                         <td>{props.Exam}</td>
                         <td>{data.subject}</td>
                         <td>{props.Marks}</td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
-                        <td>{index!==Index ?(<button onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
-                            (<div><button onClick={()=>handleUpdate(data)} className="dashboard-btn dashboard-btn-scss">Save</button> <button onClick={handleCancel} >Cancel</button> <button onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning">Delete</button></div>)}</td>
+                        <td>{index!==Index ?(<button  onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
+                            (<div><button style={{background:'#3c8dbc',borderColor:'none'}} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
+                            <button style={{background:'#3c8dbc',borderColor:'none'}} onClick={handleCancel} className="dashboard-btn btn-warning fix-width">Cancel</button> 
+                            <button style={{background:'#3c8dbc',borderColor:'none'}} onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning fix-width">Delete</button></div>)}</td>
                     </tr>
                 ))}
                 </tbody>

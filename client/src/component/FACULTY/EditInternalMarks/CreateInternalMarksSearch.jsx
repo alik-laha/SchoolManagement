@@ -168,7 +168,7 @@ const handleSubmit=(e)=>{
                 <div>
                 <label>Exam Name</label>
                 <select onChange={setExamnameFunction2} value={updatedExamName} required>
-                    <option>Exam Name</option>
+                    <option value="">Exam Name</option>
                     {allExam.map((data, index) => (
                         <option value={data.internal_exam_name} key={index}>
                             {data.internal_exam_name}

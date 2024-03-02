@@ -6,13 +6,14 @@ import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
-import { CiViewList } from "react-icons/ci";
+import { CiViewList,CiEdit  } from "react-icons/ci";
 import { BsClipboardData } from "react-icons/bs";
 import { MdQueuePlayNext } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
 import { PiStudent,PiExam, PiExamBold  } from "react-icons/pi";
+
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -349,13 +350,13 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateSubject}><FaAddressBook /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Subject</p>
             </div>
-            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p><p>{dropArrowfaculty}</p>
+            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p>
             </div>
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
             </div>
             <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateInternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Update/Delete
+                 onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Update/Delete</p>
             </div>
             
             <div className="Items" style={{display: facultyAdmin}}

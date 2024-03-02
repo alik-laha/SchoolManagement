@@ -168,7 +168,7 @@ const CreateMarks=(props)=>{
                 <div>
                 <label>Search By Exam Name</label>
                     <select onChange={setExamnameFunction2} value={updatedExamName} required={true}>
-                        <option>Exam Name</option>
+                        <option value="">Exam Name</option>
                         {allExam.map((data, index) => (
                             <option value={data.internal_exam_name} key={index}>
                                 {data.internal_exam_name}
@@ -178,8 +178,8 @@ const CreateMarks=(props)=>{
                 </div>
                 <div>
                 <label>Search By Subject </label>
-                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject} required>
-                        <option>Subject</option>
+                    <select onChange={(e) => setUpdatedSubject(e.target.value)} value={updatedSubject} required={true}>
+                        <option value="">Subject</option>
                         {allSubject.map((data, index) => (
                             <option value={data.subject} key={index}>
                                 {data.subject}

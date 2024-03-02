@@ -340,7 +340,8 @@ exports.CreateMarks = (req, res) => {
     const {examName,subject,regNo,marks,Class}=req.body
     try{
         if(examName!=="Exam Name") {
-            if (!examName || !subject || !regNo || !marks) {
+            if (!examName || !subject || !regNo ) {
+                
                 return res.status(400).json({message: "All Fields are required"})
             } else {
                 let query = `INSERT INTO Marks (regNo, subject, exam_name, marks,class)
@@ -754,7 +755,7 @@ WHERE a.class='${Class}' and a.registration_no NOT IN
 exports.MarksEntryForStudentS = (req, res) => {
     const {subject,examName,marks,Class,Year,regNo} = req.body
     try {
-        if(!subject || !examName || !marks || !Class || !Year || !regNo){
+        if(!subject || !examName  || !Class || !Year || !regNo){
             return res.status(400).json({message:"All Fields are required"})
         }
         else{
