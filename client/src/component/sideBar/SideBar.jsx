@@ -7,6 +7,7 @@ import { ImUserTie } from "react-icons/im";
 import { TbUserEdit } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
+import { BsClipboardData } from "react-icons/bs";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -301,7 +302,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onMasterStudentView}><GrDatabase /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Edit Master Entry</p>
             </div>
             <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onAcademicEntryUpdate}>&#x3e;&nbsp;&nbsp;Academic Entry
+                 onClick={props.onAcademicEntryUpdate}><BsClipboardData /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Academic Entry</p>
             </div>
             <div className="Items" style={{display: studentAdmin}}
                  onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry

@@ -961,7 +961,7 @@ const MasterStudentViewUpdate = (props) => {
 
 
     return(
-        <div style={{display: view}}>
+        <div style={{display: view,marginTop:'40px'}}>
             <div style={{display:allView}}>
             {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
                <ReactHTMLTableToExcel
