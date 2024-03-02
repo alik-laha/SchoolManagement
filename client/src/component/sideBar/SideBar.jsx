@@ -1,10 +1,12 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
-import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus} from "react-icons/fa";
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase } from "react-icons/fa";
+import { GrDatabase } from "react-icons/gr";
 import { ImUserTie } from "react-icons/im";
 import { TbUserEdit } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
+import { CiViewList } from "react-icons/ci";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -283,13 +285,34 @@ const stockUsageVisiblity = () => {
 
           <span onClick={noticeVisibility} className="user" style={{display: admin}}><FaChalkboard/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>NoticeBoard</p><p>{dropArrowNotc}</p></span>
           <div style={{display: noticeVisi}}>
-            <div className="Items" onClick={props.onpublish}>&#x3e;&nbsp;&nbsp;Upload Notice</div>
-            <div className="Items" onClick={props.onNoticeManupulation}>&#x3e;&nbsp;&nbsp;View/Delete Notice</div>
+            <div className="Items" onClick={props.onpublish}><FaFileUpload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Upload Notice</p></div>
+            <div className="Items" onClick={props.onNoticeManupulation}><CiViewList /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Delete Notice</p></div>
 
           </div>
 
+          {/* Admission */}
+          <span onClick={studentsVisiblity} className="user"
+                style={{display: studentAdmin}}><FaUserGraduate/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Admission</p><p>{dropArrowstudents}</p></span>
+          <div style={{display: studentsVisi}}>
+            <div className="Items" style={{display: studentAdmin}}
+                 onClick={props.onMasterStudentEntry}><FaDatabase /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Master Admission Entry</p>
+            </div>
+            <div className="Items" style={{display: studentAdmin}}
+                 onClick={props.onMasterStudentView}><GrDatabase /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Edit Master Entry</p>
+            </div>
+            <div className="Items" style={{display: studentAdmin}}
+                 onClick={props.onAcademicEntryUpdate}>&#x3e;&nbsp;&nbsp;Academic Entry
+            </div>
+            <div className="Items" style={{display: studentAdmin}}
+                 onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry
+            </div>
+            <div className="Items" style={{display: studentAdmin}} onClick={props.onPromote}>&#x3e;&nbsp;&nbsp;Promote
+              To Next Class
+            </div>
+          </div>
 
-          {/* Faculty */}
+
+          {/* Marks */}
           <span onClick={facultyVisiblity} className="user"
                 style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks<p>{dropArrowfaculty}</p></span>
           <div style={{display: facultyVisi}}>
@@ -313,26 +336,7 @@ const stockUsageVisiblity = () => {
           </div>
 
 
-          {/* Students */}
-          <span onClick={studentsVisiblity} className="user"
-                style={{display: studentAdmin}}><FaUserGraduate/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Admission</p><p>{dropArrowstudents}</p></span>
-          <div style={{display: studentsVisi}}>
-            <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onMasterStudentEntry}>&#x3e;&nbsp;&nbsp;Master Admission Entry
-            </div>
-            <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onMasterStudentView}>&#x3e;&nbsp;&nbsp;View/Edit Master Entry
-            </div>
-            <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onAcademicEntryUpdate}>&#x3e;&nbsp;&nbsp;Academic Entry
-            </div>
-            <div className="Items" style={{display: studentAdmin}}
-                 onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry
-            </div>
-            <div className="Items" style={{display: studentAdmin}} onClick={props.onPromote}>&#x3e;&nbsp;&nbsp;Promote
-              To Next Class
-            </div>
-          </div>
+          
 
           {/* Hostel */}
           <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Hostel<p>{dropArrowhostel}</p></span>

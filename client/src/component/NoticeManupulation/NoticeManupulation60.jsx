@@ -45,8 +45,8 @@ const NoticeManupulation60=(props)=>{
            <table className="table-60">
            <thead>
                 <tr>
-                <th>Notice Id</th>
-                    <th>Notice Name</th>
+                <th style={{width:'10%'}}>Sl. No.</th>
+                    <th style={{width:'80%'}}>Notice Name</th>
                     <th>Action</th>
                 </tr>
                 </thead>

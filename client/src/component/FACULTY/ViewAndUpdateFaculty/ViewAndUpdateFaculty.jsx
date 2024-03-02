@@ -133,7 +133,7 @@ const handaleCancel = () => {
                 id="hostel"
                 className="dashboard-btn excel-btn user-profile-export"
                 table="faculty-view"
-                filename={'Faculty_Details_Report_'+currDate}
+                filename={'Employee_Details_Report_'+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
@@ -171,11 +171,21 @@ const handaleCancel = () => {
                         {/* <td>{item.relese_Date}</td> */}
                         
                         <td>
-                            <button className="dashboard-btn dashboard-btn-scss btn-warning"
+                            <button className="dashboard-btn btn-warning fix-width"
                                     onClick={() => handaleEdit(item.id)}>Edit
                             </button>
-                            <button className='dashboard-btn dashboard-btn-scss btn-warning'
-                                    onClick={() => handaleDelete(item.id)}>Delete
+                            <button className='dashboard-btn btn-warning fix-width'
+
+                            onClick={() => {
+                                const confirmBox = window.confirm(
+                                    "Do you really want to delete this Employee: " + item.name + "?"
+                                );
+                                if (confirmBox === true) {
+                                    handaleDelete(item.id);
+                                }
+                            }}
+
+                                 >Delete
                             </button>
                         </td>
                     </tr>
@@ -353,7 +363,7 @@ const handaleCancel = () => {
                 <tbody>
                 {data.map((item, index) => (
                     <tr key={index}>
-                        <td>{item.id}</td>
+                        <td>{index+1}</td>
                         <td><input type='checkbox' checked={item.active === 1 ? true : false}></input></td>
                         <td>{item.name}</td>
                         <td>{item.type}</td>
