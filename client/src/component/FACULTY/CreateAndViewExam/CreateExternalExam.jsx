@@ -21,6 +21,7 @@ const CreateExternalExam=(props)=>{
             alert("New Exam Type Category has been Created")
             setName("")
             settotalMarks(0)
+            setExamtype('')
             handleView()
         }).catch((err)=>{
             console.log(err)
