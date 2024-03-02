@@ -1,7 +1,7 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
-import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding  } from "react-icons/fa";
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding,FaChartBar,FaAddressBook   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
@@ -12,6 +12,7 @@ import { MdQueuePlayNext } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
+import { PiStudent,PiExam, PiExamBold  } from "react-icons/pi";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -342,14 +343,13 @@ const stockUsageVisiblity = () => {
 
           {/* Marks */}
           <span onClick={facultyVisiblity} className="user"
-                style={{display: facultyAdmin}}>&#x3e;&nbsp;&nbsp;&nbsp;Marks<p>{dropArrowfaculty}</p></span>
+                style={{display: facultyAdmin}}><FaChartBar /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks</p><p>{dropArrowfaculty}</p></span>
           <div style={{display: facultyVisi}}>
             
             <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateSubject}>&#x3e;&nbsp;&nbsp;Create Subject
+                 onClick={props.onCreateSubject}><FaAddressBook /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Subject</p>
             </div>
-            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}>&#x3e;&nbsp;&nbsp;Create
-              Exam
+            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p><p>{dropArrowfaculty}</p>
             </div>
             <div className="Items" style={{display: facultyAdmin}}
                  onClick={props.onCreateExternalMarksEntry}>&#x3e;&nbsp;&nbsp;Marks Entry

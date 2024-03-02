@@ -208,7 +208,7 @@ exports.DeleteSubject = (req, res) => {
 exports.GetAllInternalExam = (req, res) => {
     try {
         let query = `SELECT *
-                     FROM internal_exam`
+                     FROM internal_exam order by internal_exam_name`
         Database.query(query, (err, result) => {
             if (err) {
                 console.log(err)
