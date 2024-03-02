@@ -8,6 +8,7 @@ import { TbUserEdit } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList } from "react-icons/ci";
 import { BsClipboardData } from "react-icons/bs";
+import { MdQueuePlayNext } from "react-icons/md";
 
 const SideBar = (props) => {
   const [userVisi, SetUserVisi] = useState("none");
@@ -304,11 +305,12 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: studentAdmin}}
                  onClick={props.onAcademicEntryUpdate}><BsClipboardData /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Academic Entry</p>
             </div>
+            
+            <div className="Items" style={{display: studentAdmin}} onClick={props.onPromote}><MdQueuePlayNext /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Promote
+              To Next Class</p>
+            </div>
             <div className="Items" style={{display: studentAdmin}}
                  onClick={props.onAcademicView}>&#x3e;&nbsp;&nbsp;Export Academic Entry
-            </div>
-            <div className="Items" style={{display: studentAdmin}} onClick={props.onPromote}>&#x3e;&nbsp;&nbsp;Promote
-              To Next Class
             </div>
           </div>
 
