@@ -56,9 +56,10 @@ const EntryStockUsage = (props) => {
     return(
         <div style={{display:props.view}}>
             <form className="dashbrd-40-colm" onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+            <p style={{fontSize: '17px'}}>Stock Usage Entry </p>
                 <dl className="dl-horizontal">
                     <dt>
-                        <label>Type Of Item </label></dt>
+                        <label>Item Type</label></dt>
                     <dd><select onChange={handleItemtype} required={true}>
                         <option value="">Item Type</option>
                         {props.Item.map((data, idx) => (
@@ -69,7 +70,7 @@ const EntryStockUsage = (props) => {
                     </select></dd>
 
                     <dt>
-                        <label>Item name </label></dt>
+                        <label>Item Name </label></dt>
                     <dd><select onChange={changeItemName} required={true} value={itemName}>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
@@ -82,14 +83,14 @@ const EntryStockUsage = (props) => {
                 </dl>
 
                 {
-                    itemName === "" ? <p></p> : <p>left Stock of {itemName} is {leftStock}</p>
+                    itemName === "" ? <p></p> : <p>Left Amount of Item  {itemName} is {leftStock} ( Pc / Kg / Ltr / Mtr )</p>
                 }
                 <dl className="dl-horizontal">
                     <dt>
-                        <label>Usage Quantity ( Pc / Kg / Ltr / Mtr ) </label></dt>
+                        <label>Usage Amount  </label></dt>
                     <dd><input
                         type="number"
-                        placeholder="Quantity"
+                        placeholder="Pc / Kg / Ltr / Mtr"
                         onChange={HandleUsage}
                         value={quantity}
                     /></dd>

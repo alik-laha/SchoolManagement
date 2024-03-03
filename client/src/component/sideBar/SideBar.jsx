@@ -388,23 +388,25 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: cashAdmin}}
                  onClick={props.onSecondStockEntry}><BsCash /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Cash Entry </p>
             </div>
+            <div className="Items" style={{display: cashstockAdmin}}
+                 onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
+            </div>
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Modify Stock Entry </p>
             </div>
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}>&#x3e;&nbsp;&nbsp;Export
-              Primary Stock
+            
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Primary Stock </p>
             </div>
+           
             
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockView}>&#x3e;&nbsp;&nbsp;Export
-              Secondary Stock
+                 onClick={props.onSecondStockView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export
+                 Secondary Stock </p>
             </div>
             
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount
             </div>
-            <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
-            </div>
+           
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View
             </div>
