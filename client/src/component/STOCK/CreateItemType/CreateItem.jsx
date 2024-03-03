@@ -48,14 +48,16 @@ const CreateItem = (props) => {
 
     return(
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
+            <form onSubmit={handleCreateItem} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <p style={{fontSize:'17px'}}>Create New Item Type </p>
+            <dl class="dl-horizontal">
 
-        <form onSubmit={handleCreateItem}>
-
-            <div>
-                <label>Create Item Type</label>
+                <dt><label>Create Item Type</label></dt>
+                <dd>
                 <input type="text" placeholder="Create Item" onChange={(e)=>setItem(e.target.value)} value={item} required/>
-
-            </div>
+                </dd>
+            </dl>
+          
             <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Item Type</button></span>
 
         </form>
