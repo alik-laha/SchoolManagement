@@ -440,7 +440,7 @@ exports.GetAllFacultyMiddleLayer = (req, res) => {
 
 //get all marks for regNo Class and examName
 exports.GetAllMarks = (req, res) => {
-    const {regNo,Class,examName}=req.body
+    const {regNo,Class,examName,year}=req.body
     try{
         let query
         if(!Class){
@@ -449,7 +449,7 @@ exports.GetAllMarks = (req, res) => {
             })
         }
         else {
-            if (!regNo && Class && !examName) {
+            if (!regNo && Class && !examName && !year) {
                 query =`SELECT Student_Admission.student_Name,Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,
                 Student_Admission.roll_no,newcombine.exam_name,obtained_mark,newcombine.total_marks FROM Student_Admission
                 LEFT JOIN (SELECT SUM(Marks.marks) as obtained_mark,Marks.regNo from Marks where Marks.class="${Class}" group by Marks.regNo,Marks.exam_name) AS combine
@@ -468,7 +468,7 @@ exports.GetAllMarks = (req, res) => {
             }
             
           
-            else if(!regNo && examName && Class){
+            else if(!regNo && examName && Class && !year){
                 query =`SELECT Student_Admission.student_Name,Student_Admission.registration_no,Student_Admission.class,Student_Admission.section,
                 Student_Admission.roll_no,newcombine.exam_name,obtained_mark,newcombine.total_marks FROM Student_Admission
                 LEFT JOIN (SELECT SUM(Marks.marks) as obtained_mark,Marks.regNo from Marks where Marks.exam_name="${examName}"  and Marks.class="${Class}" group by Marks.regNo) AS combine
@@ -485,7 +485,7 @@ exports.GetAllMarks = (req, res) => {
                 
                 where Student_Admission.class="${Class}"`
             }
-            else if(!examName && regNo && Class){
+            else if(!examName && regNo && Class && !year){
                 query=`SELECT Marks.class,Marks.regNo,Marks.exam_name,SUM(Marks.marks) AS obtained_marks,sum(combine.int_exam_marks) as total_marks,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name
                 FROM Marks
                          LEFT JOIN Student_Admission
@@ -501,8 +501,7 @@ exports.GetAllMarks = (req, res) => {
             }
             
             else{
-
-
+                console.log("here")
                 query = `SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name,combine.int_exam_marks
                 FROM Marks
                          LEFT JOIN Student_Admission
@@ -511,7 +510,7 @@ exports.GetAllMarks = (req, res) => {
                          UNION ALL
                          SELECT external_exam_name,ext_exam_marks FROM external_exam) as combine
                                    ON Marks.exam_name = combine.internal_exam_name 
-                         WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}"
+                         WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}" AND Marks.Year="${year}"
                                    order by Marks.id`
 
         
