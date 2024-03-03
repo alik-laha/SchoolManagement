@@ -6,7 +6,7 @@ import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
-import { CiViewList,CiEdit  } from "react-icons/ci";
+import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
 import { BsClipboardData } from "react-icons/bs";
 import { MdQueuePlayNext } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
@@ -373,7 +373,7 @@ const stockUsageVisiblity = () => {
           <span onClick={stockVisiblity} className="user"
                 style={{display: cashstockAdmin}}><AiOutlineStock /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock</p><p>{dropArrowstock}</p></span>
           <div style={{display: stockVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}>&#x3e;&nbsp;&nbsp;Add New Vendor
+            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Vendor</p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Add New Item Type
             </div>

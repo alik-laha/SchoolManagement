@@ -44,7 +44,7 @@ const ViewAllVendor=(props)=>{
     }
     return(
         <div style={{display:view,marginTop:'180px'}}>
-           <button style={{float:'left'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
+           
               <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn "
@@ -53,7 +53,7 @@ const ViewAllVendor=(props)=>{
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-             
+             <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
             <table className="table-60">
                 <thead >
                 <tr>
@@ -71,7 +71,7 @@ const ViewAllVendor=(props)=>{
                             <td>{vendor.vendor_name}</td>
                             <td>{vendor.vendor_address}</td>
                             <td>
-                                <button className='btn-warning dashboard-btn clear-gradient' onClick={()=>handleDelete(vendor.vendor_id,vendor.vendor_name)}>Delete</button>
+                                <button className='dashboard-btn dashboard-btn-scss'  onClick={()=>handleDelete(vendor.vendor_id,vendor.vendor_name)}>Delete</button>
                             </td>
                         </tr>
                     )
