@@ -135,7 +135,7 @@ const StockItemEntry= (props) => {
                         required
                     /></dd>
                 
-                    <dt><label> <label>Amount</label></label></dt>
+                    <dt><label> <label>Amount(Pc/Kg/Ltr/Mtr)</label></label></dt>
                     <dd><input
                         id="Quantity"
                         type="number"
