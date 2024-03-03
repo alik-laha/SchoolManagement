@@ -9,6 +9,8 @@ const ExportStudentMarksView= (props) => {
     const [view,setView]=useState("none")
     const [data,setData]=useState([])
     const [ExamData,setExamData]=useState([])
+    const [result,setResult]=useState("none")
+    const [tableView,setTableView]=useState("contents")
 
     useEffect(() => {
         if(view==="block"){
@@ -47,13 +49,18 @@ const ExportStudentMarksView= (props) => {
     //   };
     const handleView=(data)=>{
         console.log(data)
+        setTableView("none")
+        setResult("block")
     }
-
+    const HandleClick=()=>{
+        setTableView("contents")
+        setResult("none")
+    }
 
       return(
         <div style={{display: view}}>
-
-            <table className="table-60">
+            <div style={{display:tableView}}>
+            <table className="table-60" >
                 <thead>
                 <tr>
                     <th>
@@ -70,6 +77,9 @@ const ExportStudentMarksView= (props) => {
                     </th>
                     <th>
                         RegNo
+                    </th>
+                    <th>
+                        Examination Type
                     </th>
                     <th>
                         Year
@@ -99,6 +109,16 @@ const ExportStudentMarksView= (props) => {
                                 {data.registration_no}
                             </td>
                             <td>
+                                <select>
+                                    <option value="">Select Exam</option>
+                                {
+                                   ExamData.map((exam,index)=>(
+                                        <option key={index} value={exam.internal_exam_name}>{exam.internal_exam_name}</option>
+                                      ))
+                                }
+                                </select>
+                            </td>
+                            <td>
                                 {data.current_academic_year}
                             </td>
                             <td>
@@ -112,6 +132,11 @@ const ExportStudentMarksView= (props) => {
                 }
                 </tbody>
             </table>
+            </div>
+            <div style={{display:result}}>
+                <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={HandleClick}>Cancel</button>
+                Alik laha
+            </div>
 
         </div>
 
