@@ -501,7 +501,6 @@ exports.GetAllMarks = (req, res) => {
             }
             
             else{
-                console.log("here")
                 query = `SELECT Marks.*,Student_Admission.section,Student_Admission.roll_no,Student_Admission.student_Name,combine.int_exam_marks
                 FROM Marks
                          LEFT JOIN Student_Admission

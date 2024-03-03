@@ -12,6 +12,7 @@ const ExportStudentMarksView= (props) => {
     const [result,setResult]=useState("none")
     const [tableView,setTableView]=useState("contents")
     const [ExamName,setExamName]=useState("")
+    const [resultData,setResultData]=useState([])
 
     useEffect(() => {
         if(view==="block"){
@@ -50,22 +51,33 @@ const ExportStudentMarksView= (props) => {
     //   };
     const handleView=(data)=>{
         console.log(data)
-        const DATA={
-            Class:data.class,
-            examName:ExamName,
-            year:data.current_academic_year,
-            regNo:data.registration_no
+        if(ExamName===""){
+            alert("Please Select Exam")
+            return
         }
-        axios.post(`/api/v1/faculty/getallmarks`,DATA)
-            .then((res)=>{
-                console.log(res)
-                setTableView("none")
-                setResult("block")
-            }).catch((err)=>{
-            console.log(err)
-        })
+        else {
+            const DATA = {
+                Class: data.class,
+                examName: ExamName,
+                year: data.current_academic_year,
+                regNo: data.registration_no
+            }
+            axios.post(`/api/v1/faculty/getallmarks`, DATA)
+                .then((res) => {
+                    setResultData(res.data.data)
+                    console.log(res)
+                    setTableView("none")
+                    setResult("block")
+                }).catch((err) => {
+                console.log(err)
+            })
+        }
 
     }
+    let sum_v1=0;
+    let sum_tot_v1=0;
+
+
     const HandleClick=()=>{
         setTableView("contents")
         setResult("none")
@@ -147,9 +159,69 @@ const ExportStudentMarksView= (props) => {
                 </tbody>
             </table>
             </div>
-            <div style={{display:result}}>
-                <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={HandleClick}>Cancel</button>
-                Alik laha
+            <div style={{display: result}}>
+                <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
+                        onClick={HandleClick}>Cancel
+                </button>
+                <table className="table-60" id="table_one">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Student Name</th>
+                        <th>Registration No.</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Roll No.</th>
+                        <th>Exam Name</th>
+                        <th>Subject</th>
+                        <th>Obtained Marks</th>
+                        <th>Full Marks</th>
+                        <th>Percentage</th>
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {resultData.map((item, idx) => (
+                        sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
+                            <tr key={item.id}>
+                                <td>{idx + 1}</td>
+                                <td>{item.student_Name}</td>
+                                <td>{item.regNo}</td>
+                                <td>{item.class}</td>
+                                <td>{item.section}</td>
+                                <td>{item.roll_no}</td>
+                                <td>{item.exam_name}</td>
+                                <td>{item.subject}</td>
+                                <td>{item.marks}</td>
+
+
+                                <td>{item.int_exam_marks}</td>
+                                <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
+
+                            </tr>
+
+                    ))}
+                    <tr>
+                        <td style={{border: 'none'}}></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
+                            Marks:</b></td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
+
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b></td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                            <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
+                    </tr>
+                    </tbody>
+
+
+                </table>
             </div>
 
         </div>
