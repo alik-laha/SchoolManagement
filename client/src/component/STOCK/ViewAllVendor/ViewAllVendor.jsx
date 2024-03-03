@@ -5,6 +5,7 @@ import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 const ViewAllVendor=(props)=>{
     const [view,setView]=useState("none")
     const currDate = new Date().toLocaleDateString();
+    const [data,setData] = useState([])
 
     const handleDelete = (vendorId,vendor_name) => {
         axios
@@ -29,16 +30,30 @@ const ViewAllVendor=(props)=>{
 
         }
     },[props.createView,props.Vendor])
+
+    useEffect(() => {
+        setData(props.Vendor)
+    },[props.Vendor])
+
+    const handleCancel = () => {
+        setData([])
+        if(view=='block'){
+            setView('none')
+        }
+
+    }
     return(
         <div style={{display:view,marginTop:'180px'}}>
+           <button style={{float:'left'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
               <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn margin-vendor-adjust"
+                className="dashboard-btn btn-warning excel-btn "
                 table="vendor-view"
                 filename={"Vendor_Details_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
+             
             <table className="table-60">
                 <thead >
                 <tr>
@@ -49,7 +64,7 @@ const ViewAllVendor=(props)=>{
                 </tr>
                 </thead>
                 <tbody >
-                {props.Vendor.map((vendor,idx)=>{
+                {data.map((vendor,idx)=>{
                     return(
                         <tr key={idx}>
                             <td>{idx+1}</td>
