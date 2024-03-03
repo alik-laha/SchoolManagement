@@ -40,6 +40,8 @@ const [Type, setType] = useState("");
     },[props.view, props.data]);
 const clearTable = () => {
         setData([]);
+       
+        
 }
 const handaleEdit = (id) => {
         data.find((item)=>{

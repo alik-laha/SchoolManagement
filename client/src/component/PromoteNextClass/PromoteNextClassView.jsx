@@ -74,6 +74,11 @@ const PromoteNextClassView= (props) => {
             } )
 
     }
+    const clearTable = () => {
+        setAcademicAll([]);
+       
+        
+}
 
 
       const handlePass=(data)=>{
@@ -121,7 +126,7 @@ const PromoteNextClassView= (props) => {
             },{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
                     console.log("done")
-                    alert(`Student Academic Year Increased by ${data.current_academic_year+1} And Class is ${data.class}`)
+                    alert(`Student has been Retained in ${convertToRoman(data.class)} for the Academic Year ${data.current_academic_year+1}`)
                     handaleSubmit()
                 }).catch((error)=>{
                     console.log(error)
@@ -136,6 +141,7 @@ const PromoteNextClassView= (props) => {
              
                 <table className="table-60" id="academic-entry-view">
                     <thead>
+                    <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                     <tr>
                         <th>Sl. No.</th>
                         <th>Student Name</th>
