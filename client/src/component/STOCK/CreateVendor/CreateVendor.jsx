@@ -60,7 +60,7 @@ const CreateVendor = (props) => {
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>
             
-            <form onSubmit={handleCreateVendor} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <form onSubmit={handleCreateVendor} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
             <p style={{fontSize:'17px'}}>Create New Vendor </p>
             <dl class="dl-horizontal">
                     <dt><label>Vendor Name</label></dt>

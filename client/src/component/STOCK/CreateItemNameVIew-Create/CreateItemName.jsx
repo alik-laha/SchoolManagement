@@ -37,7 +37,8 @@ const CreateItemName = (props) => {
   }
     return(
         <div style={{display: props.view}} className="dashbrd-40-colm">
-            <form onSubmit={handleSubmit}>
+             <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            
                 <div>
                     <label>Type Of Item </label>
                     <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>

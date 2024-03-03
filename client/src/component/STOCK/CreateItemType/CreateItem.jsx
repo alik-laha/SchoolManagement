@@ -48,7 +48,7 @@ const CreateItem = (props) => {
 
     return(
         <div style={{display:props.itemCreateView}} className="dashbrd-40-colm">
-            <form onSubmit={handleCreateItem} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <form onSubmit={handleCreateItem} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
             <p style={{fontSize:'17px'}}>Create New Item Type </p>
             <dl class="dl-horizontal">
 

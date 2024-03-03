@@ -9,7 +9,7 @@ import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
 import { BsClipboardData } from "react-icons/bs";
-import { MdQueuePlayNext } from "react-icons/md";
+import { MdQueuePlayNext,MdOutlineSmartToy  } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
@@ -376,10 +376,10 @@ const stockUsageVisiblity = () => {
           <div style={{display: stockVisi}}>
             <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Vendor</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item Type</p>
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Type of Item</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}>&#x3e;&nbsp;&nbsp;Add New Item
-              Name 
+            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item</p>
+              
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary
               Stock (Qty.)
