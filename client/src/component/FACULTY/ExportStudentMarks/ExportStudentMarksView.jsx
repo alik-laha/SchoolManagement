@@ -11,13 +11,14 @@ const ExportStudentMarksView= (props) => {
     const [ExamData,setExamData]=useState([])
 
     useEffect(() => {
-        if(props.view==="block"){
+        if(view==="block"){
             FetchExamData()
         }
     }, [view]);
     const FetchExamData=()=>{
         axios.get(`/api/v1/faculty/getallexam`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
-            console.log(res)
+            console.log(res.data.data)
+            setExamData(res.data.data)
         }).catch((err)=>{
             console.log(err)
         })
