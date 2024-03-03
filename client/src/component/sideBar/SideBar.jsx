@@ -2,18 +2,19 @@ import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
 import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding,FaChartBar,FaAddressBook 
-  ,FaRegWindowRestore   } from "react-icons/fa";
+  ,FaRegWindowRestore ,FaRegEdit   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
-import { BsClipboardData } from "react-icons/bs";
+import { BsClipboardData,BsCash  } from "react-icons/bs";
 import { MdQueuePlayNext,MdOutlineSmartToy  } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
 import { PiExamBold  } from "react-icons/pi";
+import { RiStockFill } from "react-icons/ri";
 
 
 const SideBar = (props) => {
@@ -381,22 +382,23 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Item</p>
               
             </div>
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary
-              Stock (Qty.)
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}><RiStockFill /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>
+              Stock Amount Entry </p>
+            </div>
+            <div className="Items" style={{display: cashAdmin}}
+                 onClick={props.onSecondStockEntry}><BsCash /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Cash Entry </p>
+            </div>
+            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Modify Stock Entry </p>
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}>&#x3e;&nbsp;&nbsp;Export
               Primary Stock
             </div>
-            <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}>&#x3e;&nbsp;&nbsp;Secondary Stock (Cash)
-            </div>
+            
             <div className="Items" style={{display: cashAdmin}}
                  onClick={props.onSecondStockView}>&#x3e;&nbsp;&nbsp;Export
               Secondary Stock
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}>&#x3e;&nbsp;&nbsp;Modify
-              Stock Entry
-            </div>
+            
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount
             </div>

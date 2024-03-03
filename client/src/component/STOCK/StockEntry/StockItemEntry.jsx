@@ -42,7 +42,7 @@ const StockItemEntry= (props) => {
             .then((res) => {
                 axios.post("/api/v1/stock/entrystockusage", {itemName,quantity,usageDate:primaryEntryDate,Type:"Plus"},{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
-                        alert("Stock has been Insterted Successfully");
+                        alert("Stock Entry has been Created Successfully");
                         setItemName("");
                         setBillNo("");
                         setBillDate(new Date().toISOString().slice(0, 10) );
@@ -134,10 +134,8 @@ const StockItemEntry= (props) => {
                         placeholder="Unit Cost ( Per Pc / Kg / Ltr / Mtr )"
                         required
                     /></dd>
-                </dl>
-                <span style={{display: "flex", justifyContent: "center", alignItems: "center"}}><p>Smaller Quantity like kg/pc/ltr</p></span>
-                <dl>
-                    <dt><label> <label>Total Quantity</label></label></dt>
+                
+                    <dt><label> <label>Amount</label></label></dt>
                     <dd><input
                         id="Quantity"
                         type="number"
