@@ -123,7 +123,7 @@ const ExportStudentMarksView= (props) => {
                                 {data.registration_no}
                             </td>
                             <td>
-                                <select onChange={(e)=>ExamName(e.target.value)} value={ExamName}>
+                                <select onChange={(e)=>setExamName(e.target.value)} value={ExamName} required>
                                     <option value="">Select Exam</option>
                                 {
                                    ExamData.map((exam,index)=>(
