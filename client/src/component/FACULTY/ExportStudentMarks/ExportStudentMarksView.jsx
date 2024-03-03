@@ -11,6 +11,7 @@ const ExportStudentMarksView= (props) => {
     const [ExamData,setExamData]=useState([])
     const [result,setResult]=useState("none")
     const [tableView,setTableView]=useState("contents")
+    const [ExamName,setExamName]=useState("")
 
     useEffect(() => {
         if(view==="block"){
@@ -49,8 +50,21 @@ const ExportStudentMarksView= (props) => {
     //   };
     const handleView=(data)=>{
         console.log(data)
-        setTableView("none")
-        setResult("block")
+        const DATA={
+            Class:data.class,
+            examName:ExamName,
+            year:data.current_academic_year,
+            regNo:data.registration_no
+        }
+        axios.post(`/api/v1/faculty/getallmarks`,DATA)
+            .then((res)=>{
+                console.log(res)
+                setTableView("none")
+                setResult("block")
+            }).catch((err)=>{
+            console.log(err)
+        })
+
     }
     const HandleClick=()=>{
         setTableView("contents")
@@ -109,7 +123,7 @@ const ExportStudentMarksView= (props) => {
                                 {data.registration_no}
                             </td>
                             <td>
-                                <select>
+                                <select onChange={(e)=>ExamName(e.target.value)} value={ExamName}>
                                     <option value="">Select Exam</option>
                                 {
                                    ExamData.map((exam,index)=>(
