@@ -1,8 +1,9 @@
 import {useState,useEffect} from "react";
 import axios from "axios";
 const ViewAllItem=(props)=>{
-    const [allItem,setAllItem]=useState([])
+   
     const [View,setView]=useState("none")
+    const [data,setData] = useState([])
 
     useEffect(()=>{
     if(props.Item.length>0 && props.itemCreateView==="block") {
@@ -11,7 +12,22 @@ const ViewAllItem=(props)=>{
     else{
         setView("none")
     }
+    
     },[props.Item,props.itemCreateView])
+
+    useEffect(() => {
+        setData(props.Item)
+    },[props.Item])
+
+    const handleCancel = () => {
+        setData([])
+        if(View=='block'){
+            setView('none')
+        }
+
+    }
+
+    
     const handleDelete = (itemId,item_Type) => {
         axios
             .post("/api/v1/stock/deleteitem", { itemId ,item_Type},{headers:{"Authorization":localStorage.getItem("token")}})
@@ -25,23 +41,24 @@ const ViewAllItem=(props)=>{
         alert("Item type "+item_Type+ " Deleted Successfully")
     }
     return(
-        <div style={{display:View}}>
+        <div style={{display:View,marginTop:'80px'}}>
+             <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
             <table className="table-60">
                 <thead >
                 <tr>
-                    <th>Item Type ID</th>
+                    <th>Item Type Sl. No.</th>
                     <th>Item Type</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody >
-                {props.Item.map((vendor,idx)=>{
+                {data.map((vendor,idx)=>{
                     return(
                         <tr key={idx}>
-                            <td>{idx+1}</td>
-                            <td>{vendor.item_Type}</td>
+                            <td style={{width:'20%'}}>{idx+1}</td>
+                            <td style={{width:'50%'}}>{vendor.item_Type}</td>
                             <td>
-                                <button className='btn-warning dashboard-btn clear-gradient' onClick={()=>handleDelete(vendor.type_id,vendor.item_Type)}>Delete</button>
+                                <button className='dashboard-btn dashboard-btn-scss' onClick={()=>handleDelete(vendor.type_id,vendor.item_Type)}>Delete</button>
                             </td>
                         </tr>
                     )

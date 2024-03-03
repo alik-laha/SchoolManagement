@@ -111,7 +111,7 @@ const PromoteNextClassView= (props) => {
                 },{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
                         console.log("done")
-                        alert(`Student ${data.registration_no} has been Promoted to Next Class and Academic Year `)
+                        alert(`Student Bearing Reg. No. : ${data.registration_no} has been Promoted to Next Class and Academic Year : ${data.current_academic_year+1}`)
                         handaleSubmit()
                     }).catch((error)=>{
                         console.log(error)

@@ -1,7 +1,8 @@
 import "./sidebar.css";
 import { useState, useEffect } from "react";
 import logo from '../Home/logo_ahm.jpg'
-import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding,FaChartBar,FaAddressBook   } from "react-icons/fa";
+import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,FaRestroom,FaRegBuilding,FaChartBar,FaAddressBook 
+  ,FaRegWindowRestore   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
 import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
@@ -12,7 +13,7 @@ import { MdQueuePlayNext } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
-import { PiStudent,PiExam, PiExamBold  } from "react-icons/pi";
+import { PiExamBold  } from "react-icons/pi";
 
 
 const SideBar = (props) => {
@@ -375,7 +376,7 @@ const stockUsageVisiblity = () => {
           <div style={{display: stockVisi}}>
             <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Vendor</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}>&#x3e;&nbsp;&nbsp;Add New Item Type
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item Type</p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}>&#x3e;&nbsp;&nbsp;Add New Item
               Name 

@@ -57,7 +57,7 @@ const ViewAllVendor=(props)=>{
             <table className="table-60">
                 <thead >
                 <tr>
-                    <th>Vendor Id</th>
+                    <th>Vendor Sl. No.</th>
                     <th>Vendor Name</th>
                     <th>Vendor Address</th>
                     <th>Action</th>
@@ -82,17 +82,17 @@ const ViewAllVendor=(props)=>{
             <table style={{display:'none'}} className="table-60" id='vendor-view'>
                 <thead >
                 <tr>
-                    <th>Vendor Id</th>
+                    <th>Vendor Sl. No.</th>
                     <th>Vendor Name</th>
                     <th>Vendor Address</th>
                    
                 </tr>
                 </thead>
                 <tbody >
-                {props.Vendor.map((vendor)=>{
+                {props.Vendor.map((vendor,idx)=>{
                     return(
-                        <tr key={vendor.vendor_id}>
-                            <td>{vendor.vendor_id}</td>
+                        <tr key={idx}>
+                            <td>{idx+1}</td>
                             <td>{vendor.vendor_name}</td>
                             <td>{vendor.vendor_address}</td>
                            
