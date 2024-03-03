@@ -776,3 +776,27 @@ exports.MarksEntryForStudentS = (req, res) => {
         console.log(err)
     }
 }
+
+//get student by active status and class and academic year and section
+exports.getStudentByClassYearAndSectio= (req, res) => {
+    const {Class,year,section}=req.body
+    try{
+        if(!Class || !year || !section){
+            return res.status(400).json({message:"All Fields are required"})
+        }
+        else{
+            let query = `SELECT * FROM Student_Admission WHERE class='${Class}' AND current_academic_year='${year}' AND section='${section}'`
+            Database.query(query,(err,result)=>{
+                if(err){
+                    console.log(err)
+                    return res.status(400).json({message:"Error Occured",err:err})
+                }
+                else{
+                    return res.status(200).json({message:"Student Fetched",data:result})
+                }
+            })
+        }
+    }catch (err){
+        console.log(err)
+    }
+}
