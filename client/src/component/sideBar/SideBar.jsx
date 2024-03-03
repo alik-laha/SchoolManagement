@@ -376,9 +376,9 @@ const stockUsageVisiblity = () => {
           <div style={{display: stockVisi}}>
             <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Vendor</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Type of Item</p>
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item Type</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item</p>
+            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Item</p>
               
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}>&#x3e;&nbsp;&nbsp;Primary

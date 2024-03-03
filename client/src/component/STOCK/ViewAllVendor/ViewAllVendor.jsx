@@ -92,7 +92,7 @@ const ViewAllVendor=(props)=>{
                 {props.Vendor.map((vendor,idx)=>{
                     return(
                         <tr key={idx}>
-                            <td>{idx+1}</td>
+                            <td >{idx+1}</td>
                             <td>{vendor.vendor_name}</td>
                             <td>{vendor.vendor_address}</td>
                            

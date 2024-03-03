@@ -8,6 +8,14 @@ const [view, setView] = useState("none");
     useEffect(() => {
        setData(props.Item)
     }, [props.Item]);
+
+    const handleCancel = () => {
+        setData([])
+        if(view=='block'){
+            setView('none')
+        }
+
+    }
     useEffect(() => {
         console.log(props.view)
         if(props.view === "block" && props.Item.length > 0){
@@ -28,32 +36,35 @@ const [view, setView] = useState("none");
             })
     }
     return(
-        <div style={{display:view}}>
+        <div style={{display:view,marginTop:'120px'}}>
             <ReactHTMLTableToExcel
                 id="Alik"
-                className="dashboard-btn btn-warning excel-btn margin-vendor-adjust"
+                className="dashboard-btn btn-warning excel-btn "
                 table="itemname-view"
-                filename={"ItemName_Details_Report_"+currDate}
+                filename={"Item_Details_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
+            <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
         <table className="table-60" id="itemname-view">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Item Type</th>
+                    <th>Item SL. No.</th>
+                    
                     <th>Item Name</th>
+                    <th>Item Type</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 {data.map((data,idx) => (
                     <tr key={idx}>
-                        <td>{idx+1}</td>
-                        <td>{data.item_type}</td>
+                        <td style={{width:'20%'}}>{idx+1}</td>
+                        
                         <td>{data.item_name}</td>
+                        <td>{data.item_type}</td>
                         <td>
-                            <button className='btn-warning dashboard-btn clear-gradient' onClick={() => deleteItemName(data.id)}>Delete</button>
+                            <button className='dashboard-btn dashboard-btn-scss' onClick={() => deleteItemName(data.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}

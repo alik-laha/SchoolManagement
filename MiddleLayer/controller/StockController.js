@@ -482,7 +482,7 @@ exports.CreateItemName = (req, res) => {
 exports.GetItemName = (req, res) => {
     query = `
                 SELECT *
-                FROM Item_Name  ORDER BY id ASC`;
+                FROM Item_Name  order by item_type ASC`;
     Database.query(query, function (error, data) {
         if (error) {
             return res.status(400).json({

@@ -37,36 +37,42 @@ const CreateItemName = (props) => {
   }
     return(
         <div style={{display: props.view}} className="dashbrd-40-colm">
-             <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
-            
-                <div>
-                    <label>Type Of Item </label>
-                    <select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
+             <form onSubmit={handleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+             <p style={{fontSize:'17px'}}>Create New Item </p>
+             <dl class="dl-horizontal">
+                <dt><label>Name of Item</label></dt>
+                <dd> <input
+                        type="text"
+                        placeholder="Item Name"
+                        onChange={(e) => setItemName(e.target.value)}
+                        value={itemName}
+                        required
+                    /></dd>
+
+                <dt><label>Type of Item</label></dt>
+                <dd><select onChange={(e) => setItemType(e.target.value)} required value={itemType}>
                         <option value="">Item Type</option>
                         {props.Item.map((data) => (
                             <option value={data.item_Type} key={data.type_id}>
                                 {data.item_Type}
                             </option>
                         ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Item Name</label>
-                    <input
-                        type="text"
-                        placeholder="Item Name"
-                        onChange={(e) => setItemName(e.target.value)}
-                        value={itemName}
-                        required
-                    />
-                </div>
+                    </select></dd>
+             </dl>
+                
+               
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
             </form>
             <div>
-                <button style={{backgroundColor: 'orange'}} className="dashboard-btn dashboard-btn-scss"
-                        onClick={handleViewItemName}>View / Delete Item Name
+                <button style={{backgroundColor: 'lightseagreen',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewItemName}>
+                View / Delete Item Name
                 </button>
             </div>
+            {/* <div>
+                <button style={{backgroundColor: 'orange'}} className="dashboard-btn dashboard-btn-scss"
+                        onClick={handleViewItemName}>
+                </button>
+            </div> */}
         </div>
     )
 }
