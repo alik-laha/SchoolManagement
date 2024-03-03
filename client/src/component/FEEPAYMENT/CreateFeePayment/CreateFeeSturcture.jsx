@@ -43,7 +43,13 @@ const CreateFeeSturcture = (props) => {
                 Number(BedFee)
         )
     };
-
+    const dialog = document.getElementById('myDialogfee');
+    const closeDialogButton = document.getElementById('closeDialog');
+    if(closeDialogButton){
+        closeDialogButton.addEventListener('click', () => {
+            dialog.close();
+          });
+    }
     useEffect(() => {
         calculateTotal()
     }, [AdmissonFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee]);
@@ -101,7 +107,8 @@ const CreateFeeSturcture = (props) => {
     }
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm special-25-div">
-            <form onSubmit={HandleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'azure',boxShadow:'0 0 5px grey'}}>
+            <form onSubmit={HandleSubmit} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+            <p style={{fontSize:'17px'}}>New Academic Year Fee Structures </p>
                 <dl className="dl-horizontal">
 
                     <dt><label>Class</label></dt>
@@ -148,8 +155,8 @@ const CreateFeeSturcture = (props) => {
                     </select>
                     </dd>
 
-                    <dt><label>Year</label></dt>
-                    <dd><input type="number" value={Year} onChange={(e) => setYear(e.target.value)}/>
+                    <dt><label>Academic Year</label></dt>
+                    <dd><input type="number" value={Year} onChange={(e) => setYear(e.target.value)} required/>
                     </dd>
 
                     <dt><label>Fee Type</label></dt>
@@ -181,7 +188,7 @@ const CreateFeeSturcture = (props) => {
                                onChange={(e) => setExaminationFee(e.target.value)}/>
                     </dd>
 
-                    <dt><label>Games,Sports & Exicursion</label></dt>
+                    <dt><label>Games,Sports & Others</label></dt>
                     <dd><input type="number" value={GamesSportsExicursion}
                                onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
                     </dd>
@@ -234,6 +241,11 @@ const CreateFeeSturcture = (props) => {
                 </dl>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
+            <dialog id="myDialogfee" class="dashboard-modal">
+                <button id="closeDialog" class="dashboard-modal-close-btn ">X </button>
+                <p id="modal-text" style={{color:'black'}}> Fee Structures for the Academic Session : <p className={{color:'red!important'}}>{Year}</p> Created Successfully</p>
+                {/* <!-- Add more elements as needed --> */}
+            </dialog>
         </div>
     )
 }
