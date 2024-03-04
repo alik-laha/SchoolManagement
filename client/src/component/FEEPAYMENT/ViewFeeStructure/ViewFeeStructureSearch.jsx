@@ -15,6 +15,7 @@ const ViewFeeStructureSearch = (props) => {
                 console.log(error)
               })
     }
+   
 
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">

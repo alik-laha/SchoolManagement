@@ -137,6 +137,10 @@ const ViewFeeStructure = (props) => {
         setTotalFee(0)
 
     }
+    const clearTable = () => {
+        
+        setFeeStructure([])
+        };
 
     const handleSubmit=(e)=>{
         e.preventDefault()
@@ -199,6 +203,7 @@ const ViewFeeStructure = (props) => {
             <div style={{display: view}}>
                 <table className="table-60">
                     <thead>
+                    <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                     <tr>
                         <th>Sl. No.</th>
                         <th>Fee Type</th>
@@ -229,6 +234,7 @@ const ViewFeeStructure = (props) => {
                     })}
                     </tbody>
                 </table>
+                {feeStructure.length === 0 ? <div className="no-data">No Data Exists</div> : null}
 
             </div>
             <div style={{display: editedIndex}} className="dashbrd-40-colm special-25-div">
