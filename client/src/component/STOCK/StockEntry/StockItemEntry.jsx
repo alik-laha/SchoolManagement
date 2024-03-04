@@ -40,7 +40,9 @@ const StockItemEntry= (props) => {
         }
         axios.post("/api/v1/stock/stockentry", data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-                axios.post("/api/v1/stock/entrystockusage", {itemName,quantity,usageDate:primaryEntryDate,Type:"Plus"},{headers:{"Authorization":localStorage.getItem("token")}})
+              console.log(res.data.data.insertId)
+                const Id = res.data.data.insertId;
+                axios.post("/api/v1/stock/entrystockusage", {itemName,quantity,usageDate:primaryEntryDate,Type:"Plus",ID:Id},{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
                         alert("Stock Entry has been Created Successfully");
                         setItemName("");
