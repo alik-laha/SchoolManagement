@@ -5,10 +5,10 @@ import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,
   ,FaRegWindowRestore ,FaRegEdit   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
-import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
+import { TbUserEdit,TbBrandGoogleBigQuery,TbCash   } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
-import { BsClipboardData,BsCash  } from "react-icons/bs";
+import { BsClipboardData,BsCash ,BsCashCoin  } from "react-icons/bs";
 import { MdQueuePlayNext,MdOutlineSmartToy,MdDataUsage   } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
@@ -116,6 +116,7 @@ const SideBar = (props) => {
       setdropArrowfaculty("+")
       setdropArrowhostel("+")
       setdropArrowstudents("+")
+      setdropArrowstockUsage("+")
     }
     else{setdropArrowuser("+");
         }};  
@@ -140,6 +141,7 @@ const SideBar = (props) => {
       setdropArrowfaculty("+")
       setdropArrowhostel("+")
       setdropArrowstudents("+")
+      setdropArrowstockUsage("+")
     }
       
     else{setdropArrowNotc("+");}};
@@ -164,6 +166,7 @@ const SideBar = (props) => {
       setdropArrowfaculty("+")
       setdropArrowhostel("+")
       setdropArrowstudents("+")
+      setdropArrowstockUsage("+")
     }
     else{setdropArrowstock("+");}
   };
@@ -188,6 +191,7 @@ const SideBar = (props) => {
         setdropArrowstock("+")
         setdropArrowhostel("+")
         setdropArrowstudents("+")
+        setdropArrowstockUsage("+")
       }
       else{setdropArrowfaculty("+");}
     };
@@ -212,6 +216,7 @@ const SideBar = (props) => {
         setdropArrowstock("+")
         setdropArrowhostel("+")
         setdropArrowfaculty("+")
+        setdropArrowstockUsage("+")
       }
       else{setdropArrowstudents("+");}
     };
@@ -236,6 +241,7 @@ const SideBar = (props) => {
         setdropArrowstock("+")
         setdropArrowstudents("+")
         setdropArrowfaculty("+")
+        setdropArrowstockUsage("+")
       }
       else{setdropArrowhostel("+");}
     };
@@ -249,14 +255,17 @@ const stockUsageVisiblity = () => {
         setstudentsVisi("none");
         setfacultyVisi("none");
         sethostelVisi("none");
+        
     }
     else {
       setstockUsageVisi("none")
 
     }
     if (dropArrowstockUsage==="+")
-    { setdropArrowstock("+");
-      setdropArrowstockUsage("-");
+    { 
+      setdropArrowstockUsage("-")
+      setdropArrowstock("+");
+      
       setdropArrowuser("+");
       setdropArrowNotc("+")
       setdropArrowhostel("+")
@@ -428,10 +437,12 @@ const stockUsageVisiblity = () => {
 
 
           <span onClick={stockUsageVisiblity} className="user"
-                style={{display: admin}}>&#x3e;&nbsp;&nbsp;&nbsp;Fee Payment<p>{dropArrowstockUsage}</p></span>
+                style={{display: admin}}><BsCashCoin /><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment </p><p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}>&#x3e;&nbsp;&nbsp;
-              Create fee Structure
+            <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}><TbCash /><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Create fee Structure </p>
+              
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}>&#x3e;&nbsp;&nbsp;
               View/edit fee Structure

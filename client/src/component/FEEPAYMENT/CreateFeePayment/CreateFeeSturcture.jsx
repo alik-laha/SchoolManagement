@@ -21,6 +21,8 @@ const CreateFeeSturcture = (props) => {
     const [SessionCharge,setSessionCharge]=useState(0)
     const [BedFee,setBedFee]=useState(0)
     const [Total,setTotal]=useState(0)
+    const [dialogclass,setDialogCLass]=useState(0)
+    const [dialogYear,setDialogYear]=useState(0)
 
 
     const calculateTotal = () => {
@@ -44,12 +46,27 @@ const CreateFeeSturcture = (props) => {
         )
     };
     const dialog = document.getElementById('myDialogfee');
-    const closeDialogButton = document.getElementById('closeDialog');
+    const closeDialogButton = document.getElementById('closeDialogfee');
     if(closeDialogButton){
         closeDialogButton.addEventListener('click', () => {
             dialog.close();
           });
     }
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+
     useEffect(() => {
         calculateTotal()
     }, [AdmissonFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee]);
@@ -80,7 +97,10 @@ const CreateFeeSturcture = (props) => {
         axios.post("/api/v1/fee/createfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
-                alert("Fee Structure Created Successfully")
+                setDialogCLass(Class)
+                setDialogYear(Year)
+                dialog.showModal();
+                //alert("Fee Structure Created Successfully")
                 setClass("")
                 setYear(0)
                 setFeeType("")
@@ -102,6 +122,9 @@ const CreateFeeSturcture = (props) => {
                 setBedFee(0)
                 // setTotal(0)
             }).catch((error)=>{
+                if(error.response.data.msg.errno===1062){
+                    alert(`Fee Structure Already Created for Class ${convertToRoman(Class)} in the Academic Year ${Year}`)
+                  }
             console.log(error)
         })
     }
@@ -242,8 +265,8 @@ const CreateFeeSturcture = (props) => {
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
             <dialog id="myDialogfee" class="dashboard-modal">
-                <button id="closeDialog" class="dashboard-modal-close-btn ">X </button>
-                <p id="modal-text" style={{color:'black'}}> Fee Structures for the Academic Session : <p className={{color:'red!important'}}>{Year}</p> Created Successfully</p>
+                <button id="closeDialogfee" class="dashboard-modal-close-btn ">X </button>
+                <p id="modal-text" style={{color:'black'}}> Fee Structures for Class {convertToRoman(dialogclass)} in  Session {dialogYear} has been Created Successfully</p>
                 {/* <!-- Add more elements as needed --> */}
             </dialog>
         </div>
