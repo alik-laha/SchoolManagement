@@ -1,18 +1,53 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 const StockUsageEditSearch = (props) => {
     const [ItemNameData, setItemNameData] = useState([]);
-    const [itemTypeData, setItemTypeData] = useState([]);
     const [itemName, setItemName] = useState("");
-    const [itemType, setItemType] = useState("");
+    const [date, setDate] = useState();
     const handleSearch = (e) => {
         e.preventDefault();
-
+        axios.post("/api/v1/stock/getminusstockusage",{itemName, date},{headers:{"Authorization":localStorage.getItem("token")}})
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
+    useEffect(() => {
+        if(props.view === "block"){
+            axios.get("/api/v1/stock/getallitemname",{headers:{"Authorization":localStorage.getItem("token")}})
+                .then((res) => {
+                    setItemNameData(res.data.data);
+                    // console.log(res.data.data);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    }, [props.view]);
     return (
-        <div style={{display:props.view}}>
+        <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSearch}>
-                <h3>Alik laha</h3>
+                <div>
+                    <label>Item Name</label>
+                    <select onChange={(e) => setItemName(e.target.value)} value={itemName}>
+                        <option value="">Item Name</option>
+                        {ItemNameData.map((data, idx) => (
+                            <option value={data.item_name} key={idx}>
+                                {data.item_name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <div>
+                    <label>
+                        Entry Date
+                    </label>
+                    <input type="date" value={date} onChange={(e)=>setDate(e.target.value)} />
+                </div>
+                <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Search</button></span>
             </form>
         </div>
     )

@@ -415,6 +415,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         {/*stock usage*/}
             <EntryStockUsage view={props.StockUsageEntry} Item={itemData}/>
             <StockUsageSearch view={props.StockUsageView} StockUsage={handleStockUsage} />
+            <StockUsageEditSearch view={props.StockUsageEdit}/>
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
@@ -492,7 +493,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               <ModifyStockEntryView  Vendor={VendorDatas} Item={itemData} modifyStockView={props.modifyStock} view={modifyStockEntryViewShow} SearchebyData={modifyviewstockdata}/>
               {/* View Pending Balance */}
               <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
-            <StockUsageEditSearch view={props.StockUsageEdit}/>
+
             <StockUsageView view={props.StockUsageView} data={StockUsageData} />
           {/* Vendor End*/}    
 
