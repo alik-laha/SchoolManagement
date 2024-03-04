@@ -63,6 +63,8 @@ import StudentFeePaymentEntry from "../FEEPAYMENT/StudentFeePaymentEntry/Student
 import ViewFeePayment from "../FEEPAYMENT/ViewStudentFeepayment/ViewFeePayment.jsx";
 import StockUsageView from "../STOCKUSAGE/StockUsageView/StockUsageView.jsx";
 import StockUsageEditSearch from "../STOCKUSAGE/StockUsageEdit/StockUsageEditSearch.jsx";
+// import StockUsageEdit from "../STOCKUSAGE/StockUsageEdit/StockUSageEdit.jsx";
+import StockUsageEdit from "../STOCKUSAGE/StockUsageEdit/StockUSageEdit.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -495,6 +497,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
 
             <StockUsageView view={props.StockUsageView} data={StockUsageData} />
+           <StockUsageEdit data={StockUsageData} view={props.StockUsageEdit} />
           {/* Vendor End*/}    
 
           {/* Hostel Start*/}
