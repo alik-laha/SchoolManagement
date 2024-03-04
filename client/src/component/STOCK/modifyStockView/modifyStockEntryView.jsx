@@ -127,27 +127,36 @@ const ModifyStockEntryView= (props) => {
           modifiedDate:modifieddate,
           pendingamount:balamt
          }
+         const data1={
+             itemName:itemname,
+             quantity:qty,
+             id:itemid
+         }
             axios.post("/api/v1/stock/modifystockentry",data,{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
-                    alert("Stock Entry has been Modified Successfully");
-                    setVisiblity('none');
-                    setmainsvisibility('contents');
-                    setdiscountamt(0);
-                    setpaidamt(0);
-                    setcashentrydate()
-                    setmodifieddate(new Date().toISOString().slice(0, 10))
-                    setbillDate()
-                    setunitcost(0)
-                    setqty(0)
-                    setestimatedamt(0)
-                    setbillid("")
-                    setitemid("")
-                    setitemname("")
-                    setvendor("")
-                    setitem("")
-                    // props.setStockData(res.data.data)
-                    setVisible('none')
-                    
+                    axios.post("/api/v1/stock/updatestockusageplus",data1,{headers:{"Authorization":localStorage.getItem("token")}})
+                        .then((res) => {
+                            alert("Stock Entry has been Modified Successfully");
+                            setVisiblity('none');
+                            setmainsvisibility('contents');
+                            setdiscountamt(0);
+                            setpaidamt(0);
+                            setcashentrydate()
+                            setmodifieddate(new Date().toISOString().slice(0, 10))
+                            setbillDate()
+                            setunitcost(0)
+                            setqty(0)
+                            setestimatedamt(0)
+                            setbillid("")
+                            setitemid("")
+                            setitemname("")
+                            setvendor("")
+                            setitem("")
+                            // props.setStockData(res.data.data)
+                            setVisible('none')
+                        }).catch((err) => {
+                            console.log(err);
+                        })
 
                 })
                 .catch((err) => {

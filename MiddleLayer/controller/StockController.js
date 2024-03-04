@@ -693,3 +693,35 @@ exports.GetMinusStockUsage=(req,res)=>{
         }
     })
 }
+
+//Update Plus By modify stock
+ exports.UpdatePlusStockUsage = (req, res) => {
+    try{
+        const {id,quantity,itemName}=req.body
+        if(!id || !quantity || !itemName){
+            return res.status(400).json({
+                status:"all data needed"
+            })
+        }
+        else{
+            const query=`UPDATE Stock_Usage SET quantity="${quantity}",item_name="${itemName}" WHERE p_id="${id}"`;
+            Database.query(query,function(error,data){
+                if(error){
+                    return res.status(400).json({
+                        status:"error at updating stock usage",
+                        message:error
+                    })
+                }
+                if(data){
+                    return res.status(200).json({
+                        status:"stock usage updated",
+                        data:data
+                    })
+                }
+            })
+        }
+
+    }catch (e) {
+        console.log(e)
+    }
+ }
