@@ -191,12 +191,8 @@ const ExportStudentMarksView= (props) => {
                 <table className="table-60" id="table_one">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Student Name</th>
-                        <th>Registration No.</th>
-                        <th>Class</th>
-                        <th>Section</th>
-                        <th>Roll No.</th>
+                        <th>Sl No.</th>
+                        
                         <th>Exam Name</th>
                         <th>Subject</th>
                         <th>Obtained Marks</th>
@@ -211,11 +207,7 @@ const ExportStudentMarksView= (props) => {
                         sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
                             <tr key={item.id}>
                                 <td>{idx + 1}</td>
-                                <td>{item.student_Name}</td>
-                                <td>{item.regNo}</td>
-                                <td>{item.class}</td>
-                                <td>{item.section}</td>
-                                <td>{item.roll_no}</td>
+                               
                                 <td>{item.exam_name}</td>
                                 <td>{item.subject}</td>
                                 <td>{item.marks}</td>
@@ -229,11 +221,8 @@ const ExportStudentMarksView= (props) => {
                     ))}
                     <tr>
                         <td style={{border: 'none'}}></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        
+                        
                         <td></td>
                         <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
                             Marks:</b></td>
