@@ -9,7 +9,7 @@ import { TbUserEdit,TbBrandGoogleBigQuery  } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
 import { BsClipboardData,BsCash  } from "react-icons/bs";
-import { MdQueuePlayNext,MdOutlineSmartToy  } from "react-icons/md";
+import { MdQueuePlayNext,MdOutlineSmartToy,MdDataUsage   } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock } from "react-icons/ai";
@@ -394,7 +394,9 @@ const stockUsageVisiblity = () => {
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Cash Entry </p>
             </div>
             <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
+                 onClick={props.onStockUsageEntry}><MdDataUsage /><p
+                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
+               Stock Usage Entry </p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>

@@ -22,7 +22,7 @@ const EntryStockUsage = (props) => {
         e.preventDefault();
         axios.post("/api/v1/stock/entrystockusage",{itemName, quantity, usageDate,Type:"Minus"},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-                alert("Stock Usage has been Insterted Successfully");
+                alert("Amount of " + quantity+ " units of Stock from Item Name :  " +itemName + " has been Insterted Successfully");
                 setItemName("");
                 setQuantity("");
                 setUsageDate(new Date().toISOString().slice(0, 10) );
@@ -43,7 +43,7 @@ const EntryStockUsage = (props) => {
     }
     const HandleUsage=(e)=>{
         if(e.target.value > leftStock){
-            alert("You can not use more than "+leftStock+" "+itemName);
+            alert("You can not use more than "+leftStock+" "+itemName+ "values of amount");
             setQuantity(leftStock);
             return;
         }
