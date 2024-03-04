@@ -14,6 +14,21 @@ const ExportStudentMarksView= (props) => {
     const [ExamName,setExamName]=useState("")
     const [resultData,setResultData]=useState([])
 
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+
     useEffect(() => {
         if(view==="block"){
             FetchExamData()
@@ -90,10 +105,16 @@ const ExportStudentMarksView= (props) => {
                 <thead>
                 <tr>
                     <th>
-                        Sl.no
+                        Sl. No.
                     </th>
                     <th>
                         Name
+                    </th>
+                    <th>
+                        RegNo
+                    </th>
+                    <th>
+                        Year
                     </th>
                     <th>
                         Class
@@ -102,14 +123,13 @@ const ExportStudentMarksView= (props) => {
                         Section
                     </th>
                     <th>
-                        RegNo
+                        Roll No.
                     </th>
+                    
                     <th>
                         Examination Type
                     </th>
-                    <th>
-                        Year
-                    </th>
+                    
                     <th>
                         Action
                     </th>
@@ -126,14 +146,21 @@ const ExportStudentMarksView= (props) => {
                                 {data.student_Name}
                             </td>
                             <td>
-                                {data.class}
+                                {data.registration_no}
+                            </td>
+                            <td>
+                                {data.current_academic_year}
+                            </td>
+                            <td>
+                                {convertToRoman(data.class)}
                             </td>
                             <td>
                                 {data.section}
                             </td>
                             <td>
-                                {data.registration_no}
+                                {data.roll_no}
                             </td>
+                          
                             <td>
                                 <select onChange={(e)=>setExamName(e.target.value)} value={ExamName} required>
                                     <option value="">Select Exam</option>
@@ -144,9 +171,7 @@ const ExportStudentMarksView= (props) => {
                                 }
                                 </select>
                             </td>
-                            <td>
-                                {data.current_academic_year}
-                            </td>
+                            
                             <td>
                                 <button style={{background: '#3c8dbc', borderColor: '#3c8dbc'}}
                                         onClick={() => handleView(data)}
