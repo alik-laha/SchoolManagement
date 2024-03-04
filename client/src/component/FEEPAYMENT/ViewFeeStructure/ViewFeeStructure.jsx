@@ -243,6 +243,8 @@ const ViewFeeStructure = (props) => {
                 </button>
                 <form onSubmit={handleSubmit}
                       style={{display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey'}}>
+                        <p style={{fontSize:'17px'}} className="customize-centre">Edit Fee Structure</p>
+
                     <dl className="dl-horizontal">
 
                         <dt><label>Class</label></dt>
