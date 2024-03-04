@@ -78,26 +78,26 @@ exports.GetFeeStructure = (req, res) => {
         if(Class && year && !feeType) {
             query = `SELECT *
                      FROM fee_structure
-                     WHERE Class = '${Class}' AND year = '${year}'`
+                     WHERE Class = '${Class}' AND year = '${year}' order by year desc,Class,fee_type`
         }
         else if(Class && !feeType && !year){
             query = `SELECT *
                      FROM fee_structure
-                     WHERE Class = '${Class}'`
+                     WHERE Class = '${Class}' order by year desc,Class,fee_type`
         }
         else if(year && !Class && !feeType){
             query = `SELECT *
                      FROM fee_structure
-                     WHERE year = '${year}'`
+                     WHERE year = '${year}' order by year desc,Class,fee_type`
         }
         else if(Class && year && feeType){
             query = `SELECT *
                      FROM fee_structure
-                     WHERE Class = '${Class}' AND year = '${year}' AND fee_type='${feeType}'`
+                     WHERE Class = '${Class}' AND year = '${year}' AND fee_type='${feeType}' order by year desc,Class,fee_type`
         }
         else{
             query = `SELECT *
-                     FROM fee_structure`
+                     FROM fee_structure order by year desc,Class,fee_type`
         }
         Database.query(query,(err,result)=>{
             if(err){
