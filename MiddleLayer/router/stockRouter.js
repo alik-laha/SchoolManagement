@@ -3,7 +3,7 @@ const {CreateItem, GetItem, CreateVendor, GetVendor,ModifyStock,StockEntry,Delet
     CreateItemName,
     GetItemName,GetItemNameByType,
     DeleteItemName,
-    CreateStockUsage,GetPosativeAndNegetiveStockSum,GetStockUsage
+    CreateStockUsage,GetPosativeAndNegetiveStockSum,GetStockUsage,GetMinusStockUsage
 } = require("../controller/StockController");
 const verifyToken = require('../Config/auth')
 const router = express.Router()
@@ -61,5 +61,8 @@ router.post('/getplusminusstock',verifyToken,GetPosativeAndNegetiveStockSum)
 
 //Get Stock Usage
 router.post('/getallstockusages',verifyToken,GetStockUsage)
+
+//Get minus stock usage for Edit
+router.post('/getminusstockusage',verifyToken,GetMinusStockUsage)
 
 module.exports = router
