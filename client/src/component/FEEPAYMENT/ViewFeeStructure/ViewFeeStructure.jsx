@@ -57,6 +57,21 @@ const ViewFeeStructure = (props) => {
         setFeeStructure(props.data)
     },[props.data])
 
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+
     useEffect(() => {
         if ( props.data.length>0 && props.view40==="block") {
             setView("block")
@@ -185,10 +200,11 @@ const ViewFeeStructure = (props) => {
                 <table className="table-60">
                     <thead>
                     <tr>
-                        <th>Index</th>
-                        <th>Class</th>
-                        <th>Year</th>
+                        <th>Sl. No.</th>
                         <th>Fee Type</th>
+                        
+                        <th>Year</th>
+                        <th>Class</th>
                         <th>Total Fee</th>
                         <th>Action</th>
                     </tr>
@@ -198,9 +214,10 @@ const ViewFeeStructure = (props) => {
                         return (
                             <tr key={index}>
                                 <td>{index+1}</td>
-                                <td>{data.class}</td>
-                                <td>{data.year}</td>
                                 <td>{data.fee_type}</td>
+                                
+                                <td>{data.year}</td>
+                                <td>{convertToRoman(data.class)}</td>
                                 <td>{data.total_fee}</td>
                                 <td>
                                     <button className="dashboard-btn dashboard-btn-scss"

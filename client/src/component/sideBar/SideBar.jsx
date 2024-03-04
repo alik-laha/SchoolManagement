@@ -12,7 +12,7 @@ import { BsClipboardData,BsCash ,BsCashCoin  } from "react-icons/bs";
 import { MdQueuePlayNext,MdOutlineSmartToy,MdDataUsage   } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
-import { AiOutlineStock } from "react-icons/ai";
+import { AiOutlineStock,AiFillEdit  } from "react-icons/ai";
 import { PiExamBold  } from "react-icons/pi";
 import { RiStockFill } from "react-icons/ri";
 
@@ -441,11 +441,11 @@ const stockUsageVisiblity = () => {
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment </p><p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>
             <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}><TbCash /><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Create fee Structure </p>
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Create Fee Structure </p>
               
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}>&#x3e;&nbsp;&nbsp;
-              View/edit fee Structure
+            <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}><AiFillEdit /><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>View/Edit Fee Structure </p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onEntryFeePayment}>&#x3e;&nbsp;&nbsp;
               Entry/View Fee Payment
