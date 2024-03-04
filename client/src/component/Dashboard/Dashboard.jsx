@@ -60,6 +60,7 @@ const [createFeeStructure,setCreateFeeStructure]=useState("none")
 const [ViewFeeStructure,setViewFeeStructure]=useState("none")
 const[EntryFeePayment,setEntryFeePayment]=useState("none")
 const [viewFeePayment,setViewFeePayment]=useState("none")
+const [stockUsageEdit,setStockUsageEdit]=useState("none")
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -132,6 +133,7 @@ const handleCreateSubject=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else{
         setCreateSubject('none')
@@ -176,6 +178,7 @@ if(search==='none'){
     setItemNameCreate("none")
     setEntryFeePayment("none")
     setViewFeePayment("none")
+    setStockUsageEdit("none")
 }
 else{
     setSearch('none')
@@ -220,6 +223,7 @@ const handaleCreateUser=()=>{
          setItemNameCreate("none")
          setEntryFeePayment("none")
          setViewFeeStructure("none")
+         setStockUsageEdit("none")
          setViewFeePayment("none")
      }
      else{
@@ -266,6 +270,7 @@ const handalePublish=()=>{
          setItemNameCreate("none")
          setEntryFeePayment("none")
          setViewFeePayment("none")
+         setStockUsageEdit("none")
      }
      else{
          setPublish('none')
@@ -310,6 +315,7 @@ const HandleVendorCreate=()=>{
          setViewFeeStructure("none")
          setEntryFeePayment("none")
          setViewFeePayment("none")
+         setStockUsageEdit("none")
      }
         else{
             setVendorDisplay('none')
@@ -353,6 +359,7 @@ const handaleNotice=()=>{
          setStockUsageView("none")
          setViewFeeStructure("none")
          setEntryFeePayment("none")
+         setStockUsageEdit("none")
          setViewFeePayment("none")
      }
         else{
@@ -397,6 +404,7 @@ const handleItemCreate=()=>{
             setViewFeeStructure("none")
             setEntryFeePayment("none")
             setViewFeePayment("none")
+            setStockUsageEdit("none")
         }
             else{
                 setItemCreate('none')
@@ -440,6 +448,7 @@ const handleStockEntry=()=>{
             setEntryFeePayment("none")
             setCreateFeeStructure("none")
             setViewFeePayment("none")
+            setStockUsageEdit("none")
         }
             else{
                 setStockEntry('none')
@@ -483,6 +492,7 @@ const handleStockEntry=()=>{
         setViewFeeStructure("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setbedview('none')
@@ -524,6 +534,7 @@ const handleStockEntry=()=>{
         setStockUsageView("none")
         setEntryFeePayment("none")
         setViewFeeStructure("none")
+        setStockUsageEdit("none")
         setViewFeePayment("none")
     }
     else {
@@ -568,6 +579,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setacademicEntryUpdate('none')
@@ -611,6 +623,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setStockUsageView("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setSecondstockEntry('none')
@@ -655,6 +668,7 @@ const handleStockEntry=()=>{
         setCreateFeeStructure("none")
         setStockUsageView("none")
         setViewFeeStructure("none")
+        setStockUsageEdit("none")
         setViewFeePayment("none")
     }
     else {
@@ -698,6 +712,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setSecondStockView('none')
@@ -743,6 +758,7 @@ const handleStockEntry=()=>{
         setStockUsageView("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setmodifySearchView('none')
@@ -788,6 +804,7 @@ const handleStockEntry=()=>{
         setCreateFeeStructure("none")
         setItemNameCreate("none")
         setEntryFeePayment("none")
+        setStockUsageEdit("none")
         setViewFeePayment("none")
     }
     else {
@@ -833,6 +850,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       sethostelview('none')
@@ -878,6 +896,7 @@ const handleStockEntry=()=>{
         setViewFeeStructure("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setcheckpending('none')
@@ -923,6 +942,7 @@ const handleStockEntry=()=>{
         setViewFeeStructure("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setacademicview('none')
@@ -967,6 +987,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setstudententry('none')
@@ -1009,6 +1030,7 @@ const handleStockEntry=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
       setmasterstudentview('none')
@@ -1051,6 +1073,7 @@ const handleCreateFaculty=()=>{
        setViewFeeStructure("none")
        setEntryFeePayment("none")
        setStockUsageView("none")
+       setStockUsageEdit("none")
        setViewFeePayment("none")
    }
     else{
@@ -1094,6 +1117,7 @@ const handleViewFaculty=()=>{
         setEntryFeePayment("none")
         setViewFeeStructure("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
      else{
           setViewFaculty('none')
@@ -1135,6 +1159,7 @@ const handleCreateExam =()=>{
          setStockUsageView("none")
          setEntryFeePayment("none")
          setViewFeeStructure("none")
+         setStockUsageEdit("none")
          setViewFeePayment("none")
      }
      else{
@@ -1176,6 +1201,7 @@ const handleCreateInternalMarksEntry =()=>{
          setStockUsageView("none")
          setCreateFeeStructure("none")
          setViewFeeStructure("none")
+         setStockUsageEdit("none")
          setEntryFeePayment("none")
          setViewFeePayment("none")
      }
@@ -1219,6 +1245,7 @@ const handlePromote =()=>{
       setViewFeeStructure("none")
       setCreateFeeStructure("none")
       setEntryFeePayment("none")
+      setStockUsageEdit("none")
       setViewFeePayment("none")
   }
   else {
@@ -1262,6 +1289,7 @@ const handleCreateExternalMarks =()=>{
          setCreateFeeStructure("none")
          setViewFeeStructure("none")
          setEntryFeePayment("none")
+         setStockUsageEdit("none")
          setViewFeePayment("none")
      }
         else {
@@ -1305,6 +1333,7 @@ const handleExportStudentMarks =()=>{
          setStockUsageView("none")
          setViewFeeStructure("none")
          setEntryFeePayment("none")
+         setStockUsageEdit("none")
          setViewFeePayment("none")
      }else {
             setExportStudentMarks("none")
@@ -1348,6 +1377,7 @@ const handleItemNameCreate=()=>{
         setStockUsageView("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
         setItemNameCreate("none")
@@ -1390,6 +1420,7 @@ const handleStockUsageEntry=()=>{
         setViewFeeStructure("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
         setStockUsageEntry("none")
@@ -1433,6 +1464,7 @@ const handleStockUsageView=()=>{
         setViewFeeStructure("none")
         setEntryFeePayment("none")
         setViewFeePayment("none")
+        setStockUsageEdit("none")
     }
     else {
         setStockUsageView("none")
@@ -1476,6 +1508,7 @@ const handleCreateFeeStructure=()=>{
          setcheckpending('none')
          setEntryFeePayment("none")
          setViewFeePayment("none")
+         setStockUsageEdit("none")
      }
         else {
             setCreateFeeStructure("none")
@@ -1518,6 +1551,7 @@ const handleFeeStructureView=()=>{
             setcheckpending('none')
          setEntryFeePayment("none")
          setViewFeePayment("none")
+         setStockUsageEdit("none")
 
      }
      else{
@@ -1561,6 +1595,7 @@ const handleEntryFeePayment=()=>{
             setpromote("none")
          setViewFeePayment("none")
             setcheckpending('none')
+         setStockUsageEdit("none")
      }
      else{
             setEntryFeePayment("none")
@@ -1604,10 +1639,54 @@ const handleViewfeePayment=()=>{
                 setViewFaculty('none')
                 setpromote("none")
                 setcheckpending('none')
+            setStockUsageEdit("none")
         }
         else{
                 setViewFeePayment("none")
         }
+}
+const handleStockUsageEdit=()=>{
+    if(stockUsageEdit==="none"){
+        setStockUsageEdit("block")
+        setViewFeePayment("none")
+        setEntryFeePayment("none")
+        setViewFeeStructure("none")
+        setCreateFeeStructure("none")
+        setStockUsageView("none")
+        setStockUsageEntry("none")
+        setItemNameCreate("none")
+        setExportStudentMarks("none")
+        setCreateExternalMarks("none")
+        setCreateInternalMarks("none")
+        setCreateExam("none")
+        setCreateFaculty('none')
+        setmasterstudentview('none')
+        setacademicview('none')
+        setStockEntry('none')
+        setItemCreate('none')
+        setCreateUser('none')
+        setVendorDisplay('none')
+        setPublish('none')
+        setSearch('none')
+        setNotice('none')
+        setStockView('none')
+        setSecondstockEntry("none")
+        setbedview('none')
+        setbedentry('none')
+        sethostelentrycreate('none')
+        sethostelview('none')
+        setmodifySearchView('none')
+        setSecondStockView("none")
+        setstudententry('none')
+        setacademicEntryUpdate('none')
+        setCreateSubject('none')
+        setViewFaculty('none')
+        setpromote("none")
+        setcheckpending('none')
+    }
+    else{
+        setStockUsageEdit("none")
+    }
 }
 
   return (
@@ -1648,7 +1727,7 @@ const handleViewfeePayment=()=>{
                  onPromote={handlePromote} onCreateExternalMarksEntry={handleCreateExternalMarks} onExportStudentMarks={handleExportStudentMarks}
                  onItemNameCreate={handleItemNameCreate} onStockUsageEntry={handleStockUsageEntry} onStockUsageView={handleStockUsageView}
                  onCreateFeeStructure={handleCreateFeeStructure} onViewFeeStructure={handleFeeStructureView} onEntryFeePayment={handleEntryFeePayment}
-                 onViewFeePayment={handleViewfeePayment}
+                 onViewFeePayment={handleViewfeePayment} onStockUsageEdit={handleStockUsageEdit}
         />
 
 
@@ -1664,7 +1743,7 @@ const handleViewfeePayment=()=>{
                           CreateInternalMarks={CreateInternalMarks} PromoteView={promote} CreateExternalMarks={CreateExternalMarks}
                        ExportStudentMarks={ExportStudentMarks} CretaeItemName={itemNamesCreate} StockUsageEntry={stockUsageEntry} StockUsageView={stockUsageView}
                        CreateFeeStructure={createFeeStructure} ViewFeeStructure={ViewFeeStructure} EntryFeePayment={EntryFeePayment}
-                          ViewFeePayment={viewFeePayment}
+                          ViewFeePayment={viewFeePayment} StockUsageEdit={stockUsageEdit}
 
         />
 

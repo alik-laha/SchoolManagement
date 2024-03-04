@@ -375,40 +375,51 @@ const stockUsageVisiblity = () => {
           <span onClick={stockVisiblity} className="user"
                 style={{display: cashstockAdmin}}><AiOutlineStock /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock</p><p>{dropArrowstock}</p></span>
           <div style={{display: stockVisi}}>
-            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Vendor</p>
+            <div className="Items" style={{display: admin}} onClick={props.onVendorCreate}><CiShop/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Vendor</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Item Type</p>
+            <div className="Items" style={{display: admin}} onClick={props.onItemCreate}><FaRegWindowRestore/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Item Type</p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Item</p>
-              
+            <div className="Items" style={{display: admin}} onClick={props.onItemNameCreate}><MdOutlineSmartToy/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Item</p>
+
             </div>
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}><RiStockFill /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}><RiStockFill/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
               Stock Amount Entry </p>
             </div>
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}><BsCash /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock Cash Entry </p>
+                 onClick={props.onSecondStockEntry}><BsCash/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Cash Entry </p>
             </div>
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageEntry}>&#x3e;&nbsp;&nbsp;Stock Usage Entry
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Modify Stock Entry </p>
+            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>
             </div>
-            
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Primary Stock </p>
+
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}><LuDownload/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export Primary Stock </p>
             </div>
-           
-            
+
+
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export
-                 Secondary Stock </p>
+                 onClick={props.onSecondStockView}><LuDownload/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export
+              Secondary Stock </p>
             </div>
-            
+
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount
             </div>
-           
+
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View
+            </div>
+            <div className="Items" style={{display:admin}}
+                 onClick={props.onStockUsageEdit}>&#x3e;&nbsp;&nbsp;Stock Usage Edit
             </div>
           </div>
           {/*Stock usage*/}

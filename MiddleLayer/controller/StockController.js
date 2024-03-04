@@ -661,3 +661,35 @@ exports.GetStockUsage=(req,res)=>{
         }
     })
 }
+
+//get Minus Stock Usage for Edit
+exports.GetMinusStockUsage=(req,res)=>{
+    const{itemName,date}=req.body
+    let query;
+    if(!itemName && !date){
+        query=`SELECT * FROM Stock_Usage WHERE type="Minus" ORDER BY entry_date DESC`
+    }
+    else if(itemName && !date){
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND type="Minus" ORDER BY entry_date DESC`
+    }
+    else if(date && !itemName){
+        query=`SELECT * FROM Stock_Usage WHERE entry_date = "${date}" AND type="Minus" ORDER BY entry_date DESC`
+    }
+    else if(itemName && date){
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND entry_date ="${date}" AND type="Minus" ORDER BY entry_date DESC`
+    }
+    Database.query(query,function(error,data){
+        if(error){
+            return res.status(400).json({
+                status:"error at getting stock",
+                message:error
+            })
+        }
+        if(data){
+            return res.status(200).json({
+                status:"got all stock",
+                data:data
+            })
+        }
+    })
+}
