@@ -211,7 +211,7 @@ const CreateFeeSturcture = (props) => {
                                onChange={(e) => setExaminationFee(e.target.value)}/>
                     </dd>
 
-                    <dt><label>Games,Sports & Others</label></dt>
+                    <dt><label>Games & Sports</label></dt>
                     <dd><input type="number" value={GamesSportsExicursion}
                                onChange={(e) => setGamesSportsExicursion(e.target.value)}/>
                     </dd>
