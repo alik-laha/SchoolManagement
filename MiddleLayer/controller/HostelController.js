@@ -110,6 +110,7 @@ exports.UpdateBed= (req, res) => {
                         Database.query(query, (err, result) => {
                             if (err) {
                                 console.log(err)
+                                return res.status(400).json(err)
                             } else {
                                 return res.status(200).json({msg: "Room Details Updated Successfully"})
                             }
