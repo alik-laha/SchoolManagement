@@ -97,7 +97,11 @@ const ViewBedStatus60 = (props) => {
             })
             .catch((error) => {
                 console.log(error);
-                alert(error.response.data.msg)
+                if(error.response.data.errno===1062){
+                    alert(`Room No. already exists`)
+                    
+                }
+                // alert(error.response.data.msg)
             });
     }
     return(
