@@ -484,6 +484,10 @@ const StudentFeePaymentEntry = (props) => {
             })
         }
     }
+    const clearTable = () => {
+        
+        setData([])
+        };
 
     const HandleReAdmissionFee=(e)=>{
         e.preventDefault()
@@ -647,6 +651,7 @@ const StudentFeePaymentEntry = (props) => {
             <div style={{display:tableView}}>
             <table className="table-60" >
                 <thead>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 <tr>
                     <th>Sl. No.</th>
                     <th>Name</th>
@@ -690,6 +695,7 @@ const StudentFeePaymentEntry = (props) => {
                 }
                 </tbody>
             </table>
+            {data.length === 0 ? <div className="no-data">No Data Exists</div> : null}
             </div>
 
             {/* Monthly Fee Payment*/}
