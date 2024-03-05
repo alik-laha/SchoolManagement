@@ -534,5 +534,17 @@ dl {
 
     width:35%!important;
   }
+  .fee-entry-new-adm{
 
+  }
   
+  .fee-entry-new-adm dd{
+    display: flex;
+  }
+  /* .fee-entry-new-adm dd:nth-child(2){
+    margin-left: 10px;
+  } */
+  /* .fee-entry-new-adm dd:nth-child(1){
+    background-color: #00a65a;
+  }  */
+

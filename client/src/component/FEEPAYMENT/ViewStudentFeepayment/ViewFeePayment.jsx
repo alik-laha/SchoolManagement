@@ -460,11 +460,18 @@ const ViewFeePayment =(props)=>{
                     <dl>
                     <dt>
                         <label>Admission Fee: </label>
-                        <label>{(NewAdmissionFee-AdmissonFee)}</label> </dt>
+                        <dd> <input
+                        type="number"
+                        
+    
+                        value={NewAdmissionFee-AdmissonFee}
+                        readOnly
+                    /></dd>
+                        {/* <label>{(NewAdmissionFee-AdmissonFee)}</label> */}
                         <dd><input type="number" value={EditAdmissonFee}
                                onChange={(e) => e.target.value <= (NewAdmissionFee-AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/></dd>
 
-
+                    </dt>
                     <dt>
                         <label>Hostel Charge: </label>
                         <label>{(NewhostelCharge-hostelCharge)}</label></dt>

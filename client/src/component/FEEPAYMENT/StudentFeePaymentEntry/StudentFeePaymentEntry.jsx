@@ -739,19 +739,33 @@ const StudentFeePaymentEntry = (props) => {
             <div style={{display: NewadmissionView}} className="dashbrd-40-colm special-25-div">
             <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
-                <form onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+                <form className='fee-entry-new-adm' onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
                     <dl>
+                    <dt><label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>Fee Type </label></dt>   
+                    <dd>
+                    <label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>To Be Paid</label>
+                    <label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>Actually Paid </label>
+                        </dd> 
                     <dt>
-                        <label>Admission Fee: </label>
-                        <label>{AdmissonFee}</label> </dt>
-                     <dd> <input type="number" value={EditAdmissonFee}
-                               onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/></dd>
+                        <label>Admission Fee</label>
+                        
+                       
+                        </dt>
+                     <dd> 
+                     
+                     <input type="number" value={AdmissonFee} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                        <input style={{marginLeft:'10px',textAlign:'center',width:'50%'} } type="number" value={EditAdmissonFee}
+                              onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/></dd>
 
 
                         <dt>
-                        <label>Hostel Charge: </label>
-                        <label>{hostelCharge}</label> </dt>
-                       <dd> <input type="number" value={EdithostelCharge}
+                        <label>Hostel Charge</label>
+                         </dt>
+                       <dd> 
+                       <input type="number" value={hostelCharge} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                              <input type="number" value={EdithostelCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/></dd>
 
 
