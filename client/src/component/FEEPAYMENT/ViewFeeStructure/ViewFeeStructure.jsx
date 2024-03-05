@@ -205,7 +205,7 @@ const ViewFeeStructure = (props) => {
                     <thead>
                     <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                     <tr>
-                        <th>Sl. No.</th>
+                        <th style={{width: '10%'}}>Sl. No.</th>
                         <th>Fee Type</th>
                         
                         <th>Year</th>
@@ -238,11 +238,11 @@ const ViewFeeStructure = (props) => {
 
             </div>
             <div style={{display: editedIndex}} className="dashbrd-40-colm special-25-div">
-                <button className="dashboard-btn dashboard-btn-scss"
+                <button  className="dashboard-btn dashboard-btn-scss"
                         onClick={handleCancel}>Cancel
                 </button>
                 <form onSubmit={handleSubmit}
-                      style={{display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey'}}>
+                      style={{display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey',marginTop:'10px'}}>
                         <p style={{fontSize:'17px'}} className="customize-centre">Edit Fee Structure</p>
 
                     <dl className="dl-horizontal">
