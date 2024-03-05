@@ -541,6 +541,10 @@ dl {
   .fee-entry-new-adm dd{
     display: flex;
   }
+
+  .no-after:after {
+    content: none!important;
+ }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;
   } */

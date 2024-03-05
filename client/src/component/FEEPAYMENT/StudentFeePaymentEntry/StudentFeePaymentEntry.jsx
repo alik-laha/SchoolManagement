@@ -737,19 +737,18 @@ const StudentFeePaymentEntry = (props) => {
 
             {/* New Admission Fee Payment*/}
             <div style={{display: NewadmissionView}} className="dashbrd-40-colm special-25-div">
-            <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
+            <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
                 <form className='fee-entry-new-adm' onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
+                <p className="customize-centre" style={{fontSize:'16px'}}>Student Fee Details</p>
                     <dl>
-                    <dt><label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>Fee Type </label></dt>   
+                    <dt className='no-after'><label style={{color:'black',fontSize:'15px',textAlign:'center',width:'50%'}}></label></dt>   
                     <dd>
-                    <label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>To Be Paid</label>
-                    <label style={{color:'red',fontSize:'15px',textAlign:'center',width:'50%'}}>Actually Paid </label>
+                    <label style={{fontSize:'15px',textAlign:'center',width:'50%'}}>To Be Paid</label>
+                    <label style={{fontSize:'15px',textAlign:'center',width:'50%'}}>Actually Paid </label>
                         </dd> 
                     <dt>
                         <label>Admission Fee</label>
-                        
-                       
                         </dt>
                      <dd> 
                      
@@ -770,37 +769,52 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Tution Charge: </label>
-                        <label>{TutionFee}</label></dt>
-                     <dd> <input type="number" value={EditTutionFee}
+                        <label>Tution Charge </label>
+                        </dt>
+                     <dd> 
+                     <input type="number" value={TutionFee} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                        <input type="number" style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
+                        value={EditTutionFee}
                                onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/> </dd>
 
 
                     <dt>
-                        <label>Caution Money: </label>
-                        <label>{CautionMoney}</label>  </dt>
-                     <dd>  <input type="number" value={EditCautionMoney}
+                        <label>Caution Money </label>
+                         </dt>
+                     <dd>  
+                     <input type="number" value={CautionMoney} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                        <input type="number" value={EditCautionMoney} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should be lower then ${CautionMoney}`)}/></dd>
 
 
                     <dt>
-                        <label>Examination Fee: </label>
-                        <label>{ExaminationFee}</label></dt>
-                       <dd> <input type="number" value={EditExaminationFee}
+                        <label>Examination Fee </label>
+                        </dt>
+                       <dd> 
+                       <input type="number" value={ExaminationFee} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                        <input type="number" value={EditExaminationFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should be lower then ${ExaminationFee}`)}/></dd>
 
 
                     <dt>
-                        <label>Games Sports Exicursion: </label>
-                        <label>{GamesSportsExicursion}</label></dt>
-                     <dd> <input type="number" value={EditGamesSportsExicursion}
+                        <label>Games Sports</label>
+                        </dt>
+                     <dd>
+                     <input type="number" value={GamesSportsExicursion} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
+                         <input type="number" value={EditGamesSportsExicursion} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should be lower then ${GamesSportsExicursion}`)}/></dd>
 
 
                     <dt>
-                        <label>Electric Charge: </label>
-                        <label>{ElectricCharge}</label></dt>
-                     <dd> <input type="number" value={EditElectricCharge}
+                        <label>Electric Charge </label>
+                        </dt>
+                     <dd> <input type="number" value={ElectricCharge} readOnly
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
+                        <input type="number" value={EditElectricCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should be lower then ${ElectricCharge}`)}/></dd>
 
 
