@@ -229,11 +229,11 @@ exports.GetStudentForFeeEntry = (req, res) => {
         const{Class,year,feeType,regNo} = req.body
         let tableName
 
-        if(feeType==="Monthly"){
-            tableName = "monthly_fee"
-        }
+        // if(feeType==="Monthly"){
+        //     tableName = "monthly_fee"
+        // }
 
-        else if(feeType==="NewAdmission"){
+        if(feeType==="New-Admission"){
             tableName = "new_admission_fee"
         }
 
@@ -243,6 +243,7 @@ exports.GetStudentForFeeEntry = (req, res) => {
 
         let query
         if(Class && year && feeType && regNo) {
+            console.log(query)
             query = `SELECT 
     a.student_Name, 
     a.roll_no, 
@@ -250,7 +251,9 @@ exports.GetStudentForFeeEntry = (req, res) => {
     a.registration_no, 
     a.class,
     b.*,
-    (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+    (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
+    (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee
+
 FROM 
     Student_Admission a 
     JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'

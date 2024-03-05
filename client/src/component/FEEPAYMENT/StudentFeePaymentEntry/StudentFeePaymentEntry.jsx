@@ -686,7 +686,7 @@ const StudentFeePaymentEntry = (props) => {
                                 
                                 
                                 <td>{item.total_fee}</td>
-                                <td>{item.total_fee}</td>
+                                <td>{item.student_total_fee}</td>
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
                             </tr>

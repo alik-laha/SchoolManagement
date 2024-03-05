@@ -185,7 +185,7 @@ const CreateFeeSturcture = (props) => {
                     <dt><label>Fee Type</label></dt>
                     <dd><select value={FeeType} onChange={(e) => setFeeType(e.target.value)}>
                         <option value="">Select</option>
-                        <option value="New-Admission">New-Admisson</option>
+                        <option value="New-Admisson">New-Admisson</option>
                         <option value="Re-Admisson">Re-Admisson</option>
                     </select>
                     </dd>
