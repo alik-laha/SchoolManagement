@@ -112,6 +112,12 @@ const UserSearchResponse60=(props)=>{
             },{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res);
+                
+                if(res.data.errno===1062)
+                {
+                    alert("User Name Already Exists");
+                    return;
+                }
                 alert("User has been Updated Successfully");
                 setdisp("none");
                 setid("")
@@ -120,6 +126,7 @@ const UserSearchResponse60=(props)=>{
                 setVisiblity("none");
                 setmainsvisibility('contents')
                 setPassVisi("password")
+                
             })
             .catch((error) => {
                 console.log(error);
