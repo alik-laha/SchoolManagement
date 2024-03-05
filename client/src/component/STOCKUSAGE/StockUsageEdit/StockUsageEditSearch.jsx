@@ -9,7 +9,7 @@ const StockUsageEditSearch = (props) => {
         e.preventDefault();
         axios.post("/api/v1/stock/getminusstockusage",{itemName, date},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
-                console.log(res);
+                props.StockUsageEditData(res.data.data,"block");
             })
             .catch((err) => {
                 console.log(err);

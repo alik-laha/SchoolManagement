@@ -65,6 +65,7 @@ import StockUsageView from "../STOCKUSAGE/StockUsageView/StockUsageView.jsx";
 import StockUsageEditSearch from "../STOCKUSAGE/StockUsageEdit/StockUsageEditSearch.jsx";
 // import StockUsageEdit from "../STOCKUSAGE/StockUsageEdit/StockUSageEdit.jsx";
 import StockUsageEdit from "../STOCKUSAGE/StockUsageEdit/StockUSageEdit.jsx";
+import stockUSageEdit from "../STOCKUSAGE/StockUsageEdit/StockUSageEdit.jsx";
 
 const DashBoardMain = (props) => {
   const [data, setdata] = useState([]);
@@ -136,6 +137,8 @@ const DashBoardMain = (props) => {
     const [FeePaymentUpdateData,setFeePaymentUpdateData]=useState([])
     const [FeeType,setFeeType]=useState("")
     const [StockUsageData,setStockUsageData]=useState([])
+    const [StockUsageEditData,setStockUsageEditData]=useState([])
+    const [StockUsageEditView,setStockUsageEditView]=useState("none")
 
   {/* User Start */}
 
@@ -376,6 +379,10 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   const handleStockUsage=(data)=>{
     setStockUsageData(data)
   }
+  const handleStockUsageEdit=(data,d1)=>{
+    setStockUsageEditData(data)
+    setStockUsageEditView(d1)
+  }
   console.log(props.StockUsageEdit)
   return (
     <>
@@ -417,7 +424,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
         {/*stock usage*/}
             <EntryStockUsage view={props.StockUsageEntry} Item={itemData}/>
             <StockUsageSearch view={props.StockUsageView} StockUsage={handleStockUsage} />
-            <StockUsageEditSearch view={props.StockUsageEdit}/>
+            <StockUsageEditSearch view={props.StockUsageEdit} StockUsageEditData={handleStockUsageEdit}/>
 
         {/* Hostel Start*/}  
             {/* Create Room */}  
@@ -497,7 +504,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
               <CheckPendingView StockView={props.checkpending} view={pendingViewAllShow} SearchebyData={pendingviewstockdata}/>
 
             <StockUsageView view={props.StockUsageView} data={StockUsageData} />
-           <StockUsageEdit data={StockUsageData} view={props.StockUsageEdit} />
+           <StockUsageEdit data={StockUsageEditData} view40={props.StockUsageEdit} view={StockUsageEditView}  />
           {/* Vendor End*/}    
 
           {/* Hostel Start*/}
