@@ -13,6 +13,8 @@ const ExportStudentMarksView= (props) => {
     const [tableView,setTableView]=useState("contents")
     const [ExamName,setExamName]=useState("")
     const [resultData,setResultData]=useState([])
+    const[result2,setResult2]=useState("none")
+    const [result2Data,setResult2Data]=useState([])
 
     function convertToRoman(num) {
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
@@ -67,9 +69,20 @@ const ExportStudentMarksView= (props) => {
     const handleView=(data)=>{
         console.log(data)
         if(ExamName===""){
-            alert("Please Select Exam")
-            return
-        }
+           const DATA2={
+                Class:data.class,
+                year:data.current_academic_year,
+                regNo:data.registration_no
+              }
+                axios.post(`/api/v1/faculty/getallmarks`,DATA2)
+                 .then((res)=>{
+                      setResult2Data(res.data.data)
+                        setTableView("none")
+                        setResult2("block")
+                 }).catch((err)=>{
+                 console.log(err)
+                })
+           }
         else {
             const DATA = {
                 Class: data.class,
@@ -93,152 +106,216 @@ const ExportStudentMarksView= (props) => {
     let sum_tot_v1=0;
 
 
+    let sum_v2=0;
+    let sum_tot_v2=0;
+
     const HandleClick=()=>{
         setTableView("contents")
         setResult("none")
+        setResult2("none")
     }
 
       return(
-        <div style={{display: view}}>
-            <div style={{display:tableView}}>
-            <table className="table-60" >
-                <thead>
-                <tr>
-                    <th>
-                        Sl. No.
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        RegNo
-                    </th>
-                    <th>
-                        Year
-                    </th>
-                    <th>
-                        Class
-                    </th>
-                    <th>
-                        Section
-                    </th>
-                    <th>
-                        Roll No.
-                    </th>
-                    
-                    <th>
-                        Examination Type
-                    </th>
-                    
-                    <th>
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    data.map((data,index)=>(
-                        <tr key={index}>
-                            <td>
-                                {index + 1}
-                            </td>
-                            <td>
-                                {data.student_Name}
-                            </td>
-                            <td>
-                                {data.registration_no}
-                            </td>
-                            <td>
-                                {data.current_academic_year}
-                            </td>
-                            <td>
-                                {convertToRoman(data.class)}
-                            </td>
-                            <td>
-                                {data.section}
-                            </td>
-                            <td>
-                                {data.roll_no}
-                            </td>
-                          
-                            <td>
-                                <select onChange={(e)=>setExamName(e.target.value)} value={ExamName} required>
-                                    <option value="">Select Exam</option>
-                                {
-                                   ExamData.map((exam,index)=>(
-                                        <option key={index} value={exam.internal_exam_name}>{exam.internal_exam_name}</option>
-                                      ))
-                                }
-                                </select>
-                            </td>
-                            
-                            <td>
-                                <button style={{background: '#3c8dbc', borderColor: '#3c8dbc'}}
-                                        onClick={() => handleView(data)}
-                                        className="dashboard-btn btn-warning fix-width">View
-                                </button>
-                            </td>
-                        </tr>
-                    ))
-                }
-                </tbody>
-            </table>
-            </div>
-            <div style={{display: result}}>
-                <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
-                        onClick={HandleClick}>Cancel
-                </button>
-                <table className="table-60" id="table_one">
-                    <thead>
-                    <tr>
-                        <th>Sl No.</th>
-                        
-                        <th>Exam Name</th>
-                        <th>Subject</th>
-                        <th>Obtained Marks</th>
-                        <th>Full Marks</th>
-                        <th>Percentage</th>
+          <div style={{display: view}}>
+              <div style={{display: tableView}}>
+                  <table className="table-60">
+                      <thead>
+                      <tr>
+                          <th>
+                              Sl. No.
+                          </th>
+                          <th>
+                              Name
+                          </th>
+                          <th>
+                              RegNo
+                          </th>
+                          <th>
+                              Year
+                          </th>
+                          <th>
+                              Class
+                          </th>
+                          <th>
+                              Section
+                          </th>
+                          <th>
+                              Roll No.
+                          </th>
+
+                          <th>
+                              Examination Type
+                          </th>
+
+                          <th>
+                              Action
+                          </th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {
+                          data.map((data, index) => (
+                              <tr key={index}>
+                                  <td>
+                                      {index + 1}
+                                  </td>
+                                  <td>
+                                      {data.student_Name}
+                                  </td>
+                                  <td>
+                                      {data.registration_no}
+                                  </td>
+                                  <td>
+                                      {data.current_academic_year}
+                                  </td>
+                                  <td>
+                                      {convertToRoman(data.class)}
+                                  </td>
+                                  <td>
+                                      {data.section}
+                                  </td>
+                                  <td>
+                                      {data.roll_no}
+                                  </td>
+
+                                  <td>
+                                      <select onChange={(e) => setExamName(e.target.value)} value={ExamName} required>
+                                          <option value="">Select Exam</option>
+                                          {
+                                              ExamData.map((exam, index) => (
+                                                  <option key={index}
+                                                          value={exam.internal_exam_name}>{exam.internal_exam_name}</option>
+                                              ))
+                                          }
+                                      </select>
+                                  </td>
+
+                                  <td>
+                                      <button style={{background: '#3c8dbc', borderColor: '#3c8dbc'}}
+                                              onClick={() => handleView(data)}
+                                              className="dashboard-btn btn-warning fix-width">View
+                                      </button>
+                                  </td>
+                              </tr>
+                          ))
+                      }
+                      </tbody>
+                  </table>
+              </div>
+              <div style={{display: result}}>
+                  <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
+                          onClick={HandleClick}>Cancel
+                  </button>
+                  <table className="table-60" id="table_one">
+                      <thead>
+                      <tr>
+                          <th>Sl No.</th>
+
+                          <th>Exam Name</th>
+                          <th>Subject</th>
+                          <th>Obtained Marks</th>
+                          <th>Full Marks</th>
+                          <th>Percentage</th>
 
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {resultData.map((item, idx) => (
-                        sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
-                            <tr key={item.id}>
-                                <td>{idx + 1}</td>
-                               
-                                <td>{item.exam_name}</td>
-                                <td>{item.subject}</td>
-                                <td>{item.marks}</td>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {resultData.map((item, idx) => (
+                          sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
+                              <tr key={item.id}>
+                                  <td>{idx + 1}</td>
+
+                                  <td>{item.exam_name}</td>
+                                  <td>{item.subject}</td>
+                                  <td>{item.marks}</td>
 
 
-                                <td>{item.int_exam_marks}</td>
-                                <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
+                                  <td>{item.int_exam_marks}</td>
+                                  <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
 
-                            </tr>
+                              </tr>
 
-                    ))}
-                    <tr>
-                        <td style={{border: 'none'}}></td>
-                        
-                        
-                        <td></td>
-                        <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
-                            Marks:</b></td>
-                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
-
-                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b></td>
-                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
-                            <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
-                    </tr>
-                    </tbody>
+                      ))}
+                      <tr>
+                          <td style={{border: 'none'}}></td>
 
 
-                </table>
-            </div>
+                          <td></td>
+                          <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
+                              Marks:</b></td>
+                          <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
 
-        </div>
+                          <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
+                          </td>
+                          <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                              <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
+                      </tr>
+                      </tbody>
+
+
+                  </table>
+              </div>
+              <div style={{display: result2}}>
+              <table className="table-60" id="table_two">
+                  <thead>
+                  <tr>
+                      <th>Id</th>
+                      <th>Student Name</th>
+                      <th>Registration No.</th>
+                      <th>Class</th>
+                      <th>Section</th>
+                      <th>Roll No.</th>
+                      <th>Exam Name</th>
+
+                      <th>Total Obtained Marks</th>
+                      <th>Total Marks</th>
+                      <th>Percentage</th>
+
+
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {result2Data.map((item, idx) => (
+                      sum_v2 = sum_v2 + Number(item.obtained_marks), sum_tot_v2 = sum_tot_v2 + Number(item.total_marks),
+                          <tr key={item.id}>
+                              <td>{idx + 1}</td>
+                              <td>{item.student_Name}</td>
+                              <td>{item.regNo}</td>
+                              <td>{item.class}</td>
+                              <td>{item.section}</td>
+                              <td>{item.roll_no}</td>
+                              <td>{item.exam_name}</td>
+
+                              <td>{item.obtained_marks}</td>
+
+
+                              <td>{item.total_marks}</td>
+                              <td>{((item.obtained_marks / item.total_marks) * 100).toString().slice(0, 2).concat("%")}</td>
+
+                          </tr>
+
+                  ))}
+                  <tr>
+                      <td style={{border: 'none'}}></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+
+                      <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
+                          Marks:</b></td>
+                      <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v2}</b></td>
+
+                      <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v2}</b></td>
+                      <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                          <b>{((sum_v2 / sum_tot_v2) * 100).toString().slice(0, 2).concat("%")}</b></td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+          </div>
 
 
       )
