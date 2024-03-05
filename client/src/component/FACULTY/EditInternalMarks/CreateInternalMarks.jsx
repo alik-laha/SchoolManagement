@@ -61,6 +61,7 @@ const handleUpdate=(data)=>{
 
 const handleClear = () => {
     if(view=='block'){
+        setData([])
         setView('none')
     }
     

@@ -62,6 +62,11 @@ const CreateMarks=(props)=>{
             setMarks(newMarks)
         }
     }
+    const handleClear = () => {
+        if(view=='block'){
+            setView('none')
+        }
+    }
 
 
     const handleSubmit = async () => {
@@ -99,6 +104,7 @@ const CreateMarks=(props)=>{
     return(
 
         <div style={{display:view,marginTop:'40px'}}>
+            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
             <table className="table-60">
                 <thead>
                     <tr>
