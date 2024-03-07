@@ -125,11 +125,11 @@ const StudentFeePaymentEntry = (props) => {
         if(FeeType==="Monthly"){
             setMonthlyView("block")
         }
-        else if(FeeType==="NewAdmission"){
+        else if(FeeType==="New-Admsson"){
             setNewadmissionView("block")
 
         }
-        else if(FeeType==="ReAdmisson"){
+        else if(FeeType==="Re-Admisson"){
             setReadmissionView("block")
         }
         setTableView("none")
@@ -164,14 +164,14 @@ const StudentFeePaymentEntry = (props) => {
            }
            let cData
            let DATA
-           if (FeeType === "NewAdmission") {
+           if (FeeType === "New-Admisson") {
                await axios.post("/api/v1/fee/getnewadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                    DATA = res.data.result[0]
                    console.log(DATA)
                }).catch((err) => {
                    console.log(err)
                })
-           } else if (FeeType === "ReAdmisson") {
+           } else if (FeeType === "Re-Admisson") {
                await axios.post("/api/v1/fee/getreadmissionfeeentryforupdate", Data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                    DATA = res.data.result[0]
                    console.log(DATA)
