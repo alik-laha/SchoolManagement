@@ -242,8 +242,7 @@ exports.GetStudentForFeeEntry = (req, res) => {
         }
 
         let query
-        if(Class && year && feeType && regNo) {
-            console.log(query)
+        if(Class && year && feeType && regNo){
             query = `SELECT 
     a.student_Name, 
     a.roll_no, 

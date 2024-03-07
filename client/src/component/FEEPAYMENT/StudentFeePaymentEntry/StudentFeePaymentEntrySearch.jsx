@@ -85,7 +85,7 @@ const handlesubmit = (e) => {
                     <label>Fee Type</label>
                     <select value={feeType} onChange={(e) => setFeeType(e.target.value)} required>
                         <option value="">Select</option>
-                        <option value="New-Admission">New-Admisson</option>
+                        <option value="New-Admisson">New-Admisson</option>
                         <option value="Re-Admisson">Re-Admisson</option>
                     </select>
                 </div>
