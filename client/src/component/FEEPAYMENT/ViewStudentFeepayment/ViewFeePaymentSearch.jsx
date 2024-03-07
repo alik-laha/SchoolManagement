@@ -9,7 +9,7 @@ const ViewFeePaymentSearch = (props) => {
 
     const handlesubmit=(e)=>{
         e.preventDefault()
-        if(feeType==="NewAdmission"){
+        if(feeType==="New-Admisson"){
             axios.post ("/api/v1/fee/getnewadmissionstudent",{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
                console.log(res.data.result)
               props.setFeePaymentUpdateData(res.data.result,feeType)
@@ -17,7 +17,7 @@ const ViewFeePaymentSearch = (props) => {
                 console.log(err)
             })
         }
-        else if(feeType==="ReAdmisson"){
+        else if(feeType==="Re-Admisson"){
             axios.post('/api/v1/fee/getreadmissionstudent',{Class,year,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res)=>{
                     console.log(res.data.result)
@@ -89,8 +89,8 @@ const ViewFeePaymentSearch = (props) => {
                     <label>Fee Type</label>
                     <select value={feeType} onChange={(e) => setFeeType(e.target.value)} required>
                         <option value="">Select</option>
-                        <option value="NewAdmission">New-Admisson</option>
-                        <option value="ReAdmisson">Re-Admisson</option>
+                        <option value="New-Admisson">New-Admisson</option>
+                        <option value="Re-Admisson">Re-Admisson</option>
                     </select>
                 </div>
 
