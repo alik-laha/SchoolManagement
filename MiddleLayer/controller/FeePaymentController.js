@@ -233,7 +233,7 @@ exports.GetStudentForFeeEntry = (req, res) => {
         //     tableName = "monthly_fee"
         // }
 
-        if(feeType==="New-Admission"){
+        if(feeType==="New-Admisson"){
             tableName = "new_admission_fee"
         }
 
