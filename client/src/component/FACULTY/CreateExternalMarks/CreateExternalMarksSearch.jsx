@@ -68,7 +68,7 @@ const CreateMarks=(props)=>{
                 <div>
                     <label>Search By Class</label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
-                        <option value="">Class</option>
+                        <option value="">Clas</option>
                         <option value="1">
                             I
                         </option>

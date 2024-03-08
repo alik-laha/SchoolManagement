@@ -110,6 +110,61 @@ const handleSubmit=(e)=>{
                         
                     </select> 
                 </div>
+                <div>
+                    <label>Search By Section</label>
+                    <select onChange={(e) => setSection(e.target.value)}
+                            value={section} required>
+                        <option value="">Section</option>
+                        <option value="A">
+                            A
+                        </option>
+                        <option value="B">
+                            B
+                        </option>
+                        <option value="C">
+                            C
+                        </option>
+                        <option value="D">
+                            D
+                        </option>
+                        <option value="E">
+                            E
+                        </option>
+                        <option value="F">
+                            F
+                        </option>
+                        v
+                        <option value="Art-A">
+                            Art-A
+                        </option>
+
+                        <option value="Art-B">
+                            Art-B
+                        </option>
+                        <option value="Art-C">
+                            Art-C
+                        </option>
+                        <option value="Com-A">
+                            Com-A
+                        </option>
+                        <option value="Com-B">
+                            Com-B
+                        </option>
+                        <option value="Com-C">
+                            Com-C
+                        </option>
+                        <option value="Sci-A">
+                            Sci-A
+                        </option>
+                        <option value="Sci-B">
+                            Sci-B
+                        </option>
+                        <option value="Sci-C">
+                            Sci-C
+                        </option>
+
+                    </select>
+                </div>
                 
                 
                 <div>
