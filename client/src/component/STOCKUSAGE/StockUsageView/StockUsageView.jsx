@@ -49,7 +49,7 @@ const StockUsageView = (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="stock_usage_view"
-                filename={"Stock_Usage_Report"+currDate}
+                filename={"Stock_Usage_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />

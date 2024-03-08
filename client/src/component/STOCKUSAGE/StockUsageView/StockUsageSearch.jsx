@@ -37,7 +37,7 @@ const [toDate, setToDate] =  useState();
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handlesubmit}>
                 <div>
-                    <label>Item Name</label>
+                    <label>Search By Item Name</label>
                     <select onChange={(e) => setItemName(e.target.value)} value={itemName} required>
                         <option value="">Item Name</option>
                         {ItemNames.map((data, idx) => (
@@ -48,11 +48,11 @@ const [toDate, setToDate] =  useState();
                     </select>
                 </div>
                 <div>
-                    <label>From Date</label>
+                    <label>From Entry Date</label>
                     <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)}/>
                 </div>
                 <div>
-                    <label>To Date</label>
+                    <label>To Entry Date</label>
                     <input type="date"  value={toDate} onChange={(e) => setToDate(e.target.value)}/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
