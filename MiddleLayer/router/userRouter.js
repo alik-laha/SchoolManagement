@@ -91,7 +91,7 @@ router.post('/createrole',verifyToken, CreateUserRole)
 router.get('/getallrole',verifyToken, GetUserRole)
 
 //delete Notice
-router.post('/deletenotice',verifyToken,DeleteNotice )
+router.post('/deletenotice',DeleteNotice )
 
 //delete active Notice
 router.post('/deleteactivenotice',verifyToken,DeleteActiveNotice )
