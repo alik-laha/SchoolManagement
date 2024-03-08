@@ -745,10 +745,12 @@ exports.GetMinusStockUsage=(req,res)=>{
  }
 
 //Update Minus Stock Usage
-const UpdateMinusStockUsage = (req, res) => {
+exports.UpdateMinusStockUsageByID = (req, res) => {
     try{
         const{Quantity,id,date,itemName}=req.body
+
         if(!Quantity || !id || !date || !itemName){
+            console.log(req.body)
             return res.status(400).json({
                 status:"all data needed"
             })

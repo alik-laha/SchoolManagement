@@ -10,10 +10,10 @@ const StockUsageEdit = (props) => {
     const [view, setView] = useState("none");
 
     useEffect(() => {
-        if(props.view === "block" && props.view40==="block"){
+        if(props.view === "block" && props.view40==="block" && props.data.length>0){
             setView("block");
         }
-    },[props.view, props.view40]);
+    },[props.view, props.view40,props.data]);
 
     useEffect(() => {
         if(view==="block") {
@@ -41,8 +41,21 @@ const StockUsageEdit = (props) => {
         setQuantity()
     }
 
-    const handleUpdate = () => {
-
+    const handleUpdate = (data) => {
+        const id = data.id;
+        axios.post("/api/v1/stock/updatestockusageminus",{Quantity,id,date,itemName} ,{headers:{"Authorization":localStorage.getItem("token")}})
+            .then((res) => {
+                console.log(res.data.data);
+                alert("Updated Successfully");
+                setIndex(null);
+                setItemName("");
+                setDate("");
+                setQuantity(null)
+                setView("none");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
     }
     return(
         <div style={{display:view}} >
@@ -72,7 +85,7 @@ const StockUsageEdit = (props) => {
                             <td>{idx === index ?
                                 <input type="number" value={Quantity} onChange={(e)=>setQuantity(e.target.value)}/>: data.quantity}</td>
                             <td>{idx === index ? (<><button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
-                                <button onClick={handleUpdate} className="dashboard-btn dashboard-btn-scss">Update</button> </>):
+                                <button onClick={()=>handleUpdate(data)} className="dashboard-btn dashboard-btn-scss" >Update</button> </>):
                                 ( <button onClick={() => handleEdit(data, idx)}
                                         className="dashboard-btn dashboard-btn-scss">Edit
                                 </button>)}
