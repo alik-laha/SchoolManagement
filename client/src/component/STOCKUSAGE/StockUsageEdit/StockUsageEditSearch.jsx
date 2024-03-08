@@ -31,7 +31,7 @@ const StockUsageEditSearch = (props) => {
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSearch}>
                 <div>
-                    <label>Item Name</label>
+                    <label>Search By Item Name</label>
                     <select onChange={(e) => setItemName(e.target.value)} value={itemName}>
                         <option value="">Item Name</option>
                         {ItemNameData.map((data, idx) => (
@@ -43,7 +43,7 @@ const StockUsageEditSearch = (props) => {
                 </div>
                 <div>
                     <label>
-                        Entry Date
+                        Search By Entry Date
                     </label>
                     <input type="date" value={date} onChange={(e)=>setDate(e.target.value)} />
                 </div>

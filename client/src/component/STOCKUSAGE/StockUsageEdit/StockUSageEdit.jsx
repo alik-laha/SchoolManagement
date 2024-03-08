@@ -9,6 +9,7 @@ const StockUsageEdit = (props) => {
     const [index, setIndex] = useState();
     const [view, setView] = useState("none");
     const [leftStock, setLeftStock] = useState(0);
+    const [viewStock,setViewStock]=useState([])
 
     useEffect(() => {
         console.log(props.view, props.view40)
@@ -19,6 +20,15 @@ const StockUsageEdit = (props) => {
             setView("none");
         }
     },[props.view, props.view40]);
+
+    useEffect(()=>{
+        setViewStock(props.data)
+        
+        
+    },[props.data])
+    const clearTable = () => {
+        setViewStock([]);
+      };
 
     useEffect(() => {
         if(view==="block") {
@@ -80,18 +90,20 @@ const StockUsageEdit = (props) => {
     }
     return(
         <div style={{display:view}} >
+            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
             <table className="table-60">
+            
                 <thead>
                     <tr>
                         <th>Sl.No</th>
                         <th>Item Name</th>
                         <th>Entry Date</th>
-                        <th>Quantity</th>
+                        <th style={{width:'20%'}}>Usage Quantity (Pc/Kg/Mtr/ltr)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.data.map((data, idx) => (
+                    {viewStock.map((data, idx) => (
                         <tr key={idx}>
                             <td>{idx+1}</td>
                             <td>
@@ -110,6 +122,7 @@ const StockUsageEdit = (props) => {
                     ))}
                 </tbody>
             </table>
+            {viewStock.length===0 ? <div className="no-data">No Data Exists</div> : null}
         </div>
     )
 }
