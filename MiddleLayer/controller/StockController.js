@@ -743,3 +743,34 @@ exports.GetMinusStockUsage=(req,res)=>{
         console.log(e)
     }
  }
+
+//Update Minus Stock Usage
+const UpdateMinusStockUsage = (req, res) => {
+    try{
+        const{Quantity,id,date,itemName}=req.body
+        if(!Quantity || !id || !date || !itemName){
+            return res.status(400).json({
+                status:"all data needed"
+            })
+        }
+        else{
+            const query=`UPDATE Stock_Usage SET quantity="${Quantity}",entry_date="${date}",item_name="${itemName}" WHERE id="${id}"`;
+            Database.query(query,function(error,data){
+                if(error){
+                    return res.status(400).json({
+                        status:"error at updating stock usage",
+                        message:error
+                    })
+                }
+                if(data){
+                    return res.status(200).json({
+                        status:"stock usage updated",
+                        data:data
+                    })
+                }
+            })
+        }
+    }catch (error) {
+        console.log(error)
+    }
+}
