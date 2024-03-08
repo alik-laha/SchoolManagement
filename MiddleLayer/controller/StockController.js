@@ -685,16 +685,16 @@ exports.GetMinusStockUsage=(req,res)=>{
     const{itemName,date}=req.body
     let query;
     if(!itemName && !date){
-        query=`SELECT * FROM Stock_Usage WHERE type="Minus" ORDER BY entry_date DESC`
+        query=`SELECT * FROM Stock_Usage WHERE type="Minus" ORDER BY entry_date DESC,item_Name ASC`
     }
     else if(itemName && !date){
-        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND type="Minus" ORDER BY entry_date DESC`
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND type="Minus" ORDER BY entry_date DESC,item_Name ASC`
     }
     else if(date && !itemName){
-        query=`SELECT * FROM Stock_Usage WHERE entry_date = "${date}" AND type="Minus" ORDER BY entry_date DESC`
+        query=`SELECT * FROM Stock_Usage WHERE entry_date = "${date}" AND type="Minus" ORDER BY entry_date DESC,item_Name ASC`
     }
     else if(itemName && date){
-        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND entry_date ="${date}" AND type="Minus" ORDER BY entry_date DESC`
+        query=`SELECT * FROM Stock_Usage WHERE item_Name="${itemName}" AND entry_date ="${date}" AND type="Minus" ORDER BY entry_date DESC,item_Name ASC`
     }
     Database.query(query,function(error,data){
         if(error){
