@@ -31,6 +31,15 @@ const AcademicEntryUpdateSearch= (props) => {
             <div className="dashbrd-40-colm" style={{display:props.view}}>
                 <form onSubmit={handaleSubmit}>
                     <div>
+                    <label>
+                            Search By Current Academic Year
+                        </label>
+                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                    </div>
+
+                    <div>
+                        
+                   
                         <label>
                             Search By Class.
                         </label>
@@ -77,13 +86,10 @@ const AcademicEntryUpdateSearch= (props) => {
                         </option>
                         
                     </select> 
-                    </div>
 
-                    <div>
-                        <label>
-                            Search By Current Academic Year
-                        </label>
-                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+
+                   
+                   
                     </div>
                     <div>
                         <label>

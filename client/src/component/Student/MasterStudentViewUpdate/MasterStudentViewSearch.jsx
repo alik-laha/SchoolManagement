@@ -25,18 +25,7 @@ const MasterStudentViewSearch = (props) => {
         <div className="dashbrd-40-colm" style={{display:props.view}}>
             <form onSubmit={HandleEdit}>
                 <div style={{width:'28%'}}>
-                    <label>Search By Registration ID</label>
-                    <input
-                        type="text"
-                        placeholder="Registration ID"
-                        value={regNo}
-                        onChange={(e) => setRegNo(e.target.value)}
-                    />
-                </div>
-
-
-                <div style={{width:'28%'}}>
-                    <label>Search By Admisson Year</label>
+                <label>Search By Admisson Year</label>
                     <input
                         type="number"
                         placeholder="Admisson Year"
@@ -45,7 +34,9 @@ const MasterStudentViewSearch = (props) => {
                     />
                 </div>
 
+
                 <div style={{width:'28%'}}>
+                    
                     <label>Search by Applied Class </label>
                     <select onChange={(e) => setApplyClass(parseInt(e.target.value))} value={applyClass}>
                         <option value="">Class</option>
@@ -90,13 +81,10 @@ const MasterStudentViewSearch = (props) => {
                         
                     </select> 
                 </div>
-                <div style={{width:'16%',top:'-35px'}}>
-                    <label style={{textAlign:'center'}}>
-                        Active Student List
-                    </label>
-                    <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} checked={inactivated===1?true:false} />
-                </div>
-                <div style={{width:'28%',marginTop:'-30px'}}>
+
+                <div style={{width:'28%'}}>
+                    
+
                     <label>Search By Stream</label>
                     <select onChange={(e) => setStream(e.target.value)}  value={stream}>
                     <option value="">Stream</option>
@@ -113,7 +101,24 @@ const MasterStudentViewSearch = (props) => {
                             General
                         </option>
 
-                    </select> 
+                    </select>
+                </div>
+                <div style={{width:'16%',top:'-35px'}}>
+                    <label style={{textAlign:'center'}}>
+                        Active Student List
+                    </label>
+                    <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} checked={inactivated===1?true:false} />
+                </div>
+                <div style={{width:'28%',marginTop:'-30px'}}>
+                    
+
+                    <label>Search By Registration ID</label>
+                    <input
+                        type="text"
+                        placeholder="Registration ID"
+                        value={regNo}
+                        onChange={(e) => setRegNo(e.target.value)}
+                    />
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
 

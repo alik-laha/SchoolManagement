@@ -31,6 +31,12 @@ const AcademicEntrySearch= (props) => {
         <>
             <div className="dashbrd-40-colm" style={{display:props.view}}>
                 <form onSubmit={handaleSubmit}>
+                <div>
+                        <label>
+                            Search By Current Academic Year
+                        </label>
+                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                    </div>
                     <div>
                         <label>
                             Search By Class
@@ -80,18 +86,8 @@ const AcademicEntrySearch= (props) => {
                     </select> 
                     </div>
 
-                    <div>
-                        <label>
-                            Search By Current Academic Year
-                        </label>
-                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
-                    </div>
-                    <div>
-                        <label>
-                            Search By Registration No.
-                        </label>
-                        <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
-                    </div>
+                  
+                   
 
                     <div>
                         <label>
@@ -149,6 +145,12 @@ const AcademicEntrySearch= (props) => {
                             </option>
 
                         </select>
+                    </div>
+                    <div>
+                        <label>
+                            Search By Registration No.
+                        </label>
+                        <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>

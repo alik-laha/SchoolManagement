@@ -31,7 +31,16 @@ const PromoteNextClassSearch= (props) => {
                         
                     
                     <div>
-                        <label>
+                       
+                    <label>
+                            Search By Current Academic Year.
+                        </label>
+                        <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} placeholder="Current Year" required/>
+
+                    </div>
+
+                    <div>
+                    <label>
                             Search By Class.
                         </label>
                         {/* <input type="text" value={Class} onChange={(e) => setClass(e.target.value)} placeholder="Class" required/> */}
@@ -77,13 +86,6 @@ const PromoteNextClassSearch= (props) => {
                         </option>
                         
                     </select> 
-                    </div>
-
-                    <div>
-                        <label>
-                            Search By Current Academic Year.
-                        </label>
-                        <input type="text" value={academicYear} onChange={(e) => setAcademicYear(e.target.value)} placeholder="Current Year" required/>
                     </div>
                     <div>
                         <label>
