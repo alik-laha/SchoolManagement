@@ -5,7 +5,7 @@ import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,
   ,FaRegWindowRestore ,FaRegEdit   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
-import { TbUserEdit,TbBrandGoogleBigQuery,TbCash   } from "react-icons/tb";
+import { TbUserEdit,TbBrandGoogleBigQuery,TbCash,TbCalendarDue    } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
 import { BsClipboardData,BsCash ,BsCashCoin  } from "react-icons/bs";
@@ -407,6 +407,9 @@ const stockUsageVisiblity = () => {
                  style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
                Stock Usage Entry </p>
             </div>
+            <div className="Items" style={{display: cashstockAdmin}}
+                 onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Vendor Due </p>
+            </div>
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>
             </div>
@@ -422,9 +425,7 @@ const stockUsageVisiblity = () => {
               Secondary Stock </p>
             </div>
 
-            <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onCheckPending}>&#x3e;&nbsp;&nbsp;Check Pending Amount
-            </div>
+           
 
             <div className="Items" style={{display: cashstockAdmin}}
                  onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View

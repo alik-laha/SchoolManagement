@@ -60,6 +60,11 @@ const CreateMarks=(props)=>{
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
+            <div>
+                    <label>Search By Current Academic Year</label>
+                    <input type="text" placeholder="Current Year" value={year}
+                           onChange={(e) => setYear(e.target.value)} required/>
+                </div>
                 <div>
                     <label>Search By Class</label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
@@ -160,11 +165,7 @@ const CreateMarks=(props)=>{
 
                     </select>
                 </div>
-                <div>
-                    <label>Search By Current Academic Year</label>
-                    <input type="text" placeholder="Current Year" value={year}
-                           onChange={(e) => setYear(e.target.value)} required/>
-                </div>
+                
                 <div>
                 <label>Search By Exam Name</label>
                     <select onChange={setExamnameFunction2} value={updatedExamName} required={true}>

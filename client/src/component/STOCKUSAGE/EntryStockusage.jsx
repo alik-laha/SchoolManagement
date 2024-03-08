@@ -92,7 +92,7 @@ const EntryStockUsage = (props) => {
                         type="number"
                         placeholder="Pc / Kg / Ltr / Mtr"
                         onChange={HandleUsage}
-                        value={quantity}
+                        value={quantity} required
                     /></dd>
 
                     <dt>
