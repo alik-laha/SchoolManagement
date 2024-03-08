@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 
@@ -32,6 +32,14 @@ const EntryStockUsage = (props) => {
             })
 
     }
+    useEffect(()=> {
+        console.log(props.view)
+        if (props.view === "none") {
+            setItemName("")
+           
+        }
+       
+    },[props.view])
     const changeItemName = (e) => {
         setItemName(e.target.value);
         axios.post("/api/v1/stock/getplusminusstock",{itemName:e.target.value},{headers:{"Authorization":localStorage.getItem("token")}})
