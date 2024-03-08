@@ -418,6 +418,10 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>
             </div>
+            <div className="Items" style={{display:admin}}
+                 onClick={props.onStockUsageEdit}><FaRegEdit/><p
+                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Usage </p>
+            </div>
 
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}><LuDownload/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export Primary Stock </p>
@@ -433,9 +437,7 @@ const stockUsageVisiblity = () => {
            
 
            
-            <div className="Items" style={{display:admin}}
-                 onClick={props.onStockUsageEdit}>&#x3e;&nbsp;&nbsp;Stock Usage Edit
-            </div>
+            
           </div>
           {/*Stock usage*/}
 
