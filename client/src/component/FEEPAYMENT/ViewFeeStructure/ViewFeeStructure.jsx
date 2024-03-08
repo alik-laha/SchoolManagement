@@ -194,6 +194,9 @@ const ViewFeeStructure = (props) => {
                 setFeetype("")
                 setId(0)
             }).catch((error)=>{
+                if(error.response.data.msg.errno===1062){
+                    alert(`Fee Structure Already Exists for Class ${convertToRoman(Class)} in the Academic Year ${year}`)
+                  }
             console.log(error)
         })
     }
