@@ -94,6 +94,10 @@ const CreateFeeSturcture = (props) => {
             BedFee:BedFee,
             Total:Total
         }
+        if(Total<=0){
+            alert('Total Fees Should be Greater than 0')
+            return
+        }
         axios.post("/api/v1/fee/createfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
@@ -183,7 +187,7 @@ const CreateFeeSturcture = (props) => {
                     </dd>
 
                     <dt><label>Fee Type</label></dt>
-                    <dd><select value={FeeType} onChange={(e) => setFeeType(e.target.value)}>
+                    <dd><select value={FeeType} onChange={(e) => setFeeType(e.target.value)} required>
                         <option value="">Select</option>
                         <option value="New-Admisson">New-Admisson</option>
                         <option value="Re-Admisson">Re-Admisson</option>

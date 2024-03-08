@@ -20,6 +20,10 @@ const ViewFeeStructureSearch = (props) => {
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSearch}>
+            <div>
+                    <label>Search By Academic Year</label>
+                    <input type="number" value={Year} onChange={(e) => setYear(e.target.value)} placeholder='Current Academic Year'/>
+                </div>
                 <div>
                     <label>Search By Class</label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class}>
@@ -64,10 +68,7 @@ const ViewFeeStructureSearch = (props) => {
 
                     </select>
                 </div>
-                <div>
-                    <label>Search By Academic Year</label>
-                    <input type="number" value={Year} onChange={(e) => setYear(e.target.value)} placeholder='Current Academic Year'/>
-                </div>
+                
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>
