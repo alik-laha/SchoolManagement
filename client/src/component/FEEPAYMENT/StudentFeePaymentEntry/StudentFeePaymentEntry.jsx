@@ -125,7 +125,7 @@ const StudentFeePaymentEntry = (props) => {
         if(FeeType==="Monthly"){
             setMonthlyView("block")
         }
-        else if(FeeType==="New-Admsson"){
+        else if(FeeType==="New-Admisson"){
             setNewadmissionView("block")
 
         }
