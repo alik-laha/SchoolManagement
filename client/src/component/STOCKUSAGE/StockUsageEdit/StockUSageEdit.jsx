@@ -90,14 +90,9 @@ const StockUsageEdit = (props) => {
                     {props.data.map((data, idx) => (
                         <tr key={idx}>
                             <td>{idx+1}</td>
-                            <td>{idx === index ? (<select onChange={(e) => setItemName(e.target.value)} value={itemName}>
-                                <option value="">Item Name</option>
-                                {ItemNameData.map((data, idx) => (
-                                    <option value={data.item_name} key={idx}>
+                            <td>
                                         {data.item_name}
-                                    </option>
-                                ))}
-                            </select>): (data.item_name)}</td>
+                                  </td>
                             <td>{idx===index ? <input type="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:data.entry_date.slice(0, 10)}</td>
                             <td>{idx === index ?
                                 <input type="number" value={Quantity} onChange={(e)=>setQuantity(e.target.value)}/>: data.quantity}</td>
