@@ -8,6 +8,7 @@ const StockUsageEdit = (props) => {
     const [Quantity, setQuantity] = useState();
     const [index, setIndex] = useState();
     const [view, setView] = useState("none");
+    const [leftStock, setLeftStock] = useState(0);
 
     useEffect(() => {
         if(props.view === "block" && props.view40==="block" && props.data.length>0){
@@ -32,6 +33,7 @@ const StockUsageEdit = (props) => {
         setDate(data.entry_date.slice(0, 10));
         setIndex(idx);
         setQuantity(data.quantity)
+        changeItemName(data.item_name)
     }
 
     const handleCancel = () => {
@@ -40,9 +42,24 @@ const StockUsageEdit = (props) => {
         setDate("");
         setQuantity()
     }
-
+    const changeItemName = (data) => {
+        console.log(data)
+        // setItemName(e.target.value);
+        axios.post("/api/v1/stock/getplusminusstock",{itemName:data},{headers:{"Authorization":localStorage.getItem("token")}})
+            .then((res) => {
+                setLeftStock(res.data.data[0].Plus - res.data.data1[0].Minus);
+                console.log(res.data.data[0].Plus - res.data.data1[0].Minus);
+            }).catch((err) => {
+            console.log(err);
+        })
+    }
     const handleUpdate = (data) => {
         const id = data.id;
+        if(Quantity > leftStock){
+            alert("You can not use more than "+leftStock+" "+itemName+ "values of amount");
+            setQuantity(leftStock);
+            return;
+        }
         axios.post("/api/v1/stock/updatestockusageminus",{Quantity,id,date,itemName} ,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res) => {
                 console.log(res.data.data);
