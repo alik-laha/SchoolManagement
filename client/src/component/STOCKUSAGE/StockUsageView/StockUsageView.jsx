@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const StockUsageView = (props) => {
     const [view, setView] = useState("none");
     const [stockUsage, setStockUsage] = useState([]);
+    const currDate = new Date().toLocaleDateString();
     
 
     useEffect(() => {
@@ -43,7 +45,15 @@ const StockUsageView = (props) => {
     return(
         <div style={{display:view}}>
             <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
-            <table className="table-60">
+            <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn btn-warning excel-btn"
+                table="stock_usage_view"
+                filename={"Stock_Usage_Report"+currDate}
+                sheet="tablexls"
+                buttonText="Excel Export"
+            />
+            <table className="table-60" id='stock_usage_view'>
                 <thead>
                     <tr>
                         <th>Sl. No.</th>
@@ -101,6 +111,7 @@ const StockUsageView = (props) => {
                 </tbody>
             </table>
             {stockUsage.length===0 ? <div className="no-data">No Data Exists</div> : null}
+           
         </div>
     )
 }

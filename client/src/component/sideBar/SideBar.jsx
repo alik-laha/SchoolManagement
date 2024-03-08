@@ -408,7 +408,12 @@ const stockUsageVisiblity = () => {
                Stock Usage Entry </p>
             </div>
             <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Vendor Due </p>
+                 onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Cash </p>
+            </div>
+            <div className="Items" style={{display: cashstockAdmin}}
+                 onClick={props.onStockUsageView}><TbCalendarDue /><p
+                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Usage </p>
+            
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>
@@ -427,9 +432,7 @@ const stockUsageVisiblity = () => {
 
            
 
-            <div className="Items" style={{display: cashstockAdmin}}
-                 onClick={props.onStockUsageView}>&#x3e;&nbsp;&nbsp;Stock Usage View
-            </div>
+           
             <div className="Items" style={{display:admin}}
                  onClick={props.onStockUsageEdit}>&#x3e;&nbsp;&nbsp;Stock Usage Edit
             </div>
