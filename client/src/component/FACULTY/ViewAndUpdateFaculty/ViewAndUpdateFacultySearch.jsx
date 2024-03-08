@@ -15,17 +15,8 @@ const ViewAndUpdateFacultySearch = (props) => {
     }
 
     return (
-        <div style={{display: props.view}} className="dashbrd-40-colm">
+        <div style={{ display: props.view }} className="dashbrd-40-colm">
             <form onSubmit={handleSearch}>
-                <div>
-                    <label>Search By Employee Name</label>
-                    <input
-                        type="text"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                        placeholder="Employee Name"
-                    />
-                </div>
                 <div><label>Search By Employee Type</label>
 
                     <select onChange={(e) => setType(e.target.value)} value={Type}>
@@ -35,6 +26,16 @@ const ViewAndUpdateFacultySearch = (props) => {
                         <option value="Others">Others</option>
                     </select>
                 </div>
+                <div>
+                    <label>Search By Employee Name</label>
+                    <input
+                        type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="Employee Name"
+                    />
+                </div>
+
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
             </form>
         </div>

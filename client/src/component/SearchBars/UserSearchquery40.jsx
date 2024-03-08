@@ -62,16 +62,7 @@ const UserSearchquery40 = (props) => {
       <div className="dashbrd-40-colm" style={{display: props.Search}}>
 
 
-          <div>
-              <label>Search By User Name</label>
-              <input
-                  type="text"
-                  placeholder="User Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-              />
-              
-          </div>
+         
 
           <div>
               <label>Search by Role</label>
@@ -83,6 +74,16 @@ const UserSearchquery40 = (props) => {
                       </option>
                   ))}
               </select>
+          </div>
+          <div>
+              <label>Search By User Name</label>
+              <input
+                  type="text"
+                  placeholder="User Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+              />
+              
           </div>
           <span>
       <button className="dashboard-btn dashboard-btn-scss" onClick={handleSearch}>Search</button>
