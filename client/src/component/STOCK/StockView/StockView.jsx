@@ -40,8 +40,9 @@ const StockView= (props) => {
                 <tr>
                     <th>Entry Sl No.</th>
                     <th>Bill /Memo No.</th>
-                    <th>Item Name</th>
                     <th>Item Type</th>
+                    <th>Item Name</th>
+                    
                     <th>Vendor Name</th>
                     <th>Bill / Memo Date</th>
                     <th>Per Unit Cost</th>
@@ -57,8 +58,9 @@ const StockView= (props) => {
                     <tr key={idx}>
                         <td>{idx+1}</td>
                         <td>{item.bill_id}</td>
-                        <td>{item.item_Name}</td>
                         <td>{item.item_Type}</td>
+                        <td>{item.item_Name}</td>
+                        
                         <td>{item.vendor_name}</td>
                         <td>{item.bill_date.slice(0,10)}</td>
                         <td>{item.unit_cost}</td>
