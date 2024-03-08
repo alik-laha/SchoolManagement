@@ -21,6 +21,12 @@ const HandaleSubmit=(e)=>{
         <>
             <div className="dashbrd-40-colm" style={{display:props.view}}>
                 <form onSubmit={HandaleSubmit}>
+                <div>
+                        <label>
+                            Search By Current Academic Year
+                        </label>
+                        <input placeholder="Current Acedemic Year" type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                    </div>
                     <div>
                         <label>
                             Search By Class.
@@ -71,12 +77,7 @@ const HandaleSubmit=(e)=>{
                     
 
                     
-                    <div>
-                        <label>
-                            Search By Current Academic Year
-                        </label>
-                        <input placeholder="Current Acedemic Year" type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
-                    </div>
+                 
                     <div>
                         <label>
                             Search By Section

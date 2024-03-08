@@ -113,7 +113,7 @@ const ViewBedStatus60 = (props) => {
                     <tr style={{display:'table-caption'}}>
                <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn user-profile-export"
+                className="dashboard-btn  excel-btn user-profile-export"
                 table="bed-status-hostel"
                 filename={"Hostel_Bed_Report_"+currDate}
                 sheet="tablexls"
