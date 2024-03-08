@@ -94,7 +94,7 @@ router.get('/getallrole',verifyToken, GetUserRole)
 router.post('/deletenotice',DeleteNotice )
 
 //delete active Notice
-router.post('/deleteactivenotice',verifyToken,DeleteActiveNotice )
+router.post('/deleteactivenotice',DeleteActiveNotice )
 
 
 module.exports = router
