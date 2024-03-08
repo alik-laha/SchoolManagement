@@ -381,7 +381,13 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   }
   const handleStockUsageEdit=(data,d1)=>{
     setStockUsageEditData(data)
-    setStockUsageEditView(d1)
+      if(StockUsageEditView==="none"){
+          setStockUsageEditView(d1)
+      }
+      else{
+          setStockUsageEditView("none")
+      }
+
   }
   console.log(props.StockUsageEdit)
   return (

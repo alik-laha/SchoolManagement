@@ -11,10 +11,14 @@ const StockUsageEdit = (props) => {
     const [leftStock, setLeftStock] = useState(0);
 
     useEffect(() => {
-        if(props.view === "block" && props.view40==="block" && props.data.length>0){
+        console.log(props.view, props.view40)
+        if(props.view === "block" && props.view40==="block"){
             setView("block");
         }
-    },[props.view, props.view40,props.data]);
+        else{
+            setView("none");
+        }
+    },[props.view, props.view40]);
 
     useEffect(() => {
         if(view==="block") {
