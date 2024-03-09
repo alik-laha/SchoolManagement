@@ -36,6 +36,12 @@ const ExportStudentMarksSearch = (props) => {
     return(
         <div style={{display:props.view}} className="dashbrd-40-colm">
             <form onSubmit={handleSubmit}>
+            <div>
+                   <label>
+                       Search By Current Academic Year
+                   </label>
+                   <input type="number" placeholder="Academic Year" value={year} onChange={(e)=>setYear(e.target.value)} required={true}/>
+               </div>
                 <div>
                     <label> Search By Class</label>
                    
@@ -83,12 +89,7 @@ const ExportStudentMarksSearch = (props) => {
                         
                     </select> 
                 </div>
-               <div>
-                   <label>
-                       Search By Current Academic Year
-                   </label>
-                   <input type="number" placeholder="Academic Year" value={year} onChange={(e)=>setYear(e.target.value)} required={true}/>
-               </div>
+              
                 <div>
                 <label>
                        Search By Section
@@ -145,6 +146,10 @@ const ExportStudentMarksSearch = (props) => {
                         </option>
 
                     </select>
+                </div>
+                <div style={{ width: '100%' }}>
+
+                    <p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
