@@ -336,7 +336,7 @@ const StudentFeePaymentEntry = (props) => {
         }
         else{
             setData([])
-            setView("block")
+            //setView("block")
         }
     },[props.data])
 
