@@ -256,7 +256,7 @@ const ViewFeePayment =(props)=>{
             regNo:regNo,
             Date:EditDate
         }
-        if(feeType==="NewAdmission"){
+        if(feeType==="New-Admisson"){
 
             axios.post("/api/v1/fee/updatenewadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
 
