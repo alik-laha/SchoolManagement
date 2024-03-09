@@ -51,12 +51,12 @@ const SideBar = (props) => {
 
   useEffect(() => {
     if (user === "ADMIN") 
-      {setAdmin("block");}
+      {setAdmin("flex");}
     else if (user === !"ADMIN")
        {setAdmin("none");}
     else if (user === "STOCK-ADMIN")
        {
-        setcashStockAdmin("block")
+        setcashStockAdmin("flex")
         setCashAdmin("none");
         setfacultyAdmin("none");
         sethostelAdmin("none");
@@ -64,7 +64,7 @@ const SideBar = (props) => {
       }
     else if (user === "CASH-ADMIN")
        {
-        setcashStockAdmin("block");
+        setcashStockAdmin("flex");
         setStockAdmin("none");
        setfacultyAdmin("none");
        sethostelAdmin("none");
@@ -352,34 +352,6 @@ const stockUsageVisiblity = () => {
             </div>
           </div>
 
-
-          {/* Marks */}
-          <span onClick={facultyVisiblity} className="user"
-                style={{display: facultyAdmin}}><FaChartBar /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks</p><p>{dropArrowfaculty}</p></span>
-          <div style={{display: facultyVisi}}>
-            
-            <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateSubject}><FaAddressBook /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Subject</p>
-            </div>
-            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p>
-            </div>
-            <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
-            </div>
-            <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Update/Delete</p>
-            </div>
-            
-            <div className="Items" style={{display: facultyAdmin}}
-                 onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks
-            </div>
-          </div>
-
-
-          
-
-          
-
           {/* stock */}
           <span onClick={stockVisiblity} className="user"
                 style={{display: cashstockAdmin}}><AiOutlineStock /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Stock</p><p>{dropArrowstock}</p></span>
@@ -441,6 +413,34 @@ const stockUsageVisiblity = () => {
           </div>
           {/*Stock usage*/}
 
+          {/* Marks */}
+          <span onClick={facultyVisiblity} className="user"
+                style={{display: facultyAdmin}}><FaChartBar /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks</p><p>{dropArrowfaculty}</p></span>
+          <div style={{display: facultyVisi}}>
+            
+            <div className="Items" style={{display: facultyAdmin}}
+                 onClick={props.onCreateSubject}><FaAddressBook /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Subject</p>
+            </div>
+            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p>
+            </div>
+            <div className="Items" style={{display: facultyAdmin}}
+                 onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
+            </div>
+            <div className="Items" style={{display: facultyAdmin}}
+                 onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Update/Delete</p>
+            </div>
+            
+            <div className="Items" style={{display: facultyAdmin}}
+                 onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks
+            </div>
+          </div>
+
+
+          
+
+          
+
+          
 
           <span onClick={stockUsageVisiblity} className="user"
                 style={{display: admin}}><BsCashCoin /><p
