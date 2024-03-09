@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const StudentFeePaymentEntry = (props) => {
     const [view,setView]=useState("none")
@@ -60,6 +61,7 @@ const StudentFeePaymentEntry = (props) => {
     const [pdfstate,setpdfstate]=useState(false)
 
     const [billDate,setBillDate]=useState(new Date().toISOString().slice(0, 10))
+    const currDate = new Date().toLocaleDateString();
 
 
     function convertToRoman(num) {
@@ -319,7 +321,8 @@ const StudentFeePaymentEntry = (props) => {
             setFine_paid(0)
         }
         else{
-         setView("none")
+        //  setView("none")
+         setData([])
         }
     }, [props.view,props.data]);
 
@@ -867,9 +870,18 @@ const StudentFeePaymentEntry = (props) => {
     return(
         <div style={{display:view}}>
             <div style={{display:tableView}}>
+            <ReactHTMLTableToExcel
+                id="indranil"
+                className="dashboard-btn btn-warning excel-btn"
+                table="student_fee_payment"
+                filename={"Student_Fee_payment_Report_"+currDate}
+                sheet="tablexls"
+                buttonText="Excel Export"
+            />
             <table className="table-60" >
                 <thead>
                 <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+               
                 <tr>
                     <th>Sl. No.</th>
                     <th>Name</th>
@@ -1402,6 +1414,59 @@ const StudentFeePaymentEntry = (props) => {
                                   disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
+            <table className="table-60" id="student_fee_payment" style={{display:'none'}}>
+<thead>
+<tr>
+                    <th>Sl. No.</th>
+                    <th>Name</th>
+                    <th>Reg No</th>
+                    <th>Entry Status</th>
+                    <th>Academic Year</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                    <th>Roll No</th>
+                    <th>Fee Type</th>
+                    
+                    <th>Fees To be Paid (Including Fine)</th>
+                    
+                    <th>Fees Paid (Including Fine)</th>
+                    <th>Due Amount (Including Fine)</th>
+                
+                    
+                </tr>
+</thead>
+<tbody>
+                {
+                    data.map((item,index)=>{
+                        return(
+                            <tr key={index}>
+                                <td>{index+1}</td>
+                                <td>{item.student_Name}</td>
+                                <td>{item.registration_no}</td>
+                                <td>{ <input type='checkbox'
+                                    checked={item.status  === 1 ? true : false}></input>}</td>
+                                <td>{item.year}</td>
+                                <td>{convertToRoman(item.class)}</td>
+                                <td>{item.section}</td>
+                                <td>{item.roll_no}</td>
+                                <td>{item.fee_type}</td>
+                                
+                                <td>{item.total_fee+item.fine}</td>
+                                
+                                <td>{item.student_total_fee+item.fine_paid}</td>
+                                <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid)}</td>
+                              </tr> 
+                               
+                              
+                        )
+                    })
+                }
+                </tbody>
+
+
+
+
+                </table>
         </div>
     )
 }
