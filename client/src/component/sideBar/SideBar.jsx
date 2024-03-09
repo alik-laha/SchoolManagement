@@ -31,6 +31,7 @@ const SideBar = (props) => {
   const [cashAdmin, setCashAdmin] = useState("");
   const [stockAdmin, setStockAdmin] = useState("");
   const [cashstockAdmin, setcashStockAdmin] = useState("");
+  const [combineadmin, setcombineadmin] = useState('flex');
   const [facultyAdmin, setfacultyAdmin] = useState("");
   const [studentAdmin, setstudentAdmin] = useState("");
   const [hostelAdmin, sethostelAdmin] = useState("");
@@ -57,15 +58,18 @@ const SideBar = (props) => {
     else if (user === "STOCK-ADMIN")
        {
         setcashStockAdmin("flex")
+        setcombineadmin('flex')
         setStockAdmin('flex')
         setCashAdmin("none");
         setfacultyAdmin("none");
         sethostelAdmin("none");
         setstudentAdmin("none");
+        
       }
     else if (user === "CASH-ADMIN")
        {
         setcashStockAdmin("flex");
+        setcombineadmin('flex')
         setCashAdmin('flex')
         setStockAdmin("none");
        setfacultyAdmin("none");
@@ -75,8 +79,9 @@ const SideBar = (props) => {
     else if (user === "FACULTY-ADMIN")
    
     {    setfacultyAdmin('flex')
+    setcombineadmin('flex')
       setCashAdmin("none");
-
+        
         setStockAdmin("none");
         setcashStockAdmin("none");
         setstudentAdmin("none");
@@ -84,6 +89,7 @@ const SideBar = (props) => {
     }
     else if (user === "STUDENT-ADMIN")
     {   setstudentAdmin('flex')
+    setcombineadmin('flex')
         setCashAdmin("none");
         setStockAdmin("none");
         setcashStockAdmin("none");
@@ -93,6 +99,7 @@ const SideBar = (props) => {
     else if (user === "HOSTEL-ADMIN")
     {   
       sethostelAdmin('flex')  
+      setcombineadmin('flex')
       setCashAdmin("none");
         setStockAdmin("none");
         setcashStockAdmin("none");
@@ -326,20 +333,20 @@ const stockUsageVisiblity = () => {
           <span onClick={studentsVisiblity} className="user"
                 style={{display: studentAdmin}}><FaUserGraduate/><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Admission</p><p>{dropArrowstudents}</p></span>
           <div style={{display: studentsVisi}}>
-            <div className="Items" style={{display: studentAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onMasterStudentEntry}><FaDatabase /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Master Admission Entry</p>
             </div>
-            <div className="Items" style={{display: studentAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onMasterStudentView}><GrDatabase /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Edit Master Entry</p>
             </div>
-            <div className="Items" style={{display: studentAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onAcademicEntryUpdate}><BsClipboardData /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Academic Entry</p>
             </div>
             
             <div className="Items" style={{display: admin}} onClick={props.onPromote}><MdQueuePlayNext /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Promote
               To Next Class</p>
             </div>
-            <div className="Items" style={{display: studentAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onAcademicView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Academic Entry</p>
             </div>
           </div>
@@ -348,14 +355,14 @@ const stockUsageVisiblity = () => {
           {/* Hostel */}
           <span onClick={hostelVisiblity} className="user" style={{display: hostelAdmin}}><HiBuildingLibrary /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel</p><p>{dropArrowhostel}</p></span>
           <div style={{display: hostelVisi}}>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onCreatebed}><FaRegBuilding /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Room & Bed Entry</p>
+            <div className="Items" style={{display: combineadmin}} onClick={props.onCreatebed}><FaRegBuilding /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Room & Bed Entry</p>
             </div>
-            <div className="Items" style={{display: hostelAdmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
+            <div className="Items" style={{display: combineadmin}} onClick={props.onViewBedStatus}><TbBrandGoogleBigQuery /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Bed Availability Status</p>
             </div>
-            <div className="Items" style={{display: hostelAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onHostelEntryCreate}><FaRestroom /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Hostel Entry</p>
             </div>
-            <div className="Items" style={{display: hostelAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onHostelEntryView}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Hostel Entry</p>
             </div>
           </div>
@@ -374,23 +381,20 @@ const stockUsageVisiblity = () => {
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Item</p>
 
             </div>
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}><RiStockFill/><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
-              Stock Amount Entry </p>
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}> &#x3e;&nbsp;&nbsp;
+              Stock Amount Entry 
             </div>
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}><BsCash/><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Cash Entry </p>
+                 onClick={props.onSecondStockEntry}> &#x3e;&nbsp;&nbsp;Stock Cash Entry
             </div>
             <div className="Items" style={{display: stockAdmin}}
-                 onClick={props.onStockUsageEntry}><MdDataUsage /><p
-                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
-               Stock Usage Entry </p>
+                 onClick={props.onStockUsageEntry}>
+              &#x3e;&nbsp;&nbsp; Stock Usage Entry 
             </div>
-            <div className="Items" style={{display: cashstockAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Cash </p>
             </div>
-            <div className="Items" style={{display: cashstockAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onStockUsageView}><TbCalendarDue /><p
                  style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Usage </p>
             
@@ -403,12 +407,12 @@ const stockUsageVisiblity = () => {
                  style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Usage </p>
             </div>
 
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}><LuDownload/><p
+            <div className="Items" style={{display: combineadmin}} onClick={props.onStockView}><LuDownload/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export Primary Stock </p>
             </div>
 
 
-            <div className="Items" style={{display: cashAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onSecondStockView}><LuDownload/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export
               Secondary Stock </p>
@@ -426,19 +430,19 @@ const stockUsageVisiblity = () => {
                 style={{display: facultyAdmin}}><FaChartBar /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks</p><p>{dropArrowfaculty}</p></span>
           <div style={{display: facultyVisi}}>
             
-            <div className="Items" style={{display: facultyAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onCreateSubject}><FaAddressBook /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Subject</p>
             </div>
-            <div className="Items" style={{display: facultyAdmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p>
+            <div className="Items" style={{display: combineadmin}} onClick={props.onCreateExam}><PiExamBold /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Create Exam</p>
             </div>
-            <div className="Items" style={{display: facultyAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
             </div>
-            <div className="Items" style={{display: facultyAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Update/Delete</p>
             </div>
             
-            <div className="Items" style={{display: facultyAdmin}}
+            <div className="Items" style={{display: combineadmin}}
                  onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks
             </div>
           </div>
@@ -461,7 +465,7 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}><AiFillEdit /><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>View/Edit Fee Structure </p>
             </div>
-            <div className="Items" style={{display: cashAdmin}} onClick={props.onEntryFeePayment}><TbCash /><p
+            <div className="Items" style={{display: combineadmin}} onClick={props.onEntryFeePayment}><TbCash /><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment Entry </p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onViewFeePayment}>&#x3e;&nbsp;&nbsp;
