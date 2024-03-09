@@ -25,7 +25,7 @@ const HandaleSubmit=(e)=>{
                         <label>
                             Search By Current Academic Year
                         </label>
-                        <input placeholder="Current Acedemic Year" type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                        <input placeholder="Current Acedemic Year" required type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
                     </div>
                     <div>
                         <label>
@@ -142,7 +142,10 @@ const HandaleSubmit=(e)=>{
                         <input placeholder="Reg. No." type="text" value={regNo}
                                onChange={(e) => setRegNo(e.target.value)}/>
                     </div>
+                    <div style={{ width: '100%' }}>
 
+<p style={{ fontSize: '15px' }}>(Academic Year is Mandatory)</p>
+</div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 </form>
