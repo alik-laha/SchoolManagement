@@ -166,6 +166,10 @@ const ViewFeeStructure = (props) => {
             BedFee:bedFee,
             Total:totalFee
         }
+        if(totalFee<=0){
+            alert('Total Fees Should be Greater than 0')
+            return
+        }
         axios.post("/api/v1/fee/editfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
@@ -295,7 +299,7 @@ const ViewFeeStructure = (props) => {
                         </dd>
 
                         <dt><label>Year</label></dt>
-                        <dd><input type="number" value={year} onChange={(e) => setYear(e.target.value)}/>
+                        <dd><input type="number" value={year} onChange={(e) => setYear(e.target.value)} required/>
                         </dd>
 
                         <dt><label>Fee Type</label></dt>

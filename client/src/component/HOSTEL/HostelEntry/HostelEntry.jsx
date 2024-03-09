@@ -351,6 +351,7 @@ const HostelEntry = (props) => {
                 })
                 .catch((err) => {
                     alert(err.response.data.msg);
+                    
                 })
         }
         else {
