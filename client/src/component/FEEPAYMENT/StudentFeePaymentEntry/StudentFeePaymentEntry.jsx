@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
 
 const StudentFeePaymentEntry = (props) => {
     const [view,setView]=useState("none")
@@ -54,6 +55,8 @@ const StudentFeePaymentEntry = (props) => {
     const [disableedit,setdisabledit]=useState(true)
     const [month,setMonth]=useState("")
     const [status,setStatus]=useState(0)
+    const [pdfdata,setPDFdata]=useState([])
+    const [pdfstate,setpdfstate]=useState(false)
 
     const [billDate,setBillDate]=useState(new Date().toISOString().slice(0, 10))
 
@@ -72,6 +75,188 @@ const StudentFeePaymentEntry = (props) => {
         }
         return roman;
       }
+
+      const borderColor = "#3778C2";
+      const styles = StyleSheet.create({
+        section: {
+            margin: 10,
+            padding: 10,
+            flexGrow: 1,
+          },
+        page: {
+          
+          fontFamily: "Helvetica",
+          fontSize: 11,
+          paddingTop: 10,
+          paddingLeft: 50,
+          paddingRight: 50,
+          lineHeight: 1.5,
+          flexDirection: "column"
+        },
+        logo: {
+          width: 60,
+          height: 60,
+          marginTop:20,
+          marginRight:20
+          
+        },
+        mainHeader: {
+          display: "flex",
+          flexDirection: "row-reverse",
+          justifyContent: "space-between",
+          alignItems: "center"
+        },
+
+        tableContainer: {
+            // backgroundColor: '#E4E4E4',
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 15,
+            borderWidth: 1,
+            borderColor: "#3778C2"
+          },
+          container: {
+            flexDirection: "row",
+            borderBottomColor: "#00519C",
+            backgroundColor: "#00519C",
+            color: "#fff",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            textAlign: "center",
+            fontStyle: "bold",
+            flexGrow: 1
+          },
+          description: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'12',
+            marginLeft:'10px'
+          },
+          qty: {
+            width: "60%",
+            fontSize:'12',
+            marginRight:'10px'   
+           
+          },
+          row: {
+            display:'flex',
+            flexDirection: "row",
+            borderBottomColor: "#3778C2",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            
+          },
+          rowdescription: {
+            width: "40%",
+            textAlign: "center",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            backgroundColor: "azure",
+            fontSize:'10px',
+            fontWeight: "extrabold",
+            color:'#00519C'
+            
+          },
+          rowqty: {
+            width: "60%",
+            backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'10px'
+          },
+          headerContainer: {
+            marginTop: 10,
+            justifyContent: "flex-start",
+            width: "50%"
+          },
+          billTo: {
+            marginRight: 10,
+            fontWeight:'extrabold'
+          },
+          Mainbillto: {
+            display: "flex",
+            flexDirection: "row",
+            marginTop: 2,
+            paddingBottom: 1,
+            fontSize:'10px'
+          },
+          instituteheader:{
+            textAlign:'center',
+            flexDirection:'row'
+            
+            
+          },
+          institutedesc:{
+            
+            flexDirection:'column',
+            marginLeft:'10px'
+            
+          },
+          institutename:{
+            textAlign:'center',
+            fontSize:'18',
+            fontWeight:'bold',
+            color:'#00519C',
+            marginTop: 20,
+            
+          },
+          instituteother:{
+            textAlign:'center',
+            fontSize:'10',
+            fontWeight:'bold',
+            color:'rgb(6, 21, 116)',
+            
+            
+          },
+          formDetails:{
+            marginLeft:20,
+            width:'100%',
+            marginTop: 15,
+            textAlign:'center',
+            fontSize:'12',
+            color:'red',
+            fontWeight:'bold',
+            
+            fontStyle:'cursive'
+          },
+          blankrow:{
+            width:'100%',
+            backgroundColor:'antiquewhite',
+            color:'#00519C',
+            textAlign:'center',
+            fontWeight:'bold',
+            fontSize:'10px'
+          },
+          footer:{
+            marginTop:'55px',
+            display:'flex',
+            flexDirection:'row',
+            textAlign:'center'
+          },
+          rightfooter:{
+            width:'50%',
+            marginLeft:'50px',
+            float:'right'
+          },
+          leftfooter:{
+            width:'50%',
+            float:'left'
+          }
+          
+      });
+
+      const MyDocumentFee = ({ data }) => (
+
+        <Document>
+            <Page size="A4" style={styles.page}>
+                
+
+            </Page>
+        </Document>
+
+      );
     useEffect(() => {
 
         if(props.view==="block" && props.data.length>0){
@@ -138,6 +323,10 @@ const StudentFeePaymentEntry = (props) => {
 
 
     const handleClick=async(data)=>{
+
+        const dataArray=[data]
+        setPDFdata(dataArray)
+        setpdfstate(true)
         if(FeeType==="Monthly"){
             setMonthlyView("block")
         }
@@ -264,6 +453,8 @@ const StudentFeePaymentEntry = (props) => {
     }
 
     const handleCancel=()=>{
+        setpdfstate(false)
+        setPDFdata([])
         setMonthlyView("none")
         setNewadmissionView("none")
         setReadmissionView("none")
@@ -769,6 +960,10 @@ const StudentFeePaymentEntry = (props) => {
             <div style={{display: NewadmissionView}} className="dashbrd-40-colm special-25-div">
             <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
+                { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_New_Admission_Fee_PaymenT_Report_"+regNo+".pdf"} >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                    </PDFDownloadLink></button>}
                 <form className='fee-entry-new-adm' onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
                 <p className="customize-centre" style={{fontSize:'16px'}}>Student Fee Details</p>
                     <dl>
@@ -966,6 +1161,10 @@ const StudentFeePaymentEntry = (props) => {
             <div style={{display: readmissionView}} className="dashbrd-40-colm special-25-div">
                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
                 </button>
+                { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_Re_Admission_Fee_Payment_Report_"+regNo+".pdf"} >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                    </PDFDownloadLink></button>}
                 <form onSubmit={HandleReAdmissionFee} className='fee-entry-new-adm' style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
                     
                 <p className="customize-centre" style={{fontSize:'16px'}}>Student Fee Details</p>
