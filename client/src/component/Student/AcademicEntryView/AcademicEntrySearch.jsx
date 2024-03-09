@@ -35,7 +35,7 @@ const AcademicEntrySearch= (props) => {
                         <label>
                             Search By Current Academic Year
                         </label>
-                        <input placeholder='Current Academic Year' type="text" value={year} onChange={(e) => setyear(e.target.value)}/>
+                        <input placeholder='Current Academic Year' type="text" value={year} required onChange={(e) => setyear(e.target.value)}/>
                     </div>
                     <div>
                         <label>
@@ -152,6 +152,10 @@ const AcademicEntrySearch= (props) => {
                         </label>
                         <input type="text" placeholder='Registration No.' value={regNo} onChange={(e) => setregNo(e.target.value)}/>
                     </div>
+                    <div style={{ width: '100%' }}>
+
+                    <p style={{ fontSize: '15px' }}>(Academic Year is Mandatory)</p>
+                </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
                 </form>
