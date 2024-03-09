@@ -413,14 +413,7 @@ const ViewFeePayment =(props)=>{
     return(
         <div style={{display:view}}>
         <div style={{display:tableView}}>
-            <ReactHTMLTableToExcel
-                id="alik"
-                className="dashboard-btn btn-warning excel-btn"
-                table="Fee-Payment-view"
-                filename={"Fee_Payment_Report_"+currDate}
-                sheet="tablexls"
-                buttonText="Excel Export"
-            />
+           
             <table className="table-60" id="Fee-Payment-view">
                 <thead>
                 <tr>
@@ -715,14 +708,20 @@ const ViewFeePayment =(props)=>{
                                    readOnly={true}/></dd>
 
                         <dt>
-                            <label>Fine </label>
+                            <label>Fine to Be Imposed</label>
                         </dt>
                         <dd>
                             <input type="number" value={fine} onChange={(e) => setFine(e.target.value)}
-                                   style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
+                                   style={{backgroundColor: 'orangered',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
+                            
+                                   <dt>
+                            <label>Fine Paid</label> </dt>
+                            <dd>
+                           
                             <input type="number" value={finePaid}
-                                   style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
+                                   style={{textAlign: 'center', width: '100%'}}
                                    onChange={(e)=>setFinePaid(e.target.value)}/></dd>
+                       
 
                     </dl>
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
