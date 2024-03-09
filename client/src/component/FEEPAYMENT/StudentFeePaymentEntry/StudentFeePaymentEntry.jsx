@@ -586,7 +586,7 @@ const StudentFeePaymentEntry = (props) => {
                 BillDate:billDate
             }
             axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
-                alert("Fee Entry of New-Admission is Successful")
+                alert("Payment Entry For New-Admission is Successful")
                setNewadmissionView("none")
                 setTableView("none")
 
@@ -662,7 +662,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/updatenewadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
               console.log(res.data)
-                alert("Fee Entry of New-Admission is Updated")
+                alert("Payment Entry For New-Admission is Updated")
                 setNewadmissionView("none")
                 setTableView("none")
 
@@ -747,7 +747,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
-                alert("Fee Entry of Re-Admission is Successful")
+                alert("Payment Entry For Re-Admission is Successful")
                 setReadmissionView("none")
                 setTableView("none")
 
@@ -823,7 +823,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/updatereadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
-                alert("Fee Entry of New-Admission is Updated")
+                alert("Payment Entry For New-Admission is Updated")
                 setReadmissionView("none")
                 setTableView("none")
 
@@ -953,14 +953,14 @@ const StudentFeePaymentEntry = (props) => {
                         <label>Hostel Charge: </label>
                         <label>{hostelCharge}</label> </dt>
                       <dd>  <input type="number" value={EdithostelCharge}
-                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${hostelCharge}`)}/></dd>
 
 
                     <dt>
                         <label>Tution Charge: </label>
                         <label>{TutionFee}: </label></dt>
                        <dd><input type="number" value={EditTutionFee}
-                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/></dd>
+                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should not Exceed than ${TutionFee}`)}/></dd>
 
 
                         <div>
@@ -1018,7 +1018,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={AdmissonFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input style={{marginLeft:'10px',textAlign:'center',width:'50%'} } type="number" value={EditAdmissonFee}
-                              onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/></dd>
+                              onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should not Exceed than ${AdmissonFee}`)}/></dd>
 
 
                         <dt>
@@ -1028,7 +1028,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={hostelCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                               <input type="number" value={EdithostelCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${hostelCharge}`)}/></dd>
 
 
                     <dt>
@@ -1039,7 +1039,7 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                         value={EditTutionFee}
-                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/> </dd>
+                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should not Exceed than ${TutionFee}`)}/> </dd>
 
 
                     <dt>
@@ -1049,7 +1049,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={CautionMoney} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" value={EditCautionMoney} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should be lower then ${CautionMoney}`)}/></dd>
+                               onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should not Exceed than ${CautionMoney}`)}/></dd>
 
 
                     <dt>
@@ -1059,7 +1059,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={ExaminationFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" value={EditExaminationFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should be lower then ${ExaminationFee}`)}/></dd>
+                               onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should not Exceed than ${ExaminationFee}`)}/></dd>
 
 
                     <dt>
@@ -1069,7 +1069,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={GamesSportsExicursion} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                          <input type="number" value={EditGamesSportsExicursion} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should be lower then ${GamesSportsExicursion}`)}/></dd>
+                               onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should not Exceed than ${GamesSportsExicursion}`)}/></dd>
 
 
                     <dt>
@@ -1078,7 +1078,7 @@ const StudentFeePaymentEntry = (props) => {
                      <dd> <input type="number" value={ElectricCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditElectricCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should be lower then ${ElectricCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should not Exceed than ${ElectricCharge}`)}/></dd>
 
 
                     <dt>
@@ -1088,7 +1088,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={LibraryFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditLibraryFees} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should be lower then ${LibraryFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should not Exceed than ${LibraryFees}`)}/></dd>
 
 
                         <dt>
@@ -1098,7 +1098,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={ComputerFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditComputerFees}  style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should be lower then ${ComputerFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should not Exceed than ${ComputerFees}`)}/></dd>
 
 
                     <dt>
@@ -1109,7 +1109,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={DevelopmentFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                               <input type="number" value={EditDevelopmentFees} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should be lower then ${DevelopmentFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should not Exceed than ${DevelopmentFees}`)}/></dd>
 
 
                     <dt>
@@ -1119,7 +1119,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={Miscellaneous} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                          <input type="number" value={EditMiscellaneous} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should be lower then ${Miscellaneous}`)}/></dd>
+                               onChange={(e) => e.target.value <= Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should not Exceed than ${Miscellaneous}`)}/></dd>
 
 
                     <dt>
@@ -1129,7 +1129,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={LaundryCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditLaundryCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should be lower then ${LaundryCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should not Exceed than ${LaundryCharge}`)}/></dd>
 
 
                         <dt>
@@ -1139,7 +1139,7 @@ const StudentFeePaymentEntry = (props) => {
                       <input type="number" value={MedicalCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditMedicalCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should be lower then ${MedicalCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should not Exceed than ${MedicalCharge}`)}/></dd>
 
 
                     <dt>
@@ -1149,7 +1149,7 @@ const StudentFeePaymentEntry = (props) => {
                       <input type="number" value={Uniform} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditUniform} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= Uniform ? setEditUniform(e.target.value) : alert(`It should be lower then ${Uniform}`)}/></dd>
+                               onChange={(e) => e.target.value <= Uniform ? setEditUniform(e.target.value) : alert(`It should not Exceed than ${Uniform}`)}/></dd>
 
 
                     <dt>
@@ -1159,7 +1159,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={SessionCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditSessionCharge}  style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should be lower then ${SessionCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should not Exceed than ${SessionCharge}`)}/></dd>
 
 
                         <dt>
@@ -1169,7 +1169,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={BedFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditBedFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/></dd>
+                               onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should not Exceed than ${BedFee}`)}/></dd>
                        
 
                     <dt>
@@ -1234,7 +1234,7 @@ const StudentFeePaymentEntry = (props) => {
                         <input type="number" value={AdmissonFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                             <input type="number" value={EditAdmissonFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                                   onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/>
+                                   onChange={(e) => e.target.value <= AdmissonFee ? setEditAdmissonFee(e.target.value) : alert(`It should not Exceed than ${AdmissonFee}`)}/>
                         </dd>
 
 
@@ -1245,7 +1245,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={hostelCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                               <input type="number" value={EdithostelCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= hostelCharge ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${hostelCharge}`)}/></dd>
 
 
                     <dt>
@@ -1256,7 +1256,7 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                         value={EditTutionFee}
-                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should be lower then ${TutionFee}`)}/> </dd>
+                               onChange={(e) => e.target.value <= TutionFee ? setEditTutionFee(e.target.value) : alert(`It should not Exceed than${TutionFee}`)}/> </dd>
 
 
                     <dt>
@@ -1266,7 +1266,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={CautionMoney} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" value={EditCautionMoney} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should be lower then ${CautionMoney}`)}/></dd>
+                               onChange={(e) => e.target.value <= CautionMoney ? setEditCautionMoney(e.target.value) : alert(`It should not Exceed than${CautionMoney}`)}/></dd>
 
 
                     <dt>
@@ -1276,7 +1276,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={ExaminationFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                         <input type="number" value={EditExaminationFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should be lower then ${ExaminationFee}`)}/></dd>
+                               onChange={(e) => e.target.value <= ExaminationFee ? setEditExaminationFee(e.target.value) : alert(`It should not Exceed than ${ExaminationFee}`)}/></dd>
 
 
                     <dt>
@@ -1286,7 +1286,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={GamesSportsExicursion} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/>
                          <input type="number" value={EditGamesSportsExicursion} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should be lower then ${GamesSportsExicursion}`)}/></dd>
+                               onChange={(e) => e.target.value <= GamesSportsExicursion ? setEditGamesSportsExicursion(e.target.value) : alert(`It should not Exceed than ${GamesSportsExicursion}`)}/></dd>
 
 
                     <dt>
@@ -1295,7 +1295,7 @@ const StudentFeePaymentEntry = (props) => {
                      <dd> <input type="number" value={ElectricCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditElectricCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should be lower then ${ElectricCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= ElectricCharge ? setEditElectricCharge(e.target.value) : alert(`It should not Exceed than ${ElectricCharge}`)}/></dd>
 
 
                     <dt>
@@ -1305,7 +1305,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={LibraryFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditLibraryFees} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should be lower then ${LibraryFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should not Exceed than ${LibraryFees}`)}/></dd>
 
 
                         <dt>
@@ -1315,7 +1315,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={ComputerFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditComputerFees}  style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should be lower then ${ComputerFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should not Exceed than ${ComputerFees}`)}/></dd>
 
 
                     <dt>
@@ -1326,7 +1326,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={DevelopmentFees} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                               <input type="number" value={EditDevelopmentFees} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should be lower then ${DevelopmentFees}`)}/></dd>
+                               onChange={(e) => e.target.value <= DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should not Exceed than ${DevelopmentFees}`)}/></dd>
 
 
                     <dt>
@@ -1336,7 +1336,7 @@ const StudentFeePaymentEntry = (props) => {
                      <input type="number" value={Miscellaneous} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                          <input type="number" value={EditMiscellaneous} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should be lower then ${Miscellaneous}`)}/></dd>
+                               onChange={(e) => e.target.value <= Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should not Exceed than ${Miscellaneous}`)}/></dd>
 
 
                     <dt>
@@ -1346,7 +1346,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={LaundryCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditLaundryCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should be lower then ${LaundryCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should not Exceed than ${LaundryCharge}`)}/></dd>
 
 
                         <dt>
@@ -1356,7 +1356,7 @@ const StudentFeePaymentEntry = (props) => {
                       <input type="number" value={MedicalCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditMedicalCharge} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should be lower then ${MedicalCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should not Exceed than ${MedicalCharge}`)}/></dd>
 
 
                     <dt>
@@ -1366,7 +1366,7 @@ const StudentFeePaymentEntry = (props) => {
                       <input type="number" value={Uniform} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditUniform} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= Uniform ? setEditUniform(e.target.value) : alert(`It should be lower then ${Uniform}`)}/></dd>
+                               onChange={(e) => e.target.value <= Uniform ? setEditUniform(e.target.value) : alert(`It should not Exceed than ${Uniform}`)}/></dd>
 
 
                     <dt>
@@ -1376,7 +1376,7 @@ const StudentFeePaymentEntry = (props) => {
                     <input type="number" value={SessionCharge} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditSessionCharge}  style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should be lower then ${SessionCharge}`)}/></dd>
+                               onChange={(e) => e.target.value <= SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should not Exceed than ${SessionCharge}`)}/></dd>
 
 
                         <dt>
@@ -1386,7 +1386,7 @@ const StudentFeePaymentEntry = (props) => {
                        <input type="number" value={BedFee} readOnly
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditBedFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
-                               onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/></dd>
+                               onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should not Exceed than ${BedFee}`)}/></dd>
 
                     
                     <dt>

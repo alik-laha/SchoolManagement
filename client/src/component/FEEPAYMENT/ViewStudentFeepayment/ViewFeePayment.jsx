@@ -508,9 +508,8 @@ const ViewFeePayment =(props)=>{
                             style={{color: 'black', fontSize: '15px', textAlign: 'center', width: '50%'}}></label>
                         </dt>
                         <dd>
-                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>To Be Paid</label>
-                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Actually
-                                Paid </label>
+                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Pending Amount Till Now</label>
+                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Payment For Adjustment </label>
                         </dd>
                         <dt>
                             <label>Admission Fee </label>
@@ -521,7 +520,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditAdmissonFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewAdmissionFee - AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should be lower then ${AdmissonFee}`)}/>
+                                   onChange={(e) => e.target.value <= (NewAdmissionFee - AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should be lower than or Equal To ${NewAdmissionFee - AdmissonFee}`)}/>
                         </dd>
 
 
