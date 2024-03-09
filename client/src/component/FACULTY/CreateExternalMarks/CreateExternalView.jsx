@@ -65,6 +65,7 @@ const CreateMarks=(props)=>{
     const handleClear = () => {
         if(view=='block'){
             setView('none')
+            
         }
     }
 
