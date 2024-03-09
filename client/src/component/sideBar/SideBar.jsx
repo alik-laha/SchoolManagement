@@ -57,6 +57,7 @@ const SideBar = (props) => {
     else if (user === "STOCK-ADMIN")
        {
         setcashStockAdmin("flex")
+        setStockAdmin('flex')
         setCashAdmin("none");
         setfacultyAdmin("none");
         sethostelAdmin("none");
@@ -65,27 +66,34 @@ const SideBar = (props) => {
     else if (user === "CASH-ADMIN")
        {
         setcashStockAdmin("flex");
+        setCashAdmin('flex')
         setStockAdmin("none");
        setfacultyAdmin("none");
        sethostelAdmin("none");
        setstudentAdmin("none");}
 
     else if (user === "FACULTY-ADMIN")
-    {   setCashAdmin("none");
+   
+    {    setfacultyAdmin('flex')
+      setCashAdmin("none");
+
         setStockAdmin("none");
         setcashStockAdmin("none");
         setstudentAdmin("none");
         sethostelAdmin("none");
     }
     else if (user === "STUDENT-ADMIN")
-    {   setCashAdmin("none");
+    {   setstudentAdmin('flex')
+        setCashAdmin("none");
         setStockAdmin("none");
         setcashStockAdmin("none");
         setfacultyAdmin("none");
         sethostelAdmin("none");
     }
     else if (user === "HOSTEL-ADMIN")
-    {   setCashAdmin("none");
+    {   
+      sethostelAdmin('flex')  
+      setCashAdmin("none");
         setStockAdmin("none");
         setcashStockAdmin("none");
         setfacultyAdmin("none");
@@ -291,13 +299,13 @@ const stockUsageVisiblity = () => {
                 <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>User</p><p>{dropArrowuser}</p></span>
           
           <div style={{ display: userVisi }}>
-            <div className="Items" onClick={props.oncreate}><FaUserPlus />
+            <div className="Items" onClick={props.oncreate} style={{display:admin}}><FaUserPlus />
               <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Create Dashboard User</p></div>
-            <div className="Items" onClick={props.onSearch}><FaUserEdit />
-              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Search/Modify User</p></div>
-            <div className="Items" onClick={props.onCreateFaculty}><ImUserTie />
+            <div className="Items" onClick={props.onSearch} style={{display:admin}}><FaUserEdit />
+              <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }} >Search/Modify User</p></div>
+            <div className="Items" onClick={props.onCreateFaculty} style={{display:admin}}><ImUserTie />
               <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>Create Employee</p></div>
-            <div className="Items" onClick={props.onViewFaculty}><TbUserEdit />
+            <div className="Items" onClick={props.onViewFaculty} style={{display:admin}}><TbUserEdit />
               <p style={{ width: '-webkit-fill-available', marginLeft: '10px' }}>View/Edit Employee</p></div>
           </div>
 
@@ -307,9 +315,9 @@ const stockUsageVisiblity = () => {
           <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>NoticeBoard</p><p>{dropArrowNotc}</p></span>
           
           <div style={{display: noticeVisi}}>
-            <div className="Items" onClick={props.onpublish}><FaFileUpload />
+            <div className="Items" onClick={props.onpublish} style={{display:admin}}><FaFileUpload />
             <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Upload Notice</p></div>
-            <div className="Items" onClick={props.onNoticeManupulation}><CiViewList />
+            <div className="Items" onClick={props.onNoticeManupulation} style={{display:admin}}><CiViewList />
             <p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>View/Delete Notice</p></div>
 
           </div>
@@ -328,7 +336,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onAcademicEntryUpdate}><BsClipboardData /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Academic Entry</p>
             </div>
             
-            <div className="Items" style={{display: studentAdmin}} onClick={props.onPromote}><MdQueuePlayNext /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Promote
+            <div className="Items" style={{display: admin}} onClick={props.onPromote}><MdQueuePlayNext /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Promote
               To Next Class</p>
             </div>
             <div className="Items" style={{display: studentAdmin}}
@@ -374,7 +382,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onSecondStockEntry}><BsCash/><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Cash Entry </p>
             </div>
-            <div className="Items" style={{display: cashstockAdmin}}
+            <div className="Items" style={{display: stockAdmin}}
                  onClick={props.onStockUsageEntry}><MdDataUsage /><p
                  style={{width: '-webkit-fill-available', marginLeft: '10px'}}>
                Stock Usage Entry </p>
@@ -443,7 +451,7 @@ const stockUsageVisiblity = () => {
           
 
           <span onClick={stockUsageVisiblity} className="user"
-                style={{display: admin}}><BsCashCoin /><p
+                style={{display: cashAdmin}}><BsCashCoin /><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment </p><p>{dropArrowstockUsage}</p></span>
           <div style={{display: stockUsageVisi}}>
             <div className="Items" style={{display: admin}} onClick={props.onCreateFeeStructure}><TbCash /><p
@@ -453,8 +461,8 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: admin}} onClick={props.onViewFeeStructure}><AiFillEdit /><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>View/Edit Fee Structure </p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onEntryFeePayment}>&#x3e;&nbsp;&nbsp;
-              Entry/View Fee Payment
+            <div className="Items" style={{display: cashAdmin}} onClick={props.onEntryFeePayment}><TbCash /><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment Entry </p>
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onViewFeePayment}>&#x3e;&nbsp;&nbsp;
               Modify fee Payment
