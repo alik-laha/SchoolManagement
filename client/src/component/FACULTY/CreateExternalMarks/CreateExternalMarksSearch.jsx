@@ -188,7 +188,7 @@ const CreateMarks=(props)=>{
                         ))}
                     </select>
                 </div>
-                <p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
+                <p style={{ fontSize: '15px' }}>(All Fields are Mandatory)</p>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>

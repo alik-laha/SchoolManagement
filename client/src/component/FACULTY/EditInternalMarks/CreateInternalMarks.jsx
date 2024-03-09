@@ -44,7 +44,7 @@ function convertToRoman(num) {
 const handleUpdate=(data)=>{
         console.log(data)
      if(marks>props.Marks){
-         alert("Obtained Marks Should be less than Total Marks")
+         alert("Obtained Marks Should be less than or Equal to Total Marks")
          setIndex(null)
          return
      }
@@ -62,7 +62,7 @@ const handleUpdate=(data)=>{
 const handleClear = () => {
     if(view=='block'){
         setData([])
-        setView('none')
+        
     }
     
 
