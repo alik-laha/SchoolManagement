@@ -276,7 +276,7 @@ const ViewFeePayment =(props)=>{
 
             axios.post("/api/v1/fee/updatenewadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
 
-                alert("Fee entry has been update" +regNo)
+                alert("Payment Entry has been Updated For " +regNo)
 
                 setView("none")
                 setTableView("contents")
@@ -342,7 +342,7 @@ const ViewFeePayment =(props)=>{
         else{
             axios.post("/api/v1/fee/updatereadmissionfeeentryforupdate",data,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
 
-                alert("Fee Entry has been Updated" +regNo)
+                alert("Payment Entry has been Updated For" +regNo)
 
                 setView("none")
                 setTableView("contents")
@@ -520,7 +520,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditAdmissonFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewAdmissionFee - AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should be lower than or Equal To ${NewAdmissionFee - AdmissonFee}`)}/>
+                                   onChange={(e) => e.target.value <= (NewAdmissionFee - AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should not Exceed than ${NewAdmissionFee - AdmissonFee}`)}/>
                         </dd>
 
 
@@ -532,7 +532,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EdithostelCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewhostelCharge - hostelCharge) ? setEditHostelCharge(e.target.value) : alert(`It should be lower then ${hostelCharge}`)}/>
+                                   onChange={(e) => e.target.value <= (NewhostelCharge - hostelCharge) ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${NewhostelCharge - hostelCharge}`)}/>
                         </dd>
 
 

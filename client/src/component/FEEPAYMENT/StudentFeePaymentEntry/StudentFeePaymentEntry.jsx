@@ -586,7 +586,7 @@ const StudentFeePaymentEntry = (props) => {
                 BillDate:billDate
             }
             axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
-                alert("Payment Entry For New-Admission is Successful")
+                alert("Payment Entry For New-Admission is Successful For" + regNo)
                setNewadmissionView("none")
                 setTableView("none")
 
@@ -662,7 +662,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/updatenewadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
               console.log(res.data)
-                alert("Payment Entry For New-Admission is Updated")
+                alert("Payment Entry For New-Admission is Updated For " + regNo)
                 setNewadmissionView("none")
                 setTableView("none")
 
@@ -747,7 +747,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
-                alert("Payment Entry For Re-Admission is Successful")
+                alert("Payment Entry For Re-Admission is Successful For "+regNo)
                 setReadmissionView("none")
                 setTableView("none")
 
@@ -823,7 +823,7 @@ const StudentFeePaymentEntry = (props) => {
             }
             axios.post("/api/v1/fee/updatereadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
-                alert("Payment Entry For New-Admission is Updated")
+                alert("Payment Entry For New-Admission is Updated " +regNo)
                 setReadmissionView("none")
                 setTableView("none")
 
