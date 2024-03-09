@@ -73,7 +73,7 @@ const CreateMarks=(props)=>{
     const handleSubmit = async () => {
         let a = 0;
         if (!subject || !examName) {
-            alert("Please select subject and exam");
+            alert("Please select Subject and Exam");
             return;
         }
 
