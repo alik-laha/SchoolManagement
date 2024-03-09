@@ -5,7 +5,7 @@ const ViewFeePaymentSearch = (props) => {
     const [Class,setClass]=useState("")
     const [year,setYear]=useState(null)
     const [feeType,setFeeType]=useState("")
-    const [regNo,setRegNo]=useState("")
+    const [regNo,setRegNo]=useState('')
 
     const handlesubmit=(e)=>{
         e.preventDefault()
@@ -32,6 +32,10 @@ const ViewFeePaymentSearch = (props) => {
     return (
         <div style={{display: props.view}} className="dashbrd-40-colm">
             <form onSubmit={handlesubmit}>
+            <div>
+                    <label>Search By Academic Year</label>
+                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required={true} placeholder="Current Acedemic Year"/>
+                </div>
                 <div>
                     <label>
                         Search By Class
@@ -80,13 +84,10 @@ const ViewFeePaymentSearch = (props) => {
                     </select>
                 </div>
 
-                <div>
-                    <label>Academic Year</label>
-                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required={true}/>
-                </div>
+                
 
                 <div>
-                    <label>Fee Type</label>
+                    <label>Fee Payment For</label>
                     <select value={feeType} onChange={(e) => setFeeType(e.target.value)} required>
                         <option value="">Select</option>
                         <option value="New-Admisson">New-Admisson</option>
@@ -94,10 +95,10 @@ const ViewFeePaymentSearch = (props) => {
                     </select>
                 </div>
 
-                <div>
-                    <label>Registration No</label>
-                    <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
-                </div>
+                <div style={{ width: '100%' }}>
+
+<p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
+</div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>

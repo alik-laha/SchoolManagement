@@ -5,7 +5,7 @@ import axios from "axios";
 const StudentFeePaymentEntrySearch = (props) => {
 const [Class, setClass] = useState(0);
 const [year, setYear] = useState(null);
-const [regNo, setRegNo] = useState(0);
+const [regNo, setRegNo] = useState('');
 const [feeType, setFeeType] = useState("");
 
 const handlesubmit = (e) => {
@@ -91,10 +91,10 @@ const handlesubmit = (e) => {
                     </select>
                 </div>
 
-                <div>
-                    <label>Search By Registration No.</label>
-                    <input type="text" placeholder='Reg. No' value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
-                </div>
+                <div style={{ width: '100%' }}>
+
+<p style={{ fontSize: '15px' }}>(All fields are Mandatory)</p>
+</div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>
