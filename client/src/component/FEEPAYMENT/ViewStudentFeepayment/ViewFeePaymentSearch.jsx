@@ -34,7 +34,7 @@ const ViewFeePaymentSearch = (props) => {
             <form onSubmit={handlesubmit}>
                 <div>
                     <label>
-                        Search By Class.
+                        Search By Class
                     </label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
                         <option value="">Class</option>

@@ -28,9 +28,13 @@ const handlesubmit = (e) => {
     return(
         <div style={{display: props.view}} className="dashbrd-40-colm">
             <form onSubmit={handlesubmit}>
+            <div>
+                    <label>Search By Academic Year</label>
+                    <input type="number" placeholder='Academic Year' value={year} onChange={(e) => setYear(e.target.value)} required={true}/>
+                </div>
                 <div>
                     <label>
-                        Search By Class.
+                        Search By Class
                     </label>
                     <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
                         <option value="">Class</option>
@@ -76,13 +80,10 @@ const handlesubmit = (e) => {
                     </select>
                 </div>
 
-                <div>
-                    <label>Academic Year</label>
-                    <input type="number" value={year} onChange={(e) => setYear(e.target.value)} required={true}/>
-                </div>
+                
 
                 <div>
-                    <label>Fee Type</label>
+                    <label>Fee Payment For</label>
                     <select value={feeType} onChange={(e) => setFeeType(e.target.value)} required>
                         <option value="">Select</option>
                         <option value="New-Admisson">New-Admisson</option>
@@ -91,8 +92,8 @@ const handlesubmit = (e) => {
                 </div>
 
                 <div>
-                    <label>Registration No</label>
-                    <input type="text" value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
+                    <label>Search By Registration No.</label>
+                    <input type="text" placeholder='Reg. No' value={regNo} onChange={(e) => setRegNo(e.target.value)}/>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
