@@ -692,7 +692,7 @@ exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
                               JOIN new_admission_fee b ON a.registration_no = b.regNo
                               LEFT JOIN fee_structure c ON a.class = c.class
                          AND c.year = "${year}"
-                         AND c.fee_type = "NewAdmission"
+                         AND c.fee_type = "New-Admisson"
                      WHERE a.class = "${Class}"
                        AND a.current_academic_year = "${year}";`
         } else {
@@ -707,7 +707,7 @@ exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
                               JOIN new_admission_fee b ON a.registration_no = b.regNo
                               LEFT JOIN fee_structure c ON a.class = c.class
                          AND c.year = "${year}"
-                         AND c.fee_type = "NewAdmission"
+                         AND c.fee_type = "New-Admisson"
                      WHERE a.class = "${Class}"
                        AND a.current_academic_year = "${year}"
                        AND a.registration_no = "${regNo}";`
@@ -716,6 +716,7 @@ exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
             if (err) {
                 return res.status(400).json({msg: err})
             } else {
+
                 return res.status(200).json({result})
             }
         })
@@ -745,7 +746,7 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
                           JOIN re_admission_fee b ON a.registration_no = b.regNo
                           LEFT JOIN fee_structure c ON a.class = c.class
                           AND c.year = "${year}"
-                          AND c.fee_type = "ReAdmisson"
+                          AND c.fee_type = "Re-Admisson"
                   WHERE
                       a.class = "${Class}"
                     AND a.current_academic_year = "${year}" ;`
@@ -764,7 +765,7 @@ exports.GetStudentForReAdmissionFeeEntry = (req, res) => {
                              JOIN re_admission_fee b ON a.registration_no = b.regNo
                              LEFT JOIN fee_structure c ON a.class = c.class
                              AND c.year = "${year}"
-                             AND c.fee_type = "ReAdmisson"
+                             AND c.fee_type = "Re-Admisson"
                      WHERE
                          a.class = "${Class}"
                        AND a.current_academic_year = "${year}"

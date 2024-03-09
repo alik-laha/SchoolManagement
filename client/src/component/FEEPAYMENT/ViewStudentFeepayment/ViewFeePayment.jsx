@@ -425,6 +425,7 @@ const ViewFeePayment =(props)=>{
                 </thead>
                 <tbody>
                 {data.map((item,index)=>{
+                    console.log(item.style,item.total_fee)
                     const pendingAmount=item.status-item.total_fee
                     return(
                         <tr key={index}>
@@ -442,7 +443,7 @@ const ViewFeePayment =(props)=>{
                                 {item.regNo}
                             </td>
                             <td>
-                                {pendingAmount}
+                                {pendingAmount+item.fine-item.fine_paid}
                             </td>
                             <td>
                                 <button onClick={()=>handleEdit(item)} className="dashboard-btn dashboard-btn-scss">Edit</button>
