@@ -114,10 +114,19 @@ const ExportStudentMarksView= (props) => {
         setResult("none")
         setResult2("none")
     }
+    const handleClear = () => {
+        if(view=='block'){
+            setData([])
+            
+        }
+        
+    
+    }
 
       return(
           <div style={{display: view}}>
               <div style={{display: tableView}}>
+              <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
                   <table className="table-60">
                       <thead>
                       <tr>
@@ -201,6 +210,7 @@ const ExportStudentMarksView= (props) => {
                       }
                       </tbody>
                   </table>
+                  {data.length===0 ? <div className="no-data" style={{textAlign:'center',width:'100%'}}>No Data Exists</div> : null}
               </div>
               <div style={{display: result}}>
                   <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
@@ -314,6 +324,7 @@ const ExportStudentMarksView= (props) => {
                   </tr>
                   </tbody>
               </table>
+             
               </div>
           </div>
 
