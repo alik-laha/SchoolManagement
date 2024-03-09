@@ -837,6 +837,12 @@ exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
+        if(fine===""){
+            fine=0
+        }
+        if(finePaid===""){
+            finePaid=0
+        }
         let query = `UPDATE new_admission_fee
                      SET
                          admission_fee='${AdmissionFee}',
