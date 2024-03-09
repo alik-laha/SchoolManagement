@@ -51,6 +51,7 @@ const StudentFeePaymentEntry = (props) => {
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
     const[fine,setFine]=useState(0)
+    const[fine_paid,setFine_paid]=useState(0)
 
     const [disableedit,setdisabledit]=useState(true)
     const [month,setMonth]=useState("")
@@ -315,6 +316,7 @@ const StudentFeePaymentEntry = (props) => {
             setStatus(0)
             setBillDate(new Date().toISOString().slice(0, 10))
             setFine(0)
+            setFine_paid(0)
         }
         else{
          setView("none")
@@ -413,6 +415,7 @@ const StudentFeePaymentEntry = (props) => {
            setBillDate(DATA.bill_date.slice(0, 10))
            cData = DATA.entry_date.toString()
            setFine(DATA.fine)
+           setFine_paid(DATA.fine_paid)
 
            let currentDate = new Date().toISOString();
            let currentYear = currentDate.slice(0, 4);
@@ -510,6 +513,7 @@ const StudentFeePaymentEntry = (props) => {
         setStatus(0)
         setBillDate(new Date().toISOString().slice(0, 10))
         setFine(0)
+        setFine_paid(0)
     }
 
     useEffect(() => {
@@ -877,9 +881,13 @@ const StudentFeePaymentEntry = (props) => {
                     <th>Roll No</th>
                     
                     
-                    <th>To be Paid</th>
-                    <th>Actually Paid</th>
-                    <th>Fine</th>
+                    <th>Fees To be Paid (Including Fine)</th>
+                    
+                    <th>Fees Paid (Including Fine)</th>
+                    <th>Due Amount (Including Fine)</th>
+                
+                    
+
                     
                    <th>Action</th>
                 </tr>
@@ -900,9 +908,11 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.roll_no}</td>
                                 
                                 
-                                <td>{item.total_fee}</td>
-                                <td>{item.student_total_fee}</td>
-                                <td>{item.fine}</td>
+                                <td>{item.total_fee+item.fine}</td>
+                                
+                                <td>{item.student_total_fee+item.fine_paid}</td>
+                                <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid)}</td>
+                               
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
                             </tr>
@@ -1151,13 +1161,20 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                          <input type="number" value={EditTotal} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>
-                               <dt>
-                            <label>Fine</label>
-                        </dt>
-                        <dd>
 
-                            <input type="number" readOnly value={fine} style={{ textAlign: 'center', width: '100%' }}
-                            /></dd>
+
+<dt>
+                        <label>Fine </label>
+                        </dt>
+                      <dd> 
+                      <input type="number" value={fine} readOnly
+                              style={{backgroundColor:'orangered',textAlign:'center',width:'50%',color:'white',fontWeight:'bolder'} }/> 
+                         <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
+                               readOnly={true}/></dd>         
+                              
+                              
+                              
+                              
 
                     <dt>
                         <label>Bill Date</label></dt>
@@ -1175,13 +1192,13 @@ const StudentFeePaymentEntry = (props) => {
 
             {/* Readmission Fee Payment*/}
             <div style={{display: readmissionView}} className="dashbrd-40-colm special-25-div">
-                <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">cancel
+                 <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
                 { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
                                     <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_Re_Admission_Fee_Payment_Report_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
-                <form onSubmit={HandleReAdmissionFee} className='fee-entry-new-adm' style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
+                <form onSubmit={HandleReAdmissionFee} className='fee-entry-new-adm' style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
                     
                 <p className="customize-centre" style={{fontSize:'16px'}}>Student Fee Details</p>
                     <dl>
@@ -1362,12 +1379,13 @@ const StudentFeePaymentEntry = (props) => {
                          <input type="number" value={EditTotal} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>
                                    <dt>
-                            <label>Fine</label>
+                        <label>Fine </label>
                         </dt>
-                        <dd>
-
-                            <input type="number" readOnly value={fine} style={{  textAlign: 'center', width: '100%' }}
-                            /></dd>
+                      <dd> 
+                      <input type="number" value={fine} readOnly
+                              style={{backgroundColor:'orangered',textAlign:'center',width:'50%',color:'white',fontWeight:'bolder'} }/> 
+                         <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
+                               readOnly={true}/></dd> 
 
                         <dt>
                             <label>Bill Date</label></dt>
