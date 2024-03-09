@@ -54,7 +54,7 @@ const CreateMarks=(props)=>{
     const handaleChange=(e,index)=>{
         const newMarks=[...marks]
         if(e.target.value>target){
-            alert("Marks should be less than or equal to total marks")
+            alert("Marks should be less than or equal to Total Alloted Marks of Exam")
             return
         }
         else{
@@ -92,7 +92,7 @@ const CreateMarks=(props)=>{
                 a = 1;
             }));
 
-            alert("Marks Entered Successfully");
+            alert("Marks of All Students Has Been Entered Successfully");
             setView("none");
             setMarks([]);
             setData([]);
