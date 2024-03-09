@@ -74,6 +74,22 @@ const ViewFeePayment =(props)=>{
         setFeeType(props.feeType)
     },[props.data,props.feeType])
 
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+
+
     const handleEdit=(data)=>{
         console.log(data)
         setTableView("none")
@@ -408,21 +424,29 @@ const ViewFeePayment =(props)=>{
             <table className="table-60" id="Fee-Payment-view">
                 <thead>
                 <tr>
-                    <th>Index</th>
+                    <th>Sl No.</th>
                 <th>
                     Name
-                </th>
-                <th>
-                    Class
-                </th>
-                <th>
-                    Year
                 </th>
                 <th>
                     Registation No
                 </th>
                 <th>
-                    Pending Amount
+                    Academic Year
+                </th>
+                <th>
+                    Class
+                </th>
+                
+                <th>
+                    Section
+                </th>
+                <th>
+                    Roll No.
+                </th>
+                
+                <th>
+                    Due Amount
                 </th>
                     <th>
                         Action
@@ -440,15 +464,22 @@ const ViewFeePayment =(props)=>{
                                 {item.student_Name}
                             </td>
                             <td>
-                                {item.class}
+                            {item.regNo}
+                                
                             </td>
                             <td>
                                 {item.year}
                             </td>
                             <td>
-                                {item.regNo}
+                            {convertToRoman(item.class)}
                             </td>
                             <td>
+                                {item.section}
+                            </td>
+                            <td>
+                                {item.roll_no}
+                            </td>
+                            <td style={{color:'red'}}>
                                 {pendingAmount+item.fine-item.fine_paid}
                             </td>
                             <td>
