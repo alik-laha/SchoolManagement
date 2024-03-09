@@ -320,16 +320,23 @@ const StudentFeePaymentEntry = (props) => {
             setFine(0)
             setFine_paid(0)
         }
+        
         else{
-        //  setView("none")
-         setData([])
+        
+         //setData([])
+         setView("none")
         }
+       
     }, [props.view,props.data]);
 
     useEffect(() => {
         if(props.data.length>0){
             setFeeType(props.data[0].fee_type)
             setData(props.data)
+        }
+        else{
+            setData([])
+            setView("block")
         }
     },[props.data])
 
