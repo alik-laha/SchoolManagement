@@ -381,15 +381,15 @@ const stockUsageVisiblity = () => {
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Stock Item</p>
 
             </div>
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}> &#x3e;&nbsp;&nbsp;
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}> &#x274D;&nbsp;&nbsp;
               Stock Amount Entry 
             </div>
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}> &#x3e;&nbsp;&nbsp;Stock Cash Entry
+                 onClick={props.onSecondStockEntry}>  &#x24;&nbsp;&nbsp;&nbsp; Stock Cash Entry
             </div>
             <div className="Items" style={{display: stockAdmin}}
                  onClick={props.onStockUsageEntry}>
-              &#x3e;&nbsp;&nbsp; Stock Usage Entry 
+              &#x2744;&nbsp;&nbsp; Stock Usage Entry 
             </div>
             <div className="Items" style={{display: combineadmin}}
                  onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Cash </p>
