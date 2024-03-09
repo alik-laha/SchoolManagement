@@ -267,7 +267,8 @@ WHERE
                          a.registration_no,
                          a.class,
                          b.*,
-                         (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status
+                         (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
+                         (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee
                      FROM
                          Student_Admission a
                              JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
@@ -542,7 +543,7 @@ exports.UpdateNewAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
-        let query = `UPDATE re_admission_fee
+        let query = `UPDATE new_admission_fee
                      SET
                          class='${Class}',
                          year='${year}',
@@ -566,6 +567,8 @@ exports.UpdateNewAdmissionFeeEntry = (req, res) => {
                          total_fee='${Total}',
                             bill_date='${BillDate}'
                             Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
+
+                          
         Database.query(query,(err,result)=>{
             if(err){
                 return res.status(400).json({msg:err})

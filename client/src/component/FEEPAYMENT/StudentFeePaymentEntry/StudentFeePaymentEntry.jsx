@@ -56,6 +56,22 @@ const StudentFeePaymentEntry = (props) => {
     const [status,setStatus]=useState(0)
 
     const [billDate,setBillDate]=useState(new Date().toISOString().slice(0, 10))
+
+
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
     useEffect(() => {
 
         if(props.view==="block" && props.data.length>0){
@@ -680,7 +696,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{ <input type='checkbox'
                                     checked={item.status  === 1 ? true : false}></input>}</td>
                                 <td>{item.year}</td>
-                                <td>{item.class}</td>
+                                <td>{convertToRoman(item.class)}</td>
                                 <td>{item.section}</td>
                                 <td>{item.roll_no}</td>
                                 

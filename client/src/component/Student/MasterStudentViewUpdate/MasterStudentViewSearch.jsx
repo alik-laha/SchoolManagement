@@ -30,7 +30,7 @@ const MasterStudentViewSearch = (props) => {
                         type="number"
                         placeholder="Admisson Year"
                         value={admissionYear}
-                        onChange={(e) => setAdmissionYear(e.target.value)}
+                        onChange={(e) => setAdmissionYear(e.target.value)} required
                     />
                 </div>
 
@@ -119,6 +119,10 @@ const MasterStudentViewSearch = (props) => {
                         value={regNo}
                         onChange={(e) => setRegNo(e.target.value)}
                     />
+                </div>
+                <div style={{ width: '100%' }}>
+
+                    <p style={{ fontSize: '15px' }}>(Admission Year is Mandatory)</p>
                 </div>
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
 
