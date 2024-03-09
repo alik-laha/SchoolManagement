@@ -465,8 +465,8 @@ const stockUsageVisiblity = () => {
             <div className="Items" style={{display: combineadmin}} onClick={props.onEntryFeePayment}><TbCash /><p
                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Fee Payment Entry </p>
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onViewFeePayment}>&#x3e;&nbsp;&nbsp;
-              Modify fee Payment
+            <div className="Items" style={{display: admin}} onClick={props.onViewFeePayment}><CiEdit /><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Fee Payment </p>
             </div>
           </div>
 

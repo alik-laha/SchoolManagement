@@ -259,7 +259,7 @@ FROM
     JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
 WHERE 
     a.class = ${Class} AND 
-    a.current_academic_year = ${year} AND a.registration_no="${regNo}";`
+    a.current_academic_year = ${year} AND a.registration_no="${regNo}" order by a.section,a.roll_no;`
         }else{
             query = `SELECT
                          a.student_Name,
@@ -276,7 +276,7 @@ WHERE
                              JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
                      WHERE
                          a.class = ${Class} AND
-                         a.current_academic_year = ${year} `
+                         a.current_academic_year = ${year} order by a.section,a.roll_no`
         }
         Database.query(query,(err,result)=>{
             if(err){
@@ -694,7 +694,7 @@ exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
                          AND c.year = "${year}"
                          AND c.fee_type = "New-Admisson"
                      WHERE a.class = "${Class}"
-                       AND a.current_academic_year = "${year}";`
+                       AND a.current_academic_year = "${year}" order by a.section,a.roll_no;`
         } else {
             query = `SELECT a.student_Name,
                             a.roll_no,
@@ -710,7 +710,7 @@ exports.GetStudentForNewAdmissionFeeEntry = (req, res) => {
                          AND c.fee_type = "New-Admisson"
                      WHERE a.class = "${Class}"
                        AND a.current_academic_year = "${year}"
-                       AND a.registration_no = "${regNo}";`
+                       AND a.registration_no = "${regNo}" order by a.section,a.roll_no;`
         }
         Database.query(query, (err, result) => {
             if (err) {
