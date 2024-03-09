@@ -385,18 +385,17 @@ const stockUsageVisiblity = () => {
               Stock Amount Entry 
             </div>
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}>  &#x24;&nbsp;&nbsp;&nbsp; Stock Cash Entry
+                 onClick={props.onSecondStockEntry}>  &#x24;&nbsp;&nbsp; Stock Cash Entry
             </div>
             <div className="Items" style={{display: stockAdmin}}
                  onClick={props.onStockUsageEntry}>
               &#x2744;&nbsp;&nbsp; Stock Usage Entry 
             </div>
-            <div className="Items" style={{display: combineadmin}}
-                 onClick={props.onCheckPending}><TbCalendarDue /><p style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Cash </p>
+            <div className="Items" style={{display: cashAdmin}}
+                 onClick={props.onCheckPending}>&#x27F3;&nbsp;&nbsp;Check Pending Cash 
             </div>
-            <div className="Items" style={{display: combineadmin}}
-                 onClick={props.onStockUsageView}><TbCalendarDue /><p
-                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Check Pending Usage </p>
+            <div className="Items" style={{display: stockAdmin}}
+                 onClick={props.onStockUsageView}>&#x27F3;&nbsp;&nbsp;Check Pending Usage
             
             </div>
             <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
@@ -407,15 +406,13 @@ const stockUsageVisiblity = () => {
                  style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Usage </p>
             </div>
 
-            <div className="Items" style={{display: combineadmin}} onClick={props.onStockView}><LuDownload/><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export Primary Stock </p>
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}> &#x21e9;&nbsp;&nbsp; Export Primary Stock
             </div>
 
 
-            <div className="Items" style={{display: combineadmin}}
-                 onClick={props.onSecondStockView}><LuDownload/><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Export
-              Secondary Stock </p>
+            <div className="Items" style={{display: cashAdmin}}
+                 onClick={props.onSecondStockView}> &#x21e9;&nbsp;&nbsp; Export
+              Secondary Stock 
             </div>
 
            
