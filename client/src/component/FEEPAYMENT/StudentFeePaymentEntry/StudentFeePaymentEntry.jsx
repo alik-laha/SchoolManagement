@@ -248,12 +248,19 @@ const StudentFeePaymentEntry = (props) => {
       });
 
       const MyDocumentFee = ({ data }) => (
+        console.log(data[0].fee_type),
 
         <Document>
-            <Page size="A4" style={styles.page}>
-                
+                  <Page size="A4" style={styles.page}>
+                      <View style={styles.section}>
+                          <View style={styles.instituteheader}>
+                              
 
-            </Page>
+                          </View>
+
+                          {/* <View style={styles.formDetails}><Text> {data[0].fee_type} Fee Receipt for Academic Year </Text></View>  */}
+                      </View>
+                  </Page>
         </Document>
 
       );
@@ -872,6 +879,7 @@ const StudentFeePaymentEntry = (props) => {
                     
                     <th>To be Paid</th>
                     <th>Actually Paid</th>
+                    <th>Fine</th>
                     
                    <th>Action</th>
                 </tr>
@@ -894,6 +902,7 @@ const StudentFeePaymentEntry = (props) => {
                                 
                                 <td>{item.total_fee}</td>
                                 <td>{item.student_total_fee}</td>
+                                <td>{item.fine}</td>
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
                             </tr>
@@ -1132,7 +1141,7 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                         <input type="number" value={EditBedFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/></dd>
-
+                       
 
                     <dt>
                         <label>Total Fee </label>
@@ -1142,6 +1151,13 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                          <input type="number" value={EditTotal} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>
+                               <dt>
+                            <label>Fine</label>
+                        </dt>
+                        <dd>
+
+                            <input type="number" readOnly value={fine} style={{ textAlign: 'center', width: '100%' }}
+                            /></dd>
 
                     <dt>
                         <label>Bill Date</label></dt>
@@ -1336,7 +1352,7 @@ const StudentFeePaymentEntry = (props) => {
                         <input type="number" value={EditBedFee} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                onChange={(e) => e.target.value <= BedFee ? setEditBedFee(e.target.value) : alert(`It should be lower then ${BedFee}`)}/></dd>
 
-
+                    
                     <dt>
                         <label>Total Fee </label>
                         </dt>
@@ -1345,6 +1361,13 @@ const StudentFeePaymentEntry = (props) => {
                               style={{backgroundColor:'ivory',textAlign:'center',width:'50%'} }/> 
                          <input type="number" value={EditTotal} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>
+                                   <dt>
+                            <label>Fine</label>
+                        </dt>
+                        <dd>
+
+                            <input type="number" readOnly value={fine} style={{  textAlign: 'center', width: '100%' }}
+                            /></dd>
 
                         <dt>
                             <label>Bill Date</label></dt>

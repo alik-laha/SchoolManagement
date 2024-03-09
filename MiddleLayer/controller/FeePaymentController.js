@@ -251,7 +251,8 @@ exports.GetStudentForFeeEntry = (req, res) => {
     a.class,
     b.*,
     (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
-    (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee
+    (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee,
+    (SELECT c.fine FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine
 
 FROM 
     Student_Admission a 
@@ -268,7 +269,8 @@ WHERE
                          a.class,
                          b.*,
                          (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
-                         (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee
+                         (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee,
+                         (SELECT c.fine FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine
                      FROM
                          Student_Admission a
                              JOIN fee_structure b ON a.class = b.class AND b.year = ${year} AND b.fee_type='${feeType}'
