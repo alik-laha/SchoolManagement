@@ -278,7 +278,7 @@ const ExportStudentMarksView= (props) => {
                                   <td>{item.int_exam_marks}</td>
                                   <td>{item.marks}</td>
                                   <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
-                                  <td>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
+                                  <td style={{width:'20%'}}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
                               </tr>
 
                       ))}
