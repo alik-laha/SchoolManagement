@@ -582,12 +582,11 @@ const currDate = new Date().toLocaleDateString();
 
                           <th>Exam Name</th>
                           <th>Subject</th>
-                          
                           <th>Full Marks</th>
                           <th>Obtained Marks</th>
                           <th>Percentage</th>
                           <th>Grade</th>
-
+                          <th>highest</th>
 
                       </tr>
                       </thead>
@@ -600,13 +599,16 @@ const currDate = new Date().toLocaleDateString();
 
                                   <td>{item.exam_name}</td>
                                   <td>{item.subject}</td>
-                                   
-
 
                                   <td>{item.int_exam_marks}</td>
                                   <td>{item.marks}</td>
                                   <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
                                   <td style={{width:'20%'}}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
+                                  {
+                                      maxMark.map((max,idx)=>(
+                                          max.subject===item.subject ? <td key={idx}>{max.max_mark}</td> : null
+                                      ))
+                                  }
                               </tr>
 
                       ))}
