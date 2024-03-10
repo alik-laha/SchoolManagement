@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import logo from '../../Home/logo_ahm.jpg'
+import { TbCircuitDiode } from "react-icons/tb";
 
 const StudentFeePaymentEntry = (props) => {
     const [view,setView]=useState("none")
@@ -134,12 +136,19 @@ const StudentFeePaymentEntry = (props) => {
             width: "40%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
-            fontSize:'12',
+            fontSize:'11',
             marginLeft:'10px'
           },
           qty: {
-            width: "60%",
-            fontSize:'12',
+            width: "20%",
+            fontSize:'11',
+            borderRightWidth: 1,
+            marginRight:'10px'   
+           
+          },
+          qty1: {
+            width: "20%",
+            fontSize:'11',
             marginRight:'10px'   
            
           },
@@ -160,17 +169,60 @@ const StudentFeePaymentEntry = (props) => {
             backgroundColor: "azure",
             fontSize:'10px',
             fontWeight: "extrabold",
-            color:'#00519C'
+            color:'#00519C',
+            marginLeft:'10px'
+            
+          },
+          rowdescription1: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'11',
+            marginLeft:'10px'
             
           },
           rowqty: {
-            width: "60%",
+            width: "20%",
             backgroundColor: "white",
             textAlign: "center",
-            fontSize:'10px'
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            backgroundColor: "azure",
+            
+          },
+          rowqty1: {
+            width: "20%",
+            backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            marginRight:'10px' 
+            
+          },
+          rowqty2: {
+            width: "20%",
+            backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            backgroundColor: "ivory",
+            color:'red'
+            
+          },
+          rowqty3: {
+            width: "20%",
+            backgroundColor: "#00c7a3",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            
+            color:'white'
+            
           },
           headerContainer: {
-            marginTop: 10,
+            marginTop: 20,
             justifyContent: "flex-start",
             width: "50%"
           },
@@ -188,7 +240,6 @@ const StudentFeePaymentEntry = (props) => {
           instituteheader:{
             textAlign:'center',
             flexDirection:'row'
-            
             
           },
           institutedesc:{
@@ -216,7 +267,7 @@ const StudentFeePaymentEntry = (props) => {
           formDetails:{
             marginLeft:20,
             width:'100%',
-            marginTop: 15,
+            marginTop: 20,
             textAlign:'center',
             fontSize:'12',
             color:'red',
@@ -233,7 +284,7 @@ const StudentFeePaymentEntry = (props) => {
             fontSize:'10px'
           },
           footer:{
-            marginTop:'55px',
+            marginTop:'90px',
             display:'flex',
             flexDirection:'row',
             textAlign:'center'
@@ -257,11 +308,183 @@ const StudentFeePaymentEntry = (props) => {
                   <Page size="A4" style={styles.page}>
                       <View style={styles.section}>
                           <View style={styles.instituteheader}>
-                              
+
+                              <Image
+                                  style={styles.logo}
+                                  src={logo}
+                              />
+                              <View style={styles.institutedesc}>
+                                  <Text style={styles.institutename}> Al-HILAL-MISSION</Text>{"\n"}
+                                  <Text style={styles.instituteother}> (An Educational, Cultural, & Social Welfare Organization) </Text>{"\n"}
+
+                                  <Text style={styles.instituteother}> Kadambagachi, Duttapukur (Barasat), Kol-700125 </Text>{"\n"}
+
+                              </View>
 
                           </View>
 
-                          {/* <View style={styles.formDetails}><Text> {data[0].fee_type} Fee Receipt for Academic Year </Text></View>  */}
+                        <View style={styles.formDetails}><Text>  Payment Receipt of {data[0].fee_type} Fee for Academic Year {data[0].year} </Text></View> 
+                      
+                        <View style={styles.headerContainer}>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Student Name:</Text>
+                            <Text>{data[0].student_Name}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Registration Number:</Text>
+                            <Text>{data[0].registration_no}</Text>
+                        </View>
+                        
+                        
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Year of {data[0].fee_type}:</Text>
+                            <Text>{data[0].year}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Class:</Text>
+                            <Text>{convertToRoman(data[0].class)}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Section:</Text>
+                            <Text>{data[0].section}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Roll No:</Text>
+                            <Text>{data[0].roll_no}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Date of Receipt</Text>
+                            <Text>{currDate}</Text>
+                        </View>
+                        
+                         </View>
+                         <View style={styles.tableContainer}>
+                    <View style={styles.container}>
+                            <Text style={styles.description}>Fee Sub Category</Text>
+                            <Text style={styles.qty}>To Be Paid </Text>
+                            <Text style={styles.qty}>Actual Paid </Text>
+                            <Text style={styles.qty1}>Due Amount</Text>
+
+                        </View>
+                        {/* Invoice Table Rows */}
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Admission Fee</Text>
+                            <Text style={styles.rowqty2}>{AdmissonFee}</Text>
+                            <Text style={styles.rowqty}>{EditAdmissonFee}</Text>
+                            <Text style={styles.rowqty1}>{AdmissonFee-EditAdmissonFee}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Hostel Charge</Text>
+                            <Text style={styles.rowqty2}>{hostelCharge}</Text>
+                            <Text style={styles.rowqty}>{EdithostelCharge}</Text>
+                            <Text style={styles.rowqty1}>{hostelCharge-EdithostelCharge}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Tuition Fee</Text>
+                            <Text style={styles.rowqty2}>{TutionFee}</Text>
+                            <Text style={styles.rowqty}>{EditTutionFee}</Text>
+                            <Text style={styles.rowqty1}>{TutionFee-EditTutionFee}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Caution Money</Text>
+                            <Text style={styles.rowqty2}>{CautionMoney}</Text>
+                            <Text style={styles.rowqty}>{EditCautionMoney}</Text>
+                            <Text style={styles.rowqty1}>{CautionMoney-EditCautionMoney}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Examination Fee</Text>
+                            <Text style={styles.rowqty2}>{ExaminationFee}</Text>
+                            <Text style={styles.rowqty}>{EditExaminationFee}</Text>
+                            <Text style={styles.rowqty1}>{ExaminationFee-EditExaminationFee}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Games & Sports</Text>
+                            <Text style={styles.rowqty2}>{GamesSportsExicursion}</Text>
+                            <Text style={styles.rowqty}>{EditGamesSportsExicursion}</Text>
+                            <Text style={styles.rowqty1}>{GamesSportsExicursion-EditGamesSportsExicursion}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Electric Charge</Text>
+                            <Text style={styles.rowqty2}>{ElectricCharge}</Text>
+                            <Text style={styles.rowqty}>{EditElectricCharge}</Text>
+                            <Text style={styles.rowqty1}>{ElectricCharge-EditElectricCharge}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Library Fees</Text>
+                            <Text style={styles.rowqty2}>{LibraryFees}</Text>
+                            <Text style={styles.rowqty}>{EditLibraryFees}</Text>
+                            <Text style={styles.rowqty1}>{LibraryFees-EditLibraryFees}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Computer Fees</Text>
+                            <Text style={styles.rowqty2}>{ComputerFees}</Text>
+                            <Text style={styles.rowqty}>{EditComputerFees}</Text>
+                            <Text style={styles.rowqty1}>{ComputerFees-EditComputerFees}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Development Fees</Text>
+                            <Text style={styles.rowqty2}>{DevelopmentFees}</Text>
+                            <Text style={styles.rowqty}>{EditDevelopmentFees}</Text>
+                            <Text style={styles.rowqty1}>{DevelopmentFees-EditDevelopmentFees}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Miscelleneous Fees</Text>
+                            <Text style={styles.rowqty2}>{Miscellaneous}</Text>
+                            <Text style={styles.rowqty}>{EditMiscellaneous}</Text>
+                            <Text style={styles.rowqty1}>{Miscellaneous-EditMiscellaneous}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Laundry Charge</Text>
+                            <Text style={styles.rowqty2}>{LaundryCharge}</Text>
+                            <Text style={styles.rowqty}>{EditLaundryCharge}</Text>
+                            <Text style={styles.rowqty1}>{LaundryCharge-EditLaundryCharge}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Medical Charge</Text>
+                            <Text style={styles.rowqty2}>{MedicalCharge}</Text>
+                            <Text style={styles.rowqty}>{EditMedicalCharge}</Text>
+                            <Text style={styles.rowqty1}>{MedicalCharge-EditMedicalCharge}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Uniform</Text>
+                            <Text style={styles.rowqty2}>{Uniform}</Text>
+                            <Text style={styles.rowqty}>{EditUniform}</Text>
+                            <Text style={styles.rowqty1}>{Uniform-EditUniform}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Session Charge</Text>
+                            <Text style={styles.rowqty2}>{SessionCharge}</Text>
+                            <Text style={styles.rowqty}>{EditSessionCharge}</Text>
+                            <Text style={styles.rowqty1}>{SessionCharge-EditSessionCharge}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Bed Charge</Text>
+                            <Text style={styles.rowqty2}>{BedFee}</Text>
+                            <Text style={styles.rowqty}>{EditBedFee}</Text>
+                            <Text style={styles.rowqty1}>{BedFee-EditBedFee}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Fine(If Any)</Text>
+                            <Text style={styles.rowqty2}>{fine}</Text>
+                            <Text style={styles.rowqty}>{fine_paid}</Text>
+                            <Text style={styles.rowqty1}>{fine-fine_paid}</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Total </Text>
+                            <Text style={styles.rowqty2}>{Total+fine}</Text>
+                            <Text style={styles.rowqty}>{EditTotal+fine_paid}</Text>
+                            <Text style={styles.rowqty1}>{(Total+fine)-(EditTotal+fine_paid)}</Text>
+                        </View>
+
+
+                    </View>
+                    <View style={styles.footer}>
+                        <Text style={styles.leftfooter}>Candidate and Guardian Signature</Text>
+                        <Text style={styles.rightfooter}>AL-Hilal Official Signature</Text>
+                    </View>
+                      
+                      
+                      
                       </View>
                   </Page>
         </Document>
