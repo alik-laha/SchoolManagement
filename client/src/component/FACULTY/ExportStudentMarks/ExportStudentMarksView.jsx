@@ -104,24 +104,26 @@ const currDate = new Date().toLocaleDateString();
             flexGrow: 1
           },
           description: {
-            width: "28%",
+            width: "5%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
             fontSize:'11',
-            marginLeft:'10px'
+            
+            borderLeftColor: borderColor,
+            borderLeftWidth: 1,
           },
           qty: {
-            width: "18%",
+            width: "19%",
             fontSize:'11',
             borderRightWidth: 1,
-            marginRight:'10px'   
+             
            
           },
           qty1: {
-            width: "18%",
+            width: "19%",
             fontSize:'11',
-            marginRight:'10px'   
-           
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
           },
           row: {
             display:'flex',
@@ -133,65 +135,38 @@ const currDate = new Date().toLocaleDateString();
             
           },
           rowdescription: {
-            width: "40%",
+            width: "5%",
             textAlign: "center",
             borderRightColor: borderColor,
             borderRightWidth: 1,
             backgroundColor: "azure",
-            fontSize:'10px',
-            fontWeight: "extrabold",
-            color:'#00519C',
-            marginLeft:'10px'
+            fontSize:'9px',
+            fontWeight: "extrabold"
+            
+            
             
           },
-          rowdescription1: {
-            width: "40%",
-            borderRightColor: borderColor,
-            borderRightWidth: 1,
-            fontSize:'11',
-            marginLeft:'10px'
-            
-          },
+        
           rowqty: {
-            width: "20%",
+            width: "19%",
             // backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
-            marginRight:'10px',
-            backgroundColor: "azure",
+            
+            backgroundColor: "azure"
             
           },
           rowqty1: {
-            width: "20%",
+            width: "19%",
             backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
-            marginRight:'10px' 
+            
             
           },
-          rowqty2: {
-            width: "20%",
-            // backgroundColor: "white",
-            textAlign: "center",
-            fontSize:'9px',
-            borderRightWidth: 1,
-            marginRight:'10px',
-            backgroundColor: "ivory",
-            color:'red'
-            
-          },
-          rowqty3: {
-            width: "20%",
-            backgroundColor: "#00c7a3",
-            textAlign: "center",
-            fontSize:'9px',
-            borderRightWidth: 1,
-            marginRight:'10px',
-            
-            color:'white'
-            
-          },
+          
+         
           headerContainer: {
             marginTop: 20,
             justifyContent: "flex-start",
@@ -255,7 +230,7 @@ const currDate = new Date().toLocaleDateString();
             fontSize:'10px'
           },
           footer:{
-            marginTop:'90px',
+            marginTop:'150px',
             display:'flex',
             flexDirection:'row',
             textAlign:'center'
@@ -273,17 +248,6 @@ const currDate = new Date().toLocaleDateString();
       });
 
 
-      const Iterateview =(Item)=>(
-            console.log(Item),
-          <View style={styles.row}>
-              <Text style={styles.rowqty}>{Item.subject}</Text>
-              <Text style={styles.rowqty}>{Item.int_exam_marks}</Text>
-              <Text style={styles.rowqty}>{Item.marks}</Text>
-              {/* <Text style={styles.rowqty}>{((Item.marks / Item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
-              <Text style={styles.rowqty1}>{gradecalculate(((Item.marks / Item.int_exam_marks) * 100))}</Text> */}
-          </View>
-
-      );
 
       const MyDocumentMarks = ({ data }) => (
 
@@ -344,7 +308,8 @@ const currDate = new Date().toLocaleDateString();
                       <View style={styles.tableContainer}>
 
                           <View style={styles.container}>
-                              <Text style={styles.description}>Subject</Text>
+                              <Text style={styles.description}>Sl</Text>
+                              <Text style={styles.qty}>Subject</Text>
                               <Text style={styles.qty}>Full Marks</Text>
                               <Text style={styles.qty}>Obtained</Text>
                               <Text style={styles.qty}>Percentage</Text>
@@ -356,15 +321,16 @@ const currDate = new Date().toLocaleDateString();
                          {data[0].map((item,index)=>{
                             return( 
                             <View key={item.id} style={styles.row}>
+                                <Text style={styles.rowdescription}>{index+1}</Text>
                                 <Text style={styles.rowqty}>{item.subject}</Text>
                                 <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
                                 <Text style={styles.rowqty}>{item.marks}</Text>
-                                {/* <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
-                                <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text> */}
+                                <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
+                                <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text>
                             </View>
-                            )
+                            )   
                                
-                            // <Iterateview key={index} Item={item}/>
+                         
                            
                             })}
                          
