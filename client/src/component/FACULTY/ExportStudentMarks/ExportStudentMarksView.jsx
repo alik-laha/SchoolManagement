@@ -289,12 +289,15 @@ const ExportStudentMarksView= (props) => {
                           <td></td>
                           <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
                               Marks:</b></td>
+                              <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
+                          </td>
                           <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
 
-                          <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
-                          </td>
+                          
                           <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
                               <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                              <b>{gradecalculate(((sum_v1 / sum_tot_v1) * 100))}</b></td>
                       </tr>
                       </tbody>
 
