@@ -122,6 +122,38 @@ const ExportStudentMarksView= (props) => {
         
     
     }
+    const gradecalculate = (data) => {
+        if(data>=90){
+            return 'AA'
+            
+        }
+        else if(data >=80 && data<90)
+        {
+            return "A+"
+        }
+        else if(data >=60 && data<80)
+        {
+            return "A"
+        }
+        else if(data >=45 && data<60)
+        {
+            return "B+"
+        }
+        else if(data >=35 && data<45)
+        {
+            return "B"
+        }
+        else if(data >=25 && data<35)
+        {
+            return "C"
+        }
+        else if(data<25)
+        {
+            return "D"
+        }
+    
+    }
+
 
       return(
           <div style={{display: view}}>
@@ -223,9 +255,11 @@ const ExportStudentMarksView= (props) => {
 
                           <th>Exam Name</th>
                           <th>Subject</th>
-                          <th>Obtained Marks</th>
+                          
                           <th>Full Marks</th>
+                          <th>Obtained Marks</th>
                           <th>Percentage</th>
+                          <th>Grade</th>
 
 
                       </tr>
@@ -238,12 +272,13 @@ const ExportStudentMarksView= (props) => {
 
                                   <td>{item.exam_name}</td>
                                   <td>{item.subject}</td>
-                                  <td>{item.marks}</td>
+                                 
 
 
                                   <td>{item.int_exam_marks}</td>
+                                  <td>{item.marks}</td>
                                   <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
-
+                                  <td>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
                               </tr>
 
                       ))}

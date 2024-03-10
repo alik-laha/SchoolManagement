@@ -510,7 +510,7 @@ exports.GetAllMarks = (req, res) => {
                          SELECT external_exam_name,ext_exam_marks FROM external_exam) as combine
                                    ON Marks.exam_name = combine.internal_exam_name 
                          WHERE Marks.exam_name="${examName}" AND Marks.regNo="${regNo}" AND Marks.class="${Class}" AND Marks.Year="${year}"
-                                   order by Marks.id`
+                                   order by Marks.subject`
 
         
             }
