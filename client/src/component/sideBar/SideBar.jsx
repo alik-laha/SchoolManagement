@@ -5,16 +5,16 @@ import { FaRegUser,FaUserGraduate,FaUserEdit,FaUserPlus,FaFileUpload,FaDatabase,
   ,FaRegWindowRestore ,FaRegEdit   } from "react-icons/fa";
 import { GrDatabase } from "react-icons/gr";
 import { ImUserTie ,ImListNumbered } from "react-icons/im";
-import { TbUserEdit,TbBrandGoogleBigQuery,TbCash,TbCalendarDue    } from "react-icons/tb";
+import { TbUserEdit,TbBrandGoogleBigQuery,TbCash    } from "react-icons/tb";
 import { FaChalkboard } from "react-icons/fa6";
 import { CiViewList,CiEdit,CiShop   } from "react-icons/ci";
-import { BsClipboardData,BsCash ,BsCashCoin  } from "react-icons/bs";
-import { MdQueuePlayNext,MdOutlineSmartToy,MdDataUsage   } from "react-icons/md";
+import { BsClipboardData ,BsCashCoin  } from "react-icons/bs";
+import { MdQueuePlayNext,MdOutlineSmartToy   } from "react-icons/md";
 import { LuDownload } from "react-icons/lu";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { AiOutlineStock,AiFillEdit  } from "react-icons/ai";
 import { PiExamBold  } from "react-icons/pi";
-import { RiStockFill } from "react-icons/ri";
+
 
 
 const SideBar = (props) => {

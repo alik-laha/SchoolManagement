@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
 // import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import axios from "axios";
+import logo from '../../Home/logo_ahm.jpg'
+import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
+
 
 
 
@@ -15,6 +18,8 @@ const ExportStudentMarksView= (props) => {
     const [resultData,setResultData]=useState([])
     const[result2,setResult2]=useState("none")
     const [result2Data,setResult2Data]=useState([])
+    const [pdfdata,setPDFdata]=useState([])
+const [pdfstate,setpdfstate]=useState(false)
 
     function convertToRoman(num) {
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
@@ -45,6 +50,263 @@ const ExportStudentMarksView= (props) => {
         })
 
     }
+
+    const borderColor = "#3778C2";
+      const styles = StyleSheet.create({
+        section: {
+            margin: 10,
+            padding: 10,
+            flexGrow: 1,
+          },
+        page: {
+          
+          fontFamily: "Helvetica",
+          fontSize: 11,
+          paddingTop: 10,
+          paddingLeft: 50,
+          paddingRight: 50,
+          lineHeight: 1.5,
+          flexDirection: "column"
+        },
+        logo: {
+          width: 60,
+          height: 60,
+          marginTop:20,
+          marginRight:20
+          
+        },
+        mainHeader: {
+          display: "flex",
+          flexDirection: "row-reverse",
+          justifyContent: "space-between",
+          alignItems: "center"
+        },
+
+        tableContainer: {
+            // backgroundColor: '#E4E4E4',
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginTop: 15,
+            borderWidth: 1,
+            borderColor: "#3778C2"
+          },
+          container: {
+            flexDirection: "row",
+            borderBottomColor: "#00519C",
+            backgroundColor: "#00519C",
+            color: "#fff",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            textAlign: "center",
+            fontStyle: "bold",
+            flexGrow: 1
+          },
+          description: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'11',
+            marginLeft:'10px'
+          },
+          qty: {
+            width: "20%",
+            fontSize:'11',
+            borderRightWidth: 1,
+            marginRight:'10px'   
+           
+          },
+          qty1: {
+            width: "20%",
+            fontSize:'11',
+            marginRight:'10px'   
+           
+          },
+          row: {
+            display:'flex',
+            flexDirection: "row",
+            borderBottomColor: "#3778C2",
+            borderBottomWidth: 1,
+            alignItems: "center",
+            height: 20,
+            
+          },
+          rowdescription: {
+            width: "40%",
+            textAlign: "center",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            backgroundColor: "azure",
+            fontSize:'10px',
+            fontWeight: "extrabold",
+            color:'#00519C',
+            marginLeft:'10px'
+            
+          },
+          rowdescription1: {
+            width: "40%",
+            borderRightColor: borderColor,
+            borderRightWidth: 1,
+            fontSize:'11',
+            marginLeft:'10px'
+            
+          },
+          rowqty: {
+            width: "20%",
+            // backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            backgroundColor: "azure",
+            
+          },
+          rowqty1: {
+            width: "20%",
+            backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            marginRight:'10px' 
+            
+          },
+          rowqty2: {
+            width: "20%",
+            // backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            backgroundColor: "ivory",
+            color:'red'
+            
+          },
+          rowqty3: {
+            width: "20%",
+            backgroundColor: "#00c7a3",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            marginRight:'10px',
+            
+            color:'white'
+            
+          },
+          headerContainer: {
+            marginTop: 20,
+            justifyContent: "flex-start",
+            width: "50%"
+          },
+          billTo: {
+            marginRight: 10,
+            fontWeight:'extrabold'
+          },
+          Mainbillto: {
+            display: "flex",
+            flexDirection: "row",
+            marginTop: 2,
+            paddingBottom: 1,
+            fontSize:'10px'
+          },
+          instituteheader:{
+            textAlign:'center',
+            flexDirection:'row'
+            
+          },
+          institutedesc:{
+            
+            flexDirection:'column',
+            marginLeft:'10px'
+            
+          },
+          institutename:{
+            textAlign:'center',
+            fontSize:'18',
+            fontWeight:'bold',
+            color:'#00519C',
+            marginTop: 20,
+            
+          },
+          instituteother:{
+            textAlign:'center',
+            fontSize:'10',
+            fontWeight:'bold',
+            color:'rgb(6, 21, 116)',
+            
+            
+          },
+          formDetails:{
+            marginLeft:20,
+            width:'100%',
+            marginTop: 20,
+            textAlign:'center',
+            fontSize:'12',
+            color:'red',
+            fontWeight:'bold',
+            
+            fontStyle:'cursive'
+          },
+          blankrow:{
+            width:'100%',
+            backgroundColor:'antiquewhite',
+            color:'#00519C',
+            textAlign:'center',
+            fontWeight:'bold',
+            fontSize:'10px'
+          },
+          footer:{
+            marginTop:'90px',
+            display:'flex',
+            flexDirection:'row',
+            textAlign:'center'
+          },
+          rightfooter:{
+            width:'50%',
+            marginLeft:'50px',
+            float:'right'
+          },
+          leftfooter:{
+            width:'50%',
+            float:'left'
+          }
+          
+      });
+
+
+      const MyDocumentMarks = ({ data }) => (
+        console.log(data),
+
+        <Document>
+                  <Page size="A4" style={styles.page}>
+                      <View style={styles.section}>
+                          <View style={styles.instituteheader}>
+
+                              <Image
+                                  style={styles.logo}
+                                  src={logo}
+                              />
+                              <View style={styles.institutedesc}>
+                                  <Text style={styles.institutename}> Al-HILAL-MISSION</Text>{"\n"}
+                                  <Text style={styles.instituteother}> (An Educational, Cultural, & Social Welfare Organization) </Text>{"\n"}
+
+                                  <Text style={styles.instituteother}> Kadambagachi, Duttapukur (Barasat), Kol-700125 </Text>{"\n"}
+
+                              </View>
+
+                          </View>
+
+                        
+                    <View style={styles.footer}>
+                        <Text style={styles.leftfooter}>Class Teacher's Signature</Text>
+                        <Text style={styles.rightfooter}>AL-Hilal Secretary's Signature</Text>
+                    </View>
+                      
+                      
+                      
+                      </View>
+                  </Page>
+        </Document>
+
+      );
     useEffect(()=>{
         setData(props.data)
         console.log(props)
@@ -84,6 +346,7 @@ const ExportStudentMarksView= (props) => {
                 })
            }
         else {
+           
             const DATA = {
                 Class: data.class,
                 examName: ExamName,
@@ -96,6 +359,9 @@ const ExportStudentMarksView= (props) => {
                     console.log(res)
                     setTableView("none")
                     setResult("block")
+                    const dataArray=[res.data.data]
+                    setPDFdata(dataArray)
+                setpdfstate(true)
                 }).catch((err) => {
                 console.log(err)
             })
@@ -248,6 +514,10 @@ const ExportStudentMarksView= (props) => {
                   <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
                           onClick={HandleClick}>Cancel
                   </button>
+                  { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                                    <PDFDownloadLink document={<MyDocumentMarks data={pdfdata}/>} fileName={"Student_Marks_Report.pdf"} >
+                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                    </PDFDownloadLink></button>}
                   <table className="table-60" id="table_one">
                       <thead>
                       <tr>

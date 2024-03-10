@@ -3,7 +3,7 @@ import axios from "axios";
 import { Document, Page, Text, View,PDFDownloadLink,StyleSheet,Image } from '@react-pdf/renderer';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import logo from '../../Home/logo_ahm.jpg'
-import { TbCircuitDiode } from "react-icons/tb";
+
 
 const StudentFeePaymentEntry = (props) => {
     const [view,setView]=useState("none")
