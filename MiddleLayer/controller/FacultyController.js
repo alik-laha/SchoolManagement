@@ -520,8 +520,26 @@ exports.GetAllMarks = (req, res) => {
                     return res.status(400).json({message:"Error Occured",err:err})
                 }
                 else{
-                    return res.status(200).json({message:"Marks Fetched",data:result})
-                }
+                    
+                    if(examName){
+                        let query=`SELECT MAX(Marks) AS max_mark FROM Marks 
+                        WHERE Marks.class="${Class}" AND Marks.Year="${year}" AND Marks.exam_name="${examName}"  GROUP BY Marks.subject`
+                        Database.query(query,(err,result1)=>{
+                            if(err){
+                                console.log(err)
+                                return res.status(400).json({message:"Error Occured",err:err})
+                            }
+                            else{
+                                return res.status(200).json({message:"Marks Fetched",data:result,result1})
+                            }
+                        })
+                    }
+                    else{
+                        return res.status(200).json({message:"Marks Fetched",data:result})
+                    }
+                    
+                    }
+                   
             })
         }
     }catch (err){

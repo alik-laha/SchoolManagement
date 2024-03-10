@@ -91,4 +91,6 @@ router.post('/marksentryforStudentexam',verifyToken,MarksEntryForStudentS)
 //Get student by class and section and year
 router.post('/getstudentbyclass',verifyToken,getStudentByClassYearAndSectio)
 
+
+
 module.exports = router
