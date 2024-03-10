@@ -273,8 +273,8 @@ const currDate = new Date().toLocaleDateString();
       });
 
 
-      const Iterateview =({Item})=>(
-       
+      const Iterateview =(Item)=>(
+            console.log(Item),
           <View style={styles.row}>
               <Text style={styles.rowqty}>{Item.subject}</Text>
               <Text style={styles.rowqty}>{Item.int_exam_marks}</Text>
@@ -305,7 +305,7 @@ const currDate = new Date().toLocaleDateString();
                               </View>
 
                           </View>
-                          <View style={styles.formDetails}><Text>  Mark Sheet of {data[0][0].exam_name} Exam for Academic Year {data[0][0].Year} </Text></View> 
+                          <View style={styles.formDetails}><Text>Mark Sheet of {data[0][0].exam_name} Exam for Academic Year {data[0][0].Year}</Text></View> 
                           
                           <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
@@ -319,7 +319,7 @@ const currDate = new Date().toLocaleDateString();
                         
                         
                         <View style={styles.Mainbillto}>
-                            <Text style={styles.billTo}>Academic Year</Text>
+                            <Text style={styles.billTo}>Academic Year:</Text>
                             <Text>{data[0][0].Year}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
@@ -345,24 +345,26 @@ const currDate = new Date().toLocaleDateString();
 
                           <View style={styles.container}>
                               <Text style={styles.description}>Subject</Text>
-                              <Text style={styles.qty}>Full Marks </Text>
-                              <Text style={styles.qty}>Obtained </Text>
-                              <Text style={styles.qty}>Percentage </Text>
-                              <Text style={styles.qty1}>Grade </Text>
+                              <Text style={styles.qty}>Full Marks</Text>
+                              <Text style={styles.qty}>Obtained</Text>
+                              <Text style={styles.qty}>Percentage</Text>
+                              <Text style={styles.qty1}>Grade</Text>
 
                           </View>
                       </View>
                        
                          {data[0].map((item,index)=>{
-                            
-                                // <View key={item.id} style={styles.row}>
-                                //     <Text style={styles.rowqty}>{item.subject}</Text>
-                                //     <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
-                                //     <Text style={styles.rowqty}>{item.marks}</Text>
-                                //     {/* <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
-                                //     <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text> */}
-                                // </View>
-                            <Iterateview key={index} Item={item}/>
+                            return( 
+                            <View key={item.id} style={styles.row}>
+                                <Text style={styles.rowqty}>{item.subject}</Text>
+                                <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
+                                <Text style={styles.rowqty}>{item.marks}</Text>
+                                {/* <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
+                                <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text> */}
+                            </View>
+                            )
+                               
+                            // <Iterateview key={index} Item={item}/>
                            
                             })}
                          
