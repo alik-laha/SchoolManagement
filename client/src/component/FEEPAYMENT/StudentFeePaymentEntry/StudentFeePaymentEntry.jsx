@@ -183,7 +183,7 @@ const StudentFeePaymentEntry = (props) => {
           },
           rowqty: {
             width: "20%",
-            backgroundColor: "white",
+            // backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
@@ -201,7 +201,7 @@ const StudentFeePaymentEntry = (props) => {
           },
           rowqty2: {
             width: "20%",
-            backgroundColor: "white",
+            // backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
