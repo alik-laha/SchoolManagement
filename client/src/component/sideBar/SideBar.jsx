@@ -440,7 +440,7 @@ const stockUsageVisiblity = () => {
             </div>
             
             <div className="Items" style={{display: combineadmin}}
-                 onClick={props.onExportStudentMarks}>&#x3e;&nbsp;&nbsp;Export Student Marks
+                 onClick={props.onExportStudentMarks}><LuDownload /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Export Student Marks</p>
             </div>
           </div>
 
