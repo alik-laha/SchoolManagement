@@ -409,84 +409,91 @@ const ViewFeePayment =(props)=>{
         }
     }
     const currDate = new Date().toLocaleDateString();
+    const clearTable=()=>{
+        setData([])
+    }
 
     return(
         <div style={{display:view}}>
-        <div style={{display:tableView}}>
-           
-            <table className="table-60" id="Fee-Payment-view">
-                <thead>
-                <tr>
-                    <th>Sl No.</th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Registation No
-                </th>
-                <th>
-                    Academic Year
-                </th>
-                <th>
-                    Class
-                </th>
-                
-                <th>
-                    Section
-                </th>
-                <th>
-                    Roll No.
-                </th>
-                
-                <th>
-                    Due Amount
-                </th>
-                    <th>
-                        Action
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((item,index)=>{
-                    console.log(item.style,item.total_fee)
-                    const pendingAmount=item.status-item.total_fee
-                    return(
-                        <tr key={index}>
-                            <td>{index+1}</td>
-                            <td>
-                                {item.student_Name}
-                            </td>
-                            <td>
-                            {item.regNo}
-                                
-                            </td>
-                            <td>
-                                {item.year}
-                            </td>
-                            <td>
-                            {convertToRoman(item.class)}
-                            </td>
-                            <td>
-                                {item.section}
-                            </td>
-                            <td>
-                                {item.roll_no}
-                            </td>
-                            <td style={{color:'red'}}>
-                                {pendingAmount+item.fine-item.fine_paid}
-                            </td>
-                            <td>
-                                <button onClick={()=>handleEdit(item)} className="dashboard-btn dashboard-btn-scss">Edit</button>
-                            </td>
-                        </tr>
-                    )
-                })}
-                </tbody>
-            </table>
-        </div>
+            <div style={{display: tableView}}>
+                <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result
+                </button>
+                <table className="table-60" id="Fee-Payment-view">
+                    <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Registation No
+                        </th>
+                        <th>
+                            Academic Year
+                        </th>
+                        <th>
+                            Class
+                        </th>
+
+                        <th>
+                            Section
+                        </th>
+                        <th>
+                            Roll No.
+                        </th>
+
+                        <th>
+                            Due Amount
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.map((item, index) => {
+                        console.log(item.style, item.total_fee)
+                        const pendingAmount = item.status - item.total_fee
+                        return (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>
+                                    {item.student_Name}
+                                </td>
+                                <td>
+                                    {item.regNo}
+
+                                </td>
+                                <td>
+                                    {item.year}
+                                </td>
+                                <td>
+                                    {convertToRoman(item.class)}
+                                </td>
+                                <td>
+                                    {item.section}
+                                </td>
+                                <td>
+                                    {item.roll_no}
+                                </td>
+                                <td style={{color: 'red'}}>
+                                    {pendingAmount + item.fine - item.fine_paid}
+                                </td>
+                                <td>
+                                    <button onClick={() => handleEdit(item)}
+                                            className="dashboard-btn dashboard-btn-scss">Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        )
+                    })}
+                    </tbody>
+                </table>
+                {data.length===0 ? <div className="no-data">No Data Exists</div> : null}
+            </div>
 
             <div style={{display: EditView}} className="dashbrd-40-colm special-25-div">
-                <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
+            <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Back</button>
 
                 <form className='fee-entry-new-adm' onSubmit={handlesubmit} style={{
                     display: 'grid',
