@@ -20,6 +20,9 @@ const ExportStudentMarksView= (props) => {
     const [result2Data,setResult2Data]=useState([])
     const [pdfdata,setPDFdata]=useState([])
 const [pdfstate,setpdfstate]=useState(false)
+const [maxMark,setMaxMark]=useState([])
+
+
 const currDate = new Date().toLocaleDateString();
 
     function convertToRoman(num) {
@@ -408,6 +411,8 @@ const currDate = new Date().toLocaleDateString();
             axios.post(`/api/v1/faculty/getallmarks`, DATA)
                 .then((res) => {
                     setResultData(res.data.data)
+                    setMaxMark(res.data.result1)
+                    // console.log(res.data.data)
                     console.log(res)
                     setTableView("none")
                     setResult("block")
@@ -588,13 +593,14 @@ const currDate = new Date().toLocaleDateString();
                       </thead>
                       <tbody>
                       {resultData.map((item, idx) => (
+                        
                           sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
                               <tr key={item.id}>
                                   <td>{idx + 1}</td>
 
                                   <td>{item.exam_name}</td>
                                   <td>{item.subject}</td>
-                                 
+                                   
 
 
                                   <td>{item.int_exam_marks}</td>

@@ -522,7 +522,7 @@ exports.GetAllMarks = (req, res) => {
                 else{
                     
                     if(examName){
-                        let query=`SELECT MAX(Marks) AS max_mark FROM Marks 
+                        let query=`SELECT MAX(Marks) AS max_mark,subject FROM Marks 
                         WHERE Marks.class="${Class}" AND Marks.Year="${year}" AND Marks.exam_name="${examName}"  GROUP BY Marks.subject`
                         Database.query(query,(err,result1)=>{
                             if(err){
