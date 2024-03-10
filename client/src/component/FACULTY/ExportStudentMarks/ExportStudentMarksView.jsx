@@ -20,6 +20,7 @@ const ExportStudentMarksView= (props) => {
     const [result2Data,setResult2Data]=useState([])
     const [pdfdata,setPDFdata]=useState([])
 const [pdfstate,setpdfstate]=useState(false)
+const currDate = new Date().toLocaleDateString();
 
     function convertToRoman(num) {
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
@@ -103,21 +104,21 @@ const [pdfstate,setpdfstate]=useState(false)
             flexGrow: 1
           },
           description: {
-            width: "40%",
+            width: "28%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
             fontSize:'11',
             marginLeft:'10px'
           },
           qty: {
-            width: "20%",
+            width: "18%",
             fontSize:'11',
             borderRightWidth: 1,
             marginRight:'10px'   
            
           },
           qty1: {
-            width: "20%",
+            width: "18%",
             fontSize:'11',
             marginRight:'10px'   
            
@@ -272,8 +273,19 @@ const [pdfstate,setpdfstate]=useState(false)
       });
 
 
+      const Iterateview =({Item})=>(
+       
+          <View style={styles.row}>
+              <Text style={styles.rowqty}>{Item.subject}</Text>
+              <Text style={styles.rowqty}>{Item.int_exam_marks}</Text>
+              <Text style={styles.rowqty}>{Item.marks}</Text>
+              {/* <Text style={styles.rowqty}>{((Item.marks / Item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
+              <Text style={styles.rowqty1}>{gradecalculate(((Item.marks / Item.int_exam_marks) * 100))}</Text> */}
+          </View>
+
+      );
+
       const MyDocumentMarks = ({ data }) => (
-        console.log(data),
 
         <Document>
                   <Page size="A4" style={styles.page}>
@@ -293,11 +305,71 @@ const [pdfstate,setpdfstate]=useState(false)
                               </View>
 
                           </View>
+                          <View style={styles.formDetails}><Text>  Mark Sheet of {data[0][0].exam_name} Exam for Academic Year {data[0][0].Year} </Text></View> 
+                          
+                          <View style={styles.headerContainer}>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Student Name:</Text>
+                            <Text>{data[0][0].student_Name}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Registration Number:</Text>
+                            <Text>{data[0][0].regNo}</Text>
+                        </View>
+                        
+                        
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Academic Year</Text>
+                            <Text>{data[0][0].Year}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Class:</Text>
+                            <Text>{convertToRoman(data[0][0].class)}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Section:</Text>
+                            <Text>{data[0][0].section}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Roll No:</Text>
+                            <Text>{data[0][0].roll_no}</Text>
+                        </View>
+                        <View style={styles.Mainbillto}>
+                            <Text style={styles.billTo}>Date of Generation:</Text>
+                            <Text>{currDate}</Text>
+                        </View>
+                        
+                         </View>
 
+                      <View style={styles.tableContainer}>
+
+                          <View style={styles.container}>
+                              <Text style={styles.description}>Subject</Text>
+                              <Text style={styles.qty}>Full Marks </Text>
+                              <Text style={styles.qty}>Obtained </Text>
+                              <Text style={styles.qty}>Percentage </Text>
+                              <Text style={styles.qty1}>Grade </Text>
+
+                          </View>
+                      </View>
+                       
+                         {data[0].map((item,index)=>{
+                            
+                                // <View key={item.id} style={styles.row}>
+                                //     <Text style={styles.rowqty}>{item.subject}</Text>
+                                //     <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
+                                //     <Text style={styles.rowqty}>{item.marks}</Text>
+                                //     {/* <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
+                                //     <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text> */}
+                                // </View>
+                            <Iterateview key={index} Item={item}/>
+                           
+                            })}
+                         
                         
                     <View style={styles.footer}>
-                        <Text style={styles.leftfooter}>Class Teacher's Signature</Text>
-                        <Text style={styles.rightfooter}>AL-Hilal Secretary's Signature</Text>
+                        <Text style={styles.leftfooter}>Class Teacher Signature</Text>
+                        <Text style={styles.rightfooter}>AL-Hilal Secretary Signature</Text>
                     </View>
                       
                       
