@@ -353,7 +353,7 @@ const StudentFeePaymentEntry = (props) => {
                             <Text>{data[0].roll_no}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
-                            <Text style={styles.billTo}>Date of Receipt</Text>
+                            <Text style={styles.billTo}>Date of Receipt:</Text>
                             <Text>{currDate}</Text>
                         </View>
                         
