@@ -582,9 +582,9 @@ const currDate = new Date().toLocaleDateString();
 
                           <th>Exam Name</th>
                           <th>Subject</th>
-                          <th>Full Mark</th>
-                          <th>Obtained Mark</th>
-                          <th>Highest Mark</th>
+                          <th>Full Marks</th>
+                          <th>Obtained Marks</th>
+                          <th>Highest Marks</th>
                           <th>Percentage</th>
                           <th>Grade</th>
                           
