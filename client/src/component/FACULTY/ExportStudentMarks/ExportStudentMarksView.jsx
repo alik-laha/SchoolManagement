@@ -269,34 +269,34 @@ const currDate = new Date().toLocaleDateString();
                               </View>
 
                           </View>
-                          <View style={styles.formDetails}><Text>Mark Sheet of {data[0][0].exam_name} Exam for Academic Year {data[0][0].Year}</Text></View> 
+                          <View style={styles.formDetails}><Text>Mark Sheet of {data[0][0][0].exam_name} Exam for Academic Year {data[0][0][0].Year}</Text></View> 
                           
                           <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Student Name:</Text>
-                            <Text>{data[0][0].student_Name}</Text>
+                            <Text>{data[0][0][0].student_Name}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Registration Number:</Text>
-                            <Text>{data[0][0].regNo}</Text>
+                            <Text>{data[0][0][0].regNo}</Text>
                         </View>
                         
                         
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Academic Year:</Text>
-                            <Text>{data[0][0].Year}</Text>
+                            <Text>{data[0][0][0].Year}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Class:</Text>
-                            <Text>{convertToRoman(data[0][0].class)}</Text>
+                            <Text>{convertToRoman(data[0][0][0].class)}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Section:</Text>
-                            <Text>{data[0][0].section}</Text>
+                            <Text>{data[0][0][0].section}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Roll No:</Text>
-                            <Text>{data[0][0].roll_no}</Text>
+                            <Text>{data[0][0][0].roll_no}</Text>
                         </View>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Date of Generation:</Text>
@@ -318,7 +318,9 @@ const currDate = new Date().toLocaleDateString();
                           </View>
                       </View>
                        
-                         {data[0].map((item,index)=>{
+                         {data[0][0].map((item,index)=>{
+                            data[1]=data[1]+item.int_exam_marks
+                            data[2]=data[2]+item.marks
                             return( 
                             <View key={item.id} style={styles.row}>
                                 <Text style={styles.rowdescription}>{index+1}</Text>
@@ -333,6 +335,14 @@ const currDate = new Date().toLocaleDateString();
                          
                            
                             })}
+                            <View style={styles.row}>
+                                <Text style={styles.rowdescription}></Text>
+                                <Text style={styles.rowqty}>Total</Text>
+                                <Text style={styles.rowqty}>{data[1]}</Text>
+                                <Text style={styles.rowqty}>{data[2]}</Text>
+                                <Text style={styles.rowqty}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
+                                <Text style={styles.rowqty1}>{gradecalculate(((data[2] / data[1]) * 100))}</Text>
+                            </View>
                          
                         
                     <View style={styles.footer}>
@@ -346,6 +356,8 @@ const currDate = new Date().toLocaleDateString();
                   </Page>
         </Document>
 
+
+     
       );
     useEffect(()=>{
         setData(props.data)
@@ -555,7 +567,7 @@ const currDate = new Date().toLocaleDateString();
                           onClick={HandleClick}>Cancel
                   </button>
                   { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentMarks data={pdfdata}/>} fileName={"Student_Marks_Report.pdf"} >
+                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1]}/>} fileName={"Student_Marks_Report.pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
                   <table className="table-60" id="table_one">
