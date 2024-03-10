@@ -582,11 +582,12 @@ const currDate = new Date().toLocaleDateString();
 
                           <th>Exam Name</th>
                           <th>Subject</th>
-                          <th>Full Marks</th>
-                          <th>Obtained Marks</th>
+                          <th>Full Mark</th>
+                          <th>Obtained Mark</th>
+                          <th>Highest Mark</th>
                           <th>Percentage</th>
                           <th>Grade</th>
-                          <th>highest</th>
+                          
 
                       </tr>
                       </thead>
@@ -602,13 +603,14 @@ const currDate = new Date().toLocaleDateString();
 
                                   <td>{item.int_exam_marks}</td>
                                   <td>{item.marks}</td>
-                                  <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
-                                  <td style={{width:'20%'}}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
                                   {
                                       maxMark.map((max,idx)=>(
-                                          max.subject===item.subject ? <td key={idx}>{max.max_mark}</td> : null
+                                          max.subject===item.subject ? <td style={{color:'red'}} key={idx}>{max.max_mark}</td> : null
                                       ))
                                   }
+                                  <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
+                                  <td style={{width:'20%'}}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
+                                 
                               </tr>
 
                       ))}
@@ -623,7 +625,7 @@ const currDate = new Date().toLocaleDateString();
                           </td>
                           <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
 
-                          
+                          <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}></td>
                           <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
                               <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
                         <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
