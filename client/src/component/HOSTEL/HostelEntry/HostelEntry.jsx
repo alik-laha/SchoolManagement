@@ -9,6 +9,7 @@ const HostelEntry = (props) => {
     const [entryView, setEntryView] = useState("none");
     const [studentName, setStudentName] = useState("");
     const [regNo, setRegNo] = useState("");
+    
     const [roomNo, setRoomNo] = useState("");
     const [bedNo, setBedNo] = useState("");
     const [Class, setClass] = useState(0);

@@ -67,6 +67,7 @@ const ViewFeePayment =(props)=>{
     const [EditBedFee,setEditBedFee]=useState(0)
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
+    const [waiver,setWaiver]=useState(0)
 
 
     useEffect(()=>{
@@ -116,6 +117,7 @@ const ViewFeePayment =(props)=>{
         setRegNo(data.regNo)
         setFine(data.fine)
         setFinePaid(data.fine_paid)
+        setWaiver(data.waiver)
         let data1
             console.log(feeType)
             data1 = {
@@ -189,6 +191,7 @@ const ViewFeePayment =(props)=>{
         setNewAdmissionFee(0)
         setFinePaid(0)
         setFine(0)
+        setWaiver(0)
         setNewHostelCharge(0)
         setNewTutionFee(0)
         setNewCautionMoney(0)
@@ -270,7 +273,7 @@ const ViewFeePayment =(props)=>{
             finePaid,
             year:year,
             regNo:regNo,
-            Date:EditDate
+            Date:EditDate,waiver
         }
         if(feeType==="New-Admisson"){
 
@@ -443,7 +446,7 @@ const ViewFeePayment =(props)=>{
                         </th>
 
                         <th>
-                            Due Amount
+                            Due Amount Including Fine & Waiver
                         </th>
                         <th>
                             Action
@@ -477,7 +480,7 @@ const ViewFeePayment =(props)=>{
                                     {item.roll_no}
                                 </td>
                                 <td style={{color: 'red'}}>
-                                    {pendingAmount + item.fine - item.fine_paid}
+                                    {(pendingAmount + item.fine) - (item.fine_paid+item.waiver)}
                                 </td>
                                 <td>
                                     <button onClick={() => handleEdit(item)}
@@ -728,6 +731,12 @@ const ViewFeePayment =(props)=>{
                             <input type="number" value={finePaid}
                                    style={{textAlign: 'center', width: '100%'}}
                                    onChange={(e)=>setFinePaid(e.target.value)}/></dd>
+                                   <dt>
+                            <label>Waiver to Be Imposed</label>
+                        </dt>
+                        <dd>
+                            <input type="number" value={waiver} onChange={(e) => setWaiver(e.target.value)}
+                                   style={{backgroundColor: 'green',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
                        
 
                     </dl>
