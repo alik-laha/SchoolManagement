@@ -792,6 +792,7 @@ const StudentFeePaymentEntry = (props) => {
     }
 
     const HandleNewAdmissionFee=(e)=>{
+        console.log('clicked')
         e.preventDefault()
         if(!status) {
             const data = {
@@ -1414,7 +1415,7 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/></dd>
 
 
-<dt>
+            <dt>
                         <label>Fine </label>
                         </dt>
                       <dd> 
