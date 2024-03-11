@@ -55,6 +55,7 @@ const StudentFeePaymentEntry = (props) => {
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
     const[fine,setFine]=useState(0)
     const[fine_paid,setFine_paid]=useState(0)
+    const[waiver,setWaiver]=useState(0)
 
     const [disableedit,setdisabledit]=useState(false)
     const [month,setMonth]=useState("")
@@ -542,6 +543,7 @@ const StudentFeePaymentEntry = (props) => {
             setBillDate(new Date().toISOString().slice(0, 10))
             setFine(0)
             setFine_paid(0)
+            setWaiver(0)
         }
         
         else{
@@ -636,6 +638,7 @@ const StudentFeePaymentEntry = (props) => {
                    cData = DATA.entry_date.toString()
                    setFine(DATA.fine)
                    setFine_paid(DATA.fine_paid)
+                   setWaiver(DATA.waiver)
                }).catch((err) => {
                    console.log(err)
                })
@@ -664,6 +667,7 @@ const StudentFeePaymentEntry = (props) => {
                    cData = DATA.entry_date.toString()
                    setFine(DATA.fine)
                    setFine_paid(DATA.fine_paid)
+                   setWaiver(DATA.waiver)
                }).catch((err) => {
                    console.log(err)
                })
@@ -759,6 +763,7 @@ const StudentFeePaymentEntry = (props) => {
         setBillDate(new Date().toISOString().slice(0, 10))
         setFine(0)
         setFine_paid(0)
+        setWaiver(0)
     }
 
     useEffect(() => {
@@ -1136,7 +1141,7 @@ const StudentFeePaymentEntry = (props) => {
                     <th>Fees To be Paid (Including Fine)</th>
                     
                     <th>Fees Paid (Including Fine)</th>
-                    <th>Due Amount (Including Fine)</th>
+                    <th>Due Amount (Including Fine,Exluding Waiver)</th>
                 
                     
 
@@ -1148,6 +1153,7 @@ const StudentFeePaymentEntry = (props) => {
                 {
                     data.map((item,index)=>{
                         return(
+                            console.log(item.waiver),
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>{item.student_Name}</td>
@@ -1424,7 +1430,13 @@ const StudentFeePaymentEntry = (props) => {
                          <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>         
                               
-                              
+                              <dt>
+                        <label>Waiver </label>
+                        </dt>   
+                        <dd> 
+                      <input type="number" value={waiver} readOnly
+                              style={{backgroundColor:'green',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder'} }/> 
+                        </dd>        
                               
                               
 
@@ -1693,7 +1705,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.total_fee+item.fine}</td>
                                 
                                 <td>{item.student_total_fee+item.fine_paid}</td>
-                                <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid)}</td>
+                                <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
                               </tr> 
                                
                               

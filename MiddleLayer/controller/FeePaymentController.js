@@ -837,13 +837,13 @@ exports.UpdateNewAdmissionFeeEntryForUpdate = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
-        if(fine===""){
+        if(fine==="" || fine===null){
             fine=0
         }
-        if(finePaid===""){
+        if(finePaid==="" || finePaid===null){
             finePaid=0
         }
-        if(waiver===""){
+        if(waiver==="" || waiver===null){
             waiver=0
         }
         let query = `UPDATE new_admission_fee

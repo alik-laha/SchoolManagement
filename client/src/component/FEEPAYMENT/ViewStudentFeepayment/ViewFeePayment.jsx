@@ -446,7 +446,7 @@ const ViewFeePayment =(props)=>{
                         </th>
 
                         <th>
-                            Due Amount Including Fine & Waiver
+                            Due Amount Including Fine & Excluding Waiver
                         </th>
                         <th>
                             Action
@@ -735,8 +735,9 @@ const ViewFeePayment =(props)=>{
                             <label>Waiver to Be Imposed</label>
                         </dt>
                         <dd>
-                            <input type="number" value={waiver} onChange={(e) => setWaiver(e.target.value)}
-                                   style={{backgroundColor: 'green',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
+                            <input type="number" value={waiver} style={{backgroundColor: 'green',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
+                            onChange={(e) => e.target.value <= ((pendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((pendingAmount + fine) - (finePaid))}`)}/>
+                                   </dd>
                        
 
                     </dl>
