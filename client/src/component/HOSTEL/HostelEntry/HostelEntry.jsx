@@ -20,6 +20,7 @@ const HostelEntry = (props) => {
     const [editIndex,setEditIndex]=useState(null)
     const [pdfstate,setpdfstate]=useState(false)
     const [pdfdata,setPDFdata]=useState([])
+    const currDate = new Date().toLocaleDateString();
 
     useEffect(() => {
       if (props.view==="block" && props.data.length>0) {
