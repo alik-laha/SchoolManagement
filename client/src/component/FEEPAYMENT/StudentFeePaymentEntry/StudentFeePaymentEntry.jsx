@@ -1650,7 +1650,7 @@ const StudentFeePaymentEntry = (props) => {
 
                     </dl>
 
-                    <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>
+                    <span><button className="dashboard-btn dashboard-btn-scss"  disabled={disableedit}>Submit</button></span>
                 </form>
             </div>
             <table className="table-60" id="student_fee_payment" style={{display:'none'}}>
