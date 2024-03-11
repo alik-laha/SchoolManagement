@@ -15,7 +15,7 @@ const SecondaryStockEntryView= (props) => {
     const [billid,setbillid]=useState("");
     const [estimatedamt,setestimatedamt]=useState("");
     const [itemid,setitemid]=useState("");
-    const [disableedit,setdisabledit]=useState(true)
+    const [disableedit,setdisabledit]=useState(false)
     
 
     useEffect(()=>{
