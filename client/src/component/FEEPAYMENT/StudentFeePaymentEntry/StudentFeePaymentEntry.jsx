@@ -1701,7 +1701,7 @@ const StudentFeePaymentEntry = (props) => {
                                        fontWeight: 'bolder'
                                    }}/>
                         </dd>
-
+<dt>
                         <label>Bill Date</label></dt>
                     <dd><input type="date" value={billDate} onChange={(e) => setBillDate(e.target.value)}/></dd>
 
