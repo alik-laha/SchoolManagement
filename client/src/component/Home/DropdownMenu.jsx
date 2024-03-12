@@ -19,6 +19,9 @@ const DropdownMenu = (prop) => {
         <li>
           <NavLink to={prop.props.value.facilities}>Facilities</NavLink>
         </li>
+        <li>
+          <NavLink to={prop.props.value.admission}>Admission Form</NavLink>
+        </li>
       </ul>
     </div>
   );
