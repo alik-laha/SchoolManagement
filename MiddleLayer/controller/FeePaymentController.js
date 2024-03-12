@@ -251,6 +251,7 @@ exports.GetStudentForFeeEntry = (req, res) => {
     a.class,
     b.*,
     (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
+    (SELECT c.waiver FROM ${tableName} c WHERE c.regNo=a.registration_no) AS waiver,
     (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee,
     (SELECT c.fine FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine,(SELECT c.fine_paid FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine_paid
 
@@ -269,6 +270,7 @@ WHERE
                          a.class,
                          b.*,
                          (SELECT c.status FROM ${tableName} c WHERE c.regNo=a.registration_no) AS status,
+                         (SELECT c.waiver FROM ${tableName} c WHERE c.regNo=a.registration_no) AS waiver,
                          (SELECT c.total_fee FROM ${tableName} c WHERE c.regNo=a.registration_no) AS student_total_fee,
                          (SELECT c.fine FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine,(SELECT c.fine_paid FROM ${tableName} c WHERE c.regNo=a.registration_no) AS fine_paid
                      FROM

@@ -1153,7 +1153,6 @@ const StudentFeePaymentEntry = (props) => {
                 {
                     data.map((item,index)=>{
                         return(
-                            console.log(item.waiver),
                             <tr key={index}>
                                 <td>{index+1}</td>
                                 <td>{item.student_Name}</td>
@@ -1169,7 +1168,7 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.total_fee+item.fine}</td>
                                 
                                 <td>{item.student_total_fee+item.fine_paid}</td>
-                                <td style={{color:'red'}}>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid)}</td>
+                                <td style={{color:'red'}}>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
                                
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
