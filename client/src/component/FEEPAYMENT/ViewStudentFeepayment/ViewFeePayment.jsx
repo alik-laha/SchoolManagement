@@ -68,7 +68,7 @@ const ViewFeePayment =(props)=>{
     const [EditTotal,setEditTotal]=useState(0)
     const [EditDate,setEditDate]=useState(new Date().toISOString().slice(0, 10))
     const [waiver,setWaiver]=useState(0)
-
+    const [PendingAmount,setPendingAmount]=useState(0)
 
     useEffect(()=>{
         setData(props.data)
@@ -118,6 +118,7 @@ const ViewFeePayment =(props)=>{
         setFine(data.fine)
         setFinePaid(data.fine_paid)
         setWaiver(data.waiver)
+        setPendingAmount(data.status-data.total_fee)
         let data1
             console.log(feeType)
             data1 = {
@@ -455,7 +456,6 @@ const ViewFeePayment =(props)=>{
                     </thead>
                     <tbody>
                     {data.map((item, index) => {
-                        console.log(item.style, item.total_fee)
                         const pendingAmount = item.status - item.total_fee
                         return (
                             <tr key={index}>
@@ -736,7 +736,7 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
                             <input type="number" value={waiver} style={{backgroundColor: 'green',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
-                            onChange={(e) => e.target.value <= ((pendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((pendingAmount + fine) - (finePaid))}`)}/>
+                            onChange={(e) => e.target.value <= ((PendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
                                    </dd>
                        
 
