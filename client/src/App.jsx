@@ -17,6 +17,7 @@ import Home from "./component/Home/Home.jsx";
 import Header from "./component/Home/Header.jsx";
 import Footer from "./component/Home/Footer.jsx";
 import NavDropdown from "./component/Home/NavDropdown.jsx";
+import DownloadForms from "./component/NavLinkComponents/DownloadForms.jsx";
 
 function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",admission:"/admission",marks:"/marks",student:"Student"}
@@ -84,6 +85,7 @@ function App() {
         <Route path="/Vision&Mission" element={<VisionMision/>} />
         <Route path="/Programs" element={<Programs/>} />
         <Route path="/Facilities" element={<Facilities/>} />
+        <Route path={"/admission"} element={<DownloadForms/>} />
         
 
 
