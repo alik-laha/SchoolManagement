@@ -17,23 +17,32 @@ exports.Login = (req, res) => {
                     status: "failed",
                     data: "User not found"
                 })
-            }else{
+            }else {
+                if (!data[0]) {
+                    return res.status(400).json({
+                        status: "failed",
+                        data: "Password not match"
+                    })
+                } else {
                     const Password = data[0].password
-                const passwordMatch = await Bcrypt.compare(pass, Password)
+                    const passwordMatch = await Bcrypt.compare(pass, Password)
                     if (passwordMatch) {
-                        const token = jwt.sign({id: data[0].user_id, role: data[0].role},process.env.SECURITY_KEY, {expiresIn: '5h'});
+                        const token = jwt.sign({
+                            id: data[0].user_id,
+                            role: data[0].role
+                        }, process.env.SECURITY_KEY, {expiresIn: '5h'});
                         return res.status(200).json({
                             status: "success",
                             data: data,
                             token: token
                         });
-                }
-                    else{
+                    } else {
                         return res.status(400).json({
                             status: "failed",
                             data: "Password not match"
                         })
                     }
+                }
             }
         })
     }catch(err){
