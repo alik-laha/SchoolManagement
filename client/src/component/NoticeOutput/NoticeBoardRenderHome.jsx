@@ -81,7 +81,7 @@ const NoticeOutput=()=>{
          <ul> 
                 {file.map((fileName, index) => (
 
-                         <li  key={index}>
+                         <li  key={index} style={{cursor:"pointer"}} >
                                 
                          <NewImage filedate={fileName.slice(-10)}/> 
                           <a onClick={()=>handleDownload(fileName)}>
