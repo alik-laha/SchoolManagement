@@ -470,11 +470,18 @@ const StudentFeePaymentEntry = (props) => {
                             <Text style={styles.rowqty1}>{fine-fine_paid}</Text>
                         </View>
                         <View style={styles.row}>
-                            <Text style={styles.rowdescription}>Total </Text>
+                            <Text style={styles.rowdescription}>Waiver </Text>
+                            <Text style={styles.rowqty2}>-{waiver}</Text>
+                            <Text style={styles.rowqty}>X</Text>
+                            <Text style={styles.rowqty1}>X</Text>
+                        </View>
+                        <View style={styles.row}>
+                            <Text style={styles.rowdescription}>Summary Total </Text>
                             <Text style={styles.rowqty2}>{Total+fine}</Text>
                             <Text style={styles.rowqty}>{EditTotal+fine_paid}</Text>
-                            <Text style={styles.rowqty1}>{(Total+fine)-(EditTotal+fine_paid)}</Text>
+                            <Text style={styles.rowqty1}>{(Total+fine)-(EditTotal+fine_paid+waiver)}</Text>
                         </View>
+                        
 
 
                     </View>
@@ -1119,7 +1126,7 @@ const StudentFeePaymentEntry = (props) => {
                 id="indranil"
                 className="dashboard-btn btn-warning excel-btn"
                 table="student_fee_payment"
-                filename={"Student_Fee_payment_Report_"+currDate}
+                filename={"Student_Fee_Payment_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
@@ -1237,7 +1244,7 @@ const StudentFeePaymentEntry = (props) => {
             <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
                 { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_New_Admission_Fee_PaymenT_Report_"+regNo+".pdf"} >
+                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_New_Admission_Fee_Payment_Receipt_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
                 <form className='fee-entry-new-adm' onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
@@ -1458,7 +1465,7 @@ const StudentFeePaymentEntry = (props) => {
                  <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
                 { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_Re_Admission_Fee_Payment_Report_"+regNo+".pdf"} >
+                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_Re_Admission_Fee_Payment_Receipt_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
                 <form onSubmit={HandleReAdmissionFee} className='fee-entry-new-adm' style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
