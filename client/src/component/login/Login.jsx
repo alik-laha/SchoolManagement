@@ -6,12 +6,14 @@ import { useNavigate } from "react-router-dom";
 import CommonHeader from "../CommonHeader";
 import Footer from "../Home/Footer";
 import logo from '../Home/logo_ahm.jpg'
+import  ReCAPTCHA  from "react-google-recaptcha";
 
 const Login = () => {
   const [visiblity, setVisiblity] = useState("password");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
   const [errormsg,setErrormsg]=useState("none")
+  const [isCaptchaSuccessful, setIsCaptchaSuccess] = useState(false)
   //store the pass
   const handalePass = (e) => {
     setPass(e.target.value);
@@ -20,6 +22,14 @@ const Login = () => {
   const handaleName = (e) => {
     setName(e.target.value);
   };
+  const onChangeCaptcha = (val) => {
+    setIsCaptchaSuccess(true)
+    console.log("captcha value: ", val);
+  };
+
+
+
+
   const navigator = useNavigate();
   //password visiblity
   const passwordSee = (e) => {
@@ -116,8 +126,12 @@ const Login = () => {
               </button>
             </section>
           </div>
+          <ReCAPTCHA
+          sitekey='6LcqjZcpAAAAAIflW5rrymjG6S9F0uqqdDTtn1Uh'
+          onChange={onChangeCaptcha}
+          />
           <p style={{display:errormsg,color:"red",fontSize:"15px",fontWeight:'500'}}>Invalid Credentials</p>
-          <input className="dashboard-btn dashboard-btn-scss" type="submit" placeholder="Sign In" />
+          <input className="dashboard-btn dashboard-btn-scss" disabled={!isCaptchaSuccessful} type="submit" placeholder="Sign In" />
         </form>
       </div>
       </div>
