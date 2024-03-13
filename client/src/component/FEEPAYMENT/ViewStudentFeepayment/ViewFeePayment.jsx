@@ -722,20 +722,20 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
                             <input type="number" value={fine} onChange={(e) => setFine(e.target.value)}
-                                   style={{backgroundColor: 'orangered',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
+                                   style={{backgroundColor: 'ivory',textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
                             
                                    <dt>
                             <label>Fine Paid</label> </dt>
                             <dd>
                            
                             <input type="number" value={finePaid}
-                                   style={{textAlign: 'center', width: '100%'}}
+                                   style={{backgroundColor: 'ivory',textAlign: 'center', width: '100%'}}
                                    onChange={(e)=>setFinePaid(e.target.value)}/></dd>
                                    <dt>
                             <label>Waiver to Be Imposed</label>
                         </dt>
                         <dd>
-                            <input type="number" value={waiver} style={{backgroundColor: 'green',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
+                            <input type="number" value={waiver} style={{backgroundColor: 'lightseagreen',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
                             onChange={(e) => e.target.value <= ((PendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
                                    </dd>
                        

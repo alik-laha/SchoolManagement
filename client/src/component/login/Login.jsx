@@ -126,10 +126,10 @@ const Login = () => {
               </button>
             </section>
           </div>
-          <ReCAPTCHA
+          <div><ReCAPTCHA
           sitekey='6LcqjZcpAAAAAIflW5rrymjG6S9F0uqqdDTtn1Uh'
           onChange={onChangeCaptcha}
-          />
+          /></div>
           <p style={{display:errormsg,color:"red",fontSize:"15px",fontWeight:'500'}}>Invalid Credentials</p>
           <input className="dashboard-btn dashboard-btn-scss" disabled={!isCaptchaSuccessful} type="submit" placeholder="Sign In" />
         </form>

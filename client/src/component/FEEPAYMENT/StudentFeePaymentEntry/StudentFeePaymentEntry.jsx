@@ -1425,7 +1425,7 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>
                       <dd> 
                       <input type="number" value={fine} readOnly
-                              style={{backgroundColor:'orangered',textAlign:'center',width:'50%',color:'white',fontWeight:'bolder'} }/> 
+                              style={{backgroundColor:'lightcoral',textAlign:'center',width:'50%',color:'white',fontWeight:'bolder'} }/> 
                          <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
                                readOnly={true}/></dd>         
                               
@@ -1434,17 +1434,17 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>   
                         <dd> 
                       <input type="number" value={waiver} readOnly
-                              style={{backgroundColor:'green',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder'} }/> 
+                              style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder'} }/> 
                         </dd>        
                               
                               
 
                     <dt>
-                        <label>Bill Date</label></dt>
+                        <label>Payment Date</label></dt>
                     <dd> <input type="date" value={billDate} onChange={(e) => setBillDate(e.target.value)}/></dd>
 
                     <dt>
-                        <label>Entry Date</label></dt>
+                        <label>Date of Payment Entry</label></dt>
                       <dd>  <input type="date" value={EditDate} onChange={(e) => setEditDate(e.target.value)} readOnly/></dd>
 
                     </dl>
@@ -1679,7 +1679,7 @@ const StudentFeePaymentEntry = (props) => {
                         <dd>
                             <input type="number" value={fine} readOnly
                                    style={{
-                                       backgroundColor: 'orangered',
+                                       backgroundColor: 'lightcoral',
                                        textAlign: 'center',
                                        width: '50%',
                                        color: 'white',
@@ -1694,7 +1694,7 @@ const StudentFeePaymentEntry = (props) => {
                         <dd>
                             <input type="number" value={waiver} readOnly
                                    style={{
-                                       backgroundColor: 'green',
+                                       backgroundColor: 'lightseagreen',
                                        textAlign: 'center',
                                        width: '100%',
                                        color: 'white',
