@@ -21,6 +21,7 @@ const ExportStudentMarksView= (props) => {
     const [pdfdata,setPDFdata]=useState([])
 const [pdfstate,setpdfstate]=useState(false)
 const [maxMark,setMaxMark]=useState([])
+const [regNo,setRegNo]=useState('')
 
 
 const currDate = new Date().toLocaleDateString();
@@ -144,7 +145,8 @@ const currDate = new Date().toLocaleDateString();
             borderRightWidth: 1,
             backgroundColor: "azure",
             fontSize:'9px',
-            fontWeight: "extrabold"
+            fontWeight: "extrabold",
+            
             
             
             
@@ -161,12 +163,23 @@ const currDate = new Date().toLocaleDateString();
             
           },rowqtytot: {
             width: "22%",
-            // backgroundColor: "white",
+            backgroundColor: "ivory",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            borderLeftWidth: 1,
+            
+        
+            
+          },
+          rowqtynew: {
+            width: "16%",
+            backgroundColor: "ivory",
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
             
-            backgroundColor: "azure"
+            
             
           },
           rowqty1: {
@@ -175,6 +188,14 @@ const currDate = new Date().toLocaleDateString();
             textAlign: "center",
             fontSize:'9px',
             
+            
+          },
+          rowqtynew1: {
+            width: "16%",
+            backgroundColor: "ivory",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1
             
           },
           
@@ -242,18 +263,24 @@ const currDate = new Date().toLocaleDateString();
             fontSize:'10px'
           },
           footer:{
-            marginTop:'150px',
+            marginTop:'50px',
             display:'flex',
             flexDirection:'row',
             textAlign:'center'
           },
           rightfooter:{
-            width:'50%',
-            marginLeft:'50px',
+            borderTop:'1px solid black',
+            width:'25%',
+            marginLeft:'5px',
+            marginRight:'5px',
+            paddingTop:'5px',
             float:'right'
           },
           leftfooter:{
-            width:'50%',
+            borderTop:'1px solid black',marginLeft:'5px',
+            marginRight:'5px',
+            width:'25%',
+            paddingTop:'5px',
             float:'left'
           }
           
@@ -361,18 +388,24 @@ const currDate = new Date().toLocaleDateString();
                             <View style={styles.row}>
                                 
                                 <Text style={styles.rowqtytot}>Total</Text>
-                                <Text style={styles.rowqty}>{data[1]}</Text>
-                                <Text style={styles.rowqty}>{data[2]}</Text>
-                                <Text style={styles.rowqty}>X</Text>
-                                <Text style={styles.rowqty}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
-                                <Text style={styles.rowqty1}>{gradecalculate(((data[2] / data[1]) * 100))}</Text>
+                                <Text style={styles.rowqtynew}>{data[1]}</Text>
+                                <Text style={styles.rowqtynew}>{data[2]}</Text>
+                                <Text style={styles.rowqtynew}>X</Text>
+                                <Text style={styles.rowqtynew}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
+                                <Text style={styles.rowqtynew1}>{gradecalculate(((data[2] / data[1]) * 100))}</Text>
                             </View>
                          
-                        
                     <View style={styles.footer}>
-                        <Text style={styles.leftfooter}>Class Teacher Signature</Text>
-                        <Text style={styles.rightfooter}>AL-Hilal Secretary Signature</Text>
+                        <Text style={styles.leftfooter}>Class Teacher's Signature</Text>
+                        
+                        <Text style={styles.leftfooter}>Teacher-In-Charge's Signature</Text>
+                        <Text style={styles.rightfooter}>Guardian's Signature</Text>
+                        
+                        <Text style={styles.rightfooter}>AHM Secretary's Signature</Text>
                     </View>
+                    
+                    
+                        
                       
                       
                       
@@ -406,6 +439,7 @@ const currDate = new Date().toLocaleDateString();
     //   };
     const handleView=(data)=>{
         console.log(data)
+        setRegNo(data.registration_no)
         if(ExamName===""){
            const DATA2={
                 Class:data.class,
@@ -417,6 +451,7 @@ const currDate = new Date().toLocaleDateString();
                       setResult2Data(res.data.data)
                         setTableView("none")
                         setResult2("block")
+                       
                  }).catch((err)=>{
                  console.log(err)
                 })
@@ -593,8 +628,9 @@ const currDate = new Date().toLocaleDateString();
                           onClick={HandleClick}>Cancel
                   </button>
                   { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>} fileName={"Student_Marks_Report.pdf"} >
-                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>} 
+                                    fileName={"Progress_Report_"+ExamName+"_"+regNo+".pdf"} >
+                                        {({ blob, url, loading, error }) => (loading ? 'Download' : 'Download')}
                                     </PDFDownloadLink></button>}
                   <table className="table-60" id="table_one">
                       <thead>

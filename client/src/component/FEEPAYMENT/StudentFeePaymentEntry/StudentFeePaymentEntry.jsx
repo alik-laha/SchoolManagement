@@ -1244,7 +1244,8 @@ const StudentFeePaymentEntry = (props) => {
             <button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel
                 </button>
                 { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>} fileName={"Student_New_Admission_Fee_Payment_Receipt_"+regNo+".pdf"} >
+                                    <PDFDownloadLink document={<MyDocumentFee data={pdfdata}/>}
+                                     fileName={"Student_New_Admission_Fee_Payment_Receipt_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
                 <form className='fee-entry-new-adm' onSubmit={HandleNewAdmissionFee} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey',marginTop:'10px'}}>
