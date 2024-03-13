@@ -58,8 +58,8 @@ const currDate = new Date().toLocaleDateString();
     const borderColor = "#3778C2";
       const styles = StyleSheet.create({
         section: {
-            margin: 10,
-            padding: 10,
+            margin: 5,
+            padding: 5,
             flexGrow: 1,
           },
         page: {
@@ -67,8 +67,8 @@ const currDate = new Date().toLocaleDateString();
           fontFamily: "Helvetica",
           fontSize: 11,
           paddingTop: 10,
-          paddingLeft: 50,
-          paddingRight: 50,
+          paddingLeft: 40,
+          paddingRight: 40,
           lineHeight: 1.5,
           flexDirection: "column"
         },
@@ -107,7 +107,7 @@ const currDate = new Date().toLocaleDateString();
             flexGrow: 1
           },
           description: {
-            width: "5%",
+            width: "6%",
             borderRightColor: borderColor,
             borderRightWidth: 1,
             fontSize:'11',
@@ -116,14 +116,14 @@ const currDate = new Date().toLocaleDateString();
             borderLeftWidth: 1,
           },
           qty: {
-            width: "19%",
+            width: "16%",
             fontSize:'11',
             borderRightWidth: 1,
              
            
           },
           qty1: {
-            width: "19%",
+            width: "16%",
             fontSize:'11',
             borderRightColor: borderColor,
             borderRightWidth: 1,
@@ -138,7 +138,7 @@ const currDate = new Date().toLocaleDateString();
             
           },
           rowdescription: {
-            width: "5%",
+            width: "6%",
             textAlign: "center",
             borderRightColor: borderColor,
             borderRightWidth: 1,
@@ -151,7 +151,16 @@ const currDate = new Date().toLocaleDateString();
           },
         
           rowqty: {
-            width: "19%",
+            width: "16%",
+            // backgroundColor: "white",
+            textAlign: "center",
+            fontSize:'9px',
+            borderRightWidth: 1,
+            
+            backgroundColor: "azure"
+            
+          },rowqtytot: {
+            width: "22%",
             // backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
@@ -161,7 +170,7 @@ const currDate = new Date().toLocaleDateString();
             
           },
           rowqty1: {
-            width: "19%",
+            width: "16%",
             backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
@@ -272,7 +281,7 @@ const currDate = new Date().toLocaleDateString();
                               </View>
 
                           </View>
-                          <View style={styles.formDetails}><Text>Mark Sheet of {data[0][0][0].exam_name} Exam for Academic Year {data[0][0][0].Year}</Text></View> 
+                          <View style={styles.formDetails}><Text>Progress Report of {data[0][0][0].exam_name} Exam for Academic Year {data[0][0][0].Year}</Text></View> 
                           
                           <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
@@ -315,6 +324,7 @@ const currDate = new Date().toLocaleDateString();
                               <Text style={styles.qty}>Subject</Text>
                               <Text style={styles.qty}>Full Marks</Text>
                               <Text style={styles.qty}>Obtained</Text>
+                              <Text style={styles.qty}>Heighest</Text>
                               <Text style={styles.qty}>Percentage</Text>
                               <Text style={styles.qty1}>Grade</Text>
 
@@ -330,6 +340,12 @@ const currDate = new Date().toLocaleDateString();
                                 <Text style={styles.rowqty}>{item.subject}</Text>
                                 <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
                                 <Text style={styles.rowqty}>{item.marks}</Text>
+                                {
+                                      data[3].map((max,idx)=>(
+                                          max.subject===item.subject ? <Text style={styles.rowqty} key={idx}>{max.max_mark}</Text> : null
+                                      ))
+                                  }
+                               
                                 <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
                                 <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text>
                             </View>
@@ -338,11 +354,16 @@ const currDate = new Date().toLocaleDateString();
                          
                            
                             })}
+                             <View style={styles.row}>
+                            <Text style={styles.blankrow}></Text>
+                            
+                        </View>
                             <View style={styles.row}>
-                                <Text style={styles.rowdescription}></Text>
-                                <Text style={styles.rowqty}>Total</Text>
+                                
+                                <Text style={styles.rowqtytot}>Total</Text>
                                 <Text style={styles.rowqty}>{data[1]}</Text>
                                 <Text style={styles.rowqty}>{data[2]}</Text>
+                                <Text style={styles.rowqty}>X</Text>
                                 <Text style={styles.rowqty}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
                                 <Text style={styles.rowqty1}>{gradecalculate(((data[2] / data[1]) * 100))}</Text>
                             </View>
@@ -572,7 +593,7 @@ const currDate = new Date().toLocaleDateString();
                           onClick={HandleClick}>Cancel
                   </button>
                   { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1]}/>} fileName={"Student_Marks_Report.pdf"} >
+                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>} fileName={"Student_Marks_Report.pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
                                     </PDFDownloadLink></button>}
                   <table className="table-60" id="table_one">
