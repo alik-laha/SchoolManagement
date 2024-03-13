@@ -1728,10 +1728,14 @@ const StudentFeePaymentEntry = (props) => {
                     <th>Roll No</th>
                     <th>Fee Type</th>
                     
-                    <th>Fees To be Paid (Including Fine)</th>
-                    
+                    <th>Fees To be Paid (Excluding Fine)</th>
+                    <th>Fines to Be Paid</th>
+                    <th>Total Fees To be Paid (Including Fine)</th>
+                    <th>Fees Paid (Excluding Fine)</th>
+                    <th>Fines Paid</th>
                     <th>Fees Paid (Including Fine)</th>
-                    <th>Due Amount (Including Fine)</th>
+                    <th>Waiver(If Any)</th>
+                    <th>Due Amount (Including Fine,Excluding Waiver)</th>
                 
                     
                 </tr>
@@ -1751,10 +1755,15 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.section}</td>
                                 <td>{item.roll_no}</td>
                                 <td>{item.fee_type}</td>
-                                
+
+                                <td>{item.total_fee}</td>
+                                <td>{item.fine}</td>
                                 <td>{item.total_fee+item.fine}</td>
-                                
+
+                                <td>{item.student_total_fee}</td>
+                                <td>{item.fine_paid}</td>
                                 <td>{item.student_total_fee+item.fine_paid}</td>
+                                <td>{item.waiver}</td>
                                 <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
                               </tr> 
                                
