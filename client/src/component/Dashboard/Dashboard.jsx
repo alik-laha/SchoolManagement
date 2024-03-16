@@ -18,7 +18,7 @@ const Dashboard = () => {
  const [dashbvisi,setdashBVisi]=useState('none');
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
  
- const [dashbrdtextwidth,setdashbrdtextwidth]=useState('12%');
+ const [dashbrdtextwidth,setdashbrdtextwidth]=useState('dashboard-text-width-before');
  const [rightDashbrd,setrightDashbrd]=useState('85%');
 
  const [createUser,setCreateUser]=useState("none")
@@ -78,12 +78,12 @@ const NavbarVisibility = () => {
     setNavbarVisi('navbar-before');
   }
 
-  if(dashbrdtextwidth==='12%')
+  if(dashbrdtextwidth==='dashboard-text-width-before')
   {
-    setdashbrdtextwidth('0%');
+    setdashbrdtextwidth('dashboard-text-width-after');
   }
   else{
-    setdashbrdtextwidth('12%');
+    setdashbrdtextwidth('dashboard-text-width-before');
   }
 
   if(rightDashbrd==='85%')
@@ -1693,7 +1693,7 @@ const handleStockUsageEdit=()=>{
     <>
     <div className="dashboard-root">
     <div className='dashoboard-main-header'>
-        <span className="logo-lg dashboard-text" style={{width:dashbrdtextwidth}}>{localStorage.getItem("user")}</span>
+        <span className={"logo-lg dashboard-text"+ " "+dashbrdtextwidth } >{localStorage.getItem("user")}</span>
         <span  style={{fontSize:'20px',cursor:'pointer'}} className="logo-lg dashboard-open" onClick={NavbarVisibility}>☰</span>
         <span className='operator-hide' onClick={logoutVisiblity}><p className="logo-lg">{localStorage.getItem("name").toUpperCase()}</p><img src={icon}></img></span>
         <span  className='navbar-custom-menu'>

@@ -28,6 +28,12 @@
     margin-top: 20px;
     
 }
+.dashboard-text-width-before{
+    width: 12%;
+}
+.dashboard-text-width-after{
+    width:0%;
+}
 
 .dashboard-main-panel{
     display: flex;
@@ -69,7 +75,7 @@
 
 .dashoboard-main-header .operator-hide{
     float: right;
-    padding-right: 30px;
+    padding-right: 3%;
 }
 .dashoboard-main-header .operator-hide img{
     height:40px;
@@ -552,3 +558,40 @@ dl {
     background-color: #00a65a;
   }  */
 
+
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+
+    .navbar-before{
+        width: 40%;
+       
+    }
+    .dashboard-main-right{
+        width: 60%!important;
+    }
+
+    .dashoboard-main-header  {
+        /* width:40%; */
+        font-size: 14px;
+        width: 100%;
+        
+    }
+    .dashboard-text{
+        width:100%;
+        border-bottom-width: 1px;
+    }
+    .logo-lg{
+        margin-left: 3%;
+    }
+  
+    .operator-hide{
+        display: flex;
+        /* padding-right: 2%; */
+        margin-right: 2%;
+    }
+   
+
+
+
+
+  }
