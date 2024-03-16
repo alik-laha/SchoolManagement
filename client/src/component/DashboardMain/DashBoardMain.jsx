@@ -386,7 +386,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
   console.log(props.StockUsageEdit)
   return (
     <>
-      <div style={{ width: props.right}} className="dashboard-main-right">
+      <div className={"dashboard-main-right" +" " +props.right}>
         <div className="dasdhboard-main-40">
 
         {/* User Start*/}

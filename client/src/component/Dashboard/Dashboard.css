@@ -283,6 +283,14 @@
     height: 92vh;
     overflow: scroll;
 }
+
+.dashboard-main-right-width-before{
+    width:85%;
+}
+.dashboard-main-right-width-after{
+    width:100%;
+}
+
 .dasdhboard-main-40{
     height: 35%;
     background-color: white;
@@ -563,11 +571,11 @@ dl {
     /* For mobile phones: */
 
     .navbar-before{
-        width: 40%;
+        width: 50%;
        
     }
-    .dashboard-main-right{
-        width: 60%!important;
+    .dashboard-main-right-width-before{
+        width: 50%;
     }
 
     .dashoboard-main-header  {

@@ -19,7 +19,7 @@ const Dashboard = () => {
  const [nvbrvisi,setNavbarVisi]=useState('navbar-before');
  
  const [dashbrdtextwidth,setdashbrdtextwidth]=useState('dashboard-text-width-before');
- const [rightDashbrd,setrightDashbrd]=useState('85%');
+ const [rightDashbrd,setrightDashbrd]=useState('dashboard-main-right-width-before');
 
  const [createUser,setCreateUser]=useState("none")
  const [publish,setPublish]=useState('none')
@@ -86,12 +86,12 @@ const NavbarVisibility = () => {
     setdashbrdtextwidth('dashboard-text-width-before');
   }
 
-  if(rightDashbrd==='85%')
+  if(rightDashbrd==='dashboard-main-right-width-before')
   {
-    setrightDashbrd('100%');
+    setrightDashbrd('dashboard-main-right-width-after');
   }
   else{
-    setrightDashbrd('85%');
+    setrightDashbrd('dashboard-main-right-width-before');
   }
 
 }
