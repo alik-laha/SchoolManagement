@@ -1382,6 +1382,11 @@ const handleViewFaculty=()=>{
     }
 }
 const handleCreateExam =()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(CreateExam==="none"){
          setCreateExam("block")
          setCreateFaculty('none')
@@ -1420,11 +1425,21 @@ const handleCreateExam =()=>{
          setStockUsageEdit("none")
          setViewFeePayment("none")
      }
-     else{
-         setCreateExam("none")
-     }
+    //  else{
+    //      setCreateExam("none")
+    //  }
+     if(!ismobile){
+      if(CreateExam==='block'){
+        setCreateExam('none')
+      }
+    }
 }
 const handleCreateInternalMarksEntry =()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if (CreateInternalMarks==="none"){
             setCreateInternalMarks("block")
             setCreateExam("none")
@@ -1463,12 +1478,22 @@ const handleCreateInternalMarksEntry =()=>{
          setEntryFeePayment("none")
          setViewFeePayment("none")
      }
-     else {
-            setCreateInternalMarks("none")
-     }
+    //  else {
+    //         setCreateInternalMarks("none")
+    //  }
+     if(!ismobile){
+      if(CreateInternalMarks==='block'){
+        setCreateInternalMarks("none")
+      }
+    }
 }
 
 const handlePromote =()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
   if (promote==="none"){
          setpromote("block")
          setCreateExam("none")
@@ -1506,12 +1531,22 @@ const handlePromote =()=>{
       setStockUsageEdit("none")
       setViewFeePayment("none")
   }
-  else {
-         setpromote("none")
+  // else {
+  //        setpromote("none")
+  // }
+  if(!ismobile){
+    if(promote==='block'){
+      setpromote("none")
+    }
   }
 }
 
 const handleCreateExternalMarks =()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if (CreateExternalMarks==="none"){
             setCreateExternalMarks("block")
             setCreateInternalMarks("none")
@@ -1550,12 +1585,22 @@ const handleCreateExternalMarks =()=>{
          setStockUsageEdit("none")
          setViewFeePayment("none")
      }
-        else {
-                setCreateExternalMarks("none")
+        // else {
+        //         setCreateExternalMarks("none")
+        // }
+        if(!ismobile){
+          if(CreateExternalMarks==='block'){
+            setCreateExternalMarks("none")
+          }
         }
 }
 
 const handleExportStudentMarks =()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(ExportStudentMarks==="none"){
             setExportStudentMarks("block")
             setCreateExternalMarks("none")
@@ -1593,12 +1638,23 @@ const handleExportStudentMarks =()=>{
          setEntryFeePayment("none")
          setStockUsageEdit("none")
          setViewFeePayment("none")
-     }else {
-            setExportStudentMarks("none")
      }
+    //else {
+    //         setExportStudentMarks("none")
+    //  }
+     if(!ismobile){
+      if(ExportStudentMarks==='block'){
+        setExportStudentMarks("none")
+      }
+    }
 }
 
 const handleItemNameCreate=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
     if(itemNamesCreate==="none") {
         setItemNameCreate("block")
         setExportStudentMarks("none")
@@ -1640,8 +1696,18 @@ const handleItemNameCreate=()=>{
     else {
         setItemNameCreate("none")
     }
+    if(!ismobile){
+      if(itemNamesCreate==='block'){
+        setItemNameCreate("none")
+      }
+    }
 }
 const handleStockUsageEntry=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
     if(stockUsageEntry==="none"){
         setStockUsageEntry("block")
         setItemNameCreate("none")
@@ -1680,9 +1746,14 @@ const handleStockUsageEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-        setStockUsageEntry("none")
+    // else {
+    //     setStockUsageEntry("none")
 
+    // }
+    if(!ismobile){
+      if(stockUsageEntry==='block'){
+        setStockUsageEntry("none")
+      }
     }
 }
 const handleStockUsageView=()=>{
