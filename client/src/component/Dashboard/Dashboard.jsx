@@ -1757,6 +1757,11 @@ const handleStockUsageEntry=()=>{
     }
 }
 const handleStockUsageView=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
     if(stockUsageView==="none"){
         setStockUsageView("block")
         setStockUsageEntry("none")
@@ -1795,12 +1800,22 @@ const handleStockUsageView=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
+    // else {
+    //     setStockUsageView("none")
+    // }
+    if(!ismobile){
+      if(stockUsageView==='block'){
         setStockUsageView("none")
+      }
     }
 }
 
 const handleCreateFeeStructure=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(createFeeStructure==="none") {
          setCreateFeeStructure("block")
          setStockUsageView("none")
@@ -1839,11 +1854,21 @@ const handleCreateFeeStructure=()=>{
          setViewFeePayment("none")
          setStockUsageEdit("none")
      }
-        else {
-            setCreateFeeStructure("none")
-     }
+    //     else {
+    //         setCreateFeeStructure("none")
+    //  }
+     if(!ismobile){
+      if(createFeeStructure==='block'){
+        setCreateFeeStructure("none")
+      }
+    }
 }
 const handleFeeStructureView=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if (ViewFeeStructure==="none"){
             setViewFeeStructure("block")
             setCreateFeeStructure("none")
@@ -1883,11 +1908,21 @@ const handleFeeStructureView=()=>{
          setStockUsageEdit("none")
 
      }
-     else{
-            setViewFeeStructure("none")
-     }
+    //  else{
+    //         setViewFeeStructure("none")
+    //  }
+     if(!ismobile){
+      if(ViewFeeStructure==='block'){
+        setViewFeeStructure("none")
+      }
+    }
 }
 const handleEntryFeePayment=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(EntryFeePayment==="none"){
             setEntryFeePayment("block")
             setViewFeeStructure("none")
@@ -1926,12 +1961,22 @@ const handleEntryFeePayment=()=>{
             setcheckpending('none')
          setStockUsageEdit("none")
      }
-     else{
-            setEntryFeePayment("none")
-     }
+    //  else{
+    //         setEntryFeePayment("none")
+    //  }
+     if(!ismobile){
+      if(EntryFeePayment==='block'){
+        setEntryFeePayment("none")
+      }
+    }
 }
 
 const handleViewfeePayment=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
         if(viewFeePayment==="none"){
                 setViewFeePayment("block")
                 setEntryFeePayment("none")
@@ -1970,11 +2015,21 @@ const handleViewfeePayment=()=>{
                 setcheckpending('none')
             setStockUsageEdit("none")
         }
-        else{
-                setViewFeePayment("none")
+        // else{
+        //         setViewFeePayment("none")
+        // }
+        if(!ismobile){
+          if(viewFeePayment==='block'){
+            setViewFeePayment("none")
+          }
         }
 }
 const handleStockUsageEdit=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
     if(stockUsageEdit==="none"){
         setStockUsageEdit("block")
         setViewFeePayment("none")
@@ -2013,8 +2068,13 @@ const handleStockUsageEdit=()=>{
         setpromote("none")
         setcheckpending('none')
     }
-    else{
+    // else{
+    //     setStockUsageEdit("none")
+    // }
+    if(!ismobile){
+      if(stockUsageEdit==='block'){
         setStockUsageEdit("none")
+      }
     }
 }
 
