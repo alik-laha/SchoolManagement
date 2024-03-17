@@ -287,9 +287,11 @@
 
 .dashboard-main-right-width-before{
     width:85%;
+    transition: 0.5s;
 }
 .dashboard-main-right-width-after{
     width:100%;
+    transition: 0.5s;
 }
 
 .dasdhboard-main-40{
@@ -604,6 +606,9 @@ dl {
     }
     .dashboard-main-right-width-before{
         width: 50%;
+        background-color: #000000eb; /* Fallback color */
+        opacity: 0.2;
+        /* display: none; */
     }
 
     .dashoboard-main-header  {
@@ -672,7 +677,7 @@ dl {
         margin-top: -20px;
         position: relative;
      }
-     
+
 
 
 

@@ -2,7 +2,7 @@ import SideBar from "../sideBar/SideBar";
 import DashBoardMain from "../DashboardMain/DashBoardMain";
 import "./Dashboard.css";
 import icon from '../Galllery/GalleryImage/operater_icon.png';
-import {useState } from "react";
+import {useEffect, useState } from "react";
 
 const Dashboard = () => {
   const HandaleLogout = () => {
@@ -61,6 +61,27 @@ const [ViewFeeStructure,setViewFeeStructure]=useState("none")
 const[EntryFeePayment,setEntryFeePayment]=useState("none")
 const [viewFeePayment,setViewFeePayment]=useState("none")
 const [stockUsageEdit,setStockUsageEdit]=useState("none")
+
+
+
+const [ismobile,setIsmobile]=useState(false)
+
+useEffect(() => {
+  //const useragent=window.navigator.userAgent;
+
+  
+   if(window.innerWidth<768){
+    setIsmobile(true)
+   }
+  
+  
+
+},[]);
+
+
+
+
+
  const logoutVisiblity = () => {
   
   if (dashbvisi === "none") {
@@ -89,6 +110,7 @@ const NavbarVisibility = () => {
   if(rightDashbrd==='dashboard-main-right-width-before')
   {
     setrightDashbrd('dashboard-main-right-width-after');
+    
   }
   else{
     setrightDashbrd('dashboard-main-right-width-before');
@@ -97,6 +119,14 @@ const NavbarVisibility = () => {
 }
 
 const handleCreateSubject=()=>{
+   console.log(ismobile)
+
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
+
     if(CreateSubject==='none'){
         setCreateSubject('block')
         setCreateFaculty('none')
@@ -135,9 +165,14 @@ const handleCreateSubject=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else{
+    if(!ismobile){
+      if(CreateSubject==='block'){
         setCreateSubject('none')
+      }
     }
+    // else{
+    //     setCreateSubject('none')
+    // }
 }
 const handaleSearch=()=>{
 if(search==='none'){
