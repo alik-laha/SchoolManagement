@@ -559,6 +559,21 @@ dl {
   .no-after:after {
     content: none!important;
  }
+
+
+ .master-student-search{
+    width: 28%!important;
+  
+ }
+
+ .master-student-search-checkbox{
+    width: 16%!important;
+    top: -38px;
+ }
+
+ .master-student-search-reg-No{
+    margin-top: -30px;
+ }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;
   } */
@@ -630,5 +645,16 @@ dl {
         height: auto;
         position: relative;
     }
+    .master-student-search{
+        width: 100%!important;
+        top: 0%!important;
+     }
+     .master-student-search-checkbox{
+        width: 100%!important;
+        top: 0%;
+     }
+     .master-student-search-reg-No{
+        margin-top: 0px;
+     }
 
   }

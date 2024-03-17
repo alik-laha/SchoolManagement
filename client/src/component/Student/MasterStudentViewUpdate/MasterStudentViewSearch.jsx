@@ -24,7 +24,7 @@ const MasterStudentViewSearch = (props) => {
     return(
         <div className="dashbrd-40-colm" style={{display:props.view}}>
             <form onSubmit={HandleEdit}>
-                <div style={{width:'28%'}}>
+                <div className='master-student-search' >
                 <label>Search By Admisson Year</label>
                     <input
                         type="number"
@@ -35,7 +35,7 @@ const MasterStudentViewSearch = (props) => {
                 </div>
 
 
-                <div style={{width:'28%'}}>
+                <div className='master-student-search'>
                     
                     <label>Search by Applied Class </label>
                     <select onChange={(e) => setApplyClass(parseInt(e.target.value))} value={applyClass}>
@@ -82,7 +82,7 @@ const MasterStudentViewSearch = (props) => {
                     </select> 
                 </div>
 
-                <div style={{width:'28%'}}>
+                <div className='master-student-search'>
                     
 
                     <label>Search By Stream</label>
@@ -103,13 +103,13 @@ const MasterStudentViewSearch = (props) => {
 
                     </select>
                 </div>
-                <div style={{width:'16%',top:'-35px'}}>
+                <div className='master-student-search-checkbox' >
                     <label style={{textAlign:'center'}}>
                         Active Student List
                     </label>
                     <input type="checkbox" onChange={(e)=>e.target.checked===false ? setInactivated(0):setInactivated(1)} checked={inactivated===1?true:false} />
                 </div>
-                <div style={{width:'28%',marginTop:'-30px'}}>
+                <div className='master-student-search master-student-search-reg-No' >
                     
 
                     <label>Search By Registration ID</label>

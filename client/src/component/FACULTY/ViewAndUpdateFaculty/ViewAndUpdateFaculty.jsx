@@ -131,20 +131,24 @@ const handaleCancel = () => {
             
             
             <div style={{display: mainView}}>
-            <ReactHTMLTableToExcel
+            
+            <table className="table-60" >
+            
+           
+                <thead>
+                <tr style={{display:'table-caption'}}>
+                <ReactHTMLTableToExcel
                 id="hostel"
                 className="dashboard-btn excel-btn user-profile-export"
                 table="faculty-view"
                 filename={'Employee_Details_Report_'+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
+                
             />
-            <table className="table-60" >
-           
-                <thead >
                 <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                 {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
-            
+                </tr>
                 <tr>
                     <th>Sl No.</th>
                     
