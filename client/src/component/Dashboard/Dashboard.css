@@ -606,8 +606,8 @@ dl {
     }
     .dashboard-main-right-width-before{
         width: 50%;
-        background-color: #000000eb; /* Fallback color */
-        opacity: 0.2;
+        background-color: transparent; /* Fallback color */
+        opacity: 0;
         /* display: none; */
     }
 
