@@ -617,6 +617,11 @@ const handleStockEntry=()=>{
     }
   }
   const handleStockView = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (stockView === 'none') {
       setStockView('block')
       setStockEntry('none')
@@ -655,12 +660,22 @@ const handleStockEntry=()=>{
         setStockUsageEdit("none")
         setViewFeePayment("none")
     }
-    else {
-      setStockView('none')
+    // else {
+    //   setStockView('none')
+    // }
+    if(!ismobile){
+      if(stockView==='block'){
+        setStockView('none')
+      }
     }
   }
 
   const AcademicEntryUpdate = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (academicEntryUpdate === 'none') {
       setacademicEntryUpdate('block')
       setStockView('none')
@@ -699,12 +714,22 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setacademicEntryUpdate('none')
+    // else {
+    //   setacademicEntryUpdate('none')
+    // }
+    if(!ismobile){
+      if(academicEntryUpdate==='block'){
+        setacademicEntryUpdate('none')
+      }
     }
   }
 
   const handleSecondStockEntrySearch = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (secondstockEntry === 'none') {
       setSecondstockEntry('block')
       setStockEntry('none')
@@ -743,14 +768,24 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setSecondstockEntry('none')
+    // else {
+    //   setSecondstockEntry('none')
+    // }
+    if(!ismobile){
+      if(secondstockEntry==='block'){
+        setSecondstockEntry('none')
+      }
     }
 
 
   }
 
   const handlehostelEntryCreate = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (hostelentrycreate === 'none') {
       sethostelentrycreate('block')
       setStockEntry('none')
@@ -789,8 +824,13 @@ const handleStockEntry=()=>{
         setStockUsageEdit("none")
         setViewFeePayment("none")
     }
-    else {
-      sethostelentrycreate('none')
+    // else {
+    //   sethostelentrycreate('none')
+    // }
+    if(!ismobile){
+      if(hostelentrycreate==='block'){
+        sethostelentrycreate('none')
+      }
     }
   }
   const handleSecondStockView = () => {
