@@ -217,11 +217,20 @@ if(search==='none'){
     setViewFeePayment("none")
     setStockUsageEdit("none")
 }
-else{
-    setSearch('none')
-    setCreateUser('none')
-    setView('none')
+// else{
+//     setSearch('none')
+//     setCreateUser('none')
+//     setView('none')
+// }
+if(!ismobile){
+  if(search==='block'){
+    setCreateUser("none")
+     setSearch('none')
+     setView('none')
+  }
 }
+
+
 }
 const handaleCreateUser=()=>{
   if(ismobile){
@@ -282,6 +291,11 @@ const handaleCreateUser=()=>{
     }
 }
 const handalePublish=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(publish==='none'){
          setCreateUser('none')
          setVendorDisplay('none')
@@ -321,12 +335,22 @@ const handalePublish=()=>{
          setViewFeePayment("none")
          setStockUsageEdit("none")
      }
-     else{
-         setPublish('none')
-     }
+    //  else{
+    //      setPublish('none')
+    //  }
+     if(!ismobile){
+      if(publish==='block'){
+        setPublish('none')
+      }
+    }
 }
 
 const HandleVendorCreate=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(vendorDisplay==='none'){
          setVendorDisplay('block')
          setCreateUser('none')
@@ -366,12 +390,22 @@ const HandleVendorCreate=()=>{
          setViewFeePayment("none")
          setStockUsageEdit("none")
      }
-        else{
+        // else{
+        //     setVendorDisplay('none')
+        // }
+        if(!ismobile){
+          if(vendorDisplay==='block'){
             setVendorDisplay('none')
+          }
         }
 
 }
 const handaleNotice=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(notice==='none'){
          setCreateUser('none')
          setVendorDisplay('none')
@@ -411,11 +445,21 @@ const handaleNotice=()=>{
          setStockUsageEdit("none")
          setViewFeePayment("none")
      }
-        else{
+        // else{
+        //     setNotice('none')
+        // }
+        if(!ismobile){
+          if(notice==='block'){
             setNotice('none')
+          }
         }
 }
 const handleItemCreate=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
         if(itemCreate==='none'){
             setItemCreate('block')
             setCreateUser('none')
@@ -455,11 +499,21 @@ const handleItemCreate=()=>{
             setViewFeePayment("none")
             setStockUsageEdit("none")
         }
-            else{
+            // else{
+            //     setItemCreate('none')
+            // }
+            if(!ismobile){
+              if(itemCreate==='block'){
                 setItemCreate('none')
+              }
             }
 }
 const handleStockEntry=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
         if(stockEntry==='none'){
             setStockEntry('block')
             setItemCreate('none')
@@ -499,11 +553,21 @@ const handleStockEntry=()=>{
             setViewFeePayment("none")
             setStockUsageEdit("none")
         }
-            else{
+            // else{
+            //     setStockEntry('none')
+            // }
+            if(!ismobile){
+              if(stockEntry==='block'){
                 setStockEntry('none')
+              }
             }
 }
   const handleBedViewStatus = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (bedview === 'none') {
       setbedview('block')
       setStockEntry('none')
@@ -543,8 +607,13 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setbedview('none')
+    // else {
+    //   setbedview('none')
+    // }
+    if(!ismobile){
+      if(bedview==='block'){
+        setbedview('none')
+      }
     }
   }
   const handleStockView = () => {
