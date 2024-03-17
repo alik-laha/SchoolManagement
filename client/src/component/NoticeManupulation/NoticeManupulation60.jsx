@@ -40,8 +40,8 @@ const NoticeManupulation60=(props)=>{
 
     }
     return(
-        <div style={{display:noticevisi,marginTop:'-200px'}}>
-          <button style={{position:'relative',marginTop:'-40px'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>  
+        <div style={{display:noticevisi}} className="noticeboard-visi">
+          <button  className="dashboard-btn dashboard-btn-scss excel-btn noticeboard-visi-cancel-button" onClick={clearTable}>Clear Result</button>  
            <table className="table-60">
            <thead>
                 <tr>

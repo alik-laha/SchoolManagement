@@ -574,6 +574,14 @@ dl {
  .master-student-search-reg-No{
     margin-top: -30px;
  }
+
+ .noticeboard-visi{
+    margin-top: -200px;
+ }
+ .noticeboard-visi-cancel-button{
+    margin-top: -40px;
+    position: relative;
+ }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;
   } */
@@ -656,5 +664,14 @@ dl {
      .master-student-search-reg-No{
         margin-top: 0px;
      }
+     .noticeboard-visi{
+        margin-top: 0px;
+     }
+     .noticeboard-visi-cancel-button{
+        margin-top: -20px;
+        position: relative;
+     }
+
+
 
   }
