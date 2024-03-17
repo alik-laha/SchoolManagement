@@ -834,6 +834,11 @@ const handleStockEntry=()=>{
     }
   }
   const handleSecondStockView = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (secondStockView === 'none') {
       setSecondStockView('block')
       setStockEntry('none')
@@ -874,6 +879,11 @@ const handleStockEntry=()=>{
     }
     else {
       setSecondStockView('none')
+    }
+    if(!ismobile){
+      if(secondStockView==='block'){
+        setSecondStockView('none')
+      }
     }
 
 
