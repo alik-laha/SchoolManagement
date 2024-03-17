@@ -597,7 +597,8 @@ dl {
     /* For mobile phones: */
 
     .navbar-before{
-        width: 50%;
+        width: 60%;
+        
        
     }
     .navbar-after{
@@ -608,13 +609,18 @@ dl {
         width: 50%;
         background-color: transparent; /* Fallback color */
         opacity: 0;
+        
         /* display: none; */
+    }
+    .sidebar-main-header{
+
     }
 
     .dashoboard-main-header  {
         /* width:40%; */
         font-size: 14px;
         width: 100%;
+  
         
     }
     .dashboard-text{

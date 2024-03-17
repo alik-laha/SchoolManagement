@@ -297,9 +297,9 @@ const stockUsageVisiblity = () => {
       <>
       <div className={props.class}>
       
-      <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p>AL-HILAL-MISSION</p></span>
+      
         <div className="sidebar-main-header">
-          
+        <span className="dashboard-top-heading user"> <img src={logo} alt='logo image' height ={40} width={40}/><p style={{width:'100%'}}>AL-HILAL-MISSION</p></span>
           {/* User */}
           <span onClick={userVisiblity} className="user"
                 style={{display: admin}}><FaRegUser/>

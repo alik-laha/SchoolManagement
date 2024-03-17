@@ -68,14 +68,11 @@ const [ismobile,setIsmobile]=useState(false)
 
 useEffect(() => {
   //const useragent=window.navigator.userAgent;
-
-  
+ 
    if(window.innerWidth<768){
     setIsmobile(true)
    }
   
-  
-
 },[]);
 
 
@@ -119,7 +116,7 @@ const NavbarVisibility = () => {
 }
 
 const handleCreateSubject=()=>{
-   console.log(ismobile)
+  // console.log(ismobile)
 
     if(ismobile){
       setrightDashbrd('dashboard-main-right-width-after');
@@ -175,6 +172,11 @@ const handleCreateSubject=()=>{
     // }
 }
 const handaleSearch=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
 if(search==='none'){
     setCreateUser("none")
     setPublish('none')
@@ -222,6 +224,11 @@ else{
 }
 }
 const handaleCreateUser=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
      if(createUser==="none"){
          setCreateUser("grid")
          setVendorDisplay('none')
@@ -261,11 +268,18 @@ const handaleCreateUser=()=>{
          setStockUsageEdit("none")
          setViewFeePayment("none")
      }
-     else{
-         setCreateUser("none")
+    //  else{
+    //      setCreateUser("none")
+    //      setSearch('none')
+    //      setView('none')
+    //  }
+     if(!ismobile){
+      if(createUser==='block'){
+        setCreateUser("none")
          setSearch('none')
          setView('none')
-     }
+      }
+    }
 }
 const handalePublish=()=>{
      if(publish==='none'){
