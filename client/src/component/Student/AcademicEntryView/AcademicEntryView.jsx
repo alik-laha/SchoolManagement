@@ -47,17 +47,24 @@ const AcademicEntryView= (props) => {
         <>
         
             <div style={{display:view}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
-                <ReactHTMLTableToExcel
-                    id="acacdemic"
-                    className="dashboard-btn btn-warning excel-btn"
-                    table="academic-entry-view"
-                    filename={"Academic_Student_Report_"+currDate}
-                    sheet="tablexls"
-                    buttonText="Excel Export"
-                />
+           
+               <div>
                 <table className="table-60" id="academic-entry-view">
-                    <thead>
+                    <thead style={{display:'contents'}}>
+                        <tr style={{display:'table-caption'}}>
+                        <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                          
+
+                            <ReactHTMLTableToExcel
+                                id="acacdemic"
+                                className="dashboard-btn excel-btn user-profile-export"
+                                table="academic-entry-view"
+                                filename={"Academic_Student_Report_" + currDate}
+                                sheet="tablexls"
+                                buttonText="Excel Export"
+                            />
+                        </tr>
                     <tr>
                         <th>Sl. No.</th>
                         <th>Student Name</th>
@@ -76,7 +83,7 @@ const AcademicEntryView= (props) => {
                         
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody style={{display:'contents'}}>
                     {
                         academicAll.map((data,index)=> {
                             return(
@@ -104,6 +111,9 @@ const AcademicEntryView= (props) => {
                     </tbody>
                 </table>
                 {academicAll.length===0 ? <div className="no-data">No Data Exists</div> : null}
+            
+                </div>
+            
             </div>
             
             {/*{props.data.length===0 ? <div className="no-data">No Data Found</div> : null}*/}

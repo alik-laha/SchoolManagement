@@ -536,10 +536,15 @@ const currDate = new Date().toLocaleDateString();
 
       return(
           <div style={{display: view}}>
-              <div style={{display: tableView}}>
-              <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
+              <div >
+              
                   <table className="table-60">
-                      <thead>
+                      <thead style={{display: tableView}}>
+                        <tr style={{display:'table-caption'}}>
+                            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            onClick={handleClear}>Clear Result</button>
+                        </tr>
+
                       <tr>
                           <th>
                               Sl. No.
@@ -572,7 +577,7 @@ const currDate = new Date().toLocaleDateString();
                           </th>
                       </tr>
                       </thead>
-                      <tbody>
+                      <tbody style={{display: tableView}}>
                       {
                           data.map((data, index) => (
                               <tr key={index}>
