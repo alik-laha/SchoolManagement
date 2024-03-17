@@ -44,7 +44,7 @@ const MasterStudentViewUpdate = (props) => {
     const [bankAcountNo, setBankAcountNo] = useState('');
     const [brunch, setBrunch] = useState('');
     const [ifscCode, setIfscCode] = useState('');
-    const[allView,setAllview]=useState("block")
+    const[allView,setAllview]=useState("contents")
     const[releaseDate,setReleaseDate]=useState("");
     const[rdonly,setRdonly]=useState(false);
     const [readmit,setReadmit]=useState("none");
@@ -962,9 +962,15 @@ const MasterStudentViewUpdate = (props) => {
 
     return(
         <div style={{display: view,marginTop:'40px'}}>
-            <div style={{display:allView}}>
+            <div >
             {/* <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button> */}
-               <ReactHTMLTableToExcel
+               
+            <table className="table-60" >
+                <thead style={{display:allView}}>
+                <tr style={{display:'table-caption'}}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                <ReactHTMLTableToExcel
                 id="indranil"
                 className="dashboard-btn excel-btn user-profile-export"
                 table="master-student-view"
@@ -972,9 +978,8 @@ const MasterStudentViewUpdate = (props) => {
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <table className="table-60" >
-                <thead>
-                <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+                </tr>
+                
                 <tr>
                     <th>Sl. No.</th>
                     
@@ -994,7 +999,7 @@ const MasterStudentViewUpdate = (props) => {
 
                 </tr>
                 </thead>
-                <tbody>
+                <tbody style={{display:allView}}>
                 {
                     masterStudent.map((item, index) => {
                         
