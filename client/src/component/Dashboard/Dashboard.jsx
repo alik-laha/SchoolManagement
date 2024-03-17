@@ -877,9 +877,9 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setSecondStockView('none')
-    }
+    // else {
+    //   setSecondStockView('none')
+    // }
     if(!ismobile){
       if(secondStockView==='block'){
         setSecondStockView('none')
@@ -890,6 +890,11 @@ const handleStockEntry=()=>{
   }
 
   const handleModifySearch = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (modifySearchView === 'none') {
       setmodifySearchView('block')
       setStockEntry('none')
@@ -928,14 +933,24 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setmodifySearchView('none')
+    // else {
+    //   setmodifySearchView('none')
+    // }
+    if(!ismobile){
+      if(modifySearchView==='block'){
+        setmodifySearchView('none')
+      }
     }
 
 
   }
 
   const handlebedentry = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (bedentry === 'none') {
       setbedentry('block')
       setStockEntry('none')
@@ -975,14 +990,24 @@ const handleStockEntry=()=>{
         setStockUsageEdit("none")
         setViewFeePayment("none")
     }
-    else {
-      setbedentry('none')
+    // else {
+    //   setbedentry('none')
+    // }
+    if(!ismobile){
+      if(bedentry==='block'){
+        setbedentry('none')
+      }
     }
 
 
   }
 
   const handlehostelview = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (hostelentryview === 'none') {
       sethostelview('block')
       setStockEntry('none')
@@ -1020,14 +1045,24 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      sethostelview('none')
+    // else {
+    //   sethostelview('none')
+    // }
+    if(!ismobile){
+      if(hostelentryview==='block'){
+        sethostelview('none')
+      }
     }
 
 
   }
 
   const handleCheckPending = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (checkpending === 'none') {
       setcheckpending('block')
       setStockEntry('none')
@@ -1066,14 +1101,24 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setcheckpending('none')
+    // else {
+    //   setcheckpending('none')
+    // }
+    if(!ismobile){
+      if(checkpending==='block'){
+        setcheckpending('none')
+      }
     }
 
 
   }
 
   const handleacademicview = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (academicview === 'none') {
       setacademicview('block')
       setStockEntry('none')
@@ -1112,13 +1157,23 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setacademicview('none')
+    // else {
+    //   setacademicview('none')
+    // }
+    if(!ismobile){
+      if(academicview==='block'){
+        setacademicview('none')
+      }
     }
 
 
   }
   const handleaStudentEntry = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (studententry === 'none') {
       setstudententry('block')
       setacademicview('none')
@@ -1157,11 +1212,21 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setstudententry('none')
+    // else {
+    //   setstudententry('none')
+    // }
+    if(!ismobile){
+      if(studententry==='block'){
+        setstudententry('none')
+      }
     }
   }
   const handleMasterStudentView = () => {
+    if(ismobile){
+      setrightDashbrd('dashboard-main-right-width-after');
+      setdashbrdtextwidth('dashboard-text-width-after');
+      setNavbarVisi('navbar-after');
+    }
     if (masterstudentview === 'none') {
       setmasterstudentview('block')
       setacademicview('none')
@@ -1200,11 +1265,21 @@ const handleStockEntry=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-    else {
-      setmasterstudentview('none')
+    // else {
+    //   setmasterstudentview('none')
+    // }
+    if(!ismobile){
+      if(masterstudentview==='block'){
+        setmasterstudentview('none')
+      }
     }
   }
 const handleCreateFaculty=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
    if(CreateFaculty==='none'){
         setCreateFaculty('block')
         setmasterstudentview('none')
@@ -1244,11 +1319,21 @@ const handleCreateFaculty=()=>{
        setStockUsageEdit("none")
        setViewFeePayment("none")
    }
-    else{
-        setCreateFaculty('none')
-   }
+  //   else{
+  //       setCreateFaculty('none')
+  //  }
+   if(!ismobile){
+    if(CreateFaculty==='block'){
+      setCreateFaculty('none')
+    }
+  }
 }
 const handleViewFaculty=()=>{
+  if(ismobile){
+    setrightDashbrd('dashboard-main-right-width-after');
+    setdashbrdtextwidth('dashboard-text-width-after');
+    setNavbarVisi('navbar-after');
+  }
     if(viewFaculty==='none'){
           setViewFaculty('block')
           setCreateFaculty('none')
@@ -1287,8 +1372,13 @@ const handleViewFaculty=()=>{
         setViewFeePayment("none")
         setStockUsageEdit("none")
     }
-     else{
-          setViewFaculty('none')
+    //  else{
+    //       setViewFaculty('none')
+    // }
+    if(!ismobile){
+      if(viewFaculty==='block'){
+        setViewFaculty('none')
+      }
     }
 }
 const handleCreateExam =()=>{
