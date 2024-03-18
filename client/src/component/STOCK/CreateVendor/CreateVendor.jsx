@@ -83,15 +83,15 @@ const CreateVendor = (props) => {
               
               
             
-            <span style={{marginTop:'10px'}}><button className="dashboard-btn dashboard-btn-scss " type="submit">Create Vendor</button></span>
+            <span style={{marginTop:'10px'}}><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Vendor</button></span>
 
             </form>
 
-            <div>
-                <button style={{backgroundColor: 'lightseagreen',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewVendoronCreate}>
+           
+                <button style={{backgroundColor: 'lightsalmon',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss " onClick={handleViewVendoronCreate}>
                 View / Delete Vendor
                 </button>
-            </div>
+           
        <div>
         {/* <button style={{backgroundColor:'orange',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewVendoronCreate}>View / Delete Vendor</button> */}
         </div>
