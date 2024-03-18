@@ -43,19 +43,24 @@ const ViewAllVendor=(props)=>{
 
     }
     return(
-        <div style={{display:view,marginTop:'180px'}}>
+        <div style={{display:view}} className="vendor-view">
            
-              <ReactHTMLTableToExcel
+
+            <table className="table-60">
+                <thead style={{display:'contents'}} >
+                    <tr style={{display:'table-caption'}}>
+                    <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" 
+                    onClick={handleCancel}>Clear Result</button>
+                     <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn "
+                className="dashboard-btn excel-btn user-profile-export "
                 table="vendor-view"
                 filename={"Vendor_Details_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-             <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
-            <table className="table-60">
-                <thead >
+                    </tr>
+            
                 <tr>
                     <th>Vendor Sl. No.</th>
                     <th>Vendor Name</th>

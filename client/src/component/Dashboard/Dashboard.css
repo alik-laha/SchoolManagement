@@ -585,6 +585,10 @@ dl {
     margin-top: -40px;
     position: relative;
  }
+
+ .vendor-view{
+    margin-top: 15%;
+ }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;
   } */
@@ -683,14 +687,10 @@ dl {
         margin-top: -20px;
         position: relative;
      }
-     .no-data{
-        width: 100%;
-        text-align: center;
-        font-size: 17px;
-        color: red;
-        margin-top: 20px;
-        
-    }
+   
+    .vendor-view{
+        margin-top: 2%;
+     }
 
 
 
