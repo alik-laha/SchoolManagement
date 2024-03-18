@@ -587,7 +587,10 @@ dl {
  }
 
  .vendor-view{
-    margin-top: 15%;
+    margin-top: 15%;0 }
+ .item-name-view{
+    margin-top: 10%;
+
  }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;

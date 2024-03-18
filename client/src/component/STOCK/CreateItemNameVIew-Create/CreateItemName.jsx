@@ -63,11 +63,11 @@ const CreateItemName = (props) => {
                
                 <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Submit</button></span>
             </form>
-            <div>
-                <button style={{backgroundColor: 'lightseagreen',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewItemName}>
+           
+                <button style={{backgroundColor: 'lightsalmon',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewItemName}>
                 View / Delete Item Name
                 </button>
-            </div>
+           
             {/* <div>
                 <button style={{backgroundColor: 'orange'}} className="dashboard-btn dashboard-btn-scss"
                         onClick={handleViewItemName}>

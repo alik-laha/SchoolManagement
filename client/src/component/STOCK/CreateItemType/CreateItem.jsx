@@ -61,11 +61,11 @@ const CreateItem = (props) => {
             <span><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Item Type</button></span>
 
         </form>
-                <div>
-                <button style={{backgroundColor: 'lightseagreen',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitemCreate}>
+                
+                <button style={{backgroundColor: 'lightseagreen',marginTop:'40px'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitemCreate}>
                 View / Delete Item Type
                 </button>
-            </div>
+          
    
                 {/* <div>
                     <button style={{backgroundColor:'orange'}} className="dashboard-btn dashboard-btn-scss" onClick={handaleitemCreate}></button>

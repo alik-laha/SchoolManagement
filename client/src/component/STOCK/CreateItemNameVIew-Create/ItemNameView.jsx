@@ -36,18 +36,23 @@ const [view, setView] = useState("none");
             })
     }
     return(
-        <div style={{display:view,marginTop:'120px'}}>
+        <div style={{display:view}} className="item-name-view">
+            
+            
+        <table className="table-60" id="itemname-view">
+            <thead style={{display:'contents'}}>
+            <tr style={{display:'table-caption'}}>
+            <button style={{position:'relative',marginTop:'-40px',float:'left'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
+           
             <ReactHTMLTableToExcel
                 id="Alik"
-                className="dashboard-btn btn-warning excel-btn "
+                className="dashboard-btn excel-btn user-profile-export "
                 table="itemname-view"
                 filename={"Item_Details_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
-        <table className="table-60" id="itemname-view">
-            <thead>
+            </tr>
                 <tr>
                     <th>Item SL. No.</th>
                     
@@ -64,7 +69,7 @@ const [view, setView] = useState("none");
                         <td>{data.item_name}</td>
                         <td>{data.item_type}</td>
                         <td>
-                            <button className='dashboard-btn dashboard-btn-scss' onClick={() => deleteItemName(data.id)}>Delete</button>
+                            <button className='dashboard-btn dashboard-btn-scss btn-warning' onClick={() => deleteItemName(data.id)}>Delete</button>
                         </td>
                     </tr>
                 ))}
