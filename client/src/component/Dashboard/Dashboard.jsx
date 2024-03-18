@@ -285,8 +285,7 @@ const handaleCreateUser=()=>{
      if(!ismobile){
       if(createUser==='block'){
         setCreateUser("none")
-         setSearch('none')
-         setView('none')
+         
       }
     }
 }

@@ -44,35 +44,42 @@ const HostelView= (props) => {
     return(
         <>
             <div style={{display:view}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
-                <ReactHTMLTableToExcel
-                    id="hostel"
-                    className="dashboard-btn btn-warning excel-btn"
-                    table="hostel-entry-view"
-                    filename={`Hostel_Entry_Report_${currDate}`}
-                    sheet="tablexls"
-                    buttonText="Excel Export"
-                />
+            
+           
+               
                 <table className="table-60" id="hostel-entry-view">
-                    <thead>
-                    <tr>
-                        <th>Sl No.</th>
-                        <th>Room No</th>
-                        <th>Bed No</th>
-                        <th>Student Name</th>
-                        <th>Registration No.</th>
-                        <th>Academic Year</th>
-                         
-                        <th>Class</th>
-                        <th>Year of Admission</th> 
-                        <th>Section</th>
-                        <th>Roll No.</th>
-                                 
-                       
-                        
-                        <th>Hostel Entry Date</th>
-                        
-                    </tr>
+                    <thead style={{ display: 'contents' }}>
+                        <tr style={{ display: 'table-caption' }}>
+                            <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            onClick={clearTable}>Clear Result</button>
+                            <ReactHTMLTableToExcel
+                                id="hostel"
+                                className="dashboard-btn excel-btn user-profile-export"
+                                table="hostel-entry-view"
+                                filename={`Hostel_Entry_Report_${currDate}`}
+                                sheet="tablexls"
+                                buttonText="Excel Export"
+                            />
+                        </tr>
+                        <tr>
+                            <th>Sl No.</th>
+                            <th>Room No</th>
+                            <th>Bed No</th>
+                            <th>Student Name</th>
+                            <th>Registration No.</th>
+                            <th>Academic Year</th>
+
+                            <th>Class</th>
+                            <th>Year of Admission</th>
+                            <th>Section</th>
+                            <th>Roll No.</th>
+
+
+
+                            <th>Hostel Entry Date</th>
+
+                        </tr>
                     </thead>
                     <tbody>
                     {

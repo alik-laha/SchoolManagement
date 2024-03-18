@@ -683,7 +683,14 @@ dl {
         margin-top: -20px;
         position: relative;
      }
-
+     .no-data{
+        width: 100%;
+        text-align: center;
+        font-size: 17px;
+        color: red;
+        margin-top: 20px;
+        
+    }
 
 
 
