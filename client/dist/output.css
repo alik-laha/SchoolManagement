@@ -1963,12 +1963,17 @@ html {
  
   .flex-none{
     flex:auto;
-    background: lightsalmon;
+    background: burlywood;
     color: aliceblue;
+    border: 2px solid cadetblue;
   }
   .px-12{
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .flex-1{
+    background: brown;
+    color: whitesmoke;
   }
 
 }

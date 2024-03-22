@@ -242,9 +242,17 @@
         .responsive-header-1{
 
             width:100%;
+            font-size: large;
+    font-family: system-ui;
         }
         .alhilal-header_color-css{
             display: block;
+            padding:2%;
+        }
+        .responsive-header-image{
+            margin-left: 5%;
+            height: 30%;
+            width: 25%;
         }
        
     
