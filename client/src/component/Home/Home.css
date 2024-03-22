@@ -239,6 +239,14 @@
 
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
+        .responsive-header-1{
+
+            width:100%;
+        }
+        .alhilal-header_color-css{
+            display: block;
+        }
+       
     
     
     }

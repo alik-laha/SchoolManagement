@@ -1958,4 +1958,19 @@ html {
   border-color: rgb(59 130 246 / var(--tw-border-opacity));
 }
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+ 
+  .flex-none{
+    flex:auto;
+    background: lightsalmon;
+    color: aliceblue;
+  }
+  .px-12{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+}
+
 
