@@ -1975,6 +1975,17 @@ html {
     background: brown;
     color: whitesmoke;
   }
+  :where(.menu li) {
+
+    width: 25%;
+    font-size: 13px;
+  }
+  .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title))
+  {
+    text-align: center;
+    
+
+  }
 
 }
 
