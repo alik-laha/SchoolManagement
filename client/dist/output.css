@@ -1823,6 +1823,7 @@ html {
 
 .flex-1 {
   flex: 1 1 0%;
+
 }
 
 .flex-none {
@@ -1962,9 +1963,11 @@ html {
   /* For mobile phones: */
  
   .flex-none{
+    display: flex;
     flex:auto;
-    background: burlywood;
-    color: aliceblue;
+    
+    
+    color: black;
     border: 2px solid cadetblue;
   }
   .px-12{
@@ -1974,12 +1977,14 @@ html {
   .flex-1{
     background: brown;
     color: whitesmoke;
+    opacity: 0.9;
   }
   :where(.menu li) {
 
     width: 25%;
-    font-size: 13px;
-  }
+    font-size: 14px;
+    font-style: italic;
+  
   .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title))
   {
     text-align: center;
