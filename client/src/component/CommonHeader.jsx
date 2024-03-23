@@ -4,7 +4,7 @@ import logo from './Home/logo_ahm.jpg'
 import { NavLink } from "react-router-dom";
 const CommonHeader = () => {
   return (
-    <div className="navbar alhilal-header_color-css text-white  px-12">
+    <div className="navbar alhilal-header_color-css text-white  px-12 ">
       <div className="flex-1">
       <img src={logo} alt='logo image' height ={90} width={90}/> 
             <div style={{display: "grid"}}>

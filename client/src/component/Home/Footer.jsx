@@ -6,8 +6,8 @@ import {NavLink} from 'react-router-dom';
 import "./Home.css"
 const Footer = () => {
     return (
-        <div className="alhilal-footer_color-css text-white">
-            <footer className="footer p-10 justify-items-center">
+        <div className="alhilal-footer_color-css text-white ">
+            <footer className="footer p-10 justify-items-center ">
                 <div>
                     <span className="footer-title">Services</span>
                     <NavLink to="/aboutus" className="link link-hover">About us</NavLink>

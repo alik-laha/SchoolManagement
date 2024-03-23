@@ -225,6 +225,13 @@
 .li-notice{
     
 }
+.login-conatiner{
+    display: inline-block;
+}
+.dashboard-btn-home{
+    background: burlywood;
+    color: white;
+}
 
 
 
@@ -240,7 +247,7 @@
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
         .responsive-header-1{
-
+            font-style: italic;
             width:100%;
             font-size: large;
     font-family: system-ui;
@@ -253,7 +260,28 @@
             margin-left: 5%;
             height: 30%;
             width: 25%;
+            margin-top: 2%;
         }
+        .responsive{
+            display: none!important;
+        }
+        .login-conatiner{
+            display: block;
+        }
+        .dashboard-btn-home{
+            background: cadetblue;
+    color: beige;
+    margin: 5px;
+    border: none;
+	outline: none;
+	
+	border-radius: 50px;
+	
+	
+	
+	box-shadow: 0 3px 20px 0 #0000003b;
+        }
+        
        
     
     

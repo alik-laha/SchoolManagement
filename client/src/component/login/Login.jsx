@@ -89,7 +89,7 @@ const Login = () => {
   }
 
   return (
-    <div className="contain" style={{display:'inline-block'}}>
+    <div className="contain login-conatiner" >
       <CommonHeader/>
       <div className="login-box-body" style={{display: 'table'}}>
       <div className="login login-logo">

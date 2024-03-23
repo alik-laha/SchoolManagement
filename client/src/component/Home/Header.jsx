@@ -27,7 +27,7 @@ const Header = () => {
           <li>
           <NavLink to="/contactus">Contact Us</NavLink>
           </li>
-          <li style={{backgroundColor:'burlywood',color:'white'}}>
+          <li className="dashboard-btn-home">
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
         </ul>
