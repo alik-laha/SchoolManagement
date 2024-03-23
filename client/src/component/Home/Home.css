@@ -282,7 +282,10 @@
 	box-shadow: 0 3px 20px 0 #0000003b;
         }
         
-       
+      .banner-container{
+        min-height: 30vh;
+    height: 50vh;
+      } 
     
     
     }
