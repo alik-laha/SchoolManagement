@@ -438,7 +438,6 @@ const currDate = new Date().toLocaleDateString();
     //     setData([]);
     //   };
     const handleView=(data)=>{
-        console.log(data)
         setRegNo(data.registration_no)
         if(ExamName===""){
            const DATA2={
@@ -448,9 +447,11 @@ const currDate = new Date().toLocaleDateString();
               }
                 axios.post(`/api/v1/faculty/getallmarks`,DATA2)
                  .then((res)=>{
-                      setResult2Data(res.data.data)
-                        setTableView("none")
-                        setResult2("block")
+                     if(res.data.data.length>=0) {
+                         setResult2Data(res.data.data)
+                         setTableView("none")
+                         setResult2("block")
+                     }
                        
                  }).catch((err)=>{
                  console.log(err)
@@ -466,15 +467,20 @@ const currDate = new Date().toLocaleDateString();
             }
             axios.post(`/api/v1/faculty/getallmarks`, DATA)
                 .then((res) => {
-                    setResultData(res.data.data)
-                    setMaxMark(res.data.result1)
-                    // console.log(res.data.data)
-                    console.log(res)
-                    setTableView("none")
-                    setResult("block")
-                    const dataArray=[res.data.data]
-                    setPDFdata(dataArray)
-                setpdfstate(true)
+                    if(res.data.data.length) {
+                        setResultData(res.data.data)
+                        setMaxMark(res.data.result1)
+                        // console.log(res.data.data)
+                        console.log(res)
+                        setTableView("none")
+                        setResult("block")
+                        const dataArray = [res.data.data]
+                        setPDFdata(dataArray)
+                        setpdfstate(true)
+                    }
+                    else{
+                        alert("No Marks are Entered in this Exam")
+                    }
                 }).catch((err) => {
                 console.log(err)
             })
