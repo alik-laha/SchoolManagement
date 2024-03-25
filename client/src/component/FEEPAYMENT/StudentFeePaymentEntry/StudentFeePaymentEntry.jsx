@@ -829,7 +829,8 @@ const StudentFeePaymentEntry = (props) => {
                 BedFee: EditBedFee,
                 Total: EditTotal,
                 PaymentDate: EditDate,
-                BillDate:billDate
+                BillDate:billDate,
+                waiver:waiver
             }
             axios.post("/api/v1/fee/newadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 alert("Payment Entry For New-Admission is Successful For" + regNo)
@@ -903,7 +904,8 @@ const StudentFeePaymentEntry = (props) => {
                 BedFee: EditBedFee,
                 Total: EditTotal,
                 PaymentDate: EditDate,
-                BillDate:billDate
+                BillDate:billDate,
+                waiver:waiver
             }
             axios.post("/api/v1/fee/updatenewadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
               console.log(res.data)
@@ -988,7 +990,8 @@ const StudentFeePaymentEntry = (props) => {
                 BedFee: EditBedFee,
                 Total: EditTotal,
                 PaymentDate: EditDate,
-                BillDate:billDate
+                BillDate:billDate,
+                waiver:waiver
             }
             axios.post("/api/v1/fee/readmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
@@ -1064,7 +1067,8 @@ const StudentFeePaymentEntry = (props) => {
                 BedFee: EditBedFee,
                 Total: EditTotal,
                 PaymentDate: EditDate,
-                BillDate:billDate
+                BillDate:billDate,
+                waiver:waiver
             }
             axios.post("/api/v1/fee/updatereadmissionfeeentry", data, {headers: {"Authorization": localStorage.getItem("token")}}).then((res) => {
                 console.log(res.data)
@@ -1441,7 +1445,9 @@ const StudentFeePaymentEntry = (props) => {
                         <label>Waiver </label>
                         </dt>   
                         <dd> 
-                      <input type="number" value={waiver} readOnly
+                      <input type="number" value={waiver} onChange={(e)=>{
+                          setWaiver(e.target.value)
+                      }}
                               style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder'} }/> 
                         </dd>        
                               
@@ -1700,7 +1706,7 @@ const StudentFeePaymentEntry = (props) => {
                             <label>Waiver </label>
                         </dt>
                         <dd>
-                            <input type="number" value={waiver} readOnly
+                            <input type="number" value={waiver} onChange={(e)=>setWaiver(e.target.value)}
                                    style={{
                                        backgroundColor: 'lightseagreen',
                                        textAlign: 'center',

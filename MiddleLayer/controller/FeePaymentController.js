@@ -296,7 +296,7 @@ WHERE
 //New Admission Fee Entry
 exports.NewAdmissionFeeEntry = (req, res) => {
     try{
-        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate,BillDate} = req.body
+        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate,BillDate,waiver} = req.body
         if(AdmissionFee===""){
             AdmissionFee=0
         }
@@ -345,7 +345,10 @@ exports.NewAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
-        let query = `INSERT INTO new_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,status,modify_date,bill_date) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1,'${PaymentDate}','${BillDate}')`
+        if(waiver===""){
+            waiver=0
+        }
+        let query = `INSERT INTO new_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,status,modify_date,bill_date,waiver) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}',1,'${PaymentDate}','${BillDate}','${waiver}')`
         Database.query(query,(err,result)=>{
             if(err){
                 return res.status(400).json({msg:err})
@@ -362,7 +365,7 @@ exports.NewAdmissionFeeEntry = (req, res) => {
 //Re Admission Fee Entry
 exports.ReAdmissionFeeEntry = (req, res) => {
     try{
-        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate,BillDate} = req.body
+        let {Class,year,regNo,AdmissionFee,waiver,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,PaymentDate,BillDate} = req.body
         if(AdmissionFee===""){
             AdmissionFee=0
         }
@@ -411,8 +414,11 @@ exports.ReAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
+        if(waiver===''){
+            waiver=0
+        }
         console.log(PaymentDate)
-        let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,modify_date,status,bill_date) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}','${PaymentDate}',1,'${BillDate}')`
+        let query = `INSERT INTO re_admission_fee (class,year,regNo,admission_fee,hostel_fee,tution_fee,caution_fee,examination_fee,sports_fee,electric_fee,library_fee,computer_fee,development_fee,miscellaneous_fee,laundry_fee,madical_fee,uniform_fee,session_fee,bed_fee,total_fee,entry_date,modify_date,status,bill_date,waiver) VALUES ('${Class}','${year}','${regNo}','${AdmissionFee}','${hostelCharge}','${TutionFee}','${CautionMoney}','${ExaminationFee}','${GamesSportsExicursion}','${ElectricCharge}','${LibraryFees}','${ComputerFees}','${DevelopmentFees}','${Miscellaneous}','${LaundryCharge}','${MedicalCharge}','${Uniform}','${SessionCharge}','${BedFee}','${Total}','${PaymentDate}','${PaymentDate}',1,'${BillDate}','${waiver}')`
         Database.query(query,(err,result)=>{
             if(err){
                 return res.status(400).json({msg:err})
@@ -498,7 +504,7 @@ exports.GetReAdmissionFeeEntryForUpdate = (req, res) => {
 //Update New Admission Fee Entry
 exports.UpdateNewAdmissionFeeEntry = (req, res) => {
     try{
-        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,BillDate} = req.body
+        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,BillDate,waiver} = req.body
         if(AdmissionFee===""){
             AdmissionFee=0
         }
@@ -546,6 +552,9 @@ exports.UpdateNewAdmissionFeeEntry = (req, res) => {
         }
         if(BedFee===""){
             BedFee=0
+        }
+        if(waiver===""){
+            waiver=0
         }
         let query = `UPDATE new_admission_fee
                      SET
@@ -569,7 +578,8 @@ exports.UpdateNewAdmissionFeeEntry = (req, res) => {
                          session_fee='${SessionCharge}',
                          bed_fee='${BedFee}',
                          total_fee='${Total}',
-                            bill_date='${BillDate}'
+                            bill_date='${BillDate}',
+                            waiver='${waiver}'
                             Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
 
                           
@@ -589,7 +599,7 @@ exports.UpdateNewAdmissionFeeEntry = (req, res) => {
 //Update Re Admission Fee Entry
 exports.UpdateReAdmissionFeeEntry = (req, res) => {
     try{
-        let {Class,year,regNo,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,BillDate} = req.body
+        let {Class,year,regNo,waiver,AdmissionFee,hostelCharge,TutionFee,CautionMoney,ExaminationFee,GamesSportsExicursion,ElectricCharge,LibraryFees,ComputerFees,DevelopmentFees,Miscellaneous,LaundryCharge,MedicalCharge,Uniform,SessionCharge,BedFee,Total,BillDate} = req.body
         if(AdmissionFee===""){
             AdmissionFee=0
         }
@@ -638,6 +648,9 @@ exports.UpdateReAdmissionFeeEntry = (req, res) => {
         if(BedFee===""){
             BedFee=0
         }
+        if(waiver===""){
+            waiver=0
+        }
         let query = `UPDATE re_admission_fee
                      SET
                          class='${Class}',
@@ -660,7 +673,8 @@ exports.UpdateReAdmissionFeeEntry = (req, res) => {
                          session_fee='${SessionCharge}',
                          bed_fee='${BedFee}',
                          total_fee='${Total}',
-                            bill_date='${BillDate}'
+                            bill_date='${BillDate}',
+                         waiver='${waiver}'
                             Where class='${Class}' AND year='${year}' AND regNo='${regNo}'`
         Database.query(query,(err,result)=>{
             if(err){
