@@ -18,6 +18,13 @@
   margin-bottom: 30px;
 
 }
+@media only screen and (max-width: 600px) {
+  .carousel-container img {
+    height: 200px;
+    width: 300px;
+  }
+}
+
 /* .carousel-container:hover{
   border: none;
   
