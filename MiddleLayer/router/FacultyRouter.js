@@ -66,7 +66,7 @@ router.post("/getallmarks",GetAllMarks)
 router.post('/getallfacultyactive',verifyToken,GetAllFacultyMiddleLayer)
 
 //Get all Exam
-router.get('/getallexam',verifyToken,GetAllExamForMarks)
+router.get('/getallexam',GetAllExamForMarks)
 
 //Get Faculty For Frontend
 router.get('/getfaculty',verifyToken,GetFaculty)
