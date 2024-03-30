@@ -550,6 +550,7 @@ exports.GetAllMarks = (req, res) => {
 //get all Exam for Marks
 exports.GetAllExamForMarks = (req, res) => {
     try{
+        
         let query = `SELECT * FROM internal_exam UNION SELECT * FROM external_exam order by internal_exam_name`
         Database.query(query,(err,result)=>{
             if(err){

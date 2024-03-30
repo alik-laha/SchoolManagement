@@ -6,20 +6,37 @@ const MarkStudentView=()=>{
     const [dataView,setDataView]=useState("none")
     const [Class,setClass]=useState(0)
     const[regNo,setRegNo]=useState("")
+    const[year,setYear]=useState(null)
+    const [examName,setExamName]=useState("")
     const[examData,setExamData]=useState([])
-    const [section,setSection]=useState("")
 
     useEffect(() => {
-        axios.get("")
+        axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
+            console.log(res.data.data)
+            setExamData(res.data.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
     }, []);
+const handleSubmit=()=>{
 
-    return(
-        <div style={{height:"150vh"}}>
-        <div className="marks-View-Student">
-            <div style={{display: searchView}} className="marks-Search-Student">
-                <div style={{display: "flex", flexDirection: "column"}}>
-                    <label style={{fontWeight: "bolder", marginBottom: "10px", marginTop: "10px"}}>Class</label>
-                    <select onChange={(e) => setClass(e.target.value)} value={Class}>
+}
+    return (
+        <>
+        <div style={{display:searchView }} className="dashbrd-40-colm">
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>
+                        Current Academic Year
+                    </label>
+                    <input type="number" placeholder="Academic Year" value={year}
+                           onChange={(e) => setYear(e.target.value)} required={true}/>
+                </div>
+                <div>
+                    <label> Class</label>
+
+
+                    <select onChange={(e) => setClass(parseInt(e.target.value))} value={Class} required>
                         <option value="">Class</option>
                         <option value="1">
                             I
@@ -62,75 +79,37 @@ const MarkStudentView=()=>{
 
                     </select>
                 </div>
-                <div style={{display: "flex", flexDirection: "column"}}>
-                    <label style={{fontWeight: "bolder", marginBottom: "10px", marginTop: "10px"}}>
-                        Search By Section
+
+                <div>
+                    <label>
+                        Registration No
                     </label>
-                    <select onChange={(e) => setSection(e.target.value)} required
-                            value={section}>
-                        <option value="">Section</option>
-                        <option value="A">
-                            A
-                        </option>
-                        <option value="B">
-                            B
-                        </option>
-                        <option value="C">
-                            C
-                        </option>
-                        <option value="D">
-                            D
-                        </option>
-                        <option value="E">
-                            E
-                        </option>
-                        <option value="F">
-                            F
-                        </option>
-                        v
-                        <option value="Art-A">
-                            Art-A
-                        </option>
-
-                        <option value="Art-B">
-                            Art-B
-                        </option>
-                        <option value="Art-C">
-                            Art-C
-                        </option>
-                        <option value="Com-A">
-                            Com-A
-                        </option>
-                        <option value="Com-B">
-                            Com-B
-                        </option>
-                        <option value="Com-C">
-                            Com-C
-                        </option>
-                        <option value="Sci-A">
-                            Sci-A
-                        </option>
-                        <option value="Sci-B">
-                            Sci-B
-                        </option>
-                        <option value="Sci-C">
-                            Sci-C
-                        </option>
-
-                    </select>
+                    <input type="number" placeholder="Registration No" value={regNo}
+                           onChange={(e) => setRegNo(e.target.value)} required={true}/>
                 </div>
-                <div style={{display: "flex", flexDirection: "column"}}>
-                    <label style={{fontWeight: "bolder", marginBottom: "10px", marginTop: "10px"}}>Registration
-                        Number</label>
-                    <input type="text" placeholder="Registration Number" value={regNo}
-                           onChange={(e) => setRegNo(e.target.value)}/>
+                <div>
+                <select onChange={(e) => setExamName(e.target.value)} value={examName} required>
+                    <option value="">Select Exam</option>
+                    {
+                        examData.map((exam, index) => (
+                            <option key={index}
+                                    value={exam.internal_exam_name}>{exam.internal_exam_name}</option>
+                        ))
+                    }
+                </select>
                 </div>
-            </div>
+
+                <div style={{width: '100%'}}>
+
+                    <p style={{fontSize: '15px'}}>(All fields are Mandatory)</p>
+                </div>
+                <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
+            </form>
+        </div>
             <div style={{display: dataView}}>
-                Datas
+                Search Data
             </div>
-        </div>
-        </div>
+        </>
     )
 }
 

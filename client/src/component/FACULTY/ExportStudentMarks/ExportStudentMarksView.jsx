@@ -47,7 +47,7 @@ const currDate = new Date().toLocaleDateString();
         }
     }, [view]);
     const FetchExamData=()=>{
-        axios.get(`/api/v1/faculty/getallexam`,{headers:{"Authorization":localStorage.getItem("token")}}).then((res)=>{
+        axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
             console.log(res.data.data)
             setExamData(res.data.data)
         }).catch((err)=>{
