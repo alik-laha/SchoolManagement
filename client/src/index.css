@@ -13,14 +13,4 @@
   -webkit-text-size-adjust: 100%;
  
 }
-.marks-View-Student{
-    display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5vh;
-}
-.marks-Search-Student{
-  border: 2px solid white;
-  padding: 40px;
-}
 
