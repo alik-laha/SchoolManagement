@@ -18,8 +18,19 @@ const MarkStudentView=()=>{
             console.log(err)
         })
     }, []);
-const handleSubmit=()=>{
-
+const handleSubmit=(e)=>{
+    e.preventDefault()
+    const data={
+        Class,
+        examName,
+        regNo,
+        year
+    }
+    axios.post("/api/v1/faculty/getallmarks",data).then(
+        (data)=>{
+           console.log(data)
+        }
+    )
 }
     return (
         <>
@@ -84,7 +95,7 @@ const handleSubmit=()=>{
                     <label>
                         Registration No
                     </label>
-                    <input type="number" placeholder="Registration No" value={regNo}
+                    <input type="text" placeholder="Registration No" value={regNo}
                            onChange={(e) => setRegNo(e.target.value)} required={true}/>
                 </div>
                 <div>
