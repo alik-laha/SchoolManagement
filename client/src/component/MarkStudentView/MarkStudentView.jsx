@@ -9,6 +9,8 @@ const MarkStudentView=()=>{
     const[year,setYear]=useState(null)
     const [examName,setExamName]=useState("")
     const[examData,setExamData]=useState([])
+    const [data,setData]=useState([])
+    const [maxMarks,setMaxMarks]=useState([])
 
     useEffect(() => {
         axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
@@ -27,8 +29,11 @@ const handleSubmit=(e)=>{
         year
     }
     axios.post("/api/v1/faculty/getallmarks",data).then(
-        (data)=>{
-           console.log(data)
+        (res)=>{
+            setData(res.data.data)
+            setMaxMarks(res.data.result1)
+           setSearchView("none")
+            setDataView("block")
         }
     )
 }
