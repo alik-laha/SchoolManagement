@@ -412,4 +412,17 @@ text-justify: inter-word;
                         .responsive-common-header-li{
                             display: contents;
                         }
+                        .gallery-main{
+                            margin: 0%;
+                            border: none;
+                            background-color: white;
+                        }
+                        .gallery-line{
+                            font-size: 18px;
+                            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                            font-weight: bold;
+                            gap: 0;
+                        }
+                        
+                        
 }
