@@ -253,46 +253,58 @@
 
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
-        .responsive-header-1{
-            font-style: italic;
-            width:100%;
-            font-size: large;
-    font-family: system-ui;
-        }
-        .alhilal-header_color-css{
-            display: block;
-            padding:2%;
-        }
-        .responsive-header-image{
-            margin-left: 5%;
-            height: 30%;
-            width: 25%;
-            margin-top: 2%;
-        }
-        .responsive{
-            display: none!important;
-        }
-        .login-conatiner{
-            display: block;
-        }
-        .dashboard-btn-home{
-            background: cadetblue;
-    color: beige;
-    margin: 5px;
-    border: none;
-	outline: none;
-	
-	border-radius: 50px;
-	
-	
-	
-	box-shadow: 0 3px 20px 0 #0000003b;
-        }
+        .responsive-header-1 {
+                font-style: italic;
+                width: 100%;
+                font-size: large;
+                font-family: system-ui;
+            }
         
-      .banner-container{
-        min-height: 30vh;
-    height: 50vh;
-      } 
-    
+            .alhilal-header_color-css {
+                display: block;
+                padding: 2%;
+            }
+        
+            .responsive-header-image {
+                margin-left: 5%;
+                height: 30%;
+                width: 25%;
+                margin-top: 2%;
+            }
+        
+            .responsive {
+                display: none !important;
+            }
+        
+            .login-conatiner {
+                display: block;
+            }
+        
+            .dashboard-btn-home {
+                background: cadetblue;
+                color: beige;
+                margin: 5px;
+                border: none;
+                outline: none;
+        
+                border-radius: 50px;
+        
+        
+        
+                box-shadow: 0 3px 20px 0 #0000003b;
+            }
+        
+            .banner-container {
+                min-height: 30vh;
+                height: 50vh;
+            }
+        
+        
+            .noticeboard {
+               
+                width: 100%;
+                
+        
+            }
     
     }
