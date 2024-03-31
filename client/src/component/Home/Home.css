@@ -295,8 +295,13 @@ text-justify: inter-word;
         .conatct-use-main{
             margin: 5%;
             width:90%;
-            box-shadow:0 5px 5px 0 rgba(0,0,0,0.4)
+            box-shadow:0 5px 5px 0 rgba(0,0,0,0.4);
+            background: lightslategray;
+            color: aliceblue;
         
+        }
+        .responsive-text-color-contact{
+            color: black;
         }
         .reach-us{
            margin: 5%;
@@ -307,6 +312,10 @@ text-justify: inter-word;
             text-align: center;
             font-size: 18px;
             font-weight: 600;
+        }
+        .direction-paragraph{
+            margin: 0%;
+            text-align: justify;
         }
         .responsive-header-1 {
             padding-top: 1%;

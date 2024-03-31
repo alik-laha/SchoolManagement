@@ -46,7 +46,7 @@ export const ContactForm = () => {
                     <br></br>
                     <select onChange={e => settypequery(e.target.value)} className="bg-gray-50 border border-gray-300 
                                         text-gray-600 text-sm rounded-lg 
-                                        focus:border-blue-500 w-full p-2.5">
+                                        focus:border-blue-500 w-full p-2.5 responsive-text-color-contact">
                         <option value="Feedback" >
                             -- Select Your Query --
                         </option>
@@ -73,7 +73,7 @@ export const ContactForm = () => {
                     <br></br>
                     <input className="bg-gray-50 border border-gray-300 
                                         text-sm rounded-lg focus:border-blue-500
-                                        w-full p-2.5"
+                                        w-full p-2.5 responsive-text-color-contact"
                             type="email"
                             placeholder="Your Name" value={name} onChange={e => setName(e.target.value)}/>
 
@@ -83,7 +83,7 @@ export const ContactForm = () => {
                     <br></br>
                     <input className="bg-gray-50 border border-gray-300 
                                         text-sm rounded-lg focus:border-blue-500
-                                        w-full p-2.5"
+                                        w-full p-2.5 responsive-text-color-contact"
                             type="email"
                             placeholder="Your Email Address" value={email} onChange={e => setEmail(e.target.value)}/>
 
@@ -96,7 +96,7 @@ export const ContactForm = () => {
                     <textarea className="bg-gray-50 border border-gray-300 
                                             text-sm rounded-lg 
                                             focus:border-blue-500 
-                                            w-full p-2.5"
+                                            w-full p-2.5 responsive-text-color-contact"
                                 rows="4"
                                 cols="25"
                                 maxLength="300"

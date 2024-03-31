@@ -19,7 +19,7 @@ const ContactUs = (props) => {
                      
             
                     <div className='reach-us' >
-                        <p class='text-2xl'> Reach Us</p>
+                        <p class='text-2xl feedback-responsive'> Reach Us</p>
                    
                         <img className='contct-google-img' src={img} alt='clg-img' height={60} width={500}></img> 
                         <span className='direction-span'>Direction</span>
