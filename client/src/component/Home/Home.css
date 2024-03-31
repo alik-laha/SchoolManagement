@@ -242,6 +242,16 @@
 }
 
 
+.footer-dedicated{
+    background-color: #01285E;
+                height: 40px;
+                color: white;
+                font-size: 14px;
+                padding-top: 10px;
+
+}
+
+
 
     @keyframes cssmarquee {
     0% {
@@ -351,5 +361,11 @@
                         .alhilal-footer_color-css{
                             background-color: rgb(1, 40, 94);
                             color: white;
+                        }
+
+                        .footer-dedicated{
+                            background-color: white!important;
+                            color: rgb(1, 40, 94)!important;
+                            font-weight: 500!important;
                         }
 }

@@ -28,7 +28,7 @@ const Footer = () => {
                 </div>
                
             </footer>
-            <div className="text-center" style={{
+            <div className="text-center footer-dedicated" style={{
                 backgroundColor: '#01285E',
                 height: '40px',
                 color: 'white',

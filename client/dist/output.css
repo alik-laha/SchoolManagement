@@ -2008,6 +2008,9 @@ html {
   .menu :where(li:not(.menu-title) > *:not(ul):not(details):not(.menu-title)) {
     text-align: center;
   }
+  .justify-items-center {
+    justify-items: left;
+  }
 
 }
 
