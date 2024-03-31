@@ -41,7 +41,7 @@ function NavDropdown(props) {
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
         >
-          <button className="navdropbutton">{props.value.name}</button>
+          <button className="navdropbutton">Students</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible2 && <DropdownMenu props={props} />}
          

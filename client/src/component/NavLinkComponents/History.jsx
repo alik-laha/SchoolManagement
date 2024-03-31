@@ -11,8 +11,8 @@ const History = () => {
         <CommonHeader/>
         <div style={{fontFamily:'monospace',fontSize:'15px'}} className='vision-mision-main text-1xl'>
         <div className='vision' >
-        <div style={{display:'flex'}}>
-        <div style={{width:'65%'}}>
+        <div className='vision-flex' >
+        <div  className='width-65' >
         <br/><p><b>
 Introductory Note by the Founder and General Secretary of Al Hilal Mission
 </b></p> <br/>
@@ -24,7 +24,7 @@ Al Hilal Mission emerged from a vision to bridge the educational gap faced by ed
 
             
             </div>
-        <div style={{width:'30%'}} className='founder-img-div'>
+        <div  className='founder-img-div '>
             <img src={founder} height={1100} width={400} alt='Founder-Image'></img>
             <p className='founder-image-desc'>Founder Mr. Shahabuddin Gaine</p>
         </div>
