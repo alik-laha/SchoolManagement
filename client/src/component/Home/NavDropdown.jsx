@@ -5,7 +5,7 @@ import "./NavDropDown.css";
 
 function NavDropdown(props) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  
+  const [isDropdownVisible2, setDropdownVisible2] = useState(false);
 
   const handleMouseEnter = () => {
     setDropdownVisible(true);
@@ -14,6 +14,15 @@ function NavDropdown(props) {
   const handleMouseLeave = () => {
     setDropdownVisible(false);
   };
+
+  const handleMouseEnter2 = () => {
+    setDropdownVisible2(true);
+  };
+
+  const handleMouseLeave2 = () => {
+    setDropdownVisible2(false);
+  };
+
   return (
     <div className="NavDropdown">
       <header className="App-header">
@@ -29,12 +38,12 @@ function NavDropdown(props) {
         </div>
         <div
           className="dropdown-menu"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleMouseEnter2}
+          onMouseLeave={handleMouseLeave2}
         >
           <button className="navdropbutton">{props.value.name}</button>
           {/* <DropdownMenu /> */}
-          {isDropdownVisible && <DropdownMenu props={props} />}
+          {isDropdownVisible2 && <DropdownMenu props={props} />}
          
         </div>
       </header>
