@@ -238,6 +238,7 @@
 .dashboard-btn-home{
     background: burlywood;
     color: white;
+   
 }
 
 
@@ -254,6 +255,7 @@
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
         .responsive-header-1 {
+            padding-top: 1%;
                 font-style: italic;
                 width: 100%;
                 font-size: large;
@@ -270,6 +272,8 @@
                 height: 30%;
                 width: 25%;
                 margin-top: 2%;
+                /* border-radius: 5%; */
+                box-shadow: 0 3px 20px 0 #0000003b;
             }
         
             .responsive {
@@ -286,8 +290,13 @@
                 margin: 5px;
                 border: none;
                 outline: none;    
-                border-radius: 50px;
+                border-radius: 10px;
                 box-shadow: 0 3px 20px 0 #0000003b;
+                border-radius: var(--rounded-btn, 0.5rem);
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
             }
         
             .banner-container {
@@ -304,10 +313,7 @@
                 margin: 2%;
 
                 
-              
-               
-              
-               
+
                 opacity: 0.80;
                 font-size: 15px;
                 box-shadow: 0 8px 22px 0 rgba(0,0,0,0.4);
@@ -320,5 +326,12 @@
             .noticeboard-main{
                 height: 50vh;
             }
+            .noticeboard-main-header {
+                background: burlywood;
+                border-bottom: none;
+                color: black;
+                box-shadow: 0 5px 5px 0 rgba(0,0,0,0.4);
+            }
+
     
     }

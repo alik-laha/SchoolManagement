@@ -3,6 +3,7 @@ import React from "react";
 import logo from './logo_ahm.jpg'
 import { NavLink } from "react-router-dom";
 const Header = () => {
+  const ismob= window.innerWidth<768;
   return (
     <div className="navbar alhilal-header_color-css text-white  px-12">
       <div className="flex-1">
@@ -27,11 +28,18 @@ const Header = () => {
           <li>
           <NavLink to="/contactus">Contact Us</NavLink>
           </li>
-          <li className="dashboard-btn-home">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-          </li>
+          {!ismob && <li className="dashboard-btn-home">
+            <NavLink to="/dashboard">Login</NavLink>
+          </li>}
+          {ismob && <span className="dashboard-btn-home">
+            <NavLink to="/dashboard">Login</NavLink></span>}
+          
         </ul>
+        
       </div>
+      {/* {ismob && <span style={{marginLeft:'82%'}} className="dashboard-btn-home">
+            <NavLink to="/dashboard">Login</NavLink>
+          </span>} */}
     </div>
   );
 };
