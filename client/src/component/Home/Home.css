@@ -258,6 +258,22 @@ text-justify: inter-word;
                 padding-top: 10px;
 
 }
+.conatct-use-main{
+    margin-left:15rem;
+    margin-top:2rem;
+    width:30%;
+    box-shadow:0 5px 5px 0 rgba(0,0,0,0.4)
+
+}
+.contact-us-seperate{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.reach-us{
+    margin-top:2rem;
+    margin-left:10rem;
+}
 
 
 
@@ -272,6 +288,26 @@ text-justify: inter-word;
 
     @media only screen and (max-width: 768px) {
         /* For mobile phones: */
+        .contact-us-seperate{
+            display: inline-block;
+        }
+
+        .conatct-use-main{
+            margin: 5%;
+            width:90%;
+            box-shadow:0 5px 5px 0 rgba(0,0,0,0.4)
+        
+        }
+        .reach-us{
+           margin: 5%;
+           width: 90%;
+        }
+        .feedback-responsive{
+
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
         .responsive-header-1 {
             padding-top: 1%;
                 font-style: italic;

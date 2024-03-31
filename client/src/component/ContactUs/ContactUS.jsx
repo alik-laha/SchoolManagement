@@ -14,11 +14,11 @@ const ContactUs = (props) => {
         <div>
             <CommonHeader/>
             
-            <div style={{display:'flex'}} className=''>
+            <div className='contact-us-seperate'>
                      
-                     <ContactForm/>
-                    
-                    <div style={{marginTop:'2rem',marginLeft:'10rem'}}>
+                     
+            
+                    <div className='reach-us' >
                         <p class='text-2xl'> Reach Us</p>
                    
                         <img className='contct-google-img' src={img} alt='clg-img' height={60} width={500}></img> 
@@ -32,7 +32,8 @@ const ContactUs = (props) => {
                         </span>
                         
                      </div>
-            
+                     
+                     <ContactForm/>
             </div>
             <Footer/>
         </div>

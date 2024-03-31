@@ -37,8 +37,8 @@ export const ContactForm = () => {
     }
 
     return (
-        <div id="contact-form" className="float-left p-2 text-xl" style={{marginLeft:'15rem',marginTop:'2rem',width:'30%',boxShadow:'0 5px 5px 0 rgba(0,0,0,0.4)'}}>
-           <p className="text-2xl">Feedback & Queries</p>
+        <div id="contact-form" className="float-left p-2 text-xl conatct-use-main" >
+           <p className="text-2xl feedback-responsive">Feedback & Queries</p>
 
             <div>
             <br></br>
