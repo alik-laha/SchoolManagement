@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <div className="alhilal-footer_color-css text-white ">
             <footer className="footer p-10 justify-items-center ">
-                <div>
+                <div className='responsive'>
                     <span className="footer-title">Services</span>
                     <NavLink to="/aboutus" className="link link-hover">About us</NavLink>
                     <NavLink to="/contactus" className="link link-hover">Contact</NavLink>
@@ -35,7 +35,7 @@ const Footer = () => {
                 fontSize: '14px',
                 paddingTop: '10px'
             }}>
-                <p>Copyright © 2024 - All right reserved by AL-HILAL Mission</p>
+                <p>Copyright © 2024 - All right reserved by AHM</p>
             </div>
         </div>
     );

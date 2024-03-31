@@ -285,7 +285,7 @@
             }
         
             .dashboard-btn-home {
-                background: cadetblue;
+                background: orange;
                 color: beige;
                 margin: 5px;
                 border: none;
@@ -327,9 +327,10 @@
                 height: 50vh;
             }
             .noticeboard-main-header {
-                background: antiquewhite;
+                background: brown;
                 border-bottom: none;
-                color: black;
+                color: white;
+                opacity: 0.7;
                 box-shadow: 0 5px 5px 0 rgba(0,0,0,0.4);
                 font-family: Verdana, Geneva, sans-serif !important;
                 font-weight: bold !important;
@@ -344,5 +345,11 @@
                         }
                         .noticeboard-main li{
                             background: white;
+                        }
+
+
+                        .alhilal-footer_color-css{
+                            background-color: rgb(1, 40, 94);
+                            color: white;
                         }
 }
