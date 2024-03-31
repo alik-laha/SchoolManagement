@@ -13,7 +13,7 @@ const AboutUs = (props) => {
         <div className='about-us-main text-1xl'>
         <div className='about-us-introduction'>
         
-<img src={img} alt='clg-img'></img>
+<img className='about-us-responsive'src={img} alt='clg-img'></img>
 Kadambagachi Al Hilal Mission has made significant strides in promoting education, culture, and social welfare since its establishment in 1999. The focus on providing modern quality education to educationally backward minority communities is crucial for uplifting and empowering those who may face challenges in accessing educational opportunities.
 The fact that the organization has expanded its reach beyond the state and has successfully produced students contributing to various fields such as medicine, engineering, administration, education, and business is a testament to its impact. It's heartening to see initiatives like Al Hilal Mission making a positive difference in the lives of individuals and contributing to the development of the country through education and skill development.
 As you celebrate the organization's achievements on its 25th year birthday, may it continue to flourish and make even greater strides in the years to come, furthering its mission of promoting education and social welfare. If you have any specific questions or if there's anything else you'd like to know or discuss about Al Hilal Mission, feel free to let us know!

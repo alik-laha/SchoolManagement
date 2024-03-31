@@ -101,6 +101,8 @@
     padding: 30px;
     background-color: ghostwhite;
     font-style: italic;
+    text-align: justify;
+text-justify: inter-word;
 
 }        
 
@@ -123,6 +125,8 @@
     background-color: whitesmoke;
     font-family: sans-serif;
     font-size: 13px;
+    text-align: justify;
+text-justify: inter-word;
 }
 .logo{
     display: flex;
@@ -148,6 +152,7 @@
     font-family: cursive;
     padding-bottom: 10px;
     font-weight: 700px;
+    
 }
 
 
@@ -174,6 +179,9 @@
     background-color:  lavender; 
     padding: 5px;
     box-shadow: 0 3px 3px 0 rgba(0,0,0,0.4);
+    font-family: Verdana, Geneva, sans-serif !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
 
 }
 
@@ -346,26 +354,50 @@
                 font-weight: bold !important;
                 font-size: 16px !important;
             }
+.noticeboard-main a {
+    font-size: 14px !important;
+    font-family: Verdana, Geneva, sans-serif !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+}
 
-                        .noticeboard-main a {
-                            font-size: 14px !important;
-                            font-family: Verdana, Geneva, sans-serif !important;
-                            color: #000000 !important;
-                            font-weight: bold !important;
-                        }
-                        .noticeboard-main li{
-                            background: white;
-                        }
+.noticeboard-main li {
+    background: white;
+}
 
 
-                        .alhilal-footer_color-css{
-                            background-color: rgb(1, 40, 94);
-                            color: white;
-                        }
+.alhilal-footer_color-css {
+    background-color: rgb(1, 40, 94);
+    color: white;
+}
 
-                        .footer-dedicated{
-                            background-color: white!important;
-                            color: rgb(1, 40, 94)!important;
-                            font-weight: 500!important;
-                        }
+.footer-dedicated {
+    background-color: white !important;
+    color: rgb(1, 40, 94) !important;
+    font-weight: 500 !important;
+}
+
+.about-us-main {
+
+    padding: 0%;
+    font-size: 14px;
+}
+
+.about-us-introduction img {
+    padding: 0%;
+    height: 20vh;
+    width: 100%;
+    margin-bottom: 20px;
+
+}
+.about-us-introduction{
+    display: block;
+    text-align: justify;
+text-justify: inter-word;
+}
+
+.about-us-objectives{
+
+    padding:30px
+}
 }
