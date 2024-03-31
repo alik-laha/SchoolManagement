@@ -7,21 +7,19 @@ const DropdownMenu = (prop) => {
       {prop.props.name}
       <ul>
         <li>
-          <NavLink to={prop.props.value.history}>Founder's Desk</NavLink>
+          <NavLink to={prop.props.value.history}>{prop.props.value.founder}</NavLink>
         </li>
 
         <li>
-          <NavLink to={prop.props.value.vm}>Vision & Mission</NavLink>
+          <NavLink to={prop.props.value.vm}>{prop.props.value.visionmision}</NavLink>
         </li>
         <li>
-          <NavLink to={prop.props.value.programs}>Programs </NavLink>
+          <NavLink to={prop.props.value.programs}>{prop.props.value.progrm} </NavLink>
         </li>
         <li>
-          <NavLink to={prop.props.value.facilities}>Facilities</NavLink>
+          <NavLink to={prop.props.value.facilities}>{prop.props.value.facility}</NavLink>
         </li>
-        <li>
-          <NavLink to={prop.props.value.admission}>Admission Form</NavLink>
-        </li>
+       
       </ul>
     </div>
   );

@@ -21,8 +21,14 @@ import DownloadForms from "./component/NavLinkComponents/DownloadForms.jsx";
 import MarkStudentView from "./component/MarkStudentView/MarkStudentView.jsx";
 
 function App() {
-  const InstituteInfo={name:"Institute",history:"/Introduction",programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",admission:"/admission",marks:"/marks",student:"Student"}
-    let countdownStartTime = localStorage.getItem('countdownStartTime');
+  const InstituteInfo={name:"Institute",history:"/Introduction",
+  programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",founder:"Founder's Desk",
+  visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
+  const studentinfo={name:"Institute",history:"/Introduction",
+  programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",founder:"Founder's Desk",
+  visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
+  
+  let countdownStartTime = localStorage.getItem('countdownStartTime');
     let elapsedTime = 0;
     const durationInMillis =5*60* 60 * 1000; // 5 hours
     if (countdownStartTime) {
@@ -49,7 +55,7 @@ function App() {
               <div>
               <Header/>
               <span style={{display: 'flex',backgroundColor:'#061574'}}> 
-                <NavDropdown value={InstituteInfo}/>
+                <NavDropdown value={InstituteInfo} student={studentinfo}/>
                 
                 
                 </span>
