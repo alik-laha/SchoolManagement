@@ -7,14 +7,19 @@ import NoticeBoardRenderHome from "../NoticeOutput/NoticeBoardRenderHome.jsx";
 
 
 const Home = (props) => {
+    const ismob= window.innerWidth<768;
+
     return (
         
         <div >
             <div style={{ backgroundImage: `url(${background})`}} className="banner-container">
-                <div className="noticeboard">
+                {!ismob && <div className="noticeboard">
                     <NoticeBoardRenderHome />
-                </div>
+                </div>}
             </div>
+            {ismob && <div className="noticeboard">
+                    <NoticeBoardRenderHome />
+                    </div>}
         </div>
     );
 };
