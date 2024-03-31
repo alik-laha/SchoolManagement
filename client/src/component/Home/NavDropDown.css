@@ -57,13 +57,21 @@ header {
       padding: 10px 10px;
       border: none;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       width: 100px;
     }
     .dropdown-menu ul {
       
       width: 100px;
+    }
+    .dropdown-menu ul li {
+      padding: 8px;
+      transition: all linear 0.3s;
+      position: relative;
+      font-size: 13px;
+      font-weight: 500;
+     
     }
 
   }
