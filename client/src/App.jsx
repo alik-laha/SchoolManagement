@@ -20,6 +20,7 @@ import NavDropdown from "./component/Home/NavDropdown.jsx";
 import DownloadForms from "./component/NavLinkComponents/DownloadForms.jsx";
 import MarkStudentView from "./component/MarkStudentView/MarkStudentView.jsx";
 import Schedule from "./component/NavLinkComponents/Schedule.jsx";
+import Payment from "./component/NavLinkComponents/Payment.jsx";
 
 function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",
@@ -96,6 +97,7 @@ function App() {
         <Route path={"/admission"} element={<DownloadForms/>} />
         <Route path="/marks/view/student" element={<MarkStudentView />} />
         <Route path="/daily/schedule" element={<Schedule />} />
+        <Route path="/payment" element={<Payment />} />
 
 
 
