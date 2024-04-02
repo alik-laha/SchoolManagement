@@ -19,6 +19,7 @@ import Footer from "./component/Home/Footer.jsx";
 import NavDropdown from "./component/Home/NavDropdown.jsx";
 import DownloadForms from "./component/NavLinkComponents/DownloadForms.jsx";
 import MarkStudentView from "./component/MarkStudentView/MarkStudentView.jsx";
+import Schedule from "./component/NavLinkComponents/Schedule.jsx";
 
 function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",
@@ -94,7 +95,7 @@ function App() {
         <Route path="/Facilities" element={<Facilities/>} />
         <Route path={"/admission"} element={<DownloadForms/>} />
         <Route path="/marks/view/student" element={<MarkStudentView />} />
-        
+        <Route path="/daily/schedule" element={<Schedule />} />
 
 
 
