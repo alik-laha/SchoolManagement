@@ -13,10 +13,12 @@
 }
 
 .alhilal-header_color-css {
-    background-color: ivory;
-    color: #061574;
+    background-color: darkred;
+    /* color: #061574; */
     font-size: 11px;
     font-weight: 700;
+    color: white;
+margin-bottom: 8px;
 }
 
 .alhilal-footer_color-css {
@@ -406,6 +408,7 @@
     .alhilal-header_color-css {
         display: block;
         padding: 2%;
+        background-color: ivory;
     }
 
     .responsive-header-image {
