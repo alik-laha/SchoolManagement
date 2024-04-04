@@ -1963,6 +1963,7 @@ html {
 
   .flex-none {
     display: flex;
+    flex-direction: row-reverse;
     flex: auto;
     background: antiquewhite;
     color: black;
