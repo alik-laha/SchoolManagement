@@ -26,8 +26,8 @@ function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",
   programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",founder:"Founder's Desk",
   visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
-  const studentinfo={name:"Institute",history:"/Introduction",
-  programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",founder:"Founder's Desk",
+  const studentinfo={name:"Institute",history:"/daily-schedule",
+  programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",daily:"Daily Schedule",
   visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
   
   let countdownStartTime = localStorage.getItem('countdownStartTime');

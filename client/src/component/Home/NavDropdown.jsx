@@ -1,5 +1,6 @@
 import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
+import DropdownMenuStudent from "./DropdownMenuStudent";
 import "./NavDropDown.css";
 
 
@@ -43,7 +44,7 @@ function NavDropdown(props) {
         >
           <button className="navdropbutton">Students</button>
           {/* <DropdownMenu /> */}
-          {isDropdownVisible2 && <DropdownMenu props={props.student} />}
+          {isDropdownVisible2 && <DropdownMenuStudent props={props.student} />}
          
         </div>
       </header>

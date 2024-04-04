@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const DropdownMenu = (prop) => {
-  
+const DropdownMenuStudent = (prop) => {
+  console.log(prop)
   return (
     
     <div className="dropdown-menu">
@@ -28,4 +28,4 @@ const DropdownMenu = (prop) => {
   );
 };
 
-export default DropdownMenu;
+export default DropdownMenuStudent;
