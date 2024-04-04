@@ -8,7 +8,7 @@ const VisionMision = (props) => {
     return (
         <div >
             <CommonHeader/>
-            <div className='vision-mision-main text-1xl' style={{fontSize:'12px'}}>
+            <div className='vision-mision-main text-1xl dropdown-text-desktop'>
             <div className='vision'>
             <h1><b>Vision:</b> </h1><br/><p><b>To create a harmonious and progressive society where education serves as the catalyst for holistic development.</b></p> <br/>
 We envision a future where individuals, empowered by knowledge and guided by strong ethical values, contribute to economic prosperity, cultural preservation, and societal well-being. Our vision encompasses a society where healthcare initiatives ensure public welfare, and educational opportunities are accessible to every segment, fostering a spirit of competition and excellence. Through these efforts, we aspire to build a vibrant and inclusive community that thrives in diverse fields, creating a sustainable and enlightened society for generations to come."

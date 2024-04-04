@@ -9,7 +9,7 @@ const History = () => {
     return (
         <div >
         <CommonHeader/>
-        <div style={{fontSize:'12px'}} className='vision-mision-main text-1xl'>
+        <div className='vision-mision-main text-1xl dropdown-text-desktop'>
         <div className='vision' >
         <div className='vision-flex' >
         <div  className='width-65' >

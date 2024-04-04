@@ -291,6 +291,9 @@
 
     width: 65%;
 }
+.dropdown-text-desktop{
+    font-size: 16px;
+}
 
 @keyframes cssmarquee {
     0% {

@@ -6,29 +6,24 @@ const DropdownMenu = (prop) => {
   return (
     
     <div className="dropdown-menu">
-    {
-      map.prop((data) => {
 
-        console.log(data)
-      })
-    }
       
-      {/* <ul>
+      <ul>
         <li>
-          <NavLink to={prop.props.value.history}>{}</NavLink>
+          <NavLink to={prop.props.history}>{prop.props.founder}</NavLink>
         </li>
 
         <li>
-          <NavLink to={prop.props.value.vm}>{prop.props.value.visionmision}</NavLink>
+          <NavLink to={prop.props.vm}>{prop.props.visionmision}</NavLink>
         </li>
         <li>
-          <NavLink to={prop.props.value.programs}>{prop.props.value.progrm} </NavLink>
+          <NavLink to={prop.props.programs}>{prop.props.progrm} </NavLink>
         </li>
         <li>
-          <NavLink to={prop.props.value.facilities}>{prop.props.value.facility}</NavLink>
+          <NavLink to={prop.props.facilities}>{prop.props.facility}</NavLink>
         </li>
        
-      </ul> */}
+      </ul>
     </div>
   );
 };
