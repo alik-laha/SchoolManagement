@@ -55,26 +55,58 @@ const Schedule=()=>{
             <td>Listen to the national anthem.</td>
         </tr>
         <tr>
-            <td>	10:50 AM 	  </td>
-            <td>National Anthem</td>
-            <td>Listen to the national anthem.</td>
+            <td>	11:00 AM - 3:45 PM 	  </td>
+            <td>Study Session</td>
+            <td>Engage in study sessions.</td>
         </tr>
         <tr>
-            <td>	10:50 AM 	  </td>
-            <td>National Anthem</td>
-            <td>Listen to the national anthem.</td>
+            <td>		1:30 PM - 1:50 PM 	  </td>
+            <td>Dhuhr Prayer</td>
+            <td>Perform the Dhuhr prayer .</td>
         </tr>
         <tr>
-            <td>	10:50 AM 	  </td>
-            <td>National Anthem</td>
-            <td>Listen to the national anthem.</td>
+            <td>	3:45 PM - 4:10 PM 	  </td>
+            <td>Lunch</td>
+            <td>Have lunch, including rice, lentils, and one non-vegetarian item (except on Saturdays).</td>
         </tr>
         <tr>
-            <td>	10:50 AM 	  </td>
+            <td>		4:20 PM 	  </td>
             <td>National Anthem</td>
-            <td>Listen to the national anthem.</td>
+            <td>Perform the Asr prayer and dedicate time to Quranic education.</td>
         </tr>
-        
+        <tr>
+            <td>4:40 PM - 5:20 PM   </td>
+            <td>Sports/Rest</td>
+            <td>Engage in sports activities or take a rest.</td>
+        </tr>
+        <tr>
+            <td>		5:30 PM 	  </td>
+            <td>Maghrib Prayer and Religious Education</td>
+            <td>Perform the Maghrib prayer and receive religious teachings.</td>
+        </tr>
+        <tr>
+            <td>		6:00 PM - 9:30 PM 	  </td>
+            <td>Study Session</td>
+            <td>Continue studying during this period.</td>
+        </tr>
+        <tr>
+            <td>		9:45 PM	  </td>
+            <td>Isha Prayer</td>
+            <td>Perform the Isha prayer.</td>
+        </tr>
+        <tr>
+            <td>10:00 PM	  </td>
+            <td>Dinner</td>
+            <td>Have dinner, including rice, lentils, and vegetables.</td>
+        </tr>
+        <tr>
+            <td>	10:30 PM 	  </td>
+            <td>Bed Time</td>
+            <td>Get ready for bed and go to sleep by 10:30 PM.</td>
+        </tr>
+       
+
+
         
     </tbody>
 </table>
