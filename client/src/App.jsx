@@ -96,7 +96,7 @@ function App() {
         <Route path="/Facilities" element={<Facilities/>} />
         <Route path={"/admission"} element={<DownloadForms/>} />
         <Route path="/marks/view/student" element={<MarkStudentView />} />
-        <Route path="/daily/schedule" element={<Schedule />} />
+        <Route path="/daily-schedule" element={<Schedule />} />
         <Route path="/payment" element={<Payment />} />
 
 

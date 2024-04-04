@@ -2011,7 +2011,16 @@ html {
   .justify-items-center {
     justify-items: left;
   }
+  .footer {
   
+    row-gap: 1.5rem;
+    font-size: 0.675rem;
+    line-height: 1.25rem;
+  }
+  .footer > * {
+    
+    gap: 0.2rem;
+  }
 
 }
 

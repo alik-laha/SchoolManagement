@@ -2,12 +2,20 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 const DropdownMenu = (prop) => {
+  console.log(prop)
   return (
+    
     <div className="dropdown-menu">
-      {prop.props.name}
-      <ul>
+    {
+      map.prop((data) => {
+
+        console.log(data)
+      })
+    }
+      
+      {/* <ul>
         <li>
-          <NavLink to={prop.props.value.history}>{prop.props.value.founder}</NavLink>
+          <NavLink to={prop.props.value.history}>{}</NavLink>
         </li>
 
         <li>
@@ -20,7 +28,7 @@ const DropdownMenu = (prop) => {
           <NavLink to={prop.props.value.facilities}>{prop.props.value.facility}</NavLink>
         </li>
        
-      </ul>
+      </ul> */}
     </div>
   );
 };
