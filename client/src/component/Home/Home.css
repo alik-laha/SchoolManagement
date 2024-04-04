@@ -294,6 +294,45 @@
 .dropdown-text-desktop{
     font-size: 16px;
 }
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.styled-table thead tr {
+    background-color: #040464;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table td {
+    padding: 12px 15px;
+    
+}
+.styled-table th{
+    text-align: center;
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr:hover {
+    background-color: rgb(225, 240, 246);
+    color: #0b1366;
+    
+}
 
 @keyframes cssmarquee {
     0% {
@@ -307,7 +346,17 @@
 
 @media only screen and (max-width: 768px) {
 
+
+
     /* For mobile phones: */
+    .styled-table {
+        border-collapse: collapse;
+        margin: 5%;
+        font-size: 0.9em;
+        
+        width: 90%;
+        
+    }
     .contact-us-seperate {
         display: inline-block;
     }
@@ -490,6 +539,7 @@
     .responsive-common-header-li {
         display: contents;
     }
+  
 
     .gallery-main {
         margin: 0%;

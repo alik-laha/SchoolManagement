@@ -10,7 +10,7 @@ const DropdownMenuStudent = (prop) => {
       
       <ul>
         <li>
-          <NavLink to={prop.props.history}>{prop.props.founder}</NavLink>
+          <NavLink to={prop.props.dailylink}>{prop.props.daily}</NavLink>
         </li>
 
         <li>
