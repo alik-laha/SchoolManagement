@@ -110,6 +110,7 @@ const Schedule=()=>{
         
     </tbody>
 </table>
+<p style={{margin:'5%',fontWeight:'bold'}}>Note: The schedule may be subject to change based on seasonal variations.</p>
             </div>
             <Footer/>
         </div>
