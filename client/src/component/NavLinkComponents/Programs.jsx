@@ -25,14 +25,17 @@ We provide special training at the primary level to support and uplift academica
 Regular examinations and assessments are conducted to track student progress. Parental involvement is encouraged to foster a collaborative learning environment.<br/>
 <br/><p><b>4.	Islamic Education and Practices: </b></p> <br/>
 Alongside academic pursuits, we emphasize the importance of Islamic education, including regular prayers (five times a day), teaching Islamic etiquette and jurisprudence, and providing instruction on the Quran.<br/>
-<br/><p><b>5.	Promoting Success in Competitive Examinations:</b></p> <br/>
-•	Fostering a culture of academic excellence by encouraging students to excel in nationwide competitive exams.<br/>
-•	Recognizing successful achievements as a stepping stone toward future educational endeavors.<br/>
-<br/><p><b>6.	Encouraging Participation in Diverse Fields of Higher Education:</b></p> <br/>
-•	Advocating for efforts to excel in diverse fields such as medical, engineering, and administrative positions at the national level.<br/>
-•	Nurturing an environment that supports and facilitates the pursuit of higher education across various disciplines.
-In summary, the outlined objectives reflect a visionary roadmap for societal development, emphasizing the pivotal role of education as a driver for economic growth, cultural preservation, ethical development, and public welfare. By addressing various facets of human development, the initiative aims to create a well-rounded and empowered society capable of meeting the challenges of the contemporary world.
-<br/>
+<br/><p><b>5.	Physical Fitness, Discipline, and Character Building: </b></p> <br/>
+We place significant importance on physical fitness, organizing events like the NCC parade, and focusing on character development to mold well-rounded individuals.<br/>
+<br/><p><b>6.	Cultural and Artistic Development: </b></p> <br/>
+To enhance creativity and confidence, we have provisions for training in arts, sports, recitation, spontaneous speech, drama, Islamic songs, and Quranic recitation.
+<br/><br/><p><b>7.	Healthcare and Well-being: </b></p> <br/>
+Regular health check-ups are conducted, and necessary medical care is provided to students at no cost. We prioritize the well-being of our students.
+<br/><br/><p><b>8.	Seminars and Educational Trips: </b></p> <br/>
+We organize seminars and educational trips to broaden students' horizons and provide practical exposure to complement classroom learning.
+<br/><br/><p><b>9.	Career Counseling:  </b></p> <br/>
+Recognizing the importance of career guidance, we offer counseling sessions to help students make informed decisions about their future endeavors.
+
         </div>
 
         </div>
