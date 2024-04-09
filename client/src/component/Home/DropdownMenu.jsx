@@ -9,6 +9,9 @@ const DropdownMenu = (prop) => {
 
       
       <ul>
+      <li>
+          <NavLink to={prop.props.facilities}>{prop.props.facility}</NavLink>
+        </li>
         <li>
           <NavLink to={prop.props.history}>{prop.props.founder}</NavLink>
         </li>
@@ -19,9 +22,7 @@ const DropdownMenu = (prop) => {
         <li>
           <NavLink to={prop.props.programs}>{prop.props.progrm} </NavLink>
         </li>
-        <li>
-          <NavLink to={prop.props.facilities}>{prop.props.facility}</NavLink>
-        </li>
+        
        
       </ul>
     </div>

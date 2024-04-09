@@ -24,8 +24,8 @@ import Payment from "./component/NavLinkComponents/Payment.jsx";
 
 function App() {
   const InstituteInfo={name:"Institute",history:"/Introduction",
-  programs:"/Programs",vm:"/Vision&Mission",facilities:"/Facilities",founder:"Founder's Desk",
-  visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
+  programs:"/Programs",vm:"/Vision&Mission",facilities:"/editorial",founder:"Founder's Desk",
+  visionmision:"Vision & Mission",progrm:"Programs",facility:"Editorial"}
 
   const studentinfo={name:"Institute",dailylink:"/daily-schedule",
   markslink:"/marks-view",vm:"/Vision&Mission",facilities:"/Facilities",daily:"Daily Schedule",
@@ -94,7 +94,7 @@ function App() {
         <Route path="/Introduction" element={<History/>} />
         <Route path="/Vision&Mission" element={<VisionMision/>} />
         <Route path="/Programs" element={<Programs/>} />
-        <Route path="/Facilities" element={<Facilities/>} />
+        <Route path="/editorial" element={<Facilities/>} />
         <Route path={"/admission"} element={<DownloadForms/>} />
         <Route path="/marks-view" element={<MarkStudentView />} />
         <Route path="/daily-schedule" element={<Schedule />} />
