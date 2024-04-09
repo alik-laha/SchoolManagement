@@ -13,7 +13,7 @@ const CommonHeader = () => {
             </div>
        {/*<a href="#" className="btn btn-ghost normal-case text-1xl">CodeBun</a>*/}
       </div>
-      <div className="flex-none">
+      <div className="flex-none-commonheader">
         <ul className="menu menu-horizontal p-0 font-bold ">
           <li className="responsive-common-header-li">
           <NavLink to="/">Back to Home</NavLink>

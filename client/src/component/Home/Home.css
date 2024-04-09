@@ -336,6 +336,9 @@ margin-bottom: 8px;
     color: #0b1366;
     
 }
+.flex-none-commonheader {
+    flex: none;
+}
 
 @keyframes cssmarquee {
     0% {
@@ -348,6 +351,15 @@ margin-bottom: 8px;
 }
 
 @media only screen and (max-width: 768px) {
+    .flex-none-commonheader {
+        display: flex;
+        flex-direction: row;
+        flex: auto;
+        background: antiquewhite;
+        color: black;
+        border: 1px solid cadetblue;
+        /* padding-left: 22%; */
+      }
 
 
 
