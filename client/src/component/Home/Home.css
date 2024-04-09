@@ -505,10 +505,15 @@ margin-bottom: 8px;
         flex-direction: column;
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+        position: relative;
 
     }
     .payment-tab-main{
-
+        height: 40vh;
+    }
+    .qr-pay-img{
+        position: relative;
+        z-index: 50;
     }
 
     .noticeboard {
