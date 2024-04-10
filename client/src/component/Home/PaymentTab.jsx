@@ -1,6 +1,6 @@
 
 
-import qr from '../Home/qr_img_new.jpg'
+import qr from '../Home/qr-ahm-final.png'
 
 
 
@@ -15,8 +15,11 @@ const PaymentTab=()=>{
             <b>Branch Name :</b> KADAMBAGACHI<br/>
             <b>IFSC :</b> BARBOVJKADA<br/>
             <b>MICR :</b> 700012195<br/>
-            </span>
-        <img src={qr} alt='logo image' className='qr-pay-img'/> 
+            
+            <span className='payment-merchant'>
+            <img src={qr} alt='logo image' className='qr-pay-img'/> <p className='payment-merchant-name'><b>Merchant Name :</b><br/>Kadambagachi Al-Hilal Mission</p></span>
+            <p className='payment-vpa'>vpa : kadam99037@barodampay </p></span>
+        
        </div>
     )
 }

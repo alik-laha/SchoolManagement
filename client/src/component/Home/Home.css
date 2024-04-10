@@ -329,6 +329,15 @@ margin-bottom: 8px;
     margin-top: 2rem;
     margin-left: 10rem;
 }
+.qr-pay-img{
+    position: relative;
+    z-index: 50;
+    width:  70%;
+    text-align: center;
+    margin-left: auto; 
+    margin-right: auto;
+    
+}
 
 .vision-flex {
     display: flex;
@@ -403,6 +412,24 @@ margin-bottom: 8px;
 
     padding: 10px;
     font-size: 15px;
+}
+.payment-merchant{
+
+    display: block;
+    width:100%;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 16px;
+   
+}
+.payment-vpa{
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 7%;
+}
+.payment-merchant-name{
+    padding-top: 3%;
 }
 
 @keyframes cssmarquee {
@@ -560,6 +587,10 @@ margin-bottom: 8px;
     .qr-pay-img{
         position: relative;
         z-index: 50;
+        width:  40%;
+        text-align: center;
+        margin-left: auto; 
+        margin-right: auto;
     }
 
     .noticeboard {
