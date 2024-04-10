@@ -30,6 +30,11 @@ function App() {
   const studentinfo={name:"Institute",dailylink:"/daily-schedule",
   markslink:"/marks-view",vm:"/Vision&Mission",facilities:"/Facilities",daily:"Daily Schedule",
   marks:"Result",progrm:"Programs",facility:"Facilities"}
+
+  const otherinfo={name:"Institute",dwnldlink:"/download",
+ dwnld:"Download",
+ }
+  
   
   let countdownStartTime = localStorage.getItem('countdownStartTime');
     let elapsedTime = 0;
@@ -58,7 +63,7 @@ function App() {
               <div>
               <Header/>
               <span style={{display: 'flex',backgroundColor:'#061574'}}> 
-                <NavDropdown value={InstituteInfo} student={studentinfo}/>
+                <NavDropdown value={InstituteInfo} student={studentinfo} other={otherinfo}/>
                 
                 
                 </span>
@@ -95,9 +100,13 @@ function App() {
         <Route path="/Vision&Mission" element={<VisionMision/>} />
         <Route path="/Programs" element={<Programs/>} />
         <Route path="/editorial" element={<Facilities/>} />
-        <Route path={"/admission"} element={<DownloadForms/>} />
+
+        
         <Route path="/marks-view" element={<MarkStudentView />} />
         <Route path="/daily-schedule" element={<Schedule />} />
+
+        <Route path="/download" element={<DownloadForms/>} />
+
         <Route path="/payment" element={<Payment />} />
 
 

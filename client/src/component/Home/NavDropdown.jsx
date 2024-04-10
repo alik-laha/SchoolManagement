@@ -1,12 +1,14 @@
 import { useState } from "react";
 import DropdownMenu from "./DropdownMenu";
 import DropdownMenuStudent from "./DropdownMenuStudent";
+import DropdownOther from "./DropdownOther";
 import "./NavDropDown.css";
 
 
 function NavDropdown(props) {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const [isDropdownVisible2, setDropdownVisible2] = useState(false);
+  const [isDropdownVisible3, setDropdownVisible3] = useState(false);
 
   const handleMouseEnter = () => {
     setDropdownVisible(true);
@@ -22,6 +24,13 @@ function NavDropdown(props) {
 
   const handleMouseLeave2 = () => {
     setDropdownVisible2(false);
+  };
+  const handleMouseEnter3 = () => {
+    setDropdownVisible3(true);
+  };
+
+  const handleMouseLeave3 = () => {
+    setDropdownVisible3(false);
   };
 
   return (
@@ -45,6 +54,18 @@ function NavDropdown(props) {
           <button className="navdropbutton">Students</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible2 && <DropdownMenuStudent props={props.student} />}
+         
+        </div>
+
+
+        <div
+          className="dropdown-menu"
+          onMouseEnter={handleMouseEnter3}
+          onMouseLeave={handleMouseLeave3}
+        >
+          <button className="navdropbutton">Others</button>
+          {/* <DropdownMenu /> */}
+          {isDropdownVisible3 && <DropdownOther props={props.other} />}
          
         </div>
       </header>
