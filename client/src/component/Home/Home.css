@@ -229,6 +229,10 @@ margin-bottom: 8px;
 
 .noticeboard a:hover {
     animation-play-state: paused;
+    text-decoration: underline;
+    font-weight: 700;
+    font-style: italic;
+    color: black;
 }
 
 .noticeboard a .linecolor {
