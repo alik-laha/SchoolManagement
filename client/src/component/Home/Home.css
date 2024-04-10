@@ -331,7 +331,7 @@ margin-bottom: 8px;
 }
 .qr-pay-img{
     position: relative;
-    z-index: 50;
+    z-index: 500;
     width:  70%;
     text-align: center;
     margin-left: auto; 
@@ -586,7 +586,7 @@ margin-bottom: 8px;
     }
     .qr-pay-img{
         position: relative;
-        z-index: 50;
+        z-index: 500;
         width:  40%;
         text-align: center;
         margin-left: auto; 
