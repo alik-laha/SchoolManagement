@@ -2,7 +2,7 @@
 // import CSS
 import './Home.css';
 import React from 'react';
-import background from './school_image.png';
+import background from './school_image.jpg';
 import NoticeBoardRenderHome from "../NoticeOutput/NoticeBoardRenderHome.jsx";
 import PaymentTab from './PaymentTab.jsx';
 

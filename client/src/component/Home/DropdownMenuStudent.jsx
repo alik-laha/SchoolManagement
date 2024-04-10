@@ -16,12 +16,12 @@ const DropdownMenuStudent = (prop) => {
         <li>
           <NavLink to={prop.props.markslink}>{prop.props.marks}</NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to={prop.props.programs}>{prop.props.progrm} </NavLink>
         </li>
         <li>
           <NavLink to={prop.props.facilities}>{prop.props.facility}</NavLink>
-        </li>
+        </li> */}
        
       </ul>
     </div>
