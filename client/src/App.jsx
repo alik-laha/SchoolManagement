@@ -29,7 +29,7 @@ function App() {
 
   const studentinfo={name:"Institute",dailylink:"/daily-schedule",
   markslink:"/marks-view",vm:"/Vision&Mission",facilities:"/Facilities",daily:"Daily Schedule",
-  visionmision:"Vision & Mission",progrm:"Programs",facility:"Facilities"}
+  marks:"Result",progrm:"Programs",facility:"Facilities"}
   
   let countdownStartTime = localStorage.getItem('countdownStartTime');
     let elapsedTime = 0;

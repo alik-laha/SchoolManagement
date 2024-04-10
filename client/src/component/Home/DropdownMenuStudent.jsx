@@ -14,7 +14,7 @@ const DropdownMenuStudent = (prop) => {
         </li>
 
         <li>
-          <NavLink to={prop.props.vm}>{prop.props.visionmision}</NavLink>
+          <NavLink to={prop.props.markslink}>{prop.props.marks}</NavLink>
         </li>
         <li>
           <NavLink to={prop.props.programs}>{prop.props.progrm} </NavLink>

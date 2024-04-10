@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import CommonHeader from '../CommonHeader';
+import Footer from '../Home/Footer';
 
 const MarkStudentView=()=>{
     const [searchView,setSearchView]=useState("block")
@@ -39,7 +41,8 @@ const handleSubmit=(e)=>{
 }
     return (
         <>
-        <div style={{display:searchView }} className="dashbrd-40-colm">
+        <CommonHeader/>
+        <div style={{display:searchView }} className="dashbrd-40-colm resultview">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
@@ -125,6 +128,7 @@ const handleSubmit=(e)=>{
             <div style={{display: dataView}}>
                 Search Data
             </div>
+            <Footer/>
         </>
     )
 }
