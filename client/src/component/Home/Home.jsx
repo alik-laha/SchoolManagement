@@ -27,8 +27,13 @@ const Home = (props) => {
             </div>
             {ismob && <div className="noticeboard">
                     <NoticeBoardRenderHome />
-                    <PaymentTab/>
+                   
                     </div>}
+                    {ismob && <div className="payment-tab">
+                    <PaymentTab/>
+                    
+
+                </div> }
         </div>
     );
 };
