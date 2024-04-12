@@ -5,7 +5,7 @@ import axios from "axios";
 const CreateVendor = (props) => {
     const [vendor,setVendor]=useState("")
     const [vendoraddress,setVendoraddress]=useState("")
-    
+
 
     useEffect(() => {
         handleViewVendoronCreate()
@@ -30,7 +30,7 @@ const CreateVendor = (props) => {
                  }
                  setVendor("")
                  setVendoraddress("")
-                
+
             });
     }
     const handleViewVendoronCreate = () => {
@@ -41,7 +41,7 @@ const CreateVendor = (props) => {
             .catch((err)=>{
                 console.log(err);
             })
-    
+
 
     }
 
@@ -59,10 +59,10 @@ const CreateVendor = (props) => {
     // }
     return(
         <div className="dashbrd-40-colm" style={{display:props.createView}}>
-            
+
             <form onSubmit={handleCreateVendor} style={{display:'grid',color:'#3c8dbc',backgroundColor:'whitesmoke',boxShadow:'0 0 5px grey'}}>
             <p style={{fontSize:'17px'}}>Create New Vendor </p>
-            <dl class="dl-horizontal">
+            <dl className="dl-horizontal">
                     <dt><label>Vendor Name</label></dt>
                     <dd> <input
                     type="text"
@@ -80,18 +80,18 @@ const CreateVendor = (props) => {
                 /></dd>
 
             </dl>
-              
-              
-            
+
+
+
             <span style={{marginTop:'10px'}}><button className="dashboard-btn dashboard-btn-scss" type="submit">Create Vendor</button></span>
 
             </form>
 
-           
+
                 <button style={{backgroundColor: 'lightsalmon',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss " onClick={handleViewVendoronCreate}>
                 View / Delete Vendor
                 </button>
-           
+
        <div>
         {/* <button style={{backgroundColor:'orange',marginTop:'20px'}} className="dashboard-btn dashboard-btn-scss" onClick={handleViewVendoronCreate}>View / Delete Vendor</button> */}
         </div>
