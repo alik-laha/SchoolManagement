@@ -22,7 +22,40 @@ const MarkStudentView=()=>{
             console.log(err)
         })
     }, []);
-const handleSubmit=(e)=>{
+
+    const gradecalculate = (data) => {
+        if(data>=90){
+            return 'AA'
+
+        }
+        else if(data >=80 && data<90)
+        {
+            return "A+"
+        }
+        else if(data >=60 && data<80)
+        {
+            return "A"
+        }
+        else if(data >=45 && data<60)
+        {
+            return "B+"
+        }
+        else if(data >=35 && data<45)
+        {
+            return "B"
+        }
+        else if(data >=25 && data<35)
+        {
+            return "C"
+        }
+        else if(data<25)
+        {
+            return "D"
+        }
+
+    }
+
+    const handleSubmit=(e)=>{
     e.preventDefault()
     const data={
         Class,
@@ -30,6 +63,7 @@ const handleSubmit=(e)=>{
         regNo,
         year
     }
+
     axios.post("/api/v1/faculty/getallmarks",data).then(
         (res)=>{
             setData(res.data.data)
@@ -39,6 +73,7 @@ const handleSubmit=(e)=>{
         }
     )
 }
+let sum_v1 =0,sum_tot_v1=0
     return (
         <>
         <CommonHeader/>
@@ -125,9 +160,54 @@ const handleSubmit=(e)=>{
                 <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
             </form>
         </div>
-            <div style={{display: dataView}}>
-                Search Data
+
+
+            <div className="student-marks-table" style={{display: dataView}}>
+                <table>
+                    <thead>
+                    <tr>
+
+                        <th>Subject</th>
+                        <th>Highest Mark</th>
+                        <th>Marks</th>
+                        <th>Percentage</th>
+                        <th>Grade</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.map((row, index) => (
+                        sum_v1 = sum_v1 + row.marks, sum_tot_v1 = sum_tot_v1 + row.int_exam_marks,
+                            <tr key={index}>
+                                <td>{row.subject}</td>
+                                {
+                                    maxMarks.map((max, idx) => (
+                                        max.subject === row.subject ?
+                                            <td style={{color: 'red'}} key={idx}>{max.max_mark}</td> : null
+                                    ))
+                                }
+                                <td>{row.marks}</td>
+
+                                <td>{((row.marks / row.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
+                                <td style={{width: '20%'}}>{gradecalculate(((row.marks / row.int_exam_marks) * 100))}</td>
+
+                            </tr>
+                    ))}
+                    <tr>
+                        <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
+                            Marks:</b></td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
+                        </td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
+
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                            <b>{((sum_v1 / sum_tot_v1) * 100).toString().slice(0, 2).concat("%")}</b></td>
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
+                            <b>{gradecalculate(((sum_v1 / sum_tot_v1) * 100))}</b></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
+
             <Footer/>
         </>
     )

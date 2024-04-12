@@ -14,7 +14,7 @@ const StockItemEntry= (props) => {
     const [primaryEntryDate, setprimaryEntryDate] = useState(new Date().toISOString().slice(0, 10) );
     const [modifiedDate, setModifiedDate] = useState(new Date().toISOString().slice(0, 10) );
     const [itemNames, setItemNames] = useState([]);
-    
+
     useEffect(() => {
         setAllVendorName(props.setAllVendorName);
         setAllItemType(props.setAllItemType);
@@ -81,7 +81,7 @@ const StockItemEntry= (props) => {
             <form onSubmit={handleSubmit}
                   style={{display: 'grid', color: '#3c8dbc', backgroundColor: 'azure', boxShadow: '0 0 5px grey'}}>
                 <p style={{fontSize: '17px'}}>Primary Stock Entry </p>
-                <dl class="dl-horizontal">
+                <dl className="dl-horizontal">
 
                     <dt><label>Vendor</label></dt>
                     <dd><select onChange={(e) => setVendorName(e.target.value)} required={true} value={vendorName}>
@@ -136,7 +136,7 @@ const StockItemEntry= (props) => {
                         placeholder="Unit Cost ( Per Pc / Kg / Ltr / Mtr )"
                         required
                     /></dd>
-                
+
                     <dt><label> <label>Amount(Pc/Kg/Ltr/Mtr)</label></label></dt>
                     <dd><input
                         id="Quantity"

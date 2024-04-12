@@ -175,7 +175,7 @@ margin-bottom: 8px;
     display: block;
     text-align: center;
     padding: 10px;
-    
+
 
 }
 .payment-tab {
@@ -184,7 +184,7 @@ margin-bottom: 8px;
     width: 20%;
     margin-left: -72%;
     margin-right: 50%;
-    
+
     height: 60vh;
     opacity: 0.80;
     font-size: 15px;
@@ -259,7 +259,7 @@ margin-bottom: 8px;
 .resultview{
 
     height: 60vh;
-   
+
 }
 
 .contct-google-img {
@@ -334,9 +334,9 @@ margin-bottom: 8px;
     z-index: 500;
     width:  70%;
     text-align: center;
-    margin-left: auto; 
+    margin-left: auto;
     margin-right: auto;
-    
+
 }
 
 .vision-flex {
@@ -365,7 +365,7 @@ margin-bottom: 8px;
 
 .styled-table td {
     padding: 12px 15px;
-    
+
 }
 .styled-table th{
     text-align: center;
@@ -374,7 +374,7 @@ margin-bottom: 8px;
 
 .styled-table tbody tr {
     border-bottom: 1px solid #dddddd;
-    
+
 }
 
 .styled-table tbody tr:nth-of-type(even) {
@@ -387,7 +387,7 @@ margin-bottom: 8px;
 .styled-table tbody tr:hover {
     background-color: rgb(225, 240, 246);
     color: #0b1366;
-    
+
 }
 .flex-none-commonheader {
     flex: none;
@@ -397,7 +397,7 @@ margin-bottom: 8px;
     border-bottom: none;
     color: white;
     opacity: 0.7;
-    
+
     font-family: Verdana, Geneva, sans-serif !important;
     font-weight: bold !important;
     font-size: 15px !important;
@@ -420,7 +420,7 @@ margin-bottom: 8px;
     text-align: center;
     padding-top: 10px;
     font-size: 16px;
-   
+
 }
 .payment-vpa{
     font-size: 16px;
@@ -460,9 +460,9 @@ margin-bottom: 8px;
         border-collapse: collapse;
         margin: 5%;
         font-size: 0.9em;
-        
+
         width: 90%;
-        
+
     }
     .contact-us-seperate {
         display: inline-block;
@@ -589,7 +589,7 @@ margin-bottom: 8px;
         z-index: 500;
         width:  60%;
         text-align: center;
-        margin-left: auto; 
+        margin-left: auto;
         margin-right: auto;
     }
 
@@ -626,7 +626,7 @@ margin-bottom: 8px;
         font-weight: bold !important;
         font-size: 16px !important;
     }
-   
+
 
     .noticeboard-main a {
         font-size: 14px !important;
@@ -679,7 +679,7 @@ margin-bottom: 8px;
     .responsive-common-header-li {
         display: contents;
     }
-  
+
 
     .gallery-main {
         margin: 0%;
@@ -717,4 +717,36 @@ margin-bottom: 8px;
     }
 
 
+}
+
+.student-marks-table {
+    font-family: Arial, sans-serif;
+}
+
+.student-marks-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.student-marks-table th, .student-marks-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.student-marks-table th {
+    background-color: #f2f2f2;
+}
+
+.student-marks-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+    .student-marks-table th, .student-marks-table td {
+        padding:1px;
+        font-size: 18px;
+        text-align: center;
+    }
 }
