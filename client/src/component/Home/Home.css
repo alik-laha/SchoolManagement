@@ -733,6 +733,7 @@ margin-bottom: 8px;
     border: 1px solid #dddddd;
     padding: 8px;
     text-align: center;
+
 }
 
 .student-marks-table th {
@@ -748,5 +749,6 @@ margin-bottom: 8px;
         padding:1px;
         font-size: 18px;
         text-align: center;
+
     }
 }

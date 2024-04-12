@@ -161,7 +161,6 @@ let sum_v1 =0,sum_tot_v1=0
             </form>
         </div>
 
-
             <div className="student-marks-table" style={{display: dataView}}>
                 <table>
                     <thead>
@@ -207,6 +206,7 @@ let sum_v1 =0,sum_tot_v1=0
                     </tbody>
                 </table>
             </div>
+
 
             <Footer/>
         </>
