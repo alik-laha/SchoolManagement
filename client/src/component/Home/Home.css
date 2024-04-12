@@ -732,7 +732,8 @@ margin-bottom: 8px;
 .student-marks-table th, .student-marks-table td {
     border: 1px solid #dddddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+
 }
 
 .student-marks-table th {
@@ -745,7 +746,9 @@ margin-bottom: 8px;
 
 @media (max-width: 600px) {
     .student-marks-table th, .student-marks-table td {
-        padding: 6px;
-        font-size: 0.9em;
+        padding:1px;
+        font-size: 18px;
+        text-align: center;
+
     }
 }
