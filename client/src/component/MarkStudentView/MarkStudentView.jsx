@@ -16,7 +16,6 @@ const MarkStudentView=()=>{
 
     useEffect(() => {
         axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
-            console.log(res.data.data)
             setExamData(res.data.data)
         }).catch((err)=>{
             console.log(err)
@@ -66,10 +65,15 @@ const MarkStudentView=()=>{
 
     axios.post("/api/v1/faculty/getallmarks",data).then(
         (res)=>{
-            setData(res.data.data)
-            setMaxMarks(res.data.result1)
-           setSearchView("none")
-            setDataView("block")
+            if(res.data.data.length) {
+                setData(res.data.data)
+                setMaxMarks(res.data.result1)
+                setSearchView("none")
+                setDataView("block")
+            }
+            else {
+                alert("Fill the From Correctly")
+            }
         }
     )
 }

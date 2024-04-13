@@ -30,13 +30,13 @@ const currDate = new Date().toLocaleDateString();
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
         let roman = ''
         let i
-        
+
         for ( i in lookup ) {
          if(num==i){
             roman=lookup[i]
             break
          }
-           
+
         }
         return roman;
       }
@@ -64,7 +64,7 @@ const currDate = new Date().toLocaleDateString();
             flexGrow: 1,
           },
         page: {
-          
+
           fontFamily: "Helvetica",
           fontSize: 11,
           paddingTop: 10,
@@ -78,7 +78,7 @@ const currDate = new Date().toLocaleDateString();
           height: 60,
           marginTop:20,
           marginRight:20
-          
+
         },
         mainHeader: {
           display: "flex",
@@ -112,7 +112,7 @@ const currDate = new Date().toLocaleDateString();
             borderRightColor: borderColor,
             borderRightWidth: 1,
             fontSize:'11',
-            
+
             borderLeftColor: borderColor,
             borderLeftWidth: 1,
           },
@@ -120,8 +120,8 @@ const currDate = new Date().toLocaleDateString();
             width: "16%",
             fontSize:'11',
             borderRightWidth: 1,
-             
-           
+
+
           },
           qty1: {
             width: "16%",
@@ -136,7 +136,7 @@ const currDate = new Date().toLocaleDateString();
             borderBottomWidth: 1,
             alignItems: "center",
             height: 20,
-            
+
           },
           rowdescription: {
             width: "6%",
@@ -146,21 +146,21 @@ const currDate = new Date().toLocaleDateString();
             backgroundColor: "azure",
             fontSize:'9px',
             fontWeight: "extrabold",
-            
-            
-            
-            
+
+
+
+
           },
-        
+
           rowqty: {
             width: "16%",
             // backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
-            
+
             backgroundColor: "azure"
-            
+
           },rowqtytot: {
             width: "22%",
             backgroundColor: "ivory",
@@ -168,9 +168,9 @@ const currDate = new Date().toLocaleDateString();
             fontSize:'9px',
             borderRightWidth: 1,
             borderLeftWidth: 1,
-            
-        
-            
+
+
+
           },
           rowqtynew: {
             width: "16%",
@@ -178,17 +178,17 @@ const currDate = new Date().toLocaleDateString();
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1,
-            
-            
-            
+
+
+
           },
           rowqty1: {
             width: "16%",
             backgroundColor: "white",
             textAlign: "center",
             fontSize:'9px',
-            
-            
+
+
           },
           rowqtynew1: {
             width: "16%",
@@ -196,10 +196,10 @@ const currDate = new Date().toLocaleDateString();
             textAlign: "center",
             fontSize:'9px',
             borderRightWidth: 1
-            
+
           },
-          
-         
+
+
           headerContainer: {
             marginTop: 20,
             justifyContent: "flex-start",
@@ -219,13 +219,13 @@ const currDate = new Date().toLocaleDateString();
           instituteheader:{
             textAlign:'center',
             flexDirection:'row'
-            
+
           },
           institutedesc:{
-            
+
             flexDirection:'column',
             marginLeft:'10px'
-            
+
           },
           institutename:{
             textAlign:'center',
@@ -233,15 +233,15 @@ const currDate = new Date().toLocaleDateString();
             fontWeight:'bold',
             color:'#00519C',
             marginTop: 20,
-            
+
           },
           instituteother:{
             textAlign:'center',
             fontSize:'10',
             fontWeight:'bold',
             color:'rgb(6, 21, 116)',
-            
-            
+
+
           },
           formDetails:{
             marginLeft:20,
@@ -251,7 +251,7 @@ const currDate = new Date().toLocaleDateString();
             fontSize:'12',
             color:'red',
             fontWeight:'bold',
-            
+
             fontStyle:'cursive'
           },
           blankrow:{
@@ -283,7 +283,7 @@ const currDate = new Date().toLocaleDateString();
             paddingTop:'5px',
             float:'left'
           }
-          
+
       });
 
 
@@ -308,8 +308,8 @@ const currDate = new Date().toLocaleDateString();
                               </View>
 
                           </View>
-                          <View style={styles.formDetails}><Text>Progress Report of {data[0][0][0].exam_name} Exam for Academic Year {data[0][0][0].Year}</Text></View> 
-                          
+                          <View style={styles.formDetails}><Text>Progress Report of {data[0][0][0].exam_name} Exam for Academic Year {data[0][0][0].Year}</Text></View>
+
                           <View style={styles.headerContainer}>
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Student Name:</Text>
@@ -319,8 +319,8 @@ const currDate = new Date().toLocaleDateString();
                             <Text style={styles.billTo}>Registration Number:</Text>
                             <Text>{data[0][0][0].regNo}</Text>
                         </View>
-                        
-                        
+
+
                         <View style={styles.Mainbillto}>
                             <Text style={styles.billTo}>Academic Year:</Text>
                             <Text>{data[0][0][0].Year}</Text>
@@ -341,7 +341,7 @@ const currDate = new Date().toLocaleDateString();
                             <Text style={styles.billTo}>Date of Generation:</Text>
                             <Text>{currDate}</Text>
                         </View>
-                        
+
                          </View>
 
                       <View style={styles.tableContainer}>
@@ -357,11 +357,11 @@ const currDate = new Date().toLocaleDateString();
 
                           </View>
                       </View>
-                       
+
                          {data[0][0].map((item,index)=>{
                             data[1]=data[1]+item.int_exam_marks
                             data[2]=data[2]+item.marks
-                            return( 
+                            return(
                             <View key={item.id} style={styles.row}>
                                 <Text style={styles.rowdescription}>{index+1}</Text>
                                 <Text style={styles.rowqty}>{item.subject}</Text>
@@ -372,21 +372,21 @@ const currDate = new Date().toLocaleDateString();
                                           max.subject===item.subject ? <Text style={styles.rowqty} key={idx}>{max.max_mark}</Text> : null
                                       ))
                                   }
-                               
+
                                 <Text style={styles.rowqty}>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</Text>
                                 <Text style={styles.rowqty1}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</Text>
                             </View>
-                            )   
-                               
-                         
-                           
+                            )
+
+
+
                             })}
                              <View style={styles.row}>
                             <Text style={styles.blankrow}></Text>
-                            
+
                         </View>
                             <View style={styles.row}>
-                                
+
                                 <Text style={styles.rowqtytot}>Total</Text>
                                 <Text style={styles.rowqtynew}>{data[1]}</Text>
                                 <Text style={styles.rowqtynew}>{data[2]}</Text>
@@ -394,27 +394,27 @@ const currDate = new Date().toLocaleDateString();
                                 <Text style={styles.rowqtynew}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
                                 <Text style={styles.rowqtynew1}>{gradecalculate(((data[2] / data[1]) * 100))}</Text>
                             </View>
-                         
+
                     <View style={styles.footer}>
                         <Text style={styles.leftfooter}>Class Teacher's Signature</Text>
-                        
+
                         <Text style={styles.leftfooter}>Teacher-In-Charge's Signature</Text>
                         <Text style={styles.rightfooter}>Guardian's Signature</Text>
-                        
+
                         <Text style={styles.rightfooter}>AHM Secretary's Signature</Text>
                     </View>
-                    
-                    
-                        
-                      
-                      
-                      
+
+
+
+
+
+
                       </View>
                   </Page>
         </Document>
 
 
-     
+
       );
     useEffect(()=>{
         setData(props.data)
@@ -452,13 +452,13 @@ const currDate = new Date().toLocaleDateString();
                          setTableView("none")
                          setResult2("block")
                      }
-                       
+
                  }).catch((err)=>{
                  console.log(err)
                 })
            }
         else {
-           
+
             const DATA = {
                 Class: data.class,
                 examName: ExamName,
@@ -479,7 +479,7 @@ const currDate = new Date().toLocaleDateString();
                         setpdfstate(true)
                     }
                     else{
-                        alert("No Marks are Entered in this Exam")
+                        alert("No Marks Found in this Exam")
                     }
                 }).catch((err) => {
                 console.log(err)
@@ -502,15 +502,15 @@ const currDate = new Date().toLocaleDateString();
     const handleClear = () => {
         if(view=='block'){
             setData([])
-            
+
         }
-        
-    
+
+
     }
     const gradecalculate = (data) => {
         if(data>=90){
             return 'AA'
-            
+
         }
         else if(data >=80 && data<90)
         {
@@ -536,18 +536,18 @@ const currDate = new Date().toLocaleDateString();
         {
             return "D"
         }
-    
+
     }
 
 
       return(
           <div style={{display: view}}>
               <div >
-              
+
                   <table className="table-60">
                       <thead style={{display: tableView}}>
                         <tr style={{display:'table-caption'}}>
-                            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
                             onClick={handleClear}>Clear Result</button>
                         </tr>
 
@@ -639,7 +639,7 @@ const currDate = new Date().toLocaleDateString();
                           onClick={HandleClick}>Cancel
                   </button>
                   { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
-                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>} 
+                                    <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>}
                                     fileName={"Progress_Report_"+ExamName+"_"+regNo+".pdf"} >
                                         {({ blob, url, loading, error }) => (loading ? 'Download' : 'Download')}
                                     </PDFDownloadLink></button>}
@@ -655,13 +655,13 @@ const currDate = new Date().toLocaleDateString();
                           <th>Highest Marks</th>
                           <th>Percentage</th>
                           <th>Grade</th>
-                          
+
 
                       </tr>
                       </thead>
                       <tbody>
                       {resultData.map((item, idx) => (
-                        
+
                           sum_v1 = sum_v1 + item.marks, sum_tot_v1 = sum_tot_v1 + item.int_exam_marks,
                               <tr key={item.id}>
                                   <td>{idx + 1}</td>
@@ -678,7 +678,7 @@ const currDate = new Date().toLocaleDateString();
                                   }
                                   <td>{((item.marks / item.int_exam_marks) * 100).toString().slice(0, 3).concat("%")}</td>
                                   <td style={{width:'20%'}}>{gradecalculate(((item.marks / item.int_exam_marks) * 100))}</td>
-                                 
+
                               </tr>
 
                       ))}
