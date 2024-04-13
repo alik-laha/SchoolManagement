@@ -162,6 +162,13 @@ let sum_v1 =0,sum_tot_v1=0
         </div>
 
             <div className="student-marks-table" style={{display: dataView}}>
+                <div><span>Name :</span> <span>{data.length ? data[0].student_Name : " "}</span></div>
+                <div><span>Registration No :</span> <span>{data.length ? data[0].regNo : " "}</span></div>
+                <div><span>Class :</span> <span>{data.length ? data[0].class : " "}</span></div>
+                <div><span>Section :</span> <span>{data.length ? data[0].section : " "}</span></div>
+                <div><span>Exam Name :</span> <span>{data.length ? data[0].exam_name : " "}</span></div>
+
+
                 <table>
                     <thead>
                     <tr>
