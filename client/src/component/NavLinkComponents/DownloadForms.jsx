@@ -1,7 +1,7 @@
 import CommonHeader from '../CommonHeader';
 import '../Home/Home.css'
 import Footer from '../Home/Footer';
-import React from 'react';
+// import React from 'react';
 const DownloadForms = ()=>{
     return(
        
@@ -9,7 +9,7 @@ const DownloadForms = ()=>{
             <div >
                 <CommonHeader/>
                 <div className='vision-mision-main text-1xl dropdown-text-desktop'>
-                <table class="styled-table">
+                <table className="styled-table">
         <thead>
             <tr>
                 <th>Sl. No.</th>
