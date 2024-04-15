@@ -146,6 +146,9 @@ let sum_v1 =0,sum_tot_v1=0
                            onChange={(e) => setRegNo(e.target.value)} required={true}/>
                 </div>
                 <div>
+                <label>
+                        Exam Name
+                    </label>
                 <select onChange={(e) => setExamName(e.target.value)} value={examName} required>
                     <option value="">Select Exam</option>
                     {
