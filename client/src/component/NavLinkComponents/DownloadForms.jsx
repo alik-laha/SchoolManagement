@@ -1,7 +1,12 @@
 import CommonHeader from '../CommonHeader';
 import '../Home/Home.css'
 import Footer from '../Home/Footer';
-// import React from 'react';
+import React from 'react';
+
+import path1 from '../NavLinkComponents/sample_student_admission.pdf'
+import path2 from '../NavLinkComponents/sample_payment.pdf'
+import path3 from '../NavLinkComponents/sample_admit.pdf'
+
 const DownloadForms = ()=>{
     return(
        
@@ -9,38 +14,29 @@ const DownloadForms = ()=>{
             <div >
                 <CommonHeader/>
                 <div className='vision-mision-main text-1xl dropdown-text-desktop'>
-                <table className="styled-table">
+                <table className="styled-table download-form">
         <thead>
             <tr>
-                <th>Sl. No.</th>
+                <th style={{width:'5%'}}>Sl. No.</th>
                 <th>Download Form</th>
              
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>1</td>
-                <td>Waking Up and Morning Routine</td>
+                <td style={{width:'5%'}}>1</td>
+                <td><a href={path1} download>Sample Student Admission Form</a></td>
             </tr>
             <tr>
-                <td>2</td>
-                <td>Fajr Prayer and Quran Recitation</td>
+                <td style={{width:'5%'}}>2</td>
+                <td><a href={path2} download>Sample Admission/Readmission Payment Form</a></td>
             </tr>
             
             <tr>
-                <td>3 </td>
-                <td>Physical Exercise and Prayer</td>
+                <td style={{width:'5%'}}>3 </td>
+                <td><a href={path3} download>Sample Exam Admit Card </a></td>
             </tr>
-            <tr>
-                <td>4 </td>
-                <td>Breakfast</td>
-         
-            </tr>
-            <tr>
-                <td>5 </td>
-                <td>Coaching/Prep Classes</td>
-          
-            </tr>
+           
           
           
            
@@ -50,7 +46,7 @@ const DownloadForms = ()=>{
             
         </tbody>
     </table>
-    <p style={{margin:'5%',fontWeight:'bold'}}>Note: The schedule may be subject to change based on seasonal variations.</p>
+    
                 </div>
                 <Footer/>
             </div>

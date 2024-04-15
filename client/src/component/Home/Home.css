@@ -178,6 +178,16 @@ margin-bottom: 8px;
 
 
 }
+.download-form{
+
+}
+
+
+
+.download-form td{
+
+    text-align: center;
+}
 .payment-tab {
     background-color: ivory;
     padding: 20px;
