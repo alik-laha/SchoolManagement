@@ -72,7 +72,7 @@ const MarkStudentView=()=>{
                 setDataView("block")
             }
             else {
-                alert("Fill the From Correctly")
+                alert("Invlaid Credentials/Marks not Yet Uploaded")
             }
         }
     )
@@ -169,11 +169,11 @@ let sum_v1 =0,sum_tot_v1=0
         </div>
 
             <div className="student-marks-table" style={{display: dataView}}>
-                <div><span>Name :</span> <span>{data.length ? data[0].student_Name : " "}</span></div>
-                <div><span>Registration No :</span> <span>{data.length ? data[0].regNo : " "}</span></div>
-                <div><span>Class :</span> <span>{data.length ? data[0].class : " "}</span></div>
-                <div><span>Section :</span> <span>{data.length ? data[0].section : " "}</span></div>
-                <div><span>Exam Name :</span> <span>{data.length ? data[0].exam_name : " "}</span></div>
+                <div><span><b>Name :</b></span> <span>{data.length ? data[0].student_Name : " "}</span></div>
+                <div><span><b>Registration No :</b></span> <span>{data.length ? data[0].regNo : " "}</span></div>
+                <div><span><b>Class :</b></span> <span>{data.length ? data[0].class : " "}</span></div>
+                <div><span><b>Section :</b></span> <span>{data.length ? data[0].section : " "}</span></div>
+                <div><span><b>Exam Name :</b></span> <span>{data.length ? data[0].exam_name : " "}</span></div>
 
 
                 <table>
@@ -208,8 +208,9 @@ let sum_v1 =0,sum_tot_v1=0
                     <tr>
                         <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
                             Marks:</b></td>
-                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
-                        </td>
+                            <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>X</td>
+                        {/* <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
+                        </td> */}
                         <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>
 
                         <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>
