@@ -84,7 +84,7 @@ const NoticeOutput=()=>{
                          <li  key={index} style={{cursor:"pointer"}} >
                                 
                          <NewImage filedate={fileName.slice(-10)}/> 
-                          <a onClick={()=>handleDownload(fileName)}>
+                          <a onClick={()=>handleDownload(fileName)} style={{color:"Blue",textDecoration:"UnderLine"}}>
                             {       
                                 fileName.slice(0,-15)
                             }</a>
