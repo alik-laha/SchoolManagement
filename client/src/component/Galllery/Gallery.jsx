@@ -30,17 +30,7 @@ const Gallery = () => {
     "statement 10",
   ];
   const slides = [
-    <img src={img1} alt="Slide 1" />,
-    <img src={img3} alt="Slide 3" />,
-    <img src={img4} alt="Slide 4" />,
-    <img src={img5} alt="Slide 5" />,
-    <img src={img6} alt="Slide 6" />,
-
-    <img src={img8} alt="Slide 8" />,
-    <img src={img9} alt="Slide 9" />,
-    <img src={img10} alt="Slide 10" />,
-    <img src={img11} alt="Slide 11" />,
-    <img src={img12} alt="Slide 12" />,
+    img1,img3,img4,img5,img6,img8,img9,img10,img11,img12
   ];
 
   return (

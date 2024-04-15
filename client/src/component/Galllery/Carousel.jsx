@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Gallery.css";
 const Carousel = (props) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const goToNextSlide = () => {
     if (currentIndex === props.slides.length - 1) {
       setCurrentIndex(0);
@@ -15,25 +17,31 @@ const Carousel = (props) => {
       setCurrentIndex(currentIndex - 1);
     }
   };
-  const max = props.slides.length;
-  setTimeout(() => {
-    if (currentIndex == max - 1) {
-      setCurrentIndex(0);
-    } else if (currentIndex < 0) {
-      setCurrentIndex(0);
-    } else {
-      setCurrentIndex(currentIndex + 1);
-    }
-  }, 5000);
+  useEffect(() => {
+    const interval = setTimeout(() => {
+      goToNextSlide();
+    }, 5000);
+    return () => clearTimeout(interval);
+  }, [currentIndex]);
+
   const renderSlide = () => {
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
-        {props.slides[currentIndex]} <span>{props.Texts[currentIndex]}</span>
+        {
+          props.slides.map((slide, index) => (
+            <img
+              key={index}
+              src={slide}
+              alt="Gallery"
+              style={{ display: index === currentIndex ? "block" : "none" }}
+            />
+          ))
+        }
+         <span>{props.Texts[currentIndex]}</span>
       </div>
     );
   };
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <div>
       <div className="carousel-container">{renderSlide()}</div>
