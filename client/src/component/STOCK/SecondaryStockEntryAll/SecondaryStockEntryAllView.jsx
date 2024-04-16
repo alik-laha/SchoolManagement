@@ -31,17 +31,21 @@ const SecondaryStockEntryAllView= (props) => {
 
     return (
         <div style={{display:visible}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+           
+            <table className="table-60" id="secondary-stock-view">
+            <thead style={{ display: 'contents' }}>
+            <tr style={{ display: 'table-caption' }}>
+            <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
                <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="secondary-stock-view"
                 filename={"Secondary_Stock_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <table className="table-60" id="secondary-stock-view">
-                <thead>
+                </tr>
                 <tr>
                     <th>Entry Id</th>
                     <th>Bill / Memo No.</th>
