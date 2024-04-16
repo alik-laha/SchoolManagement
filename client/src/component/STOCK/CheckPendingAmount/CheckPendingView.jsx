@@ -32,17 +32,22 @@ const CheckPendingView= (props) => {
 let sum=0;
     return (
         <div style={{display:visible}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
-               <ReactHTMLTableToExcel
+            
+              
+            <table className="table-60" id="pending-stock-view">
+                <thead style={{ display: 'contents' }}>
+                <tr style={{ display: 'table-caption' }}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn"  onClick={clearTable}>Clear Result</button>
+                <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="pending-stock-view"
                 filename={"Pending_Balance_Stock_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <table className="table-60" id="pending-stock-view">
-                <thead>
+                </tr>
                 <tr>
                     <th>Item Id</th>
                     <th>Bill Id</th>
