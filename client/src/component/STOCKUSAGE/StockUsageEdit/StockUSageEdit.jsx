@@ -28,6 +28,7 @@ const StockUsageEdit = (props) => {
     },[props.data])
     const clearTable = () => {
         setViewStock([]);
+        // setIndex()
       };
 
     useEffect(() => {
@@ -90,10 +91,11 @@ const StockUsageEdit = (props) => {
     }
     return(
         <div style={{display:view}} >
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+           <button style={{position:'relative',marginTop:'-40px',float:'none'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
             <table className="table-60">
-            
+
                 <thead>
+               
                     <tr>
                         <th>Sl.No</th>
                         <th>Item Name</th>
@@ -112,10 +114,10 @@ const StockUsageEdit = (props) => {
                             <td>{idx===index ? <input type="date" value={date} onChange={(e)=>setDate(e.target.value)}/>:data.entry_date.slice(0, 10)}</td>
                             <td>{idx === index ?
                                 <input type="number" value={Quantity} onChange={(e)=>setQuantity(e.target.value)}/>: data.quantity}</td>
-                            <td>{idx === index ? (<><button onClick={handleCancel} className="dashboard-btn dashboard-btn-scss">Cancel</button>
-                                <button onClick={()=>handleUpdate(data)} className="dashboard-btn dashboard-btn-scss" >Update</button> </>):
+                            <td>{idx === index ? (<><button onClick={handleCancel} className="dashboard-btn btn-warning">Cancel</button>
+                                <button onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning" >Update</button> </>):
                                 ( <button onClick={() => handleEdit(data, idx)}
-                                        className="dashboard-btn dashboard-btn-scss">Edit
+                                        className="dashboard-btn btn-warning">Edit
                                 </button>)}
                             </td>
                         </tr>
