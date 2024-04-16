@@ -44,17 +44,21 @@ const StockUsageView = (props) => {
 
     return(
         <div style={{display:view}}>
-            <button className="dashboard-btn dashboard-btn-scss excel-btn" onClick={clearTable}>Clear Result</button>
+            
+            <table className="table-60" id='stock_usage_view'>
+            <thead style={{ display: 'contents' }}>
+            <tr style={{ display: 'table-caption' }}>
+            <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn"  onClick={clearTable}>Clear Result</button>
             <ReactHTMLTableToExcel
                 id="indranil"
-                className="dashboard-btn btn-warning excel-btn"
+                className="dashboard-btn excel-btn user-profile-export"
                 table="stock_usage_view"
                 filename={"Stock_Usage_Report_"+currDate}
                 sheet="tablexls"
                 buttonText="Excel Export"
             />
-            <table className="table-60" id='stock_usage_view'>
-                <thead>
+                </tr>
                     <tr>
                         <th>Sl. No.</th>
                         <th>Item Name</th>
