@@ -8,7 +8,7 @@ header {
   
   
   .navdropbutton {
-    /* background: #01285e; */
+    background: #01285e;
     /* background: rgb(6, 69, 108); */
     box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
     color: white;
@@ -18,8 +18,8 @@ header {
     font-size: 14px;
     font-weight: 500;
     width: 150px;
-    background-image: linear-gradient( 310deg, #01285e 20%, #0705306b 100%);
-    margin: 0px 4px 2px 0px;
+    /* background-image: linear-gradient( 310deg, #01285e 20%, #0705306b 100%); */
+    margin: 0px 4px 1px 0px;
   }
   
   .dropdown-menu ul {
