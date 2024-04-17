@@ -620,7 +620,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
     }
 
     .noticeboard {
-        height: 60vh;
+        height: 70vh;
         width: 95%;
         /* background-color: lightgoldenrodyellow; */
         /* background-color: cornsilk; */
@@ -639,7 +639,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
     }
 
     .noticeboard-main {
-        height: 55vh;
+        height: 65vh;
     }
 
     .noticeboard-main-header {
