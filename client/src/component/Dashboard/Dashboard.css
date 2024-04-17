@@ -52,7 +52,7 @@
     position: absolute;
     z-index: 1;
     left: 0;
-    overflow: hidden;
+    overflow: auto;
     transition: 0.5s;
 
 }
@@ -65,7 +65,7 @@
     height: 92vh;
     padding-bottom: 10px;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
     position: fixed;
     z-index: 1;
     left: 0;
