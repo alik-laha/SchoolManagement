@@ -473,6 +473,38 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
     }
 }
 
+@media only screen and (max-width: 600px)  {
+    .about-us-introduction img {
+        padding: 0%;
+        height: 20vh;
+        /* max-width: max-content; */
+        width:100%;
+        margin-bottom: 20px;
+
+    }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 768px)   {
+    .about-us-introduction img {
+        
+        padding: 0%;
+        height: 20vh;
+        /* max-width: max-content; */
+        /* width:40%; */
+        margin-bottom: 20px;
+        margin-left: 30%;
+        height: max-content;
+        width: max-content;
+        
+    }
+
+    .contct-google-img {
+       margin-left: 10%;
+    }
+
+}
+
 @media only screen and (max-width: 768px) {
     .payment-merchant img{
 
@@ -702,13 +734,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
         font-size: 13px;
     }
 
-    .about-us-introduction img {
-        padding: 0%;
-        height: 20vh;
-        width: 100%;
-        margin-bottom: 20px;
 
-    }
 
     .about-us-introduction {
         display: block;
