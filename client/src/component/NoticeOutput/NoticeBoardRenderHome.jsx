@@ -72,13 +72,13 @@ const NoticeOutput=()=>{
     };
 
     return(
-        <div className="noticeboard-main">
+        <div className="noticeboard-main ahm_marq">
             
             <span className="noticeboard-main-header">Institute Notice Board</span>
 
 
-            <marquee onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='90%' direction="up" scrolldelay="1" scrollamount="2" >
-         <ul> 
+            <marquee loop='1000' onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='95%' direction="up" scrolldelay="1" scrollamount="2" >
+         <ul className="ahm_marquee_content" aria-hidden="true"> 
                 {file.map((fileName, index) => (
 
                          <li  key={index} style={{cursor:"pointer"}} >
