@@ -81,7 +81,7 @@ let sum_v1 =0,sum_tot_v1=0
     return (
         <>
         <CommonHeader/>
-        <div style={{display:searchView }} className="dashbrd-40-colm resultview">
+        <div style={{display:searchView ,height:'auto'}} className="dashbrd-40-colm resultview">
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
