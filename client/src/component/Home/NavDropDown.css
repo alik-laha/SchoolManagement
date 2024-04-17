@@ -19,7 +19,7 @@ header {
     font-weight: 500;
     width: 150px;
     background-image: linear-gradient( 310deg, #01285e 20%, #0705306b 100%);
-    margin: 0px 4px 1px 4px;
+    margin: 0px 4px 2px 0px;
   }
   
   .dropdown-menu ul {
@@ -41,7 +41,8 @@ header {
   }
   
   .dropdown-menu ul li:hover {
-    background: #4c8be4;
+    /* background:#01285e; */
+    background: linear-gradient( 310deg, #0b9593 70%, #0705306b 100%);
     cursor: pointer;
     color: #fff;
   }
