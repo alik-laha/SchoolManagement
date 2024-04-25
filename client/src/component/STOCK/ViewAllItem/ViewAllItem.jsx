@@ -41,7 +41,7 @@ const ViewAllItem=(props)=>{
         alert("Item type "+item_Type+ " Deleted Successfully")
     }
     return(
-        <div style={{display:View}}>
+        <div style={{display:View,marginTop:'40px'}}>
              <button style={{float:'right'}}className="dashboard-btn btn-warning excel-btn" onClick={handleCancel}>Clear Result</button>
             <table className="table-60">
                 <thead >
