@@ -46,7 +46,7 @@ const AcademicEntryView= (props) => {
     return(
         <>
         
-            <div style={{display:view}}>
+            <div style={{display:view,marginTop:'40px'}}>
            
                <div>
                 <table className="table-60" id="academic-entry-view">
