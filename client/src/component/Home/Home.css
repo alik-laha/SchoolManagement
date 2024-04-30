@@ -580,7 +580,9 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
         /* padding-left: 22%; */
       }
 
-
+      .ahm_marq:hover .ahm_marquee_content{
+        animation-play-state:running;
+    }
 
     /* For mobile phones: */
     .styled-table {
@@ -694,7 +696,8 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 {
     margin-bottom: 2px;
     display: flex;
-    height: 7vh;
+    height: 6vh;
+    background: beige;
 }
 
     .payment-tab {
