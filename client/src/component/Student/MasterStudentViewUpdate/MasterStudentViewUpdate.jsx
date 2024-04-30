@@ -478,6 +478,7 @@ const MasterStudentViewUpdate = (props) => {
       };
 
     const Handleedit=(item)=>{
+        console.log(item)
         const dataArray=[item]
         setPDFdata(dataArray)
         setAllview("none")

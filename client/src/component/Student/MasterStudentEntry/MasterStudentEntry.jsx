@@ -314,22 +314,22 @@ const MasterStudentEntry= (props) => {
                      <dt><label>Cast*</label></dt>
                     <dd> <select onChange={(e) => setCast(e.target.value)} required value={cast}>
                         <option value="">Cast</option>
-                        <option value="General">
+                        <option value="gen">
                             General
                         </option>
-                        <option value="OBC-A">
+                        <option value="obcA">
                             OBC-A
                         </option>
-                        <option value="OBC-B">
+                        <option value="obcB">
                             OBC-B
                         </option>
-                        <option value="SC">
+                        <option value="sc">
                             SC
                         </option>
-                        <option value="ST">
+                        <option value="st">
                             ST
                         </option>
-                        <option value="Other">
+                        <option value="other">
                             Other
                         </option>
                     </select></dd>
