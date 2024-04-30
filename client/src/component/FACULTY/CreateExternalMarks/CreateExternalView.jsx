@@ -105,9 +105,14 @@ const CreateMarks=(props)=>{
     return(
 
         <div style={{display:view,marginTop:'40px'}}>
-            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
+            {/* <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button> */}
             <table className="table-60">
-                <thead>
+                <thead style={{ display: 'contents' }}>
+                <tr style={{ display: 'table-caption' }}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            onClick={handleClear}>Clear Result</button>
+                    </tr>
                     <tr>
                     <th>Sl. No.</th>
                     <th>Registration No</th>
