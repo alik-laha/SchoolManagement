@@ -41,7 +41,7 @@ function NavDropdown(props) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <button className="navdropbutton">Institute</button>
+          <button className="navdropbutton nav1">Institute</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible && <DropdownMenu props={props.value} />}
          
@@ -51,7 +51,7 @@ function NavDropdown(props) {
           onMouseEnter={handleMouseEnter2}
           onMouseLeave={handleMouseLeave2}
         >
-          <button className="navdropbutton">Students</button>
+          <button className="navdropbutton nav2">Students</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible2 && <DropdownMenuStudent props={props.student} />}
          
@@ -63,7 +63,7 @@ function NavDropdown(props) {
           onMouseEnter={handleMouseEnter3}
           onMouseLeave={handleMouseLeave3}
         >
-          <button className="navdropbutton">Others</button>
+          <button className="navdropbutton nav3">Others</button>
           {/* <DropdownMenu /> */}
           {isDropdownVisible3 && <DropdownOther props={props.other} />}
          

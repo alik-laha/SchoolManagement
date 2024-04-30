@@ -18,9 +18,29 @@ header {
     font-size: 14px;
     font-weight: 500;
     width: 150px;
-    background-image: linear-gradient( 140deg, #01285e 90%, white 100%);
+    /* background-image: linear-gradient( 140deg, #01285e 90%, white 100%); */
     margin: 0px 3px 1px 3px;
   }
+  .nav1{
+   
+    color: white;
+    
+    background-image: linear-gradient( 140deg, rgb(14, 86, 14) 85%, white 100%);
+    
+  }
+  .nav2{
+    background-image: linear-gradient( 140deg, rgb(28, 101, 164) 85%, white 100%);
+    color: white;
+   
+
+  }
+  .nav3
+  {
+    background-image: linear-gradient( 140deg, rgb(145, 15, 110) 85%, white 100%);
+    color: white;
+    
+  }
+
   
   .dropdown-menu ul {
     list-style: none;
