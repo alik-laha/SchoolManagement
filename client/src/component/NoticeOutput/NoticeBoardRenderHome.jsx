@@ -1,7 +1,7 @@
 import {useState,useEffect} from "react";
 import ntc_img from '../NoticeOutput/notice_img.gif'
 //Brrech day is defined in day
-const breech_day=10
+const breech_day=30
 
 
 function NewImage({ filedate }) {
@@ -86,12 +86,12 @@ const NoticeOutput=()=>{
               {file.map((fileName, index) => (
 
                        <li onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} key={index} style={{cursor:"pointer"}} >
-                              
-                       <NewImage filedate={fileName.slice(-10)}/> 
+                        <span className="notice-li"><NewImage filedate={fileName.slice(-10)}/> 
                         <a onClick={()=>handleDownload(fileName)} >
                           {       
                               fileName.slice(0,-15)
-                          }</a>
+                          }</a></span>      
+                       
                           
                           
                       

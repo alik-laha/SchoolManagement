@@ -63,7 +63,7 @@ function App() {
               <div>
               <Header/>
               {/* <span style={{display: 'flex',backgroundColor:'#061574'}}>  */}
-              <span style={{display: 'flex',backgroundImage:'linear-gradient( 135deg, #01285e 90%, #0705306b 100%)',marginBottom:'2px'}}> 
+              <span style={{display: 'flex',marginBottom:'2px'}}> 
               
                 <NavDropdown value={InstituteInfo} student={studentinfo} other={otherinfo}/>
                 

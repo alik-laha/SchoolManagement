@@ -21,6 +21,7 @@
 margin-bottom: 2px;
 background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
 /* background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%); */
+box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 }
 
 .alhilal-footer_color-css {
@@ -471,12 +472,14 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
     justify-content: space-around;
     min-width: 100%;
     gap: var(--gap);
-    animation: marquee-scroll 30s linear infinite;
+    animation: marquee-scroll 50s linear infinite;
 }
 
 .ahm_marq:hover .ahm_marquee_content{
     animation-play-state: paused;
 }
+
+
 
 @keyframes marquee-scroll {
     0% {
@@ -694,7 +697,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
 
     .noticeboard {
         height: 70vh;
-        width: 90%;
+        width: 95%;
         /* background-color: lightgoldenrodyellow; */
         /* background-color: cornsilk; */
         background-color: whitesmoke;
