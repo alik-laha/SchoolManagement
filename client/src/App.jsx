@@ -63,7 +63,8 @@ function App() {
               <div>
               <Header/>
               {/* <span style={{display: 'flex',backgroundColor:'#061574'}}>  */}
-              <span style={{display: 'flex',marginBottom:'2px'}}> 
+              <span className='nav-main-header'
+              > 
               
                 <NavDropdown value={InstituteInfo} student={studentinfo} other={otherinfo}/>
                 
