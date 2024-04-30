@@ -87,10 +87,11 @@ const NoticeOutput=()=>{
 
                        <li onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} key={index} style={{cursor:"pointer"}} >
                         <span className="notice-li"><NewImage filedate={fileName.slice(-10)}/> 
-                        <a onClick={()=>handleDownload(fileName)} >
+                        <p> <a onClick={()=>handleDownload(fileName)} >
                           {       
                               fileName.slice(0,-15)
-                          }</a></span>      
+                          }</a></p>
+                       </span>      
                        
                           
                           

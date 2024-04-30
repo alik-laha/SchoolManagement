@@ -151,6 +151,10 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
     height: 70vh;
     display: block;
 }
+.notice-li{
+    width: 100%;
+    display: contents;
+}
 
 .noticeboard-main-header {
     /* display: block;
@@ -258,6 +262,8 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
     transform: translateY(-100%);
     /* font-family: serif; */
     padding-left: 5px;
+    display: contents;
+    width: fit-content;
 
 
 }
@@ -314,6 +320,11 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 
 .login-conatiner {
     display: inline-block;
+}
+
+.noticeboard-main ul li p{
+    display: contents;
+    width: fit-content;
 }
 
 .dashboard-btn-home {
@@ -758,7 +769,13 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
         font-family: Verdana, Geneva, sans-serif !important;
         color: #000000 !important;
         font-weight: bold !important;
+        
     }
+    .noticeboard-main ul li p{
+        display: contents;
+        width: fit-content;
+    }
+
 
     .noticeboard-main li {
         background: white;
