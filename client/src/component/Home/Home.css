@@ -445,7 +445,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
 }
 
 .ahm_marq{
-    --gap: 1rem;
+    --gap: 0.1rem;
   /* display: flex; */
   overflow: hidden;
   user-select: none;
@@ -467,6 +467,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
 .ahm_marquee_content{
     
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     min-width: 100%;
     gap: var(--gap);
@@ -707,7 +708,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
     }
 
     .noticeboard-main {
-        height: 65vh;
+        height: 60vh;
     }
 
     .noticeboard-main-header {

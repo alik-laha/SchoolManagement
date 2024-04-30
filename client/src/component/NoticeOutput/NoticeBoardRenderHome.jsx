@@ -80,9 +80,9 @@ const NoticeOutput=()=>{
 
 
           {/* <marquee loop='1000' onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='95%' direction="up" scrolldelay="1" scrollamount="2" > */}
-       <div className="ahm_marquee_content" >
+       <div  >
 
-       <ul aria-hidden="true"> 
+       <ul className="ahm_marquee_content" aria-hidden="true"> 
               {file.map((fileName, index) => (
 
                        <li onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} key={index} style={{cursor:"pointer"}} >
