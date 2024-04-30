@@ -765,7 +765,7 @@ const MasterStudentViewUpdate = (props) => {
                         .then((res)=>{
                             alert('Student Details Edited Successfully')
                             console.log(res.data);
-                            setAllview("block")
+                            setAllview("contents")
                             setUpdateView("none")
                             setView('none')
                             setName('');
@@ -810,7 +810,7 @@ const MasterStudentViewUpdate = (props) => {
                 }
                 else{
                     alert('Student Details Edited Successfully')
-                    setAllview("block")
+                    setAllview("contents")
         setUpdateView("none")
                     setView('none')
                 }
@@ -825,7 +825,7 @@ const MasterStudentViewUpdate = (props) => {
 
     }
     const handaleDelete=(regNo,name)=>{
-        setAllview("block")
+        setAllview("contents")
         setUpdateView("none")
         axios.post("/api/v1/student/deletemasterstudent",{regNo},{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
@@ -888,7 +888,7 @@ const MasterStudentViewUpdate = (props) => {
     const handaleCancel=()=>{
         setpdfstate(false)
         setPDFdata([])
-    setAllview("block")
+    setAllview("contents")
         setUpdateView("none")
 
         setName('');
@@ -944,7 +944,7 @@ const MasterStudentViewUpdate = (props) => {
                 display.close();
                 //setPopup("none")
                 setUpdateView("none")
-                setAllview("block")
+                setAllview("contents")
                 setView('none')
             })
             .catch((err)=>{
