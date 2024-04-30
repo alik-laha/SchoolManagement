@@ -592,6 +592,11 @@ dl {
     margin-top: 10%;
 
  }
+
+ .view-exam{
+
+    margin-top: 140px;
+ }
   /* .fee-entry-new-adm dd:nth-child(2){
     margin-left: 10px;
   } */
@@ -602,7 +607,10 @@ dl {
 
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
+    .view-exam{
 
+        margin-top: 30px;
+     }
     .navbar-before{
         width: 60%;
         

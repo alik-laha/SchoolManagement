@@ -45,10 +45,16 @@ const ViewExternalExam=(props)=>{
         setData1(props.data1)
     },[props.data,props.data1])
     return (
-        <div className="dashbrd-40-colm" style={{display: view,marginTop:'120px'}}>
-           <button style={{float:'right'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button>
+        <div className="dashbrd-40-colm view-exam" style={{display: view}}>
+           
+           {/* <button style={{float:'right'}}className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleCancel}>Clear Result</button> */}
             <table className="table-60">
-                <thead>
+                <thead style={{ display: 'contents' }}>
+                <tr style={{ display: 'table-caption' }}>
+                <button style={{position:'relative',marginTop:'-40px',float:'right'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            onClick={handleCancel}>Clear Result</button>
+                </tr>
                 <tr>
                     <th>Sl. No.</th>
                     <th>Exam Type</th>
