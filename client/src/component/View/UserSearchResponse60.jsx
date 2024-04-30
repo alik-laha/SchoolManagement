@@ -123,6 +123,7 @@ const UserSearchResponse60=(props)=>{
                 setid("")
                 setname("")
                 setpassword("")
+                setConfirmPass("")
                 setVisiblity("none");
                 setmainsvisibility('contents')
                 setPassVisi("password")
