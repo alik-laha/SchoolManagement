@@ -72,33 +72,41 @@ const NoticeOutput=()=>{
     };
 
     return(
-        <div className="noticeboard-main ahm_marq">
-            
-            <span className="noticeboard-main-header">Institute Notice Board</span>
+        <div>
+             <span className="noticeboard-main-header">Institute Notice Board</span>
+            <div className="noticeboard-main ahm_marq">
+          
+         
 
 
-            <marquee loop='1000' onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='95%' direction="up" scrolldelay="1" scrollamount="2" >
-         <ul className="ahm_marquee_content" aria-hidden="true"> 
-                {file.map((fileName, index) => (
+          {/* <marquee loop='1000' onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} behaviour='scroll' height ='95%' direction="up" scrolldelay="1" scrollamount="2" > */}
+       <div className="ahm_marquee_content" >
 
-                         <li  key={index} style={{cursor:"pointer"}} >
-                                
-                         <NewImage filedate={fileName.slice(-10)}/> 
-                          <a onClick={()=>handleDownload(fileName)} >
-                            {       
-                                fileName.slice(0,-15)
-                            }</a>
-                            
-                            
-                        
-                    </li>
-                    
+       <ul aria-hidden="true"> 
+              {file.map((fileName, index) => (
 
-                ))}
-                </ul>
-                 </marquee>
+                       <li onMouseOver={(e) => { e.target.stop() }} onMouseOut={(e) => { e.target.start() }} key={index} style={{cursor:"pointer"}} >
+                              
+                       <NewImage filedate={fileName.slice(-10)}/> 
+                        <a onClick={()=>handleDownload(fileName)} >
+                          {       
+                              fileName.slice(0,-15)
+                          }</a>
+                          
+                          
+                      
+                  </li>
+                  
 
+              ))}
+              </ul>
+       </div>
+       
+               {/* </marquee> */}
+
+      </div>
         </div>
+        
     )
 }
 export default NoticeOutput

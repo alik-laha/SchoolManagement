@@ -451,25 +451,37 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
   user-select: none;
   gap: var(--gap);
   
+  
 }
-.ahm_marquee_content{
+/* .ahm_marquee_content{
     flex-shrink: 0;
-    /* display: flex; */
+    display: flex;
     justify-content: space-around;
     min-width: 100%;
     gap: var(--gap);
     animation: marquee 15s linear infinite;
+} */
+
+.ahm_marquee_content{
+    
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: var(--gap);
+    animation: marquee-scroll 30s linear infinite;
 }
 
-@keyframes ahm_marq {
+@keyframes marquee-scroll {
     0% {
         /* transform: translateY(-100%); */
-        top: 0;
+        transform: translateY(100%);
+        /* top: 0; */
     }
 
     100% {
         /* transform: translateY(100%); */
-        top: -100%;
+        transform: translateY(-100%);
+        /* top: -100%; */
     }
 }
 
