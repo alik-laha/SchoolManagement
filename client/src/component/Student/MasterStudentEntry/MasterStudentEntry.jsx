@@ -285,10 +285,10 @@ const MasterStudentEntry= (props) => {
                     <dt><label>Religion*</label></dt>
                     <dd><select onChange={(e) => setReligion(e.target.value)} required value={religion}>
                         <option value="">Religion</option>
-                        <option value="Islam">
+                        <option value="islam">
                             Islam
                         </option>
-                        <option value="Other">
+                        <option value="other">
                             Other
                         </option>
                     </select></dd>
