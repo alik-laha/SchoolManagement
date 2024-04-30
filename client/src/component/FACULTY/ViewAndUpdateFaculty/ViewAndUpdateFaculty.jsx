@@ -75,7 +75,7 @@ const handaleDelete = (id) => {
     axios.post("/api/v1/faculty/deletefaculty", {id},{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
             if(res){
-                alert("Faculty Deleted Successfully");
+                alert("Employee Has Been Deleted Successfully");
                 setView("none");
             }
         })
@@ -86,7 +86,7 @@ const data = {id, name, email, contactNo:contact_no, qualification:heighst_quali
 axios.post("/api/v1/faculty/updatefaculty", data,{headers:{"Authorization":localStorage.getItem("token")}})
         .then((res) => {
             if(res){
-                alert("Faculty Updated Successfully");
+                alert("Employee Has Been Updated Successfully");
                 setEditView("none");
                 setMainView("contents");
                 setView("none")

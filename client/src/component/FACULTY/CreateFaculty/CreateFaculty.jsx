@@ -18,7 +18,7 @@ const handleSubmit = (e) => {
     
     const faculty = {name, qualification, joinDate, email, specialized, contactNo,aadharno,pan,address,dob,Type};
     axios.post("/api/v1/faculty/createfaculty", faculty,{headers:{"Authorization":localStorage.getItem("token")}}).then((res) => {
-        alert("Faculty Added Successfully");
+        alert("Employee Has Been Created Successfully");
         console.log(res)
     }).catch((err) => {
         console.log(err);
@@ -57,7 +57,7 @@ const handleSubmit = (e) => {
 
                     <dt><label>Employee Type*</label></dt>
                     <dd>
-                        <select onChange={(e)=>setType(e.target.value)} value={Type}>
+                        <select onChange={(e)=>setType(e.target.value)} value={Type} required>
                             <option value="">Employee Type</option>
                             <option value="Faculty">Faculty</option>
                             <option value="Staff">Staff</option>
