@@ -635,16 +635,24 @@ const currDate = new Date().toLocaleDateString();
                   {data.length===0 ? <div className="no-data" style={{textAlign:'center',width:'100%'}}>No Data Exists</div> : null}
               </div>
               <div style={{display: result}}>
-                  <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
+                  {/* <button style={{float: 'right'}} className="dashboard-btn dashboard-btn-scss excel-btn"
                           onClick={HandleClick}>Cancel
-                  </button>
-                  { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
+                  </button> */}
+                  
+                  <table className="table-60" id="table_one">
+                      <thead style={{ display: 'contents' }}>
+                      <tr style={{ display: 'table-caption' }}>
+
+                      <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                            className="dashboard-btn dashboard-btn-scss excel-btn" 
+                            onClick={HandleClick}>Cancel</button>
+                            { pdfstate && <button className='dashboard-btn excel-btn user-profile-export' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
                                     <PDFDownloadLink document={<MyDocumentMarks data={[pdfdata,sum_v1,sum_tot_v1,maxMark]}/>}
                                     fileName={"Progress_Report_"+ExamName+"_"+regNo+".pdf"} >
-                                        {({ blob, url, loading, error }) => (loading ? 'Download' : 'Download')}
+                                        {({ blob, url, loading, error }) => (loading ? 'Download PDF' : 'Download PDF')}
                                     </PDFDownloadLink></button>}
-                  <table className="table-60" id="table_one">
-                      <thead>
+
+                        </tr>
                       <tr>
                           <th>Sl No.</th>
 
