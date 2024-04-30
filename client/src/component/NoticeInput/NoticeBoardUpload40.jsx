@@ -16,18 +16,23 @@ const StudentInputNotice = ({Publish}) => {
     const formData = new FormData();
 
     formData.append("file", file);
-
+    if(file == null){
+      return
+    }
 
       axios
       .post("/api/v1/studentnotice", formData).then((res) => {
+       
           console.log("file send")
         
     })
         .catch(err=>{
         console.log(err)
       });
-
-      alert("Notice has been Uploaded Successfully")
+      
+        alert("Notice has been Uploaded Successfully")
+      
+      
       //setFile(null)
       handleReset();
 
