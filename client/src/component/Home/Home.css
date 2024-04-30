@@ -320,6 +320,16 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
     background: darkorange;
     color: white;
 
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    box-shadow: 0 3px 20px 0 #0000003b;
+    border-radius: var(--rounded-btn, 0.5rem);
+    /* padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; */
+
 }
 
 
@@ -668,6 +678,13 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
         min-height: 30vh;
         height: 50vh;
     }
+
+    .nav-main-header
+{
+    margin-bottom: 2px;
+    display: flex;
+    height: 7vh;
+}
 
     .payment-tab {
         height: auto;
