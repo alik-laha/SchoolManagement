@@ -1065,7 +1065,7 @@ const MasterStudentViewUpdate = (props) => {
             onClick={handaleCancel} className="dashboard-btn dashboard-btn-scss fix-width">Back</button>
             { pdfstate && <button className='dashboard-btn fix-width-pdf pdf-btn' style={{background:'lightsalmon',color:'white',marginBottom:'8px',float:'right'}}>
                                     <PDFDownloadLink document={<MyDocument data={pdfdata}/>} fileName={"Student_Admission_Report_"+regNo+".pdf"} >
-                                        {({ blob, url, loading, error }) => (loading ? 'Loading..' : 'Download')}
+                                        {({ blob, url, loading, error }) => (loading ? 'Download' : 'Download')}
                                     </PDFDownloadLink></button>}
            
             <hr></hr>
