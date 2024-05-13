@@ -382,37 +382,38 @@ const stockUsageVisiblity = () => {
 
             </div>
             <div className="Items" style={{display: stockAdmin}} onClick={props.onStockEntry}> &#x274D;&nbsp;&nbsp;
-              Stock Amount Entry 
+              Stock Arrival Entry 
             </div>
             <div className="Items" style={{display: cashAdmin}}
-                 onClick={props.onSecondStockEntry}>  &#x24;&nbsp;&nbsp; Stock Cash Entry
+                 onClick={props.onSecondStockEntry}>  &#x24;&nbsp;&nbsp;&nbsp; Stock Cash Entry
             </div>
             <div className="Items" style={{display: stockAdmin}}
                  onClick={props.onStockUsageEntry}>
               &#x2744;&nbsp;&nbsp; Stock Usage Entry 
             </div>
+            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
+                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Arrival/Cash Entry</p>
+            </div>
+            <div className="Items" style={{display:admin}}
+                 onClick={props.onStockUsageEdit}><FaRegEdit/><p
+                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Usage Entry</p>
+            </div>
             <div className="Items" style={{display: cashAdmin}}
                  onClick={props.onCheckPending}>&#x27F3;&nbsp;&nbsp;Check Pending Cash 
             </div>
             <div className="Items" style={{display: stockAdmin}}
-                 onClick={props.onStockUsageView}>&#x27F3;&nbsp;&nbsp;Check Pending Usage
+                 onClick={props.onStockUsageView}>&#x27F3;&nbsp;&nbsp;Check/Export Usage
             
             </div>
-            <div className="Items" style={{display: admin}} onClick={props.onModifySeachEntry}><FaRegEdit/><p
-                style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Entry </p>
-            </div>
-            <div className="Items" style={{display:admin}}
-                 onClick={props.onStockUsageEdit}><FaRegEdit/><p
-                 style={{width: '-webkit-fill-available', marginLeft: '10px'}}>Modify Stock Usage </p>
-            </div>
+            
 
-            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}> &#x21e9;&nbsp;&nbsp; Export Primary Stock
+            <div className="Items" style={{display: stockAdmin}} onClick={props.onStockView}> &#x21e9;&nbsp;&nbsp; Export Arrival Entry
             </div>
 
 
             <div className="Items" style={{display: cashAdmin}}
                  onClick={props.onSecondStockView}> &#x21e9;&nbsp;&nbsp; Export
-              Secondary Stock 
+              Cash Entry
             </div>
 
            
