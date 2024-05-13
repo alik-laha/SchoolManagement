@@ -37,7 +37,7 @@ const Carousel = (props) => {
             />
           ))
         }
-         <span>{props.Texts[currentIndex]}</span>
+         <span style={{fontFamily:'initial'}}>{props.Texts[currentIndex]}</span>
       </div>
     );
   };

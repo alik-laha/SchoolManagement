@@ -23,9 +23,8 @@ const Gallery = () => {
     "Eve of Annual Football Tournament",
     "Sports Award Ceremony",
     "Hosting One of the Biggest Events",
-    "Our Teachers",
+    "Our Entire Faculties",
     "Entire Batch of Al-Hilal-Mission Students",
-    
     "Guardian Meeting",
     "Award Ceremony",
   ];
