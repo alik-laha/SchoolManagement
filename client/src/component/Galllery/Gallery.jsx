@@ -9,7 +9,7 @@ import img6 from "./GalleryImage/img6.jpeg";
 
 import img8 from "./GalleryImage/img8.jpeg";
 import img9 from "./GalleryImage/img9.jpeg";
-import img10 from "./GalleryImage/img10.jpeg";
+
 import img11 from "./GalleryImage/img11.jpeg";
 import img12 from "./GalleryImage/img12.jpg";
 
@@ -18,19 +18,19 @@ import "../Home/Home.css";
 
 const Gallery = () => {
   const texts = [
-    "statement 1",
-    "statement 2",
-    "statement 3",
-    "statement 4",
-    "statement 5",
-    "statement 6",
-    "statement 7",
-    "statement 8",
-    "statement 9",
-    "statement 10",
+    "Reception of Distinguished Guest",
+    "Performing Cultural Events",
+    "Eve of Annual Football Tournament",
+    "Sports Award Ceremony",
+    "Hosting One of the Biggest Events",
+    "Our Teachers",
+    "Entire Batch of Al-Hilal-Mission Students",
+    
+    "Guardian Meeting",
+    "Award Ceremony",
   ];
   const slides = [
-    img1,img3,img4,img5,img6,img8,img9,img10,img11,img12
+    img1,img3,img4,img5,img6,img8,img9,img11,img12
   ];
 
   return (
