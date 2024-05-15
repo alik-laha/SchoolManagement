@@ -20,6 +20,7 @@
     color: white;
 margin-bottom: 2px;
 background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
+/* background-image: linear-gradient( 135deg, rgb(117, 9, 38) 30%, #f4f6e700 100%); */
 /* background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%); */
 box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 }
@@ -566,6 +567,15 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 }
 
 @media only screen and (max-width: 768px) {
+    .login-body{
+        background: none;
+        /* background-color: #009879; */
+        background-size: cover;
+        background-repeat: no-repeat;
+       overflow:auto;
+        background-origin: content-box;
+        margin-top: 0rem;
+    }
     .payment-merchant img{
 
         /* display: block;
