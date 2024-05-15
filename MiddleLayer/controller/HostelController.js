@@ -112,7 +112,20 @@ exports.UpdateBed= (req, res) => {
                                 console.log(err)
                                 return res.status(400).json(err)
                             } else {
-                                return res.status(200).json({msg: "Room Details Updated Successfully"})
+
+                                query = `SELECT room_no
+                                FROM bed_availability`
+                                   Database.query(query,(err,result)=>{
+                                       if(err){
+                                           console.log(err)
+                                       }
+                                       else{
+                                           return res.status(200).json({result})
+                                       }
+                                   })
+
+
+                                // return res.status(200).json({msg: "Room Details Updated Successfully"})
                             }
                         })
                     }

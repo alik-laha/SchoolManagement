@@ -88,6 +88,7 @@ const ViewBedStatus60 = (props) => {
             .post("/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed},{headers:{"Authorization":localStorage.getItem("token")}} )
             .then((res) => {
                 alert("Room No : "+room+" Updated Successfully")
+                props.allRoomData(res.data.result)
                 setMainView("contents");
                 setEditView("none");
                 if(view==="block"){
