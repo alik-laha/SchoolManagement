@@ -87,7 +87,7 @@ const ViewBedStatus60 = (props) => {
         axios
             .post("/api/v1/hostel/updatebed",{id,room,floor,bulding,totalbed},{headers:{"Authorization":localStorage.getItem("token")}} )
             .then((res) => {
-                alert("Room No : "+room+" Updated Successfully")
+                alert("Room Has Been Updated Successfully")
                 props.allRoomData(res.data.result)
                 setMainView("contents");
                 setEditView("none");
@@ -101,6 +101,9 @@ const ViewBedStatus60 = (props) => {
                 if(error.response.data.errno===1062){
                     alert(`Room No. already exists`)
                     
+                }
+                else{
+                    alert(error.response.data.msg)
                 }
                 // alert(error.response.data.msg)
             });
