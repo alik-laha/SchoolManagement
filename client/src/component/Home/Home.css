@@ -222,7 +222,15 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 .payment-tab-main{
     display: grid;
 }
-
+.login-body{
+    background: url(../Home/admin-bg.jpg);
+    /* background-color: #009879; */
+    background-size: cover;
+    background-repeat: no-repeat;
+   overflow: auto;
+    background-origin: content-box;
+    margin-top: 0.5rem;
+}
 
 .noticeboard {
     background-color: ivory;

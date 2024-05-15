@@ -91,6 +91,7 @@ const Login = () => {
   return (
     <div className="contain login-conatiner" >
       <CommonHeader/>
+      <body className="login-body">
       <div className="login-box-body" style={{display: 'table'}}>
       <div className="login login-logo">
         <div className="nameLogo">
@@ -135,6 +136,7 @@ const Login = () => {
         </form>
       </div>
       </div>
+      </body>
       <Footer/>
     </div>
   );
