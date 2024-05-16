@@ -67,6 +67,7 @@ background-image: linear-gradient( 135deg, darkred 30%, #d3e7206b 100%);
 /* background-image: linear-gradient( 135deg, rgb(117, 9, 38) 30%, #f4f6e700 100%); */
 /* background-image: linear-gradient( 135deg, #9f05ff69 10%, #fd5e086b 100%); */
 box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
+margin-left: -1%;
 }
 
 .alhilal-footer_color-css {
