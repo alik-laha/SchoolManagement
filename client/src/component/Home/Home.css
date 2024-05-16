@@ -1,5 +1,5 @@
 .banner-container {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.4);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -7,7 +7,7 @@
     height: 90vh;
     display: flex;
     justify-content: center;
-    background-blend-mode: overlay;
+    background-blend-mode:overlay;
     align-items: center;
 
 }
