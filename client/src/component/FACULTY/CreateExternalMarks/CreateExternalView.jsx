@@ -9,6 +9,7 @@ const CreateMarks=(props)=>{
     const [examName,setExamName]=useState("")
     const [marks,setMarks]=useState([])
     const [submitall,setSubmitall]=useState('block')
+    const [present, setPresent] = useState([]);
 
     useEffect(() => {
         console.log(props.view)
@@ -28,6 +29,12 @@ const CreateMarks=(props)=>{
             setSubmitall('block')
         }
     }, [props.view40,props.view,props.data]);
+
+    const handlePresentChange = (index) => {
+        const newPresent = [...present];
+        newPresent[index] = !newPresent[index];
+        setPresent(newPresent);
+    };
 
     function convertToRoman(num) {
         const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
@@ -49,6 +56,8 @@ const CreateMarks=(props)=>{
          setSubject(props.subject)
             setExamName(props.exam)
             setTarget(props.total)
+            setPresent(Array(props.data.length).fill(true));
+            setMarks(Array(props.data.length).fill(0))
     }, [props.data,props.subject,props.examName,props.target]);
 
     const handaleChange=(e,index)=>{
@@ -71,7 +80,7 @@ const CreateMarks=(props)=>{
 
 
     const handleSubmit = async () => {
-        let a = 0;
+        console.log(present)
         if (!subject || !examName) {
             alert("Please select Subject and Exam");
             return;
@@ -124,6 +133,7 @@ const CreateMarks=(props)=>{
                     <th>Exam Name</th>
                     <th>Total Marks</th>
                     <th>Marks</th>
+                    <th>Present</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -140,6 +150,9 @@ const CreateMarks=(props)=>{
                             <td>{target}</td>
                             <td>
                                 <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true}/>
+                            </td>
+                            <td>
+                            <input type="checkbox" checked={present[index]} onChange={() => handlePresentChange(index)} />
                             </td>
                         </tr>
                     ))}
