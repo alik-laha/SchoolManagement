@@ -12,7 +12,8 @@ import PaymentTab from './PaymentTab.jsx';
 
 const Home = (props) => {
     const ismob= window.innerWidth<768;
-    const [bgimage,setBgimage]=useState(background)
+    const [bgimage,setBgimage]=useState(img2)
+   
     const images= [img3,img4,img2];
     const intervalduration= 7000
 
@@ -24,6 +25,8 @@ const Home = (props) => {
             const currentindex= images.indexOf(bgimage)
             const nextindex=(currentindex+1)%images.length;
             setBgimage(images[nextindex])
+           
+            
 
         
         }, intervalduration);
@@ -35,7 +38,9 @@ const Home = (props) => {
     return (
         
         <div >
-            <div style={{ backgroundImage: `url(${bgimage})`}} className="banner-container">
+            
+            {/* <div style={{ backgroundImage: `url(${bgimage})`}} className={`banner-container home-carousel ${nxtimg? 'fade':''}`}> */}
+            <div style={{ backgroundImage: `url(${bgimage})`}} className="banner-container home-carousel" >
                 {!ismob && <div className="payment-tab">
                     <PaymentTab/>
                     
@@ -47,6 +52,7 @@ const Home = (props) => {
 
             </div>}
             </div>
+            
             {ismob && <div className="noticeboard">
                     <NoticeBoardRenderHome />
                    
