@@ -13,7 +13,7 @@ import PaymentTab from './PaymentTab.jsx';
 const Home = (props) => {
     const ismob= window.innerWidth<768;
     const [bgimage,setBgimage]=useState(img2)
-   
+    const [actvindex,setactvIndex]=useState(0)
     const images= [img3,img4,img2];
     const intervalduration= 7000
 
@@ -25,8 +25,10 @@ const Home = (props) => {
             const currentindex= images.indexOf(bgimage)
             const nextindex=(currentindex+1)%images.length;
             setBgimage(images[nextindex])
-           
-            
+          
+            setTimeout(() => {
+                setactvIndex(nextindex)
+            }, 7000);
 
         
         }, intervalduration);
@@ -49,9 +51,10 @@ const Home = (props) => {
                 {!ismob &&<div className="noticeboard">
                 
                 <NoticeBoardRenderHome />
+                
 
             </div>}
-            </div>
+           
             
             {ismob && <div className="noticeboard">
                     <NoticeBoardRenderHome />
@@ -62,6 +65,10 @@ const Home = (props) => {
                     
 
                 </div> }
+                <div className='indicator-container'>
+                    {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}></div>))}
+                </div>
+            </div>
         </div>
     );
 };

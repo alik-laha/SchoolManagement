@@ -9,6 +9,7 @@
     justify-content: center;
     background-blend-mode:overlay;
     align-items: center;
+    
 
 }
 .home-carousel{
@@ -23,7 +24,26 @@
 .fade {
     opacity: 0!important;
 }
+.indicator-container{
 
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+.indicator{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #888;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.indicator-active{
+    background-color: #fff;
+}
 .alhilal-header_color-css {
     /* background-color: darkred; */
     /* color: #061574; */
@@ -402,6 +422,7 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 5px;
 
 }
 
@@ -476,7 +497,7 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
 }
 .payment-bank-txt{
 
-    padding: 10px;
+    padding: 20px 10px 10px 10px;
     font-size: 15px;
 }
 .payment-merchant{
