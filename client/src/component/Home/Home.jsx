@@ -61,6 +61,13 @@ const Home = (props) => {
             </div>}
            
             
+           
+                <div className='indicator-container'>
+                    {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}
+                    onClick={()=> chngBgimg(images[index],index)}></div>))}
+                </div>
+               
+            </div>
             {ismob && <div className="noticeboard">
                     <NoticeBoardRenderHome />
                    
@@ -70,11 +77,6 @@ const Home = (props) => {
                     
 
                 </div> }
-                <div className='indicator-container'>
-                    {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}
-                    onClick={()=> chngBgimg(images[index],index)}></div>))}
-                </div>
-            </div>
         </div>
     );
 };
