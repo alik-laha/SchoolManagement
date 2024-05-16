@@ -13,6 +13,7 @@ import PaymentTab from './PaymentTab.jsx';
 const Home = (props) => {
     const ismob= window.innerWidth<768;
     const [bgimage,setBgimage]=useState(img2)
+    const [nxtimg,setnxtimg]=useState(null)
     const [actvindex,setactvIndex]=useState(0)
     const images= [img3,img4,img2];
     const intervalduration= 7000
@@ -24,11 +25,13 @@ const Home = (props) => {
 
             const currentindex= images.indexOf(bgimage)
             const nextindex=(currentindex+1)%images.length;
-            setBgimage(images[nextindex])
+            setnxtimg(images[nextindex])
+            
           
             setTimeout(() => {
+                setBgimage(images[nextindex])
                 setactvIndex(nextindex)
-            }, 7000);
+            }, 1000);
 
         
         }, intervalduration);
@@ -46,37 +49,32 @@ const Home = (props) => {
         
         <div >
             
-            {/* <div style={{ backgroundImage: `url(${bgimage})`}} className={`banner-container home-carousel ${nxtimg? 'fade':''}`}> */}
-            <div style={{ backgroundImage: `url(${bgimage})`}} className="banner-container home-carousel" >
-                {!ismob && <div className="payment-tab">
-                    <PaymentTab/>
-                    
 
-                </div> }
-                {!ismob &&<div className="noticeboard">
-                
-                <NoticeBoardRenderHome />
-                
+            <div style={{ backgroundImage: `url(${bgimage})`}} className={`banner-container home-carousel ${nxtimg? 'carousel-fade':''}`}>
+            {/* <div style={{ backgroundImage: `url(${bgimage})`}} className="banner-container home-carousel" > */}
+               
+                {/* For Desktop Start */}
 
-            </div>}
-           
-            
-           
+                {!ismob && <div className="payment-tab"> <PaymentTab/></div> }
+                {!ismob &&<div className="noticeboard"><NoticeBoardRenderHome />  </div>}
+
+                 {/* For Desktop End */}
+
                 <div className='indicator-container'>
                     {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}
                     onClick={()=> chngBgimg(images[index],index)}></div>))}
                 </div>
                
             </div>
-            {ismob && <div className="noticeboard">
-                    <NoticeBoardRenderHome />
-                   
-                    </div>}
-                    {ismob && <div className="payment-tab">
-                    <PaymentTab/>
-                    
 
-                </div> }
+            {/* For Mobile Start */}  
+
+                {ismob && <div className="noticeboard"><NoticeBoardRenderHome /></div>}
+                {ismob && <div className="payment-tab"> <PaymentTab /></div>}
+                   
+             {/* For Mobile End */}  
+
+                
         </div>
     );
 };

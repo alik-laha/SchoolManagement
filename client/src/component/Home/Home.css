@@ -19,10 +19,15 @@
   background-size: cover;
   background-position: center;
   opacity: 1;
-  transition: opacity 1s ease;
+  
 }
-.fade {
-    opacity: 0!important;
+.carousel-fade {
+    animation: fade-animation 1s ease;
+}
+@keyframes ade-animation{
+    from{opacity:0;}
+    to{opacity: 1;}
+
 }
 .indicator-container{
 
