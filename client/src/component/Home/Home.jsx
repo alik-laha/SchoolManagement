@@ -36,6 +36,11 @@ const Home = (props) => {
            return ()=> clearInterval(interval)
       },[bgimage,images])
 
+      const chngBgimg=(image,index)=> {
+        setBgimage(image)
+        setactvIndex(index)
+      }
+
 
     return (
         
@@ -66,7 +71,8 @@ const Home = (props) => {
 
                 </div> }
                 <div className='indicator-container'>
-                    {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}></div>))}
+                    {images.map((_,index) => (<div key={index} className={`indicator ${actvindex===index? 'indicator-active':''}`}
+                    onClick={()=> chngBgimg(images[index],index)}></div>))}
                 </div>
             </div>
         </div>
