@@ -839,7 +839,14 @@ box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.9);
     .noticeboard-main li {
         background: white;
     }
+    .indicator-container{
 
+        position: absolute;
+       margin-bottom: 160px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+    }
 
     .alhilal-footer_color-css {
         background-color: rgb(1, 40, 94);
