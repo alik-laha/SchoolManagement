@@ -72,7 +72,7 @@ const AcademicEntryUpdate = (props) => {
             } )
     }
     const HandleSubmit=(index)=>{
-        if(section==="" || rollNo===0){
+        if(section==="" || rollNo===null || section===null || rollNo===0){
             alert("Please Fill All The Details")
             return
         }
