@@ -91,7 +91,7 @@ const PromoteNextClassView= (props) => {
                   academicYear: data.current_academic_year
               },{headers:{"Authorization":localStorage.getItem("token")}})
                   .then((res) => {
-                      axios.post("/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no})
+                      axios.post("/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no},{headers:{"Authorization":localStorage.getItem("token")}})
                             .then((res) => {
                                 console.log("done")
                                 alert(`Student ${data.student_Name} has been Promoted to Next Class and Academic Year `)
