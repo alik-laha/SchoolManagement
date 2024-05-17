@@ -43,6 +43,7 @@ const AcademicEntryUpdate = (props) => {
       };
 
     const HandleEdit=(index,data)=>{
+
         setEditedIndex(index);
         setSection(data.section)
         setRollNo(data.roll_no)
@@ -71,6 +72,10 @@ const AcademicEntryUpdate = (props) => {
             } )
     }
     const HandleSubmit=(index)=>{
+        if(section==="" || rollNo===0){
+            alert("Please Fill All The Details")
+            return
+        }
         if(index===editedIndex) {
             axios.post("/api/v1/student/academecentry", {section, rollNo,regNo},{headers:{"Authorization":localStorage.getItem("token")}})
                 .then((res) => {
