@@ -945,6 +945,8 @@ const MasterStudentViewUpdate = (props) => {
                 dialog.close();
                 //setPopup("none")
                 setUpdateView("none")
+                setReadmitAcademicYear(0)
+                setReadmitClass(0)
                 setAllview("contents")
                 setView('none')
             })
