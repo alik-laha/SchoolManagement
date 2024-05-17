@@ -1111,7 +1111,7 @@ const MasterStudentViewUpdate = (props) => {
                                 Other
                             </option>
                         </select></dd>
-                        <dt><label>Date of Birth*</label></dt>
+                        <dt><label>Date of Birth</label></dt>
                         <dd>  <input
                             type="date"
                             value={dob}
@@ -1119,9 +1119,10 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="Date of Birth"
                             required={true}
                         /></dd>
-                         <dt><label>Age*</label></dt>
+                         <dt><label>Age</label></dt>
                         <dd>  <input
                             type="number"
+                            style={{backgroundColor:'lightyellow'}}
                             value={age}
                             onChange={(e) => setAge(e.target.value)}
                             placeholder="Age"
@@ -1165,7 +1166,7 @@ const MasterStudentViewUpdate = (props) => {
                             placeholder="Address"
                             required={true}
                         /></dd>
-                         <dt><label>Pin Number*</label></dt>
+                         <dt><label>Pin Number</label></dt>
                         <dd>   <input
                             type="text"
                             value={pinNo}
