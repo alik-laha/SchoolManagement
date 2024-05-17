@@ -58,10 +58,11 @@ const PromoteNextClassView= (props) => {
     },[props.PromoteView,props.view,props.SearchebyData])
 
 
-    const handaleSubmit=()=>{
+    const handaleSubmit=(section)=>{
         const data={
             Class,
             academicYear,
+            section
         }
         axios.post("/api/v1/student/getpromotesearch",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
@@ -112,7 +113,7 @@ const PromoteNextClassView= (props) => {
                     .then((res) => {
                         console.log("done")
                         alert(`Student Bearing Reg. No. : ${data.registration_no} has been Promoted to Next Class and Academic Year : ${data.current_academic_year+1}`)
-                        handaleSubmit()
+                        handaleSubmit({section:data.section})
                     }).catch((error)=>{
                         console.log(error)
                     })
