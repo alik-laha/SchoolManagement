@@ -942,7 +942,7 @@ const MasterStudentViewUpdate = (props) => {
         axios.post("/api/v1/student/readmitstudent",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 alert('Student Re-Admitted Successfully')
-                display.close();
+                dialog.close();
                 //setPopup("none")
                 setUpdateView("none")
                 setAllview("contents")
