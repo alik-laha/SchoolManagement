@@ -92,7 +92,7 @@ const PromoteNextClassSearch= (props) => {
                             Search By Section.
                         </label>
                         <select onChange={(e) => setSection(e.target.value)}
-                                value={section}>
+                                value={section} required>
                             <option value="">Section</option>
                             <option value="A">
                                 A
