@@ -201,8 +201,8 @@ const MasterStudentEntry= (props) => {
                         setReligion('');
                         setDob('');
                         setCast('');
-                        setPhysicallyChallenged("");
-                        setOrphanage("");
+                        setPhysicallyChallenged(false);
+                        setOrphanage(false);
                         setFatherName('');
                         setFatherQualification('');
                         setFatherOcupation('');
