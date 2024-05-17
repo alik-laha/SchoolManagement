@@ -95,7 +95,7 @@ const PromoteNextClassView= (props) => {
                             .then((res) => {
                                 console.log("done")
                                 alert(`Student ${data.student_Name} has been Promoted to Next Class and Academic Year `)
-                                handaleSubmit()
+                                handaleSubmit(data.section)
                             }).catch((error)=>{
                                 console.log(error)
                             })
@@ -113,7 +113,7 @@ const PromoteNextClassView= (props) => {
                     .then((res) => {
                         console.log("done")
                         alert(`Student Bearing Reg. No. : ${data.registration_no} has been Promoted to Next Class and Academic Year : ${data.current_academic_year+1}`)
-                        handaleSubmit({section:data.section})
+                        handaleSubmit(data.section)
                     }).catch((error)=>{
                         console.log(error)
                     })
@@ -128,7 +128,7 @@ const PromoteNextClassView= (props) => {
                 .then((res) => {
                     console.log("done")
                     alert(`Student has been Retained in ${convertToRoman(data.class)} for the Academic Year ${data.current_academic_year+1}`)
-                    handaleSubmit()
+                    handaleSubmit(data.section)
                 }).catch((error)=>{
                     console.log(error)
                 })
