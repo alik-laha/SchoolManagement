@@ -222,7 +222,7 @@ const MasterStudentEntry= (props) => {
                         setApplyClass('');
                         setAdmissionYear(new Date().getFullYear());
                         setAdmissonDate(new Date().toISOString().slice(0, 10));
-                        setAge('');
+                        setAge(0);
                         setBloodGroup('');
                         setBankAcountNo('');
                         setBrunch('');
