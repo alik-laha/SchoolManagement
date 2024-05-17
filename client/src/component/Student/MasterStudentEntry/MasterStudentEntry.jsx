@@ -306,6 +306,7 @@ const MasterStudentEntry= (props) => {
                     <dd> <input
                         type="number"
                         value={age}
+                        style={{backgroundColor:'lightyellow'}}
                         onChange={(e) => setAge(e.target.value)}
                         placeholder="Age" readOnly
                         
