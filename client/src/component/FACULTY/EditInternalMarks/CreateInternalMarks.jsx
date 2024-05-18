@@ -1,12 +1,13 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const CreateInternalMarks=(props)=>{
 const [view,setView]=useState("none")
 const [data,setData]=useState([])
 const [Index,setIndex]=useState(null)
 const [marks,setMarks]=useState(0)
-
+const currDate = new Date().toLocaleDateString();
 function convertToRoman(num) {
     const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
     let roman = ''
@@ -82,9 +83,24 @@ const handleDelete=(data)=>{
 }
     return(
         <div style={{display:view,marginTop:'35px'}}>
-            <button style={{float:'right'}} className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
+            
+            
             <table className="table-60">
-                <thead>
+                <thead style={{display:'contents'}}>
+                <tr style={{display:'table-caption'}}>
+                <button style={{position:'relative',marginTop:'-40px',float:'left'}} 
+                className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear}>Clear Result</button>
+                
+
+                <ReactHTMLTableToExcel
+                                id="marks"
+                                className="dashboard-btn excel-btn user-profile-export"
+                                table="student-marks-all"
+                                filename={"Student_All_Marks_Report_" + currDate}
+                                sheet="tablexls"
+                                buttonText="Excel Export"
+                            />
+                </tr>
                 <tr>
                     <th>Sl. No.</th>
                     <th>Registration No</th>
@@ -120,6 +136,45 @@ const handleDelete=(data)=>{
                             (<div><button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} disabled={data.present === 0 ? true : false} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
                             <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={handleCancel} className="dashboard-btn btn-warning fix-width">Cancel</button> 
                             <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning fix-width">Delete</button></div>)}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            <table  style={{display:'none'}} id='student-marks-all'>
+                <thead style={{display:'contents'}}>
+               
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Registration No</th>
+                    <th>Student Name</th>
+                    <th>Class</th>
+                    <th>Section</th>
+                   
+                    <th>Roll No</th>
+                    <th>Exam Name</th>
+                    <th>Subject</th>
+                    <th>Total Exam Mark</th>
+                    <th>Present</th>
+                    <th>Obtained Mark</th>
+                  
+                </tr>
+                </thead>
+                <tbody>
+                {data.map((data,index)=>(
+                    <tr key={index}>
+                        <td>{index+1}</td>
+                        <td>{data.registration_no}</td>
+                        <td>{data.student_Name}</td>
+                        <td>{convertToRoman(data.class)}</td>
+                        <td>{data.section}</td>
+                       
+                        <td>{data.roll_no}</td>
+                        <td>{props.Exam}</td>
+                        <td>{data.subject}</td>
+                        <td>{props.Marks}</td>
+                        <td><input type='checkbox' checked={data.present === 1 ? true : false}></input></td>
+                        <td>{data.marks}</td>
+                        
                     </tr>
                 ))}
                 </tbody>
