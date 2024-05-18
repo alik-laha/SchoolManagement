@@ -128,7 +128,7 @@ const Login = () => {
             </section>
           </div>
           <div><ReCAPTCHA
-          sitekey='6LcqjZcpAAAAAIflW5rrymjG6S9F0uqqdDTtn1Uh'
+          sitekey='6LdW4OApAAAAAJkVjOTL3wRCcpQr3g938o-TXtDv'
           onChange={onChangeCaptcha}
           /></div>
           <p style={{display:errormsg,color:"red",fontSize:"15px",fontWeight:'500'}}>Invalid Credentials</p>
