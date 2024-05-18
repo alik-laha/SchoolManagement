@@ -645,7 +645,8 @@ try{
             Student_Admission.class,
             Student_Admission.current_academic_year,
             Marks.subject,
-            Marks.marks 
+            Marks.marks,
+            Marks.present  
         FROM 
             Student_Admission 
         LEFT JOIN 
@@ -673,7 +674,8 @@ try{
             Student_Admission.class,
             Student_Admission.current_academic_year,
             Marks.subject,
-            Marks.marks 
+            Marks.marks,
+            Marks.present  
         FROM 
             Student_Admission 
         LEFT JOIN 

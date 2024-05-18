@@ -96,6 +96,7 @@ const handleDelete=(data)=>{
                     <th>Exam Name</th>
                     <th>Subject</th>
                     <th>Total Exam Mark</th>
+                    <th>Present</th>
                     <th>Obtained Mark</th>
                     <th style={{width:'21%'}}>Action</th>
                 </tr>
@@ -113,6 +114,7 @@ const handleDelete=(data)=>{
                         <td>{props.Exam}</td>
                         <td>{data.subject}</td>
                         <td>{props.Marks}</td>
+                        <td><input type='checkbox' checked={data.present === 1 ? true : false}></input></td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
                         <td>{index!==Index ?(<button  onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
                             (<div><button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 

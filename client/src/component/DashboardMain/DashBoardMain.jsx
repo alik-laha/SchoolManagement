@@ -450,7 +450,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
           <PromoteNextClassSearch view={props.PromoteView} setPromoteData={PromoteNextClassSearchData} buttonClick={PromoteNextClassShow} />
         {/* Student End*/} 
 
-         {/* Faculty Start */} 
+         {/* Marks Start */} 
             {/* Faculty Entry*/}
             <CreateFaculty view={props.CreateFaculty}/>
             {/* Faculty Serach*/}
@@ -465,7 +465,7 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <CreateMarksSearch view={props.CreateExternalMarks} setExternalMarks={ExternalMarksData} setExternalMarksView={ExternalMarksView}/>
             {/* Export Exam Search*/}
             <ExportStudentMarksSearch view={props.ExportStudentMarks} setStudentMarks={MarksData} setStudentMarksView={MarksView} setSearchcombination={handaleMarksFlag}/>
-          {/* Faculty End */}
+          {/* Marks End */}
 
             {/*fee payment Start*/}
             <CreateFeeSturcture view={props.CreateFeeStructure}/>
@@ -523,14 +523,16 @@ const PromoteNextClassSearchData=(data,d1,d2)=>{
             <PromoteNextClassView PromoteView={props.PromoteView} view={promotetonextClass} SearchebyData={promoteViewData} Class={Class} AcademicYear={academicYear} />
          {/* Student End*/} 
 
-          {/* Faculty Start*/} 
+          {/* Marks Start*/} 
             <ViewAndUpdateFaculty data={facultyData} view={props.ViewFaculty}/>
             <ViewSubject data={subjectData} view={subjectView} view40={props.CreateSubject}/>
             <ViewExternalExam view={externalExamView} view40={props.CreateExam} data={externalExamData} data1={internalExamData} />
+            {/* Marks Edit */}
             <CreateInternalMarks view40={props.CreateInternalMarks} view={internalMarksView} data={internalMarksData} Exam={editExamName} Subject={editSubjectName} Marks={editMarks}/>
+            {/* Marks Entry */}
             <CreateMarks view40={props.CreateExternalMarks} view={externalMarksView} data={externalMarksData} exam={entexam} subject={entSubject} total={enttarget} />
             <ExportStudentMarksView view40={props.ExportStudentMarks} view={marksView} data={marksData} type={marksFlag}/>
-          {/* Faculty End*/}
+          {/* Marks End*/}
 
 
             <ViewFeeStructure data={viewStructData} view40={props.ViewFeeStructure} view={ViewStructView} />
