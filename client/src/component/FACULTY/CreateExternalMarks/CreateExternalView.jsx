@@ -62,10 +62,11 @@ const CreateMarks=(props)=>{
 
     const handaleChange=(e,index)=>{
         const newMarks=[...marks]
-        if(e.target.value>target){
+        if(e.target.value>target ){
             alert("Marks should be less than or equal to Total Alloted Marks of Exam")
             return
         }
+        
         else{
             newMarks[index]= parseInt(e.target.value)
             setMarks(newMarks)
@@ -88,6 +89,20 @@ const CreateMarks=(props)=>{
 
         try {
             await Promise.all(data.map(async (data, index) => {
+                if(!present[index])
+                    {
+                        if(marks[index]!==0)
+                            {
+                                alert("Absent Candidate Can Not get Marks Other than 0")
+                                return
+                            }
+                    }
+
+                    if(marks[index]===null){
+                            alert("Marks has been Put Blank For Student Reg No.: "+data.registration_no)
+                            return
+                            
+                    }
                 await axios.post(`/api/v1/faculty/marksentryforStudentexam`, {
                     regNo: data.registration_no,
                     Class: data.class,
