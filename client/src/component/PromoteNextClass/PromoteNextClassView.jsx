@@ -94,7 +94,7 @@ const PromoteNextClassView= (props) => {
                       axios.post("/api/v1/hostel/deletehostelentrybyregno", {regNo: data.registration_no},{headers:{"Authorization":localStorage.getItem("token")}})
                             .then((res) => {
                                 console.log("done")
-                                alert(`Student ${data.student_Name} has been Promoted to Next Class and Academic Year `)
+                                alert(`Student ${data.student_Name} Has Qualified Highest Class and Hence Released from Institute `)
                                 handaleSubmit(data.section)
                             }).catch((error)=>{
                                 console.log(error)
@@ -112,7 +112,7 @@ const PromoteNextClassView= (props) => {
                 },{headers:{"Authorization":localStorage.getItem("token")}})
                     .then((res) => {
                         console.log("done")
-                        alert(`Student Bearing Reg. No. : ${data.registration_no} has been Promoted to Next Class and Academic Year : ${data.current_academic_year+1}`)
+                        alert(`Student Bearing Reg. No. : ${data.registration_no} has been Promoted to Next Class ${convertToRoman(data.class+1)} and Academic Year : ${data.current_academic_year+1}`)
                         handaleSubmit(data.section)
                     }).catch((error)=>{
                         console.log(error)

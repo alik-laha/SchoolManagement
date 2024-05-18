@@ -145,7 +145,7 @@ const PromoteNextClassSearch= (props) => {
                     </div>
                     <div style={{width: '100%'}}>
 
-                        <p style={{fontSize: '15px'}}>(Class and Academic Year is Mandatory)</p>
+                        <p style={{fontSize: '15px'}}>(All Fields Are Mandatory)</p>
                     </div>
 
                     <span><button className="dashboard-btn dashboard-btn-scss">Search</button></span>
