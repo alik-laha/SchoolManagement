@@ -437,7 +437,7 @@ const stockUsageVisiblity = () => {
                  onClick={props.onCreateExternalMarksEntry}><ImListNumbered /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Entry</p>
             </div>
             <div className="Items" style={{display: combineadmin}}
-                 onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}>Marks Update/Delete</p>
+                 onClick={props.onCreateInternalMarksEntry}><CiEdit /><p style={{width:'-webkit-fill-available',marginLeft:'10px'}}> View/Update Marks</p>
             </div>
             
             <div className="Items" style={{display: combineadmin}}
