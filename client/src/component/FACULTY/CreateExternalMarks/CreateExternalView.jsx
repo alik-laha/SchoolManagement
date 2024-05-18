@@ -94,12 +94,13 @@ const CreateMarks=(props)=>{
                     subject,
                     examName,
                     marks: marks[index],
-                    Year: data.current_academic_year
+                    Year: data.current_academic_year,
+                    Present: present[index]? 1:0
                 }, {
                     headers: { "Authorization": localStorage.getItem("token") }
                 });
                 console.log("Done");
-                a = 1;
+               
             }));
 
             alert("Marks of All Students Has Been Entered Successfully");
@@ -132,8 +133,9 @@ const CreateMarks=(props)=>{
                     <th>Subject</th>
                     <th>Exam Name</th>
                     <th>Total Marks</th>
-                    <th>Marks</th>
                     <th>Present</th>
+                    <th>Marks</th>
+                    
                     </tr>
                 </thead>
                 <tbody>
@@ -149,11 +151,12 @@ const CreateMarks=(props)=>{
                             <td>{examName}</td>
                             <td>{target}</td>
                             <td>
-                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true}/>
-                            </td>
-                            <td>
                             <input type="checkbox" checked={present[index]} onChange={() => handlePresentChange(index)} />
                             </td>
+                            <td>
+                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true} readOnly={!present[index]}/>
+                            </td>
+                            
                         </tr>
                     ))}
                 </tbody>
