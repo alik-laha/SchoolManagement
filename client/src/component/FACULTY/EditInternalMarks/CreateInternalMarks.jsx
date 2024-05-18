@@ -117,7 +117,7 @@ const handleDelete=(data)=>{
                         <td><input type='checkbox' checked={data.present === 1 ? true : false}></input></td>
                         <td>{index!==Index ? (data.marks):(<input type="number" value={marks} onChange={(e)=>setMarks(e.target.value)}/>)}</td>
                         <td>{index!==Index ?(<button  onClick={()=>handleEdit(data,index)} className="dashboard-btn btn-warning">Edit</button>):
-                            (<div><button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
+                            (<div><button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} disabled={data.present === 0 ? true : false} onClick={()=>handleUpdate(data)} className="dashboard-btn btn-warning fix-width">Save</button> 
                             <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={handleCancel} className="dashboard-btn btn-warning fix-width">Cancel</button> 
                             <button style={{background:'#3c8dbc',borderColor:'#3c8dbc'}} onClick={()=>handleDelete(data)} className="dashboard-btn btn-warning fix-width">Delete</button></div>)}</td>
                     </tr>
