@@ -11,8 +11,8 @@ export const ContactForm = () => {
 
     const submit = () => {
         if (name && email && message && typequery) {
-            const serviceId = 'service_yjmjno8'
-            const templateId = 'template_hshxz6f'
+            const serviceId = 'service_4lcggkr'
+            const templateId = 'template_j8sk3yz'
             const templateParams = {
                 name,
                 email,
@@ -31,7 +31,7 @@ export const ContactForm = () => {
             setstyle('block')
             setEmailSent(1)
         } else {
-            alert('Please fill in all fields.')
+            alert('Please Fill in All Fields.')
             
         }
     }

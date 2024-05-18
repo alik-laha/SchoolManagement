@@ -8,7 +8,7 @@ import img from '../Home/location-ahm.png'
 
 
 const ContactUs = (props) => {
-    emailjs.init('29DtP64eGRyM55Lbw')
+    emailjs.init('1amBgCIwnsl6XqJEJ') //API Public Key
 
     return (
         <div>
