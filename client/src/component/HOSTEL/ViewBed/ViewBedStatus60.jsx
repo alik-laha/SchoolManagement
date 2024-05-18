@@ -205,7 +205,7 @@ const ViewBedStatus60 = (props) => {
                         <dd><input type="text" placeholder="Floor" value={floor} onChange={(e)=>setFloor(e.target.value)} /></dd>
                         <dt><label>Room No.</label></dt>
                         <dd>
-                        <input type="text" placeholder="Room Number" value={room} onChange={(e)=>setRoom(e.target.value)} />
+                        <input style={{backgroundColor:'lightyellow'}} type="text" placeholder="Room Number" value={room} onChange={(e)=>setRoom(e.target.value)} readOnly/>
                             
                         </dd>
                         <dt><label>Total Bed </label></dt>
