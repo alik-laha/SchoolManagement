@@ -705,6 +705,16 @@ const ViewFeePayment =(props)=>{
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
                                    onChange={(e) => e.target.value <= NewBedFee - BedFee ? setEditBedFee(e.target.value) : alert(`It should not Exceed than ${NewBedFee - BedFee}`)}/>
                         </dd>
+                        <dt>
+                            <label>Total Pending Fee(Without Waiver)</label>
+                        </dt>
+                        <dd>
+                            <input type="number" value={NewTotal - Total+Number(fine)-Number(finePaid)} readOnly
+                                   style={{backgroundColor: 'ivory', color:'black',textAlign: 'center', width: '100%',fontWeight:'bolder'}}/>
+                            {/* <input type="number" value={EditTotal+Number(finePaid)-waiver}
+                                   style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
+                                   readOnly={true}/> */}
+                                   </dd>
 
 
                        
@@ -730,10 +740,15 @@ const ViewFeePayment =(props)=>{
                            
                             <input type="number" value={finePaid}
                                    style={{backgroundColor: 'azure',textAlign: 'center', width: '100%',fontWeight:'bolder'}}
-                                   onChange={(e)=>setFinePaid(e.target.value)}/></dd>
+                                   onChange=
+                                   {(e) => e.target.value <= fine ? setFinePaid(e.target.value) : alert(`It should not Exceed than ${fine}`)}/></dd>
+
+
+
+
 
 <dt>
-                            <label>Total Pending Fee </label>
+                            <label>Final Pending Fee </label>
                         </dt>
                         <dd>
                             <input type="number" value={NewTotal - Total-waiver+Number(fine)-Number(finePaid)} readOnly
