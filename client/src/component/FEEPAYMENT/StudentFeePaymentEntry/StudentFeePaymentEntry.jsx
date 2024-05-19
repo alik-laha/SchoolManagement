@@ -806,6 +806,10 @@ const StudentFeePaymentEntry = (props) => {
     const HandleNewAdmissionFee=(e)=>{
         console.log('clicked')
         e.preventDefault()
+        if(Number(Total+fine-waiver)-Number(EditTotal+fine_paid)<0){
+            alert("Please Check The Total Amount")
+            return
+        }
         if(!status) {
             const data = {
                 regNo: regNo,
@@ -966,6 +970,10 @@ const StudentFeePaymentEntry = (props) => {
 
     const HandleReAdmissionFee=(e)=>{
         e.preventDefault()
+        if(Number(Total+fine-waiver)-Number(EditTotal+fine_paid)<0){
+            alert("Please Check The Total Amount")
+            return
+        }
         if(!status) {
             console.log(EditTotal, EdithostelCharge, EditTutionFee, EditAdmissonFee, EditCautionMoney, EditExaminationFee, EditGamesSportsExicursion, EditElectricCharge, EditLibraryFees, EditComputerFees, EditDevelopmentFees, EditMiscellaneous, EditLaundryCharge, EditMedicalCharge, EditUniform, EditSessionCharge, EditBedFee)
             const data = {
