@@ -1156,6 +1156,7 @@ const StudentFeePaymentEntry = (props) => {
                     
                     
                     <th>Total Paid </th>
+                    <th>Final Due</th>
                     
                 
                     
@@ -1180,13 +1181,13 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.roll_no}</td>
                                 
                                 
-                                <td style={{width:'30%'}}>{item.total_fee}</td>
+                                <td style={{width:'20%'}}>{item.total_fee}</td>
                                 
                                 
-                                <td style={{width:'30%'}}>{item.total_fee+item.fine-item.waiver}</td>
+                                <td style={{width:'20%'}}>{item.total_fee+item.fine-item.waiver}</td>
                                 
-                                <td style={{width:'30%'}}>{item.student_total_fee+item.fine_paid}</td>
-                               
+                                <td style={{width:'20%'}}>{item.student_total_fee+item.fine_paid}</td>
+                                <td style={{width:'30%',color:'red'}}>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
                                
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
@@ -1462,8 +1463,8 @@ const StudentFeePaymentEntry = (props) => {
                          <input type="number" value={EditTotal+fine_paid} style={{backgroundColor:'azure',marginLeft:'10px',textAlign:'center',width:'50%',fontWeight:'bolder'} }
                                readOnly={true}/></dd>
 
-<dt>
-                        <label>Due Amount </label>
+                        <dt >
+                        <label >Due Amount </label>
                         </dt>   
                         <dd> 
                       <input type="number" value={(Total+fine)-(EditTotal+fine_paid)} 
@@ -1473,15 +1474,21 @@ const StudentFeePaymentEntry = (props) => {
                     
                    
 
-                        <dt>
+                        <dt style={{marginTop:'5%'}}>
                         <label>Waiver </label>
                         </dt>   
                         <dd> 
                       <input type="number" value={waiver} onChange={(e) => e.target.value <= ((Total+fine)-(EditTotal+fine_paid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${(Total+fine)-(EditTotal+fine_paid)}`)}
-                              style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder'} }/> 
+                              style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder',marginTop:'14%'} }/> 
                         </dd>        
                               
-                              
+                        <dt>
+                        <label>Final Due Amount </label>
+                        </dt>   
+                        <dd> 
+                      <input type="number" value={(Total+fine-waiver)-(EditTotal+fine_paid)} 
+                              style={{backgroundColor:'ivory',textAlign:'center',width:'100%',color:'red',fontWeight:'bolder'} }/> 
+                        </dd>          
 
                     <dt>
                         <label>Payment Date</label></dt>
