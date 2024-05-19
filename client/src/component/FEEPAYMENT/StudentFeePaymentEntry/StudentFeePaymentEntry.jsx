@@ -1476,7 +1476,7 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>   
                         <dd> 
                       <input type="number" value={(Total+fine)-(EditTotal+fine_paid)} 
-                              style={{backgroundColor:'azure',textAlign:'center',width:'100%',color:'red',fontWeight:'bolder'} }/> 
+                              style={{backgroundColor:'azure',textAlign:'center',width:'100%',color:'black',fontWeight:'bolder'} }/> 
                         </dd> 
                   
                     
@@ -1487,7 +1487,7 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>   
                         <dd> 
                       <input type="number" value={waiver} onChange={(e) => e.target.value <= ((Total+fine)-(EditTotal+fine_paid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${(Total+fine)-(EditTotal+fine_paid)}`)}
-                              style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder',marginTop:'14%'} }/> 
+                              style={{backgroundColor:'lightsalmon',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder',marginTop:'14%'} }/> 
                         </dd>        
                               
                         <dt>
@@ -1725,11 +1725,11 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/></dd>
 
                         <dt >
-                        <label >Due Amount </label>
+                        <label >Due Without Waiver</label>
                         </dt>   
                         <dd> 
                       <input type="number" value={(Total+fine)-(EditTotal+fine_paid)} 
-                              style={{backgroundColor:'azure',textAlign:'center',width:'100%',color:'red',fontWeight:'bolder'} }/> 
+                              style={{backgroundColor:'azure',textAlign:'center',width:'100%',color:'black',fontWeight:'bolder'} }/> 
                         </dd> 
                   
                     
@@ -1740,7 +1740,7 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>   
                         <dd> 
                       <input type="number" value={waiver} onChange={(e) => e.target.value <= ((Total+fine)-(EditTotal+fine_paid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${(Total+fine)-(EditTotal+fine_paid)}`)}
-                              style={{backgroundColor:'lightseagreen',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder',marginTop:'14%'} }/> 
+                              style={{backgroundColor:'lightsalmon',textAlign:'center',width:'100%',color:'white',fontWeight:'bolder',marginTop:'14%'} }/> 
                         </dd>        
                               
                         <dt>
