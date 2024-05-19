@@ -713,8 +713,8 @@ const ViewFeePayment =(props)=>{
                             <label>Waiver Imposed</label>
                         </dt>
                         <dd>
-                            <input type="number" value={waiver} style={{backgroundColor: 'lightseagreen',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
-                            onChange={(e) => e.target.value <= ((PendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
+                            <input type="number" value={waiver} style={{backgroundColor: 'azure',color:'black' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
+                            onChange={(e) => e.target.value <= (NewTotal - Total-waiver+Number(fine)-Number(finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
                                    </dd>           
 
                         <dt>
@@ -722,14 +722,14 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
                             <input type="number" value={fine} onChange={(e) => setFine(e.target.value)}
-                                   style={{backgroundColor: 'ivory',textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
+                                   style={{backgroundColor: 'azure',textAlign: 'center', width: '100%',fontWeight:'bolder'}}/></dd>
                             
                                    <dt>
                             <label>Fine Paid</label> </dt>
                             <dd>
                            
                             <input type="number" value={finePaid}
-                                   style={{backgroundColor: 'ivory',textAlign: 'center', width: '100%'}}
+                                   style={{backgroundColor: 'azure',textAlign: 'center', width: '100%',fontWeight:'bolder'}}
                                    onChange={(e)=>setFinePaid(e.target.value)}/></dd>
 
 <dt>
@@ -737,10 +737,11 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
                             <input type="number" value={NewTotal - Total-waiver+Number(fine)-Number(finePaid)} readOnly
-                                   style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
-                            <input type="number" value={EditTotal}
+                                   style={{backgroundColor: 'lightcoral', color:'white',textAlign: 'center', width: '100%'}}/>
+                            {/* <input type="number" value={EditTotal+Number(finePaid)-waiver}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   readOnly={true}/></dd>
+                                   readOnly={true}/> */}
+                                   </dd>
                                   
                        
 
