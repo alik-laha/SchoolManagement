@@ -268,7 +268,7 @@ const ViewFeePayment =(props)=>{
 
     const handlesubmit=(e)=>{
         e.preventDefault()
-        console.log(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid))
+        console.log(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid)-EditTotal)
         if(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid)<0){
             alert("Please Check the Fee Details")
             return
