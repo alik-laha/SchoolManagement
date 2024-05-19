@@ -268,6 +268,11 @@ const ViewFeePayment =(props)=>{
 
     const handlesubmit=(e)=>{
         e.preventDefault()
+        console.log(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid))
+        if(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid)<0){
+            alert("Please Check the Fee Details")
+            return
+        }
         let data={
             AdmissionFee:Number(EditAdmissonFee),
             hostelCharge:Number(EdithostelCharge),
@@ -540,7 +545,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditAdmissonFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewAdmissionFee - AdmissonFee) ? setEditAdmissonFee(e.target.value) : alert(`It should not Exceed than ${NewAdmissionFee - AdmissonFee}`)}/>
+                                   onChange={(e) => e.target.value <= (NewAdmissionFee) ? setEditAdmissonFee(e.target.value) : alert(`It should not Exceed than ${NewAdmissionFee}`)}/>
                         </dd>
 
 
@@ -552,7 +557,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EdithostelCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewhostelCharge - hostelCharge) ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${NewhostelCharge - hostelCharge}`)}/>
+                                   onChange={(e) => e.target.value <= (NewhostelCharge) ? setEditHostelCharge(e.target.value) : alert(`It should not Exceed than ${NewhostelCharge}`)}/>
                         </dd>
 
 
@@ -564,7 +569,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
                                    value={EditTutionFee}
-                                   onChange={(e) => e.target.value <= (NewTutionFee - TutionFee) ? setEditTutionFee(e.target.value) : alert(`It should not Exceed than ${NewTutionFee - TutionFee}`)}/>
+                                   onChange={(e) => e.target.value <= (NewTutionFee) ? setEditTutionFee(e.target.value) : alert(`It should not Exceed than ${NewTutionFee}`)}/>
                         </dd>
 
 
@@ -576,7 +581,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditCautionMoney}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewCautionMoney - CautionMoney) ? setEditCautionMoney(e.target.value) : alert(`It should not Exceed than ${NewCautionMoney - CautionMoney}`)}/>
+                                   onChange={(e) => e.target.value <= (NewCautionMoney) ? setEditCautionMoney(e.target.value) : alert(`It should not Exceed than ${NewCautionMoney}`)}/>
                         </dd>
 
 
@@ -588,7 +593,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditExaminationFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewExaminationFee - ExaminationFee) ? setEditExaminationFee(e.target.value) : alert(`It should not Exceed than ${NewExaminationFee - ExaminationFee}`)}/>
+                                   onChange={(e) => e.target.value <= (NewExaminationFee) ? setEditExaminationFee(e.target.value) : alert(`It should not Exceed than ${NewExaminationFee }`)}/>
                         </dd>
 
 
@@ -600,7 +605,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditGamesSportsExicursion}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewGamesSportsExicursion - GamesSportsExicursion) ? setEditGamesSportsExicursion(e.target.value) : alert(`It should not Exceed than ${NewGamesSportsExicursion - GamesSportsExicursion}`)}/>
+                                   onChange={(e) => e.target.value <= (NewGamesSportsExicursion ) ? setEditGamesSportsExicursion(e.target.value) : alert(`It should not Exceed than ${NewGamesSportsExicursion }`)}/>
                         </dd>
 
 
@@ -611,7 +616,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditElectricCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= (NewElectricCharge - ElectricCharge) ? setEditElectricCharge(e.target.value) : alert(`It should not Exceed than ${NewElectricCharge - ElectricCharge}`)}/>
+                                   onChange={(e) => e.target.value <= (NewElectricCharge ) ? setEditElectricCharge(e.target.value) : alert(`It should not Exceed than ${NewElectricCharge}`)}/>
                         </dd>
 
 
@@ -623,7 +628,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditLibraryFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewLibraryFees - LibraryFees ? setEditLibraryFees(e.target.value) : alert(`It should not Exceed than ${NewLibraryFees - LibraryFees}`)}/>
+                                   onChange={(e) => e.target.value <= NewLibraryFees  ? setEditLibraryFees(e.target.value) : alert(`It should not Exceed than ${NewLibraryFees }`)}/>
                         </dd>
 
 
@@ -635,7 +640,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditComputerFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewComputerFees - ComputerFees ? setEditComputerFees(e.target.value) : alert(`It should not Exceed than ${NewComputerFees - ComputerFees}`)}/>
+                                   onChange={(e) => e.target.value <= NewComputerFees ? setEditComputerFees(e.target.value) : alert(`It should not Exceed than ${NewComputerFees }`)}/>
                         </dd>
 
 
@@ -648,7 +653,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditDevelopmentFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewDevelopmentFees - DevelopmentFees ? setEditDevelopmentFees(e.target.value) : alert(`It should not Exceed than ${NewDevelopmentFees - DevelopmentFees}`)}/>
+                                   onChange={(e) => e.target.value <= NewDevelopmentFees  ? setEditDevelopmentFees(e.target.value) : alert(`It should not Exceed than ${NewDevelopmentFees}`)}/>
                         </dd>
 
 
@@ -660,7 +665,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditMiscellaneous}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewMiscellaneous - Miscellaneous ? setEditMiscellaneous(e.target.value) : alert(`It should not Exceed than ${NewMiscellaneous - Miscellaneous}`)}/>
+                                   onChange={(e) => e.target.value <= NewMiscellaneous  ? setEditMiscellaneous(e.target.value) : alert(`It should not Exceed than ${NewMiscellaneous }`)}/>
                         </dd>
 
 
@@ -672,7 +677,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditLaundryCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewLaundryCharge - LaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should not Exceed than ${NewLaundryCharge - LaundryCharge}`)}/>
+                                   onChange={(e) => e.target.value <= NewLaundryCharge ? setEditLaundryCharge(e.target.value) : alert(`It should not Exceed than ${NewLaundryCharge }`)}/>
                         </dd>
 
 
@@ -684,7 +689,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditMedicalCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewMedicalCharge - MedicalCharge ? setEditMedicalCharge(e.target.value) : alert(`It should not Exceed than ${NewMedicalCharge - MedicalCharge}`)}/>
+                                   onChange={(e) => e.target.value <= NewMedicalCharge  ? setEditMedicalCharge(e.target.value) : alert(`It should not Exceed than ${NewMedicalCharge }`)}/>
                         </dd>
 
 
@@ -696,7 +701,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditUniform}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewUniform - Uniform ? setEditUniform(e.target.value) : alert(`It should not Exceed than ${NewUniform - Uniform}`)}/>
+                                   onChange={(e) => e.target.value <= NewUniform  ? setEditUniform(e.target.value) : alert(`It should not Exceed than ${NewUniform }`)}/>
                         </dd>
 
 
@@ -708,7 +713,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditSessionCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewSessionCharge - SessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should not Exceed than ${NewSessionCharge - SessionCharge}`)}/>
+                                   onChange={(e) => e.target.value <= NewSessionCharge ? setEditSessionCharge(e.target.value) : alert(`It should not Exceed than ${NewSessionCharge }`)}/>
                         </dd>
 
 
@@ -720,7 +725,7 @@ const ViewFeePayment =(props)=>{
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditBedFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   onChange={(e) => e.target.value <= NewBedFee - BedFee ? setEditBedFee(e.target.value) : alert(`It should not Exceed than ${NewBedFee - BedFee}`)}/>
+                                   onChange={(e) => e.target.value <= NewBedFee  ? setEditBedFee(e.target.value) : alert(`It should not Exceed than ${NewBedFee }`)}/>
                         </dd>
                         <dt>
                             <label>Total Pending Fee(Without Waiver)</label>
