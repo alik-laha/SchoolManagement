@@ -350,6 +350,7 @@ const currDate = new Date().toLocaleDateString();
                               <Text style={styles.description}>Sl</Text>
                               <Text style={styles.qty}>Subject</Text>
                               <Text style={styles.qty}>Full Marks</Text>
+                              <Text style={styles.qty}>Status</Text>
                               <Text style={styles.qty}>Obtained</Text>
                               <Text style={styles.qty}>Heighest</Text>
                               <Text style={styles.qty}>Percentage</Text>
@@ -366,6 +367,9 @@ const currDate = new Date().toLocaleDateString();
                                 <Text style={styles.rowdescription}>{index+1}</Text>
                                 <Text style={styles.rowqty}>{item.subject}</Text>
                                 <Text style={styles.rowqty}>{item.int_exam_marks}</Text>
+                               
+                               
+                                <Text style={styles.rowqty}>{item.present==1?'Present':'Absent'}</Text>
                                 <Text style={styles.rowqty}>{item.marks}</Text>
                                 {
                                       data[3].map((max,idx)=>(
@@ -389,6 +393,7 @@ const currDate = new Date().toLocaleDateString();
 
                                 <Text style={styles.rowqtytot}>Total</Text>
                                 <Text style={styles.rowqtynew}>{data[1]}</Text>
+                                <Text style={styles.rowqtynew}>X</Text>
                                 <Text style={styles.rowqtynew}>{data[2]}</Text>
                                 <Text style={styles.rowqtynew}>X</Text>
                                 <Text style={styles.rowqtynew}>{((data[2]/ data[1]) * 100).toString().slice(0, 3).concat("%")}</Text>
@@ -575,7 +580,7 @@ const currDate = new Date().toLocaleDateString();
                           </th>
 
                           <th>
-                              Examination Type
+                              Exam Name
                           </th>
 
                           <th>
@@ -611,13 +616,14 @@ const currDate = new Date().toLocaleDateString();
 
                                   <td>
                                       <select onChange={(e) => setExamName(e.target.value)} value={ExamName} required>
-                                          <option value="">Select Exam</option>
+                                          
                                           {
                                               ExamData.map((exam, index) => (
                                                   <option key={index}
                                                           value={exam.internal_exam_name}>{exam.internal_exam_name}</option>
                                               ))
                                           }
+                                          <option value="">Grand Total</option>
                                       </select>
                                   </td>
 
@@ -658,7 +664,9 @@ const currDate = new Date().toLocaleDateString();
 
                           <th>Exam Name</th>
                           <th>Subject</th>
+                          <th>Present</th>
                           <th>Full Marks</th>
+                          
                           <th>Obtained Marks</th>
                           <th>Highest Marks</th>
                           <th>Percentage</th>
@@ -676,8 +684,9 @@ const currDate = new Date().toLocaleDateString();
 
                                   <td>{item.exam_name}</td>
                                   <td>{item.subject}</td>
-
+                                  <td><input type='checkbox' checked={item.present === 1 ? true : false}></input></td>
                                   <td>{item.int_exam_marks}</td>
+                                  
                                   <td>{item.marks}</td>
                                   {
                                       maxMark.map((max,idx)=>(
@@ -694,6 +703,7 @@ const currDate = new Date().toLocaleDateString();
                           <td style={{border: 'none'}}></td>
 
 
+                          <td></td>
                           <td></td>
                           <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
                               Marks:</b></td>
