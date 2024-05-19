@@ -14,6 +14,32 @@ const MarkStudentView=()=>{
     const [data,setData]=useState([])
     const [maxMarks,setMaxMarks]=useState([])
 
+    function convertToRoman(num) {
+        const lookup = ['','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII']
+        let roman = ''
+        let i
+        
+        for ( i in lookup ) {
+         if(num==i){
+            roman=lookup[i]
+            break
+         }
+           
+        }
+        return roman;
+      }
+      const handleClear = () => {
+        if(dataView=='block'){
+            setSearchView("block")
+            setDataView("none")
+            
+            
+            
+        }
+        
+    
+    }
+
     useEffect(() => {
         axios.get(`/api/v1/faculty/getallexam`).then((res)=>{
             setExamData(res.data.data)
@@ -72,7 +98,7 @@ const MarkStudentView=()=>{
                 setDataView("block")
             }
             else {
-                alert("Invlaid Credentials/Marks not Yet Uploaded")
+                alert("Invalid Search Parameters / Marks Not Yet Uploaded")
             }
         }
     )
@@ -81,7 +107,8 @@ let sum_v1 =0,sum_tot_v1=0
     return (
         <>
         <CommonHeader/>
-        <div style={{display:searchView ,height:'auto'}} className="dashbrd-40-colm resultview">
+        <div style={{display:searchView ,height:'50vh'}} className="dashbrd-40-colm resultview">
+        
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>
@@ -169,9 +196,13 @@ let sum_v1 =0,sum_tot_v1=0
         </div>
 
             <div className="student-marks-table" style={{display: dataView}}>
+
+                <button style={{position:'relative',marginTop:'-40px',float:'right'}} 
+                className="dashboard-btn dashboard-btn-scss excel-btn" onClick={handleClear} >Back to Result Page</button>
+
                 <div><span><b>Name :</b></span> <span>{data.length ? data[0].student_Name : " "}</span></div>
                 <div><span><b>Registration No :</b></span> <span>{data.length ? data[0].regNo : " "}</span></div>
-                <div><span><b>Class :</b></span> <span>{data.length ? data[0].class : " "}</span></div>
+                <div><span><b>Class :</b></span> <span>{data.length ? convertToRoman(data[0].class) : " "}</span></div>
                 <div><span><b>Section :</b></span> <span>{data.length ? data[0].section : " "}</span></div>
                 <div><span><b>Exam Name :</b></span> <span>{data.length ? data[0].exam_name : " "}</span></div>
 
@@ -181,8 +212,11 @@ let sum_v1 =0,sum_tot_v1=0
                     <tr>
 
                         <th>Subject</th>
+                        <th>Present</th>
+                        <th>Full Marks</th>
+                       
                         <th>Highest Mark</th>
-                        <th>Marks</th>
+                        <th>Obtained Marks</th>
                         <th>Percentage</th>
                         <th>Grade</th>
                     </tr>
@@ -192,6 +226,9 @@ let sum_v1 =0,sum_tot_v1=0
                         sum_v1 = sum_v1 + row.marks, sum_tot_v1 = sum_tot_v1 + row.int_exam_marks,
                             <tr key={index}>
                                 <td>{row.subject}</td>
+                                <td><input type="checkbox" checked={row.present === 1 ? true : false} /></td>
+                                <td>{row.int_exam_marks}</td>
+                               
                                 {
                                     maxMarks.map((max, idx) => (
                                         max.subject === row.subject ?
@@ -206,9 +243,15 @@ let sum_v1 =0,sum_tot_v1=0
                             </tr>
                     ))}
                     <tr>
+                        
                         <td style={{backgroundColor: '#f39c12', color: 'white', border: '1px solid black'}}><b>Total
                             Marks:</b></td>
-                            <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>X</td>
+                            <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}></td>
+                            <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
+                        </td>
+                            
+                        <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}></td>
+                            {/* <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}>X</td> */}
                         {/* <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_tot_v1}</b>
                         </td> */}
                         <td style={{backgroundColor: 'ghostwhite', border: '1px solid black'}}><b>{sum_v1}</b></td>

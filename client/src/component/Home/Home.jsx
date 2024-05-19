@@ -15,7 +15,7 @@ const Home = (props) => {
     const [bgimage,setBgimage]=useState(img2)
     const [nxtimg,setnxtimg]=useState(null)
     const [actvindex,setactvIndex]=useState(0)
-    const images= [img3,img4,img2];
+    const images= [img3,img4,img2,background];
     const intervalduration= 7000
 
 
