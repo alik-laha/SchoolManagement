@@ -505,14 +505,14 @@ const ViewFeePayment =(props)=>{
                     boxShadow: '0 0 5px grey',
                     marginTop: '10px'
                 }}>
-                    <p className="customize-centre" style={{fontSize: '16px'}}>Student Fee Details</p>
+                    <p className="customize-centre" style={{fontSize: '16px'}}>Pending Student Fee Details</p>
                     <dl>
                         <dt className='no-after'><label
                             style={{color: 'black', fontSize: '15px', textAlign: 'center', width: '50%'}}></label>
                         </dt>
                         <dd>
-                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Pending Amount Till Now</label>
-                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Payment For Adjustment </label>
+                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Pending Amount</label>
+                            <label style={{fontSize: '15px', textAlign: 'center', width: '50%'}}>Going To Pay</label>
                         </dd>
                         <dt>
                             <label>Admission Fee </label>
@@ -707,15 +707,15 @@ const ViewFeePayment =(props)=>{
                         </dd>
 
 
-                        <dt>
-                            <label>Total Fee </label>
+                       
+
+<dt>
+                            <label>Waiver Imposed</label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewTotal - Total} readOnly
-                                   style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
-                            <input type="number" value={EditTotal}
-                                   style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
-                                   readOnly={true}/></dd>
+                            <input type="number" value={waiver} style={{backgroundColor: 'lightseagreen',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
+                            onChange={(e) => e.target.value <= ((PendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
+                                   </dd>           
 
                         <dt>
                             <label>Fine to Be Imposed</label>
@@ -731,13 +731,17 @@ const ViewFeePayment =(props)=>{
                             <input type="number" value={finePaid}
                                    style={{backgroundColor: 'ivory',textAlign: 'center', width: '100%'}}
                                    onChange={(e)=>setFinePaid(e.target.value)}/></dd>
-                                   <dt>
-                            <label>Waiver to Be Imposed</label>
+
+<dt>
+                            <label>Total Pending Fee </label>
                         </dt>
                         <dd>
-                            <input type="number" value={waiver} style={{backgroundColor: 'lightseagreen',color:'white' ,textAlign: 'center', width: '100%',fontWeight:'bolder'}}
-                            onChange={(e) => e.target.value <= ((PendingAmount + fine) - (finePaid)) ? setWaiver(e.target.value) : alert(`It should not Exceed than ${((PendingAmount + fine) - (finePaid))}`)}/>
-                                   </dd>
+                            <input type="number" value={NewTotal - Total-waiver+Number(fine)-Number(finePaid)} readOnly
+                                   style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
+                            <input type="number" value={EditTotal}
+                                   style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
+                                   readOnly={true}/></dd>
+                                  
                        
 
                     </dl>
