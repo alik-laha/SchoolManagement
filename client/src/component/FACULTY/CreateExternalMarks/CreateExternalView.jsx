@@ -169,7 +169,7 @@ const CreateMarks=(props)=>{
                             <input type="checkbox" checked={present[index]} onChange={() => handlePresentChange(index)} />
                             </td>
                             <td>
-                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true} readOnly={!present[index]}/>
+                                <input type="number" placeholder="Marks" value={marks[index]} onChange={(e)=>handaleChange(e,index)} required={true} readOnly={!present[index]} style={{backgroundColor:!present[index]?'lightyellow':'white'}}/>
                             </td>
                             
                         </tr>
