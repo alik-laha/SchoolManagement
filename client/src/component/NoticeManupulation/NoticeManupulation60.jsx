@@ -20,6 +20,13 @@ const NoticeManupulation60=(props)=>{
         
     },[props.Publish])
 
+    const fetchFiles=()=>{
+        fetch("/api/v1/allfiles")
+            .then((response) => response.json())
+            .then((data) => setFile(data.files))
+            .catch((error) => console.error('Error fetching files:', error));
+    }
+
     useEffect(()=>{
         fetch("/api/v1/allfiles")
             .then((response) => response.json())
@@ -33,7 +40,8 @@ const NoticeManupulation60=(props)=>{
             .then(() => {
                 alert("Notice has been Deleted")
                 // setnoticevisi('none')
-                {clearTable()}
+               // {clearTable()}
+               fetchFiles();
             })
             .catch((error) => console.log('Error deleting files:', error));
             

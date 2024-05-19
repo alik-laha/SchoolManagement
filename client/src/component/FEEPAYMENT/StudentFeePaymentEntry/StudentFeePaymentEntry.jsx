@@ -807,7 +807,7 @@ const StudentFeePaymentEntry = (props) => {
         console.log('clicked')
         e.preventDefault()
         if(Number(Total+fine-waiver)-Number(EditTotal+fine_paid)<0){
-            alert("Please Check The Total Amount")
+            alert("Please Adjust Waiver Amount According To Total Fees Paid so That final Due Amount doesn't Becomes Negative")
             return
         }
         if(!status) {
@@ -971,7 +971,7 @@ const StudentFeePaymentEntry = (props) => {
     const HandleReAdmissionFee=(e)=>{
         e.preventDefault()
         if(Number(Total+fine-waiver)-Number(EditTotal+fine_paid)<0){
-            alert("Please Check The Total Amount")
+            alert("Please Adjust Waiver Amount According To Total Fees Paid so That final Due Amount doesn't Becomes Negative")
             return
         }
         if(!status) {
@@ -1298,7 +1298,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Tution Charge </label>
+                        <label>Tuition Charge </label>
                         </dt>
                      <dd> 
                      <input type="number" value={TutionFee} readOnly
@@ -1336,7 +1336,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Games Sports</label>
+                        <label>Games & Sports Fee</label>
                         </dt>
                      <dd>
                      <input type="number" value={GamesSportsExicursion} readOnly
@@ -1365,7 +1365,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                         <dt>
-                        <label>Computer Fees</label>
+                        <label>Computer Fee</label>
                         </dt>
                     <dd>
                     <input type="number" value={ComputerFees} readOnly
@@ -1375,7 +1375,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Development Fees </label>
+                        <label>Development Fee </label>
                         </dt>
                     <dd>
                         
@@ -1409,7 +1409,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Uniform </label>
+                        <label>Uniform Fee</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Uniform} readOnly
@@ -1441,7 +1441,7 @@ const StudentFeePaymentEntry = (props) => {
                     
                     
                     <dt style={{marginTop:'5%'}}>
-                        <label>Total Fee Structure</label>
+                        <label>Initial Fee Structure</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Total} readOnly
@@ -1451,7 +1451,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
             <dt>
-                        <label>Fine </label>
+                        <label>Fine Imposed</label>
                         </dt>
                       <dd> 
                       <input type="number" value={fine} readOnly
@@ -1463,7 +1463,7 @@ const StudentFeePaymentEntry = (props) => {
                        
 
                         <dt>
-                        <label>Final Fee Structure</label>
+                        <label>Final Fee Structure with Fine</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Total+fine} readOnly
@@ -1472,7 +1472,7 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/></dd>
 
                         <dt >
-                        <label >Due Amount </label>
+                        <label >Due Without Waiver</label>
                         </dt>   
                         <dd> 
                       <input type="number" value={(Total+fine)-(EditTotal+fine_paid)} 
@@ -1551,7 +1551,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Tution Charge </label>
+                        <label>Tuition Charge </label>
                         </dt>
                      <dd> 
                      <input type="number" value={TutionFee} readOnly
@@ -1589,7 +1589,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Games Sports</label>
+                        <label>Games & Sports</label>
                         </dt>
                      <dd>
                      <input type="number" value={GamesSportsExicursion} readOnly
@@ -1608,7 +1608,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Library Fees </label>
+                        <label>Library Fee </label>
                         </dt>
                      <dd>
                      <input type="number" value={LibraryFees} readOnly
@@ -1618,7 +1618,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                         <dt>
-                        <label>Computer Fees</label>
+                        <label>Computer Fee</label>
                         </dt>
                     <dd>
                     <input type="number" value={ComputerFees} readOnly
@@ -1628,7 +1628,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Development Fees </label>
+                        <label>Development Fee </label>
                         </dt>
                     <dd>
                         
@@ -1662,7 +1662,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                     <dt>
-                        <label>Uniform </label>
+                        <label>Uniform Fee</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Uniform} readOnly
@@ -1694,7 +1694,7 @@ const StudentFeePaymentEntry = (props) => {
                     
                     
                     <dt style={{marginTop:'5%'}}>
-                        <label>Total Fee Structure</label>
+                        <label>Initial Fee Structure</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Total} readOnly
@@ -1704,7 +1704,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
             <dt>
-                        <label>Fine </label>
+                        <label>Fine Imposed</label>
                         </dt>
                       <dd> 
                       <input type="number" value={fine} readOnly
@@ -1716,7 +1716,7 @@ const StudentFeePaymentEntry = (props) => {
                        
 
                         <dt>
-                        <label>Final Fee Structure</label>
+                        <label> Fee Structure With Fine</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Total+fine} readOnly
@@ -1725,7 +1725,7 @@ const StudentFeePaymentEntry = (props) => {
                                readOnly={true}/></dd>
 
                         <dt >
-                        <label >Due Amount </label>
+                        <label >Due Without Waiver </label>
                         </dt>   
                         <dd> 
                       <input type="number" value={(Total+fine)-(EditTotal+fine_paid)} 
