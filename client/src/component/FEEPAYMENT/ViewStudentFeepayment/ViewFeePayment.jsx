@@ -268,7 +268,7 @@ const ViewFeePayment =(props)=>{
 
     const handlesubmit=(e)=>{
         e.preventDefault()
-        console.log(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid))
+        console.log(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid)-EditTotal)
         if(Number(NewTotal - Total-waiver)+Number(fine)-Number(finePaid)<0){
             alert("Please Check the Fee Details")
             return
@@ -292,8 +292,8 @@ const ViewFeePayment =(props)=>{
             BedFee:Number(EditBedFee) ,
             Total:Number(EditTotal),
             Class:Class,
-            fine,
-            finePaid,
+            fine:fine===null?0:fine,
+            finePaid:finePaid===null?0:finePaid,
             year:year,
             regNo:regNo,
             Date:EditDate,waiver

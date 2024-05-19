@@ -644,8 +644,8 @@ const StudentFeePaymentEntry = (props) => {
                    setBillDate(DATA.bill_date.slice(0, 10))
                    cData = DATA.entry_date.toString()
                    setFine(DATA.fine)
-                   setFine_paid(DATA.fine_paid)
-                   setWaiver(DATA.waiver)
+                   setFine_paid(DATA.fine_paid === null ? 0 : DATA.fine_paid)
+                   setWaiver(DATA.waiver === null ? 0 : DATA.waiver)
                }).catch((err) => {
                    console.log(err)
                })
@@ -672,8 +672,8 @@ const StudentFeePaymentEntry = (props) => {
                    setEditDate(DATA.entry_date.slice(0, 10))
                    setBillDate(DATA.bill_date.slice(0, 10))
                    cData = DATA.entry_date.toString()
-                   setFine(DATA.fine)
-                   setFine_paid(DATA.fine_paid)
+                   setFine(DATA.fine===null?0:DATA.fine)
+                   setFine_paid(DATA.fine_paid === null ? 0 : DATA.fine_paid)
                    setWaiver(DATA.waiver)
                }).catch((err) => {
                    console.log(err)
