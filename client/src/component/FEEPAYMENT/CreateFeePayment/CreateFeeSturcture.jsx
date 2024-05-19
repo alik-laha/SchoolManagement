@@ -263,7 +263,7 @@ const CreateFeeSturcture = (props) => {
                     </dd>
 
                     <dt><label>Total</label></dt>
-                    <dd><input type="number" value={Total} readOnly={true}/>
+                    <dd><input type="number" value={Total} readOnly={true} style={{background:'lightyellow'}}/>
                     </dd>
                 </dl>
                 <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>

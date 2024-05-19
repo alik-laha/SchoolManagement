@@ -173,7 +173,7 @@ const ViewFeeStructure = (props) => {
         axios.post("/api/v1/fee/editfeestructure",data,{headers:{"Authorization":localStorage.getItem("token")}})
             .then((res)=>{
                 console.log(res)
-                alert("Updated Structure")
+                alert("Fee Structure Has Been Modified")
                 setEditedIndex("none")
                 setAdmissionFee(0)
                 setHostelFee(0)
@@ -303,7 +303,7 @@ const ViewFeeStructure = (props) => {
                         </dd>
 
                         <dt><label>Fee Type</label></dt>
-                        <dd><input type="text" value={FeeType} readOnly />
+                        <dd><input type="text" value={FeeType} style={{background:'lightyellow'}} readOnly />
                         </dd>
 
                         <dt><label>Admission Fee</label></dt>
@@ -382,7 +382,7 @@ const ViewFeeStructure = (props) => {
                         </dd>
 
                         <dt><label>Total</label></dt>
-                        <dd><input type="number" value={totalFee} readOnly={true}/>
+                        <dd><input type="number" value={totalFee} readOnly={true} style={{background:'lightyellow'}}/>
                         </dd>
                     </dl>
                     <span><button className="dashboard-btn dashboard-btn-scss">Submit</button></span>

@@ -1149,10 +1149,14 @@ const StudentFeePaymentEntry = (props) => {
                     <th>Roll No</th>
                     
                     
-                    <th>Fees To be Paid (Including Fine)</th>
+                    <th>Initial Fee As per Structure</th>
                     
-                    <th>Fees Paid (Including Fine)</th>
-                    <th>Due Amount (Including Fine,Exluding Waiver)</th>
+                  
+                    <th >Final Fee (Initial Fee+Fine-Waiver) </th>
+                    
+                    
+                    <th>Total Paid </th>
+                    
                 
                     
 
@@ -1165,7 +1169,7 @@ const StudentFeePaymentEntry = (props) => {
                     data.map((item,index)=>{
                         return(
                             <tr key={index}>
-                                <td>{index+1}</td>
+                                <td style={{width:'3px'}}>{index+1}</td>
                                 <td>{item.student_Name}</td>
                                 <td>{item.registration_no}</td>
                                 <td>{ <input type='checkbox'
@@ -1176,10 +1180,13 @@ const StudentFeePaymentEntry = (props) => {
                                 <td>{item.roll_no}</td>
                                 
                                 
-                                <td>{item.total_fee+item.fine}</td>
+                                <td style={{width:'30%'}}>{item.total_fee}</td>
                                 
-                                <td>{item.student_total_fee+item.fine_paid}</td>
-                                <td style={{color:'red'}}>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
+                                
+                                <td style={{width:'30%'}}>{item.total_fee+item.fine-item.waiver}</td>
+                                
+                                <td style={{width:'30%'}}>{item.student_total_fee+item.fine_paid}</td>
+                               
                                
                                
                                 <td><button onClick={()=>handleClick(item)} className="dashboard-btn dashboard-btn-scss" >Entry</button></td>
@@ -1423,7 +1430,7 @@ const StudentFeePaymentEntry = (props) => {
                        
 
                     <dt>
-                        <label>Total Fee </label>
+                        <label>Total Fee Structure</label>
                         </dt>
                       <dd> 
                       <input type="number" value={Total} readOnly
@@ -1437,8 +1444,8 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>
                       <dd> 
                       <input type="number" value={fine} readOnly
-                              style={{backgroundColor:'lightcoral',textAlign:'center',width:'50%',color:'white',fontWeight:'bolder'} }/> 
-                         <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%'} }
+                              style={{backgroundColor:'azure',textAlign:'center',width:'50%',color:'red',fontWeight:'500'} }/> 
+                         <input type="number" value={fine_paid} style={{marginLeft:'10px',textAlign:'center',width:'50%',color:'red',fontWeight:'500'} }
                                readOnly={true}/></dd>         
                               
                               <dt>
@@ -1679,7 +1686,7 @@ const StudentFeePaymentEntry = (props) => {
 
 
                         <dt>
-                            <label>Total Fee </label>
+                            <label>Total Fee Structure</label>
                         </dt>
                         <dd>
                             <input type="number" value={Total} readOnly
@@ -1692,15 +1699,9 @@ const StudentFeePaymentEntry = (props) => {
                         </dt>
                         <dd>
                             <input type="number" value={fine} readOnly
-                                   style={{
-                                       backgroundColor: 'lightcoral',
-                                       textAlign: 'center',
-                                       width: '50%',
-                                       color: 'white',
-                                       fontWeight: 'bolder'
-                                   }}/>
+                                  style={{backgroundColor:'azure',textAlign:'center',width:'50%',color:'red',fontWeight:'500'} }/>
                             <input type="number" value={fine_paid}
-                                   style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
+                                   style={{marginLeft:'10px',textAlign:'center',width:'50%',color:'red',fontWeight:'500'} }
                                    readOnly={true}/></dd>
                         <dt>
                             <label>Waiver </label>
@@ -1742,14 +1743,15 @@ const StudentFeePaymentEntry = (props) => {
                     <th>Roll No</th>
                     <th>Fee Type</th>
                     
-                    <th>Fees To be Paid (Excluding Fine)</th>
-                    <th>Fines to Be Paid</th>
-                    <th>Total Fees To be Paid (Including Fine)</th>
-                    <th>Fees Paid (Excluding Fine)</th>
+                    <th>Initial Fee</th>
+                    <th>Fine Imposed</th>
+                    <th>Waiver Imposed</th>
+                    <th>Final Fee (Initial Fee+ Fine Imposed- Waiver Imposed)</th>
+                    <th>Initial Fee Paid</th>
                     <th>Fines Paid</th>
-                    <th>Fees Paid (Including Fine)</th>
-                    <th>Waiver(If Any)</th>
-                    <th>Due Amount (Including Fine,Excluding Waiver)</th>
+                    <th>Total Fees Paid (Initial Fee Paid+Fines Paid)</th>
+                    
+                    <th>Due Amount (Final Fee - Total Fees Paid)</th>
                 
                     
                 </tr>
@@ -1772,12 +1774,13 @@ const StudentFeePaymentEntry = (props) => {
 
                                 <td>{item.total_fee}</td>
                                 <td>{item.fine}</td>
-                                <td>{item.total_fee+item.fine}</td>
+                                <td>{item.waiver}</td>
+                                <td>{item.total_fee+item.fine-item.waiver}</td>
 
                                 <td>{item.student_total_fee}</td>
                                 <td>{item.fine_paid}</td>
                                 <td>{item.student_total_fee+item.fine_paid}</td>
-                                <td>{item.waiver}</td>
+                                
                                 <td>{(item.total_fee+item.fine)-(item.student_total_fee+item.fine_paid+item.waiver)}</td>
                               </tr> 
                                
