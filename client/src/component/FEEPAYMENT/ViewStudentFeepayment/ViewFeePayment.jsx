@@ -292,8 +292,8 @@ const ViewFeePayment =(props)=>{
             BedFee:Number(EditBedFee) ,
             Total:Number(EditTotal),
             Class:Class,
-            fine,
-            finePaid,
+            fine:fine===null?0:fine,
+            finePaid:finePaid===null?0:finePaid,
             year:year,
             regNo:regNo,
             Date:EditDate,waiver
