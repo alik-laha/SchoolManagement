@@ -96,22 +96,39 @@ const ViewFeePayment =(props)=>{
         setTableView("none")
         setEditView("block")
         setAdmissonFee(data.admission_fee)
+        setEditAdmissonFee(data.admission_fee)
         setHostelCharge(data.hostel_fee)
+        setEditHostelCharge(data.hostel_fee)
         setTutionFee(data.tution_fee)
+        setEditTutionFee(data.tution_fee)
         setCautionMoney(data.caution_fee)
+        setEditCautionMoney(data.caution_fee)
         setExaminationFee(data.examination_fee)
+        setEditExaminationFee(data.examination_fee)
         setGamesSportsExicursion(data.sports_fee)
+        setEditGamesSportsExicursion(data.sports_fee)
         setElectricCharge(data.electric_fee)
+        setEditElectricCharge(data.electric_fee)
         setLibraryFees(data.library_fee)
+        setEditLibraryFees(data.library_fee)
         setComputerFees(data.computer_fee)
+        setEditComputerFees(data.computer_fee)
         setDevelopmentFees(data.development_fee)
+        setEditDevelopmentFees(data.development_fee)
         setMiscellaneous(data.miscellaneous_fee)
+        setEditMiscellaneous(data.miscellaneous_fee)
         setLaundryCharge(data.laundry_fee)
+        setEditLaundryCharge(data.laundry_fee)
         setMedicalCharge(data.madical_fee)
+        setEditMedicalCharge(data.madical_fee)
         setUniform(data.uniform_fee)
+        setEditUniform(data.uniform_fee)
         setSessionCharge(data.session_fee)
+        setEditSessionCharge(data.session_fee)
         setBedFee(data.bed_fee)
+        setEditBedFee(data.bed_fee)
         setTotal(data.total_fee)
+        setEditTotal(data.total_fee)
         setClass(data.class)
         setYear(data.year)
         setRegNo(data.regNo)
@@ -229,23 +246,23 @@ const ViewFeePayment =(props)=>{
         setTotal(0)
 
 
-        setEditAdmissonFee(0)
-        setEditHostelCharge(0)
-        setEditTutionFee(0)
-        setEditCautionMoney(0)
-        setEditExaminationFee(0)
-        setEditGamesSportsExicursion(0)
-        setEditElectricCharge(0)
-        setEditLibraryFees(0)
-        setEditComputerFees(0)
-        setEditDevelopmentFees(0)
-        setEditMiscellaneous(0)
-        setEditLaundryCharge(0)
-        setEditMedicalCharge(0)
-        setEditUniform(0)
-        setEditSessionCharge(0)
-        setEditBedFee(0)
-        setEditTotal(0)
+        setEditAdmissonFee(AdmissonFee)
+        setEditHostelCharge(hostelCharge)
+        setEditTutionFee(TutionFee)
+        setEditCautionMoney(CautionMoney)
+        setEditExaminationFee(ExaminationFee)
+        setEditGamesSportsExicursion(GamesSportsExicursion)
+        setEditElectricCharge(ElectricCharge)
+        setEditLibraryFees(LibraryFees)
+        setEditComputerFees(ComputerFees)
+        setEditDevelopmentFees(DevelopmentFees)
+        setEditMiscellaneous(Miscellaneous)
+        setEditLaundryCharge(LaundryCharge)
+        setEditMedicalCharge(MedicalCharge)
+        setEditUniform(Uniform)
+        setEditSessionCharge(SessionCharge)
+        setEditBedFee(BedFee)
+        setEditTotal(Total)
         setEditDate(new Date().toISOString().slice(0, 10))
     }
 
@@ -321,23 +338,23 @@ const ViewFeePayment =(props)=>{
                 setBedFee(0)
                 setTotal(0)
 
-                setEditAdmissonFee(0)
-                setEditHostelCharge(0)
-                setEditTutionFee(0)
-                setEditCautionMoney(0)
-                setEditExaminationFee(0)
-                setEditGamesSportsExicursion(0)
-                setEditElectricCharge(0)
-                setEditLibraryFees(0)
-                setEditComputerFees(0)
-                setEditDevelopmentFees(0)
-                setEditMiscellaneous(0)
-                setEditLaundryCharge(0)
-                setEditMedicalCharge(0)
-                setEditUniform(0)
-                setEditSessionCharge(0)
-                setEditBedFee(0)
-                setEditTotal(0)
+                setEditAdmissonFee(AdmissonFee)
+                setEditHostelCharge(hostelCharge)
+                setEditTutionFee(TutionFee)
+                setEditCautionMoney(CautionMoney)
+                setEditExaminationFee(ExaminationFee)
+                setEditGamesSportsExicursion(GamesSportsExicursion)
+                setEditElectricCharge(ElectricCharge)
+                setEditLibraryFees(LibraryFees)
+                setEditComputerFees(ComputerFees)
+                setEditDevelopmentFees(DevelopmentFees)
+                setEditMiscellaneous(Miscellaneous)
+                setEditLaundryCharge(LaundryCharge)
+                setEditMedicalCharge(MedicalCharge)
+                setEditUniform(Uniform)
+                setEditSessionCharge(SessionCharge)
+                setEditBedFee(BedFee)
+                setEditTotal(Total)
                 setEditDate(new Date().toISOString().slice(0, 10))
             }).catch((err)=>{
                 console.log(err)
@@ -389,23 +406,23 @@ const ViewFeePayment =(props)=>{
                 setBedFee(0)
                 setTotal(0)
 
-                setEditAdmissonFee(0)
-                setEditHostelCharge(0)
-                setEditTutionFee(0)
-                setEditCautionMoney(0)
-                setEditExaminationFee(0)
-                setEditGamesSportsExicursion(0)
-                setEditElectricCharge(0)
-                setEditLibraryFees(0)
-                setEditComputerFees(0)
-                setEditDevelopmentFees(0)
-                setEditMiscellaneous(0)
-                setEditLaundryCharge(0)
-                setEditMedicalCharge(0)
-                setEditUniform(0)
-                setEditSessionCharge(0)
-                setEditBedFee(0)
-                setEditTotal(0)
+                setEditAdmissonFee(AdmissonFee)
+                setEditHostelCharge(hostelCharge)
+                setEditTutionFee(TutionFee)
+                setEditCautionMoney(CautionMoney)
+                setEditExaminationFee(ExaminationFee)
+                setEditGamesSportsExicursion(GamesSportsExicursion)
+                setEditElectricCharge(ElectricCharge)
+                setEditLibraryFees(LibraryFees)
+                setEditComputerFees(ComputerFees)
+                setEditDevelopmentFees(DevelopmentFees)
+                setEditMiscellaneous(Miscellaneous)
+                setEditLaundryCharge(LaundryCharge)
+                setEditMedicalCharge(MedicalCharge)
+                setEditUniform(Uniform)
+                setEditSessionCharge(SessionCharge)
+                setEditBedFee(BedFee)
+                setEditTotal(Total)
                 setEditDate(new Date().toISOString().slice(0, 10))
             }).catch((err)=>{
                 console.log(err)
@@ -519,7 +536,7 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
 
-                            <input type="number" value={NewAdmissionFee - AdmissonFee} readOnly
+                            <input type="number" value={NewAdmissionFee} readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditAdmissonFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -531,7 +548,7 @@ const ViewFeePayment =(props)=>{
                             <label>Hostel Charge</label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewhostelCharge - hostelCharge} readOnly
+                            <input type="number" value={NewhostelCharge } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EdithostelCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -543,7 +560,7 @@ const ViewFeePayment =(props)=>{
                             <label>Tution Charge </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewTutionFee - TutionFee} readOnly
+                            <input type="number" value={NewTutionFee } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
                                    value={EditTutionFee}
@@ -555,7 +572,7 @@ const ViewFeePayment =(props)=>{
                             <label>Caution Money </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewCautionMoney - CautionMoney} readOnly
+                            <input type="number" value={NewCautionMoney} readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditCautionMoney}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -567,7 +584,7 @@ const ViewFeePayment =(props)=>{
                             <label>Examination Fee </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewExaminationFee - ExaminationFee} readOnly
+                            <input type="number" value={NewExaminationFee } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditExaminationFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -579,7 +596,7 @@ const ViewFeePayment =(props)=>{
                             <label>Games Sports</label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewGamesSportsExicursion - GamesSportsExicursion} readOnly
+                            <input type="number" value={NewGamesSportsExicursion } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditGamesSportsExicursion}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -590,7 +607,7 @@ const ViewFeePayment =(props)=>{
                         <dt>
                             <label>Electric Charge </label>
                         </dt>
-                        <dd><input type="number" value={NewElectricCharge - ElectricCharge} readOnly
+                        <dd><input type="number" value={NewElectricCharge } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditElectricCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -602,7 +619,7 @@ const ViewFeePayment =(props)=>{
                             <label>Library Fees </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewLibraryFees - LibraryFees} readOnly
+                            <input type="number" value={NewLibraryFees } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditLibraryFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -614,7 +631,7 @@ const ViewFeePayment =(props)=>{
                             <label>Computer Fees</label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewComputerFees - ComputerFees} readOnly
+                            <input type="number" value={NewComputerFees } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditComputerFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -627,7 +644,7 @@ const ViewFeePayment =(props)=>{
                         </dt>
                         <dd>
 
-                            <input type="number" value={NewDevelopmentFees - DevelopmentFees} readOnly
+                            <input type="number" value={NewDevelopmentFees } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditDevelopmentFees}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -639,7 +656,7 @@ const ViewFeePayment =(props)=>{
                             <label>Miscellaneous </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewMiscellaneous - Miscellaneous} readOnly
+                            <input type="number" value={NewMiscellaneous } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditMiscellaneous}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -651,7 +668,7 @@ const ViewFeePayment =(props)=>{
                             <label>Laundry Charge </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewLaundryCharge - LaundryCharge} readOnly
+                            <input type="number" value={NewLaundryCharge} readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditLaundryCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -663,7 +680,7 @@ const ViewFeePayment =(props)=>{
                             <label>Medical Charge </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewMedicalCharge - MedicalCharge} readOnly
+                            <input type="number" value={NewMedicalCharge } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditMedicalCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -675,7 +692,7 @@ const ViewFeePayment =(props)=>{
                             <label>Uniform </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewUniform - Uniform} readOnly
+                            <input type="number" value={NewUniform } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditUniform}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -687,7 +704,7 @@ const ViewFeePayment =(props)=>{
                             <label>Session Charge </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewSessionCharge - SessionCharge} readOnly
+                            <input type="number" value={NewSessionCharge } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditSessionCharge}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
@@ -699,7 +716,7 @@ const ViewFeePayment =(props)=>{
                             <label>Bed Fee </label>
                         </dt>
                         <dd>
-                            <input type="number" value={NewBedFee - BedFee} readOnly
+                            <input type="number" value={NewBedFee } readOnly
                                    style={{backgroundColor: 'ivory', textAlign: 'center', width: '50%'}}/>
                             <input type="number" value={EditBedFee}
                                    style={{marginLeft: '10px', textAlign: 'center', width: '50%'}}
